@@ -287,6 +287,7 @@ Defense-In-Depth is an information security strategy that integrates people, tec
 * Applies multiple countermeasures in a layered fashion to fulfill security objectives.
 * Should be implemented to prevent or deter a cyberattack, but it cannot guarantee that an attack will not occur.
 
+![Sec Controls](images/sec-controls.png)
 Control Purpose
 * Prevent
     * Stop a security issue from occurring
