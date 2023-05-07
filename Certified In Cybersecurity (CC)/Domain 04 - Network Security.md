@@ -239,7 +239,7 @@ IP Addresses and Domain Host Configuration Protocl (DHCP)
        * Written in the dotted quad notation, four numbers separated by periods (192.168.200.1)
     * Range 0 - 255
     * 8-bit binary numbers
-    * 2<sup>8 = 256 possible values
+    * 2<sup>8</sup> = 256 possible values
     * Start counting at 0
     * Subnets
         * Ex: 192.168.1.100
