@@ -5,6 +5,7 @@
 Open Systems Internconnection Model (OSI)
 * Developed by the International Organization for Standardization (ISO) in 1984
 * 7 layer architecture which all work collectively to transmit data
+* https://www.geeksforgeeks.org/layers-of-osi-model/
 * ![OSI](images/OSI-Model.png)
 
 Transmission Control Procol/Internet Protocol (TCP/IP) Model
@@ -365,9 +366,10 @@ Network Ports
     * Port 3389: Remote Desktop Protocol (RDP)
     * Port 137,138, and 139: NetBIOS (Windows only) 
     * Port 53: Domain Name Service (DNS)
-    * Port 25 (unencrypted), 465 (encrypted): Simple Mail Transfer Protocol (SMTP)
-    * Port 110 (unencrypted), 995 (encrypted port): Post Office Protocol (POP)
-    * Port 143 (unencrypted), 993 (encrypted): Internet Message Protocol (IMAP)
+    * Mail Related Ports
+        * Port 25 (unencrypted), 465 (encrypted): Simple Mail Transfer Protocol (SMTP)
+        * Port 110 (unencrypted), 995 (encrypted port): Post Office Protocol (POP)
+        * Port 143 (unencrypted), 993 (encrypted): Internet Message Protocol (IMAP)
     * Port 80: Hypertext Transfer Protocol (HTTP)
     * Port 443: HTTPS → adds TLS to HTTP
 
