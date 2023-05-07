@@ -247,6 +247,8 @@ IP Addresses and Domain Host Configuration Protocl (DHCP)
             * Host Address (1.100)
         Subnetting (splitting addresses into smaller pieces)
             * [Subnetting Made Easy](https://www.youtube.com/watch?v=nFYilGQ-p-8&pp=ygUKU3VibmV0dGluZw%3D%3D)
+    * Classes
+        * ![IP Address Classes](images/ip-address-classes.png)
     * IPv6 (128 bits)
         * Replaces v4 due to address exhaustion
         * Hexadecimal format (not in dotted-decimal notation like v4)
@@ -469,6 +471,11 @@ Threat Vectors:
 * Social Media
 * Removable media
 * Cloud
+
+Indicators of Compromise (IoC)
+* Indication, or signs, that unauthorized activity has compromised an info system
+* act as breadcrumbs for IR investigators, giving us the capability to create an entire picture of the state of the system, based on putting together the clues given to us
+
 
 Types of Threats
 * Distributed Denial-of-Service (DDoS)
