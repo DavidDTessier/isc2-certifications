@@ -699,7 +699,7 @@ Identification
             * Typically analyizes HTTP/HTTPS protocol stream between devices and server
             * Installed at the front even of a server
             * Monitoring indound / outbound traffic
-        * Application Protocol-Bases Intrusion Detection System (APIDS)
+        * Application Protocol-Based Intrusion Detection System (APIDS)
             * Specializes in software app security
             * Associated with HIDS
             * Monitors the communication that occur between applications and the server
@@ -788,7 +788,7 @@ Fire Suppression (Extinguisher)
     * CO<sub>2 and FM-200 can still be used
 * Class D
     * fires include burning of combustible metals such as magnesium and sodium and requires the use of dry chemcials to suppress
-  * Class K
+* Class K
     * Kitchen fires (fats / oils)
     * Use same as class b extinguisher
     * Class F in Europe and Australia
