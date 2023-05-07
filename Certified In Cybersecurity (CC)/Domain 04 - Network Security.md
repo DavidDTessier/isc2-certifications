@@ -249,6 +249,9 @@ IP Addresses and Domain Host Configuration Protocl (DHCP)
             * [Subnetting Made Easy](https://www.youtube.com/watch?v=nFYilGQ-p-8&pp=ygUKU3VibmV0dGluZw%3D%3D)
     * Classes
         * ![IP Address Classes](images/ip-address-classes.png)
+            * Class A has up to 16,777,214 hosts per Network
+            * Class B has up to 65,534 hosts per network
+            * Class C has up to 254 hosts per network
     * IPv6 (128 bits)
         * Replaces v4 due to address exhaustion
         * Hexadecimal format (not in dotted-decimal notation like v4)
@@ -343,7 +346,7 @@ Network Ports
 * Particular location on a network
     * Similar to apartment numbers, IP address is the street address
 * 16 bit binary number
-* 2<sup>16 = 65,536 possible values
+* 2<sup>16</sup> = 65,536 possible values
 * Start counting at 0
 * 0 - 65,535
 * 0-1,023: well-known ports
