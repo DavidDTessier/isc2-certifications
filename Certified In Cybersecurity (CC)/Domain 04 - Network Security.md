@@ -857,7 +857,6 @@ Security Zones
 * Micro Segmentation is very small network segments
 * VLANs
     * Virual Local Area Networks
-    
     * Extend broadcast domain
         * Operates at OSI Layer 2
         * Users on the same VLAN will be able to directly contact each other as if they were connected to the same switch
