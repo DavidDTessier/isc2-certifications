@@ -887,7 +887,10 @@ Network Devices
     * Layer 3 Device as it leverage IP addresses to route traffic
     * Connect networks together by serving as a central aggregation point for network traffic heading to or from a large network making routing decisions for packets
     * Some security function using access control lists, stateless inspection
-
+* Gateway
+    * Session Layer (Layer 5)
+* Firewall
+    * Transport Layer (Layer 4)
 Firewalls
 * Types
     * Network Firewalls
@@ -993,7 +996,7 @@ VPN and VPN Concentrators
     * Uses internet exchange (IKE) protocol for secure communication channels
         * https://afrozahmad.com/blog/ikev1-vs-ikev2-what-is-the-difference/
         * ![IKE Versions](images/IKEv1-vs-IKEv2.webp)
-            * DPD = Deed Peer Packet
+            * [DPD = Dead Peer Packet](https://en.wikipedia.org/wiki/IPsec#Dead_Peer_Detection)
         * Security Assciation (SA)
             * Identifies cryptographic alogorithms
             * Systems that wish to communicate with each other compare their list of SAs to find the strongest one that they both have in common
