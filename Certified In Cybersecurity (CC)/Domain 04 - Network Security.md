@@ -405,9 +405,11 @@ Wireless Encryption
 * (2020) WPA3
     * Wireless devices are required to support
     * Still supports CCMP 
-    * Add Simultaneous Authentication of Equals (SAE)
+    * Add [Simultaneous Authentication of Equals (SAE)](https://en.wikipedia.org/wiki/Simultaneous_Authentication_of_Equals#:~:text=In%20cryptography%2C%20Simultaneous%20Authentication%20of,password%2Dauthenticated%20key%20agreement%20method.)
         * Secure key exchange protocol based on [Diffie-Hellman technique](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
             * ![Diffie-Hellman](images/diffie-hellman.png)
+        * Problem with Diffie-Hellman key exchange:
+            * So the resulting key is influenced by a pre-shared key and the MAC addresses of both peers to solve the authentication problem.
 
 Command Line Network Tools:
 * ping
