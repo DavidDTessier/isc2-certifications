@@ -780,10 +780,10 @@ Fire Suppression (Extinguisher)
     * use water or soda acid to suppress
 * Class B
     * considered liquid fires and include buring of gas, oils, tars, solvents, and alcohol
-    * cannot use water, instead take the oxygen away by using CO<sub>2 or FM-200 extinguisher
+    * cannot use water, instead take the oxygen away by using CO<sub>2</sub> or FM-200 extinguisher
 * Class C
     * fires include burning of elctrical components and equipement
-    * previously these could be extinguished with Halon gas, CO<sub>2, or nonconductive agent such as FM-200.
+    * previously these could be extinguished with Halon gas, CO<sub>2</sub>, or nonconductive agent such as FM-200.
     * Halon is no longer recommended becuase of the ozone depletion
     * CO<sub>2</sub> and FM-200 can still be used
 * Class D
