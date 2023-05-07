@@ -400,13 +400,14 @@ Wireless Encryption
     * Now consider insecure
 * (2004) WPA2 (v2 of WPA)
     * Uses an encryption protocol based upon the advanced encryption standard (AES):
-        * Counter Mode Cipher Block Chaining Message Authentication Code Protocol (CCMP)
+        * Counter Mode [Cipher Block Chaining Message Authentication Code Protocol (CCMP)](https://en.wikipedia.org/wiki/CCMP_(cryptography)#:~:text=Counter%20Mode%20Cipher%20Block%20Chaining,the%20original%20IEEE%20802.11%20standard.)
     * Still considered Secure
 * (2020) WPA3
     * Wireless devices are required to support
     * Still supports CCMP 
     * Add [Simultaneous Authentication of Equals (SAE)](https://en.wikipedia.org/wiki/Simultaneous_Authentication_of_Equals#:~:text=In%20cryptography%2C%20Simultaneous%20Authentication%20of,password%2Dauthenticated%20key%20agreement%20method.)
-        * Secure key exchange protocol based on [Diffie-Hellman technique](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
+        * a password-based authentication and password-authenticated key agreement method.
+        * variant of Dragonfly Secure Key Exchange, which is based on [Diffie-Hellman technique](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
             * ![Diffie-Hellman](images/diffie-hellman.png)
         * Problem with Diffie-Hellman key exchange:
             * So the resulting key is influenced by a pre-shared key and the MAC addresses of both peers to solve the authentication problem.
@@ -472,7 +473,7 @@ Threat Vectors:
 Types of Threats
 * Distributed Denial-of-Service (DDoS)
     * attack on a system or network results in either denial of service or services, a reduction in functions and operation of that system, and prevention of legitimate users accessing the resources. 
-    * ![DDoS](images/ddos.png)
+    * ![DDoS](images/ddos.svg)
 * Malware
     * Malicious software
     * Characteristics
