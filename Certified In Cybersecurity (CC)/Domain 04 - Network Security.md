@@ -785,7 +785,7 @@ Fire Suppression (Extinguisher)
     * fires include burning of elctrical components and equipement
     * previously these could be extinguished with Halon gas, CO<sub>2, or nonconductive agent such as FM-200.
     * Halon is no longer recommended becuase of the ozone depletion
-    * CO<sub>2 and FM-200 can still be used
+    * CO<sub>2</sub> and FM-200 can still be used
 * Class D
     * fires include burning of combustible metals such as magnesium and sodium and requires the use of dry chemcials to suppress
 * Class K
