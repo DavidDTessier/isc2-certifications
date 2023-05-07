@@ -131,8 +131,7 @@ Transmission Control Protocol (TCP)
                 * Acknowledgement that the packet sent in the second phase has been received
         * ![TCP Handshake](images/tcp-handshake.png)
     * Disonnecting from a TCP Session
-        * Systems want to disconnect from the conversation 
-        * System that wants to disconnect sends a FIN flag to signal they want to terminate the connection
+        * System that wants to disconnect from the conversation sends a FIN flag to signal they want to terminate the connection
         * The Receiving system replies with an ACK and send its own FIN flag. Which the starting system send an ACK to complete the disconnection
         * Known as the “polite” way to disconnect
         * The “impolite” manner is to use the RST (reset) flag, this is like hanging up a phone
