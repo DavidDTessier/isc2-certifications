@@ -7,7 +7,7 @@ Information Security has three major goals, know as the _The CIA_ triad.
 ![CIA](images/cia-triad.jpg)
 
 ### Confidentiality
-Refers to the organizations efforets to protect information / data from unauthorized disclosure
+Refers to the organizations efforts to protect information / data from unauthorized disclosure
 
 There are several threats that put data and infomation confidentiality at risk, they are:
 
@@ -247,12 +247,11 @@ The risk management process is broken down into 4 basic steps
             * Combinations of a threat and vulnerability
         * Assessment techniques
             * Qualitative Risk Assessment
-                * Uses subjective ratins to evaluate risk likelihood and impact (i.e. Low, Medium, High)
+                * Uses subjective ratios to evaluate risk likelihood and impact (i.e. Low, Medium, High)
                 * ![Qualitative](images/qualitative-risk-assessment.png)
             * Quantitative Risk Assessment
-                * Uses objective numberical ratins to evaluate risk likelihood and impact
+                * Uses objective numberical ratios to evaluate risk likelihood and impact
                 * ![Quantitative](images/quantitative-risk-assessment.png)
-
 
 3. Treat the risk
     * Once the risks have been assessed this is where we evulate and make a decision on how to handle the risk.
@@ -314,6 +313,46 @@ Control Mechanism
 * Physical
     * Impacts the physcial world
         * Fences, locks, security guards, etc.
+
+Secruity Roles and Responsibilities
+* System Owner and Data Owner
+    * owner (either system or data) is the person who decides how valuable the asset is and whay types of security controls should be put in place to protect the asset.
+    * decides the sensitivity classification of the information (ie. top secret, secret, etc)
+    * typicall upper-level management and holds the ultimate responsibility of securing the asset and security with the organization
+* Data Controller and Data Processor
+    * In the EU, GDPR governs the protection and privacy of personal data
+    * _data controller_ is an entity that determines how and why personal data is processed
+    * _data processor_ is the entity that actually perfroms the processing on the personal data, as per guidelines set by the data controller
+* System Administrator
+    * responsible for the configuration of a system or network
+    * recieves configuration goals from the designers or the security professionals within the organizationand configures the system in a manner to the meeting those goals
+    * Sec professional should be someone other than the system admin for audit purposes
+* User
+    * anyone who accesses and uses the resources within the organization
+    * affected by security controls determined by the owner and put in place by the steward/custodian
+* Privileged User
+    * one who has been given extra privileges to perfomr administrative tasks
+    * these users should be limited to a few
+* Executive User
+    * high-level business executive (president, CEO)
+    * requires access to more company resources than a regular user or even management
+    * has elevated access 
+
+Data Roles and Responsibilities
+* Data Owner
+    * typically compnay owner, executive team, department head who decides which data is considered an asset and how that data should be protected
+* Data custodian/steward
+    * custodian (aka steward) is the person who implements the security control based on the value of the asset determined by the owner.
+    * typically IT admin who performs common tasks such as backups, configuring permissions, etc
+* Data privacy officer (DPO)
+    * chief privacy officer (CPO)
+    * responsible for developing policies that address employee personal data and customer personal data
+    * privacy policy should specify how PI is to be handled and stored with the organization
+
+Security Officer
+* liases between management (the owner) and the IT staff (custodian)
+* responsible for making sure that policies are being followed by educating everyone on their role within the organization
+
 
 ## 1.4 Understanding (ISC)<sup>2</sup> Code of Ethics
 
