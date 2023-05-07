@@ -134,7 +134,7 @@ Five possible components to include in a Disaster Recovery (DR) plan:
 5. Checklists for certain individuals
 
 Purpose:
-* Subnet of BC used to restore business to operations as quickly as possible
+* Subset of BC used to restore business to operations as quickly as possible
     * Steps in when BC fails
 * Triggered by environmental, cyber attack, DC failure or power outage
 

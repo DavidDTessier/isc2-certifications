@@ -15,10 +15,11 @@ Transmission Control Procol/Internet Protocol (TCP/IP) Model
 * Sometimes reffered to as five or four 
 * the Physical and Data Link Layers are referred to as the Physical or Network Interface Layer in the the 4 layer reference
 * Does not consider security
-* ![TCP](images/OSI-TCPIP.webp)
 
-OSI vs TCP
+
+OSI Model vs TCP Model
 ![OSI-TCP](images/OSI-TCP.png)
+
 Types of computer networks
 * Local Area Network (LAN)
     * Connects devices at home or in the office
@@ -1030,6 +1031,10 @@ Internet Of Things (IoT)
     * Application Firewall (WAF)
         * For embedded systems that have a web interface
         * Monitoring inbound traffic and block malicious hostile traffic
+    * **NIST - SP 800-82 Guide to Industrial Control Systems (ICS) Security**
+        * https://csrc.nist.gov/publications/detail/sp/800-82/rev-2/final
+        * guidance on how to secure Industrial Control Systems (ICS), including Supervisory Control and Data Acquisition (SCADA) systems, Distributed Control Systems (DCS), and other control system configurations such as Programmable Logic Controllers (PLC)
+
 
 Cloud Computing
 * What is the cloud?
