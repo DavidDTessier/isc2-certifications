@@ -180,8 +180,22 @@ Authorization
         * Grants permissions to job specific roles (groups)
         * Users are grant access to those “roles/groups”
         * Permission is applied to the role, users in that role will get the new permission
+Elements of Access Control
+* Subject
+    * Entity capable of accessing objects
+    * typically represents a process (the process takes on the attributes, such as access rights, of the user or application)
+        * Owner
+        * Group
+        * World
+* Object
+    * Resource to which access is controlled
+    * An entity that contains and/or receives informaiton
+    * E.g.: Records, blocks, pages, segments, files, etc
+* Access right
+    * describes the way in which a subject may access an object
+    * Read, Write, Execute, Delete, Create, Search
 
-Linux Permissions
+Unix File Access Control
 * Give control to files using the **chmod** command
 * Permissions:
     * Read (R): 4
