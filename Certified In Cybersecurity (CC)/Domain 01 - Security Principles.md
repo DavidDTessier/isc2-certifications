@@ -251,6 +251,11 @@ The risk management process is broken down into 4 basic steps
                 * ![Qualitative](images/qualitative-risk-assessment.png)
             * Quantitative Risk Assessment
                 * Uses objective numberical ratios to evaluate risk likelihood and impact
+                * Single Loss Expectancy (SLE) = Value of Assest ($) x Exposure Factor (*)
+                    * Ex: Let’s say you decide the e-commerce web site has a value of $200,000, and each time the web server has a hard drive failure, you lose 8 percent of the asset value. This means that your single loss expectancy is $200,000 × .08, which is $16,000. Therefore, every time the hard drive fails in the server, your business loses $16,000!
+                * Annualized Loss Expectancy (ALE) = SLE x Annualized Rate Of Occurence (ARO)
+                    * ARO = how many times a year you expect the threat to occur
+                    * For example, you may expect a threat to occur three times a year or to occur once every five years. The following example calculates the ALE for our hard drive failure threat if it were to occur three times a year: ALE = $16K x 3 which would equate to $48,000
                 * ![Quantitative](images/quantitative-risk-assessment.png)
 
 3. Treat the risk
