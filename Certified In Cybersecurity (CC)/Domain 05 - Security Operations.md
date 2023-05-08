@@ -228,13 +228,20 @@ Systems hardening
 Configuration management (e.g., baselines, updates, patches)
 * Tracks the way that specific devices are set up
 * Create artifacts to help how things are configured
-
-* Baselining
+* Identification
+    * breakdown the project and create referencing system for each item.
+* Control
+    * includes the evaluation of all change-requests and change-proposals, and their subsequent approval or disapproval. It covers the process of controlling modifications to the system's design, hardware, firmware, software, and documentation.
+* Status Accounting
+    * recording or reporting config item descriptions
+*   Baselining is part of this process
     * Snapshot of a system at a given time
     * Use to compare changes
-* Versioning
-    * Assigned numbers to each version
-    * Major.Minor.Build
+    * Versioning
+        * Assigned numbers to each version
+        * Major.Minor.Build
+* Verifcation and Audit
+    * independant review to make sure the configuration follows compliance and performance requirements
 * Standards
     * Naming conventions
     * IP addressing schema
