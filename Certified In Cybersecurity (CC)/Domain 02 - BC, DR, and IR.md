@@ -345,4 +345,4 @@ Components
     * When monitoring fails to detect an incident and we hear about a breach from employees, customers, or external organizations whom see signs of a breach
     * CIRT team should have a consisten method of recieving, recording, and evaluating exteranl reports
 
-    
+    [Back](./Domain%2001%20-%20Security%20Principles.md)  | [Next](./Domain%2003%20-%20Access%20Control%20Concepts.md)
