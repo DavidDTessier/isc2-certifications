@@ -249,9 +249,9 @@ IP Addresses and Domain Host Configuration Protocl (DHCP)
             * [Subnetting Made Easy](https://www.youtube.com/watch?v=nFYilGQ-p-8&pp=ygUKU3VibmV0dGluZw%3D%3D)
     * Classes
         * ![IP Address Classes](images/ip-address-classes.png)
-            * Class A has up to 16,777,214 hosts per Network
-            * Class B has up to 65,534 hosts per network
-            * Class C has up to 254 hosts per network
+            * Class A has up to 2<sup>24</sup>-2 = 16,777,214 hosts per Network
+            * Class B has up to 2<sup>16</sup>-2 =  65,534 hosts per network
+            * Class C has up to 2<sup>8</sup>-2 254 hosts per network
     * IPv6 (128 bits)
         * Replaces v4 due to address exhaustion
         * Hexadecimal format (not in dotted-decimal notation like v4)
