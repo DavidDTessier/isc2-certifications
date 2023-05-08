@@ -240,6 +240,8 @@ Configuration management (e.g., baselines, updates, patches)
     * IP addressing schema
 
 * Change Management
+    * ![CM](images/Change-Mangement-Process.webp)
+    * Structured process for reviewing proposed IT system or service changes
     * Control risk of change
 
 
