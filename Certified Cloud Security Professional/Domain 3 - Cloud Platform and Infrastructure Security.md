@@ -569,8 +569,62 @@ Identification, Authentication and Authorization
             * This sign-in method ensures that all users authencation occurs on-premises
         * Allows administrators to implment more rigorous levels of access control
         * Certificate Authentication, key fob, card token
+        * trust can be either one-way or two-way, if one-way trust exists from domain one to domain two, domain will trust authenticated sessions from domain two, not vice-versa. If two-way, their is mutual trust.
+        * trust can 
         * ![Federation](images/federation.png)
-    
+    * Trust Models
+        * One-Way Trust
+            * domain one to domain two, domain will trust authenticated sessions from domain two, not vice-versa.
+        * Two-Way Trust
+            * domains mutually trust each other
+        * Transitive Trust
+            * trust relationship transfer across domains
+                * Ex: if domain one has a transitive trust with domain two and domain two has transitive trust with domain three, domain one and three will have a trust relationship
+        * Non-transitive Trust
+            * trust will not be automatically inferred.
+            * domain on will not trust three unless the admin explicitly creates that trust
+* Strength of Authtenciation Factors
+    * False acceptance errors occur when the system misidentifies individuals as authorized users and grant access which should be denied
+        * problematic because this provides unauthorized access to systems, devices, etc
+        * The frequency of these errors is measured by the false acceptance rate (FAR)
+    * False rejection errors occur when authorized individuals attempt to gain access to a system but are incorrectly denied access
+        * not as serious as false acceptance errors, but it jeopardizes the legitimate availability of resources
+        * the frequence of these errors is measured by the false rejection rate (FRR)
+    * FAR and FRR are not by themselves good measures of strength of an auth factor, due to they can be easily manipulate.
+    * Solution to this is to use a balanced measure of strength called the crossover error rate
+        * admin tunes the system to have equal false acceptance and false rejection rates
+* Kerberos
+    * Core protocols of MS Active Directory
+    * ticket-based authentication system that allows users to authenticate to a centralized service and the use tickets from that authentication process to gain access to distributed systems that support kerberos authentication.
+    * uses port 88
+    * ![Kerberos](images/kerberos_figure_5_10.gif)
+    * ![Kerberos 1](images/kerberos-at-work.png)
+* Ligthweight Directory Access Protocol (LDAP)
+    * provides the means to query a centralized directory service, such as MS Active Directory
+    * TCP Ports
+        * 389 - unencrypted comms
+        * 636 - Secure LDAP
+* NTLM Authentication
+    * NT Lan Manager
+    * was widely used on windows systems before Kerberos
+    * depends upon a hash-based challenge-response protocol
+    * Security Issues
+        * Weak encryption
+            * jeopardizes the security of encrypted hash values
+        * Vulnerable to Pass the hash (hack)
+            * allows the use of credentials from one system to gain access to another system
+    * Avoid the use of NTLM
+* Security Assertion Markup Language (SAML)
+    * allows SSO within a web browser across a variety of systems
+    * Benefits
+        * true SSO experience for end users
+        * No credential access for service providers 
+    * ![SAML Auth](images/SAML-Auth.png)
+* OAuth and OpenID Connect
+    * Used by 3rd party IdPs (LinkedIn, Facebool, Google, etc)
+    * OAuth is an _authorization_ protocol
+    * OpenID Connect is an _authentication_ protocol
+    * ![OAuth-OpenID](images/oidic.jpg)
 
 Audit mechanisms (e.g., log collection,
 correlation, packet capture)
