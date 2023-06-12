@@ -1260,8 +1260,26 @@ Incident Management
 3. Containment, eradication, recovery
     * the required and appropriate actions taken to contain the sec incident based on the analyiss done in the previous phase
     * limits the damage (scope) of the incident
+    * Containment Strategy Evaluation
+        1. Damage potential
+        2. Evidence preservation
+        3. Service availability
+        4. Resource requirements
+        5. Expected effectiveness
+        6. Solution time frame
+    * Segmentation is a common network security technique
+        * also useful in IR response
+        ![Quarantine Zone](images/segmentation-quarrantine-zone.png)
+        * Move affect systems to quarrantine zone and use ACLs to limit acces or disconnect from other zones
+    * Isolation
+    ![Isolation](images/islotation.png)
+    * Removal
+    ![Remove](images/removal.png)
 4. Eradication
-    * process of eliminating the root cause of the security incident with a high degree of confidence
+    * process of eliminating the root cause and traces of the security incident with a high degree of confidence
+    * sometime it requires purging and media sanitization
+    * follow the [NIST SP 800-88 standard](https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-88r1.pdf) which provides standards/guidelines for Media sanitization. 
+    ![NIST Data Sanitiziation](images/NIST-data-sanitization.png)
 5. Recovery
     * during the incident, our focus is on protecting and restoring business-critical processes
     * should happen after the adversary has been evicted from the environment and known vulnerabilities have been remediated
@@ -1269,7 +1287,23 @@ Incident Management
 6. Post-incident activity
     * post-mortem analysis is performed
     * actions performed during the process are reviewed to determine if any changes need to be made in the preparation or detection and analysis phases
-    * lessons learned drive continous improvement to ensure effective and efficient IR
+    * lessons learned
+        * use a trained facilitator
+        * provides incident responders with an opportunity to reflect on the IR efforts an offer feedback that will drive continous improvement to ensure effective and efficient IR
+        * incident summary report generation
+            * describes the response efforst in detail
+        * retain any evidence necesary to comply with legal and regulatory compliance
+        * NIST Lessons Learned Questions:
+            1. How well did staff and management perform?
+            2. Were documented procedures followed?
+            3. Were those procedures adequate?
+            4. Did any actions inhibit the recover effort?
+            5. What would responders do differently next time?
+            6. How could information sharing improve?
+            7. What could prevent similar incidents?
+            8. What should the organization watch for?
+            9. What additional tools or resources are needed?
+
 * Inicident Response Team
     * must have personnel available 24/7
     * Groups that should be part of the team
@@ -1282,6 +1316,15 @@ Incident Management
         * Phyiscal Security
     * Conduct regular training and testing
     * Use IR Service Providers to fill gaps
+        * Testing Types
+            * Read-through
+                * ask each team member to review their role in the plan
+            * Walk-through
+                * known as tabletop
+                * gather the team together to discuss the plan
+            * Simulation
+                * scenerio based testing of the incident reponse plan
+                * may evolve into pen tests
 * Communictions Plan
     * include internal and external communications
     * limit external to trusted parties
