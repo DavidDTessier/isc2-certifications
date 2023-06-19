@@ -11,6 +11,7 @@ Conflicting International Legislation
     * Clarifying Lawful Overseas Use of Data (CLOUD) Act requires CSPs to hand over data to aid in investigation of serious crimes, even if stored in another country
     * compliance requires collaboration
     * legal counsel should be part of the evaluation of any cloud-specific risks, legal requests, and the company's response to these
+* Encryption and Privacy
     * **Compute Export Controls**
         * US companies can't export to Cuba, Iran, North Korea, Sudan, and Syria
     * **Encryption Export Controls**
