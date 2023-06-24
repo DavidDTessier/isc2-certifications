@@ -148,6 +148,10 @@ Legal framework and Guidelines
     * https://en.wikipedia.org/wiki/Sarbanes%E2%80%93Oxley_Act
     * law enacted in 2002
     * sets requirements for US public companies to protect financial data when stored and used
+* **Family Educational Rights and Privacy Act (FERPA)**
+    * Regulates how educational institutions may handle student educational records
+    * provides students and their parents, if student is under 18, the right to inspect their eductional records and requests to those records
+    * restricts the ways the educational institutions can use and release those records without the student's consent
 
 Laws and Regulations
 * **Stationary Requirements**
@@ -166,6 +170,19 @@ eDiscovery
     * CSPs may not preserve essentail data for the required period of time to support historical investigations
     * they may not even log all the data relevant to support an investigation
     * shifts burden of recording/preserving potential evidence onto the consumer
+* Three Major Steps
+    1. **Preservation**
+        * issueance of legal hold on preservation of relevant electronic and paper records, including logs files so they are not purged
+    2. **Collection**
+        * Sec team often assists in collection
+        * sources may include but not limited to:
+            * File Servers
+            * Endpoint Systems
+            * Email Messages
+            * Enterprise systems and cloud services
+        * ediscovery management tools
+    3. **Production**
+        * attourneys must review documents for relevance and turn them over to the other side by recreating an electronic file to share
 * eDiscovery Frameworks
     * [NIST 8006 - Cloud Computing Forensic Science Challenges](https://csrc.nist.gov/publications/detail/nistir/8006/final)
         * Addresses common issues and solutions needed to address Digital Forensics and Incident Response (DFIR)
@@ -186,6 +203,7 @@ eDiscovery
         * Guide for digital evidence analysis
     * [ISO/IEC 27043:2015](https://www.iso.org/standard/44407.html)
         * Guide for incident investigation principles and processes
+* 
 
 Forensics Requirements
 * ISO/IEC and CSA provide guidance on best practices for collecting digital evidence and conducting forensics investigations in the cloud
@@ -250,6 +268,10 @@ identifiable information (PII))
     * **Gramm-Leach-Bliley Act (GLBA) of 1999**
         * focuses on services of banks, lenders, and insurance
         * severely limits services they can provide and the information they can share with each other
+        * regulates fin institutions
+        * requires a written info sec program
+        * requires a designated sec officer
+        * Limits sharing of fin records
         * Consists of three main sections:
             * **The Financial Privacy Rule**
                 * regulates the collection and disclosure of private financial information
@@ -257,6 +279,11 @@ identifiable information (PII))
                 * stipulates that financial institutions must implement security programs to protect such information
             * **The Pretexting provisions**
                 * prohibit the practice of pretexting (accessing private information using false pretenses)
+    * **Children's Only Privacy Protection Act (COPPA)**
+        * Protects privacy of children under 13
+        * Requires that websites have a privacy policy
+        * Provides for parental inspection and deletion of information
+        * Requires parental consent for data collection
     * **Privacy Shield**
         * international agreement between the US and the EU
         * allows transfer of personal data from the European Economic Area (EEA) to the US by US based companies
@@ -320,7 +347,11 @@ Protection Regulation (GDPR))
             * Companies (CSP, in this case) must subject themselves to an independent audit on an annual basis
 * [Generally Accepted Privacy Principles (GAPP)](https://us.aicpa.org/interestareas/informationtechnology/privacy-management-framework)
 * recently replaced with the Privacy Management Framework
-* created by AICPA in 2009
+* developed by a collaboration between four majory industry organizations:
+    * American Institute of Certified Public Accountants (AICPA)
+    * Canadian Institute of Chartered Accountants (CICA)
+    * Information Systems Audit and Control Association (ISACA)
+    * Institute of Internal Auditors (IIA)
 * framework of privacy prinicples
 * widely incorporated into the SOC 2 framework as an optional criterion
 * organizations that pursue a SOC 2 audit can include these privacy controls if appropriate
@@ -367,6 +398,7 @@ Auditing
 * serves as a primary type of detective control
 * frequency is based on risk
 * degree of risk also affects how often an audit is performed
+* A gap analysis provides a roadmap for future work
 * Concept of Due Care
     * Security audits and effectiveness reviews are key elements in displaying due care. Without them senior management will likely be held accountable and liable for any asset losses that occur
     * act with common sense, prudent management, responsible action
@@ -383,10 +415,20 @@ Auditing
     * include purpose and scope of audit, and results discovered or revealed
     * may include sensitive information such as problems, standards, causes, and recommendations
     * only people with sufficient privilege SHOULD have access
-* Internal Auditor
+* Internal Auditors
     * acts as a "trusted advisor" to the organization on risk educating stakeholders, assessing compliance
     * compliance may mean company policies or regulatory
     * some legal and regulator frameworks require the use of an independent auditor, other demand a third-party auditor
+* External Auditors
+    * independent firms that often perform audits at the request of a board of directors
+    * Example firms
+        * Price-Waterhouse Coopers (PwC)
+        * Ernst and Young
+        * Deloitte
+        * KPMG
+        * BDO (Canada)
+* Third-Party Auditors
+    * Government agencies or industry groups that perform regulatory audits
 * Internal Audit
     * Can provide more continuous monitoring of control effectiveness and policy compliance
     * enables the org to catch and fix any issues before they show up on a formal audit report
@@ -418,15 +460,24 @@ Types of audit reports
     * includes audit standards and suggested report formats to guide and assit auditors
     * SOC Reports
         * SOC 1
-            * deals mainly with fin controls and are used primarily by CPAs auditing fin statements
-        * SOC 2 Type 1
-            * report that assesses the design of security processes at a specified point in time
-        * SOC 2 Type 2
-            * (often written as Type II) assesses how effective those controls are over time by observing operations for at least six months
-            * often requires an NDA due to sensitive contents
+            * deals mainly with financial controls and are used primarily by CPAs auditing fin statements
+            * provides assurance required for customer financial audits
+        * SOC 2
+            * provides assurance of confidentiality, integrity, and availability controls 
+            * Type 1
+                * report that assesses the design of security processes at a specified point in time 
+                * describes the controls that the service provider has in place and an opionion on the suitability of those controls
+            * Type 2
+                * (often written as Type II) assesses how effective those controls are over time by observing operations for at least six months
+                * includes the same info as type 1 along with the results of control testing by the auditor
+                * often requires an NDA due to sensitive contents
         * SOC 3
             * contain only the auditor's general opinions and non-sensitive data is publicly shareable
+            * providees high-level, public reporting of confidential, integrity, and availability controls
     * US-based but SOC2 has become a defacto global standard
+* **Statement on Standards for Attestation Engagements (SSAE)**
+    * https://en.wikipedia.org/wiki/SSAE_No._18
+    * guide for SOC audits in the US
 * **International Standards on Assurance Engagments (ISAE)** 
     * https://en.wikipedia.org/wiki/ISAE_3402
     * developed and issued by the International Aduiting and Assurance Standards Board (IAASB) and published by the International Federation of Accounts (IFAC)
@@ -571,7 +622,28 @@ computing)
     * CASB can help identify and stop shadow IT
     * policies should define requirements users must adhere to and specify which cloud services are approved for various uses
 
-
+* Data Security Policies and Procedures
+    * Policies
+        * Foundational authority for data security efforts
+        * Set clear expectations for data security responisibilities
+        * Provides guidance for requesting access to information
+        * Process for granting policy exceptions
+        * Should cover:
+            * Data Storage Policies:
+                * Appropriate storage locations
+                * Access control requirements
+                * Encryption requirements
+            * Data Transmission Policies
+                * Appropriate data transmissions
+                * Encryption requirements
+                * Acceptible transmission requirements
+            * Data Lifecyle Policies
+                * Describes end of life for data 
+                * Data Retention Policies
+                    * Specifies the min/max periods that an organization will retain different data elements
+                    * limits risk exposure 
+                * Data Disposal Polices
+                    * Describes proper techniques for destroying data that is no longer needed by the organization
 Identification and involvement of relevant
 stakeholders
 * key challeng of audit process is the inclusion of any **relevant stakeholders**
@@ -638,10 +710,12 @@ Difference between data owner/controller vs. data custodian/processor
 * **Data Processor**
     * anyone who processes personal data on behalf of the data controller
     * THE CUSTODIAN
+    * third-party outside of your organization
     * is responsible for the safe and private custody transport, and storage
 * **Data Controller**
     * the person or entity that controls processing of the data
     * THE OWNER
+    * set policies and guidelines for their data sets
     * owns teh data and risks associated with any data breaches
     * when data controllers use processors, they must ensure that security requirements follow the data
 * **Data Protection Officer (DPO)**
@@ -654,8 +728,12 @@ Difference between data owner/controller vs. data custodian/processor
     * usually a member of senior management
     * CAN delegate some day-to-day duties
     * CANNOT delegate total responsibility
+* **Data Steward**
+    * handles day-to-day governance activities.
+    * they are delegated responsibility by data owners
 * **Data Custodian**
     * Data Processor in GDPR
+    * ensures 
     * Usually someone in the IT department
     * DOES implement controls for data owner
     * DOES NOT decide what controls are needed
@@ -708,6 +786,33 @@ Risk treatment (i.e., avoid, mitigate, transfer, share, acceptance)
         * HIPAA
         * PCI-DSS
 * Security Controls
+    * procedures and mechanisms that an organization puts in place to manage security risks
+    * **Defense in Depth**
+        * multiple overlapping controls for one objective
+    * Categories
+        * Purpose
+            * **Preventive**
+                * Stop a security issue from occuring in the first place
+            * **Detective** 
+                * Identify that a potential security issue has taken place
+            * **Corrective**
+                * Remediate security issues that have already occurred
+        * Mechanism of action
+            * **Technical Controls**
+                * use of techninology to achieve security control objectives
+                    * Firewall
+                    * IDP/IPS
+            * **Operatinal Controls**
+                * use human-driven processes to manage tech in a secure manner
+                    * user access reviews
+                    * log monitoring
+            * **Management Controls** 
+                * improve the security of the risk management process itself
+                    * conduct regular security planning and including security considerations in orgs change management, service acquisition and pm methodologies
+    * **False Positive Errors**
+        * Occur when a control inadvertently triggers when it should not
+    * **False Negatitive Errors**
+        * Occur when a control fails to trigger in a situation where it should.
     * **safeguards**
         * proactive (reduce likelihoo of occurrence)
     * **countermeasure**
@@ -724,6 +829,7 @@ Different Risk Frameworks
 * NIST
     * [NIST SP 800-37](https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final)
         * Risk Management Framework
+         ![NIST Risk Framework](images/nist-risk-management-framework.png)
     * [NIST SP 800-146 - Cloud Computing Synopsis and Recommendations](https://csrc.nist.gov/publications/detail/sp/800-146/final)
         * provides definitions of various cloud computing terms
 * European Union Agency for Cybersecurity (ENISA)
@@ -734,7 +840,7 @@ Different Risk Frameworks
     * includes research recommendations to advance the field of cloud computing, legal risks, and security risks
 
 Metrics for risk management
-* key metrics
+* Key Metrics
     * **Patching levels**
         * how many devices are fully patched and up-to-date?
         * unpatched devices often contain exploitable vulnerabilities
@@ -750,6 +856,30 @@ Metrics for risk management
         * how long does it take for sec teams to take action and contain the damage after a sec incident
     * **Mean time to resolve (MTTR)**
         * how long does it take for sec teams to resolve the sec incident
+
+Risk Visibility and Reporting
+* Risk Register
+    * Centrallized document thart tracks  information about the nature and status of each risk facing the organization
+    * Also referred to as "Risk Log"
+    * Example: https://en.wikipedia.org/wiki/Risk_register
+    * Contents
+        * Description
+        * Category
+            * used to group similar risks
+        * Probability and Impact
+            * resulting from risk assessment
+        * Rating
+            * calculated by multiplying the probability and impact scores
+        * Risk management actions
+    * Information Sources
+        * Risk assessment results
+        * Audit findings
+        * Team member output
+        * Threat intelligence
+            * Shares risk information
+    * Risk Matrix/Heat Map
+        * ![Risk Matrix](images/risk-heat-map.png)
+        * quickly summarizes risks and allows senior leaders to quickly focus on the most significant risks facings the organization
 
 Assessment of risk environment (e.g., service, vendor, infrastructure, business)
 * Questions to ask when considering a cloud service, vendor or infra provider
@@ -784,11 +914,20 @@ Assessment of risk environment (e.g., service, vendor, infrastructure, business)
 
 Business requirements (e.g., service-level agreement (SLA), master service agreement (MSA),
 statement of work (SOW))
+* **Non-Discolsure Agreement (NDA)**
+    * contract with vendors and suppliers not to disclose the company's confidential information
+* **Service-Level Requirements (SLRs)**
+    * Document specific requirements that a customer has about any aspect of a vendor's service performance
+    * may include:
+        * System response time
+        * Service availability
+        * Data preservation
 * **Master Service Agreement (MSA)**
     * defined as any contract that two or more parties enter into a service agreement
     * should address compliance and process requirements the customer is passing along to the CSP
     * should include breach notification (CSP duty)
 * **Service-Level Agreements (SLA)**
+    * SLRs are documented in an SLA
     * Stipulates performance expectations such as maximum downtimes and often include penalties if the vendor doesn't meet expectations
     * generally used with external vendors (like CSP) and is legally binding
     * often includes financial penalties for non-performance, amy allow customer to terminate a contract
@@ -804,13 +943,26 @@ statement of work (SOW))
 * **Statement of Work (SOW)**
     * legal document created after an MSA has been executed and governs a specific unit of work
     * MSA may document services and prices, a SOW covers requirements, expectations, and deliverables for a project.
-* **Non-Discolsure Agreement (NDA)**
-    * contract with vendors and suppliers not to disclose the company's confidential information
+* Other Agreement Types
+    * Memorandum of understanding (MOU)
+        * written letter to document aspects of the relationship
+        * commonly used when a legal dispute is unlikely, but the customer and vendor still wish to document their relationship to avoid future misunderstandings
+        * uses in cases where internal service provider is offering a service to a customer that's in a different business unit of the same company
+    * Business Partner Agreement (BPA)
+        * when two organizations agree to do business with each other in a partnership
+        * example: two companies jointly develop and market a product, the BPA might specify each partner's responsibilities and the division of profits
+    * Interconnection Security Agreements (ISA)
+        * include details on the ways that two organizations will interconnect their networks, systems, and/or data
+        * provides details on connection security parameters, such as the encryption standards and transfer protocols that will be used.
+* Security and Compliance Terms
+    * Document security and complaince requirements
+    * Faciliate customer monitoring of compliance
+    * Ensure the right of audit and assessment
 
 Vendor management (e.g., vendor assessments, vendor lock-in risks, vendor viability, escrow)
 * SCRM and vendor management overlap
 * vendor management will include more activities related to operational risks
-* **Asses vendors**
+* **Assess vendors**
     * sec practitioners should participate in the inital selection process for a csp to assess sec risks
     * review soc 2 reports
 * **Assess vendor lock-in risks**
@@ -895,7 +1047,7 @@ Electrotechnical Commission (ISO/IEC) 27036)
             * provides a set of best practices and techniques for designing and implementing the supply chain management fucntion
         * **Part 3 - Guidelines for information and communication technology supply chain security**
             * lays out practices and techniques specific to managing security risks in the supply chain
-        * **Part 4 - Guidelines for security of cloud services**
+        * **Part 4 - Guidelines for 0ooppolpppsecurity of cloud services**
             * deals with practices and requirements for managing supply chain security risk specific to cloud computing and CSP
 * Additional Resources
     * [NISTIR 8276](https://csrc.nist.gov/News/2021/nistir-8276-key-practices-in-c-scrm)
