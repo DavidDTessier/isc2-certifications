@@ -2,7 +2,7 @@
 
 ## 1.1 Understanding cloud computing concepts
 
-Cloud computing definitions
+**Cloud computing definitions**
 * Delivering computing resource to a remote customer over a network
     * Building Servers in AWS
     * Using Gmail or Office 365
@@ -10,7 +10,7 @@ Cloud computing definitions
 * NIST Defintion as per [NIST SP 800-145](https://csrc.nist.gov/publications/detail/sp/800-145/final)
     * _A model for enabling ubiquitous, convenient, on-demand network access o a shared pool of configurable computing resources, for example, networks, servers, storage, applications, and services, that can be rapidly provisioned and released with minimal management effort or service provider interaction._
 
-Cloud computing roles and responsibilities
+**Cloud computing roles and responsibilities**
 * Cloud Service Customer (CSC)
     * Consumer of cloud computing resources/services from one or more CSPs
 * Cloud Service Provider (CSP)
@@ -63,7 +63,7 @@ Cloud computing roles and responsibilities
         * may manage firewalls, IDPS, SIEM systems, and other security services and infra
         * may provide an outsourced security operations center (SOC) and incident response (IR)
 
-Cloud Computing Characteristics
+**Cloud Computing Characteristics**
 * On-Demand Self Service
     * customers should be able to scale their compute/storage resources without CSP involvement
     * providing agility in service delivery
@@ -113,7 +113,7 @@ Cloud Computing Characteristics
     * Resource pooling is a key component for multi-tenancy
     * If demand exceeds resource availablity this becomes a problem for the CSP
 
-Building block technologies
+**Building Block Technologies**
 * Compute Services
     * IaaS
     * Combines central processing units (CPU), memory and ephemeral storage capabilities using virtual machines (VMs)
@@ -246,10 +246,10 @@ Building block technologies
      
     
 
-Generic CSP Architecture
+**Generic CSP Architecture**
 * ![CSP Architecture](images/csp-architecture.png)
 
-Key Drivers for Cloud Computing
+**Key Drivers for Cloud Computing**
 * Shift from Captial Expenditures (CapEx), where organizations had to invest large sums of money, to Operational Expenditures (OpEx), which now enables companies to pay per use and avail themselves of pricing structures similar to monthly or quarterly leasing agreements.
 * Additional drivers include
     * Scalability / Elasticity
@@ -260,12 +260,12 @@ Key Drivers for Cloud Computing
 
 ## 1.2 Describe cloud reference architecture
 
-Acroynims
+**Acroynims**
 * NIST = National Institute of Standards and Technology
 * ISO = Intenational Organization for Standardization
 * IEC = International Electrotechnical Commission
 
-Architectures and Frameworks
+**Architectures and Frameworks**
 * Two reference architectures widely used are:
     * [NIST Special Publication (SP) 500-292 - Cloud Computing Reference Architecture and Taxonomy](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication500-292.pdf)
     * Guiding principles used to create the ref architecture were:
@@ -326,7 +326,7 @@ Architectures and Frameworks
     
 
         
-Cloud Computing Activities (ISO/IEC 17788)
+**Cloud Computing Activities (ISO/IEC 17788)**
 * Fall into three (3) groups:
     * Activities that **use** services
         * Cloud Service Consumer (CSC)
@@ -365,7 +365,7 @@ Cloud Computing Activities (ISO/IEC 17788)
             * Cloud auditor (perfom adutis, report results)
             * Cloud service broker (acquire and assess customers, assess marketplace, create legal agreements)
 
-Cloud Service Capabilities Types (ISO/IEC 17788)
+**Cloud Service Capabilities Types (ISO/IEC 17788)**
 * Infrastructure
     * Where the CSC can provision and use the compute, storage, or networing resources of the CSP
     * CapEx on-premis but OpEx in the cloud
@@ -375,7 +375,7 @@ Cloud Service Capabilities Types (ISO/IEC 17788)
 * Application
     * Where the CSC uses the CSP's applications
 
-ISO/IEC 17788 Cloud Service Categories
+**ISO/IEC 17788 Cloud Service Categories**
 * Communications as a Service (CaaS)
     * Capability provided to customer for real time interaction and collaboration
 * Compute as a Service (CompaaS)
@@ -430,7 +430,7 @@ ISO/IEC 17788 Cloud Service Categories
         * Costs associated with supporting virtualized servers and hardware is now on the CSP
 * IaaS, PaaS, SaaS are the most common
 
-Cloud Deployment Models
+**Cloud Deployment Models**
 * Criteria for selecting a deployment model
     * Risk appetite
     * Cost
@@ -483,7 +483,7 @@ Cloud Deployment Models
         * Variation of hybrid
         * Newer term and not in reference architectures
 
-Cloud Shared Considerations
+**Cloud Shared Considerations**
 * Cloud Computing Shared Responsibility Model
     * Security is shared in the Cloud
         * CSPs are responsible for security of the cloud
@@ -586,7 +586,7 @@ Cloud Shared Considerations
         * ![outsourcing](images/cloud-considerations-outsourcing.png)
         * important to understand supply chain for any service so potential cloud-related issues can be identified.
 
-Impact of related technologies  
+**Impact of related technologies**  
 * Blockchain
     * **distributed, public ledger** that can be used to store financial, medical, or other transactions (free to join and participate)
     * Does not use intermediaries such as banks and fin institutions
@@ -660,7 +660,7 @@ Impact of related technologies
     * management of cloud infra described as code
     * key DevOps practice and is used in conjunction with Continuous Integration and Continous Delivery (CI/CD)
 
-NOTE:
+**NOTE**:
 * IaC, CI/CD, and DevOps are standard elements of deployment, change, and release in the cloud. DevSecOps is quickly growing in popularity.
 
 ## 1.3 Understand security concepts relevant to cloud computing
@@ -676,7 +676,7 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 * Availability
     * Refers to the organizations efforts to make sure data and systems are available for authorized use.
 
-Cryptography and Key Management
+**Cryptography and Key Management**
 * Concepts
     * Cryptography
         * refers to secure information and communication techniques derived from mathematical concepts and a set of rule-based calculations called algorithms, to transform messages in ways that are hard to decipher.
@@ -728,7 +728,7 @@ Cryptography and Key Management
         * GCP Cloud KMS
         * AWS KMS
 
-Identity and access control
+**Identity and Access Control**
 * Provisioning and Deprovisioning
     * standardize, streamline, and develop an efficient account creation process
     * timely deprovisioning eliminates access sprawl
@@ -776,7 +776,7 @@ Identity and access control
     * provides visibility into who is using privileged accounts and what they are using it for   
     * may provide Just-in-time elevation feature to provide access  
 
-Data and media sanitization
+**Data and Media Sanitization**
 * [NIST Special Publication (SP) 800-88](https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final)
     * Guidelines for secure media sanitization
         * Includes these different activities
@@ -812,7 +812,7 @@ Data and media sanitization
         * Media is no longer reusable with any of these methods
         * Data is also NOT recoverable
 
-Network Security
+**Network Security**
 * Network Security Groups
     * provide additional layer of security for cloud resources
     * act as a virtual firwall for virtual networks and resource instances
@@ -862,7 +862,7 @@ Network Security
         * Inbound / Outbound traffic inspection
         * Centrallized security policy managemetn and enforcement
 
-Virtualization Security
+**Virtualization Security**
 * Container Security
     * ![Container Host](images/containerhost.png)
     * Shares many concerns of service virtualization, but must enforce **isolation** of network, data, storage access at the container-level
@@ -879,7 +879,7 @@ Virtualization Security
     * destroy environment once needs are met and resources are no longer required
 
 
-Common Threats
+**Common Threats**
 * Data Breach
     * result of a cyberattack
     * when sensitive data is stolent, includes Personally Indetifiable Information (PII)/Protected Health Information (PHI)
@@ -915,7 +915,7 @@ Common Threats
 * Application flaws
 * Improper use, configuration or implementation of cryptography
  
-Security hygiene (e.g., patching, baselining)
+**Security Hygiene (e.g., patching, baselining)**
 * Configuration Management
     * ensures systems are configured similarly
     * configurations are known and documented
@@ -935,7 +935,7 @@ Security hygiene (e.g., patching, baselining)
 
 ## 1.4 Understand design principles of secure cloud computing
 
-Cloud Secure Data Lifecycle
+**Cloud Secure Data Lifecycle**
 * ![Data Lifecycle](images/secure-data-lifecycle.png)
 * Phases
     * Create
@@ -994,7 +994,7 @@ Cloud Secure Data Lifecycle
 
 
 
-Cloud-based Business Continuity (BC)
+**Cloud-based Business Continuity (BC)**
 * Definition
     * overal organization plan for "how-to" continue business
 * focuses on the whole business
@@ -1002,7 +1002,7 @@ Cloud-based Business Continuity (BC)
 * umbrella policy and DRP is part of it
 
 
-Disaster Recovery (DR) Plan
+**Disaster Recovery (DR) Plan**
 * Definition
     * plan for recovering from a disaster impacting IT and returning the IT infrastructure to operation
 * focuses more on the technical aspects of recovery
@@ -1017,7 +1017,7 @@ Disaster Recovery (DR) Plan
         * address rack-level failures within a region datacenter
         * Consists of two or more 'fault domains' for power, network, etc
 
-Business impact analysis (BIA)
+**Business Impact Analysis (BIA)**
 * Contains two important items
     * cost-benefit analysis (CAB)
     * calculation of the return on investment (ROI)
@@ -1036,7 +1036,7 @@ Business impact analysis (BIA)
         * Improved Scalability and elasticity
         * Faster access to emerging tech
 
-Cloud Economics
+**Cloud Economics**
 * Business shift to see the value in using cloud computing as a measure for costs saving
 * Economic Impact of Cloud Computing Model
     * ![Cloud Economic Model](images/cloud-econ-model.png)
@@ -1059,10 +1059,7 @@ Cloud Economics
             * Measure of efficiency
             * Impact Measures
 
-
-
-
-Functional Security Requirements 
+**Functional Security Requirements**
 * Functional vs Non-Functional
     * Functional Requirements
         * Define a system or its components and specifies what it must do
@@ -1073,7 +1070,7 @@ Functional Security Requirements
         * Applicable system level
         * Ex.: Security certificaton are non-functional
 
-Security Considerations and Responsibilities
+**Security Considerations and Responsibilities**
 * IaaS
     * VM attacks
     * Virtual Network
@@ -1137,7 +1134,7 @@ Security Considerations and Responsibilities
     * Countermeasures:
         * IDS/IPS, rate-limiting, firewall ingress/egress filters
 
-Cloud Design Patterns
+**Cloud Design Patterns**
 * are a standardized or “known good” way of implementing some capability
 * Will NEVER guarantee security or future effectiveness of security objectives, they can significantly reduce risk associated with misconfigurations and such
 * Commonly used
@@ -1152,7 +1149,7 @@ Cloud Design Patterns
         * [Google Cloud Architecture Framework](https://cloud.google.com/architecture/framework)
         * [Oracle Cloud Architecture Center](https://www.oracle.com/ca-en/cloud/architecture-center/)
 
-DevOps Security
+**DevOps Security**
 * DevOps Goals
     * Build collaborative relationships with Devs and Operations
     * Embrace automation
@@ -1187,7 +1184,7 @@ DevOps Security
 
 ## 1.5 Evaluate cloud service providers
 
-Verification Against Criteria
+**Verification Against Criteria**
 * Regulations, Standards, and Legislation
     * [ISO/IEC 27017:2015](https://www.iso.org/obp/ui/en/#iso:std:iso-iec:27017:ed-1:v1:en)
         * ISO/IEC stands for International Organization for Standardization/International Electrotechnical Commission
@@ -1214,8 +1211,7 @@ Verification Against Criteria
             * Supplier security
             * Supplier relationships
             * Incident Management
-            * Business continuity
-    
+            * Business continuity 
     * Payment Card Information Data Security Standard (PCI DSS)
         * widely accepted set of policies and procedures intended to optimize the security of credit, debit and cash card transactions
         * created jointly in 2004 by four major credit-card companies: Visa, Mastercard, Discover and American Express
@@ -1232,7 +1228,7 @@ Verification Against Criteria
             * https://listings.pcisecuritystandards.org/pdfs/PCI_SSC_Cloud_Guidelines_v3.pdf
             * https://listings.pcisecuritystandards.org/documents/PCI_DSS-QRG-v3_2_1.pdf
 
-System/Subsystem Product Certifications
+**System/Subsystem Product Certifications**
 * Common Criteria (CC)
     * [ISO/IEC 15408](https://www.iso.org/standard/72891.html)
         * Enable an objective evaluation to validate that a particular product or system satisfies a defined set of security requirements
