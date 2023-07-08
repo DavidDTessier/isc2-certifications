@@ -288,9 +288,10 @@ Threat Modeling
                 * how many people will be impacted?
             * **D**iscoverability
                 * how easy is it to discover the threat?
-    * [P.A.S.T.A](https://cdn2.hubspot.net/hubfs/4598121/Content%20PDFs/VerSprite-PASTA-Threat-Modeling-Process-for-Attack-Simulation-Threat-Analysis.pdf)
+    * [Process for Attack Simulation Threat Analysis (P.A.S.T.A)](https://cdn2.hubspot.net/hubfs/4598121/Content%20PDFs/VerSprite-PASTA-Threat-Modeling-Process-for-Attack-Simulation-Threat-Analysis.pdf)
         * Multi-stage modelling process for aligning business objectives and technical requirements, taking into account compliance issues and business analysis.
         * The intent of the method is to provide a dynamic threat identification, enumeration, and scoring process.
+        * Risk-centric modelling for threats
         * Stages
             1. Definition of Objectives
             2. Definition of Technical Scope
