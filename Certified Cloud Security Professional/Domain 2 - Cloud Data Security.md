@@ -2,35 +2,72 @@
 
 ## 2.1 Describe cloud data concepts
 
-Cloud Data Life Cycle Phases
-* ![Data Lifecycle](images/secure-data-lifecycle.png)
+**Cloud Data Life Cycle Phases**
+![Data Lifecycle](images/secure-data-lifecycle.png)
 * Phases
     * Create
         * can be created by users/systems
+        * Classify, tagging
     * Store
         * ensure data is handled properly, using encryption at rest
         * ensure data is classified as soon as possible
+        * logging monitoting
     * Use
         * data should be protected by adequate security controls based on its classification
+        * Apply DLP, RO, IRM
     * Share
         * encryption of data in use or in transit over a network
+        * Apply DLP, encrypt, IRM
     * Archive
         * needed to comply with laws or regulations requiging the retention of data
+        * retention policy
     * Destroy
         * when data is no longer need, it should be destroy in such a way the it is not readable nor recoverable
         * crypto-shredding!!
+        * overwrite
 
-Data Dispersion
+**Key Data Functions**
+* Access
+    * View/Accessing data
+* Process
+    * Use of data to perform action
+* Store
+    * Storing data in a datastore (dabase, filesystem, etc)
+
+**Controlling Data Functions**
+![Data Access Controls](images/data%20mapping.png)
+* Access
+    * How do we control access?
+    * Encrypt data
+    * Digital Rights Management (DRM)
+* Process
+    * How do we control processing?
+    * Access Management
+    * Encryption
+* Storing
+    * How do we control the storage of data?
+    * Policies
+        * How certain types of data are stored
+        * USB restriction policies to prevent USB storage
+    * DRM to prevent copying of data
+    * Data Loss Prevention (DLP)
+        * can enforce rules and prevent data from being moved or copied
+
+**Data Dispersion**
 * core principle of business continuity says that importent data should always be stored **in more than one location**
 * easier in the cloud because the CSP owns the underlying complexity that delivers site-level resiliency
 * Cloud storage for IaaS includes different levels of storage redundancy, including:
     * Local: replicas within a single datacenter
     * Zonal: replicas to multiple datacenters within a region
     * Global: region level resiliency (replicas to backup region)
+* Storage Slicing
+    * Data is broken into chunks and encrypted, error correction (erasure coding) is added, and then the data is geopgraphically distributed
+    * Allows for retrieval of data in the event multiple locations are offline
+    * Like RAID in the cloud
 
-Data Flows
+**Data Flows**
 * data flow diagram (DFD) is useful to gain visibility and ensure that adequate security controls are implemented
-* ![Sample DFD](images/sample-data-flow.png)
+![Sample DFD](images/sample-data-flow.png)
 * Benefits
     * decrease development time and faster deployment of new system features
     * reduced security risk
@@ -40,39 +77,43 @@ Data Flows
 
 ## 2.2 Design and implement cloud data storage architectures
 
-Storage Types (e.g., long-term, ephemeral, raw storage)
+**Storage Types (e.g., long-term, ephemeral, raw storage)**
 * Types
     * See Building Block Technologies in [Domain 1](./Domain%201%20-%20Cloud%20Concepts%2C%20Architecture%20and%20Design.md)
 * Storage Types By Category
     * IaaS
-        * Raw Storage
+        * Raw Storage (Raw Device Mapping (RDM))
             * physical media, allows a VM access a storage logical unit number (LUN)
+            * VMWare virtualization
         * Ephermeral Storage
             * its used for any temporary data such as cache, buffers, session data, swap volume, etc.
             * instance storage
         * Volume Storage
-            * attached as IaaS instance (EC)
-            * i.e GCP Persistent Disk
+            * attached as IaaS instance (EC2)
+            * i.e GCP Persistent Disk, AWS EBS, VMFS
         * Object Storage
             * S3 storage, GCS
     * PaaS
         * Structured
             * Relational DB
+            * tables, keys, and rows
         * Unstructured
             * Big Data
+            * NoSQL
+            * text files, media or other file types
     * SaaS
         * Information Storage and Mgmnt
             * Data entered via the web interface
         * Content/File Storage
-            * File-based content
+            * File-based content - NAS
         * Ephermeral Storage
             * its used for any temporary data such as cache, buffers, session data, swap volume, etc.
         * Content Delivery Network (CDN)
             * Geo-distributed content
 
-Threats To Storage Types
+**Threats To Storage Types**
 * Universal threats to data at rest (in storage) regardless of location (on-prem vs cloud)
-    * Unauthorized access threatens Confidentiality
+    * Unauthorized usage and access threatens Confidentiality
         * user accessing data storage without proper authorization
         * Preventions:
             * Customer implements proper access controls
@@ -80,7 +121,9 @@ Threats To Storage Types
     * Improper modification/Unathorized Changes threatens Integrity
         * cost and operational concern
         * Shadow IT is a common issue
-    * Losst of connectivity threatens Availability
+    * Lost of connectivity threatens Availability
+        * Denial of Service (DoS)
+        * Implement Security products such as IPS to prevent DoS/DDoS attacks
 * Other threats
     * Jurisdictional Issues
         * data transfer between countries can run afoul of legal requiremetns
@@ -91,14 +134,24 @@ Threats To Storage Types
             * First are the consequences of noncompliance like fines or suspension of business operations
             * Second is the reason for the compliance requirements -- **data protection**
         * Requirements may include use of specfic encryption standards, handling and retention
-    * DoS
+    * Denial-of-Service
     * Data corruption/destruction
     * Theft or mdeia loss
     * Malware and ransomware
     * Improper disposal  
         * CSP is responsible for hardware disposal
+        * DOD 5220.22-M and NIST 800-88 deal with data sanitization
+            * https://www.sipicorp.com/wp-content/uploads/2019/09/NIST_vs_DoD_V3.pdf
+        * Solution **Crypto-shredding**
 
-Ransomware Countermeasures & Prevention
+**Crypto-Shredding**
+* https://en.wikipedia.org/wiki/Crypto-shredding
+1. Encrypt data with key A
+2. Encrypt key A with key B
+3. Delete data
+4. Delete key A and key B
+
+**Ransomware Countermeasures & Prevention**
 * Countermeasures
     * Backup systems
     * Store backups separately
@@ -113,9 +166,13 @@ Ransomware Countermeasures & Prevention
     * use awareness training --> **MOST IMPORTANT**
     * AI-driven Cloud services offer help with these
 
+**Data Responsibility**
+* The client (cloud customer) is **ultimately responsible** for the safeguarding of the sensitive data (PCI, PII, PHI, etc) from cradle to grave
+* Even if the data disclosure is the **fault of another party (CSP)**, the client (cloud customer) is still ultimately responsible
+
 ## 2.3 Design and apply data security technologies and strategies
 
-Encryption and Key Management
+**Encryption and Key Management**
 * Cryptography
     * Use of mathematical algorithms to transform information into an encrypted form that is not readable by unauthorized individuals
     * Two basic operations
@@ -134,40 +191,40 @@ Encryption and Key Management
     * Diffusion → changing a single bit of the plaintext should change about 50% of the ciphertext bits
 * Categories
     * Categories
-    * [Symmetric](https://en.wikipedia.org/wiki/Symmetric-key_algorithm)
-        * Shared secret key for both encryption and decryption
-        * ![symmetric](../Certified%20In%20Cybersecurity%20(CC)/images/symmetric-encryption.png)
-        * Most commonly uses [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) algorithm
-        * Common symmetric encryption algorithms:
-            * Data Encryption Standard (DES)
-                * Block cipher that was selected as an American government standard in the 1970s
-                * Used a 56-bit encryption algorithm
-                * No longer secure
-            * Blowfish
-                * block cipher algorithm created by Bruce Schneider to replace DES
-                * offers variable rates of encryption 1-448 bit
-            * Twofish
-                * also written by Bruce Shneider
-                * created after Blowfish
-                * 128-bit encryption
-            * Triple DES (3DES)
-                * improvement on DES that runs the information through three mathematical operations using three different 56-but keys to create 168-bit encyption
-                * block cipher
-            * Rivest Cipher (RC4/RC5)
-                * block cipher created by Ronal Rivest
-                * 3 different verisons
-                * RC4 which is a stream cipher used in SSL and WEP (for wireless security)
-            * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-                * replaced 3DES as new standard for symmetric algorithms
-                * block cipher
-                * supports 128-bit, 192-bit, and 256-bit encryption
-                * AES256
-                    * if AES is used to encrypt data with 256-bit encryption, its referred to as AES256, or AES-256, instead of just AES
-        * Formula to calculate the number of symmetric keys required for a group to communicate
-            * (N * (N-1))/2 or (N<sup>2</sup>-N)/2
-                * N == number of participants in the group
-                * Table
-                    ![num of symmetric keys](../Certified%20In%20Cybersecurity%20(CC)/images/number-of-symmetric-keys.png)
+        * [Symmetric](https://en.wikipedia.org/wiki/Symmetric-key_algorithm)
+            * Shared secret key for both encryption and decryption
+            * ![symmetric](../Certified%20In%20Cybersecurity%20(CC)/images/symmetric-encryption.png)
+            * Most commonly uses [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) algorithm
+                * Common symmetric encryption algorithms:
+                    * Data Encryption Standard (DES)
+                        * Block cipher that was selected as an American government standard in the 1970s
+                        * Used a 56-bit encryption algorithm
+                        * No longer secure
+                    * Blowfish
+                        * block cipher algorithm created by Bruce Schneider to replace DES
+                        * offers variable rates of encryption 1-448 bit
+                    * Twofish
+                        * also written by Bruce Shneider
+                        * created after Blowfish
+                        * 128-bit encryption
+                    * Triple DES (3DES)
+                        * improvement on DES that runs the information through three mathematical operations using three different 56-but keys to create 168-bit encyption
+                        * block cipher
+                    * Rivest Cipher (RC4/RC5)
+                        * block cipher created by Ronal Rivest
+                        * 3 different verisons
+                        * RC4 which is a stream cipher used in SSL and WEP (for wireless security)
+                    * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+                        * replaced 3DES as new standard for symmetric algorithms
+                        * block cipher
+                        * supports 128-bit, 192-bit, and 256-bit encryption
+                        * AES256
+                            * if AES is used to encrypt data with 256-bit encryption, its referred to as AES256, or AES-256, instead of just AES
+            * Formula to calculate the number of symmetric keys required for a group to communicate
+                * (N * (N-1))/2 or (N<sup>2</sup>-N)/2
+                    * N == number of participants in the group
+                    * Table
+                        ![num of symmetric keys](../Certified%20In%20Cybersecurity%20(CC)/images/number-of-symmetric-keys.png)
     * [Asymmetric](https://en.wikipedia.org/wiki/Public-key_cryptography)
         * Slower than symmetric but solves the issues of having large number of keys for large groups
         * Use different keys for encryption and decryption
@@ -185,7 +242,7 @@ Encryption and Key Management
                 * use your own private key
             * validate a signature
                 * use the sender's public key
-        * ![asymmetric](../Certified%20In%20Cybersecurity%20(CC)/images/asymmetric.png)
+        ![asymmetric](../Certified%20In%20Cybersecurity%20(CC)/images/asymmetric.png)
         * Common asymmetric algorithms
             * [Rivest-Shamir-Adleman (RSA)](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
                 * first asymmetric algorithm that implemented signining and encryption. 
@@ -282,7 +339,7 @@ Encryption and Key Management
     * Phases
         * 1. Generation
             * keys should be generated within a trusted, secure cryptographic module
-            * FIPS 140-2 validated modules provide tamper resistence and key integrity
+            * FIPS 140-2/140-3 validated modules provide tamper resistence and key integrity
         * 2. Distribution
             * should be distributed securely to prevent theft/compromise during transit
             * best practice to encrypt with a seperate key while distributing to other parties
@@ -301,6 +358,25 @@ Encryption and Key Management
             * MDM systems removes certificates from a device during device wipe or retirement
 * Key Management In The Cloud
     * CSP-managed or self-managed
+    * Volume storage encryption
+        * encrypts a storage volume mounted to a VM
+        * Instance based
+            * encryption engine resides on the VM instance
+        * Proxy-based
+            * encryption engine runs on a proxy instance
+            * proxy maps the volume data to the instance for secure access
+            * becomes SPF
+    * Object Storage Encryption
+        * basic storage-level encryption is less secure, so its best to encrypt data before send it to the cloud
+        * File-level encryption
+            * use IRM or DRM solution to protect individual files
+        * Application-level encryption
+            * the encryption engine resides within the application itself, allowing the application to ingest and use encrypted data
+    * Database encryption:
+        * File-level encryption
+        * Transparent encryption:
+            * Encryption engine resides within the database itself
+        * Application-level encryption
     * Key Storage
         * many CSPs offer FIPS compliant virtualized Hardware Security Modueles (HSMs) to securely generate, store, and control access to cryptographic keys
             * Ex: AWS CloudHSM, GCP Cloud HSM, Azure Dedicated HSM, Azure Key Vault
@@ -329,8 +405,15 @@ Encryption and Key Management
         * column-level, row-level encryption
         * data masking
 
+**Key Management In Software Environments**
+* CSP normally use software-based encryption to **avoid costs** associated with hardware-based encyrption
+    * Software-based encrypion is **more vulnerable** to exploits than hardware-based encryption
+* Software-based encryption **doesn't meet** NIST's FIPS 140-2/140-3 specifications
+    * Software-based encryption has a hard time identifying signs of **tampering**
+    * May cause an issue if you work with US federal government agencies
+* It's **your responsibility** to find out what type of encryption your CSP offers
 
-Hashing
+**Hashing**
 * one-way function that scrambles plain text to produce a unique message
 * no way to reverse if properly designed
 * conversion of a string of characters into a shorter fixed-lenght value
@@ -350,8 +433,9 @@ Hashing
     * Create and verify message authentication code by using a secret key in conjunction with a hash function 
 * Used with asymmetric cryptography for digital signatures and digital certificates
 
-Data obfuscation
+**Data Obfuscation**
 * Reduce GDPR Exposure
+* Used to produce test data out of production data
 * Steps to reduce or eliminate GDPR requirements
 * **Anonymization**
     * process of removing all relevant data so that is is impossible to identify original subject or person
@@ -360,21 +444,32 @@ Data obfuscation
 * **Pseudonymization** 
     * de-indentification procedure using pseudonyms (aliases) to represent other data
     * can result in less stringent requirements than would otherwise apply under the GDPR
-* Data Masking
+* **Data Masking**
     * Redacts sensitive information with blanks or characters
         * i.e. `**** **** **** 1234`
+* **Shuffle**
+    * shuffles data between fields
+* **Deletion**
+    * Deletes the data or uses a null value
+* **Pseudonymization**
+    * de-indentification procedure in which personally identifiable information (PII) fields within a data record are replaced by one or more artificial identifiers, or pseudonyms (aliases)
+    * reversal requires access to another data source
 
-Tokenization
+**Tokenization**
 * Stateless, stronger than encryption keys
 * not local
 * data is replaced with a token that is generated randomly, and the original data is held in a vault
 * Maintain a lookup table to convert the random identifier back to the original value, this table should be secure
 * ![Basic Tokenization Arch](images/tokenization-arch.png)
-* Pseudonymization
-    * de-indentification procedure in which personally identifiable information (PII) fields within a data record are replaced by one or more artificial identifiers, or pseudonyms (aliases)
-    * reversal requires access to another data source
+* Six Steps of Tokenization
+    1. Sensitive data is **generated**
+    2. Data is **sent** to the tokenization server
+    3. A token is generated, and the sensitive data and its associated token are **stored** in a database.
+    4. The tokenization server sends the token back to the application so it can **substitute** the sensistive data with it
+    5. The application **stores** the token
+    6. When the sensitive data is needed, the data can be requested by the applicartion by **submitting** the token
 
-Data loss prevention (DLP)
+**Data loss prevention (DLP)**
 * system designed to identify, inventory, and control the use of data that an organization deems sensitive
 * spans several categories of controls including detective, preventative, and corrective
 * DLP policies can be typically applied to email, sharepoint, cloud storage, removeable devices, and databases
@@ -382,6 +477,21 @@ Data loss prevention (DLP)
 * identify, monitor, and automatically protect sensitive information in documents
 * monitors for and alerts on for potential breaches, policy validations like oversharing
 * Technology solutions that search systems and monitor networks for sensitive information that is unsecured and provide the ability to remove the information, block the transmission, or encrypt the stored data
+* Components
+    * Discovery and classification (what to look for)
+    * Monitoring (notification of issues)
+    * Enforcement (prevent data loss)
+* DLP Architecture
+    * Data in motion (DIM):
+        * Network-based or gateway DLP
+        * monitors SMTP, HTTP/S, SSH, FTP, etc for sensitive data and prevents it from leaving the orgnization
+    * Data at rest (DAR):
+        * Storage-based, used for tracking and identifying data as it's installed on the system where the data resides, generally needs another mechanism for enforcement
+    * Data in use (DIU):
+        * Client or endpoint-based
+        * Resides on the user's workstations
+        * Requires a considerable amount of management
+        * Not easy to deploy and manageß
 * Host-Based DLP
     * Software agents installed on a single system searches for the presence of sensitive information, allows sec professional to take action to either remove or secure it
     * Also monitor configurations and user actions, block undesirable actions
@@ -398,8 +508,31 @@ Data loss prevention (DLP)
         * May contain a db of known terms
     * Watermarking
         * Identifies sensitive information with electronic tags
+* Cloud Considerations
+    * Data movement 
+    * Performance impact
+    * Admin Access
+    * CSP Approval (Hardware based)
 
-Keys, Secrets And Certificates Management
+**Data De-Identification (Anonymization)**
+* **Anonymization**
+    * The process of removing direct and indirect identifiers
+    * Can be done via sampling data/generalizing the data to ensure the group shares the same value for sensitive data
+    * This would make it hard to identify a single person because the sensitve data is the same for all users
+* **K-Anonymity**
+    * an industry term used to describe a **technique** for hiding an invidual's identity in a group of similar persons
+    * https://cloud.google.com/dlp/docs/concepts-risk-analysis#about-k-anonymity
+    * https://cloud.google.com/dlp/docs/compute-k-anonymity
+* **Identifer Types**
+    * Direct
+        * Data that directly identifies someone (i.e name, address, DOB, SSN, etc)
+        * Usually classified as PII
+    * Indirect
+        * Data that indirectly identifies someone (events, dates, demographics, etc)
+        * When combining several of these data points, it may be possible to identify someone
+
+
+**Keys, Secrets And Certificates Management**
 * Keys
     * most often used for encryption operations and can be used to uniquely identify a user or system
     * should be stored in a tool that implements encryption and requires a strong passphrase or MFA to access
@@ -480,7 +613,7 @@ Keys, Secrets And Certificates Management
             * provdes a higher level of trust in identifying the entity that is using the certificate
             * commonly used in the fin service sector
     * Chain of Trust
-        * ![PKI Chain of Trus](images/pki-chain-of-trust.png)
+        * ![PKI Chain of Trust](images/pki-chain-of-trust.png)
     * Trust Models
         * Web Of Trust (WOT)
             * https://en.wikipedia.org/wiki/Web_of_trust
@@ -497,21 +630,16 @@ Keys, Secrets And Certificates Management
 
 ## 2.4 Implement data discovery
 
-Data Discovery
+**Data Discovery**
 * Identifies stored data
+* Work to create a **data inventory**
 
-Data Types
+**Data Types**
 * Structured data
     * data contained in rows and columns, such as an excel spreasheet or relational database (Excel, MSSSQL, MySQL, etc)
     * often includes a description of its format know as a data model or schema, which is an abstract view of the data's format in a system
     * data structured as elements, rows, or tuples is given context through schema
-    * Disocovery methods include:
-        * Metadata
-            * data that describes data
-            * is a critical part of discover in structured data
-        * Semantics
-            * meaning of the data
-            * described in the schema or data model and explains the relationships expressed in the data
+   
 * Unstructured data
     * data that cannot be contained in a row-column database and does not have an associated data model (images, video files, social media posts, etc)
     * Discovery occurs through **content analysis**, which attempts to parse all data in a storage location and identify sensitive information
@@ -526,8 +654,17 @@ Data Types
     * a combination of structure and unstructured data (JSON, XML, emails, NoSQL)
     * may contain metadata to help organize
     * data model is flexbile
+* **Disocovery methods / techniques**
+    * Metadata
+        * information that describes file (owner, size, creation date, etc)
+        * is a critical part of discover in structured data
+    * Labels
+        * tags assigned to the data by the owner
+        * meaning of the data
+    * Content Analysis
+        * analyzing data content using keywords
 
-Data Location & Discoverability
+**Data Location & Discoverability**
 * location will impact both data discoverability and the choice of tools used to perform discovery
 * tools must be able to access data to perform the scanning and analysis in the discovery process
 * may require different tools for cloud and on-prem discovery
@@ -548,7 +685,7 @@ Data Discovery
 
 ## 2.5 Plan and implement data classification
 
-Data Classification Policies
+**Data Classification Policies**
 * Assign information into categories, know as classifications, that determine storage, handling, and access requirements
 * Assign classifications based on
     * Sensitivity of information
@@ -582,19 +719,31 @@ Data Classification Policies
     * Regulatory compliance
         * For legal and compliance reasons, you may need to keep certain data for different periods of time
 
-Data Mapping
+**Data Mapping**
 * Informs organization of the locations where data is present within applications and storage
+* Attribute based access
 * brings understanding that enables implmentation of security controls and classification policies
 * usually precedes classification and labelling
+* Function, Actors, and controls of the data
 
-Data Labeling
+
+**Data Labeling**
 * requirements that apply consistent markings to sensitive data should accompany classification
 * Often applied through classification policies providing a target for data protection
 * often applied in bulk using classification tools
+* Common labels
+    * to encrypt, not to encrypt
+    * internal use, limited sharing
+    * sensitive
+* Sensitive Data
+    * Intellectual Property (IP)
+    * Patient medical information (PHI)
+    * Personally identifiable information (PII)
+    * Federally protected data (FERPA)(student information)
 
 ## 2.6 Design and implement Information Rights Management (IRM)
 
-Intellectual Property Protections
+**Intellectual Property Protections**
 * Copyrights
     * Protects creative works from theft sucha as Books, movies, 
     * Granted to the creator automatically
@@ -624,7 +773,7 @@ Intellectual Property Protections
     * Inventor doesnt want to make the invention public and keeps the details secret
 
 
-Infromation Rights Management (IRM)
+**Infromation Rights Management (IRM)**
 * programs that enforce data rights, provisioning access, and implementing access control models
 * often implemented to control access to data designed to be shared but not freely distributed
 * can be used to block specific actions, like print, copy/paste, download, and sharing
@@ -650,16 +799,33 @@ Infromation Rights Management (IRM)
         * require local storage for encryption keys, tokens, or digital certificates used to validate users and access authorizations
         * local storage requires protection primarily for data integrity to prevent tampering with the material used to enforce IRM
 
+**Access Models**
+* **Mandatory Access Control (MAC)**:
+    * Grants access based on labels such as _confidential or secret_, according to organization policy.
+    * **Most restrictive** access model
+* **Role-based Access Control (RBAC)**:
+    * Grants access based on the user's role or responsibility according to **organizationl policy**
+* **Discretionary Access Control (DAC)**:
+    * System or data owner controls who has access
+
+
 ## 2.7 Plan and implment data retention, deletion, and archiving policies
 
-Data Retention Policies
+**Data Retention Policies**
 * Retention occurs within the Archive and Destroy phases of the data life cycle
 * Driven by security policies and regulatory requirements
 
 
+**AWS Config**
+* Service that allows you to assess, audit, and evaluate the configs of you AWS resources
+* Provides the ability to create retention policies for data and will auto-delete data based on policy rules
+* Similar to GCP Cloud Asset Inventory
 
-Data Deletion Procedures and Mechanisms
+
+**Data Deletion Procedures and Mechanisms**
 * Crypto-Shredding
+    * https://en.wikipedia.org/wiki/Crypto-shredding
+    * ![Crypto-Shredding](images/crypto-shredding.png)
     * Most secure form of data destruction
     * "cryptographic erasure"
     * Data is encrypted with a strong encryption engine
@@ -669,10 +835,22 @@ Data Deletion Procedures and Mechanisms
         * Data cannot be recovered from any remnants
     * Con
         * High CPU performance overhead
-Data Archiving Procedures and Mechanisms
+
+**AWS Data Sanitization Procedures**
+* AWS uses techniques outline in NIST 800-88 when decommissioning customer data
+* Amazone EFS is designed such that once data is deleted, it will never be served again
+
+**GCP Data Deletion**
+* https://cloud.google.com/docs/security/deletion
+* Follow NIST 800-88 rev 1 (Guidelines for media sanization) and DoD 5220.22-M (National Industrial Security Program Operating Model)
+
+**Data Archiving Procedures and Mechanisms**
 * Data Archiving
     * refers to placing data in long-term storage for a variety of purposes
     * optimal approach in the cloud differs in several respects from on-prem equivalent
+    * AWS Glacier, GCP Archive Class in Cloud Storage, Azure Archive Tier in Blob Storage
+        * due to the retrieval time it may not be a good option for BC/DR as it may impact RTOs
+    * Data retrival from long-term storage may take longer (possibly several hours)
 * Key elements
     * Data Encryption
         * encryption policy should consider which media is used, and data seach and restoration needs, as well as regulatory obligations
@@ -688,23 +866,30 @@ Data Archiving Procedures and Mechanisms
         * backup and restore requirements should be clearly documented and specified
         * BCDR plans are updated and aligned with whatever procedures are implemented
     * Data Format
-        format needs to be secure, accessible, and affordable
+        * format needs to be secure, accessible, and affordable
+        * avoid incompability issues word 98 docs wont open in modern version of word
     * Media Type
         * should support the other data archiving requirements, but physical media concerns fall to the CSP
-Legal Hold
+
+**Legal Hold**
 * protecting any documents that can be used in evidence in legal proceedings from being destroyed
 * data protection suites in cloud platforms often have a feature to ensure immutability
 * Cloud Storage (Azure Storage, AWS S3) offer an immutable storage feature
 * generally implements permanent retention until a human authorizes release
+* use a **vault lock** which allows for a non-readable and non-rewritable format that meets several reg requirements
+    * AWS Glacier Vault (https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-vaults.html)
+    * GCP and Azure Storage bucket locks
+        * https://cloud.google.com/storage/docs/bucket-lock
+        * https://learn.microsoft.com/en-us/azure/storage/common/lock-account-resource?tabs=portal
 
 ## 2.8 Design and implement auditability, traceability and accountability of data events
 
-Accountability
+**Accountability**
 * is maintained for individual subjects using auditing
 * logs record user activities and users can be held accountable for their logged actions
 * directly promotes good user behavior and compliance with the organizations security policy
 
-Security Audit and Reviews
+**Security Audit and Reviews**
 * helps ensure that management programs are effective and being followed
 * commonly associated with account management practices to prevent violations with least privilege or need-to-know principles
 * can also be performed to oversee many programs and processes
@@ -713,7 +898,7 @@ Security Audit and Reviews
     * change management
     * configuration management
 
-Event Sources & Event Attributes
+**Event Sources & Event Attributes**
 * Event logs determine
     * Accountability
         * Who caused the event and when and from where? (identity attribution)
@@ -729,9 +914,24 @@ Event Sources & Event Attributes
     * IaaS Event Sources
         * customer has the most access and visibility into system and infra logs of any cloud service model
         * customer has nearly full control over their compute environment, including system and network capabilities, virtually all logs and data events should be exposed and available for capture
+        * some points for logging
+            * DNS logs
+            * VM logs
+            * Host OS and hypervisor logs
+            * API logs
+            * Packet captures
+            * Billing records
     * PaaS Event Sources
         * does not offer or expose the same level of customer access to infra and system logs
         * however same level of detail of logs and events is available at the application level
+        * OWASP app events should be logged:
+            * Input validation failures (protocol violations, unacceptable encoding, invalid parameter names, and values)
+            * Output validation failures
+            * AuthZ success/failure
+            * AuthN failures
+            * Session management failures (cookie session ID)
+            * App errors/system events(runtime errors, etc)
+            * Admin privileges
     * SaaS Event Sources
         * CSP is responsible for the entire infra and application, the amount of log data available to the customer is less
         * customer responsibility is limited to access control, shared resp for data recovery and feature configuration
@@ -758,12 +958,10 @@ Event Sources & Event Attributes
         * Interaction identifier
 * OWASP maintains concentrated guidance for developers on building application logging mechanisms, especially related to security logging in the [OWASP Logging Cheat Sheets](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Logging_Cheat_Sheet.md)
 
-Definition of event sources and requirement of event attributes (e.g., identity, Internet Protocol (IP)
-address, geolocation)
 
-Logging, Storage and Analysis of Data Events
+**Logging, Storage and Analysis of Data Events****
 * Logs are worthless if you do nothing with the log data, more valuable only by review to identify activity that is unauthorized or compromising
-* Security Infromation Event Monitoring (SIEM)
+* Security Infromation & Event Management (SIEM) (SIM+SEM = SIEM)
    * Log Centralization and Aggregation
         * gathers logs from a variety of sources:
             * OS
@@ -782,19 +980,22 @@ Logging, Storage and Analysis of Data Events
    * Investigation Monitoring
         * manual investigation is required
         * SIEM should provide support capabilities such as querying log files, generating reports
+        * Forensic Analysis
+            * search through logs from many systems by specific date, time, or other criteria
 
-Chain of Custody
+**Chain of Custody**
 * tracks the movement of evidence through its collection, safeguarding, and analysis lifecycle
 * Functions and Importance
     * provides evidence integrity through convincing proof evidence was not tampered with in a way that damages its reliability
     * Documents key elements of evidence movement and handling, including:
         * Each person who handled the evidence
-        * Data and time of movement/transfer
-        * Purpose evidence movement/transfer
+        * Data and time of collection/movement/transfer
+        * Purpose evidence collection/movement/transfer
+        * Analysis performed
     * What if evidence is left unattended or handled by unauthorized parites?
         * criminal defendants can claim the data was altered in a way that incriminates them, and thus the evidence is no longer reliable
 
-Non-Repudiation
+**Non-Repudiation**
 * guarantee that no one can deny a transation
 * Methods to provide non-repudiation
     * log files which inlcude unique user ID/timestamps

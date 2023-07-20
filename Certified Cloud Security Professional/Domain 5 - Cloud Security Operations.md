@@ -2,10 +2,9 @@
 
 ## 5.1 Build and implment physical and logical infrstructure for cloud environment
 
-Hardware specific security configuration requirements (e.g., hardware security module (HSM) and Trusted
-Platform Module (TPM))
+**Hardware Security**
 * Unified Extensible Firmware Interface (UEFI) Secure Boot
-    * validates fireware integrity either by
+    * Validates fireware integrity either by
         1. Checksum Verification
             * UEFI computes a checksum of the binary prior to loading it and verifies that it appears on a list of approved checksums
         2. Signature Verification
@@ -46,9 +45,7 @@ Platform Module (TPM))
                 * extremely strong requirements including the use of common criteria level EAL4 for the software and firmware
                 *  strict physical security controls
 
-
-
-Installation and configuration of management tools
+**Installation and configuration of management tools**
 * Considerations on cloud infra:
     * **Redundancy**
         * any critcally important tool can be a single point of failure (SPOF), so adequate planning for redundancy should be performed
@@ -62,8 +59,7 @@ Installation and configuration of management tools
     * **Logging and monitoring**
         * audit trail is important, but logging activities can create additional overhead, which may not be appropriate for all systems
 
-Virtual hardware specific security configuration requirements (e.g., network, storage, memory, central
-processing unit (CPU), Hypervisor type 1 and 2)
+**Virtual Hardware Specific Security Configuration Requirements***
 * Software Define Networks (SDN)
     * network architecture approach to enables the network to be intelligently and centrally controlled, or 'programmed', using software
     * has capacity to reprogram the data plane at any time
@@ -95,7 +91,7 @@ processing unit (CPU), Hypervisor type 1 and 2)
         * **Patching**
             * customer should patch VMs (IaaS) while CSP patches the hypervisor
 
-Installation of guest operating system (OS) virtualization toolsets
+**Installation of guest operating system (OS) virtualization toolsets**
 * toolsets exist that can provide extended functionality for various guest OS
 * example, Hyper-V integration services enhance VM performance and provide several useful features e.g. Guest file copy, time sync, guest shutdown
 * In a public cloud, these toolsets will be typically provided by the CSP
@@ -103,7 +99,9 @@ Installation of guest operating system (OS) virtualization toolsets
 
 ## 5.2 Operate and maintain physical and logical infrastructure for cloud environment
 
-Access Methods and Controls for local and remote access 
+**Access Methods and Controls for local and remote access**
+* Physical access should be **limited**
+    * individuals who manage physical hardware should not have other types of administrative access (sep of duties)
 * Methods
     * **Remote Desktop Protocol (RDP)**
         * the native remote access protocol for windows
@@ -116,6 +114,25 @@ Access Methods and Controls for local and remote access
         * a system for secure local access
         * typically a Virtualized KVM (Keyboad video mouse) system with access controls
         * single hardware station that provides phyiscal access to servers, but can easily be switched between those servers by changing a software setting
+        * access to the KVM should be logged and routine audits conducted
+        * KVMs provide secure access and prevent data loss
+        * MFA should be considered for KVM access
+        * Security Reqs
+            * Isolated data channels
+                * each channel connects to one host so that no data can be transferred between connected computers through KVM
+            * Tamper warning labels
+                * located on each side of the KVM
+            * Housing instrusion detection
+                * renders the KVM inorperable if the housing has been opened
+            * Fixed firmware
+                * prevents tampering
+            * Tamper-proof circuit boards
+            * Safer buffer design
+                * no memory buffer to retain data
+            * Selective USB access
+                * only recognize human interface USB devices, such as keyboards and mice, to prevent data transfer
+            * Push-button control
+                * require physical access to kvm to switch between between computers
     * **Jumpboxes**
         * as bastion host at the boundary of lower and higher security zones
         * CSPs offer services for this : Azure Bastion, AWS Transit Gateway
@@ -145,12 +162,7 @@ Access Methods and Controls for local and remote access
                 * an audit trail when privilege is activate
                 * an access review process (to avoid permission sprawl)
 
-Secure Network Configuration (e.g., virtual
-local area networks (VLAN), Transport Layer
-Security (TLS), Dynamic Host Configuration
-Protocol (DHCP), Domain Name System Security
-Extensions (DNSSEC), virtual private network
-(VPN))
+**Secure Network Configuration**
 * Zero Trus Security
     * no entity is trusted by default!
     * addresses the limitations of legacy network perimeter based security model
@@ -172,6 +184,7 @@ Extensions (DNSSEC), virtual private network
         * Restricting services that are permitted to access or be accessbilt from other zones using rules to control in/outbound traffic
         * Rules are enforced by the IP address range of each subnet
         * Within a virtual network, segmentation can be used to achive isolation
+    
     * **Private Subnets**
         * cannot connect directly to the internet (requires a NAT gateway to be set up for outbound connectivity)
         * use one of the following IP address ranges as defined in [RFC 1918](https://datatracker.ietf.org/doc/html/rfc1918):
@@ -209,7 +222,6 @@ Extensions (DNSSEC), virtual private network
     * **North-South**
         * traffice moves between systems in the data center and the internet 
     * Some traffic may be filtered through a firewall if it crosses security zones
-
 * Virtual Private Network (VPN)
     * extends private network across a public network
     * enabling users and devices to send and recieve data across shared or public networks as if their computing devices were directly connected to the private network
@@ -220,12 +232,17 @@ Extensions (DNSSEC), virtual private network
         * using VPN for all traffic, both to the internet and corporate network
     * **Site-to-Site**
         * IPSec use an always on mode where both packet header and payload are encrypted (IPSec Tunnel Mode)
+        * Tunnel Mode - encrypts the entire original packet and provides a new header (supports NAT traversal (NAT-T))
     * **Remote Access**
         * connection is initiated from a users PC or laptop for a connection of shorter duration (IPSec Transport Mode)
+        * IPSec Tranpsort Mode - Only encrypts part of the original packet (data)
 * Virtual Local Area Network(VLAN)
     * a collection of devices that communicate with one another as if they made up a single phyiscal LAN
     * creates a distinct broadcast domain
+    * tagging data with a VLAN ID whcih network devices recognize and are able to used to keep data sperate
     * Cloud VPCs take the form of a dedicated VLAN for a specific user organization, which means other cloud tenants are blocked from accessing resources in the VPC
+    * Enable VLAN prunning which removes unsued VLANs
+    * Disable unnescessary protocols on switches
     * VPC Connectivity
         * connect a VPN using Layer 2 [Tunneling Protocol(L2TP)](https://en.wikipedia.org/wiki/Layer_2_Tunneling_Protocol)/IPSec with a VPC gateway (aka transit gateway)
             * common for hybrid connectivty
@@ -266,9 +283,19 @@ Extensions (DNSSEC), virtual private network
         * some content filters alter DNS query results
     * DNSSec
         * set of specifications primarily aimed at reinforcing the integrity of DNS
-        * leverages digital signatures for cryptographic autentication of DNS data
+        * leverages digital signatures for cryptographic autentication of DNS records (zone signing)
         * provides proof of orgin and makes cache poisoning and spoofing attacks more difficult
         * however does not provide confidenitality as the digital signatures rely on publicly decryptable information
+        * allows responses to be validated
+    * Threats to DNS
+        * Footprinting
+            * An attacker attempts to gather all DNS records for a domain via zone transfer in order to map out the target environment
+        * Denial of Service (DoS)
+            * Attackers flood DNS servers to prevent them from responding to legitimate DNS requests
+        * Redirection
+            * An attacker redirects queries to a server that is under the attacker's control
+        * Spoofing
+            * An attacker provides incorrect DNS information for a domain to a DNS server, which then gives out that incorrect information (also known as a DNS poisoning)
 * Internet Protocol (IP)
     * Routes information across networks
     * Provides and IP addressing scheme
@@ -362,13 +389,13 @@ Extensions (DNSSEC), virtual private network
             * **192.168.0.1 - 192.168.255.255 (192.168/16 prefix)**
         * all other IP address ranges, except the APIPA _169.254.x.x_, are public addresses.
 
-Open Systems Internconnection Model (OSI)
+**Open Systems Internconnection Model (OSI)**
 * Developed by the International Organization for Standardization (ISO) in 1984
 * 7 layer architecture which all work collectively to transmit data
 * https://www.geeksforgeeks.org/layers-of-osi-model/
 * ![OSI](../Certified%20In%20Cybersecurity%20(CC)/images/OSI-Model.png)
 
-Transmission Control Procol/Internet Protocol (TCP/IP) Model
+**Transmission Control Procol/Internet Protocol (TCP/IP) Model**
 * Designed in the 1960s by the Department of Defense (DoD)
 * Based on standard protocols
 * Concise version of the OSI model
@@ -377,10 +404,10 @@ Transmission Control Procol/Internet Protocol (TCP/IP) Model
 * the Physical and Data Link Layers are referred to as the Physical or Network Interface Layer in the the 4 layer reference
 * Does not consider security
 
-OSI Model vs TCP Model
+**OSI Model vs TCP Model**
 ![OSI-TCP](../Certified%20In%20Cybersecurity%20(CC)/images/OSI-TCP.png)
 
-Network Ports
+**Network Ports**
 ![Network Ports](../Certified%20In%20Cybersecurity%20(CC)/images/network-ports.png)
 * Particular location on a network
     * Similar to apartment numbers, IP address is the street address
@@ -417,7 +444,7 @@ Network Ports
     * Port 80: Hypertext Transfer Protocol (HTTP)
     * Port 443: HTTPS → adds TLS to HTTP
 
-Internet Control Message Protocl (ICMP)
+**Internet Control Message Protocl (ICMP)**
 * OSI Layer 3 (Network) protocol
 * mainly used to determine whether or not data is reaching its intended destination in a timeline many
 * used on network devices such as routers
@@ -426,7 +453,7 @@ Internet Control Message Protocl (ICMP)
 * connectionless protocol
 * Common ICMP Type Codes
     * ![ICMP Codes](../Certified%20In%20Cybersecurity%20(CC)/images/icmp-codes.png)
-Command Line Network Tools:
+* Command Line Network Tools:
 * ping
     * Checks if a system responds
     * Uses ICMP
@@ -480,7 +507,7 @@ host)
 
 Operating system (OS) hardening through
 he application of baselines, monitoring and
-remediation (e.g., Windows, Linux, VMware)
+remediation
 * Baseline/Secure Configuration Guides
     * Concepts
         * Control
@@ -489,6 +516,7 @@ remediation (e.g., Windows, Linux, VMware)
             * contains security recommendations for a specific technology, such as a VM
         * Baseline
             * the implementation of the benchmark on the individual service
+            * an agreed-upon set of attributes for a product
 * OS Hardening
     * the configuration of a machine into a secure state through application of a configuration baseline
     * baselines can be applied to a single VM image, or to a VM template created that is then used to deploy all VMs
@@ -512,6 +540,7 @@ remediation (e.g., Windows, Linux, VMware)
         * DISA STIGs
             * the US Defense Information Systems Agency (DISA) produces baseline documents know as Security Technical Implementation Guides (STIGs)
             * MAY include configurations that are too restrictive for many organizations
+            * https://www.titania.com/resources/guides/disa-stig-compliance-explained/
         * NIST checklists
             * National Institute of Technology and Standards maintains a repository of configuration checklists for various OS and application software
             * https://ncp.nist.gov/repository
@@ -519,18 +548,41 @@ remediation (e.g., Windows, Linux, VMware)
             * Center for internet security (CIS) publishes baseline guides for a variety of operating systems, applications, and devices, which incorporate many security best practices
             * CIS benchmark scripts are priced based on environment size
             * https://www.cisecurity.org/cis-benchmarks
+        * [OpenSCAP](https://www.open-scap.org/)
+            * suite of tools to perform security compliance scanning & audits
 
     
-
-Patch Management
+**Patch Management**
+* the process of identifying, acquiring, installing and verifying patches for products, applicartions and systems
 * ensures that systems are kept up-to-date with current patches
 * process will evaluate, test, approve, and deploy patches
 * system audits verify the deployment of approved patches to the system
 * patch both native OS and 3rd party apps
 * apply out-of-band updates prompty
     * An emergency software modification that is being deployed immediately and prior to the next routine update.
+* patch management plan should be developed to manage the installation of patches
+    * this plan should be part of the configuration management process
+    * test patches before deployment
+* patch management process should adress:
+    * vulnerability detection
+    * vendor patch notifications (sing up)
+    * patch severity assessment by the organization
+    * change management
+    * customer notification (if required)
+    * verification of successful patching
+    * risk management in case of unexpected outcomes after applying patches (roll back plan)
+* [NIST SP 800-40](https://csrc.nist.gov/publications/detail/sp/800-40/rev-4/final) - Guide to enterprise patch management
+* Challenges
+    * Lack of standardization of patches
+    * Collaboration between mulitple systems owners
+    * Many moving parts (complexity)
+    * Patches must be tested before deployment
+    * VM's in a suspended state are not patched
+    * Mulitple timezones (applying patches at the same local time)
+* Blanket approvals could be given for applying patches which address iminent risks, allowing these patches to bypass standard change management process
 
-Infrastructure as Code (IaC) Strategy
+
+**Infrastructure as Code (IaC) Strategy**
 * IaC Definition
     * management of infrastructure described as code
 * just as the same source code generates the same binary, code in the IaC model results in the same environment every time it is applied
@@ -547,11 +599,7 @@ Infrastructure as Code (IaC) Strategy
     * Idempotent
         * can be applied multiple times without changing the results
 
-
-Availability of clustered hosts (e.g., distributed
-resource scheduling, dynamic optimization,
-storage clusters, maintenance mode, high
-availability (HA))
+**Availability of Clustered Hosts**
 * Cluster advantages include high availability via redundancy, optimized performance via distrabuted workloads, and the ability to scale resources
 * **Cluster Management Agent**
     * often part of the hypervisor or load balancer software
@@ -564,7 +612,9 @@ availability (HA))
     * the coordination element in a cluster of VMWare ESXi hosts
     * mediates access to the physical resources
     * handles resources available to a cluster, reservation and limits for the VMs running on the cluster, and maintenance features
-    * allows reassignment of workloads between resources pools (VMotion)
+    * allows reassignment/balance of workloads between resources pools (VMotion)
+    * Anti-affinity rules keeps VMs on separate hosts
+    * Affinity rules can be used to keep VMs on the same host
 * **Dyanmic Optimization**
     * Shifts workloads automatically
     * is Microsft's DRS equivalent delivered through their cluster management software
@@ -574,9 +624,10 @@ availability (HA))
 * **Storage Clusters**
     * pooled storage, providing reliability, increased performance, or possibly additional capacity
     * RAID and snapshoting
+* Availability is measured in a percentage known as "nines"
+![Nines Availability](images/nines.png)
 
-
-Availability of guest operating system (OS)
+**Availability of guest operating system (OS)**
 * Guest OS availability
     * once a vm is created in IaaS, the CSP no longer has direct control over the OS
     * customer can use baselines, backups, and cloud storage features to provide resiliency of the guest OS
@@ -587,8 +638,10 @@ Availability of guest operating system (OS)
     * achieved by architecting systems to handle failures from the outset rather than needing to be recovered
     * ex: virtualization host clusters with live migration provides resiliency
 
-Performance and capacity monitoring (e.g.,
-network, compute, storage, response time)
+**Performance, Capacity, and Hardware Monitoring**
+* Monitoring performance and capacity is **critical**
+    * Changes in performance can indicated **failing hardware**
+    * Unmonitored capacity could allow for total consumption of resources, which can lead to **resource starvation** and a **serious impact on performance**
 * CSP should implement monitoring to ensure that they are able to meet customers demands and promised capactity
 * CORE 4 Monitoring should include utilization, performance and availability of (applies to both CSP and customers):
     1. CPU
@@ -598,8 +651,9 @@ network, compute, storage, response time)
 * alerts should be generated based on established thresholds and appropriate plans initiated (applies to both CSPs and customers)
 * Key Metrics
     * CPU utilization
-    * Memory consumption
+    * Memory consumption & utilization
     * Network bandwidth
+        * excessive dropped packets on NIC
     * Service response time
 * Administrators should monitor for:
     * Underprovisioned Services
@@ -608,23 +662,46 @@ network, compute, storage, response time)
     * Overprovisioned Services
         * capacity exceed demands
         * services should be downsized to reduce costs
+* Hardware Monitoring
+    * Should monitor
+        * Fan speeds
+        * Failed drives or drive errors
+        * CPU, memory, cards
+        * Network devices
+    * Environmental
+        * HVAC, temperature and humidity monitoring are important
 
+**Backup and Restore Functions**
+* Host configuration data should be included in backup plans
+* Routine tests should be conducted to test the restorability of backup data
+    * individual file recovery
+    * entire vm image recovery
+    * increases the likelihood of a successful BCDR failover
+* Biggest challenge 
+    * understanding the extent to which you have access to the hosts and what configuration can be changed
+        * **Control**
+            * In the cloud we make changes through a management interface, be we don't see what happens in the background.
+            * We must be confident the changes we make are the only changes occuring
+        * **Visibility**
+            * The ability to monitor data and how it's being accessed
+            * This is why test is so **critical**
 
-Hardware monitoring (e.g., disk, central
-processing unit (CPU), fan speed, temperature)
-* should monitor CPU, RAM, fans, disk drives, and network components
-* Environmental
-    * HVAC, temperature and humidity monitoring are important
-
-Configuration of host and guest operating system (OS) backup and restore functions
-* 
-
-Management plane (e.g., scheduling, orchestration, maintenance)
+**Management Plane**
+* Provides access to manage:
+    * **Hardware** - through baseline configurations
+    * **Logical** - Task scheduling, resource allocation, software updates
+    * **Networking** - Network management, routes, access lists, security groups, virtual switches, VLANs
 * Provides virtual management options analogous to physical admin options of a legacy datacenter
     * e.g. power VMs on/off, provisioning virtual infra for VMs like RAM and storage
 * **Orchestration** is the automated configuration and management of resources in bulk
     * patch management and vm reboots are commonly orchestrated tasks
+* **Scheduling of resources** through distributed resource scheduling (DRS)
+* **Maintenance** such as software updates and patching
 * **Management Console** is the web-based consumer interface for managing resources
+* High Risk and must be protected with:
+    * Access control
+    * Logging
+    * Isolated network
 
 
 ## 5.3 Implment operation controls and standards (e.g., Information Technology Infrastructure Library (ITIL), International Organization for Standardization/International Electrotechnical Commission (ISO/IEC) 20000-1)
@@ -687,16 +764,23 @@ Management plane (e.g., scheduling, orchestration, maintenance)
 * requires changes to be requested, approved, tested, and documentation
 * Guided by **Change Management Process**
 
-Change Management
+**Change Management**
+* [ISO 9001:2015](https://www.iso.org/standard/62085.html)
+    * specifies requirements for a quality management system
 * policy that details how changes will be processed in an organization
 * helps reduce outages or weakened security from unauthorized changes
 * **Versioning** uses a labelling or numbering system to track changes in updated versions of software
 * Automating change management
     * change reviews in CI/CD and IaC may be partially automated when new code is ready for deployment
     * reduces operational overhead and human error, reduces security risk, and enables more frequent releases while maintaining a strong security posture
+* Objectives
+    * Respond to changing business requirements while minimizing incidents and distruption
+    * Ensure changes are documented in a change management system
+    * Ensure changes are proritized, planned, and test
+    * Reduce overal business risk
 
 
-Continuity Management
+**Continuity Management**
 * concerned with **availability** aspect of the CIA triad
 * various standards related to continuity management
     * NIST Risk Management Framework
@@ -704,15 +788,24 @@ Continuity Management
     * ISO/IEC 27000
         * https://www.iso.org/standard/73906.html
     * Both deal with business continuity and disaster recovery terms that fall under the larger category of continuiting management
-* Health Insurance Portability and Accountability Act (HIPAA)
-    * standard that governs how healthcare data is managed in the US
-    * manadates adequate data backups, DR planning and emergency access in the the event of a system interruption
-    * https://www.cdc.gov/phlp/publications/topic/hipaa.html
-* ISO/IEC 22301-2019 Security and resilience - BC Management Systems
-    * https://www.iso.org/standard/75106.html
-    * specifies the requirements needed for an organization to plan, implement and operate, and continually improve the continuity capability
+    * Health Insurance Portability and Accountability Act (HIPAA)
+        * standard that governs how healthcare data is managed in the US
+        * manadates adequate data backups, DR planning and emergency access in the the event of a system interruption
+        * https://www.cdc.gov/phlp/publications/topic/hipaa.html
+    * ISO/IEC 22301-2019 Security and resilience - BC Management Systems
+        * https://www.iso.org/standard/75106.html
+        * specifies the requirements needed for an organization to plan, implement and operate, and continually improve the continuity capability
+* prioritized list of systems and services must be created and maintained
+    * the list is created through a buisness impact analysis which identifies the systems and services that are critical to the business
+* Continuity Management Plan
+    * Defines events that will put the plan in motion
+    * Defines roles/responsibility
+    * Defines continuity and recovery procedures
+    * Specifies which notifications are required to be sent
+    * Specifies requirements for the capabilities and capacity of backup systems
+* should be tested regularly
 
-Information Security Management
+**Information Security Management**
 * ensure a consistent organizational approach to managing security risks
 * preserving the entire CIA triad for their systems
 * Standards that provide guidance for implementing and managing security controls in a cloud environment include:
@@ -739,14 +832,21 @@ Information Security Management
     * [Association of International Ceritfied Professional Accountants (AICPA) SOC 2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report)
         * Service Organizations Controls (SOC 2) framework has seen wide adoption among CSPs as well as the use of a third party to perfrom audits
         * provides increased assurance for business partners and customers who cannot audit the CSP directly
+* Organization should have a documented Info Sec Management Plan that covers
+    * Security policies
+    * Security management
+    * Asset management
+    * Physical security
+    * Access control
+    * Information system development, maintenance, and acquisition
 
-Continual service improvement management
+**Continual Service Improvement Management**
 * one critical element includes areas of monitoring and measurement
 * taking form of security metrics
 * metrics need to be tailored to the audience they will be presented to, which often means "executive friendly"
 * metrics should be used to aggregate information and present it in an easily understood, actionable format
 
-Incident Management
+**Incident Management**
 ![IM](images/incident-management.png)
 * **Events** are any observable item, including routine actions such as a user successfully logging into a system.
 * **Incidents**, by contrast, are events that are _unplanned_ and have an adverse impact on the organization
@@ -766,11 +866,27 @@ Incident Management
     6. Lessons Learned
         * helps prevent recurrence, improve IR process
 * **NIST SP 800-61 rev2**
+    * https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
     * "Compute Security Incident Handling Guide"
     * popular security incident management methodology
     * See 5.6 for deeper details
+* [ISO/IEC 27035](https://www.iso27001security.com/html/27035.html)
+    * 3 Part specification for Information Security Incident Management
+    * **ISO/IEC 27035-1:2023 - Principles and Process**
+        * outlines concepts and principles underpinning info sec incident management and introduces the remaining part/s of the standard. Describes an info sec incident management process consisting of five/six phases and how to improve the process
+    * **ISO/IEC 27035-2:2023 - Guidelines to plan and prepare for incident response**
+        * provides guidelines and concerns assurance that the organization is in fact ready to respond appropriately to info sec incidents that may occur
+    * **ISO/IEC 27035-3:2020 - Guidelines for ICT incident response operations**
+        * provides guidelines for info sec incident response in ICT security operations
+    * DRAFT
+        * **ISO/IEC 27035-4 - Coordination**
+            * provides guidelines for coordination among Incident Response Teams (IRTs) of multiple organizations to work together to handle info sec incidents
 
-Problem Management
+
+**Problem Management**
+* [ISO/IEC 20000](https://en.wikipedia.org/wiki/ISO/IEC_20000)
+    * details standards/guidelines for problem management & release and deployment management
+* Goal is to minimize the impact on the organization by identifying the root cause and implementing a fix or workaround
 * In the ITIL framework, problems are the causes of incidents or adverse events that impact the CIA triad
 * essentially the root cause of incidents
 * aims to utilize root cause analysis to identify the underlying problem(s) that lead to an incident
@@ -778,47 +894,119 @@ Problem Management
 * an unsolved problem will be documented and tracked in a known issues or known errors database
     * temp fix is called a "workaround"
 
-Release Management
+**Release Management**
+* [ISO/IEC 20000](https://en.wikipedia.org/wiki/ISO/IEC_20000)
+    * details standards/guidelines for problem management & release and deployment management
 * largely been replaced with release practices in Agile development methodologies
 * primary change is the requency of releases due to the increased speed of development activities in CI/CD
 * release scheduling may require coordination wih customers and CSP
 * release manager is responsible for a number of checks, including ensuring change requests and approvals are complete, before approving final release gate.
 * changes that impact data exposure may require security team
 * some of the release process is often automated, but manual processes may be involved, such as updateing documentation and writing release notes
+* record and track packages in the Definitive Media Library (DML)
 
-Deployment Management
+**Deployment Management**
+* [ISO/IEC 20000](https://en.wikipedia.org/wiki/ISO/IEC_20000)
+    * details standards/guidelines for problem management & release and deployment management
 * Continuous Deployment portion of the CI/CD, which further/fully automates the release process
 * less manual effort means lower cost, fewer mistakes, faster releases
 * processes for new software and infrastructure should be documented
 * DevSecOps
 
-Configuration Management
+**Configuration Management**
+* [ISO/IEC 10007](https://www.iso.org/standard/70400.html)
+    * Guidelines for Configuration Management
 * ensures that systems are configured similarly, configurations are known and documented
 * **Baselining** ensures that systems are deployed with a common baseline or starting point, and imaging is a common baselining method
 * composed of inividual settings called _configuration items (CI)_
 
-Service Level Management
+**Service Level Management**
+* [ISO/IEC 200000-1:2018](https://www.iso.org/standard/70636.html)
+    * Service Level Management
+    * Negotiate agreements with parties and design services to meet agreed-upon service level targets
 * focuses on the organization's requirements for a service, as defined in a service level agreement (SLA)
 * SLA is a contract focused on measurable outcomes of the service being provided
     * should include clear metrics that define 'availability' for a service
 * SLAs require routine monitoring for enforcement, and this typically relies on metrics designed to indicate whether the service level is being met
 * defining the levels of service is the responsibility of the CSP in public cloud environments
 * customer should monitor their CSP compliance with the SLAs promised
+* Common agreements
+    * Service-Level Agreement (SLA)
+    * Operational-Level Agreement (OLA)
+        * SLA between business units within an organization
+    * Underpinning Contract (UC)
+        * External contract between the organization and vendor
 
-Availability Management
-* Availability means the service is "up" AND "usable"
-* BCDR plans aim to quickly restore service availability in adverse events
+**Availability Management**
+* [ISO 20000 - Availability Management Process](https://iso-docs.com/blogs/iso-20000-itsm/availability-management-process)
+    * Define, analyze, plan, measure, and improve availability of IT services
+    * Meet the availability targets set by the organization
+    * Systems should be designed to meet availability requirements
+    * HA and failover solutions help maintain availability
 * data residency, use of encryption can complicate availability, services should be configured to meet requirements
 
-Capacity Management
-* service capacity compared with the amount being subscribed to is a core concern of availability
+**Capacity Management**
+* [ISO 20000 - Capacity Management Process](https://iso-docs.com/blogs/iso-20000-itsm/capacity-management-process)
+* Ensure infrastructure is adequately provisioned to meet SLAs in a cost-effective manner
+* Monitor capacity to prevent performace impact
 * CSP is responsible at the platform level but the customer is responsible for the deployed apps and services (tiers, design app to scale)
 
 ## 5.4 Support digital forensics
 
-Forensic Data Collection Methodologies
-* **eDiscovery**
-    * "electronic discover", is the identification, collection, preservation, analysis, and review of electronic information typically for legal purposes or security breach
+**Forensic Data Collection Methodologies**
+* Forensic Data Collection Process
+    1. Collection of evidence
+        * Identification, labeling, recording, preservation of data integrity
+    2. Examination
+        * Processing evidence, extracting data while preserving data integrity
+    3. Analysis
+        * Derive useful information from evidence
+    4. Reporting
+        * Report on findings, including tools, and procedures used, recommendations, and alternate explanations
+* Data Collection
+    1. Develop a plan that specifies which sources are to be collected and in what order
+        * **Value** - relative likely value of data sources (from past experiences)
+        * **Volatility** - Likelhood that data will be lost on a system when it is powered off or after a period of time (page file, memory, logs overwritten by new events, etc)
+        * **Amount of effor required** - Collecting data from on-premises hosts versus cloud vendor's hypervisor; balance between effort and the likelihood that data will be valuable
+        * **Chain of Custody** should be implemented
+    2. Acquire the data
+        * Use forensic tools to gather data (write blockers)
+        * Create duplicates of data to work with
+        * Secure the original, non-volitile data (create a hash if possible)
+    3. Verify the integrity of the data
+        * Use the hashed value of the original data to verify that the working copy has not been altered
+* Data Examination
+    * Extracting relevant information from collected evidence
+    * May need to bypass OS-level features that obscure data, such as encryption
+    * Use search patterns to look for evidence
+    * Tools can help inventory and categorize files
+* Analysis
+    * identifying people, items, places, data, and events in an effort to piece together a conclusion
+    * using various systems like firewalls, IDS, and security management software can help identify events
+* Reporting
+    * There may be more than one possible explanation - be prepared to support all
+    * Know your audience - law enforcement will want details, whereas executives may simply want to know if anything was deterined by the evidence
+    * Actionable information may be identified that requires the collection of additional information
+* Challenges with Collecting Evidence
+    * Seizing servers that may contain multiple tenants' data creates a privacy issue
+    * Trustworthiness of evidence is based on the CSP
+    * Investigations rely on the cooperation of the CSP
+    * CSP technicians collecting data may not follow forensically sound practices
+    * Data may be in unknown locations
+* Network Forensics
+    * capturing of packets may be necessary for a cloud-based investigation
+    * Packet capture can reveal locations (addresses of systems)
+    * Can provide unencrypted data such as text files being transfered or emails
+    * VoIP streams and video can be captured and replayed
+    * Use Cases
+        * Finding proof of an attack
+        * Troubleshooting performance issues
+        * Monitoring activity for compliance with policies
+        * Identifying data leaks
+        * Creating audit trails
+
+**eDiscovery**
+* "electronic discover", is the identification, collection, preservation, analysis, and review of electronic information typically for legal purposes or security breach
 * Standards
     * [ISO/IEC 27037:2012](https://www.iso.org/standard/44381.html)
         * Guidelines for identification, collection, acquisition and preservation of digital /electrionic evidence
@@ -853,7 +1041,7 @@ Forensic Data Collection Methodologies
     * **Establish and maintain communications**
         * with relevant parties such as the CSP, internal legal counsel, and law enforcement for guidance and requirements
 
-Evidence Management
+**Evidence Management**
 * **Legal Hold**
     * protecting any documents that can be used in evidence from being altered or destroyed
     * referred to a "litigation hold"
@@ -928,8 +1116,8 @@ Evidence Management
     7. Remotely logged data
     8. Data stored on archival media and backups
 
-Evidence Collection and Handling
-* Four general phases of digital evidence handling
+**Evidence Collection and Handling**
+* Four general phases of digital evidence handling (See above)
     * **Collection**
     * **Examination**
     * **Analysis**
@@ -989,7 +1177,7 @@ Evidence Collection and Handling
 
 ## 5.5 Manage communication with relevant parties
 
-Stackholder Management
+**Stackholder Management**
 * **Stackholder** is a party with an interest in an enterprise; corporate stakeholders include investors, employees, customers, and suppliers
 * Multiple groups of relevant stakeholders that need to be informed and managed may include:
     * Vendors
@@ -998,7 +1186,7 @@ Stackholder Management
     * Regulators
     * Other stakeholders
 
-Communication Plan
+**Communication Plan**
 * the plan that details how relevant stakeholders will be informed in event of an incident
 * should include a plan to maintain confidentiality, such as encryption to ensure that the event does not become public knowledge
 * Contact list should be maintained that includes stakeholders from the government, police, customers, suppliers, and internal staff
@@ -1022,7 +1210,7 @@ Communication Plan
         * may need to communicate with the public, investorsm and the company's cyber insurance company in a crisis
         * procedures for the order and timing of contact should be created
 
-Responsibility
+**Responsibility**
 ![Shared Security Responsibility](images/shared-resp-security.png)
 * if customer data is impacted the company is always responsible for timely communication
 * this is true regardless of the cloud service model in use, even if the CSP is at fault
@@ -1030,7 +1218,7 @@ Responsibility
 
 ## 5.6 Manage security operations
 
-Security Operations Center (SOC)
+**Security Operations Center (SOC)**
 * support unit designed to centralize a variety of security tasks and personnel at the tactical (mid-term) and operational (day-to-day) levels
 * both CSP and consumer should have a SOC function
 * Key functions of the SOC include:
@@ -1046,7 +1234,7 @@ Security Operations Center (SOC)
     * [GCP Status](https://status.cloud.google.com/)
 * You need to login to your CSP specific account to see the service health and status pertinent to your account
 
-Monitoring
+**Monitoring**
 * a form of auditing that focuses on active review of log file data
 * used to hold subjects accountable for their actions
 * used to monitor system health and performance
@@ -1057,7 +1245,7 @@ Monitoring
     * Network firewalls, WAF, and IDS/IPS provide critical source of information for NOC or SOC teams
     * these devices should be continously monitored to ensure they are functional
 
-Firwall 
+**Firwall**
 * Types
     * Hardware
         * piece of purpose-build network infrastructure
@@ -1094,7 +1282,7 @@ Firwall
         * a deep-packet inspection firewall that moves beyond port/protocol inspection and blocking
         * addes application-level inspection, instrusion prevention, and brings intelligence from outside the firewall
 
-IDS and IPS
+**IDS and IPS**
 * Intrusion Detection System (IDS)
     * generally responds passively by logging and sending notifications
     * Types
@@ -1140,30 +1328,29 @@ IDS and IPS
         * increased false positives
         * also known as behavior-based detection and heuristic detection
 
-Honeypot
+**Honeypot**
 * a system that often has pseudo flaws and fake data to lure intruders and analyze them
 * a group of honeypots is called a honeynet
 
-Artifical Intelligence (AL)
+**Artifical Intelligence (AI)**
 * focuses on accomplishing "smart" task combining machine learning and deep learning to emulate human intelligence
 
-Machine Learning (ML)
+**Machine Learning (ML)**
 * Subset of AI, computer algorithms that improve automatically through experience and the use of data
 
-Deep Learning
+**Deep Learning**
 * a subfield of ML concerned with algorithms inspired by the structure and function of the brain called artificial neural networks
  
-User Entity Behavior Analysis (UEBA)
+**User Entity Behavior Analysis (UEBA)**
 * based on the interaction of a user that focuses on their identity and the data that they would normally access on a normal day
 * tracks the devices that the user normally uses and the servers that they normally visit
 
-Sentiment Analysis
+**Sentiment Analysis**
 * AI and ML to identify attacks
 * Cybersecurity sentiment analysis can monitor articles on social media, look at the text and analyze the sentiment behind the articles
 * Over time, can identify a users' attitudes to different aspects of cybersecurity
 
-
-Log capture and analysis (e.g., security information and event management (SIEM), log management)
+**Log Capture and Analysis**
 * Definition:
     * _tooling that allows an organization to define incident analysis and response procedures in a digital workflow format_
 * integrates your security processes and tooling in a central location (SOC)
@@ -1235,11 +1422,11 @@ Log capture and analysis (e.g., security information and event management (SIEM)
         * used for internet-based calls and the log files generally show:   
             * the 100 events, known as the INVITE, the initiation of a connection, that relates to ringing
             * the 200 OK is followed by an acknowledgment
-* Event Reporint (Review Reports)
+* Event Reporting (Review Reports)
     * SIEM includes dashboard and collects reports that can be reviewed regularly to ensure that the policies have been enforced and that the environment is compliant
     * also highlight whether the SIEM is effective and working (no false positives)
 
-Incident Management
+**Incident Management**
 * [NIST SP 800-61 Rev2](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 * Incident Response Lifecycle:
 ![IR Lifecycle](images/IR%20Lifecyle.png)
@@ -1303,7 +1490,6 @@ Incident Management
             7. What could prevent similar incidents?
             8. What should the organization watch for?
             9. What additional tools or resources are needed?
-
 * Inicident Response Team
     * must have personnel available 24/7
     * Groups that should be part of the team
@@ -1332,7 +1518,7 @@ Incident Management
     * comply with legistative and/or regulator notification requirements
     * should use secure comms channels
 
-Vulnerability Management
+**Vulnerability Management**
 * includes route processes to periodically detects, remediates, and reports vulnerabilities
 * Why Managed Vulnerabilities?
     * Maintain system security
@@ -1397,7 +1583,7 @@ Vulnerability Management
 * Vulnerability Assessments
     * extend beyond just technical scans and can include reviews and audits to detect vulnerabilities
 
-Penetration Testing
+**Penetration Testing**
 * places security professionals in the roles of attackers
 * goal of the pen test is to successfully defeat security controls on target system
 * Document the rules of engagement (ROE) before beginning
@@ -1416,7 +1602,7 @@ Penetration Testing
 * Peristence
     * After exploiting a vulnerability in a system, attackers install tools on that system to allow future access - even if the inital vulnerability is corrected
 
-Deception Technologies
+**Deception Technologies**
 * Darknets
     * unused but monitored IP address space
 * Honeyfiles

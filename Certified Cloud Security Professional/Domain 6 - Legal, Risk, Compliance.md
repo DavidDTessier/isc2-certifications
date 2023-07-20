@@ -2,7 +2,7 @@
 
 ## 6.1 Articulate legal requirements and unique risks within the cloud environment
 
-Conflicting International Legislation
+**Conflicting International Legislation**
 * important to be aware of the various laws and regulations that govern cloud computing
 * laws can introduce risks to a business, such as fines, penalities, or even a loss of the ability to do business in a certain place
 * important to identify suchs risks and make recommendations to mitigate them just like any other risk
@@ -17,7 +17,7 @@ Conflicting International Legislation
     * **Encryption Export Controls**
         * Dept of Commerce details limitations on export of encryption productions outside of the US
     * **Privacy (US)**
-        * basis for privacy rights is in the Fourth Amendment to the US Constitution
+        * basis for privacy rights is in the Fourth Amendment to the US Constitution, however the Fourht amendment doesnt completely specify privacy
     * **Privacy (EU)**
         * General Data Protection Regulation (GDPR) is not a US law, but very likely to be mentioned
         * applies to any company with customers in the EU!
@@ -31,7 +31,7 @@ Conflicting International Legislation
     * **International import/export laws**
         * particularly technologies that may be sensitive or illegal under various international agreements
 
-Differences between laws, regulation, standards, and frameworks
+**Differences between laws, regulation, standards, and frameworks**
     * **Laws**
         * legal rules
         * created by government entities
@@ -45,7 +45,10 @@ Differences between laws, regulation, standards, and frameworks
     * **Frameworks**
         * are a set of guidelines helping organizations improve their security posture
 
-Types of Law
+**Types of Law**
+* **Doctrine of Proper Law**
+    * when a conflict between laws occurs, this determines the jurisdication under which the dispute will be heard.
+    * Generally based on **contractural language** through the choice-of-law clause
 * **Criminal Law**
     * contains prohibitions against acts such as murder, assault, robbery, and arson
 * **Cival Law**
@@ -90,8 +93,13 @@ Types of Law
         * the accuser must have suffered some type of harm, be it financial, physical, emotional, or reputational
     * there must be **causation**
         * a reasonable person must be able to conclude that the injury causes to the accuser must be a result of the breach of duty by the accused
+    * **Compensate** victims
+    * **Shift the cost** of injuries to the offender
+    * **Discourage** careless and risky behavior
+* **Restatement (second) conflict of laws**
+    * Laws made by judges - not legislation - that come into play when there are regions or states with conflicting laws. The judges must determine which laws are most appropriate for the situation
 
-Legal Liability
+**Legal Liability**
 * Definition
     * _Liable_ means "responsible or answerable in law; legally obligated"
 * Two forms
@@ -102,9 +110,7 @@ Legal Liability
         * Civil cases are brought to court by one party, called the **claimant**, who is accusing another party of a violation, called the **respondant**
         * Claimant may be invidividual, a corporation, or the government
 
-
-
-Evaluation of legal risks specific to cloud computing
+**Evaluation of legal risks specific to cloud computing**
 * Differeing legal requirements
     * State and provincial laws have different requirements for data breach notifications
 * Different legal systems and frameworks in different countries
@@ -117,7 +123,7 @@ Evaluation of legal risks specific to cloud computing
 * Ensuring necessary audit and IR data is logged and retained
 * Any additional due diligence and due care
 
-Legal framework and Guidelines
+**Legal framework and Guidelines**
 * **Organisation for Economic Co-operation and Development (OECD)**
     * https://www.oecd.org/
     * international organization comprised of 38 member states from around the world
@@ -128,12 +134,24 @@ Legal framework and Guidelines
     * Comprised of 21 member economies in the Pacific Rim
     * Incorporates many standard privacy practices into their guidance, such as preventing harm, notice, consent, security, and accountability
     * Promotes the smooth cross-border flow of information between APEC member nations
+* **EU Data Protection Directive**
+    * https://en.wikipedia.org/wiki/Data_Protection_Directive
+    * Enacted in October 1995
+    * Also known as Directive 95/96 EC
+    * Provides regualation and protection of PII within the European Union
+    * Designed to protect all personal data collected about EU citizens
 * **General Data Protection Regulation (GDPR)**
     * https://gdpr-info.eu/
+    * Enacted April 2016
+    * Superseded the EU Data Protection Directive as of May 2018
     * mandates privacy for individuals, defines companies' duties to protect personal data
-    * prescribes punishments for companies violating these laws
-    * includes mandatory notification timelines in the event of data breach
+    * prescribes punishments for companies violating these laws upto 4% of annual global turnover or 20 million pounds
+    * includes mandatory notification timelines in the event of data breach must be within 72 hours
     * GDPR formally defines many data roles related to privacy and security (subject, controller, processor)
+    * primary privacy law throughout all EU member states and **supersedes** local privacy laws
+* **ePrivacy Directive**
+    * https://edps.europa.eu/data-protection/data-protection/glossary/e_en#e-privacy_directive2009-136-ec
+    * Created by the European parliament to protect the privacy of data that is processed in the electronic communications sector
 * **Health Insurance Portability and Accountability Act (HIPAA)**
     * https://www.hhs.gov/hipaa/index.html
     * established by the US in 1996
@@ -147,13 +165,20 @@ Legal framework and Guidelines
 * **Sarbanes-Oxley Act (SOX)**
     * https://en.wikipedia.org/wiki/Sarbanes%E2%80%93Oxley_Act
     * law enacted in 2002
-    * sets requirements for US public companies to protect financial data when stored and used
+    * holds company executives accountable for data accuracy in an effort to prevent fraud and protect shareholders and employees
 * **Family Educational Rights and Privacy Act (FERPA)**
     * Regulates how educational institutions may handle student educational records
     * provides students and their parents, if student is under 18, the right to inspect their eductional records and requests to those records
     * restricts the ways the educational institutions can use and release those records without the student's consent
+* **Gramm-Leach-Bliley Act (GLBA)**
+    * https://www.ftc.gov/business-guidance/privacy-security/gramm-leach-bliley-act
+    * Requires financial institutions to explain how they share and protect their customer's data
 
-Laws and Regulations
+**Silver Platter Doctrine**
+* Former doctrine of criminal law that stated a federal court could introduce illegally or improperly seized evidence, as long as federal officers had played no role in obtaning it
+    * Ex: If an employer discovered that one of their employees was stealing and selling sensitive company data, they could collect the evidence and give it to law enforcement. That evidence could legally be used in court because law enforcement was not involved in collecting it
+
+**Laws and Regulations**
 * **Stationary Requirements**
     * required by law
     * HIPAA, GDPR, FERPA
@@ -165,7 +190,8 @@ Laws and Regulations
     * e.g. SOC, GAPP, CSA CCM    
 
 
-eDiscovery
+**eDiscovery**
+* ISO/IEC 27050
 * Complexities/Considerartions in the Cloud
     * CSPs may not preserve essentail data for the required period of time to support historical investigations
     * they may not even log all the data relevant to support an investigation
@@ -203,19 +229,24 @@ eDiscovery
         * Guide for digital evidence analysis
     * [ISO/IEC 27043:2015](https://www.iso.org/standard/44407.html)
         * Guide for incident investigation principles and processes
-* 
 
-Forensics Requirements
+**Forensics Requirements**
 * ISO/IEC and CSA provide guidance on best practices for collecting digital evidence and conducting forensics investigations in the cloud
 * see Domain 5
 
 ## 6.2 Understand privacy issues
 
-Difference between contractual and regulated private data (e.g., protected health information (PHI),
-personally identifiable information (PII))
+**Difference between contractual and regulated private data**
 * **Personally Identifiable Information (PII)**
     * any information that can identify an individual (name, ssn, bdate, bplace, biometric records, etc)
     * defined by [NIST SP 800-122](https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-122.pdf)
+    * Two types
+        * **Contractual PII**
+            * an organization processes, transmits, or stores PII as part of its business or services
+            * Contractually, this data must be protected by the business providing the service
+        * **Regulated PII**
+            * PII must be protected due to the legal and statutory requirements of regulations such as HIPAA and GLBA.
+            * Regulatory protection shields inviduals from risk
 * **Protected Health Information (PHI)**
     * health-related information that can be related to a specific person
     * must be protected by strong controls and access audited
@@ -233,8 +264,7 @@ personally identifiable information (PII))
     * contract may include how data is processed, security controls, deletion of data, physical location, audit, and use of subcontractors
 
 
-Country-specific legislation related to private data (e.g., protected health information (PHI), personally
-identifiable information (PII))
+**Country-specific legislation related to private data**
 * Australian Privacy Act
     * https://www.oaic.gov.au/privacy/privacy-legislation/the-privacy-act
     * introduced in 1988 by the Office of the Australian Information Commissioner (OAIC)
@@ -248,6 +278,8 @@ identifiable information (PII))
             * DNA, age, medical, education, employment, identifying numbers, religion, race/ethnic orgin, financial information
         * includes a data breach notification requirement
         * PIPEDA may also be superseded by province-specific laws that are deemed substantially similar to PIPEDA
+      * **Cross-Boarder Data Transfers**
+        * Canadian regulations covering the processing of Canadian Citizens' data outside of Canada
 * European Union (EU)
     * **General Data Protection Regulation (GDPR)**
         * deals with the handling of data while maintaining privacy and rights of an individual
@@ -264,7 +296,18 @@ identifiable information (PII))
             * The rigth to object
             * Rights in relation to automated decision making and profilling
         * other data types in GDPR: race or ethnic origin, political affiliations or opinions, religious or philosophical beliefs, and sexual orientation
-* National, Territory, and State Laws
+        * an entity outside the EU can gather/process personal data belonging to EU citizens if the entity:
+            * is located in a country with a national law that complies with EU laws
+            * Creates binding contractual wording that complies with EU laws
+                * each country in the EU for which data is processed must approve the wording of the contract
+            * Joins the Safe Harbor or Privacy Shield program in its own country
+* United States
+    * no single federal law governing data protection. There are few restrictions on the transfer of personal data outside the US, which makes it easy to use CSPs located outside the US.
+    * However, the Federal Trade Commission (FTC) and US regulators hold that applicable to US laws and regulations apply to data after it leaves the US, and the US-regulated entities that send data abroad remain liable for:
+        * Data exported outside the US
+        * The processing of data by subcontractors outside the US
+        * Subcontractors abroad using the same level of protection for regulated data
+* National, Territory, and State Laws (US)
     * **Gramm-Leach-Bliley Act (GLBA) of 1999**
         * focuses on services of banks, lenders, and insurance
         * severely limits services they can provide and the information they can share with each other
@@ -284,7 +327,12 @@ identifiable information (PII))
         * Requires that websites have a privacy policy
         * Provides for parental inspection and deletion of information
         * Requires parental consent for data collection
+    * **Safe Harbor Program**
+        * developed by the US and EU to address concerns that the US does not have a regulatory framework that provides adequate protection for personal data transferred from the European Economic Area (EAA)
     * **Privacy Shield**
+        * As of July 12, 2016, the EU reversed its decision on the legal adequacy of the US Safe Harbor program. 
+        * Privacy Shield replaces the Safe Harbor Program which the EU deems adequate for protecting personal information
+        * managed by the FTC
         * international agreement between the US and the EU
         * allows transfer of personal data from the European Economic Area (EEA) to the US by US based companies
         * NOT an indicator of GDPR compliance
@@ -302,6 +350,7 @@ identifiable information (PII))
             * Fourth Amendment:
                 * _Details the people's " right to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures"_
         * it outlines that private data is protected from authorized access or interception (by private parties or the government)
+        * Very outdated and in need of updating
     * **Health Insurance Portability and Accountability Act (HIPAA) of 1996**
         * privacy and security regulations requiring strict security measures for hosiptals, physicians, insurance companies
         * HIPAA-covered entities are those organizations that collect or generate protected health information (PHI)
@@ -311,8 +360,9 @@ identifiable information (PII))
         * aids in evidence collection in investigation of serious crimes
         * created in 2018 due to the problems that FBI faced in forcing Microsoft to hand over data stored in Ireland
         * requires US-based companies to respond to legal requests for data no matter where the data is phyiscally located
+  
     
-Jurisdictional differences in data privacy
+**Jurisdictional Differences in Data Privacy**
 * Different laws and regulations may apply depending on the **location** of:
     * data subject
     * data collector
@@ -324,10 +374,9 @@ Jurisdictional differences in data privacy
     * add to costs and time to market
     * drive changes to technical architectures required to deliver services
 * Never replace compliance with convienience when evaluating services, as this increases risks
+* CCSPs should always engage with legal professionals about local and international laws prior to engaging in cloud services
 
-Standard privacy requirements (e.g., International Organization for Standardization/International
-Electrotechnical Commission (ISO/IEC) 27018, Generally Accepted Privacy Principles (GAPP), General Data
-Protection Regulation (GDPR))
+**Standard Privacy Requirements**
 * [ISO/IEC 27018](https://www.iso.org/standard/76559.html)
     * published in July 2014 as a component of the ISO 27001 standard
     * establishes commonly accepted control objectives, controls and guidelines for implementing measures to protect Personally Identifiable Information (PII) in line with the privacy principles in ISO/IEC 29100 for the public cloud computing environment.
@@ -380,8 +429,11 @@ Protection Regulation (GDPR))
     10. **Monitoring and enforcement**
         * the organization monitors compliance with its privacy policies and procedures
         * it also has procedures in place to address privacy-related complaints and disputes
+* [ISO/IEC 27001 - Info Sec Management System (ISMS)](https://www.iso27001security.com/html/27001.html)
+    * internal audits should be part of the every ISMS, and their goal should be to reduce risks related to the availablity, integrity, and confidentiality of data while improving stakeholder confidence in the security posture of the organization
+        * ISO 27001 is the **most widely used** global standard for ISMS implementation
 
-Privacy Impact Assessments (PIA)
+**Privacy Impact Assessments (PIA)**
 * designed to identify the privacy data being collected, processed, or stored by a system, and assess the effects of a data beach
 * several privacy laws explictly require PIAs as a planning tool for identifying and implementing required privacy controls, including GDPR and HIPAA
 * conducting a PIA typically begins when a system or process is being evaluated
@@ -392,7 +444,7 @@ Privacy Impact Assessments (PIA)
 
 ## 6.3 Understand audit process, methodologies, and required adaptions for a cloud environment
 
-Auditing
+**Auditing**
 * definition:
     * _a methodical examination of an environment to ensure compliance with regulations and detect abnormalities, unauthorized occurences, or outright crimes._
 * serves as a primary type of detective control
@@ -439,6 +491,10 @@ Auditing
         * Regulatory compliance
         * Privacy compliance
         * Cyber threats
+* External Audits
+    * focus on the controls over financial risk
+        * areas that support the financial health of the organization
+        * don't necessarily focus on cloud risks
 * Impact of Audit Requirements
     * large procedural and financial impact
     * Regulated Industries
@@ -446,16 +502,17 @@ Auditing
     * Sample size and relevance
         * large environments, representative samples of some infra (20 of 100 servers) may be checked but must be representative of multi-region estate
 
-Identify assurance challenges of virtualization and cloud
+**Assurance challenges of virtualization and cloud**
+* It's difficult to audit the underlying hypervisor and virtualization of many CSPs, as they will not provide access to the underlying systems
 * Provider (CSP) (AWS, GCP, Azure)
     * audits of controls over the hypervisor will usually be the purview of the CSP
 * Customer (Cloud consumers)
     * VMs deployed on top of that hardware are usually under ownership of the customer
 
-Types of audit reports
+**Types of Audit Reports**
 * **Statement on Standards for Attestation Engagements (SSAE)**
     * https://en.wikipedia.org/wiki/SSAE_No._18
-    * SSAE 18 is a set of standards defined by the AICPA (American Institute of CPAs)
+    * SSAE 18 is a set of standards defined by the American Institute of CPAs (AICPA)
     * designed to enhance the quality and usefulness of System and Organization Control (SOC) reports
     * includes audit standards and suggested report formats to guide and assit auditors
     * SOC Reports
@@ -475,9 +532,6 @@ Types of audit reports
             * contain only the auditor's general opinions and non-sensitive data is publicly shareable
             * providees high-level, public reporting of confidential, integrity, and availability controls
     * US-based but SOC2 has become a defacto global standard
-* **Statement on Standards for Attestation Engagements (SSAE)**
-    * https://en.wikipedia.org/wiki/SSAE_No._18
-    * guide for SOC audits in the US
 * **International Standards on Assurance Engagments (ISAE)** 
     * https://en.wikipedia.org/wiki/ISAE_3402
     * developed and issued by the International Aduiting and Assurance Standards Board (IAASB) and published by the International Federation of Accounts (IFAC)
@@ -496,15 +550,20 @@ Types of audit reports
     * consist of two levels of certification which provide increasing levels of assurance
         * **Level1: Self-assessment**
             * a complimentary offering that documents the security controls provided by the CSP
+            * self-declared compliance with CCM
         * **Level 2: Third-party audit**
             * requires the CSP to engage an independent auditor to evaluate the CSPs controls against the CSA standard
             * stronger as its a 3rd party audit conducted by a trained qualified auditor
+        * **Level 3: Continous Auditing**
+            * 
+* **Agreed-Upon Procedures (AUP)**
+    * based on the SSAE, in an AUP an auditor is engaged to report on the findings of procedures performed by the audited party.
+    * The auditor provides no opinion, only states identified facts and third party forms their own conclusion based on the report
+* **EuroCloud Star Audit (ESCA) Program**
+    * https://eurocloud.org/streams/staraudit/
+    * European CSP certification program
 
-
-Restrictions of audit scope statements (e.g.,
-Statement on Standards for Attestation
-Engagements (SSAE), International Standard on
-Assurance Engagements (ISAE))
+**Restrictions of Audit Scope Statements**
 * Audit Scope Statements
     * provide the reader with details on what was included in the audit and what was not
     * generally includes:
@@ -517,6 +576,10 @@ Assurance Engagements (ISAE))
         * Expected deliverables
         * Classification (secret, top secret, public, etc.)
     * setting params for an audit is known as _audit scope restrictions_
+        * limit the operational impact of audit activities
+        * lower the risk to production environments posted by audit activities
+            * ex: The auditor cannot require a fully functional DR test
+            * ex: The auditor cannot pull the fire alarm unannounced to verify functionality
     * Limiting scope of audit
         * expensive endeavors
         * can affect system performance and possibly require system downtime
@@ -524,7 +587,7 @@ Assurance Engagements (ISAE))
         * cost of implementing controls is too high 
 
 
-Gap Analysis (e.g., control analysis, baselines)
+**Gap Analysis**
 * Definition:
     * identifies where an organization does not meet requirements and provides important information to help remediate gaps
 * purpose is to compare the organization's current practices against a specified framework and identify the gaps between the two
@@ -533,7 +596,8 @@ Gap Analysis (e.g., control analysis, baselines)
 * assess impact of changes to reg/compliance frameworks which introduce new or modified requirements
 * ISO 27002 and NIST CSF are frameworks commonly used for gap analysis
 
-Audit Planning
+**Audit Planning**
+* ISO/IEC 27007 sets out guidelines for auditing information security management systems—and will look familiar as it’s part of the 2700x series of standards. 
 * Phases
     * Planning Phase
         * Activities include:
@@ -554,10 +618,17 @@ Audit Planning
             * **Audit follow-up**
                 * various activities may be conducted after the audit, including addressing any identified weaknesses
 
-Internal Information Security Management System (ISMS)
+**Internal Information Security Management System (ISMS)**
 * a systematic approach to information security
 * focuses on processes, technology, and people desgined to help protect and managed an organization's information
 * ISO 27001 addresses need and approaches to implementing an ISMS
+    * covers the following domains:
+        * A.5 - Security policy management
+        * A.8 - Organizational Asset management
+        * A.10 - Cryptography policy
+        * A.11 - Physical security policy
+        * A.13 - Network security management
+        * A.18 - Security compliance management
 * Fucntions
     * Quantify risk
     * Develop and execute risk mitigation strategies
@@ -568,7 +639,7 @@ Internal Information Security Management System (ISMS)
     * Central info sec management
     * Formal risk management
 
-Internal Information Security Controls System (ISCS)
+**Internal Information Security Controls System (ISCS)**
 * provides guidance for mitigating the risks identified as part of ISMS risk management processes
 * several contol frameworks to choose from
     * **Scoping**
@@ -582,8 +653,7 @@ Internal Information Security Controls System (ISCS)
     * [Secure Control Framework](https://securecontrolsframework.com/)
     * [CSA Cloud Control Matrix (CCM)](https://cloudsecurityalliance.org/research/cloud-controls-matrix/)
 
-Policies (e.g., organizational, functional, cloud
-computing)
+**Policies**
 * key part of any data security stragegy and facilitate a number of capabilities for an organization
 * provide users and organizations with a way to understand and enforce requirements
 * standard security practices throughtout the organizations
@@ -621,7 +691,6 @@ computing)
 * Applying policies to the Cloud
     * CASB can help identify and stop shadow IT
     * policies should define requirements users must adhere to and specify which cloud services are approved for various uses
-
 * Data Security Policies and Procedures
     * Policies
         * Foundational authority for data security efforts
@@ -644,23 +713,16 @@ computing)
                     * limits risk exposure 
                 * Data Disposal Polices
                     * Describes proper techniques for destroying data that is no longer needed by the organization
-Identification and involvement of relevant
-stakeholders
-* key challeng of audit process is the inclusion of any **relevant stakeholders**
+
+**Identification and Involvement of Relevant Stakeholders**
+* key challenge of audit process is the inclusion of any **relevant stakeholders**
 * **Relevant stakeholders** are
     * management who will likely be paying for the audit
     * security practitioners responsible for facilitating the audit
     * employees who will be called upon to provide evidence to auditors in the form of documentation, artifacts, or sitting for interviews
 * Cloud computing enviroments can include more stakeholders thann on-prem and even multiple CSPs
 
-Specialized compliance requirements for
-highly-regulated industries (e.g., North
-American Electric Reliability Corporation /
-Critical Infrastructure Protection (NERC / CIP),
-Health Insurance Portability and Accountability
-Act (HIPAA), Health Information Technology for
-Economic and Clinical Health (HITECH) Act,
-Payment Card Industry (PCI))
+**Specialized Compliance Requirements for Highly Regulated Industries**
 * **NERC/CIP**
     * https://www.nerc.com/Pages/default.aspx
     * North American Reliability Corporation (NERC) / Critical Infrastructure Protection (CIP) regulates organizations involved in power generation and distribution
@@ -672,9 +734,7 @@ Payment Card Industry (PCI))
     * specifies protections for payment card transaction data
     * no specific mention of cloud
 
-Impact of distributed information technology
-(IT) model (e.g., diverse geographical locations
-and crossing over legal jurisdictions)
+**Impact of Distributed Information Technology (IT) Model*
 * Cloud computing enables distributed IT service delivery with systems that can automatically **replicate data globally**
 * one impact of this distributed model is the additional geographic locations auditors must consider when performing an audit
 * common technique in cloud audits is **sampling**, which is the act of picking a subset of the system's physcial infra to inpect
@@ -683,8 +743,7 @@ and crossing over legal jurisdictions)
 
 ## 6.4 Understand implications of cloud to enterprise risk management
 
-Assess providers risk management programs (e.g., controls, methodologies, policies, risk profile,
-risk appetite)
+**Assess Providers Risk Management Programs/Framework**
 * Reviewing provider controls
     * before choosing a CSP, customer needs to analyze the risks associated with adopting that provider's services
     * rely on **supply chain risk management (SCRM)** processes instead of a full audit:
@@ -694,6 +753,7 @@ risk appetite)
     * SCRM in a CSP scenerio requires customer to review CSP's audit reports
     * when reviewing auditor reports there are some key elements to focus on such as scoping information or description of the audit target
     * if the CSPs SOC 2 audit did not cover a specific service a customer wants to use, then the audit finding does not provide any value!
+    * Look for CSPs who participate in the CSA STAR program
 * Methodologies
     * NIST has a resource library that includes working groups, publications, and other resources, available at https://csrc.nist.gov/Projects/cyber-supply-chain-risk-management
     * ISO 27000:2022
@@ -706,7 +766,7 @@ risk appetite)
     * regulated industries will be more apt to mitigation, transference, and avoidance
     * smaller orgs and startups will be more apt to simply accept risks to avoid cost of treatment
 
-Difference between data owner/controller vs. data custodian/processor
+**Difference between data owner/controller vs. data custodian/processor**
 * **Data Processor**
     * anyone who processes personal data on behalf of the data controller
     * THE CUSTODIAN
@@ -738,12 +798,15 @@ Difference between data owner/controller vs. data custodian/processor
     * DOES implement controls for data owner
     * DOES NOT decide what controls are needed
 
-Regulatory transparency requirements (e.g., breach notification, Sarbanes-Oxley (SOX),
-General Data Protection Regulation (GDPR))
+**Regulatory Transparency Requirements**
 * Breach Notification
     * likely manadatory
     * some variations among laws, mainly around issues of timing of the notification and who must be notified
     * regulations that require breach notification, include, but are not limited to, GDPR, HIPAA (as amended by the HITECH ACT), GLBA, PIPEDA
+    * GDPR - within 72 hours
+    * HIPAA - no later than 60 days
+    * PCI - No Requirement
+    * Most states within the US have laws regarding breach notifications
 * Sarbanes-Oxley (SOX) Act
     * https://en.wikipedia.org/wiki/Sarbanes%E2%80%93Oxley_Act
     * if a company is publicly traded in the US, they are subject to the transparency requirements
@@ -759,8 +822,20 @@ General Data Protection Regulation (GDPR))
             * obligations for transparency begin at the data controller stage and apply "through the lifecylce of processing."
         * _Stipulates that communication to data subjects must be "concise, transparent, intelligible and easily accessible, and use clear and plain language."
     * meeting transparency requirements also requires processes for providing data subjects with access to their data
+* Gramm-Leach-Biley Act (GLBA)
+    * https://en.wikipedia.org/wiki/Gramm%E2%80%93Leach%E2%80%93Bliley_Act
+    * Financial Privacy Rule
+        * requires financial institutions to provide each consumer with a privacy notice at the time the consumer relationship is established and annually thereafter.
+        * The privacy notice must explain the information collected about the consumer, where that information is shared, how that information is used, and how that information is protected.
+        * The notice must also identify the consumer's right to opt out of the information being shared with unaffiliated parties pursuant to the provisions of the Fair Credit Reporting Act. 
+    * Safeguards Rule
+        * implements data security requirements from the GLBA and requires financial institutions to develop a written information security plan that describes how the company is prepared for, and plans to continue to protect its clients' nonpublic personal information. The Safeguards Rule applies to information of any consumer's past or present regarding the financial institution's products or services. The written plan must include:
+            * Denoting at least one employee to manage the safeguards
+            * Constructing a thorough risk analysis on each departmenet handling nonpublic information
+            * Develop, monitor, and test a program to secure the information
+            * Adapting the safeguards as needed with comtemporary changes in how information is collected, stored, and used
 
-Risk treatment (i.e., avoid, mitigate, transfer, share, acceptance)
+**Risk treatment**
 * Definition:
     * practice modifying risk, usually to lower it. Typically begins with identifying and assessing risks by measuring the likelihood and impact. Risks most likely to occur and impactful would be prioritized for treatment. 
     * organizations response to risk
@@ -802,13 +877,17 @@ Risk treatment (i.e., avoid, mitigate, transfer, share, acceptance)
                 * use of techninology to achieve security control objectives
                     * Firewall
                     * IDP/IPS
+                    * encryption
+            * **Physical Controls**
+                * limiting physical access using door locks, fire suppression, fences, guards, etc
             * **Operatinal Controls**
                 * use human-driven processes to manage tech in a secure manner
                     * user access reviews
                     * log monitoring
-            * **Management Controls** 
+            * **Management/Administrative Controls** 
                 * improve the security of the risk management process itself
                     * conduct regular security planning and including security considerations in orgs change management, service acquisition and pm methodologies
+                    * personal background checks, separation of duties, mandatory vacation, etc.
     * **False Positive Errors**
         * Occur when a control inadvertently triggers when it should not
     * **False Negatitive Errors**
@@ -818,7 +897,7 @@ Risk treatment (i.e., avoid, mitigate, transfer, share, acceptance)
     * **countermeasure**
         * reactive (reduce impact after occurrence) 
 
-Different Risk Frameworks
+**Different Risk Frameworks**
 * [ISO 31000 - Risk Management](https://www.iso.org/iso-31000-risk-management.html)
     * [ISO 31000:2018 - Risk Management Guidelines](https://www.iso.org/standard/65694.html)
         * provides the foundation of an organization's risk management function
@@ -839,7 +918,7 @@ Different Risk Frameworks
     * guide identifies various categories of risk and recommendations for organizations to consider when evaluating cloud computing
     * includes research recommendations to advance the field of cloud computing, legal risks, and security risks
 
-Metrics for risk management
+**Metrics for Risk Management**
 * Key Metrics
     * **Patching levels**
         * how many devices are fully patched and up-to-date?
@@ -852,10 +931,17 @@ Metrics for risk management
         * increased intrusion attempts can be an indicator of increased risk likelihood
     * **Mean time to detect (MTTD)**
         * how long does it take for sec teams to become aware of a potential sec incident
+        * also known as median time to discover
     * **Mean time to contain (MTTC)**
         * how long does it take for sec teams to take action and contain the damage after a sec incident
     * **Mean time to resolve (MTTR)**
         * how long does it take for sec teams to resolve the sec incident
+        * also known as median time to remediate 
+    * **Number of high-risk assets**
+    * **Number of identified risks**
+    * **Number of recurring risks**
+    * **Risk severity**
+
 
 Risk Visibility and Reporting
 * Risk Register
@@ -871,6 +957,12 @@ Risk Visibility and Reporting
         * Rating
             * calculated by multiplying the probability and impact scores
         * Risk management actions
+        * Severity
+            * Critical
+            * High
+            * Moderate
+            * Low
+            * Minimal
     * Information Sources
         * Risk assessment results
         * Audit findings
@@ -881,7 +973,7 @@ Risk Visibility and Reporting
         * ![Risk Matrix](images/risk-heat-map.png)
         * quickly summarizes risks and allows senior leaders to quickly focus on the most significant risks facings the organization
 
-Assessment of risk environment (e.g., service, vendor, infrastructure, business)
+**Assessment of Risk environment**
 * Questions to ask when considering a cloud service, vendor or infra provider
     * Is the provider subject to takeover or acquisition?
     * How financially stable is the provider?
@@ -912,8 +1004,7 @@ Assessment of risk environment (e.g., service, vendor, infrastructure, business)
 
 ## 6.5 Understand outsourcing and cloud contract design
 
-Business requirements (e.g., service-level agreement (SLA), master service agreement (MSA),
-statement of work (SOW))
+**Business Requirements**
 * **Non-Discolsure Agreement (NDA)**
     * contract with vendors and suppliers not to disclose the company's confidential information
 * **Service-Level Requirements (SLRs)**
@@ -959,9 +1050,15 @@ statement of work (SOW))
     * Faciliate customer monitoring of compliance
     * Ensure the right of audit and assessment
 
-Vendor management (e.g., vendor assessments, vendor lock-in risks, vendor viability, escrow)
+**Vendor Management**
 * SCRM and vendor management overlap
 * vendor management will include more activities related to operational risks
+* Must understand the the associated risks:
+    * Is the vendor mature?
+    * Is the vendord financially stable?
+    * Is the vendor outsourcing services?
+    * Is the vendor compliant with industry standards?
+    * Can the vendor meet your regulatory compliance needs?
 * **Assess vendors**
     * sec practitioners should participate in the inital selection process for a csp to assess sec risks
     * review soc 2 reports
@@ -977,9 +1074,41 @@ Vendor management (e.g., vendor assessments, vendor lock-in risks, vendor viabil
 * **Escrow**
     * legal term used then a trusted third party holds something on behalf of two or more other parties, such as souce code or encryption keys
 
-Contract management (e.g., right to audit, metrics, definitions, termination, litigation, assurance,
-compliance, access to cloud/data, cyber risk insurance)
-* organizations must employ adequate governance structures to **monitor contract terms and performance** and **be aware of outages** and **any violations of stated agreements**
+**Industry Standards to Consider**
+* Common Criteria (CC)
+    * An international set of guidelines and specifications (ISO/IEC 15408) developed for evaluating information security products to ensure that they do what they say the do.
+* CSA STAR
+    * Created to establish transparency and assurance for cloud-based environments.
+    * Allows customers to assess the security of the CSPs by asking the CSPs for information.
+    * The CSPs then provide that information in a tranparent manner
+    * Consists of three layers:
+        * Self-Assessment
+            * requires the release of published results of due diligence assessments against the CSA's questionnaire
+        * CSA Star Assessment
+            * Requires the release and publication of results of a third party audit of the cloud vendord against CSA CCM and ISO 27001:2022 requirements or an AICPA SOC 2
+        * Continous Auditing
+            * Requires the release and publication of results related to the security properties of monitoring based on the CloudTrust Protocol
+* European Union Agency For Cybersecurity (ENISA):
+    * Cloud Certification Schemes List (CCSL):
+        * Provdies an overview of different cloud certification schemes (certifications) and shows the main characteristics of each scheme.
+        * It also answers questions such as:
+            * What are the underlying standards?
+            * Who issues the certification?
+        * CCSL provides informaiton for the following schemes:
+            * Certified Cloud Service
+            * CSA STAR Attestation
+            * EuroCloud Star Audit Certification
+            * ISO/IEC 27001
+            * PCI-DSS v3/v4
+            * Service Organization Control (SOC) 1,2,3
+    * Cloud Certification Schemes Metaframework (CCSM)
+        * an extension of the CCSL designed to provide a high-level mapping of customers security requirements to security objectives in existing cloud security schemes
+            * My sec requirements are "X" -- which cloud security schemes align with that?
+
+**Contract Mnagement**
+* organizations must employ adequate governance structures to: 
+    * **monitor contract terms and performance**
+    * **be aware of outages** and **any violations of stated agreements**
 * **Contract Clauses**
     * specific article of related information that specifies the agreement between the contracting parties
     * some common contract clauses that should be considered for any CSP or other data service provider include the follwing:
@@ -1033,9 +1162,10 @@ compliance, access to cloud/data, cyber risk insurance)
                 * associated costs for employees working overtime or extended hours/travel to contigency sites
                 * catering and lodging 
 
-Supply-chain management (e.g., International Organization for Standardization/International
-Electrotechnical Commission (ISO/IEC) 27036)
+**Supply Chain Management**
 * focuses on both Operational Risks, to ensure that suppliers are capable of providing the needed services and security risks
+* [ISO/IEC 28000:2022 - Supply Chain Standard](https://www.iso.org/standard/79612.html)
+    * specifies requirements for a security management system, including aspects relevant to the supply chain.
 * [ISO/IEC 27036 - 1:2021 - Cybersecurity - Supplier relationships](https://www.iso.org/standard/82905.html)
     * provides a set of practices and guidance for managing cybersecurity risks in supplier relationships
     * the standard is particularly useful for organizations that use ISO 27001 for building an ISMS or ISO 31000 for risk management

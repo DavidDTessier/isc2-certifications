@@ -37,8 +37,7 @@ Control Frameworks
 * ![Controls](images/controls.png)
 
 
-
-Physical Environment
+**Physical Environment**
 * components are physically located with the CSP but some are accessible via the network
 * CSP takes on customer datacenter facilities, infra management responsibilities
 * See Share Responsibility Model In [Domain 1](Domain%201%20-%20Cloud%20Concepts%2C%20Architecture%20and%20Design.md)
@@ -49,21 +48,41 @@ Physical Environment
     * Controls for data confidentiality and integrity like any cloud customer but with much broader controls
     * Example:
         * _Ensuring that communication lines are not physically compromised by locating telecommunications equipement inside a controlled area of the CSPs building or campus_
-
-
-Network and Communications
 * IaaS 
     * Customer is responsible for configuring the VMs, VPC, and guest os security as if the systems were on-prem
-    * csp is responsbile for physical host, phsyical storage, and phsyical network
+    * CSP is responsbile for physical host, phsyical storage, and phsyical network
 * PaaS
-    * csp is responsible for the physical components, the internal network, and the tools provided
+    * CSP is responsible for the physical components, the internal network, and the tools provided
     * cheaper for customer, but less control
+    * Cusomter is responsible for following secure coding practices and compliance
 * SaaS
     * customer remains responsible for configuring access to the cloud service for their users, as well as shared resp for data
     * CSP owns physical infra, as well as network and comms
 
-Compute
-* infra components that deliver compute resources, such as VMs, disk, processor, memory and network resources
+**Network and Communications**
+* Cloud carrier
+    * organization that provides connectivity between the CSP and the cloud customer
+    * should be redundant on different carriers
+* Network functionality
+    * Address allocation (DHCP)
+    * Access Control (IAM)
+    * Bandwidth allocation
+        * reserving bandwidth for a specific use
+    * Rate limiting
+        * limiting the amount of traffic
+    * Filtering
+        * Closing ports or blocking specified protocols 
+    * Routing
+* Software-Defined Networking (SDN)
+    * allows for networking to be completely programmable
+    * underlying hardware is simply commodity hardware
+    * gooal is to make networking more agile, flexible, and centrally managed
+
+**Compute**
+* Infra components that deliver compute resources, such as VMs, disk, processor, memory and network resources
+* Compute compacity is **dependent on**
+    * Number of CPUs
+    * Amount of memory
 * Reservation
     * a min resource that is guarranteed to the customer
 * Limits
@@ -77,14 +96,31 @@ Compute
     * CSP remains responsible for maintenance and security of the physical components
     * customer is responsible largley for their data and users
 
-Virtualization
+**Virtualization**
+* Includes the use of compute, storage, and networ
 * security of the hypervisor is always the responsibility of the CSP
 * virtual network and vm may be either csp or customer depending on the service model
+* Hypervisor
+    * software, firmware, or hardware that makes a guest OS think it is running directly on physical hardware
+    * Allows for running multiple guests on the same hardware
+    * Two types:
+        * Type 1
+            * Bare metal
+            * runs directly on hardware
+            * Ex: VMWare ESXi
+        * Type 2
+            * Runs on top of another OS
+            * Ex: VMWare Workstation or Virtual Box
+            * More susceptible to vulnerabilities and exploitation
 * Associated Risks
     * flawed hypervisor can facilitate inter-vm attacks
     * network traffic between vms is not necessarily visible
     * resource availablity for vms can be impacted
     * vms and their disk images are simply files, can be portable and moveable
+    * VM hopping
+        * one tenant is able to see another tenant's data
+    * resource starvation in high-contention times
+    * file attacks on images or snapshots
 * Sec recommendations for the hypervisor (CSP resp)
     * install all updates to the hypervisor as they are released by the vendor
     * restrict admin access to the management interfaces of the hypervisor
@@ -107,7 +143,7 @@ Virtualization
         * Ensure patches on hypervisors and VMs are alway up to date
         * Ensure guest privileges are low, server-level redundancy and HIPS/HIDS protection
 
-Storage
+**Storage**
 * CSP responsibilities
     * physical protection of data centers and the storage infrastructure the contain
     * security patches and maintenance of underlying data storage technologies and other data services they provide
@@ -118,13 +154,22 @@ Storage
     * only storing data in an encrypted format
     * retaining control of the keys needed to decrypt the data
 
-Management Plane
+**Management Plane**
 * What is the management plane?
     * provides the tools (web interface/APIs) necessary to configure, monitor, and control your cloud environment 
     * provides virtual management options equivalent to the physical administration options a legacy data center would provide
         * e.g. powering VMs on/off, provisioning vm resources, migrating a vm
     * interaction is done through the CSP's cloud portal, CLI (bash, powershell), client SDKs, or via REST API
+        * API allows for automation
+            * Scripting
+            * Orchestration
+            * Managing user access
+            * Config Management
+            * Allocating resources
+    * controls entire infrastructure and is very high risk
+    * allow admins to remotely manage all hosts
     * Seperate from and works with the **control plane** and the **data plane**
+    * regulatory requirements may require seperate physical networks
 * Control Plane
     * is what you are calling when you create top-level cloud resources with ARM & Bicep (Azure), CloudFormation(AWS) or Terraform (IaC)
 * Data Plane
@@ -147,7 +192,7 @@ Management Plane
 
 ## 3.2 Design a secure data center
 
-Logical design (e.g., tenant partitioning, access control)
+**Logical design**
 * Concept
     * abstraction
     * legacy co-location (CoLo) scenerio, customers were seperated at the server rack or cage-level
@@ -157,8 +202,16 @@ Logical design (e.g., tenant partitioning, access control)
         * limit and secure **remote access**
         * monitor the cloud infra
         * allow for the patching and updating of systems
+    * known as "Power, Pipe, and Ping"
+        * Electrical Power
+        * Air conditioning
+        * Network Connectivity
+            * Power and pipe limit the density of servers in a datacenter
 * Tenant Partitioning
+    * ![MultiTenant Design](images/multitenant-dc-design.png)
     * logical isolation in CSP multitenancy makes cloud computing more affordable but creates some security and privacy concerns
+    * secure segregate tenants
+    * logically seperated physcial networks (Ex: VLANs)
     * if isolation between tenants is breached, customer data is at risk
     * Multitenancy is a concept developed decades ago:
         * business centers phyically housed multiple tenants
@@ -190,7 +243,7 @@ Logical design (e.g., tenant partitioning, access control)
             * software tools that allow remote connections to a VM for use as if it is your local machine
             * e.g Virtual Desktop Infrastructure (VDI) for contractors
 
-Physical design (e.g., location, buy or build)
+**Physical design (e.g., location, buy or build)**
 * Build 
     * Requires significant investment to build a robust DC
     * offers the most control over DC design
@@ -208,6 +261,18 @@ Physical design (e.g., location, buy or build)
     * Physical site security (vehicular approaches, visibility)
     * Location relative to existing customer datacenters (BCDR)
     * Geographic location relative to customers
+* Physical Design Standards
+    * [ISO 27001:2022](https://www.iso27001security.com/html/27001.html)
+    * ITIL - best practices framework for IT service management (ITSM)
+    * [Building Industry Consulting Service International (BICSI) | ANSI/BICSI 002-2014/002-2019](https://www.bicsi.org/standards/available-standards-store/single-purchase/ansi-bicsi-002-2019-data-center-design)
+        * Covers cabling design and installation
+    * [International Data Center Authority (IDCA) | Infinity Paradigm](https://idc-a.org/)
+        * Covers data center location, facility structure, and infrastructure and applications
+    * [National Fire Protection Associate (NFPA)](https://www.nfpa.org/)    
+        * [NFPA 75](https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=75) & [NFPA 76](https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=76)
+            * Specifies how hot or cold aisle continment should be
+        * [NFPA 70](https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70)
+            * Requires implementation of an emergency power-off button to protect first responders
 * Physical Security Challenges
     * strong fence line of sufficient height and construction
     * lighting of facility perimeter and entrances
@@ -217,8 +282,14 @@ Physical design (e.g., location, buy or build)
     * interior access controls (badges, key codes, secured doors)
     * fire detection and prevent systems
     * protection of sensitive assests, systems, wiring closets, etc.
+* Size
+    * Use of blade servers for high capacity vs large mainframe
+    * chicken coop design for cold and hot isles
+        * ![Hot Cold Racks](../Certified%20In%20Cybersecurity%20(CC)/images/hot-cold-server-aisle.png)
+    * Room for expansion (cooling, power, tenants)
 
-Datacenter Tier Standard (Classification)
+
+**Datacenter Tier Standard (Classification)**
 * List created by the [Uptime Institute](https://uptimeinstitute.com/tiers)
 * Describes the level of resiliency in a facility
 * Tiers
@@ -253,32 +324,40 @@ Datacenter Tier Standard (Classification)
             * fully redundant infrastructure including dual commercial power feeds, dual back generators
         * Expected 99.995% uptime
 
-Environmental design (e.g., Heating, Ventilation, and Air Conditioning (HVAC),
-multi-vendor pathway connectivity)
+**Environmental design (e.g., Heating, Ventilation, and Air Conditioning (HVAC),multi-vendor pathway connectivity)**
 * Heating, Ventilation, and Air Condition (HVAC)
     * DC’s used to be very cold
     * Environmental threats are major risks to equipment
     * High humidity → leads to condensation that may damage electronic equipment
     * Low Humidity → leads to static electricity that may damage electronic equipment
-    * Current standards for data center cooling come from the American Society of Heating, Refrigeration and Air Conditioning Engineers.  
+    * Current standards for data center cooling come from the [American Society of Heating, Refrigeration and Air Conditioning Engineers (ASHRAE)](https://www.ashrae.org/).  
         * The standard is called the “expanded environment envelope”
         * Maintaining proper HVAC and humidity
-            * 64.4 F - 80.6F → HVAC (Expanded Envelope)
-            * 41.9 F - 50 F → Humidity (Dew point Range) → Sweet Spot
+            * 64.4F - 80.6F (18-27C) → HVAC (Expanded Envelope)
+            * 41.9F - 50F (5.5-15C) → Humidity (Dew point Range) → Sweet Spot
     * Servers draw cool air in the front and expel hot air out back
     * ![Server hot/cold](../Certified%20In%20Cybersecurity%20(CC)/images/server.png)
-
-    Hot/Cold aisle approach makes cooling data centers more efficient
+    * Hot/Cold aisle approach makes cooling data centers more efficient
     ![hot/cold](../Certified%20In%20Cybersecurity%20(CC)/images/hot-cold-server-aisle.png)
     * HVAC failure can reduce availability of computing resources (just like power)
     * SOC-2 Type II report can help assess HVAC concerns
         * requires NDA prior to sharing due to confidential information
+    * Aisle separation and Containment
+        * Empty U's in rack should be covered with blanks
+        * Raised floors and drop ceilings should be tightly sealed
+        * Under-floor cooling with perforated tiles to the cold aisle is very effective
+* HVAC Considerations
+    * Lower temps equals higher cooling costs
+    * Power requirements for colling are dependent on the amount of heat that must be moved as well as the temperature difference between inside and outside the datacenter
+    * Use redundant HVAC
+    * Ensure backup power
+    * Should filter contaminants and dust
 * Multivendor Pathway Connectivity
     * using more than one Internet Service Provider (ISP)
     * proactive way for CSPs to mitigate risk of losing network connectivity
     * best is dual-entry, dual-provider for HA
 
-Statements on Standards For Attestation Engagments (SSAE)
+**Statements on Standards For Attestation Engagments (SSAE)**
 * SSAE 18 is an audit standard to enhance the quality and usefulness of System and Organization Control (SOC) reports
 * designed for larger organizations, such as CSP, as the cost of a type 2 report can run $30,000 or more
 * [SOC Reports Details](https://sprinto.com/blog/soc-1-soc-2-soc-3/#:~:text=SOC%201%20is%20a%20financial,presented%20to%20a%20general%20audience)
@@ -294,7 +373,7 @@ Statements on Standards For Attestation Engagments (SSAE)
             * assesses how effective those controls are over time by observing operations for six months
     * SOC 3 - same as soc 2 but watered down and is publicly available
 
-Design Resilient
+**Design Resilient**
 * resislent designs are engineered to respond positively to changes or disturbances, such as natural disasters or man-mad disturbances
 * Examples:
     * HA firewalls, active-passive or active-active
@@ -305,7 +384,7 @@ Design Resilient
 
 ## 3.3 Analyze risk associated with cloud infrastructure and platforms
 
-Risk assessment (e.g., identification, analysis)
+**Risk assessment (e.g., identification, analysis)**
 * **Risk Management Process** is fundamental to information security since the entire practice involves **mitigating and managing risk** to data and info systmes
 * Risk Frameworks
     * [ISO/IEC 31000:2018](https://www.iso.org/standard/65694.html) - Risk Management Guidelines
@@ -324,12 +403,14 @@ Risk assessment (e.g., identification, analysis)
             * Single Loss Exectancy (SLE) - $
         * "How significant will the loss be?":
             * Exposure Factor (EF) - %
+            * EX: if the value of a building would be reduced from $1,000,000 to $250,000 by a fire, the exposure factor for the risk of fire to the building is 75%.
         * "How likely is it to happen?":
             * Annualized Rate of Occurrence (ARO) - decimal (%)
+            * ARO = Incidents / Years
             * Ex:
-                * An impact that happens _twice a year_ has an ARO of **2.0**
-                * An impact that happens _once every two years_ has an ARO of **0.5**
-                * An impact that happens _once every five years_ has an ARO of **0.2**
+                * An impact that happens _twice a year_ has an ARO of **2.0** **(2/1 = 2)**
+                * An impact that happens _once every two years_ has an ARO of **0.5** **(1/2 = 0.5)**
+                * An impact that happens _once every five years_ has an ARO of **0.2** **(1/5 = 0.2)**
         * With the SLE and the ARO you can determine the Annualized Loss Expectancy (ALE)
             * Formula ALE = SLE x ARO
         * Scenerio 1:
@@ -378,11 +459,12 @@ Risk assessment (e.g., identification, analysis)
         * capabilities depend on tools, experience, and funding
         * environmental threats (fires, floods)
         * man-made threats (accidental deletion of user data)
+        * vendor-lock in/out
     * Internal
         * malicious insider (dissatisfied employee)
         * human error
 
-Cloud Vulnerabilities, Threats and Attacks
+**Cloud Vulnerabilities, Threats and Attacks**
 * [The CSA Egregious 11](https://cloudsecurityalliance.org/artifacts/top-threats-to-cloud-computing-egregious-eleven/)
     * detailed list of top cloud-specific threats
     1. Data Breaches
@@ -413,20 +495,33 @@ Cloud Vulnerabilities, Threats and Attacks
             * IaaS vs PaaS vs SaaS
     11. Abuse and nefarious use of cloud services
         * low cost and high scale of compute in the cloud is advantage to enterprises, its an opportunity for attackers to execute disruptive attacks at scale
+        * sprawl
         * DDoS, phishing
 
-Risk Mitigation Strategies
+**Risk Mitigation Strategies**
 * select qualified CSP
 * design and architecting with security in mind
 * use of encryption to secure data at rest and in transit (TLS)
 * ongoing monitoring and management to maintain posture
 * Defense in depth
 
+
 ## 3.4 Plan and implementation of security controls
 
-Physical and Environmental protection (e.g.,
-on-premises)
+**Standards**
+* Standards
+    * NIST SP 800-14:
+        * General principles and practices for securing IT systems
+        * https://csrc.nist.gov/publications/detail/sp/800-14/archive/1996-09-03
+    * NIST SP 800-123
+        * General server security
+        * https://csrc.nist.gov/publications/detail/sp/800-123/final
+**Physical and Environmental protection (e.g.,on-premises)**
 * The North American Electric Reliability Corporation Critical Infrastructure Protection (NERC CIP) plan is a set of standards aimed at regulating, enforcing, monitoring and managing the security of the Bulk Electric System (BES) in North America
+* https://www.nerc.com/comm/RSTC/Pages/default.aspx
+* Standards
+    * NIST SP 800-14
+    * NIST
 * Considerations
     * site location is primary
     * requirements
@@ -440,7 +535,7 @@ on-premises)
     * customers should focus on selecting CSP datacenter locations to meet DR and data residency
     * CSPs auto-select region pairs for redundancy
 
-Fire Suppression (Extinguisher)
+**Fire Suppression (Extinguisher)**
 * Class A
     * fires known as common combustible fires and include burning of wood, paper, cloth, or plastic
     * use water or soda acid to suppress
@@ -462,7 +557,7 @@ Fire Suppression (Extinguisher)
 ![Fire Extinguishers](../Certified%20In%20Cybersecurity%20(CC)/images/fire-extinguisher-types.webp)
 
 
-Other Suppression
+**Other Suppression**
 * Wet Pipe
     * water is in the pipe at all the time and ready to be released
     * drawback is pipe could break and release the water and DC could be flooded
@@ -472,7 +567,7 @@ Other Suppression
 * Pre-action system
     * head link on the sprinkler has to be melted in order for the water to be released
 
-Other environmental issues to protect against
+**Other environmental issues to protect against**
 * Protect against flooding → choose a location that flooding rarely occurs or not at all
 * Use moisture sensors to prevent water infiltration
 * Electromagnetic Interference
@@ -481,7 +576,7 @@ Other environmental issues to protect against
     * Enables eavesdropping attacks → attackers can reconstruct keystrokes (side channel attack)
     * Use faraday cages to control EMI → rarely used outside of government builds
 
-System, Storage and Communication Protection
+**System, Storage and Communication Protection**
 * [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)
     * Security and Privacy Controls for Information Systems and Organizations
     * Contains a family of security, privacy, and protection controls specific to systems and communications
@@ -511,12 +606,12 @@ System, Storage and Communication Protection
     * Cryptographic Key Establishment and Management
         * Use TLS / VPN
         * Hashing / digital signatures
-        * HMAC -- simultaneously verifiy both data integrity and message authenticity
+        * Hash-based message authentication code (HMAC) -- simultaneously verifiy both data integrity and message authenticity
             * sometimes expanded as either keyed-hash message authentication code or hash-based message authentication code 
             * a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key.
             * ![HMAC](images/HMACDiagram.webp)
 
-Identification, Authentication and Authorization
+**Identification, Authentication and Authorization**
 * Authentication (AuthN)
     * proces of providing that you are who you say you are
     * proof of identity
@@ -595,7 +690,7 @@ Identification, Authentication and Authorization
         * admin tunes the system to have equal false acceptance and false rejection rates
 * Kerberos
     * Core protocols of MS Active Directory
-    * ticket-based authentication system that allows users to authenticate to a centralized service and the use tickets from that authentication process to gain access to distributed systems that support kerberos authentication.
+    * ticket-based authentication system that allows users to authenticate to a centralized service and then use tickets from that authentication process to gain access to distributed systems that support kerberos authentication.
     * uses port 88
     * ![Kerberos](images/kerberos_figure_5_10.gif)
     * ![Kerberos 1](images/kerberos-at-work.png)
@@ -620,14 +715,18 @@ Identification, Authentication and Authorization
         * true SSO experience for end users
         * No credential access for service providers 
     * ![SAML Auth](images/SAML-Auth.png)
+* Wed Services Federation Protocol (WS-Federation or WS-Fed)
+    * part of larger WS-Security framework and an extension of WS-trust.
+    * can be used directly by SOAP applications and web services.
+    * WS-Fed is a protocol that can be used to negotiate the issuance of a token
+    * can be use by applications (such as a Windows Identity Foundation-based app) and for indentity providers (such as Active Directory Federation Services or Azure AppFabric Access Control Service)
 * OAuth and OpenID Connect
     * Used by 3rd party IdPs (LinkedIn, Facebool, Google, etc)
     * OAuth is an _authorization_ protocol
     * OpenID Connect is an _authentication_ protocol
     * ![OAuth-OpenID](images/oidic.jpg)
 
-Audit mechanisms (e.g., log collection,
-correlation, packet capture)
+**Audit mechanisms (e.g., log collection, correlation, packet capture)**
 * Log Collection
     * cloud services will offer different controls over what information is logged
     * min level of security-related events such as use of or changes to privilege accounts
@@ -661,11 +760,15 @@ correlation, packet capture)
             * Tcpdump → https://www.tcpdump.org/
             * Wireshark and tcpdump are built using libpcap library → https://github.com/the-tcpdump-group/libpcap
         * Tcpreplay → allows editing and replaying traffic
+* Compliance Audits
+    * needs to be controlled by a representative (regulator) from the industry or organizartion that sets the compliance requirements
+* Audits in the cloud
+    * don't generally involve physcial access, so the reports may be less complete than an on-premise audit and my be considered less trustworthy becuause of this fact.
 
 
 ## 3.5 Plan business continuity (BC) and disaster recovery (DR)
 
-Business Continuity Plan (BCP)
+**Business Continuity Plan (BCP)**
 * Business-focused
 * org plan for "how-to" continue business after an event has occurred
 * proactive risk mitigtion strategy that contains likely scenerios that could affect the organization and guidance on how the organization should respond
@@ -682,16 +785,16 @@ Business Continuity Plan (BCP)
     * Max Tolerable Downtime (MTD)
         * amount of time we can be without the asset that is unavailable **BEFORE** we must declare a disaster and initiate the DR plan
 
-Disaster Recovery Plan (DRP)
+**Disaster Recovery Plan (DRP)**
 * focuses more on the technical aspects of recovery
 * plan for recovering from an IT disaster and having the IT infrastructure back in operation
 
-BCP/DRP From a CSP Perspective
+**BCP/DRP From a CSP Perspective**
 * cloud data center that is affected by a natural disaster will likely activate multiple BCPs and DRPs
 * CSP will activate both plans to deal with the interruption to their service
 * one key element of the BCP is communication incident status to relevant parties
 
-BCP/DRP From a Customer Perspective
+**BCP/DRP From a Customer Perspective**
 * customer responsibility for determinig how to recover in the case of a disaster in the cloud
 * customer may choose to implement backups, or utilize multiple availability zones, load balancers, or other techniques
 * CSPs can further protect customers by not allowing two availability zones within a single phyiscal datacenter within a cloud region
@@ -700,7 +803,7 @@ BCP/DRP From a Customer Perspective
         * comprised of one or more datacenters
         * tolerant to datacenter failures via redundancy and isolation
 
-Communication Plan
+**Communication Plan**
 * plan details how relevant stakeholders will be informated in event of an incident (i.e. security breach)
 * inlcude maintaining confidentiality such as encryption to ensure that the event does not become public knowledge
 * contact list should be maintained that includes stakeholders 
@@ -715,25 +818,40 @@ from the government, police, customers, suppliers and internal staff
         * Customers
         * Law enforcement (not mandatory unless a criminal law is broken)
 
-Business requirements (e.g., Recovery Time Objective (RTO), Recovery Point Objective (RPO),
-recovery service level)
+**Business requirements**
 * Recovery Point Objective (RPO)
     * age of data that be recovered from a backup storage for normal operations to resume if a system or network goes down
+    * acceptable amount of downtime for a business-critical application before they need to be functional again after an event
+        * **Prioritize** applications and services
+        * **If less downtime** is needed:
+            * Deploy DR solutions that allow for faster recovery
+            * More personnel to complete tasks
 * Recovery Time Objective (RTO)
     * duration of time and a service level within which a business process must be restored after a disaster in order to avoid unacceptable consequences associated with a break in continuity
+    * acceptable amount of data the organization is willing to lose if restoration is required after an event
+        * Dependent on data **replication schedule**
+        * Ex. Replication every 4 hours, may lose up to 4 hours' worth of data
+        * How to reduce data loss:
+            * Replicate more frequently
+            * Increased bandwidth
+            * Licensing costs
 * Recovery Service Level (RSL)
     * measures that compute resources needed to keep production environments running during a disaster
     * percentage measure (0-100%) of how much computing power that will be needed during a disaster
+        * All services will be restored during a disaster = 100% RSL
+        * Only most critical services will be restored during a disaster = 30% RSL
     * based upon a percentage of computing used by producution environment versus others, such as dev, test, and QA
     * Example: a 10-web server environment that uses 8 for dev, test, and QA, only 2 would need to be migrated for production
+* Business Impact Analysis (BIA)
+    * determines the RPO/RTO
 
-BCDR Planning Factors
+**BCDR Planning Factors**
 * Important Assets: Data and Processing
 * Current location of the assets
 * The network between the assets and the sides of their processing
 * Actual and potential location of the workforce and business partners concercing disaster event
 
-BCDR Types
+**BCDR Types**
 * On-Prem, Cloud as BCDR
     * CSP serves as endpoint for failover services
 * Cloud Consumer, Primary Cloud Service Provider BCDR
@@ -742,7 +860,7 @@ BCDR Types
     * Failure happends, restoration is done in another CSP
     * Azure is primary, DR is in Aws or GCP
 
-BCDR Plan Creation, Implementation and Testing
+**BCDR Plan Creation, Implementation and Testing**
 * Creation of the Plan
     * Business Impact Analysis (BIA) provides input into the plan
     * Steps
@@ -751,10 +869,26 @@ BCDR Plan Creation, Implementation and Testing
             * BIA, RPO, RTO
         * Analysis of the Plan
             * translate BCDR requirements into input to be used in the design phase
+            * identify mitigating controls to be implemented
+            * consider decoupling systems to make BCDR more successful
+            * ensure CSPs and vendors can meet requirements
+            * identify resource requirements (storage, bandwidth, etc.)
         * Risk Assesment
             * assessed for residual risk
         * Plan Design
             * objective into establishing and evaluate candidate architecture solution
+            * Include procedures and workflows
+            * Define owner(s)
+                * Technical
+                * Declaring BCDR event
+                * Communications to cutomers
+                * Internal communications
+                * Decision makers
+            * Describe HOW BCDR plan will be tested
+                * Enterprise-wide testing plans should address every business-related service
+                * Should be fully tested annually with semi-annual training (walkthroughs) or when significant changes occur with business operations
+                * Each line within the business should be fully tested to ensure it will survive
+                * Testing of any exteranl dependencies
 * Implementation of the Plan
     * identify key personnnel is a crucial implementation steps
     * use the design in the plan to implement protections to critical business functions
@@ -765,10 +899,11 @@ BCDR Plan Creation, Implementation and Testing
 * Testing the Plan
     * ensures both the BCP/DRP function as expected and that people know their roles and responsibilities
     * testing both BCP and DRP is essential
+    * RPO/RTO must be measured to ensure attainability
 * Report and Revise
     * BCR/DRP should be revised as necessary based on test results and business changes
 
-BCP/DRP Test Scenarios
+**BCP/DRP Test Scenarios**
 * BCDP and DRP should be tested **at least annually**
 * Common disaster scenarios include the follwoing:
     * Data breach
@@ -791,11 +926,20 @@ BCP/DRP Test Scenarios
         * some of the responses measures are tested (on-non critical functions)
         * More involved than tabletop.
         * Participants choose a scenario and apply BCP to it
+        * Roll play
     * Functional Drill / Parralel Test
         * People move to an offiste locatoin to see if BCP is properly invoked
         * operations are NOT switched
+        * Parrallel processing of data to ensure backup site functionality
     * Full Test
+        * most comprehensive test
         * involves actually shutting down operations at the primary site and shifting them to the recovery site
         * when the entire organization takes part in an unscheduled, unannounced practice scenario, of full BC/DR activities
+        * be sure a FULL backup occurs prior to test
+        * Full BCDR implementation
+* The goal of BCDR testing is to ensure the BCP process is:
+    * Accurate
+    * Relevant
+    * Viable under adverse conditions
 
 

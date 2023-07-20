@@ -2,7 +2,21 @@
 
 ## 4.1 Advocate training and awareness of application security
 
-Cloud Development Basics
+**Cloud Development Basics**
+* Cloud development typically involves:
+    * Integrated development environments (IDEs)
+    * Application lifecycle management
+    * Application security testing
+* Most Common API Formats
+    * Representational State Transfer (REST)
+        * consists of guidelines and best practices for creating scalable web services
+    * Simple Object Access Protocol (SOAP)
+        * Protocol for exchanging structured information as part of a web service
+* REST vs SOAP
+    * REST supports many formats including JSON, XML, and YAML | SOAP onlt supports XML
+    * REST uses HTTP/HTTPS for data transfer | SOAP uses HTTP/HTTPS/FTP/SMTP to transfer data
+    * REST has good performance and is scalable | SOAP is slower, and scaling is complex
+    * REST is widely used | SOAP is used when REST is NOT possible
 * Security By Design
     * declares security should be present throughout every step of the process
     * various models exist to help, like [Building Security In Maturity Model (BSIMM)](https://owasp.org/www-pdf-archive/Bsimm09.pdf)
@@ -100,8 +114,7 @@ Common Pitfalls
         * Azure API management
         * GCP APi gateway/Apigee
 
-Common Cloud Vulnerabilities (e.g., Open Web Application
-Security Project (OWASP) Top-10, SANS Top-25)
+**Common Cloud Vulnerabilities (e.g., Open Web Application Security Project (OWASP) Top-10, SANS Top-25)**
 * Vulnerabilities
     * Data Breaches
     * Data Integrity
@@ -117,19 +130,81 @@ Security Project (OWASP) Top-10, SANS Top-25)
 
 ## 4.2 Describe the Secure Software Development Life Cycle (SDLC) process
 
-Business Requirements
+**Business Requirements**
+* part of the first phase of the SDLC 
 * captures what the organization needs its information systems to do
+* refrain form identifying technologies at this point and concentrate on the needs of the business
 
-Function Requirements
+**Function Requirements**
 * detail what the solution must do, such as supporting up as max concurrent user requirements .. which in turn supports business requirements, like all works being able to access a system to perform their assigned duties
 * must also consider security, privacy, and compliance
 
-Secure Software Development Lifecycle (SSDLC)
+**Standards**
+* [ISO/IEC 12207](https://www.iso.org/standard/63712.html)
+    * provides processes that can be employed for defining, controlling, and improving software life cycle processes within an organization or a project.
+    * The processes, activities, and tasks of this document can also be applied during the acquisition of a system that contains software, either alone or in conjunction with [ISO/IEC/IEEE 15288:2023](https://www.iso.org/standard/81702.html), Systems and software engineering - System life cycle processes.
+* [ISO 27034](https://www.iso27001security.com/html/27034.html)
+    * This multi-part standard provides guidance on specifying, designing/selecting and implementing information security controls through a set of processes integrated throughout an organisation’s Systems Development Life Cycle/s. It is process-oriented.
+    * It covers software applications developed internally, by external acquisition, outsourcing/offshoring or through hybrid approaches.
+    * It addresses all aspects from determining information security requirements, to protecting information accessed by an application as well as preventing unauthorized use and/or actions of an application.
+    * The standard is SDLC-method-agnostic: it does not mandate one or more specific development methods, approaches or stages but is written in a general manner to be applicable to them all. In this way, it complements other systems development standards and methods without conflicting with them.
+    * One of the key driving principles is that it is worth investing more heavily in specifying, designing, developing and testing software security controls or functions if they are reusable across multiple applications, systems and situations, albeit at the risk of propagating vulnerabilities more widely than might otherwise be the case. In a nutshell, “Do it properly, do it once, and reuse it”. The approach may seem a little idealistic, but some far-sighted organisations are already successfully using it: it is more than just an academic interest.
+    * Parts
+        1. ISO/IEC 27034-1:2011 - Overview and concepts
+            * Overview of application security concepts and definitions
+        2. ISO/IEC 27034-2:2015 - Organization Normative Framework
+            * Provides a detail description of the Organization Normative Framework (ONF) and provides guidance to organizations for its implmentation
+        3. ISO/IEC 27034-3:2018 - Application Security Management Process
+            * provides guidance on and details the overall process for managing security on each specific applicaiton used by an organization
+        4. ISO/IEC 27034-4 - Application Security Validation
+            * Cancelld and removed from the ISO's catalogue
+        5. ISO/IEC 27034-5-1:2017 - Protocols and application security controls data structure
+            * facilitates the implementation of ISO/IEC 27034 application security framework and the communication and exchange of Application Security Controls (ASC) by defining a formal structure, XML data structure, and certain other components of the framework
+        6. ISO/IEC 27034-6:2016 - Case studies
+            * provides examples of how ASCs might be developed and documented
+            * it concerns the handling of information security in the course of software development
+        7. ISO/IEC 27034-7:2018 - Assurance prediction framework
+            * describes the min requirements when the required activities specified by an ASC are replaced with a Prediction Applicaiton Security Rationale (PASR)
+            * the ASC mapped to a PASR define the Expected Level of Trust for a subsequent application
+    * Organizational Normative Framework (ONF)
+        * framework of so-called containers of application security best practices catalogued and leveraged by the organization and contains at least one or more sub-components known as application normative frameworks (ANFs).
+        * consits of:
+            * Business context:
+                * Application security policies, standards, and best practices used by the organization
+            * Regulatory context:
+                * Standards, laws, and regulations the organization must abide by
+            * Technical context:
+                * Required and available technologies that can be used
+            * Specifications:
+                * Functional IT requirements and solutions to meet those requirements
+            * Roles,responsibilities, and qualifications:
+                * Individuals and their roles
+            * Processes:
+                * Processes related to application security
+            * Application Security Control (ASC) library:
+                * Contains a list of controls used to protect the application and its data
+    * Application Normative Framework
+        * used in conjunction with the ONF
+        * Created specifically for a single application
+        * ONF to ANF is a one-to-manny relationship
+
+**Application Security Management Process**
+* Process of managing and maintaining each ANF
+* Consists of five steps:
+    1. **Specify** the application requirements and environment
+    2. **Assess** application security risks
+    3. **Create** and maintain the ANF
+    4. **Provision** and operate the application
+    5. **Audit** the security of the application
+
+**Secure Software Development Lifecycle (SSDLC)**
 * Phases
     * Planning
         * analysis
         * determines need, feasibility, costs
         * considers potential development work
+        * business, security, and standard requirements defined
+        * all stakeholders are involved
     * Requirement Definition
         * user/business/functional requirements are captured
         * involves input from users, customers, and stakeholders to determine desired functionality, current system or app functionality and desired improvements
@@ -140,16 +215,25 @@ Secure Software Development Lifecycle (SSDLC)
         * data flows
         * business processes
         * security requirements fit in
-    * Coding
+        * threat modeling occurs for the design
+    * Coding/Development
         * implementation
         * hands on work
         * follow security best practices
+        * code reviews and static analysis testing
     * Testing
+        * user acceptance testing
+        * testing of integrations
         * testing to ensure software is functional, scalable, and secure
     * Deployment
     * Maintenance
         * Ongoing maintenance updates, patching, and checks to ensure software remains functional and secure
-SDLC Methodologies
+        * bug fixing
+    * Disposal
+        * Once the application is no longer required
+        * securely erase application data (crypto-shredding)
+
+**SDLC Methodologies**
 * Agile
     * places an emphasis on the needs of the customer and quickly developing new functionality that meets those needs in an iterative fashion
     * rapid iteration, quick response to changing requirements
@@ -171,7 +255,7 @@ SDLC Methodologies
     * viewed as an iterative process that has four phases
     * ![Spiral Model](images/spiral-1-1024x945.jpg)
 
-Service-Oriented Architecture (SOA)
+**Service-Oriented Architecture (SOA)**
 * design philosophy that embraces the use of discrete services that may be accessed by customers in a block-box fashion
 * 4 Key Charactersitics
     * Logical representations of a repeatable business activity with a specified outcome
@@ -180,13 +264,13 @@ Service-Oriented Architecture (SOA)
         * black-box nature
 * facilitates the integration of services from different vendors
 
-Microservices
+**Microservices**
 * modern take on SOA
 * fine-grain services that provide small and discrete functions to other services
 * commonly adopted in function-as-a-service (FaaS) that allow the independent execution of code on a cloud platform
 * designed to communicate with and event trigger each other in response to events that place in the business
     
-Security Training/Awareness
+**Security Training/Awareness**
 * Training
     * provides users with the knowledge they need to protect the organizations's security
     * Methods
@@ -200,7 +284,7 @@ Security Training/Awareness
 
 ## 4.3 Apply the Secure Software Development Life Cycle (SDLC)
 
-Cloud-Specific Risks
+**Cloud-Specific Risks**
 * [The CSA Egregious 11](https://cloudsecurityalliance.org/artifacts/top-threats-to-cloud-computing-egregious-eleven/)
     * detailed list of top cloud-specific threats
     1. Data Breaches
@@ -239,8 +323,21 @@ Cloud-Specific Risks
     11. Abuse and nefarious use of cloud services
         * low cost and high scale of compute in the cloud is advantage to enterprises, its an opportunity for attackers to execute disruptive attacks at scale
         * DDoS, phishing
+* The "Notorious 9" Cloud Computing Threats:
+    * List operated by CSA
+    * https://cloudsecurityalliance.org/press-releases/2013/02/25/ca-warns-providers-of-the-notorious-nine-cloud-computing-top-threats-in-2013/
+    * List
+        1. Data breaches
+        2. Data loss
+        3. Account hijacking
+        4. Insecure APIs
+        5. Denial of Service (DoS)
+        6. Malicious insiders
+        7. Abuse of cloud services
+        8. Insufficient due diligence (on behalf of the customer)
+        9. Shared technology use (multitenancy)
 
-Identifying Threats
+**Identifying Threats**
 * Three approaches
     * **Focused on Assets**
         * Uses **asset valuation** results to identify threats to the valuable assets
@@ -251,28 +348,29 @@ Identifying Threats
     * **Focused on Software / Service Focus** 
         * Considers **potential threats** against the software / services the org develops
 
-Threat Modeling
+**Threat Modeling**
+* Practice of identifying, communicating, and understanding threats and how to mitigate them in order to protect valuable assets
 * Allows security practitioners to identify potential threats and security vulnerabilities
 * often an input to risk management
 * can be proactive or reactive, but in either case, the goal is to eliminate or reduce threats
 * Model Techniques
     * [STRIDE](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats)
-        * devloped by Mircrost
-        * Categories
-            * **S**poofing
+        * devloped by Mircrsoft
+        * Describes the flowing six threats:
+            1. **S**poofing
                 * Involves illegally accessing and then using another user's authentication information (credentials)
                 * Social engineering
                 * Spoof IP/MAC address
-            * **T**ampering
+            2. **T**ampering
                 * Malicious modification of data
                 * unauthorized changes
-            * **R**epudiation
+            3. **R**epudiation
                 * users deny performing an action without anyone able to provide proof
-            * **I**nformation disclosure
+            4. **I**nformation disclosure
                 * exposure of information to individuals or groups who should not have access to it
-            * **D**enial of Service
+            5. **D**enial of Service
                 * attacks that deny users from access services
-            * **E**levation of privilege
+            6. **E**levation of privilege
                 * unprivileged users gains privileged access
     * [DREAD](https://en.wikipedia.org/wiki/DREAD_(risk_assessment_model))
         * risk-assessment for assessing security threats (precussor to STRIDE)
@@ -325,9 +423,7 @@ Threat Modeling
             * ![Diag Reduction Analysis](images/reduction-analysis-diagram-ex.png)
 
 
-
-Avoid Common Vulnerabilities During
-Development
+**Avoid Common Vulnerabilities During Development**
 * training and awareness
     * understanding of common flaws like injection attaks, prevent coding mistakes
 * documented process
@@ -399,8 +495,8 @@ Development
 
         ```
 
-Secure Coding 
-* Forum for Excellence in Code (SAFECode))
+**Secure Coding** 
+* Forum for Excellence in Code (SAFECode)
 * practice of designing systems and software to avoid security risks
 * essentially a proactive risk mitigation practice
 * Standards and organizations exist that work to mature these practices 
@@ -527,7 +623,7 @@ Secure Coding
     24. Improper restriction of XML enternal entity reference
     25. Improper Control of Generation of Code (Code Injection)
 
-DevOps and DevSecOps
+**DevOps and DevSecOps**
 * Code Repositories
     * where source code and related artificates are stored
     * do not commit sensitive information
@@ -557,8 +653,7 @@ DevOps and DevSecOps
         * This process is burdensome
 
 
-Software configuration management and
-versioning
+**Software Configuration Management and Versioning**
 * Configuration Management
     * ensures that systems are configured similarly, confis are known and documented
     * **Baselineing** ensures that systems are deployed with a common baseline or starting, and imaging is a common baselining method
@@ -574,6 +669,15 @@ versioning
         * snapshot of a system or applicaiton at a given point in time
     * should also create artificats that be used to help understand system configuration
     * system and component-level versioning
+    * Tools
+        * [Chef](https://www.chef.io/):
+            * Used to automate building, deploying, and managing infrastructure components
+            * Configs and policies are known as recipes
+            * Chef client is installed on each server, each server polls the Chef server for the latest policy and updates its configs automatically based on the latest Chef policies
+        * [Ansible](https://www.ansible.com/):
+            * Open-source platform that handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex changes like zero-downtime rolling updates with load balancers easy.
+        * [Puppet](https://www.puppet.com/):
+            * allows you to define the state of your infrastructure and then enforces the correct state     
 * Software bill of materials (SBOM)
     * lists all of the components in an applciaiton or service, including open source or proprietary code libs
 
@@ -629,46 +733,52 @@ Database Security
 
 ## 4.4 Apply cloud software assurance validation
 
-Verification and Validation
+**Verification and Validation**
 * Software Model Validation
     * are we building the right software?
 * Software Verification
     * Are we building the software right?
 
 
-Functional and non-functional testing
-* Functional Testing
-    * determines if the software meets functionality requirements defined earlier in the SSDLC
-    * takes multiple forms including
-        * **integration** test that validates whether components work together
-        * **regression** testing that validates whether bugs were reintroduced between versions
-        * **user acceptance** testing which test how users interact with and operate the software
-    * security requirements
-        * define a system or its components and specifies what it must do.
-        * captured in use cases, defined at a component level
-        * EX: application forms must protect against injection attacks
-* Non-functional Testing
-    * focuses on the quality of the software
-    * looks at the software qualities like stability and performance
-    * methods include load, stress, recovery, and volume tests
-    * security requirements
-        * ex security certifications are non-functional
+**Functional Testing**
+* used to verify that business requirements have been met and the application operates as expected without errors
+* takes multiple forms including
+    * **integration** test that validates whether components work together
+    * **regression** testing that validates whether bugs were reintroduced between versions
+    * **user acceptance** testing which test how users interact with and operate the software
+* security requirements
+    * define a system or its components and specifies what it must do.
+    * captured in use cases, defined at a component level
+        * ex: application forms must protect against injection attacks
 
-Security testing methodologies (e.g., blackbox, whitebox, static, dynamic, Software Composition Analysis
-(SCA), interactive application security testing (IAST))
+**Non-functional Testing**
+* focuses on the quality of the software
+* looks at the software qualities like stability and performance
+* methods include load, stress, recovery, and volume tests
+* security requirements
+    * ex security certifications are non-functional
+
+**Security testing methodologies**
 * Static Application Security Testing (SAST)
     * analysis of computer software performed without actually executing programs
     * tester has access to the underlying framework, design, and implementation
     * requires source code
     * tests "inside out"
     * uses automated techniques to analyze code for errors and security flaws without acutally executing the code
+    * considered white-box testing
+    * scans code for XSS, SQL Injection, buffer overflows, etc
+    * runs early in the dev cycle
 * Dynamic Application Security Testing (DAST)
     * a program which communicates with a web application (executes the application)
     * tester has no knowledge of the technologies or frameworks that the application is built on
     * no source code required
     * tests "outside" in
     * executes code to verify that its functioning correctly and doesn't have security flaws
+    * most effective with HTTP and HTML web app interfaces
     * Synthetic transactions are scripted sets of inputs provided to the code
+    * considered black-box testing
+* Runtime Application Self-Protection (RASP)
+    * prevents attacks by self-protecting or auto-reconfiguring in response to specific conditions
 * White box testing
     * conducted with full access to and knowledge of systems, code, and environment
     * static application testing is on example
@@ -679,7 +789,7 @@ Security testing methodologies (e.g., blackbox, whitebox, static, dynamic, Softw
     * "zero knowledge testing"
     * no source code required
 * Interactive Applicatoin Security Testing (IAST)
-    * analyses code for vulnerabilities while it's being used / running
+    * analyzes code for vulnerabilities while it's being used / running
     * focused on real time reporting to optimize testing and analaysis process
     * often built into CI/CD automated release testing
     * uses DAST techniques
@@ -690,8 +800,19 @@ Security testing methodologies (e.g., blackbox, whitebox, static, dynamic, Softw
     * because open-source components often involve resuable code libraries
     * Automated, combines app security and patch management
     * identifies flaws/vulnerabilities in these included components, ensures latest versions are in use, etc.
+* Secure Code Review
+    * Manually reviewing code and looking for vulnerabilities.
+    * Known as "Static Testing"
+* Vulnerability Assessment
+    * scanning an application with a vulnerability scanner or assessement too such as BURP or OWASP ZAP
+        * look for well-known vulnerabilities
+        * uses signatures to identify vulnerabilities
+            * no signature = no identification of vulnerability
+* Testing in the Cloud
+    * When performing security testing in a cloud environment, you must receive permission from the CSP in writing prior to performing the testing
+    * Some CSPs provide this on their website, while others require a formal written process
 
-Quality assurance (QA)
+**Quality assurance (QA)**
 * responsible for ensuring that the code delivered to the customer through the cloud environment is quality code, defect-free, and secure
 * Process:
     * is frequently a combination of automated and manual validation testing techniques
@@ -702,8 +823,16 @@ Quality assurance (QA)
     * significantly expanded in DevOps/DevSecOps teamm where QA is emebedded through the developement process
 * Tests
     * qa should be involved in manay testing activities, such as load, perf, and strss testing, as well as vulnerability managment
+* Measure the following variables to ensure that quality standards are being met:
+    1. Availability
+    2. Mean Time Between Failures (MTBF)
+    3. Outage duration
+    4. Performance
+    5. Reliability
+    6. Capacity
+    7. Response time
 
-Abuse Case Testing
+**Abuse Case Testing**
 * Focuses on using features in ways that weren't intened by the developer
 * may exploit weaknesses or coding flaws from perspective of multiple personas:
     * malicious user
@@ -717,7 +846,7 @@ Abuse Case Testing
     * Injection Attacks
     * Unavailable funds
 
-Fuzz testing
+**Fuzz Testing**
 * automated software testing method that injects invalid, malformed, or unexpected inputs into a system to reveal software defects and vulnerabilities
 * input sources
     * developer-supplied input
@@ -730,22 +859,22 @@ Fuzz testing
     * Zap Proxy --> https://www.zaproxy.org/
 * Only fuzz test with permission!
 
-Stress Testing
+**Stress Testing**
 * Use automated scripts to verify system capacity
 * May be run internally or through a vendor
 * verifies the system can handle the maximum expected load
 * Determines the maximum capacity of the system
 
-User Acceptance Testing (UAT)
+**User Acceptance Testing (UAT)**
 * Ensure software will work for users
 * Users simulate real world situtations
 * commononly refered to as "beta testing"
 
-Regression Testing
+**Regression Testing**
 * Checks for unexpected side effects of changes
 
-Code Repositories
-* Stoe software code files
+**Code Repositories**
+* Stores software code files
 * Coordinate changes among multiple developers
 * Perform version control
 * Promote code reuse
@@ -755,27 +884,31 @@ Code Repositories
     * Verifies release code is unchange by using hashes
 * Example: git
 
-* Application Control
-    * Restricts software that may run on a system to only those that meet the organizations security policies
-    * Two Approaches
-        * Whitelist
-            * Admins create a list of all applications that may run on a system
-        * Blacklist
-            * Admins create a list of the applications that are prohibited on a system
-            * More flexibile
-            * Harder to control
-    * Example [Windows AppLocker](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker)
-    * Can be integrated with SIEMs to send application control logs
-    * Use Host Software Baselining
+**Application Control**
+* Restricts software that may run on a system to only those that meet the organizations security policies
+* Two Approaches
+    * Whitelist
+        * Admins create a list of all applications that may run on a system
+    * Blacklist
+        * Admins create a list of the applications that are prohibited on a system
+        * More flexibile
+        * Harder to control
+* Example [Windows AppLocker](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker)
+* Can be integrated with SIEMs to send application control logs
+* Use Host Software Baselining
 
 
 
 ## 4.5 Use verified secure software
 
-Securing Application Programming Interfaces (API)
-* APIs
+**Securing Application Programming Interfaces (API)**
+* Application Programming Interfaces (APIs)
     * is a set of exposed interfaces that allow programmatic interaction between services
     * no user/human involved
+    * benefits:
+        * Programmatic control and access
+        * Automation
+        * Integration with third party tools
 * Software Development Kits (SDKs)
     * Provide programming resources to underlying expose APIs
 * Types
@@ -840,9 +973,10 @@ Validated open-source software
 
 ## 4.6 Comprehend the specifics of cloud application architecture
 
-Supplemental Security Components
+**Supplemental Security Components**
 * Web Application Firewall (WAF)
     * portects applications by filtering and monitoring HTTP traffic between a web application and the internet
+    * Layer 7 firewall that can understand HTTP traffic calls (GET, POST, etc.)
     * typically protects web applicartions from common attacks like XSS, CSRF, and SQL Injection, includes OWASP core rules sets (CRs)
     * Examples: Google Cloud Armour, Azure WAF, AWS WAF, GCP Firewall, AWS Security Groups, Azure Security Groups
     * Types
@@ -853,20 +987,23 @@ Supplemental Security Components
         * Cloud-Based WAF
             * 3rd-party service that remotely filters malicious traffic
             * also protects against DDoS
-* Extensible Markup Language (XML) Firewall
+* Extensible Markup Language (XML) Firewall/Gateway
     * used to protect services that rely on XML based interfaces including some web apps
     * provides request validation and filtering, rate limiting, and traffic management
-    * usually implemented as a proxy
+    * usually implemented as a go-between or proxy for accessing an API
+    * can implement other controls suchs as DLP, antivirus and anti-malware services
 * Database Activity Monitoring (DAM)
     * combines network data and database audit info in real time to analyze database activity or unwanted, anomalous, or unexpected behavior
+    * layer 7 device that understands SQL commands
     * monitors applicaiton activity, privileged access, and detects attacks through behavioral analysis
+    * can detect and stop malicious commands from executing on a SQL server
     * most CSPs offer some form of DAM tooling
 * API Gateway
     * monitors traffic to your application services, exposed as API endpoints
     * provides authentication and key validation services that control API access
     * Example: AWS API Gateway, Azure API Management, Apigee, GCP API Endpoints
 
-Firewall Considerations In a Cloud Environment
+**Firewall Considerations In a Cloud Environment**
 * filter incoming traffic to protect our cloud hosted workloads
 * Cost
     * cost is one the reasons for WAF popularity
@@ -878,7 +1015,7 @@ Firewall Considerations In a Cloud Environment
     * network firewall works on Layer 3, stateful packet inspection at Layers 3/4
     * many cloud firewalls, like WAF, work at Layer 7 of the OSI model
 
-Cryptography
+**Cryptography**
 * touches three areas
     * Data at rest
     * Data in Motion
@@ -891,16 +1028,21 @@ Cryptography
     * Transparent data encryption (TDE)
         * protects SQL database and data warehouses against threat of malicious activity with real-time encryption and decryption of databases, backups, and transaction log files at rest withou requiring app changes
 * Protecting Data In Motion
-    * Use TLS for HTTPS 
+    * Use Transport Layer Security (TLS) for HTTPS
+        * uses x.509 certificates to authenticate initial connection
+        * transfers symmetric encryption key to be used
+    * Secure Socket Layer (SSL)
+        * standard tech for creating an encrypted connection between a browser and a web server
+        * all data passed through the connection is kept private and maintains integrity
     * IPSec Site-to-Site VPN tunnels or Interconnect connections for Hybrid connectivity
 
-Sandboxing
+**Sandboxing**
 * Isolates systems and/or development code in a secure environment where testing can be performed without impacting other systems
 * often use in ephemeral environments
 * enables patch and test and ensures a system is secure before putting it into a production environment
 * facilitates investigating dangerous software
 
-Application virtualization and orchestration (e.g., microservices, containers)
+**Application virtualization and orchestration**
 * Containerization
     * lightwieght, granular, and portable way to package applications of multiple platforms
     * reduces overhead of server virtualization by enabling containerized apps to run on a shared OS kernel
@@ -936,7 +1078,7 @@ Application virtualization and orchestration (e.g., microservices, containers)
 
 ## 4.7 Design appropriate identity and access management (IAM) solutions
 
-Federated Identity
+**Federated Identity**
 * **Federation** is a collection of domains that have **established trust**
 * typically includes authentication and authorization
 * Ex: 
@@ -944,23 +1086,45 @@ Federated Identity
     * this sign-in method ensures that all user authentication occurs on-premise
     * allows administrators to implement more rigorous levels of access control
         * Certificate authentication, key fob, card token, etc
+
+**Identity Federation Standards**
+* Security Assertion Markup Language (SAML)
+    * the most common federation standard, xml based
+* WS-Federation
+    * Defines mechanisms that allow different security realms to federate between each other
+* OpenID Connect
+    * Lets developers authenticate their users across websites and apps without having to own and manage passwords
+    * doesn't use SOAP, SAML, or XML
+* OAuth
+    * widely used for authorization services in web and mobile applications
+* Shibboleth
+    * Heavily used in education websites and apps
     
-Identity Providers (IdP)
-* creates, maintains, and manages identity informatino while providing authentication services to applications
-* Ex: Auzre AD is the IdP for Office 365
+**Identity Providers (IdP)**
+* creates, maintains, and manages identity information while providing authentication services to applications
+* performs authentication services and pass reqired information to relying parties as needed, supplying the required authorization to access resources
+* Ex: Auzre AD is the IdP for Office 365 which is the relying party
 * Other IDaaS options include OKTA and DUO
 * Social IdPs that support OAuth, like Google, Facebook, and Apple are common in Federation scenerios
 
-Authentication (AuthN)/Authorization (AuthZ)
+
+**Authentication (AuthN)/Authorization (AuthZ)**
 * Single sign-on (SSO)
     * means a user doesn't have to sign into every application
     * user logs in once and that credential is used for multiple apps
     * often called "modern authentication"
+    * user logs into an "authentication server"
+    * each resource the user attempts to access checks with the auth server to verify that the user has already successfully logged in
 
-Multi-factor authentication (MFA)
+**Multi-factor authentication (MFA)**
 * Something you **know** (pin/passord)
 * Something you **have** (trusted device)
 * Something you **are** (biometric)
+* One-time passwords fall under MFA and are highly encouraged for use with the first-time logins (you must change your password)
+* **Step-up authentication** is used during **high-risk transactions** or when violations have occurred in a transaction
+    * Challenge questions
+    * Out-of-band authentication (SMS, text, phone calls, etc)
+    * Dynamic knowledge-based authentication (question unique to the individual, previous address, etc.)
 * Preventative security control for attacks such as:
     * Phishing
     * Spear phishing
@@ -969,13 +1133,19 @@ Multi-factor authentication (MFA)
     * Brute force and reverse brute force attacks
     * Man-in-the-middle (MITM) attacks
 
-
-Cloud Access Security Broker (CASB)
+**Cloud Access Security Broker (CASB)**
+* a trusted 3rd party IdP that manages authenticartion between cloud service users and cloud applications
 * enforces the company's data security policies between on-prem and the cloud
 * Can detect (and optionally, prevent) data access with unauthorized apps and data storage in unauthorized locations
 * Combines the ability to control use of services with data loss prevention and threat management features
+* When multiple parties operate in federated identity management (a federation), they must decide to trust each other.
+* This can be done in two ways:
+    * Web of Trust: 
+        * each organization has to review and approve each other's memebers for inclusion in the federation
+        * can be time-consuming and tedious
+    * Outsource to a 3rd party identifier such as a CASB
 
-Secrets Management
+**Secrets Management**
 * CPs offer a managed cloud service for centralized secure storage and access for application secrets
 * A secret is anything that you want to control access to, such as:
     * API keys

@@ -13,14 +13,32 @@
 **Cloud computing roles and responsibilities**
 * Cloud Service Customer (CSC)
     * Consumer of cloud computing resources/services from one or more CSPs
+    * Sub-Roles:
+        * Cloud service user
+        * Cloud service administrator
+        * Cloud service business manager
+        * Cloud service integrator
 * Cloud Service Provider (CSP)
     * Offers cloud computing services for sale to third parties
     * Responsible for building and maintaining the infrastructuring service offerings
     * Can also be a cloud customer if they off-load maintenance to other cloud service providers
         * i.e. AWS, GCP, Azure, Oracle, etc
-* Cloud Service Partner
+    * Sub-Roles
+        * Cloud Service Operation Manager
+        * Cloud Service Deployment Manager
+        * Cloud Service Manager
+        * Cloud Service Business Manager
+        * Customer support and care representative
+        * Inter-cloud provider
+        * Cloud service security and risk manager
+        * Network provider
+* Cloud Service Partner (CSN)
     * 3rd party companies that offer some product or service that interacts with the primary offerings of CSPs
         * i.e - SADA, Accenture, Tata, Avenade
+    * Sub-Roles:
+        * Cloud Service Developer
+        * Cloud Auditor
+        * Cloud Service Broker
 * Cloud Service Broker (CSB)
     * entity that manages the use, performance and delivery of cloud services
     * negotiates relationships between cloud providers and cloud consumers 
@@ -132,7 +150,7 @@
                 * business applications that managed the underlying control plane are exposed with northbound interfaces
             * Control Plane
                 * control of network funcitonality and programmability is made directly to devices at this layer
-                    * OpenFlow was the original framework/protocol at the control plane
+                    * OpenFlow was the original framework/protocol at the control plane currently managed by the [Open Networking Foundation (ONF)](https://opennetworking.org/sdn-definition/)
             * Data Plane
                 * Network switches and routes located at this plane are associated with the underlying network infrastructure.
                     * Data forward happens here, so also known as the _Forwarding Plane_
@@ -151,10 +169,10 @@
                 * Types
                     * Volume (Block)
                         * Used by applications/vms to store data in fixed size blocks
-                        * Azure Disk Storage, Amazon EBS, Perisitent Disk (GCP)
+                        * Ex: Azure Disk Storage, Amazon EBS, Perisitent Disk (GCP)
                     * Object
                         * Optimized storage for binary objects
-                            * Ex: S3, Azure Blob, GCS
+                        * Ex: S3, Azure Blob, GCS
             * Raw
                 * storage maps a logical unit number (LUN) on a storage area network (SAN) to a VM
                 * Example
@@ -162,7 +180,7 @@
                         * similar functionality to traditional HD or network file share
                         * Ex: [GCP File Storage](https://cloud.google.com/filestore)
     * PaaS
-        * Big data
+        * Big Data
             * "BigData-as-a-Service"
             * Nonrelational (NoSQL) data, such as document, graph, column, or key-value
             * Ex:
@@ -243,8 +261,6 @@
                 * if an attacker manages to compromise the machine they won't have access to the processor and memory used by other systems
                 * virtualized environment this may not be the case, an attack may be able can access to other guest os if one is compromise also the underlying host machine also
             * VM Sprawl, leads to unused and unmaintained servers 
-     
-    
 
 **Generic CSP Architecture**
 * ![CSP Architecture](images/csp-architecture.png)
@@ -272,7 +288,7 @@
         * Develope a vendor-neutral architecture that is consistent with the NIST definition
         * Develop a solution that does not stifle innovation by defining a prescribed technical solution
         * NIST Reference Model
-    * ![NIST Cloud Computing](images/NIST-Cloud-Computing-Architecture.webp)
+    ![NIST Cloud Computing](images/NIST-Cloud-Computing-Architecture.webp)
         * Defines Five Major Actors
             * Cloud user/customer
                 * User access either paid-for or free cloud services and resources within a cloud
@@ -376,12 +392,7 @@
     * Where the CSC uses the CSP's applications
 
 **ISO/IEC 17788 Cloud Service Categories**
-* Communications as a Service (CaaS)
-    * Capability provided to customer for real time interaction and collaboration
-* Compute as a Service (CompaaS)
-    * Capability provided to the customer are the provisioning and use of processing resources needed to deploy and run software
-* Data Storage as a Service (DSaaS)
-    * Capability provided to the customer is the provision and use of data storage and related capabilities
+![Cloud Service Categories](images/Cloud%20Categories.png)
 * Infrastructure as a Service (IaaS)
     * Capabilities type provided by the CSP to the customer where they can provision and use processing, storage, and networking resources 
     * CSP manages staff, HW and datacenter
@@ -392,8 +403,6 @@
         * Resilience and HA
         * Measured/metered use
         * Reduced TCO, engergy and cooling costs
-* Network as a Service (NaaS)
-    * Capability provided to customers is transport connectivity and related network capabilities
 * Platform as a Service (PaaS)
     * Platform capability type
     * Customer can deploy, manage and run their create/acquired applications using one or more programming languages and multiple execution environments
@@ -429,6 +438,15 @@
         * On-demand
         * Costs associated with supporting virtualized servers and hardware is now on the CSP
 * IaaS, PaaS, SaaS are the most common
+* Other types:
+    * Communications as a Service (CaaS)
+        * Capability provided to customer for real time interaction and collaboration
+    * Compute as a Service (CompaaS)
+        * Capability provided to the customer are the provisioning and use of processing resources needed to deploy and run software
+    * Data Storage as a Service (DSaaS)
+        * Capability provided to the customer is the provision and use of data storage and related capabilities
+    * Network as a Service (NaaS)
+        * Capability provided to customers is transport connectivity and related network capabilities
 
 **Cloud Deployment Models**
 * Criteria for selecting a deployment model
@@ -689,22 +707,22 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
         * like TPM but often removable or external devices even cloud based (GCP Cloud HSM)
 * Encryption Key Management Lifecycle
     * ![Key Lifecycle](images/key-lifecycle.webp)
-    * 1. Generation
+    1. Generation
         * keys should be generated within a trusted, secure cryptographic module
         * FIPS 140-2 validated modules provide tamper resistence and key integrity
-    * 2. Distribution
+    2. Distribution
         * should be distributed securely to prevent theft/compromise during transit
         * best practice to encrypt with a seperate key while distributing to other parties
-    * 3. Storage
+    3. Storage
         * must be protected at rest and should never be stored in plaintext
         * includes keys in volatile and persistent memory
-    * 4. Use
+    4. Use
         * Clients (users + trusted devices) will use keys for resource access as access controls allow
         * Acceptible Use Policy (AUP) sets guardrails for data usage
-    * 5. Revocation
+    5. Revocation
         * process for revoking access at separation, policy breach, device or key compromise
         * Ex: in PKI you would revoke the certificate on the issuing Certificate Authority (CA)
-    * 6. Destruction
+    6. Destruction
         * key destruction is the removal of an encryption key form its operational location
         * key destruction goes further and removes any info that could be used to reconstruct that key
         * MDM systems removes certificates from a device during device wipe or retirement
@@ -797,10 +815,10 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 * More secure data destruction
     * Crypto-shredding
         * cryptographic erasure
-            * 1. Data is encrypted with a strong encryption engine
-            * 2. keys used to encrypt the data are then using a different encryption engine
-            * 3. keys from the second round of encryption are destroyed
-        * PROD --> data cannot be recovered
+            1. Data is encrypted with a strong encryption engine
+            2. keys used to encrypt the data are then using a different encryption engine
+            3. keys from the second round of encryption are destroyed
+        * PRO --> data cannot be recovered
         * CON --> High CPU and performance overhead
     * Destroyig Media Data
         * **Degausing**
@@ -813,7 +831,7 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
         * Data is also NOT recoverable
 
 **Network Security**
-* Network Security Groups
+* Network Security Groups (Firewall)
     * provide additional layer of security for cloud resources
     * act as a virtual firwall for virtual networks and resource instances
     * uses security rules list (ip and port ranges) that allow or deny network traffic to one or more resource instances for security posture
@@ -864,7 +882,7 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 
 **Virtualization Security**
 * Container Security
-    * ![Container Host](images/containerhost.png)
+    ![Container Host](images/containerhost.png)
     * Shares many concerns of service virtualization, but must enforce **isolation** of network, data, storage access at the container-level
     * Best Practices: https://docs.docker.com/develop/security-best-practices/
     * Leverage managed k8s offering from CSP
@@ -877,7 +895,6 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 * Ephemeral Computing
     * use as a need rises
     * destroy environment once needs are met and resources are no longer required
-
 
 **Common Threats**
 * Data Breach
@@ -936,7 +953,7 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 ## 1.4 Understand design principles of secure cloud computing
 
 **Cloud Secure Data Lifecycle**
-* ![Data Lifecycle](images/secure-data-lifecycle.png)
+![Data Lifecycle](images/secure-data-lifecycle.png)
 * Phases
     * Create
         * can be created by users/systems
@@ -970,6 +987,8 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
     * In Use
         * in memory (RAM, CPU, cache, etc)
         * should be flushed from memory when transaction is complete or system is powered down
+        * [Homomorphic Encryption](https://en.wikipedia.org/wiki/Homomorphic_encryption) can be used to maintain encyrption while the data is in use.
+            * IBM, Microsoft,Intel, NIST, and others formed an open consortium in 2017 calle the [Homomorphic Encryption Standardization Consortium](https://homomorphicencryption.org/) that maintains a community security standard regarding Homomorphic Encryption
 * Data Roles
     * Data Owner
         * holds legal rights and complete control over a single piece of data
@@ -990,8 +1009,6 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
             * indentifiers may include name, ID number, location data
         * Data Steward
             * ensure the data's context and meaning are understood, and business rules governing the data's usage, (being used as intented)
-
-
 
 
 **Cloud-based Business Continuity (BC)**
@@ -1016,6 +1033,7 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
     * Availability Sets
         * address rack-level failures within a region datacenter
         * Consists of two or more 'fault domains' for power, network, etc
+        * Ex: Azure Avalability Set, Managed Instance Group (GCP), AWS Placement Groups
 
 **Business Impact Analysis (BIA)**
 * Contains two important items
@@ -1048,12 +1066,12 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
         * (i.e. moving to the cloud)
     * ![ROI](images/roi.png)
     * Economic savings can be measured through the following KPIs
-        * Workload vs utilization %
+        * Workload vs Utilization %
         * Workload type allocation
         * Instance to asset ratio
         * Ecosystem optionality 
             * (increased flexibility to choose or change providers)
-    * KPIs should have defined metrics based on either ISO/IEC 27004, negotiated SLAs, or NIST SP 800-55
+    * KPIs should have defined metrics based on either [ISO/IEC 27004](https://www.iso27001security.com/html/27004.html), negotiated SLAs, or [NIST SP 800-55](https://csrc.nist.gov/publications/detail/sp/800-55/rev-1/final)
         * Should address one of the following:
             * Measure of effectiveness
             * Measure of efficiency
@@ -1184,12 +1202,22 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 
 ## 1.5 Evaluate cloud service providers
 
+**Acronyms**
+* ISO/IEC 
+    * International Organization for Standardization/International Electrotechnical Commission
+
 **Verification Against Criteria**
 * Regulations, Standards, and Legislation
-    * [ISO/IEC 27017:2015](https://www.iso.org/obp/ui/en/#iso:std:iso-iec:27017:ed-1:v1:en)
-        * ISO/IEC stands for International Organization for Standardization/International Electrotechnical Commission
+    * [ISO/IEC 27001:2022](https://www.iso27001security.com/html/27001.html)
+        * Most widely known and accepted info sec standard
+        * Consists of 114 sec controls across 14 domains of security
+        * does not specifically address cloud security
+    * [ISO/IEC 27002:2022](https://www.iso27001security.com/html/27002.html)
+        * provide guidelines for sec standards but isnt certified against like 27001 is; its more used for reference
+    * [ISO/IEC 27017:2015](https://www.iso27001security.com/html/27017.html)
+        
         * Provides guidelines for information security controls applicable to the provision and use of cloud services
-        * Provides cloud-based guidance on several ISO/IEC 27002 controls, along with seven cloud controls that address:
+        * Provides cloud-based guidance and builds upon several [ISO/IEC 27002:2022 info sec controls](https://www.iso27001security.com/html/27002.html), along with seven cloud controls that address:
             1. Who is responsible for what between the cloud service provider and the cloud customer
             2. The removal/return of assets when a contract is terminated
             3. Protection and separation of the customer's virtual environment
@@ -1212,6 +1240,10 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
             * Supplier relationships
             * Incident Management
             * Business continuity 
+    * [ISO/IEC 27018:2019](https://www.iso27001security.com/html/27018.html)
+        * Code of practice for protection of Personally Identifiable Information (PII) in public clouds acting as PII processors
+        * Provides guidance aimed at ensuring that cloud service providers (such as Amazon and Google) offer suitable information security controls to protect the privacy of their customers’ clients by securing Personally Identifiable Information entrusted to them.
+        * development project had widespread support from national standards bodies plus the Cloud Security Alliance.
     * Payment Card Information Data Security Standard (PCI DSS)
         * widely accepted set of policies and procedures intended to optimize the security of credit, debit and cash card transactions
         * created jointly in 2004 by four major credit-card companies: Visa, Mastercard, Discover and American Express
@@ -1227,35 +1259,93 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
         * Guidelines for certification
             * https://listings.pcisecuritystandards.org/pdfs/PCI_SSC_Cloud_Guidelines_v3.pdf
             * https://listings.pcisecuritystandards.org/documents/PCI_DSS-QRG-v3_2_1.pdf
+    * SOC Reports
+        * SOC 1
+            * Focuses on service providers and is related to financial statements
+            * Type 1: Auditor findings at a point in time
+            * Type 2: Operational effectiveness over time
+        * SOC 2
+            * Meant for IT service providers and cloud providers
+            * Addresses the five Trust Services principles (Security, Availability, Processing Integrity, Confidentiality, Privacy) providing a detailed technical report
+            * Uses Type 1 & Type 2
+        * SOC 3
+            * Covers the same content as SOC 2 but the report only identifies success/failure of the audit and doesnt contain sensitive technical information
+            * publically available
+        * Aligned with Statement on Standards for Attestation Engagements (SSAE) 18
+    * HIPAA
+        * deals with Personal Health Information (PHI) 
+    * [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)
+        * provides a catalog of security and privacy controls for information systems and organizations to protect organizational operations and assets, individuals, other organizations, and the Nation from a diverse set of threats and risks, including hostile attacks, human errors, natural disasters, structural failures, foreign intelligence entities, and privacy risks.
+* [Cloud Certification Schemes List (CCSL)](https://digital-strategy.ec.europa.eu/en/library/cloud-computing-certification-schemes-list-ccsl)
+    * Created by the European Union Agency for Cybersecurity (ENISA)
+    * Provides an overview of different cloud certification schemes (certifications) and shows the main characteristics of each scheme.
+    * Answers questions such as:
+        * Which are the underlying standards?
+        * Who issues the certification?
+        * Is the CSP audited?
+        * Who performs the audits?
+    * CCSL provides information for the following schemes:
+        * Certified Cloud Service
+        * CSA Attestation of OCF Level 2
+        * EuroCloud Star Audit certification
+        * ISO/IEC 27001
+        * PCI-DSS v3
+        * Service Organization Control (SOC) 1,2,3
+        * Cloud Industry Forum Code of Practice
+    * Basically a checklist explaining each scheme to hep you better understand each one.
+* [Cloud Certified Schemes Metaframwork (CCSM)](https://www.enisa.europa.eu/news/enisa-news/enisa-cloud-certification-schemes-metaframework)
+    * Created by ENISA
+    * The other half of the CCSL
+    * Allows users to select their security objectives, then suggests schemes containing these objectives for users to review
+    * To access this framework and view different schemes, use the CCSM Online Procurement Tool
+* [CSA Security, Trust, and Assurance Registry (STAR)](https://cloudsecurityalliance.org/star/)
+    * Created in 2011 in response to the need for a single consistent framework by which to evaluate vendors
+    * STAR is managed by the Cloud Security Alliance (CSA)
+    * There are 2 parts to STAR (like CCSL/CCSM)
+        * [Cloud Controls Matrix (CCM)](https://cloudsecurityalliance.org/research/cloud-controls-matrix/)
+            * List of security controls and principles for the cloud environment
+        * [Consensus Assessments Initiative Questionnaire](https://cloudsecurityalliance.org/artifacts/consensus-assessments-initiative-questionnaire-v3-1/)
+            * self-assessment performed by the CSP (Self-audit)
+    * There are 3 levels of STAR certification:
+        1. Self-assessment: Fill out the CAIQ
+        2. CSA STAR Attestation: Third party audit
+        3. Continous auditing: Using the CloudTrust Protocol
+* [CloudTrust Protocol](https://cloudsecurityalliance.org/artifacts/cloudtrust-protocol-information-overview/)
+    * CSP agrees to openly share certification information with customers and prospective customers
+    * Allows cloud consumers to request and receive transpency audit information
 
+    
 **System/Subsystem Product Certifications**
 * Common Criteria (CC)
-    * [ISO/IEC 15408](https://www.iso.org/standard/72891.html)
+    * [ISO/IEC 15408-1:2022](https://www.iso.org/standard/72891.html)
         * Enable an objective evaluation to validate that a particular product or system satisfies a defined set of security requirements
         * Ensures customers that security products they purchase have been thoroughly tested by independent third-party testers and meet customer requirements
         * certification of product only certifies product capabilities
         * designed to provide assurances for security claims by the vendord
-        * Evaluation Assurance Levels
-            * https://en.wikipedia.org/wiki/Evaluation_Assurance_Level
+        * [Evaluation Assurance Levels](https://en.wikipedia.org/wiki/Evaluation_Assurance_Level)
             * Numerical grade assigned
-                * To achieve a particular EAL, the computer system must meet specific assurance requirements. Most of these requirements involve design documentation, design analysis, functional testing, or penetration testing. The higher EALs involve more detailed documentation, analysis, and testing than the lower ones. Achieving a higher EAL certification generally costs more money and takes more time than achieving a lower one. The EAL number assigned to a certified system indicates that the system completed all requirements for that level.
-                * EAL 1: Functionally tested → threats to security are not viewed as serious
-                * EAL2: Structurally tested
-                * EAL3: Methodically tested and checked
-                * EAL4: Methodically designed, test, and reviewed
-                * EAL5: Semiformally designed and tested
-                * EAL6: Semiformally verified design and tested
-                * EAL7: Formally verified design and tested
-* Federal Risk and Authorization Management Program (FedRAMP)
+                * To achieve a particular EAL, the computer system must meet specific assurance requirements. Most of these requirements involve design documentation, design analysis, functional testing, or penetration testing. 
+                * The higher EALs involve more detailed documentation, analysis, and testing than the lower ones. Achieving a higher EAL certification generally costs more money and takes more time than achieving a lower one.
+                * The EAL number assigned to a certified system indicates that the system completed all requirements for that level:
+                    * EAL 1: Functionally tested → threats to security are not viewed as serious
+                    * EAL2: Structurally tested
+                    * EAL3: Methodically tested and checked
+                    * EAL4: Methodically designed, test, and reviewed
+                    * EAL5: Semi-formally designed and tested
+                    * EAL6: Semi-formally verified design and tested
+                    * EAL7: Formally verified design and tested
+* [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov/)
     * Centralized process to certifying cloud service providers
     * Run by US General Services Administration
     * FedRAMP Marketplace
         * https://marketplace.fedramp.gov/#!/products
-* Federal Information Processing Standard (FIPS 140-2)
+* [Federal Information Processing Standard (FIPS 140-2)](https://www.nist.gov/publications/security-requirements-cryptographic-modules-includes-change-notices-1232002)
     * Established to aid in the protection of digitally stored unclassifed, yet sensitive, information
     * Developed by NIST, for use in computer systems by non-military American government agencies and government contractors
     * used to approved cryptographic modules 
+    * https://csrc.nist.gov/publications/fips
     * New standard is [FIPS 140-3](https://en.wikipedia.org/wiki/FIPS_140-3)
+        * More robust standard
     * FIPS Security Levels
         * Level 1
             * Lowest level of security
@@ -1271,5 +1361,4 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
             * Highest level of security
             * physical mechanisms provide complete envelope of protection around the cryptographic module with the intent of detecting and responding to all unuathorized attempts at physicall access.
             * useful for operation in physically unprotected environments
-            
 
