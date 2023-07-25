@@ -9,8 +9,54 @@
     * Runs in a massive data center owned by the Cloud Provider
 * NIST Defintion as per [NIST SP 800-145](https://csrc.nist.gov/publications/detail/sp/800-145/final)
     * _A model for enabling ubiquitous, convenient, on-demand network access o a shared pool of configurable computing resources, for example, networks, servers, storage, applications, and services, that can be rapidly provisioned and released with minimal management effort or service provider interaction._
+* Cloud Computing definitions as per **ISO/IEC 17788 - Cloud Computing - Overview and Vocabulary**
+    * https://www.iso.org/standard/60544.html
+    * **Cloud application**
+        * an application that does not reside or run on a user's device but rather is accessible via a network
+    * **Cloud application portability**
+        * The ability to migrate a cloud application from one cloud provider to another
+    * **Cloud computing**
+        * Networking-accessbile platform that delivers services from a large and scalable pool of systems, rather than dedicated physical hardware and more static configurations
+    * **Cloud data portability**
+        * The ability to move data between cloud providers
+    * **Cloud deployment model**
+        * How cloud computing is delivered through a set of particular configurations and features of virtual resources. The clou deployment modeles are public, private, hybrid and community
+    * **Cloud service**
+        * Capabilities offered via a cloud provider and accessible via a client
+    * **Cloud service category**
+        * A group of cloud services that have a common set of features or qualities
+    * **Community cloud**
+        * A cloud services model where the tenants are limited to those that have a relationship together, with shared requirements, and are maintained or controlled by at least one member of the community.
+    * **Data portability**
+        * The ability to move data from one system or another without having to re-enter it
+    * **Hybrid cloud**
+        * A cloud services model that combines two other typese of cloud deployment models
+    * **Infrastructure as a Service (IaaS)**
+        * A cloud service category where infrastructure level services (such as processing, storage, and networking) are provided by a cloud service provider
+    * **Measure service**
+        * Cloud services are delivered and billed for in a metered way
+    * **Multitenancy**
+        * Having mulitple customers and applications running within the same environment, but in a way that they are isolated from each other and oftentimes not visible to each other, yet share the same resources
+    * **On-demand self service**
+        * A cloud customer can provision services in an automatic manner, when needed, with minimal involvement from the cloud provider
+    * **Platform as a Service (PaaS)**
+        * A cloud service category where platform services, such as Azure or AWS, are provided to the cloud customer, and the cloud provider is responsible for the system up to the level of the actual application
+    * **Private cloud**
+        * Cloud services model where the cloud is owned and controlled by a single entity for their own purposes
+    * **Public cloud**
+        * Cloud services model where the cloud is maintained and controlled by the cloud provider, but the services are available to any potential cloud customers
+    * **Resource pooling**
+        * The aggregation of resources allocated to cloud customers by the cloud provider
+    * **Reversibility**
+        * The ability of a cloud customer to remove all data and applications from a cloud provider and completely remove all data from their environment, along with the ability to move into a new environment with miniaml impact to operations
+    * **Software as a Service (SaaS)**
+        * A cloud service category in which a full application is provided to the cloud customer, and the cloud provider maintains responsibility for the entire infrastructure, platform, and application
+    * **Tenant**
+        * One or more cloud customers sharing access to a pool of resources        
+
 
 **Cloud computing roles and responsibilities**
+* As described in ISO/IEC 17788
 * Cloud Service Customer (CSC)
     * Consumer of cloud computing resources/services from one or more CSPs
     * Sub-Roles:
@@ -350,26 +396,41 @@
                 * 3rd party that is in a business relationship for the purpose of consuming cloud services   
             * ![csc activities](images/csc-activities.png)
             * Activities:
-                * Use cloud services (create accounts and resources)
-                * Perform trial (poc)
-                * Monitor services (validate SLAs)
-                * Admin security (manages policies, organize data, audit)
-                * Provide billing usage reports
-                * Handle problems (asseses impact, troubleshoot, remedy)
-                * Select and purchase services
+                * **Cloud service user**
+                    * Use cloud services (create accounts and resources)
+                    * Perform trial (poc)
+                * **Cloud service administrator**
+                    * Monitor services (validate SLAs)
+                    * Admin security (manages policies, organize data, audit)
+                    * Provide billing usage reports
+                    * Handles problems (asseses impact, troubleshoot, remedy)
+                * **Cloud service business manager**
+                    * oversees business and billing administration
+                    * purchases the cloud services, and requests audit reports as necessary
+                * **Cloud service integrator**
+                    * connects and integrates existing systems and services to the cloud
     * Activities that **provide** services 
         * Cloud Service Provider (CSP)
             * Definition:
                 * a 3rd party that provides cloud services for consumers
             * ![csp activities](images/csp-activities.png)
             * Activities:
-                * Cloud Ops Manager (prepare, monitor, manage)
-                * Cloud services deployment manager (define procesess, gather metrics)
-                * Cloud services manager (provide services, service level management)
-                * Cloud service business manager (manage business plan, customer relations, financial processing)
-                * Cloud support and care rep
-                * Inter-cloud provider (manages peer cloud services, perform peering and federation)
-                * Cloud service security and risk manager (manage security and risks, design and implement service continutiy, ensure compliance)
+                * **Cloud service operations manager**
+                    * prepares systems for the cloud, administers services, monitors services, provides audit data when requested or required, and manages inventory and assets
+                * **Cloud services deployment manager**
+                    * gathers metrics on cloud services, manages deployment steps and processes, and defines the environment and processes
+                * **Cloud services manager**
+                    * Delivers, provisions, and manages the cloud services
+                * **Cloud service business manager**
+                    * Oversees business plan and customer relationships as well as processes financial transactions
+                * **Customer support and care representative**
+                    * provides customer service and responds to customer requests
+                * **Inter-cloud provider**
+                    * Responsible for peering with other cloud services and providers as well as overseeing and managing federations and federated services
+                * **Network provider**
+                    * Responsible for network connectivity, network services delivery, and management of network services
+                * **Cloud service security and risk manager**
+                    * manage security and risks, design and implement service continutiy, ensure compliance
     * Activities that **support** services
         * Cloud Service Partner (CSN)
             * Definition:
@@ -377,27 +438,33 @@
         * NIST Cloud Service Broker and Cloud Auditor fall under this role
         * ![csn activities](images/csn%20activitites.png)
         * Activities:
-            * Cloud service developer (design, create, maintain service components, compose and test services)
-            * Cloud auditor (perfom adutis, report results)
-            * Cloud service broker (acquire and assess customers, assess marketplace, create legal agreements)
+            * **Cloud service developer**
+                * design, create, maintain service components, compose and test services
+            * **Cloud auditor** 
+                * perfom audits, report results
+            * **Cloud service broker** 
+                * acquire and assess customers, assess marketplace, create legal agreements and contracts
 
 **Cloud Service Capabilities Types (ISO/IEC 17788)**
-* Infrastructure
+* Infrastructure service capability
     * Where the CSC can provision and use the compute, storage, or networing resources of the CSP
     * CapEx on-premis but OpEx in the cloud
-* Platform
+* Platform service capability
     * Where the CSC can deploy, manage, and run their own applications using one or more programming languages and one or more execution environments supported by the CSP
     * allows choice and reducing venor lock-in
-* Application
-    * Where the CSC uses the CSP's applications
+* Software service capability
+    * Where the CSC uses the CSP's provided applications with minimal user configuration options allowed
+    * also known as Application
 
 **ISO/IEC 17788 Cloud Service Categories**
 ![Cloud Service Categories](images/Cloud%20Categories.png)
 * Infrastructure as a Service (IaaS)
     * Capabilities type provided by the CSP to the customer where they can provision and use processing, storage, and networking resources 
     * CSP manages staff, HW and datacenter
+    * Definition as per NIST SP 800-145:
+        * _The capability provided to the consumer is to provision processing, storage, networks, and other fundamental computing resources where consumer is able to deploy and run arbitrary software, which can include operating systems and applications. The consumer does not manage or control the underlying cloud infrastructure but has control over operating systems, storage, and deployed applications; and possibly limited control of selected networking components (e.g., host firewalls)._
     * Benefits
-        * Scale
+        * Scalability
         * Converged Network → provide services without regard to network boundaries
         * On-demand self-service
         * Resilience and HA
@@ -408,9 +475,12 @@
     * Customer can deploy, manage and run their create/acquired applications using one or more programming languages and multiple execution environments
     * Customer is responsible for deployment and management of apps
     * CSP manages provisioning, configuration, hardward, and OS
+    * Definition as per NIST SP 800-145:
+        * _The capability provided to the customer is to deploy onto the cloud infrastructure consumer-created or acquired applications created using programming languages, libraries, services, and tools supported by the provider. The consumer does not manage or control the underlying cloud infrastructure, including network, servers, operating systems, or storage, but has control over the deployed applications and possibly configuration settings for the application-hosting environment._
     * Benefits
         * Support for multiple languages and frameworks
         * Multi hosting environments
+        * Choice of environments
         * Flexibility
         * Autoscaling through configuration
         * Technology isnt crossing borders, it's cloud based
@@ -427,6 +497,8 @@
 * Software as a Service (SaaS)
     * Application capability type
     * Customer uses CSP provided applications: (Gmail, Workspace, Office 365, etc)
+    * Definition as per NIST SP 800-145:
+        * _The capability provided to the customer is to use the provider's applications running in a cloud infrastructure. The applications are accessible from various client devices through either a thin client interface, such as a web browser (e.g., web-based email), or a program interface. The consumer does not manage or control the underlying cloud infrastructure, including network, servers, operating systems, storage, or even individual application capabilities, with the possible exception of limited user-specific application settings._
     * Benefits
         * Cost Reduction
         * Reduce the need for hardware and servers
@@ -438,15 +510,24 @@
         * On-demand
         * Costs associated with supporting virtualized servers and hardware is now on the CSP
 * IaaS, PaaS, SaaS are the most common
-* Other types:
+* Emergine Cloud Services Categories:
     * Communications as a Service (CaaS)
         * Capability provided to customer for real time interaction and collaboration
-    * Compute as a Service (CompaaS)
-        * Capability provided to the customer are the provisioning and use of processing resources needed to deploy and run software
-    * Data Storage as a Service (DSaaS)
-        * Capability provided to the customer is the provision and use of data storage and related capabilities
+    * Compute as a Service (CompaaS/CaaS)
+        * allows for the execution of compute-intensive workloads to be performed in the cloud. 
+        * Code can be executed in a serverless environment where the customer only pays for the computing time and cycles they consume, without the need for setting up server instances or environments.
+    * Storage as a Service (STaaS)
+        * cloud service where the provider offers storage space and solutions on a subscription service. Cloud customers incur costs based on the amount of storage that is consumed or reserved.
     * Network as a Service (NaaS)
-        * Capability provided to customers is transport connectivity and related network capabilities
+        * Cloud-based virtual network where customers can quickly and easily change network configurations via software versus the traditional need for cabling and hardware appliances.
+    * Database as a Service (DBaaS)
+        * subscription service where the database is installed, configured, secured, and maintained by the cloud provider, with the cloud customer only responsible for loading their schema and data.
+    * Desktop as a Service (DaaS)
+        * cloud-based equivalent of a traditional virtual desktop interface (VDI) that is hosted and managed by a cloud provider rather than on hardware owned by the customer.
+    * Identity as a Service (IDaaS)
+        * subscription-based service for identity and access management (IAM) and single sign-on (SSO) that is offered over the Internet versus deployed by the customer.
+    * Security as a Service (SECaaS)
+        * enables companies to contract with an external vendor to supply and manage their security operations for such technologies as intrusion detection systems (IDSs), intrusion prevention systems (IPSs), data loss prevention (DLP), and antivirus implementations.
 
 **Cloud Deployment Models**
 * Criteria for selecting a deployment model
@@ -457,6 +538,8 @@
     * Business strategy
 * Models
     * Private
+        * NIST SP 800-145 Definition
+            * _The cloud infrastructure is provisioned for exclusive use by a single organization comprising multiple consumers (e.g., business units). It may be owned, managed, and operated by the organization, a third party, or some combination of them, and it may exist on or off premises._
         * Cloud Infra **provisioned for use by a single orgnaization**
             * May consist of multiple internal consumers
             * May be owned, managed, and operated by:
@@ -474,6 +557,8 @@
     * Public
         * Cloud Infra **provisioned for use by anyone** who is a customer. Exists on the premises and hardware of the CSP
             * AWS, Azure, Google
+        * NIST SP 800-145 Definition
+            * _The cloud infrastructure is provisioned for open use by the general public. It may be owned, managed, and operated by a business, acedemic, or government organization, or some combination of them. It exists on the premises of the cloud provider._
         * Benefits
             * easy/inexpensive to setup because hardware, application, bandwidth is covered by provider
             * Streamlined for provisioning resources
@@ -484,18 +569,23 @@
         * Cloud Infra provisioned for use by a specific community of consumers that have shared conserns (mission, security requirements, policy, compliance, etc)
         * Universities sharing infra
         * similar to private clouds
+        * NIST SP 800-145 Definition:
+            * _The cloud infrastructure is provisioned for exclusive use by a specific community of consumers from organizations that have shared concerns (e.g., mission, security requirements, policy, and compliance considerations). It may be owned, managed, and operated by one or more of the organizations in the community, a third party, or some combination of them, and may exist on or off premises._
         * Benefits
             * Shared costs
             * Shared sec and compliance
     * Hybrid
         * Combining multiple forms of deployment models (public and private)
         * Common is primary on-prem and dr in public cloud (AWS,GCP,etc)
+        * NIST SP 800-145 definition
+            * _The cloud infrastructure is a composition of two or more distinct cloud infrastructures (private, community, or public) that remain unique entities, but are bound together by standardized or proprietary technology that enables data and application portability (e.g., cloud bursting for load balancing between clouds)._
         * Key drivers
             * retain ownership and oversight of critical task and processes
             * resusing previous investments in tech
             * Controlling most critical business components and systems
             * Cost-effectively fulfilling noncritical business functions using public cloud components
-            * bursting into cloud
+            * bursting into cloud / split systems for optimization
+            * disaster recovery
     * Multi Cloud
         * Using cloud services from multi cloud providers instead of a single 
         * Variation of hybrid
@@ -627,7 +717,7 @@
 * Artificial Intelligence (AI) / Machine Learning (ML)
     * AI → tech that emulates human behavior or interactions
     * ML → often considered a branch of AI science, method used to create intelligent products / services
-        * Trains automated systems by using computer programs
+        * Trains automated systems by using computer programs and "seeded" data to begin system optimization
     * Deep Learning
         * subfield of ML concerned with algorithims inspired by the structure and function of the brain called **artificial neural networks**
 * Internet of Things (IoT)
@@ -677,7 +767,9 @@
 * Infrastructure-as-Code (IaC)
     * management of cloud infra described as code
     * key DevOps practice and is used in conjunction with Continuous Integration and Continous Delivery (CI/CD)
-
+* Mobile Device Management (MDM)
+    * an encompassing term for a suite of policies, technologies, and infrastructure that enables an organization to manage and secure mobile devices that are granted access to its data across a homogenous environment.
+    * allows for "bring you own device" (BYOD) for users and the granting of access to coorporate data, such as internal networks, applications, and especially e-mail.
 **NOTE**:
 * IaC, CI/CD, and DevOps are standard elements of deployment, change, and release in the cloud. DevSecOps is quickly growing in popularity.
 
@@ -895,44 +987,86 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 * Ephemeral Computing
     * use as a need rises
     * destroy environment once needs are met and resources are no longer required
+* Type 1 Hypervisors
+    * tied to the underlying hardware and hosts virtual machines on top of it, and it operates as the sole layer between the hardware (bare metal) and host (virtual servers) layer. 
+    * A common example would be VMware ESXI.
+    * security can be maintained with a very high degree of confidence
+    * more difficult to exploit
+    * vendor controls upgrades and patches
+* Type 2 Hypervisors
+    * software based, it resides on the host system itself and then orchestrates the hosts under its purview. 
+    * In this case, the hypervisor is not tied directly to the bare-metal infrastructure and instead runs within an operating system as software. A common example would be VMware Workstation.
+    * more vulnerable to any potential flaws and software exploits that can strike the underlying OS, which could then be used to launch attacks against the hypervisor.
+    * security is not as tight as Type 1
+    * patching / upgrading and vigilance of the underlying OS is key
 
 **Common Threats**
-* Data Breach
-    * result of a cyberattack
-    * when sensitive data is stolent, includes Personally Indetifiable Information (PII)/Protected Health Information (PHI)
-    * due to poor application or database security design or configuration, whereby data is exposed without proper authorization
-    * Prevention
-        * following secure development practices and adhering to recommendations in the secure data lifecycle
-* Data Loss
-    * "data leaks"
-    * when data is unknowingly exposed to the public
-    * often due to a system or service misconfiguration or oversharing
-* APIs (SOAP or REST)
-    * Targets for DDoS attacks
-    * Security mechanisms include API gateway, authN/authZ, IP filtering, throttling, quotas, data validation
-    * ensure secure storage, distribution, and transmission of access keys
-* Malicious Indsider
-    * disgruntled employees can wreak havoc on a system
-    * internal acts of disruption include theft and sabotage
-* Account (or Service) Traffic Hijacking
-    * attack designed to steal or wedge themselves into the middle of a conversation in order to gain control
-    * i.e Man-in-the-Middle attack
-* Abuse of cloud services
-    * consumers sometimes misuse their cloud services for illegal or immoral activities
-* Insufficient due dilligence
-    * failure to perform due dilligence can result in a due care violation
-     * Due Dilligence definition:
-        * process/effort to collect and analyze information before making a decision or conducting a transaction
-        * increase understanding and reduces risk
-    * Due Care definition:
-        * doing what a reasonable person would do in a given situation. Sometimes called the **_prudent person rule_**
-* Improper Configuration
-* Interface attacks
-* IAM Failures → stolen creds, improper exposure
-* Application flaws
-* Improper use, configuration or implementation of cryptography
+* "Top threats to Cloud Computing: The Egregious 11" (https://cloudsecurityalliance.org/group/top-threats/).
+    * Data Breaches
+        * result of a cyberattack
+        * when sensitive data is stolent, includes Personally Indetifiable Information (PII)/Protected Health Information (PHI)
+        * due to poor application or database security design or configuration, whereby data is exposed without proper authorization
+        * also includes data loss ("data leaks")
+            * often due to a system or service misconfiguration or oversharing
+        * Applies to IaaS, PaaS, and SaaS models
+        * Prevention
+            * following secure development practices and adhering to recommendations in the secure data lifecycle
+    * Misconfiguration and inadequate change control
+        * systems not properly setup to enforce security policies and best practices
+        * Applies to IaaS, PaaS, and SaaS models
+    * Lack of cloud security architecture and strategy
+        * misguided notion of "lift and shift" effectively re-creating network segements and implementing the same type of sec controls that they have within their own data centers.
+        * no effective approach to cloud security architectures
+        * physical barriers do not exist in the cloud
+        * Applies to IaaS, and PaaS models
+    * Insufficient identity, credential, access, and key management
+        * key rotation is not set up
+        * poor password complexity and strength
+        * no MFA
+        * use of certificates
+        * make sure credentials are NOT stored in public code repos (such as Github)
+        * Applies to IaaS, PaaS, and SaaS models
+    * Account hijacking
+        * attack designed to steal or wedge themselves into the middle of a conversation in order to gain control
+            * i.e Man-in-the-Middle attack
+        * attacker gains access through either exploiting system, that can eavesdrop or capture traffic or use it to attack other systems in the cloud or the underlying cloud infrastructure.
+        * Use of MFA and strong account provisioning controls and access requirements can minimize the risk
+        * Applies to IaaS, PaaS, and SaaS models
+    * Insider threat
+        * disgruntled employees can wreak havoc on a system
+        * internal acts of disruption include theft and sabotage
+        * Applies to IaaS, PaaS, and SaaS models
+    * Insecure interfaces and APIs
+        * Targets for DDoS attacks
+        * Security mechanisms include API gateway, authN/authZ, IP filtering, throttling, quotas, data validation
+        * ensure secure storage, distribution, and transmission of access keys
+        * Applies to IaaS, PaaS, and SaaS models
+    * Weak control plane
+        * The control plane within a cloud environment enables administrators to have full control over the data infrastructure and security controls implemented on it.
+        * security is paramount
+        * Applies to IaaS, PaaS, and SaaS models
+    * Metastructure and applistructure failures
+        * protecting the underlying APIs that are exposed for operating a cloud environment, CSP must secure the the APIs
+        * Applies to IaaS, PaaS, and SaaS models
+    * Limited cloud usage visibility
+        * Logging and Observability is key
+    * Abuse and nefarious use of cloud services 
+        * consumers sometimes misuse their cloud services for illegal or immoral activities
+    * Insufficient due dilligence
+        * failure to perform due dilligence can result in a due care violation
+        * Due Dilligence definition:
+            * process/effort to collect and analyze information before making a decision or conducting a transaction
+            * increase understanding and reduces risk
+        * Due Care definition:
+            * doing what a reasonable person would do in a given situation. Sometimes called the **_prudent person rule_**
  
 **Security Hygiene (e.g., patching, baselining)**
+* Baselines
+    * set of standards and settings applied to systems when they are first built.
+    * essentially templates and images built to security policies and are applied to any systems based on their purpose.
+* Patching
+    * released through vendors or internal dev teams to apply fixes, new features, etc
+    * applying patches is critical as new security gaps are discovered
 * Configuration Management
     * ensures systems are configured similarly
     * configurations are known and documented
@@ -1038,13 +1172,14 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 **Business Impact Analysis (BIA)**
 * Contains two important items
     * cost-benefit analysis (CAB)
-    * calculation of the return on investment (ROI)
+    * calculation of the return on investment (ROI) 
 * Key component of any change or use of services
 * Cost-Benefit Analysis
     * lists the benefits of the decision alonside their corresponding costs
     * can be strickly quantitative
         * Profitability = Sum of financial benefits of a change - the associated costs  
     * Cost Factors at scale
+        * CapEx vs OpEx
         * Electricity costs
         * DC facility rentals, acquisitions, maintenance
         * Training , Consulting Services, Staff time costs
@@ -1095,8 +1230,11 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
     * Hypervisor attacks
     * VM-based rootkits
     * Virtual switch attacks
-    * Colocation
+    * Co-location
     * DoS attack
+    * Multitenancy
+        * possibility for data breachs and data loss
+        * exposure of data
 * PaaS
     * System and Resource Isolation
     * User-Level Permissions
@@ -1104,6 +1242,7 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
     * Protection Against Malware, Backdoors, and Trojans
 * SaaS
     * Data Segregation
+    * Data Protection and Confidentiality
     * Data Access and Policies
     * Web Application Security
 * Virtualization-Focused Attacks
@@ -1156,16 +1295,99 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 * are a standardized or “known good” way of implementing some capability
 * Will NEVER guarantee security or future effectiveness of security objectives, they can significantly reduce risk associated with misconfigurations and such
 * Commonly used
-    * SANS Security Principles
-        * https://www.sans.org/blog/cis-controls-v8/
-        * https://www.sans.org/
+    * [SANS Security Principles](https://www.sans.org/blog/cis-controls-v8/)
+        * CIS controls, which serves as a framework for security planning and operations, aligns with other families of security controls such as CSA and NIST
+        * Broken down into the following 18 categories
+            1. Inventory and Control of Enterprise Assets
+            2. Inventory and Control of Software Assets
+            3. Data Protection
+            4. Secure Configuration of Enterprise Assets
+            5. Account Management
+            6. Access Control Management
+            7. Continous Vulnerability Management
+            8. Audit Log Management
+            9. E-mail and Web Browser Requirements
+            10. Malware Defenses
+            11. Data Recovery
+            13. Network Infrastructure Management
+            14. Networking Monitoring and Defense
+            14. Security Awareness and Skills Training
+            15. Service Provider Management
+            16. Application Software Security
+            17. Incident Response Management
+            18. Penetration Testing   
     * [Cloud Computing Reference Architecture (NIST)](https://www.nist.gov/publications/nist-cloud-computing-reference-architecture)
-    * [Cloud Security Alliance (CSA) Reference Architecture](https://cloudsecurityalliance.org/artifacts/enterprise-architecture-reference-guide-v2/)
+    * [NIST Cloud Technology Roadmap (SP 500-293)](https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.500-293.pdf)
+        * comprehensive guide for U.S government agencies concerning their use of and migration to cloud computing platforms.
+        * It is not a rigid set of requirements for federal agencies or contractors but rather a solid framework to guide IT departments across the governement in evaluating cloud technologies, the suitability of these technologies for their IT operations, and security models withiin a cloud framework to meed federal IT security standards.
+        * spells out ten steps for the gov and contractors to follow in moving resources to cloud platforms.
+    * [Cloud Security Alliance (CSA) Enterprise Reference Architecture](https://cloudsecurityalliance.org/artifacts/enterprise-architecture-reference-guide-v2/)
+        * **Business Operation Support Services (BOSS)**
+            * focuses on the nontechnical aspects of an organization that are central to cloud security and operations which includes (legal, compliance, and human resources)
+            * areas that tie the actual IT implementations to the actual business needs and requirements of an organization
+        * **Information Technology Operations & Support (ITOS)**
+            * ITOS is the actual IT operations and management of an organization that focuses on service delivery
+                * includes:
+                    * change management
+                    * project management
+                    * release management
+                    * configuration management
+                    * asset management
+            * also where capacity and availability planning and service level agreements are handled
+        * **Technology Solution Services (TSS)**
+            * focuses on the mulitiered architecture of applciations and how they securely operate together:
+                * **Presentation services**
+                    * these are for the actual interactions with the user, either through a website or an application
+                * **Application services**
+                    * services that sit behind the presentation tier and perform operations for the user with the underlying data.
+                    * code written by developers is implemented and executed
+                * **Information services**
+                    * databases or files that contain the actual data for the application accessed from the application tier
+                * **Infrastructure services**
+                    * the underlying hardware or hosting infrastructure for all applications and IT services
+                    * can be virutal machines, applications, databases, and networks as well as physical infrastructure and facilities that host them
+        * **Security and Risk Management (SRM)**
+            * includes authentication and authorization data as well as the auditing systems and tools to ensure their compliance.
+            * also includes pen testing, vulnerability scanning, and ethical hacking
+    * [Sherwood Applied Business Security Architecture (SABSA)](https://sabsa.org/)
+        * provides a group of components, listed next, that can be used in part of in whole as an approach to security architecture for any system:
+            * Business Requirements Engineering Framework (known as Attributes Profiling)
+            * Risk and Opportunity Management Framework
+            * Policy Architecture Framework
+            * Security Services-Oriented Architecture Framework
+            * Governance Framework
+            * Security Domain Framework
+            * Through-Life Security Service Management & Performance Management Framework
+    * [IT Insfrastructure Library (ITIL)](https://www.axelos.com/best-practice-solutions/itil)
+        * collection of papers and concepts that lay out a vision for IT Service Management (ITSM)
+        * best practices to give companies of all sizes (but more targeted toward large companies) a framework for providing IT services and user support
+        * Five main publications form the core of ITIL:
+            * ITIL Service Strategy
+            * ITIL Service Design
+            * ITIL Service Transition
+            * ITIL Service Operation
+            * ITIL Continual Service Improvement
+    * [The Open Group Architecture Framework (TOGAF)](https://www.opengroup.org/subjectareas/enterprise/togaf)
+        * meant to be an opern enterprise architecture model that offers a high-level design approach
+        * intended to provide a common framework for architecture design to used in a standardized approach
+        * helps avoid common pitfalls, proprietary lock-in, and communication problems during design and implementation phases and throguh the lifecycle of a system
+        * addresses the following four critical areas:
+            * Common language and communications
+            * Standardizing on open methods and technologies to avoid proprietary lock-in
+            * Utilizing resources more effectively and efficientaly to save money
+            * Demonstrating return on investment
     * Cloud Vendor Specific
         * [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/?wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc&wa-guidance-whitepapers.sort-by=item.additionalFields.sortDate&wa-guidance-whitepapers.sort-order=desc)
         * [Microsoft Azure Well-Architected Framework](https://learn.microsoft.com/en-us/azure/architecture/framework/)
         * [Google Cloud Architecture Framework](https://cloud.google.com/architecture/framework)
         * [Oracle Cloud Architecture Center](https://www.oracle.com/ca-en/cloud/architecture-center/)
+        * Each contains variations of the following items
+            * Reliability
+            * Security
+            * Cost Optimization
+            * Operational Excellence
+            * Performance Efficiency
+            * Sustainability
 
 **DevOps Security**
 * DevOps Goals
@@ -1210,12 +1432,27 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
 * Regulations, Standards, and Legislation
     * [ISO/IEC 27001:2022](https://www.iso27001security.com/html/27001.html)
         * Most widely known and accepted info sec standard
+        * Gold standard
         * Consists of 114 sec controls across 14 domains of security
         * does not specifically address cloud security
+        * Contains a group of 114 controls organized under the following 14 domains:
+            1. Information security policies
+            2. Organization of information security
+            3. Human resource security
+            4. Asset management
+            5. Access control
+            6. Cryptography
+            7. Physical and environmental security
+            8. Operations security
+            9. Communications security
+            10. System acquisition, development, and maintenance
+            11. Supplier relationships
+            12. Information security incident management
+            13. Information security aspects of business continuity management
+            14. Compliance
     * [ISO/IEC 27002:2022](https://www.iso27001security.com/html/27002.html)
         * provide guidelines for sec standards but isnt certified against like 27001 is; its more used for reference
     * [ISO/IEC 27017:2015](https://www.iso27001security.com/html/27017.html)
-        
         * Provides guidelines for information security controls applicable to the provision and use of cloud services
         * Provides cloud-based guidance and builds upon several [ISO/IEC 27002:2022 info sec controls](https://www.iso27001security.com/html/27002.html), along with seven cloud controls that address:
             1. Who is responsible for what between the cloud service provider and the cloud customer
@@ -1227,24 +1464,25 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
             7. Virtual and cloud network environment alignment
         * Topics Covered
             * Information Security Policy
-            * Security organization
+            * Information Security Organization
             * Human Resources
             * Asset Managment
             * Access control
             * Cryptography
-            * Phyical Security
-            * Operations Security
-            * Communications Security
-            * Systems security
+            * Phyical and environmental security
+            * Operations security
+            * Communications security
+            * Systems acquisition, development, and maintenance
             * Supplier security
             * Supplier relationships
-            * Incident Management
-            * Business continuity 
+            * Information security incident management
+            * Information security aspects of business continuity management
+            * Compliance 
     * [ISO/IEC 27018:2019](https://www.iso27001security.com/html/27018.html)
         * Code of practice for protection of Personally Identifiable Information (PII) in public clouds acting as PII processors
         * Provides guidance aimed at ensuring that cloud service providers (such as Amazon and Google) offer suitable information security controls to protect the privacy of their customers’ clients by securing Personally Identifiable Information entrusted to them.
         * development project had widespread support from national standards bodies plus the Cloud Security Alliance.
-    * Payment Card Information Data Security Standard (PCI DSS)
+    * [Payment Card Information Data Security Standard (PCI DSS)](https://blog.pcisecuritystandards.org/pci-dss-v4-0-resource-hub)
         * widely accepted set of policies and procedures intended to optimize the security of credit, debit and cash card transactions
         * created jointly in 2004 by four major credit-card companies: Visa, Mastercard, Discover and American Express
         * Based on 6 Major Objectives
@@ -1259,6 +1497,19 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
         * Guidelines for certification
             * https://listings.pcisecuritystandards.org/pdfs/PCI_SSC_Cloud_Guidelines_v3.pdf
             * https://listings.pcisecuritystandards.org/documents/PCI_DSS-QRG-v3_2_1.pdf
+        * The PCI DSS standard is found in a series of 12 compliance requirements:
+            * Install and maintain a firewall configuration to protect cardholder data.
+            * Do not use vender-supplied defaults for system passwords and other security parameters.
+            * Protect stored cardholder data.
+            * Encrypt transmission of cardholder data across open, public networks.
+            * Use and regularly update antivirus software on all systems commonly affected by malware.
+            * Develop and maintain secure systems and applications.
+            * Restrict access to cardholder data by business need-to-know.
+            * Assign a unique ID to each person with computer access.
+            * Restrict physical access to cardholder data.
+            * Track and monitor all access to network resources and cardholder data.
+            * Regularly test security systems and processes.
+            * Maintain a policy that addresses information security.
     * SOC Reports
         * SOC 1
             * Focuses on service providers and is related to financial statements
@@ -1268,14 +1519,48 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
             * Meant for IT service providers and cloud providers
             * Addresses the five Trust Services principles (Security, Availability, Processing Integrity, Confidentiality, Privacy) providing a detailed technical report
             * Uses Type 1 & Type 2
+            * Security Principle includes seven categories
+                * Organization and management
+                * Communications
+                * Risk management and design implement of controls
+                * Monitoring of controls
+                * Logical and physical access controls
+                * System operations
+                * Change management
         * SOC 3
             * Covers the same content as SOC 2 but the report only identifies success/failure of the audit and doesnt contain sensitive technical information
             * publically available
         * Aligned with Statement on Standards for Attestation Engagements (SSAE) 18
-    * HIPAA
+    * [Health Insurance Portability and Accountability Act(HIPAA)](https://www.ncbi.nlm.nih.gov/books/NBK500019/)
         * deals with Personal Health Information (PHI) 
+        * established in 1996
+        * consits of 5 titles
+            * Title I:
+                * Protects health insurance coverage for workers and their families who change or lose their jobs. It limits new health plans' ability to deny coverage due to a pre-existing condition.
+            * Title II: 
+                * Prevents Health Care Fraud and Abuse; Medical Liability Reform; 
+                * Administrative Simplification that requires the establishment of national standards for electronic health care transactions and national identifiers for providers, employers, and health insurance plans.
+            * Title III: 
+                * Guidelines for pre-tax medical spending accounts. 
+                * It provides changes to health insurance law and deductions for medical insurance.
+            * Title IV: 
+                * Guidelines for group health plans. 
+                * It provides modifications for health coverage.
+            * Title V: 
+                * Governs company-owned life insurance policies. 
+                * Makes provisions for treating people without United States Citizenship and repealed financial institution rule to interest allocation rules.
     * [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)
-        * provides a catalog of security and privacy controls for information systems and organizations to protect organizational operations and assets, individuals, other organizations, and the Nation from a diverse set of threats and risks, including hostile attacks, human errors, natural disasters, structural failures, foreign intelligence entities, and privacy risks.
+        * provides a catalog/matrix of security and privacy controls for information systems and organizations to protect organizational operations and assets, individuals, other organizations, and the Nation from a diverse set of threats and risks, including hostile attacks, human errors, natural disasters, structural failures, foreign intelligence entities, and privacy risks.
+        * overlaps with ISO 27001
+        * Contains:
+            * Insider threats and malicious activity
+            * Software application security, including web-based applications and APIs • Social networking
+            * Mobile devices
+            * Cloud computing
+            * Persistent threats
+            * Privacy
+            * Access control
+            * Identity and authentication
 * [Cloud Certification Schemes List (CCSL)](https://digital-strategy.ec.europa.eu/en/library/cloud-computing-certification-schemes-list-ccsl)
     * Created by the European Union Agency for Cybersecurity (ENISA)
     * Provides an overview of different cloud certification schemes (certifications) and shows the main characteristics of each scheme.
@@ -1304,6 +1589,23 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
     * There are 2 parts to STAR (like CCSL/CCSM)
         * [Cloud Controls Matrix (CCM)](https://cloudsecurityalliance.org/research/cloud-controls-matrix/)
             * List of security controls and principles for the cloud environment
+            * Sec Domains
+                * Application and Interface Security
+                * Audit Assurance and Compliance
+                * Business Continuity Management and Operational Resilience
+                * Change Control and Coniguration Management
+                * Data Security and Information Lifecycle Management
+                * Data Center Security
+                * Encryption and Key Management
+                * Governance and Risk Management
+                * Human Resources
+                * Identity and Access Management
+                * Infrastructure and Virtualization Security
+                * Interoperability and Portability
+                * Mobile Security
+                * Security Incident Management, eDiscovery, and Cloud
+                * Supply Chain Management, transparency, and Accountability
+                * Threat and Vulnerability Management
         * [Consensus Assessments Initiative Questionnaire](https://cloudsecurityalliance.org/artifacts/consensus-assessments-initiative-questionnaire-v3-1/)
             * self-assessment performed by the CSP (Self-audit)
     * There are 3 levels of STAR certification:
@@ -1314,7 +1616,6 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
     * CSP agrees to openly share certification information with customers and prospective customers
     * Allows cloud consumers to request and receive transpency audit information
 
-    
 **System/Subsystem Product Certifications**
 * Common Criteria (CC)
     * [ISO/IEC 15408-1:2022](https://www.iso.org/standard/72891.html)
@@ -1322,12 +1623,13 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
         * Ensures customers that security products they purchase have been thoroughly tested by independent third-party testers and meet customer requirements
         * certification of product only certifies product capabilities
         * designed to provide assurances for security claims by the vendord
+        * https://www.commoncriteriaportal.org/
         * [Evaluation Assurance Levels](https://en.wikipedia.org/wiki/Evaluation_Assurance_Level)
             * Numerical grade assigned
                 * To achieve a particular EAL, the computer system must meet specific assurance requirements. Most of these requirements involve design documentation, design analysis, functional testing, or penetration testing. 
                 * The higher EALs involve more detailed documentation, analysis, and testing than the lower ones. Achieving a higher EAL certification generally costs more money and takes more time than achieving a lower one.
                 * The EAL number assigned to a certified system indicates that the system completed all requirements for that level:
-                    * EAL 1: Functionally tested → threats to security are not viewed as serious
+                    * EAL1: Functionally tested → threats to security are not viewed as serious
                     * EAL2: Structurally tested
                     * EAL3: Methodically tested and checked
                     * EAL4: Methodically designed, test, and reviewed
@@ -1343,8 +1645,8 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
     * Established to aid in the protection of digitally stored unclassifed, yet sensitive, information
     * Developed by NIST, for use in computer systems by non-military American government agencies and government contractors
     * used to approved cryptographic modules 
-    * https://csrc.nist.gov/publications/fips
-    * New standard is [FIPS 140-3](https://en.wikipedia.org/wiki/FIPS_140-3)
+    * https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf
+    * New standard is [FIPS 140-3](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-3.pdf)
         * More robust standard
     * FIPS Security Levels
         * Level 1
@@ -1361,4 +1663,16 @@ Core concept of Information Security known as the _The CIA_ triad, which has thr
             * Highest level of security
             * physical mechanisms provide complete envelope of protection around the cryptographic module with the intent of detecting and responding to all unuathorized attempts at physicall access.
             * useful for operation in physically unprotected environments
-
+    * FIPS standard contains 11 sections that define security requirements:
+        * Cryptographic Module Specification
+        * Cryptographic Module Ports and Interfaces
+        * Roles, Services, Authentication
+        * Finite State Model
+        * Physical Security
+        * Operational Environment
+        * Cryptographic Key Management
+        * Electromagnetic Interference/Electromagnetic Compatibility (EMI/EMC)
+        * Self-tests
+        * Design Assurance
+        * Mitigation of Other Attacks
+        

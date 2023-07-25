@@ -17,6 +17,7 @@
     * provides the OS with access to keys, but prevents drive removal and data access
     * virtual TPMs are part of the hypervisor and provided to VMs running on a virtualization platform
     * Unlike a HSM, it is generally a physical component of the system hardware and cannot be added or removed at a later date
+    * have BIOS settings that govern specific hardware configurations and security technologies to prevent access to them for the purpose of manipulation.
     * Functions used for
         * Hardware Root of Trust
             * when certificates are used in FDE, they use a hardware root of trust for key storage used in the UEFI process
@@ -27,9 +28,9 @@
     * physical computing device that safeguards and managed digital keys, performs encryption and decryption functions for digital signatures, strong authentication and other cryptographic functions
     * like a TPM but are often removable or external
     * key escrow uses an HSM to store and manage private keys
+    * HSMs are often certified to the highest international standards for cryptography, such as FIPS-140, and within FIPS-140, the highest level of certification (level 4)
     * Examples: Dedicated HSM (Azure), CloudHSM (AWS), Google KMS (GCP), CloudHSM (GCP) which is a service offering that leverages KMS underneath
-    * Government agencies using HSMs must follow the requirements outline in the Federal Information Processing Standard (FIPS) 140-2:
-        * [Link](https://csrc.nist.gov/publications/detail/fips/140/2/final)
+    * Government agencies using HSMs must follow the requirements outline in the [Federal Information Processing Standard (FIPS) 140-2](https://csrc.nist.gov/publications/detail/fips/140/2/final):
         * Outlines security Requirements for Cryptographic Modules
         * Levels
             * Security Level 1
@@ -90,6 +91,14 @@
             * encrypting VM snapshots
         * **Patching**
             * customer should patch VMs (IaaS) while CSP patches the hypervisor
+            * if patching cant happen immediately, service isolation and restricting access points to services
+* Network Storage
+    * storage systems have heavy network utilization and therefor should be considered LAN traffic
+    * prevalent communications protocol for network-based storage is iSCSI, which allows for the transmission and use of SCSI commands and features over a TCP-based network.
+    * Whereas a traditional data center will have SAN (storage area network) setups with dedicated fiber channels, cables, and switches, in a cloud data center this is not possible with the use of virtualized hosts. 
+    *  In this case, iSCSI allows systems to use block-level storage that looks and behaves like a SAN would with physical servers, but it leverages the TCP network within a virtualized environment and cloud.
+    *  iSCSI also supports a variety og authentication protocols, such as Kerberos and CHAP, gor securing communications and conidentiality within networks.
+    * However, iSCSI does support encrypted communications through such protocols as IPSec, and encryption should be used wherever possible to protect communications between virtual machines and storage networks.
 
 **Installation of guest operating system (OS) virtualization toolsets**
 * toolsets exist that can provide extended functionality for various guest OS
@@ -107,9 +116,11 @@
         * the native remote access protocol for windows
         * has a gui interface
         * runs on TCP port 3389
+        * Exposing RDP to the Internet or outside a protected network is something that should never be done. 
     * **Secure Shell (SSH)** 
-        * natvie remote access protocol for linux operating systems, and common for remote management of network devices
+        * native remote access protocol for linux operating systems, and common for remote management of network devices
         * operates on TCP port 22
+        * has been extended to incorporate many nonsecured protocols such as Telnet, rlogin, rsync, rexec, and FTP and allow them to operate in a secure and encrypted manner, while still maintaining the same functionality.
     * **Secure Terminal/Console-Based Access**
         * a system for secure local access
         * typically a Virtualized KVM (Keyboad video mouse) system with access controls
@@ -175,6 +186,10 @@
         * Inbound / outbound traffic inspection
         * Centeralized security policy management and enforcement
 * Network Security
+    * **VLANs**
+        * network segregation
+        * includes the isolation og production and nonproduction systems as well as the separation and isolation og application tiers specifically the presentation, application, and data tiers or zones. 
+        * With the proper congiguration og machines grouped in a VLAN, they will only see the other servers in the same VLAN, so communication outside the VLAN can be more easily and greatly restricted, while allowing internal server-to-server communications in an easier and more efficient manner.
     * **Network Security Group (NSG)**
         * provide additional layer of security for cloud resources
         * act as a _virtual firewall_ for virtual networks and resource instances (e.g. VMs, databases, subnets)
@@ -184,7 +199,6 @@
         * Restricting services that are permitted to access or be accessbilt from other zones using rules to control in/outbound traffic
         * Rules are enforced by the IP address range of each subnet
         * Within a virtual network, segmentation can be used to achive isolation
-    
     * **Private Subnets**
         * cannot connect directly to the internet (requires a NAT gateway to be set up for outbound connectivity)
         * use one of the following IP address ranges as defined in [RFC 1918](https://datatracker.ietf.org/doc/html/rfc1918):
@@ -192,6 +206,22 @@
             * **172.16.0.0 - 172.31.255.255 (172.16/12 prefix)**
             * **192.168.0.0 - 192.168.255.255 (192.168/16 prefix)**
         * all other IP address ranges, except the APIPA _169.254.x.x_, are public addresses.
+    * **Transport Layer Security (TLS)**
+        * replace Secure Sockets Layer (SSL) as the default acceptable method for traffic encryption across a network
+        * use x.509 certificates to provide authenticaiton and encrypt communications sent over the connection between two parties
+        * two layers
+            * **TLS Handshake Protocol**
+                * negotiates and establishes the connection between two parties and enables the secure communications channel to then handle data transmissions
+                * protocol exchanges all information needed by several messaging exchanges containing information and status codes for key exchange and establishes a session ID for the overall transaction
+                * certificates are used at this stage to authenticate and establish the connection to the satisfaction of both parties
+                * encyrption algorithms are negotiated
+                * handshake is completed before any data is transmitted
+            * **TLS Record Protocol**
+                * actual secure communications method for the transmitting of data
+                * responsible for the encryption and authentication of packets throught their transmission between the parties and in some cases it also performs compression of the packets
+                * limited to just operations of sending and recieving
+                * handshake can hold the secure communications channels, at which point, the record protocol will, as needed, ultilize send and recieve functions for data transmission
+                * relies entirely on the handshake protocol for all parameters used during its transaction and function calls
 * Security Zones:
     * **Network Boarder Firewall**:
         * ![NBF](images/network-boarder-firewall.png)
@@ -225,6 +255,7 @@
 * Virtual Private Network (VPN)
     * extends private network across a public network
     * enabling users and devices to send and recieve data across shared or public networks as if their computing devices were directly connected to the private network
+    * IPSec can add 100 bytes or more to each transmitted packet in overhead, so on a large network with substantial traic, the impact on resources can be enormous.
     * **Split tunnel**
         * using VPN for traffic destined for the corporate network only
         * internet traffic is direct through its normal route
@@ -243,14 +274,15 @@
     * Cloud VPCs take the form of a dedicated VLAN for a specific user organization, which means other cloud tenants are blocked from accessing resources in the VPC
     * Enable VLAN prunning which removes unsued VLANs
     * Disable unnescessary protocols on switches
-    * VPC Connectivity
-        * connect a VPN using Layer 2 [Tunneling Protocol(L2TP)](https://en.wikipedia.org/wiki/Layer_2_Tunneling_Protocol)/IPSec with a VPC gateway (aka transit gateway)
-            * common for hybrid connectivty
-        * Network peering is another method
-            * more common option between cloud networks
+* VPC Connectivity
+    * connect a VPN using Layer 2 [Tunneling Protocol(L2TP)](https://en.wikipedia.org/wiki/Layer_2_Tunneling_Protocol)/IPSec with a VPC gateway (aka transit gateway)
+        * common for hybrid connectivty
+    * Network peering is another method
+        * more common option between cloud networks
 * DNS Security Extensions (DNSSEC)
     * Domain Name System (DNS) Servers
         * translates domain names into IP addresses
+        * Locking down DNS servers and disabling zone transfers are best practices
         * Network layer function leveraging UDP port 53
         * DNS Resolution
         ![DNS](images/what-is-a-dns-server.png)
@@ -282,11 +314,14 @@
         ```
         * some content filters alter DNS query results
     * DNSSec
-        * set of specifications primarily aimed at reinforcing the integrity of DNS
+        * security extension to the regular DNS protocol and services that allows for the validation of integreity of DNS lookups
+        * does not address confidentiality or availability, though, at all
         * leverages digital signatures for cryptographic autentication of DNS records (zone signing)
         * provides proof of orgin and makes cache poisoning and spoofing attacks more difficult
         * however does not provide confidenitality as the digital signatures rely on publicly decryptable information
-        * allows responses to be validated
+        * It allows for a DNS client to perform DNS lookups and validate both their origin and authority via the cryptographic signature that accompanies the DNS response. 
+        * When a client makes a request for a DNS lookup, the digital signature can validate the integrity of the DNS record, while otherwise performing the typical way DNS records are processed and cached, so modifications to applications and code are not required for the use of DNSSEC.
+        * Will NOT prevent or mitigate DoS attacks on the DNS servers, it can be used to greatly mitigate or eliminate common integrity attacks
     * Threats to DNS
         * Footprinting
             * An attacker attempts to gather all DNS records for a domain via zone transfer in order to map out the target environment
@@ -296,6 +331,7 @@
             * An attacker redirects queries to a server that is under the attacker's control
         * Spoofing
             * An attacker provides incorrect DNS information for a domain to a DNS server, which then gives out that incorrect information (also known as a DNS poisoning)
+            * DNSSEC help in migitating this as the DNS record can be validated to come from the officially signed and registered DNS zone, and not from a rogue DNS server or other process attempting to inject malicious traffic into the data stream.
 * Internet Protocol (IP)
     * Routes information across networks
     * Provides and IP addressing scheme
@@ -484,11 +520,7 @@
     * Windows only command which combines ping and tracert functionality
 
         
-Network Security Controls (e.g., firewalls,
-intrusion detection systems (IDS), intrusion
-prevention systems (IPS), honeypots, vulnerability
-assessments, network security groups, bastion
-host)
+**Network Security Controls**
 * Bastion Host
     * a host used to allow administrators to access a private network from a lower security zone
     * will have a network interface in both the lower and higher security zones
@@ -500,14 +532,24 @@ host)
     * Application, host, and virtual
     * WAF
     * Next Gen
-* Intrusion Detection and Prevention Systems (IDS, IPS)
-    * Host-based (HIDS and HIPS)
-    * Network (NIDS and NIPS)
-    * Hardware vs Software
+* Intrusion Detection Systems (IDS) 
+    * designed to analyze network packets, compare their contents or characteristics against a set of configurations or signatures, and alert personnel if anything is detected that could constitute a threat or is otherwise designated for alerting.
+    * passive
+    * often generates a large number of false positives
+    * Types
+        * Host Instrusion Detection System (HIDS)
+            * runs on a single host and only does analysis of packets for that host (inbound/outbound)
+            * typically monitors critical system files and configs for modification
+        * Network Intrusion Detection System (NIDS)
+            * placed at various points in a network and can analyze all network traffic for the same threats
+* Intrusion Prevention Systems (IPS)
+    * works in the same way as an IDS except being reactive in nature and can immeidately and automatically stop and prevent attacks as they occur instead of being passive
+    * does deep analysis of network packets, has variety of methods available to block or terminate something that it determines to be an attack
+    * Types
+        * Host Intrusion Prevention System (HIPS)
+        * Network Intrusion Prevention System (NIPS)
 
-Operating system (OS) hardening through
-he application of baselines, monitoring and
-remediation
+**Operating system (OS) hardening through the application of baselines, monitoring and remediation**
 * Baseline/Secure Configuration Guides
     * Concepts
         * Control
@@ -551,6 +593,7 @@ remediation
         * [OpenSCAP](https://www.open-scap.org/)
             * suite of tools to perform security compliance scanning & audits
 
+
     
 **Patch Management**
 * the process of identifying, acquiring, installing and verifying patches for products, applicartions and systems
@@ -571,6 +614,19 @@ remediation
     * customer notification (if required)
     * verification of successful patching
     * risk management in case of unexpected outcomes after applying patches (roll back plan)
+* Windows
+    * Windows Server Update Service (WSUS) 
+        * toolset to perform patch management
+        * the tool downloads patches and hotfixes from Microsoft's servers, and then administrators can use it to update the Window machines under their control in a centrallized and automated way
+        * free service and a component of windows
+    * Microsoft Deployment Toolkit (MDT)
+        * a collection of tools and processes to facilitate the automation of server and desktop deployments through the use of system images
+        * can also be used in a configuration management and security management role
+        * often used to complement WSUS
+* Linux
+    * Not all Linux distros contain the same toolsets, utilities, applications, or configuration paradigms, so while the overall methodology for Linux will be consistent, the specific application of it will often be dependent on the distro to some extent.
+* VMware
+    * comes with the vSphere Update Manager (VUM) utility which can be used to automate patches of both vSphere hosts and virtual machines running under them
 * [NIST SP 800-40](https://csrc.nist.gov/publications/detail/sp/800-40/rev-4/final) - Guide to enterprise patch management
 * Challenges
     * Lack of standardization of patches
@@ -599,6 +655,10 @@ remediation
     * Idempotent
         * can be applied multiple times without changing the results
 
+**Availability of Standalone Hosts**
+* physical host is isolated in what it does from other systems
+* operates independently of others
+
 **Availability of Clustered Hosts**
 * Cluster advantages include high availability via redundancy, optimized performance via distrabuted workloads, and the ability to scale resources
 * **Cluster Management Agent**
@@ -615,7 +675,7 @@ remediation
     * allows reassignment/balance of workloads between resources pools (VMotion)
     * Anti-affinity rules keeps VMs on separate hosts
     * Affinity rules can be used to keep VMs on the same host
-* **Dyanmic Optimization**
+* **Dyanmic Optimization (DO)**
     * Shifts workloads automatically
     * is Microsft's DRS equivalent delivered through their cluster management software
 * **Maintenance mode**
@@ -645,8 +705,8 @@ remediation
 * CSP should implement monitoring to ensure that they are able to meet customers demands and promised capactity
 * CORE 4 Monitoring should include utilization, performance and availability of (applies to both CSP and customers):
     1. CPU
-    2. Memory
-    3. Storage
+    2. Disk
+    3. Memory
     4. Network
 * alerts should be generated based on established thresholds and appropriate plans initiated (applies to both CSPs and customers)
 * Key Metrics
@@ -704,7 +764,7 @@ remediation
     * Isolated network
 
 
-## 5.3 Implment operation controls and standards (e.g., Information Technology Infrastructure Library (ITIL), International Organization for Standardization/International Electrotechnical Commission (ISO/IEC) 20000-1)
+## 5.3 Implment Operation Controls and Standards (e.g., Information Technology Infrastructure Library (ITIL), International Organization for Standardization/International Electrotechnical Commission (ISO/IEC) 20000-1)
 
 **ISO/IEC 20000-1**
 * Definition:
@@ -715,7 +775,7 @@ remediation
         * https://www.iso.org/standard/70636.html
 
 **The ITIL Model**
-* Information Technology Infrastructure Library (ITIL) is set of best practices for IT managment
+* [Information Technology Infrastructure Library (ITIL)](https://www.axelos.com/best-practice-solutions/itil) is set of best practices for IT managment
 * analyzes the work of info tech organizations and divides it into 34 practices that organizations should consider implementing, which are divided into 3 categories:
     * General Management
         * 14 practices
@@ -770,6 +830,13 @@ remediation
 * policy that details how changes will be processed in an organization
 * helps reduce outages or weakened security from unauthorized changes
 * **Versioning** uses a labelling or numbering system to track changes in updated versions of software
+* Request for Change (RFC)
+    * ticket containing all relevant details of the change being requested, included testing results
+* Change Advisory Board (CAB)
+    * committee that reviews the RFC tickets and approve/denies large and significant changes
+    * made up of representatives from throughout the organization with different roles
+* Change Manager
+    * plays a significant role with the CAB, but in most instances can approve only minor or corrective changes, without having to go through the full process with the CAB.
 * Automating change management
     * change reviews in CI/CD and IaC may be partially automated when new code is ready for deployment
     * reduces operational overhead and human error, reduces security risk, and enables more frequent releases while maintaining a strong security posture
@@ -779,21 +846,16 @@ remediation
     * Ensure changes are proritized, planned, and test
     * Reduce overal business risk
 
-
 **Continuity Management**
 * concerned with **availability** aspect of the CIA triad
 * various standards related to continuity management
-    * NIST Risk Management Framework
-        * https://csrc.nist.gov/projects/risk-management/about-rmf
-    * ISO/IEC 27000
-        * https://www.iso.org/standard/73906.html
+    * [NIST Risk Management Framework](https://csrc.nist.gov/projects/risk-management/about-rmf)
+    * [ISO/IEC 27000](https://www.iso.org/standard/73906.html)
     * Both deal with business continuity and disaster recovery terms that fall under the larger category of continuiting management
-    * Health Insurance Portability and Accountability Act (HIPAA)
+    * [Health Insurance Portability and Accountability Act (HIPAA)](ttps://www.cdc.gov/phlp/publications/topic/hipaa.html)
         * standard that governs how healthcare data is managed in the US
         * manadates adequate data backups, DR planning and emergency access in the the event of a system interruption
-        * https://www.cdc.gov/phlp/publications/topic/hipaa.html
-    * ISO/IEC 22301-2019 Security and resilience - BC Management Systems
-        * https://www.iso.org/standard/75106.html
+    * [ISO/IEC 22301-2019 Security and resilience - BC Management Systems](https://www.iso.org/standard/75106.html)
         * specifies the requirements needed for an organization to plan, implement and operate, and continually improve the continuity capability
 * prioritized list of systems and services must be created and maintained
     * the list is created through a buisness impact analysis which identifies the systems and services that are critical to the business
@@ -842,6 +904,8 @@ remediation
 
 **Continual Service Improvement Management**
 * one critical element includes areas of monitoring and measurement
+* [ISO/IEC 20000](https://en.wikipedia.org/wiki/ISO/IEC_20000)
+    * Continual Improvement
 * taking form of security metrics
 * metrics need to be tailored to the audience they will be presented to, which often means "executive friendly"
 * metrics should be used to aggregate information and present it in an easily understood, actionable format
@@ -865,8 +929,7 @@ remediation
         * Root cause is addressed and time to return to normal operations is estimated and executed
     6. Lessons Learned
         * helps prevent recurrence, improve IR process
-* **NIST SP 800-61 rev2**
-    * https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
+* [NIST SP 800-61 rev2](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
     * "Compute Security Incident Handling Guide"
     * popular security incident management methodology
     * See 5.6 for deeper details

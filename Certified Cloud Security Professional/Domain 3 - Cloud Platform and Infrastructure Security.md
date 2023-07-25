@@ -63,6 +63,11 @@ Control Frameworks
 * Cloud carrier
     * organization that provides connectivity between the CSP and the cloud customer
     * should be redundant on different carriers
+* Virtual Local Area Networks (VLANs) 
+    * software/virtual separation of networks
+    * not dependent on physical network devices and, as such, can span across data centers, regardless of where hardware is physically located; 
+    * servers do not need to be in the same racks or even connected to the same switches or routers.
+    * allow dedicated IP address spacing for servers that are in the same class or belong to the same application or customer, giving enhanced security and isolation rom other systems at the network level. 
 * Network functionality
     * Address allocation (DHCP)
     * Access Control (IAM)
@@ -86,12 +91,13 @@ Control Frameworks
 * Reservation
     * a min resource that is guarranteed to the customer
 * Limits
-    * max utilizatioin of compute resource by a customer (e.g. VM)
+    * max utilization of compute resource by a customer (e.g. VM)
     * limits are allowed to change dynamically based on current conditions and consumption
 * Shares
     * a weighting given to a particulare VM used to calculate percentage-based access to pooled resources when there is contention
     * in cases of shortage, host scoring determines who gets capacity
         * ex: Spot instances
+    * controls customer requests for resource allocations in case the environment does not have the current capability to provide these resources
 * Responsibilities
     * CSP remains responsible for maintenance and security of the physical components
     * customer is responsible largley for their data and users
@@ -265,7 +271,8 @@ Control Frameworks
     * [ISO 27001:2022](https://www.iso27001security.com/html/27001.html)
     * ITIL - best practices framework for IT service management (ITSM)
     * [Building Industry Consulting Service International (BICSI) | ANSI/BICSI 002-2014/002-2019](https://www.bicsi.org/standards/available-standards-store/single-purchase/ansi-bicsi-002-2019-data-center-design)
-        * Covers cabling design and installation
+        * Created in 1977
+        * focused on cabling design and setups and also includes specifications on power, energy efficiency, and hot/cold aisle setups.
     * [International Data Center Authority (IDCA) | Infinity Paradigm](https://idc-a.org/)
         * Covers data center location, facility structure, and infrastructure and applications
     * [National Fire Protection Associate (NFPA)](https://www.nfpa.org/)    
@@ -324,7 +331,7 @@ Control Frameworks
             * fully redundant infrastructure including dual commercial power feeds, dual back generators
         * Expected 99.995% uptime
 
-**Environmental design (e.g., Heating, Ventilation, and Air Conditioning (HVAC),multi-vendor pathway connectivity)**
+**Environmental Design**
 * Heating, Ventilation, and Air Condition (HVAC)
     * DC’s used to be very cold
     * Environmental threats are major risks to equipment
@@ -333,8 +340,8 @@ Control Frameworks
     * Current standards for data center cooling come from the [American Society of Heating, Refrigeration and Air Conditioning Engineers (ASHRAE)](https://www.ashrae.org/).  
         * The standard is called the “expanded environment envelope”
         * Maintaining proper HVAC and humidity
-            * 64.4F - 80.6F (18-27C) → HVAC (Expanded Envelope)
-            * 41.9F - 50F (5.5-15C) → Humidity (Dew point Range) → Sweet Spot
+            * **Temperature** -> 64.4F - 80.6F (18-27C) → HVAC (Expanded Envelope)
+            * **Humidity** -> 40-60 percent relative Humidity
     * Servers draw cool air in the front and expel hot air out back
     * ![Server hot/cold](../Certified%20In%20Cybersecurity%20(CC)/images/server.png)
     * Hot/Cold aisle approach makes cooling data centers more efficient
@@ -508,20 +515,17 @@ Control Frameworks
 
 ## 3.4 Plan and implementation of security controls
 
-**Standards**
-* Standards
-    * NIST SP 800-14:
-        * General principles and practices for securing IT systems
-        * https://csrc.nist.gov/publications/detail/sp/800-14/archive/1996-09-03
-    * NIST SP 800-123
-        * General server security
-        * https://csrc.nist.gov/publications/detail/sp/800-123/final
 **Physical and Environmental protection (e.g.,on-premises)**
 * The North American Electric Reliability Corporation Critical Infrastructure Protection (NERC CIP) plan is a set of standards aimed at regulating, enforcing, monitoring and managing the security of the Bulk Electric System (BES) in North America
 * https://www.nerc.com/comm/RSTC/Pages/default.aspx
-* Standards
-    * NIST SP 800-14
-    * NIST
+* * Standards
+    * [NIST SP 800-14](https://csrc.nist.gov/publications/detail/sp/800-14/archive/1996-09-03):
+        * General principles and practices for securing IT systems
+        * Withdrawn March 16, 2018
+        * contents is split into NIST SP 800-12 rev 1, SP 800-53, SP 800-30 Rev 1, and SP 800-39
+    * [NIST SP 800-123](https://csrc.nist.gov/publications/detail/sp/800-123/final)
+        * General server security
+        * to assist organizations in understanding the fundamental activities performed as part of securing and maintaining the security of servers that provide services over network communications as a main function. The document discusses the need to secure servers and provides recommendations for selecting, implementing, and maintaining the necessary security controls.
 * Considerations
     * site location is primary
     * requirements

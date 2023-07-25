@@ -12,6 +12,7 @@
         * ensure data is handled properly, using encryption at rest
         * ensure data is classified as soon as possible
         * logging monitoting
+        * can be in parallel with creation
     * Use
         * data should be protected by adequate security controls based on its classification
         * Apply DLP, RO, IRM
@@ -102,10 +103,14 @@
             * NoSQL
             * text files, media or other file types
     * SaaS
-        * Information Storage and Mgmnt
+        * Information Storage and Management
             * Data entered via the web interface
+            * used by the application
         * Content/File Storage
             * File-based content - NAS
+        * Long-Term Storage
+            * storage tiers (archvial)
+            * "frozen" "cold" "archive", etc
         * Ephermeral Storage
             * its used for any temporary data such as cache, buffers, session data, swap volume, etc.
         * Content Delivery Network (CDN)
@@ -173,6 +178,16 @@
 ## 2.3 Design and apply data security technologies and strategies
 
 **Encryption and Key Management**
+* Encryption
+    * architecture of an encryption system has three basic components: 
+        * the data itself, 
+        * the encryption engine, aka cryptographic engine, that handles all the encryption activities, 
+        * and the encryption keys employed in the actual encryption and use of the data
+    * Encryption with Data States
+        * in use, at rest or in motion
+        * Digital Rights Management (DRM), Information Rights Management (IRM), or homomorphic encryption (data in use)
+        * TLS/SSL, VPN, IPSec, and HTTPS used for securing data in transit/motion
+        * strong file-level and/or storage-level encryption for data sitting idle (at rest)
 * Cryptography
     * Use of mathematical algorithms to transform information into an encrypted form that is not readable by unauthorized individuals
     * Two basic operations
@@ -471,6 +486,7 @@
 
 **Data loss prevention (DLP)**
 * system designed to identify, inventory, and control the use of data that an organization deems sensitive
+* also known as _data leaking prevention_
 * spans several categories of controls including detective, preventative, and corrective
 * DLP policies can be typically applied to email, sharepoint, cloud storage, removeable devices, and databases
 * way to protect sensitive information and prevent its inadvertent disclosure
@@ -513,16 +529,50 @@
     * Performance impact
     * Admin Access
     * CSP Approval (Hardware based)
+* Caution:
+    * DLP on end-user devices can be a particular challenge for any cloud application. Because it requires the end user to install an application or plug-in to work, you will need to make sure you fully understand the types of devices your users will be utilizing, as well as any costs and requirements associated with the use of the technology. 
+    * The growth of “bring your own device” (BYOD) within many organizations will also have a profound impact on any DLP strategies and should be reflected in policies.
+* Challenges
+    * Data storage spread across large storage systems (with replication and redundancy) can pose issues for data discovery and monitoring more difficult
 
 **Data De-Identification (Anonymization)**
-* **Anonymization**
-    * The process of removing direct and indirect identifiers
-    * Can be done via sampling data/generalizing the data to ensure the group shares the same value for sensitive data
-    * This would make it hard to identify a single person because the sensitve data is the same for all users
-* **K-Anonymity**
-    * an industry term used to describe a **technique** for hiding an invidual's identity in a group of similar persons
-    * https://cloud.google.com/dlp/docs/concepts-risk-analysis#about-k-anonymity
-    * https://cloud.google.com/dlp/docs/compute-k-anonymity
+* **Data Obfuscation**
+    * Reduce GDPR Exposure
+    * Used to produce test data out of production data
+    * Steps to reduce or eliminate GDPR requirements
+    * **Anonymization**
+        * process of removing all relevant data so that is is impossible to identify original subject or person
+        * if done effectively, then GDPR is no longer relevant for the anonymized data
+        * good only if you no longer need the data!!
+    * **Pseudonymization** 
+        * de-indentification procedure using pseudonyms (aliases) to represent other data
+        * can result in less stringent requirements than would otherwise apply under the GDPR
+    * **Data Masking**
+        * Redacts sensitive information with blanks or characters
+            * i.e. `**** **** **** 1234`
+            * Two types
+                * **Static**
+                    * separate and distinct copy of the data set is created with masking in place
+                    * done via script or other process that will take the standard data set, process it to mask appropriate and predefined fields, and then output the data set as a new one with the completed masking done
+                    * most appropriate for data sets that are created for nonproduction environments, where testing is necessary or desired and having a data set very similar in size and structure to production is paramount. 
+                * **Dynamic**
+                    * production environments are protected by the masking process being implemented between the application and data layers of the application. This allows for a masking translation to take place live in the system and during normal application processing of data.
+                    * usually done where a system needs to have full and unmasked data but certain users should not have the same level of access.
+    * **Shuffle**
+        * shuffles data between fields
+    * **Deletion**
+        * Deletes the data or uses a null value
+    * **Pseudonymization**
+        * de-indentification procedure in which personally identifiable information (PII) fields within a data record are replaced by one or more artificial identifiers, or pseudonyms (aliases)
+        * reversal requires access to another data source
+    * **Anonymization**
+        * The process of removing direct and indirect identifiers
+        * Can be done via sampling data/generalizing the data to ensure the group shares the same value for sensitive data
+        * This would make it hard to identify a single person because the sensitve data is the same for all users
+    * **K-Anonymity**
+        * an industry term used to describe a **technique** for hiding an invidual's identity in a group of similar persons
+        * https://cloud.google.com/dlp/docs/concepts-risk-analysis#about-k-anonymity
+        * https://cloud.google.com/dlp/docs/compute-k-anonymity
 * **Identifer Types**
     * Direct
         * Data that directly identifies someone (i.e name, address, DOB, SSN, etc)
@@ -563,8 +613,7 @@
         * Integrity
             * provides assurances that the message has not been modified or corrupted
     * Example:
-        * ![Digital Sig](images/digital-sigs.png)
-    
+        * ![Digital Sig](images/digital-sigs.png)    
 * Public Key Infrastructure (PKI)
     * Concepts
         * Key Management
@@ -630,16 +679,11 @@
 
 ## 2.4 Implement data discovery
 
-**Data Discovery**
-* Identifies stored data
-* Work to create a **data inventory**
-
 **Data Types**
 * Structured data
     * data contained in rows and columns, such as an excel spreasheet or relational database (Excel, MSSSQL, MySQL, etc)
     * often includes a description of its format know as a data model or schema, which is an abstract view of the data's format in a system
-    * data structured as elements, rows, or tuples is given context through schema
-   
+    * data structured as elements, rows, or tuples is given context through schema 
 * Unstructured data
     * data that cannot be contained in a row-column database and does not have an associated data model (images, video files, social media posts, etc)
     * Discovery occurs through **content analysis**, which attempts to parse all data in a storage location and identify sensitive information
@@ -654,6 +698,7 @@
     * a combination of structure and unstructured data (JSON, XML, emails, NoSQL)
     * may contain metadata to help organize
     * data model is flexbile
+
 * **Disocovery methods / techniques**
     * Metadata
         * information that describes file (owner, size, creation date, etc)
@@ -673,7 +718,9 @@
 * tools must be able to scan unsctructure data within structured datasources, such as relation databases
 * both unstructured and structured in same repository will increase tool cost and complexity and my present classification challenges
 
-Data Discovery
+**Data Discovery**
+* Identifies stored data
+* Work to create a **data inventory**
 * Ensures data is appropriately classified for protection
 * Types
     * Metadata-Based Discovery
@@ -682,6 +729,21 @@ Data Discovery
     * Lable-Based Disovery
         * Based on examining lables created by the data owners during the **CREATE** phase (or bulk with a scanning tool)
         * Can be used with databases but is more commonly used with file data
+
+**Privacy Roles and Responsibilities**
+* **Physical environment**
+    * sole responsibility of the CSP for all cloud models
+* **Infrastructure**
+    * Sole responsibility of the CSP for PaaS and SaaS
+    * With shared responsibility for IaaS between CSP and cloud customer
+* **Platform**
+    * Sole responsibility of the CSP for SaaS, shared responsibiltiy for Paas, and responsibility of the cloud customer for IaaS
+* **Application**
+    * Shared responsibility for SaaS and sole resp of the cloud customer for both IaaS and PaaS
+* **Data**
+    * Sole responsibility for the cloud customer for all models
+* **Governance**
+    * Sole responsibility for the cloud customer for all models
 
 ## 2.5 Plan and implement data classification
 
@@ -735,11 +797,13 @@ Data Discovery
     * to encrypt, not to encrypt
     * internal use, limited sharing
     * sensitive
-* Sensitive Data
-    * Intellectual Property (IP)
-    * Patient medical information (PHI)
-    * Personally identifiable information (PII)
-    * Federally protected data (FERPA)(student information)
+
+**Sensitive Data**
+* Intellectual Property (IP)
+* Patient medical information (PHI)
+* Personally identifiable information (PII)
+    * Cardholder Data (CD) also falls under PII but more related to the the credit card or banking industry i.e card numbers, expiration dates, security codes
+* Federally protected data (FERPA)(student information)
 
 ## 2.6 Design and implement Information Rights Management (IRM)
 
@@ -772,9 +836,12 @@ Data Discovery
     * Offers an alternative to patent protection
     * Inventor doesnt want to make the invention public and keeps the details secret
 
+**Data Rights Management (DRM)**
+* applies to the protection of consumer media, such as music, publications, video, movies, and so on. 
+* In this context, IRM applies to the organizational side to protect information and privacy, whereas DRM applies to the distribution side to protect intellectual property rights and control the extent of distribution.
 
 **Infromation Rights Management (IRM)**
-* programs that enforce data rights, provisioning access, and implementing access control models
+* programs that enforce data rights management (DRM), provisioning access, and implementing access control models
 * often implemented to control access to data designed to be shared but not freely distributed
 * can be used to block specific actions, like print, copy/paste, download, and sharing
 * provide file expiration so that documents can no longer be viewed after a specified time
@@ -798,6 +865,12 @@ Data Discovery
     * Secrets storage
         * require local storage for encryption keys, tokens, or digital certificates used to validate users and access authorizations
         * local storage requires protection primarily for data integrity to prevent tampering with the material used to enforce IRM
+    * IRM typical tool features
+        * Auditing
+        * Expiration
+        * Policy control
+        * Protection
+        * Support for applications and formats
 
 **Access Models**
 * **Mandatory Access Control (MAC)**:
@@ -814,6 +887,7 @@ Data Discovery
 **Data Retention Policies**
 * Retention occurs within the Archive and Destroy phases of the data life cycle
 * Driven by security policies and regulatory requirements
+* imperative to address the formats and storage methods as well as the security that will be utilized along with the preservation decisions.
 
 
 **AWS Config**
@@ -823,11 +897,10 @@ Data Discovery
 
 
 **Data Deletion Procedures and Mechanisms**
-* Crypto-Shredding
+* Cryptographic Erasure ("Crypto-Shredding")
     * https://en.wikipedia.org/wiki/Crypto-shredding
     * ![Crypto-Shredding](images/crypto-shredding.png)
     * Most secure form of data destruction
-    * "cryptographic erasure"
     * Data is encrypted with a strong encryption engine
     * keys used to encrypt the data are then encrypted using a different encryption engine
     * keys from the second round of encryption are destroyed
@@ -835,6 +908,9 @@ Data Discovery
         * Data cannot be recovered from any remnants
     * Con
         * High CPU performance overhead
+* Overwritting
+    * he process of using random data or null pointers to write over the data sectors that previously contained sensitive or proprietary information.
+    * doesnt have a high degree of confidence for security
 
 **AWS Data Sanitization Procedures**
 * AWS uses techniques outline in NIST 800-88 when decommissioning customer data

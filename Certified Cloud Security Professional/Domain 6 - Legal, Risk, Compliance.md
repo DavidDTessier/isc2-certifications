@@ -57,6 +57,7 @@
 * **Administrative Law**
     * policies, procedures, and regulations that govern the daily operations of government and government agencies
     * HIPAA falls into this category
+    * Code of Federal Regulations (CFR)
 * **Contitutional Law**
     * highest possible source of law in the US
     * no laws from other sources may conflict with the provisions of the US Constitution
@@ -191,7 +192,17 @@
 
 
 **eDiscovery**
-* ISO/IEC 27050
+* [ISO/IEC 27050](https://www.iso27001security.com/html/27050.html)
+    * This multi-part standard concerns the discovery phase, specifically the discovery of Electronically Stored Information, a legal term-of-art meaning (in essence) forensic evidence in the form of digital data. Electronic discovery (eDiscovery) involves the following main steps:
+        1. **Identification**
+        2. **Preservation**
+        3. **Collection**
+        4. **Processing**
+        5. **Review**
+        6. **Analysis**
+        7. **Production**
+    * attempts to address the enormous volume of data that organizations produce and hold, the complex and disparate methods by which this data is stored and processed, as well as the challenges with how quickly and easily electronic data and records can be produced, stored, shared, and destroyed.
+    * allows cloud providers to structure their support and operations around the framework and best practices put forward as well as to advertise that compliance to cloud customers and potential customers.
 * Complexities/Considerartions in the Cloud
     * CSPs may not preserve essentail data for the required period of time to support historical investigations
     * they may not even log all the data relevant to support an investigation
@@ -234,7 +245,7 @@
 * ISO/IEC and CSA provide guidance on best practices for collecting digital evidence and conducting forensics investigations in the cloud
 * see Domain 5
 
-## 6.2 Understand privacy issues
+## 6.2 Understand Privacy Issues
 
 **Difference between contractual and regulated private data**
 * **Personally Identifiable Information (PII)**
@@ -302,66 +313,70 @@
                 * each country in the EU for which data is processed must approve the wording of the contract
             * Joins the Safe Harbor or Privacy Shield program in its own country
 * United States
-    * no single federal law governing data protection. There are few restrictions on the transfer of personal data outside the US, which makes it easy to use CSPs located outside the US.
-    * However, the Federal Trade Commission (FTC) and US regulators hold that applicable to US laws and regulations apply to data after it leaves the US, and the US-regulated entities that send data abroad remain liable for:
+    * no single federal law governing data protection (security and/or privacy). 
+    * there are few restrictions on the transfer of personal data outside the US, which makes it easy to use CSPs located outside the US. However, the Federal Trade Commission (FTC) and US regulators hold that applicable to US laws and regulations apply to data after it leaves the US, and the US-regulated entities that send data abroad remain liable for:
         * Data exported outside the US
         * The processing of data by subcontractors outside the US
         * Subcontractors abroad using the same level of protection for regulated data
-* National, Territory, and State Laws (US)
-    * **Gramm-Leach-Bliley Act (GLBA) of 1999**
-        * focuses on services of banks, lenders, and insurance
-        * severely limits services they can provide and the information they can share with each other
-        * regulates fin institutions
-        * requires a written info sec program
-        * requires a designated sec officer
-        * Limits sharing of fin records
-        * Consists of three main sections:
-            * **The Financial Privacy Rule**
-                * regulates the collection and disclosure of private financial information
-            * **The Safeguards Rule**
-                * stipulates that financial institutions must implement security programs to protect such information
-            * **The Pretexting provisions**
-                * prohibit the practice of pretexting (accessing private information using false pretenses)
-    * **Children's Only Privacy Protection Act (COPPA)**
-        * Protects privacy of children under 13
-        * Requires that websites have a privacy policy
-        * Provides for parental inspection and deletion of information
-        * Requires parental consent for data collection
-    * **Safe Harbor Program**
-        * developed by the US and EU to address concerns that the US does not have a regulatory framework that provides adequate protection for personal data transferred from the European Economic Area (EAA)
-    * **Privacy Shield**
-        * As of July 12, 2016, the EU reversed its decision on the legal adequacy of the US Safe Harbor program. 
-        * Privacy Shield replaces the Safe Harbor Program which the EU deems adequate for protecting personal information
-        * managed by the FTC
-        * international agreement between the US and the EU
-        * allows transfer of personal data from the European Economic Area (EEA) to the US by US based companies
-        * NOT an indicator of GDPR compliance
-        * Organizations commit to sever principles of the agreement:
-            * Notice
-            * Choice
-            * Security
-            * Access
-            * Accountability for onward transfer
-            * Data integrity and purpose limitation
-            * Recourse, enforcement, and liability
-    * **The Stored Communication Act (SCA) of 1986**
-        * create privacy protection for electronic communications like email or other digital communications stored on the internet
-        * extends the Fourth Amendment of the US Constitution to the electronic realm
-            * Fourth Amendment:
-                * _Details the people's " right to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures"_
-        * it outlines that private data is protected from authorized access or interception (by private parties or the government)
-        * Very outdated and in need of updating
-    * **Health Insurance Portability and Accountability Act (HIPAA) of 1996**
-        * privacy and security regulations requiring strict security measures for hosiptals, physicians, insurance companies
-        * HIPAA-covered entities are those organizations that collect or generate protected health information (PHI)
-        * under HIPAA there are separate rules for privacy, security, and breach notifications, and flow of these rules down to third parties
-        * under HIPAA, PHI may be stored by CSPs provided that the data is adequately protected
-    * **Clarifying Lawful Overseas Use of Data (CLOUD) Act**
-        * aids in evidence collection in investigation of serious crimes
-        * created in 2018 due to the problems that FBI faced in forcing Microsoft to hand over data stored in Ireland
-        * requires US-based companies to respond to legal requests for data no matter where the data is phyiscally located
-  
-    
+    * **Code of Federal Regulations (CFR)**
+        * a codification (arrangement of) the general and permanent rules published in the Federal Register by the executive departments and agencies of the Federal Government.
+        * federal administrative law documented in the United States
+    * National, Territory, and State Laws (US)
+        * **Gramm-Leach-Bliley Act (GLBA) of 1999**
+            * focuses on services of banks, lenders, and insurance
+            * severely limits services they can provide and the information they can share with each other
+            * regulates fin institutions
+            * requires a written info sec program
+            * requires a designated sec officer
+            * Limits sharing of fin records
+            * Consists of three main sections:
+                * **The Financial Privacy Rule**
+                    * regulates the collection and disclosure of private financial information
+                * **The Safeguards Rule**
+                    * stipulates that financial institutions must implement security programs to protect such information
+                * **The Pretexting provisions**
+                    * prohibit the practice of pretexting (accessing private information using false pretenses)
+        * **Children's Only Privacy Protection Act (COPPA)**
+            * Protects privacy of children under 13
+            * Requires that websites have a privacy policy
+            * Provides for parental inspection and deletion of information
+            * Requires parental consent for data collection
+        * **Safe Harbor Program**
+            * developed by the US and EU to address concerns that the US does not have a regulatory framework that provides adequate protection for personal data transferred from the European Economic Area (EAA)
+        * **Privacy Shield**
+            * As of July 12, 2016, the EU reversed its decision on the legal adequacy of the US Safe Harbor program. 
+            * Privacy Shield replaces the Safe Harbor Program which the EU deems adequate for protecting personal information
+            * managed by the FTC
+            * international agreement between the US and the EU
+            * allows transfer of personal data from the European Economic Area (EEA) to the US by US based companies
+            * NOT an indicator of GDPR compliance
+            * Organizations commit to sever principles of the agreement:
+                * Notice
+                * Choice
+                * Security
+                * Access
+                * Accountability for onward transfer
+                * Data integrity and purpose limitation
+                * Recourse, enforcement, and liability
+        * **The Stored Communication Act (SCA) of 1986**
+            * create privacy protection for electronic communications like email or other digital communications stored on the internet
+            * extends the Fourth Amendment of the US Constitution to the electronic realm
+                * Fourth Amendment:
+                    * _Details the people's " right to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures"_
+            * it outlines that private data is protected from authorized access or interception (by private parties or the government)
+            * Very outdated and in need of updating
+        * **Health Insurance Portability and Accountability Act (HIPAA) of 1996**
+            * privacy and security regulations requiring strict security measures for hosiptals, physicians, insurance companies
+            * HIPAA-covered entities are those organizations that collect or generate protected health information (PHI)
+            * under HIPAA there are separate rules for privacy, security, and breach notifications, and flow of these rules down to third parties
+            * under HIPAA, PHI may be stored by CSPs provided that the data is adequately protected
+        * **Clarifying Lawful Overseas Use of Data (CLOUD) Act**
+            * aids in evidence collection in investigation of serious crimes
+            * created in 2018 due to the problems that FBI faced in forcing Microsoft to hand over data stored in Ireland
+            * requires US-based companies to respond to legal requests for data no matter where the data is phyiscally located
+* Russia
+    * as of september 1, 2015 Russian Law 526-FZ establishes that any collecting, storing, or processing of personal information or data on Russian citizens must be done from systems and databases that are physically located within the Russian Federation
+
 **Jurisdictional Differences in Data Privacy**
 * Different laws and regulations may apply depending on the **location** of:
     * data subject
@@ -392,7 +407,7 @@
             * CSPs must inform customers of where their data resides AND any subcontractors that may process personal data
         * **Communication**
             * Auditing should be in place, and any incidents should be communicated to customers
-        * **Audit**
+        * **Independent and yearly audit**
             * Companies (CSP, in this case) must subject themselves to an independent audit on an annual basis
 * [Generally Accepted Privacy Principles (GAPP)](https://us.aicpa.org/interestareas/informationtechnology/privacy-management-framework)
 * recently replaced with the Privacy Management Framework
@@ -502,25 +517,71 @@
     * Sample size and relevance
         * large environments, representative samples of some infra (20 of 100 servers) may be checked but must be representative of multi-region estate
 
-**Assurance challenges of virtualization and cloud**
+**Identify Assurance Challenges of Virtualization and Cloud**
 * It's difficult to audit the underlying hypervisor and virtualization of many CSPs, as they will not provide access to the underlying systems
 * Provider (CSP) (AWS, GCP, Azure)
     * audits of controls over the hypervisor will usually be the purview of the CSP
 * Customer (Cloud consumers)
     * VMs deployed on top of that hardware are usually under ownership of the customer
+* The main strategy to deal with this is to rely on audits and certifications for the underlying environment that are done in conjunction with the cloud provider and thus can be used by all tenants as the basis for their own audits.
+* cloud provider will then publish to their customers, or to the public, the audit reports and some information about their baseline configurations.
 
 **Types of Audit Reports**
+* **Statement on Auditing Standards (SAS)**
+    * Number 70, commonly known as SAS 70, is a standard published by the American Institute of Certified Public Accounts (AICPA) and is intended to provide guidance for auditors when analyzing service orga- nizations specifically.
+    * deprecated and replaced with the SSAE 18
+    * the definition of a “service organization” is intended to include those that provide outsourced services to an organization, where the services provided impact data and processes within their controlled and secured environment (in this case, the specific application is in regard to hosted data centers). It is also known commonly as a “service auditor’s examination.”
+    * two types
+        * Type 1
+            * focused on an evaluation by the auditor as to the service organization’s declarations, the security controls it has put in place, and the effectiveness of the design of the controls to meet the objectives stated by the service organization.
+        * Type 2
+            * the same information and evaluation is included, but additional evaluations and opinions on behalf of the auditor are added as to the effectiveness in actually meeting the control objectives on behalf of the service organization.
+            * adds an additional qualitative assessment as to the actual effectiveness of the controls as implemented.
+    * primary reason is to present audit reports to current or potential customers as to the state of controls designed and implemented.
 * **Statement on Standards for Attestation Engagements (SSAE)**
     * https://en.wikipedia.org/wiki/SSAE_No._18
-    * SSAE 18 is a set of standards defined by the American Institute of CPAs (AICPA)
+    * SSAE 18 is a set of standards defined by the American Institute of CPAs (AICPA) as of may 1, 2017
+    * supersedes Statement on Auditing Standards (SAS) 70, SAS 78, SASE 16 (replaced SAS 70 as of 2011)
+        * main change from SSAE 16 to SSAE 18 was the addition of a concrete requirement for organizations to conduct formal third-party vendor management programs and implement a formal annual risk assessment process.
+    * the SAS 70 was known as the “service auditor’s examination,” the SSAE 18 is known as the Service Organization Control (SOC) report
     * designed to enhance the quality and usefulness of System and Organization Control (SOC) reports
     * includes audit standards and suggested report formats to guide and assit auditors
+    * the SSAE 18 reports are largely used to help satisfy regulatory requirements, such as SOX, for auditing and oversight of financial systems. 
     * SOC Reports
         * SOC 1
+            * direct replacement of the SAS 70 reports
             * deals mainly with financial controls and are used primarily by CPAs auditing fin statements
             * provides assurance required for customer financial audits
-        * SOC 2
-            * provides assurance of confidentiality, integrity, and availability controls 
+            * it covers the service organization’s controls that are relevant to an audit of a user entity’s (customer’s) financial statements. 
+            * restricted to the operations management of the services organization, user entities, and user auditors.
+            * Control objectives are related to both business processes and information technology.
+                * Type I 
+                    * focuses on a description of a service organization’s control and the suitability/effectiveness of how those controls are designed to achieve the control objectives as of a specified date.
+                * Type II 
+                    * contains the same opinions as a Type I, but it adds an opinion on the operating effectiveness to achieve related control objectives throughout a specified period, at least 6 months. 
+        * SOC 2 - Trusted Services Criteria
+            * report expands on SOC 1 reports and apply to a broad range of service organizations and types
+            * modeled around four broad areas: policies, commounications, procedures, and monitoring
+            * basis of SOC 2 reporting is a model that incorporates "principles"
+            * With the last update to SOC 2 in 2017, five principles were established. Under the guidelines, the security principle must be included with any of the following four to form a complete report of a service organization’s controls:
+                * Availability
+                    * requirements and expectations for uptime and accessibility and ability to meet these parameters set by contract or expectation
+                * Processing Integrity
+                    * system processes information, and it does so in a manner that is accurate, verified, and done only by authorized parties
+                * Confidentiality
+                    * system contains confidential or sensitive information, and information is properly safeguarded to the exten required by regulations, law, or contract
+                * Privacy
+                    * system uses, collects, or stores personal and private information and it does so in a manner that conforms to the organization's stated privacy policy as well as any pertinent regualtions, law, or standards requirements
+                * Security
+                    * made up up seven categories
+                        * Change Management
+                        * Communications
+                        * Logical and physical access controls
+                        * Monitoring of controls
+                        * Organization and management
+                        * Risk management and design and implementation of controls
+                        * System operations
+            * addresses controls related to operations and compliance, as outlined by the AICPA’s Trust Services criteria in relation to its services, operations, and compliance. A service organization may choose a SOC 2 report that focuses on anyone or all five Trust Service principles (Security, Availability, Processing Integrity, Confidentiality, Privacy) and may choose either a SOC 2 Type I certification or a Type II certification.
             * Type 1
                 * report that assesses the design of security processes at a specified point in time 
                 * describes the controls that the service provider has in place and an opionion on the suitability of those controls
@@ -541,7 +602,7 @@
         * **Type I**
             * documenting a "snapshot" of the organization's controls
         * **Type II**
-            * Documenting over a period of time (typicall 12 months) show controls have been managed over time
+            * documenting over a period of time (typicall 12 months) show controls have been managed over time
 * **Security Trust Assurance and Risk (STAR)**
     * https://cloudsecurityalliance.org/star
     * certification program driven by the Cloud Security Alliance (CSA)
@@ -555,7 +616,6 @@
             * requires the CSP to engage an independent auditor to evaluate the CSPs controls against the CSA standard
             * stronger as its a 3rd party audit conducted by a trained qualified auditor
         * **Level 3: Continous Auditing**
-            * 
 * **Agreed-Upon Procedures (AUP)**
     * based on the SSAE, in an AUP an auditor is engaged to report on the findings of procedures performed by the audited party.
     * The auditor provides no opinion, only states identified facts and third party forms their own conclusion based on the report
@@ -585,7 +645,6 @@
         * can affect system performance and possibly require system downtime
         * some new systems arent ready for audit
         * cost of implementing controls is too high 
-
 
 **Gap Analysis**
 * Definition:
@@ -621,15 +680,23 @@
 **Internal Information Security Management System (ISMS)**
 * a systematic approach to information security
 * focuses on processes, technology, and people desgined to help protect and managed an organization's information
-* ISO 27001 addresses need and approaches to implementing an ISMS
+* ISO 27001:2018 addresses need and approaches to implementing an ISMS
     * covers the following domains:
         * A.5 - Security policy management
-        * A.8 - Organizational Asset management
+        * A.6 - Organization of Information Security
+        * A.7 - Human Resource Security
+        * A.8 - Asset management
+        * A.9 - Access Control
         * A.10 - Cryptography policy
-        * A.11 - Physical security policy
-        * A.13 - Network security management
+        * A.11 - Physical and Environmental Security (Policies)
+        * A.12 - Operations Security
+        * A.13 - Network/Communciations security management
+        * A.14 - System Acquisition, Developement, and Maintenance
+        * A.15 - Supplier Relationships
+        * A.16 - Information Security Incident Management
+        * A.17 - Information Security Aspects of Business Continuity Management
         * A.18 - Security compliance management
-* Fucntions
+* Functions
     * Quantify risk
     * Develop and execute risk mitigation strategies
     * Provide formal reporting on status of mitigation efforts
@@ -729,12 +796,13 @@
 * **HIPAA/HITECT**
     * https://www.hipaajournal.com/hipaa-and-hitech/
     * does not specifically address cloud computing
+    * Health Information Technology for Economic and Clinical Health (HITECH) Act
     * both deal with PHI and implement specific requirements for security and privacy protections, as well as breach notification requirements
 * **PCI DSS**
     * specifies protections for payment card transaction data
     * no specific mention of cloud
 
-**Impact of Distributed Information Technology (IT) Model*
+**Impact of Distributed Information Technology (IT) Model**
 * Cloud computing enables distributed IT service delivery with systems that can automatically **replicate data globally**
 * one impact of this distributed model is the additional geographic locations auditors must consider when performing an audit
 * common technique in cloud audits is **sampling**, which is the act of picking a subset of the system's physcial infra to inpect
@@ -756,8 +824,7 @@
     * Look for CSPs who participate in the CSA STAR program
 * Methodologies
     * NIST has a resource library that includes working groups, publications, and other resources, available at https://csrc.nist.gov/Projects/cyber-supply-chain-risk-management
-    * ISO 27000:2022
-        * https://www.iso.org/standard/75652.html
+    * [ISO 27000:2022](https://www.iso.org/standard/75652.html)
         * specifies a security managemen system for security and resilience, with a particular focus on supply chain management
 * Risk Profiles
     * describes the risk present in the organization based on all the identified risks and any associated mitigations in place

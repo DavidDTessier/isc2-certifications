@@ -11,12 +11,14 @@
     * Representational State Transfer (REST)
         * consists of guidelines and best practices for creating scalable web services
     * Simple Object Access Protocol (SOAP)
-        * Protocol for exchanging structured information as part of a web service
+        * Protocol and standard for exchanging structured information as part of a web service
 * REST vs SOAP
-    * REST supports many formats including JSON, XML, and YAML | SOAP onlt supports XML
+    * REST supports many formats including JSON, XML, and YAML | SOAP only supports XML
     * REST uses HTTP/HTTPS for data transfer | SOAP uses HTTP/HTTPS/FTP/SMTP to transfer data
     * REST has good performance and is scalable | SOAP is slower, and scaling is complex
     * REST is widely used | SOAP is used when REST is NOT possible
+    * REST supports caching | SOAP does not support caching
+    * SOAP is more commonly used where design or technical limitations make the use of REST impossible
 * Security By Design
     * declares security should be present throughout every step of the process
     * various models exist to help, like [Building Security In Maturity Model (BSIMM)](https://owasp.org/www-pdf-archive/Bsimm09.pdf)
@@ -26,39 +28,38 @@
         * assesses an organization's process maturity
         * replaces CMM
         * focused on software development
-        * CMMI
-        * Five Levels
-            1. Initial
-                * just getting started with formal development practices
-                * work gets done but is subject to delays and budget overruns
-            2. Managed
-                * begin basic process, i.e code reuse
-                * config management
-                * measurement / analysis
-                * project planning, monitoring, control
-                * QA/QC
-                * Reqs management
-                * supplier agreemtnt mgnmt
-            3. Defined
-                * have formal documented practices
-                * desicion / analysis resolution
-                * integrated project management
-                * Org process def / training / process focus
-                * product integration
-                * reqs development
-                * risk management
-                * technical solution
-                * validation
-                * verification
-            4. Quantitatively Managed
-                * Quantitatve measures to evaluate their progress and effectiveness
-                * organization process performance
-                * quantitative project management
-            5. Optimizing
-                * Continuous process improvemnt
-                * feedback goes back into the dev cycle to improve
-                * causal analysis and resolution
-                * org performance managemtn
+    * Five Levels
+        1. Initial
+            * just getting started with formal development practices
+            * work gets done but is subject to delays and budget overruns
+        2. Managed
+            * begin basic process, i.e code reuse
+            * config management
+            * measurement / analysis
+            * project planning, monitoring, control
+            * QA/QC
+            * Reqs management
+            * supplier agreemtnt mgnmt
+        3. Defined
+            * have formal documented practices
+            * desicion / analysis resolution
+            * integrated project management
+            * Org process def / training / process focus
+            * product integration
+            * reqs development
+            * risk management
+            * technical solution
+            * validation
+            * verification
+        4. Quantitatively Managed
+            * Quantitatve measures to evaluate their progress and effectiveness
+            * organization process performance
+            * quantitative project management
+        5. Optimizing
+            * Continuous process improvemnt
+            * feedback goes back into the dev cycle to improve
+            * causal analysis and resolution
+            * org performance managemtn
     * [IDEAL Model](https://resources.sei.cmu.edu/asset_files/presentation/2001_017_001_23277.pdf)
         * focused on the process to improve itself
         * Five phases
@@ -122,10 +123,46 @@ Common Pitfalls
     * Denial-of-Service
 * Organizations (provide guidance and info on security threats)
     * [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/)
-    * [SANS Institute Top 20](https://www.sans.org/blog/cis-controls-v8/)
-        * ![CSA Top 20](images/CSA-Top-20.png)
+    * [SANS Institute Top 25](https://www.sans.org/top25-software-errors/)
+        1. **CWE-787 Out-of-bounds Write**
+        2. **CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scriptin')**
+        3. **CWE-89 Improper Neutralization of Special Elements used in an SQL commnand ('SQL Injection')**
+        4. **CWE-20 Improper input validation**
+        5. **CWE-125 Out-of-bounds Read**
+        6. **CWE-78 Improper Neutralization of Special Elements used in an OS command ('OS Comman Injection')**
+        7. **CWE-416 Use After Free**
+        8. **CWE-22 Improper limitation of a pathname to a restricted directory ('Path Traversal')**
+        9. **CWE-352 Cross-site Request Forgery (CSRF)**
+        10. **CWE-434 Unrestricted upload of file with dangerous type**
+        11. **CWE-476 NULL pointer dereference**
+        12. **CWE-502 Deserialization of untrusted data**
+        13. **CWE-190 Integer overflow or wraparound**
+        14. **CWE-287 Improper authenticationi**
+        15. **CWE-798 Use of hard-coded credentials**
+        16. **CWE-862 Missing authorization**
+        17. **CWE-77 Improper neutralization of special elements in a command ('Command Injection')**
+        18. **CWE-306 Missing authentication for critical function**
+        19. **CWE-119 Improper restriction of operations within the Bounds of a memory buffer**
+        20. **CWE-276 Incorrect Default Permissions**
+        21. **CWE-918 Server-side Request Forgery (SSRF)**
+        22. **CWE-362 Concurrent execution using shared resource with improper synchronization('Race condition')**
+        23. **CWE-400 Uncontrolled resource consumption**
+        24. **CWE-611 Improper restriction of XML external entity reference**
+        25. **CWE-94 Improper control of generation of code ('Code injection')**
     * [Open Web Application Security Project (OWASP) - Top 10](https://owasp.org/www-project-top-ten/)
         * ![OWASP 10](images/OWASP-top-10.png)
+        * **A1: Broken Access Control**
+        * **A2: Cryptographic Failures**
+        * **A3: Injection**
+            * SQL Injection
+            * LDAP Injection
+        * **A4: Insecure Design**
+        * **A5: Security Misconfiguration**
+        * **A6: Vulnerability and Outdated Components**
+        * **A7: Identification and Authentication Failures**
+        * **A8: Software and Data integrity failures**
+        * **A9: Security logging and monitoring failures**
+        * **A10: Server-side Request Forgery (SSRF)**
 
 
 ## 4.2 Describe the Secure Software Development Life Cycle (SDLC) process
@@ -243,6 +280,7 @@ Common Pitfalls
         * Working software over comprehensive documentation
         * Customer collaboration over contract negotiation
         * Responding to change over following a plan
+    * Use [OWASP Cornicopia](https://owasp.org/www-project-cornucopia/) to help development teams to define security requirements
     * ![Agile](images/agile.png)
 * Waterfall
     * created by Winston Royce back in the 1970s
@@ -357,11 +395,11 @@ Common Pitfalls
     * [STRIDE](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats)
         * devloped by Mircrsoft
         * Describes the flowing six threats:
-            1. **S**poofing
+            1. **S**poofing Indentity
                 * Involves illegally accessing and then using another user's authentication information (credentials)
                 * Social engineering
                 * Spoof IP/MAC address
-            2. **T**ampering
+            2. **T**ampering with data
                 * Malicious modification of data
                 * unauthorized changes
             3. **R**epudiation
@@ -376,7 +414,7 @@ Common Pitfalls
         * risk-assessment for assessing security threats (precussor to STRIDE)
         * discountinued around 2008 due to the ratings were not very consistent and were subject to debate
         * Categories
-            * **D**amage
+            * **D**amage Potential
                 * how bad would an attack be?
             * **R**eproducibility
                 * how easy is it to reproduce the attack?
@@ -507,121 +545,107 @@ Common Pitfalls
     * informed by existing models, including OWASP, CVE, CWE, and the microsoft SDL
     * designed to help software industry adopt and use security best practices effectively
     * includes guidance on software design, secure coding practices, testing, validation, third-party risks, and handling vulnerabilities
-
-[OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
-* provides a basis for testing web application technical security controls and also provides developers with a list of requirements for secure development.
-* 12 areas
-    * Architecture, design, and threat modelling
-    * Authentication
-    * Session Management
-    * Access Control
-    * Validation, sanitization, and encoding
-    * Stored cryptography
-    * Error handling and logging
-    * Data protection
-    * Communication
-    * Malicious code
-    * Business logic
-    * Files and Resources
-
-[OWASP Top 10](https://owasp.org/www-project-top-ten)
-* awareness document that replresents a broad consensus about the most critical security risks to cloud / web applications
-* RISKS:
-    * Broken Access Controls
-        * allow unauthorized access
-        * no checks for authetnication
-    * Cryptographic Failures
-        * allows access to sensistive data using poor encryption or no encryption
-    * Injection
-        * insert code into a request to a website
-            * SQL Injection
-    * Insecure Design
-        * traces security back to coding
-        * fails to meet security reqs/best practices
-        * Follow Security by Design
-    * Security Misconfiguration
-        * Vulnerability and Outdate components
-        * Identification/Authenticaion Failures
-            * Session hijacking
-    * Software and Data Integrity Failures
-        * fail to use Secure CI/CD
-    * Security Logging and Monitoring Failures
-        * no detailed logs for sec investigation
-        * Server-Side Request Forgery
-* Primary Goal is to provide assistance and education for organizations looking to adopt cloud-native applications securely:
-    1. Insecure cloud, container or orchestration
-    2. Injection flaws (app layer, cloud events, cloud services)
-    3. Improper authentication & authorization
-    4. CI/CD pipeline & software supply chain flaws
-    5. Insecure secrets storage
-    6. Over-permissive or insecure network policies
-    7. Using components with known vulnerabilities
-    8. Imporper assets management
-    9.Inadequate 'compute' resource quota limits
-    10. Ineffective logging & monitoring (e.g. runtime activity)
-
-[CWE/SANS Top 25](https://www.sans.org/top25-software-errors/)
-* not specific to cloud native environments like OWASP
-* uses the [Common Weakness Scoring System (CWSS)]
-    * comprised of three scores
-        1. Base finding score
-        2. Environmental score
-        3. Attack Surface
-* Attack Types and Concepts
-    1. Injection Attacks
-        * used to compromise web front-end and backend databases
-        * improper input handling
-        * Types:
-            * SQL Injection
-                * Use unexpected input to a web application to gain unauthorized access to an underlying database
-        * Countermeasure
-            * input validation, use prepared statements, limit acccount privilege
-    2. Buffer overflow attacks
-        * exists when a developer does not validate user input to ensure that it is of an appropriate size (allows input that is too large can "overflow" memory buffer)
-        * prevent with INPUT validation
-    3. Directory / path traversal
-        * attacker gains access to restricted directories through HTTP
-        * one of the simplest ways to perform directory traversal is by using a command injection attack that carries out the action
-        * most vulnerability scanners will check for weakness with directory traversal/command injection and inform you of their presence
-        * keep web servers and softare patched
-    4. Denial of Service (DoS) / Distributed DoS (DDoS)
-        * (DoS) -> a resource consumption attack intended to prevent legitimate activity on a victimized system
-        * (DDoS) -> a DoS attack utilizing mulitple compromised computer systems as sources of attack traffic
-        * countermeasures
-            * firewalls, routers, IPDS, SIEM, disable broadcast packets entering/leaving, disable echo replies, patching
-    5. Race Condition
-        * system's behavior is dependant on the sequence or timing of other uncontrolled events
-        * Time-of-Check-to-Time-of-Use (TICTOU)
-            * a timing vulnerability that occurs when a program checks access permissions too far in advance of resource request
-            * problems occurs when the state of the resource changes between the time of the check and the time it is actually used
-        * file locking transactions in file system or OS kernel
-    6. AuthN/AuthZ 
-* Top 25
-    1. Out-of-band Write (buffer overflow)
-    2. Improper Neutralization of Input during web page generation (Cross-site scripting)
-    3. Improper neutralizatoin of special elements used in a SQL command (SQL Injection)
-    4. Improper input validation (prevent inejct)
-    5. Out-of-band reads (buffer overflow)
-    6. Improper neutralization of special elements using in a OS command (OS command injection)
-    7. Use after free (buffer overflow)
-    8. Improper limitation of a pathname to a restricted directory (Path Traversal)
-    9. Cross-site request forgery (CSRF)
-    10. Unrestricted upload of file with dangerouse type
-    11. NULL pointer deference
-    12. Deserialization of unstrusted data
-    13. Integer overflow or wraparound
-    14. Improper Authentication
-    15. Use of Hard-coded credentials
-    16. Missing Authorization
-    17. Improper neutralization of special elements used in a command (command injection)
-    18. Missing authentication for critical function
-    19. Improper restriction of operations within the bounds of a memory buffer
-    20. Incorrect default permissions
-    21. Server-Side Request Forgery (SSRF)
-    22. Concurrent execution using shared resource with improper synchronizatoiin (Race condition)
-    23. Uncontrolled resource comsumption (DDoS)
-    24. Improper restriction of XML enternal entity reference
-    25. Improper Control of Generation of Code (Code Injection)
+* [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+    * provides a basis for testing web application technical security controls and also provides developers with a list of requirements for secure development.
+    * 12 areas
+        * Architecture, design, and threat modelling
+        * Authentication
+        * Session Management
+        * Access Control
+        * Validation, sanitization, and encoding
+        * Stored cryptography
+        * Error handling and logging
+        * Data protection
+        * Communication
+        * Malicious code
+        * Business logic
+        * Files and Resources
+    * Levels
+        * Level 1 - First steps, automated, or whole of portfolio view
+            * An application achieves ASVS Level 1 if it adequately defends against application security vulnerabilities that are easy to discover, and included in the OWASP Top 10 and other similar checklists.
+            * Level 1 is the bare minimum that all applications should strive for. It is also useful as a first step in a multiphase effort or when applications do not store or handle sensitive data and therefore do not need the more rigorous controls of Level 2 or 3. Level 1 controls can be checked either automatically by tools or simply manually without access to source code. We consider Level 1 the minimum required for all applications. 
+            * Threats to the application will most likely be from attackers who are using simple and low effort techniques to identify easy-to-find and easy-to-exploit vulnerabilities. This is in contrast to a determined attacker who will spend focused energy to specifically target the application. If data processed by your application has high value, you would rarely want to stop at a Level 1 review.
+        * Level 2 - Most applications
+            * An application achieves ASVS Level 2 (or Standard) if it adequately defends against most of the risks associated with software today.
+            * Level 2 ensures that security controls are in place, effective, and used within the application. Level 2 is typically appropriate for applications that handle significant business-to-business transactions, including those that process healthcare information, implement business-critical or sensitive functions, or process other sensitive assets, or industries where integrity is a critical facet to protect their business, such as the game industry to thwart cheaters and game hacks.
+            * Threats to Level 2 applications will typically be skilled and motivated attackers focusing on specific targets using tools and techniques that are highly practiced and effective at discovering and exploiting weaknesses within applications.
+        * Level 3 - High value, high assurance, or high safety 
+            * ASVS Level 3 is the highest level of verification within the ASVS. This level is typically reserved for applications that require significant levels of security verification, such as those that may be found within areas of military, health and safety, critical infrastructure, etc.
+            * Organizations may require ASVS Level 3 for applications that perform critical functions, where failure could significantly impact the organization's operations, and even its survivability. 
+            * Example guidance on the application of ASVS Level 3 is provided below. An application achieves ASVS Level 3 (or Advanced) if it adequately defends against advanced application security vulnerabilities and also demonstrates principles of good security design.
+            * An application at ASVS Level 3 requires more in depth analysis of architecture, coding, and testing than all the other levels. A secure application is modularized in a meaningful way (to facilitate resiliency, scalability, and most of all, layers of security), and each module (separated by network connection and/or physical instance) takes care of its own security responsibilities (defense in depth), that need to be properly documented.
+            * Responsibilities include controls for ensuring confidentiality (e.g. encryption), integrity (e.g. transactions, input validation), availability (e.g. handling load gracefully), authentication (including between systems), authorization, and auditing (logging).
+* [OWASP Top 10](https://owasp.org/www-project-top-ten)
+    * awareness document that replresents a broad consensus about the most critical security risks to cloud / web applications
+    * RISKS:
+        * Broken Access Controls
+            * allow unauthorized access
+            * no checks for authetnication
+        * Cryptographic Failures
+            * allows access to sensistive data using poor encryption or no encryption
+        * Injection
+            * insert code into a request to a website
+                * SQL Injection
+        * Insecure Design
+            * traces security back to coding
+            * fails to meet security reqs/best practices
+            * Follow Security by Design
+        * Security Misconfiguration
+            * Vulnerability and Outdate components
+            * Identification/Authenticaion Failures
+                * Session hijacking
+        * Software and Data Integrity Failures
+            * fail to use Secure CI/CD
+        * Security Logging and Monitoring Failures
+            * no detailed logs for sec investigation
+            * Server-Side Request Forgery
+    * Primary Goal is to provide assistance and education for organizations looking to adopt cloud-native applications securely:
+        1. Insecure cloud, container or orchestration
+        2. Injection flaws (app layer, cloud events, cloud services)
+        3. Improper authentication & authorization
+        4. CI/CD pipeline & software supply chain flaws
+        5. Insecure secrets storage
+        6. Over-permissive or insecure network policies
+        7. Using components with known vulnerabilities
+        8. Imporper assets management
+        9.Inadequate 'compute' resource quota limits
+        10. Ineffective logging & monitoring (e.g. runtime activity)
+* [CWE/SANS Top 25](https://www.sans.org/top25-software-errors/)
+    * not specific to cloud native environments like OWASP
+    * uses the [Common Weakness Scoring System (CWSS)]
+        * comprised of three scores
+            1. Base finding score
+            2. Environmental score
+            3. Attack Surface
+    * Attack Types and Concepts
+        1. Injection Attacks
+            * used to compromise web front-end and backend databases
+            * improper input handling
+            * Types:
+                * SQL Injection
+                    * Use unexpected input to a web application to gain unauthorized access to an underlying database
+            * Countermeasure
+                * input validation, use prepared statements, limit acccount privilege
+        2. Buffer overflow attacks
+            * exists when a developer does not validate user input to ensure that it is of an appropriate size (allows input that is too large can "overflow" memory buffer)
+            * prevent with INPUT validation
+        3. Directory / path traversal
+            * attacker gains access to restricted directories through HTTP
+            * one of the simplest ways to perform directory traversal is by using a command injection attack that carries out the action
+            * most vulnerability scanners will check for weakness with directory traversal/command injection and inform you of their presence
+            * keep web servers and softare patched
+        4. Denial of Service (DoS) / Distributed DoS (DDoS)
+            * (DoS) -> a resource consumption attack intended to prevent legitimate activity on a victimized system
+            * (DDoS) -> a DoS attack utilizing mulitple compromised computer systems as sources of attack traffic
+            * countermeasures
+                * firewalls, routers, IPDS, SIEM, disable broadcast packets entering/leaving, disable echo replies, patching
+        5. Race Condition
+            * system's behavior is dependant on the sequence or timing of other uncontrolled events
+            * Time-of-Check-to-Time-of-Use (TICTOU)
+                * a timing vulnerability that occurs when a program checks access permissions too far in advance of resource request
+                * problems occurs when the state of the resource changes between the time of the check and the time it is actually used
+            * file locking transactions in file system or OS kernel
+        6. AuthN/AuthZ 
 
 **DevOps and DevSecOps**
 * Code Repositories
@@ -652,7 +676,6 @@ Common Pitfalls
                 * leader of reviews confirms all the defects were successfully corrected and completes the documentation of the reviews.
         * This process is burdensome
 
-
 **Software Configuration Management and Versioning**
 * Configuration Management
     * ensures that systems are configured similarly, confis are known and documented
@@ -681,7 +704,7 @@ Common Pitfalls
 * Software bill of materials (SBOM)
     * lists all of the components in an applciaiton or service, including open source or proprietary code libs
 
-Code Signing
+**Code Signing**
 * Applies digital signatures to software
 * help users determine that the software is ligitement
 * Process
@@ -693,7 +716,7 @@ Code Signing
     3. The OS verifies that the signature's hash matches the code
     4. The OS verifies that the developer is trusted
 
-Database Security
+**Database Security**
 * contains sensitive business information
 * Database Normal Forms
     * design rules for columns and tables
@@ -739,7 +762,6 @@ Database Security
 * Software Verification
     * Are we building the software right?
 
-
 **Functional Testing**
 * used to verify that business requirements have been met and the application operates as expected without errors
 * takes multiple forms including
@@ -759,7 +781,7 @@ Database Security
     * ex security certifications are non-functional
 
 **Security testing methodologies**
-* Static Application Security Testing (SAST)
+* **Static Application Security Testing (SAST)**
     * analysis of computer software performed without actually executing programs
     * tester has access to the underlying framework, design, and implementation
     * requires source code
@@ -768,7 +790,7 @@ Database Security
     * considered white-box testing
     * scans code for XSS, SQL Injection, buffer overflows, etc
     * runs early in the dev cycle
-* Dynamic Application Security Testing (DAST)
+* **Dynamic Application Security Testing (DAST)**
     * a program which communicates with a web application (executes the application)
     * tester has no knowledge of the technologies or frameworks that the application is built on
     * no source code required
@@ -777,42 +799,52 @@ Database Security
     * most effective with HTTP and HTML web app interfaces
     * Synthetic transactions are scripted sets of inputs provided to the code
     * considered black-box testing
-* Runtime Application Self-Protection (RASP)
-    * prevents attacks by self-protecting or auto-reconfiguring in response to specific conditions
-* White box testing
+    * it must discover any information from the outside and attempt to discover its own paths and interfaces to test
+* **Runtime Application Self-Protection (RASP)**
+    * prevents attacks by self-protecting or auto-reconfiguring in response to specific 
+    * typically run against systems that have the ability to tune and focus their security measures based on actual environment variables and particular attack methods being used against them.
+* **White Box testing**
     * conducted with full access to and knowledge of systems, code, and environment
     * static application testing is on example
     * "full knowledge testing"
-* Black box testing
+* **Black box testing**
     * conducted as an external attacker would access the code, systems, or environment
     * tester has no knowledge of any of these elements at the outset of a test
     * "zero knowledge testing"
     * no source code required
-* Interactive Applicatoin Security Testing (IAST)
+* **Interactive Application Security Testing (IAST)**
     * analyzes code for vulnerabilities while it's being used / running
     * focused on real time reporting to optimize testing and analaysis process
     * often built into CI/CD automated release testing
     * uses DAST techniques
     * allows the tester to interact with the software and guide the process as the test is underway
-* Software Composition Analysis (SCA)
+* **Software Composition Analysis (SCA)**
     * is used to track the components of a software package or application
     * is of special concern for apps built with open-source softwart components
     * because open-source components often involve resuable code libraries
     * Automated, combines app security and patch management
     * identifies flaws/vulnerabilities in these included components, ensures latest versions are in use, etc.
-* Secure Code Review
+* **Secure Code Review**
     * Manually reviewing code and looking for vulnerabilities.
     * Known as "Static Testing"
-* Vulnerability Assessment
+* **Vulnerability Assessment/Scanning**
     * scanning an application with a vulnerability scanner or assessement too such as BURP or OWASP ZAP
         * look for well-known vulnerabilities
         * uses signatures to identify vulnerabilities
             * no signature = no identification of vulnerability
-* Testing in the Cloud
-    * When performing security testing in a cloud environment, you must receive permission from the CSP in writing prior to performing the testing
-    * Some CSPs provide this on their website, while others require a formal written process
 
-**Quality assurance (QA)**
+**Testing in the Cloud**
+* When performing security testing in a cloud environment, you must receive permission from the CSP in writing prior to performing the testing
+* Some CSPs provide this on their website, while others require a formal written process
+
+**Quality of Service (QoS)**
+* a layer of SOA (service-oriented architecture)
+* focused on monitoring and managing both the business and IT systems levels. 
+* On the business side, QoS is focused on the measuring and monitoring of events, business processes, and key performance indicators (KPIs)
+* On the IT systems side, QoS is focused on the security and health of systems, applications, services, storage, networking, and all other components that comprise the IT ingrastructure. 
+* also concerned with the monitoring and enforcement of business policies in all areas, including security, access, and data.
+
+**Quality Assurance (QA)**
 * responsible for ensuring that the code delivered to the customer through the cloud environment is quality code, defect-free, and secure
 * Process:
     * is frequently a combination of automated and manual validation testing techniques
@@ -919,7 +951,7 @@ Database Security
 * Security features from CSP include API gateway, authentication, IP filtering, throttling, quotas, data validation
 * Also ensure that storage, distribution, and transmission of access keys is performed in a secure fashion
 
-Supply Chain Management
+**Supply Chain Management**
 * should follow the CIA triad
 * a secure supply chain includes **vendors** who are secure, reliable, trustworthy, reputable
 * _Due dilligence_ should be exercised in assessing vendor security posture, business practices, and reliability
@@ -947,7 +979,7 @@ Supply Chain Management
         * Review **SOC-2 Type II Report**, and **ISO/IEC 27001,27017,27018 reports** to verify efficacy of the CSPs physical and logical controls for securing facilities, infrastructure, and data
         * These reports are generally available from the CSP
 
-Third Party Software Management (e.g., licensing)
+**Third Party Software Management (e.g., licensing)**
 * using 3rd party software adds additional risk, such as:
     * although a 3rd party may have limited access to the systems they will often have direct access to some portion of you data
 * Use Software Vendor Assessments to address the following issues:
@@ -963,7 +995,7 @@ Third Party Software Management (e.g., licensing)
         * **pfsense** is an open source firewall https://www.pfsense.org/.
 
 
-Validated open-source software
+**Validated Open Source Software**
 * all software, including OSS, must be validated in a business environment
 * Validation testing techniques:
     * Sandbox testing
@@ -1088,18 +1120,34 @@ Validated open-source software
         * Certificate authentication, key fob, card token, etc
 
 **Identity Federation Standards**
-* Security Assertion Markup Language (SAML)
+* [Security Assertion Markup Language (SAML)](https://www.oasis-open.org/standards#samlv2.0)
     * the most common federation standard, xml based
-* WS-Federation
+    * 2.0 is the latest standard put out by the nonprofit OASIS consortium and its Security Services Technical Committee, which was adopted in 2005
+* [WS-Federation](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)
     * Defines mechanisms that allow different security realms to federate between each other
-* OpenID Connect
-    * Lets developers authenticate their users across websites and apps without having to own and manage passwords
+    * Extension of WS-Security standards, also published by OASIS.
+* [OpenID Connect](https://openid.net)
+    * designed to provide developers with an easy and flexible mechanism to support authenticaiton across organizations and utilize external identity providers, alleviating the need to maintain their own password stores and systems 
+    * can leveage it as an open and free authentication mechanism and tie it into their code and applications without being dependant on a proprietary or inflexible system.
+    * with a browser tie-in for authentication, it provides web-based application an authentication mechanism that is independant of device hardware
     * doesn't use SOAP, SAML, or XML
-* OAuth
+    * based on OAuth 2.0 specifications
+* [OAuth 2.0](https://tools.ietf.org/html/rfc6749)
     * widely used for authorization services in web and mobile applications
-* Shibboleth
+    * established in 2006 and published in RFC 6749
+* [Shibboleth](https://www.shibboleth.net/)
     * Heavily used in education websites and apps
-    
+    * based on SAML specification
+    * made up of three components:
+        * Identity Provider (IdP):
+            * responsible for user authentication and providing user information to the Service Provider (SP). * located at the home organization, which is the organization which maintains the user's account.
+        * Service Provider (SP):
+            * responsible for protecting an online resource and consuming information from the Identity Provider (IdP). 
+            * located at the resource organization.
+         * Discovery Service (DS):
+            * helps the Service Provider (SP) discover the user's Identity Provider (IdP). 
+            * It may be located anywhere on the web and is not required in all cases.
+ 
 **Identity Providers (IdP)**
 * creates, maintains, and manages identity information while providing authentication services to applications
 * performs authentication services and pass reqired information to relying parties as needed, supplying the required authorization to access resources
@@ -1107,6 +1155,8 @@ Validated open-source software
 * Other IDaaS options include OKTA and DUO
 * Social IdPs that support OAuth, like Google, Facebook, and Apple are common in Federation scenerios
 
+**Relying Party (RP)**
+* takes the assertion provided by the IdP and uses it to make a determination whether to grant the entity access to a secure application and, if so, what level and type of access are granted
 
 **Authentication (AuthN)/Authorization (AuthZ)**
 * Single sign-on (SSO)
@@ -1116,7 +1166,7 @@ Validated open-source software
     * user logs into an "authentication server"
     * each resource the user attempts to access checks with the auth server to verify that the user has already successfully logged in
 
-**Multi-factor authentication (MFA)**
+**Multifactor Authentication (MFA)**
 * Something you **know** (pin/passord)
 * Something you **have** (trusted device)
 * Something you **are** (biometric)
