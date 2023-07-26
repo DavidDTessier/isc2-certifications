@@ -9,8 +9,7 @@
     * Runs in a massive data center owned by the Cloud Provider
 * NIST Defintion as per [NIST SP 800-145](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf)
     * _A model for enabling ubiquitous, convenient, on-demand network access o a shared pool of configurable computing resources, for example, networks, servers, storage, applications, and services, that can be rapidly provisioned and released with minimal management effort or service provider interaction._
-* Cloud Computing definitions as per **ISO/IEC 17788 - Cloud Computing - Overview and Vocabulary**
-    * https://www.iso.org/standard/60544.html
+* Cloud Computing definitions as per [ISO/IEC 17788 - Cloud Computing - Overview and Vocabulary](https://www.iso.org/standard/60544.html)
     * **Cloud application**
         * an application that does not reside or run on a user's device but rather is accessible via a network
     * **Cloud application portability**
