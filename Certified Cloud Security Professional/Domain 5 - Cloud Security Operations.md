@@ -30,7 +30,7 @@
     * key escrow uses an HSM to store and manage private keys
     * HSMs are often certified to the highest international standards for cryptography, such as FIPS-140, and within FIPS-140, the highest level of certification (level 4)
     * Examples: Dedicated HSM (Azure), CloudHSM (AWS), Google KMS (GCP), CloudHSM (GCP) which is a service offering that leverages KMS underneath
-    * Government agencies using HSMs must follow the requirements outline in the [Federal Information Processing Standard (FIPS) 140-2](https://csrc.nist.gov/publications/detail/fips/140/2/final):
+    * Government agencies using HSMs must follow the requirements outline in the [Federal Information Processing Standard (FIPS) 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf):
         * Outlines security Requirements for Cryptographic Modules
         * Levels
             * Security Level 1
