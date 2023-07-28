@@ -504,7 +504,7 @@
     * Not all systems respond to ping
         * Blocking ICMP traffic firewall
     * Request Flow
-        * ![Ping Flow](/Certified%20In%20Cybersecurity%20(CC)/mages/ping-req-flow.png)
+        * ![Ping Flow](/Certified%20In%20Cybersecurity%20(CC)/images/ping-req-flow.png)
 * hping
     * similar to standard ping command
     * creates customized ping requests
