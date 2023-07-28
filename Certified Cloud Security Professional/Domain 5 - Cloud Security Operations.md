@@ -97,7 +97,7 @@
     * prevalent communications protocol for network-based storage is iSCSI, which allows for the transmission and use of SCSI commands and features over a TCP-based network.
     * Whereas a traditional data center will have SAN (storage area network) setups with dedicated fiber channels, cables, and switches, in a cloud data center this is not possible with the use of virtualized hosts. 
     *  In this case, iSCSI allows systems to use block-level storage that looks and behaves like a SAN would with physical servers, but it leverages the TCP network within a virtualized environment and cloud.
-    *  iSCSI also supports a variety og authentication protocols, such as Kerberos and CHAP, gor securing communications and conidentiality within networks.
+    *  iSCSI also supports a variety og authentication protocols, such as Kerberos and CHAP, gor securing communications and confidentiality within networks.
     * However, iSCSI does support encrypted communications through such protocols as IPSec, and encryption should be used wherever possible to protect communications between virtual machines and storage networks.
 
 **Installation of guest operating system (OS) virtualization toolsets**
@@ -255,7 +255,7 @@
 * Virtual Private Network (VPN)
     * extends private network across a public network
     * enabling users and devices to send and recieve data across shared or public networks as if their computing devices were directly connected to the private network
-    * IPSec can add 100 bytes or more to each transmitted packet in overhead, so on a large network with substantial traic, the impact on resources can be enormous.
+    * IPSec can add 100 bytes or more to each transmitted packet in overhead, so on a large network with substantial traffic, the impact on resources can be enormous.
     * **Split tunnel**
         * using VPN for traffic destined for the corporate network only
         * internet traffic is direct through its normal route
