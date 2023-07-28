@@ -827,6 +827,14 @@
 **Change Management**
 * [ISO 9001:2015](https://www.iso.org/standard/62085.html)
     * specifies requirements for a quality management system
+        * needs to demonstrate its ability to consistently provide products and services that meet customer and applicable statutory and regulatory requirements, and
+        * aims to enhance customer satisfaction through the effective application of the system, including processes for improvement of the system and the assurance of conformity to customer and applicable statutory and regulatory requirements.
+    * All the requirements of ISO 9001:2015 are generic and are intended to be applicable to any organization, regardless of its type or size, or the products and services it provides.
+* [ISO ISO/TS 10020:2022](https://www.iso.org/standard/82213.html)
+    * Quality management systems — Organizational change management — Processes
+    * specifies processes that can be used to govern, manage and implement organizational change management (OCM) for organizations, projects or smaller activities. It comprises generic process descriptions that describe the OCM processes. Supporting diagrams describing the processes are also provided.
+* [ISO/IEC 27002:2022 - Control 8.32](https://www.isms.online/iso-27002/control-8-32-change-management/)
+    * Control 8.32 enables organisations to maintain the security of information assets when executing changes on the information processing facilities and systems by establishing, implementing and managing change management rules and procedures.
 * policy that details how changes will be processed in an organization
 * helps reduce outages or weakened security from unauthorized changes
 * **Versioning** uses a labelling or numbering system to track changes in updated versions of software
