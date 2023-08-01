@@ -633,6 +633,7 @@
             * a single compromised CA does not result in compromise of the root
         * Registration Autority (RA)
             * third party CA
+            * verifies user requests for a digital certificate and tells CA to issue it
         * Common Name (CN)
             * fully qualified domain name (FQDN) of the entity
         * Certificate Signing Request (CSR)
