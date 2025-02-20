@@ -1,0 +1,33 @@
+1. Discuss and describe the CIA Triad.
+
+* Confidentiality
+    * principal that objects are not disclosed to unauthorized individuals/subjects
+* Integrity
+    * principal that objects retain their veracity and are intentionally modified by ONLY authorized subjects
+* Availability
+    * principal that authorized subjects are granted timely and uninterrupted access to objects
+
+2. What are the requirements to hold a person accountable for the actions of their user account?
+* AAA 
+* Auditing --> programmatic means of recording actions performed by subjects while authenticated to a system
+* Accounting --> proving beyond doubt that subjects performed those recorded actions, review logs etc
+
+
+3. Name the six primary security roles described by ISC2 for CISSP?
+* Senior Manager
+* Security Professionals
+* Asset owners
+* Custodians
+* Users
+* Auditors
+
+4. What are the four components of a complete organizational security policy and their basic purpose?
+
+The four key components of a complete organizational security policy are: 
+* purpose (defining the policy's goal), 
+* scope (specifying where and when the policy applies), 
+* responsibilities (identifying who is accountable for upholding the policy), 
+* compliance (ensuring adherence to the policy's guidelines); 
+
+essentially outlining the "why," "where," "who," and "how" of security practices within an organization. 
+

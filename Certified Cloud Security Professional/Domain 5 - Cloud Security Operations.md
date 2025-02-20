@@ -1,6 +1,6 @@
 ![Domain 5](images/domain5.png)
 
-## 5.1 Build and implment physical and logical infrstructure for cloud environment
+## 5.1 Build and implement physical and logical infrastructure for cloud environment
 
 **Hardware Security**
 * Unified Extensible Firmware Interface (UEFI) Secure Boot

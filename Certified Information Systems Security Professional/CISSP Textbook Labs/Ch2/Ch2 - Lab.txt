@@ -1,0 +1,64 @@
+1. Name six different administrative controls used to secure personnel
+    * Mandatory Vacations
+    * Job Rotation
+    * Employment Agreements
+    * Manager Oversight
+    * Background checks / candidate screening
+    * Job Descriptions and Role Responsibilities reviews
+    * Employment on and off-boarding processes
+
+2. What are the basic formulas or values used in quantitative risk assessment?
+    * Asset Value (AV) is the $ of an asset
+    * Exposure Factor (EF) is the % of loss
+    * Single loss expectancy (SLE) = AV * EF
+    * Annualized rate of occurrence (ARO) is the # of occurrences / per year
+    * Annualized lost expectancy (ALE) = SLE * ARO
+    * Annualized Cost of the safeguard is the $ of the safeguard / per year
+    * Value or benefit of a safeguard = (ALE1 (pre-safeguard) - AL2 (post-safeguard)) - ACS
+
+3. Describe the process or techniques used to reach an anonymous consensus during a qualitative risk assessment.
+    * anonymous consensus is the process of gaining / eliciting feedback from a group without identifying the individual participants with their response
+    techniques
+        * Brainstorming / Storyboarding
+        * Focus Groups
+        * Surveys / Questionnaires
+        * Checklists
+        * One-on-one meetings
+        * Interviews
+        * The DelphiTechnique
+            * usually group is gathered in a room and each participant writes their responses on a paper or through digital messaging anonymously
+            * results are compiled and presented to the group for evaluation
+            * the process is repeated until consensus is achieved
+        * Scenarios
+    
+4. Discuss the need to perform a balanced risk assessment. What are the techniques that can be used and why is this necessary?
+    * Quantitative assessment assigns a dollar value to an asset
+    * Qualitative assessment is subjective in nature and assigns intangible values to the loss of an asset and takes into account perspectives and feelings
+    * Both can be used to enhance each other
+
+5. What are the main types of social engineering principles?
+    * authority --> respond with obedience
+    * intimidation --> use of authority or event threat of harm to convince ppl
+    * consensus --> social proof, act of using a person's good nature to mimic others
+    * scarcity --> convince someone that an object is rare and has a higher value
+    * familiarity --> uses someone's nature to like things they know
+    * trust --> build a relationship with the victim
+    * urgency --> similar to scarcity but more urgent
+
+6. Name several types or methods of social engineering?
+    * phishing
+    * whaling
+    * pretexting/prepending
+    * eliciting information
+    * smishing
+    * vishing
+    * spear phishing
+    * spam
+    * shoulder surfing
+    * invoice scams
+    * dumpster diving
+    * impersonation/masquerading
+    * Tailgating/piggybacking
+    * Identity fraud
+    * typosquatting
+    * influence campaigns
