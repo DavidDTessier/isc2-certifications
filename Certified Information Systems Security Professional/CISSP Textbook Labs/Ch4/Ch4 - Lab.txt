@@ -1,0 +1,32 @@
+1. What are the two primary mechanisms that an organization may use to share information outside the EU under the terms of the GDPR?
+
+    * Standard Contractual Clauses (SCC)
+       * adopted by organizations for information sharing outside of the EU
+       * approved by the EU Commissions and available on their website for integration into contracts
+    * Binding Corporate Rules (BCRs)
+       * regulate data transfers between internal units of the same firm
+       * very time-consuming process
+       * rules must be approved by every EU member nation where they will be used
+       * typically for very large organizations
+
+2. What are some common questions that organizations should ask when considering outsourcing information storage, processing, and transmission?
+
+    Questions to ask during vendor governance reviews
+
+    1. What types of sensitive information are stored, processed, or transmitted by the vendor?
+    2. What controls are in place to protect the organization's information?
+    3. How is the origanization's information segragated from that of other clients?
+    4. If encryption is relied on as a security control, what encryption algorithms and key lengths are used? How is key management handled?
+    5. What types of security audits does the vendor perform, and what access does the client have to those audits?
+    6. Does the vendor rely on any other third parties to store, process, or transmit data? How do the provisions of the contract related to security extend to those third parties?
+    7. Where will data storage, processing, and transmission take place? If outside the home country of the client and/or vendor, what implications does that have?
+    8. What is the vendor's incident response process, and when will clients be notified of a potential security breach?
+    9. What provisions are in place to ensure the ongoing integrity and availability of client data?
+
+3. What are some common steps that employers can take to notify employees of system monitoring?
+    Consider the following if planning to monitor communications of employees:
+
+    1. Clauses in employment contracts that state the employee has no expectation of privacy while using corporate equipement.
+    2. Similar written statements in corporate acceptable use and privacy policies
+    3. Logon banners warning that all communications are subject to monitoring
+    4. Warning labels on equipement (computers and telephones) warning of monitoring

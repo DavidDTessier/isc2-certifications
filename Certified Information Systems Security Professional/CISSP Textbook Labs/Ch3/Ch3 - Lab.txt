@@ -1,0 +1,20 @@
+1. Why is it essential to include legal representatives on you business continuity planning team?
+    * because they are familiar with all local and state laws, regulatory compliance requirements that may be applicable to you organization.
+    * this will maintain due care and due diligence
+
+2. What is wrong with the "seat-of-the-pants" approach to business continuity planning?
+    * no proper plan will mean potential and longer downtime
+    * will have legal liabilities as this shows no due care and due diligence on sr leadership for building a plan
+
+3. What is the difference between quantitative and qualitative assessment?
+    * quantitative assessment assign numeric (most likely monetary values) to assessment and leverages several calculation to determine the important and critical assessments
+    * qualitative assessment is more subjective and leverage a matrix style approach (high, med, low)
+
+4. What critical components should you include in your business continuity training plan?
+    * Documentation of the BCP provisions and procedures is critical component training plan in order to properly provide those responsible for BC activities the necessary steps required to perform their duties
+
+5. What are the four main elements of the business continuity planning process?
+    * Project scope and planning
+    * Business Impact analysis
+    * Continuity Planning
+    * Plan approval and implementation
