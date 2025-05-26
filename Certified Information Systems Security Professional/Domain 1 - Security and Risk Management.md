@@ -1014,6 +1014,9 @@ Some US Laws that have elements dedicated to privacy:
           * very time-consuming process
           * rules must be approved by every EU member nation where they will be used
           * typically for very large organizations
+      * GDPR restricts data transfers to countries outside of the EU, if companies violated privacy rules they may face fines of up to 4 percent of their global revenue or 20 million Euros whichever is higher.
+        * Unfortunately the GDPR is filled with legalese which present many challenges for organizations, example is clause 107:
+          > * _"Consequently the transfer of personal data to that third country or international organization should be prohibited, unless the requirements in this Regulation relating to transfers subject to appropriate safeguards, including **binding corporate rules**, and derogations for specific situations are fufilled."_
     * **Privacy Shield**
       * https://www.privacyshield.gov/ps/program-overview
       * safe-harbor used in the past between the EU and the United States allowing Organizations to certify their compliance with privacy practices through independant assessors and, if awarded the privacy shield, were permitted to transfer information

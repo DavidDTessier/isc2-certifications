@@ -1,0 +1,21 @@
+1. Describe sensitive data?
+   sensitive data is an record that can either Identify a subject, data that if exposed do damage the reputuation of the organization. 
+   Could also be IP associated with the organization
+
+2. Identify the different between EOL and EOS?
+    * EOL is when a product vendor stops production and selling of a product but continues to support it for a period of time
+    * EOS is when the period of additional support ends
+
+3. Identify common uses of pseudonymization, tokenization, and anonymization.
+    * anonymization
+        * randomized masking
+        * cannot be reverse
+    * tokenization:
+        * payment transactions using 3rd party payment providers
+    * pseudonymization:
+        * linked to an alias or substitution
+
+4. Describe the difference between scoping and tailoring.
+
+    scoping, is part of the tailoring process, and is the process of identifying those security controls within the security controls baseline that do and do not apply to your origanization
+    tailoring is the process of modifying the chosen security controls to fit the use cases of your organization
