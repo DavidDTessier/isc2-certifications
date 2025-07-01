@@ -1,0 +1,23 @@
+1. What is the major obstacle preventing the widespread adoption of one-time pad cryptosystems to ensure data confidentiality?
+    * the major obstacle in its widespread use is the difficulty in generating, distributing, and safeguarding the lengthy keys required to encrypt the data 
+
+2. Encrypt the message "I will pass the CISSP exam and be certified next month" using columnar transposition with the keyword SECURE
+
+SECURE
+521643
+IWILLP
+ASSTHE
+CISSPE
+XAMAND
+BECERT
+IFIEDN
+EXTMON
+TXXXXX
+
+Ciphertext = ISSMCIT WSIAEFX PEEDTNN LHPNRDO IACXBIET LTSAEEM
+
+
+3. Decrypt the message "F R Q J U D W X O D W L R Q V B R X J R W L W" using the Caesar ROT3 substitution cipher 
+
+F R Q J U D W X O D W L R Q V B R X J R W L W
+C O N G R A T U L A T I O N S Y O U G O T I T
