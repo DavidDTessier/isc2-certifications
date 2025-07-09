@@ -1,0 +1,16 @@
+1. Explain the process Bob should use if he wants to send a confidential message to Alice using asymmetric cryptography
+   * Leveraging a Public Key Exchange (Diffie-Hellman)
+   * Bob will generate a public and private key pair and will share the public key with Alice 
+   * Alice will generate a public and private key pair and will share her public key with Bob
+   * Bob will encrypt the message using Alice's public key and send the encrypted message to Alice
+
+2. Explain the process Alice would use to decrypt the message Bob sent in Q1
+    * Alice will use her own private key to decrypt the message Bob sent since it was encrypted with Alice's public key 
+
+3. Explain the process Bob should use to digitally sign a message to Alice
+    * Bob will uses his private key to generate a digital signature using a hash function and append it to the message it. He Bob wants to maintain confidentiality he will encrypt the entire message including the digital signature with Alice's public key. 
+
+4. Explain the process Alice should use to verify the digital signature on the message from Bob in Q3
+    * If the full message is encrypted Alice would decrypt it using her own private key
+    * she would then verify the digital signature by using Bob's public key and hashing the public key to compare the hash values she generate to the digital signature
+    * if both hashes match the she can verify that Bob sent the message

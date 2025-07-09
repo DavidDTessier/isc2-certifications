@@ -580,10 +580,11 @@ Two basic operations used to obscure plaintext messages:
   * **No preexisitng communication link needs to exist**
     * individuals can begin communicating securely the moment they start communicating and does not require a pre-existing link
   * Major weakness: **Slow speed of operation**
-* **_Hybrid Cryptograph_**
+* **_Hybrid Cryptography_**
   * approach that combines symmetric and asymmetric cryptography
   * used to solve the weakness of asymmetric speed issues
     * Asymmetric is used securely establish a secure tunnel then uses symmetric encryption to encrypt large amounts of data
+  * Transport Layer Security (TLS) most well-known example of hybrid cryptography
 
 ![Asymmetric Encryption](./images/asymmetric-encryption.png)
 
@@ -608,6 +609,66 @@ Two basic operations used to obscure plaintext messages:
 * used in public key cryptography in conjunction with digital signatures
 
 ![Hashing](./images/hashing.png)
+
+##### Asymmetric Crytopgraphy
+
+###### RSA
+
+* [RSA (Rivest, Shamir, Adleman)](https://en.wikipedia.org/wiki/RSA_cryptosystem) most famous public key cryptosystem
+* proposed in 1977 by Ronal Rivest, Adi Shamir, and Leonard Adleman and remains the standard today
+  * they patented and created a commercial venture known as [RSA Security](https://www.rsa.com/) to develop mainstream implementations of their security technology
+* RSA Algorithm was released into public domain in 2000 and is widely used for secure communication
+* depends on the computational difficulty inherent in factoring the product of large prime numbers
+* each user of the cryptosystem generates pair of public and private keys that are mathematically related using the algorithm describe below:
+  > 1. Choose two large prime numbers (approx. 200 digits each), label _p_ and _q_
+  > 2. Compute the product of those two numbers: _n = p * q_
+  > 3. Select a number, _e_, that statisfies either of the following two requirements:
+    > a. _e_ is less than _n_.
+    > b. _e_ and _(p - 1)(q - 1)_ are relative primt -- that is, the two numbers have no common factors other than 1.
+  > 4. Find a number, _d_, such that _ed = 1 mod ((p - 1)(q - 1))_
+  > 5. Distribute _e_ and _n_ as the public key to all cryptosystem users. Keep _d_ secret as the private key
+* Example:
+  * If Alice wants to send an encrypted message to Bob, she generates the ciphertext (C) from the plaintext (P) using the formula (where _e_ is Bob's public key and _n_ is the product _p_ and _q_ created during the key generation process):
+    * `C = P^e mod n`
+  * When Bob recives the message, he performs the following calculation to retrieve the plaintext message:
+    * `P = C^d mod n`
+* [Merkle-Hellman Knapsack](https://en.wikipedia.org/wiki/Merkle%E2%80%93Hellman_knapsack_cryptosystem)
+  * developed the year after RSA was publicized by Ralph Merkle and Martin Hellman in 1978
+  * similar to RSA as it's based on the difficulty of performing factoring operations, but it relies on a component of set theory known as _[super-increasing sequence](https://en.wikipedia.org/wiki/Superincreasing_sequence)_ rather than large prime numbers
+  * proven ineffective when it was broken in 1984 after Adi Shamir published a polynomial time attack on the algorithm and thus deemed insecure.
+
+![RSA](./images/rsa.png)
+
+###### ElGamal
+
+* [encryption algorithm, created by Dr. Taher Elgamal](https://en.wikipedia.org/wiki/ElGamal_encryption), which extends the fundamental mathematical principles behind Diffie-Hellman key exchange algorithm to support an entire public key infrastructure used for encrypting and decrypting messages
+* publish as freely available at its time of release (1985) which was an advantage of RSA (at the time)
+* major disadvantage was that it doubled the size of any message that it encrypts which is a major hardship when encrypting large amounts of data that must be sent over a network.
+* The algorithm can be described as :
+  * first performing a Diffie–Hellman key exchange to establish a shared secret _s_, then using this as a one-time pad for encrypting the message. ElGamal encryption is performed in three phases:
+    * the key generation,
+    * the encryption,
+    * and the decryption
+  * The first is purely key exchange, whereas the latter two mix key exchange computations with message computations.
+
+###### Elliptic Curve Crytography (ECC)
+
+* [ECC](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography), created the same year as Elgamal published his algorithm by two other mathmeticians:
+  * Neal Koblitz from the University of Washington
+  * Victor Miller from IBM
+* detail mathematics behind the algorithm can be found [here](https://www.certicom.com/content/certicom/en/ecc-tutorial.html)
+* fundamentals of ECC
+  * Any elliptic curve can be defined by the following equation:
+    * `y^2 = x^3 + ax + b`
+    * _x, y, a, and b_ are real numbers
+  * Each elliptic curve has a corresponding _elliptic curve group (ECG)_ which is made up of points on the elliptic curve along the point _O_, located at infinity
+  * Two points within the _ECG_ (_P_ and _Q_) can be added together with an elliptic curve addition algorithm and expressed as:
+    * `P + Q`
+  * This problem can be extended to involve multiplication by assuming that _Q_ is a multiple of P, as follows:
+    * `Q = k*P`
+  * it is believed that it is extremely difficult to determine the integer _k_, even if _P_ and _Q_ are already known which is known as the [elliptic curve discrete logarithm problem (ECDLP)](https://eitca.org/cybersecurity/eitc-is-acc-advanced-classical-cryptography/elliptic-curve-cryptography/introduction-to-elliptic-curves/examination-review-introduction-to-elliptic-curves/what-is-the-elliptic-curve-discrete-logarithm-problem-ecdlp-and-why-is-it-difficult-to-solve/).
+    * it forms the basis elliptic curve cryptography
+    * widely believe to be much harder to solve than both the [prime factorization problem](https://en.wikipedia.org/wiki/RSA_problem) that the RSA cryptosystem is based and that [standard discrete logrithm problem (DLP)](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_problem) utilized by Diffie-Hellman and ElGamal.
 
 ##### Symmetric Cryptography
 
@@ -875,20 +936,812 @@ Image (a) illustrates the blowfish encryption process, while image (b) illustrat
   * Identifying the acceptable key lengths for use with each alogrithm based on the sensitivity of information transmitted
   * Enumerating the secure transaction protocols (such as TLS) that may be used
 
+### Importance of Key Length
+
+* most important security parameter is the cryptosytem key length
+* choose a key length that provides the appropriate level of protection for you asset
+* decision can be made by weighing the difficulty of defeating a given key length (measured in the amount of processing time required to defeat the cryptosystem) against the importance of data
+* the more critical you data is, the stronger the key you should use to protect it
+* key lengths of the three crypto systems
+  * **Symmetric** : 128 bits
+  * **RSA**: 3,072 bits
+  * **Elliptic curve crytography**: 256 bits
+
+### Diffie-Hellman
+
+* [key exchange method](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) for two parties to securely establish a shared secret key over an insecure channel.
+* This shared secret can then be used to encrypt further communication between the two parties using symmetric-key cryptography.
+* The algorithm itself does not involve encrypting any actual data, but rather, it securely shares a key that can be used for encryption later.
+* example of _hybrid cryptography_
+* works by using the mathematics of prime numbers similar to RSA
+* How it works (as shown in the image below)
+  > 1. Alice and Bob agree on two large numbers: _p_ (which is a prime number) and _g_ (which is an integer), such that 1 < g < p, in the example (p=23 and g=5)
+  > 2. Alice chooses a large random integer _a_ and performs the following calulation (example a = 4):
+    > * `A = g^a mod p` (A=5^4 mod 23 which equals 4)
+  > 3. Bob chooses a large random integer _b_ and performs the following calulation (example b = 3):
+    > * `B = g^b mod p` (A=5^3 mod 23 which equals 10)
+  > 4. Alice sends A to Bob and Bob sends B to Alice
+  > 5. Alices then performs the following calculation:
+    > * `s = B^a mod p` (s = 10^4 mod 23 = 18)
+  > 6. Bob then performs the following calculation:
+    > * `s = A^b mod p` (s = 4^3 mod 23 = 18)
+  * Alice and Bob both have the same key (_s_) which is 18 and can use this secret key for communication between the two parties
+* Diffie-Hellman is NOT an encryption protocol in and of itself, it is technically a key exchange protocol
+* commonly used to create a shared secret key for use in TLS where it is referred to either as Diffie-Hellman Ephemeral (DHE) or Ephermeral Diffie-Hellman (EDH)
+
+![Diffie-Hellman](./images/DiffieHellman.png)
+
+#### Elliptic Curve Diffie-Hellman (ECDHE)
+
+* [ECDHE](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman) is a key exchange algorithm that is a variant of DH that uses the elliptic curve problem to perform a similar shared key agreement process
+
+![ECDHE](./images/ECDH.jpg)
+
 ### Public key infrastructure (PKI) (e.g., quantum key distribution)
+
+* Public (made free available) and private (only known to the individual who owns the key) keys
+* knowledge of public keys do not introduce any weakness
+* private keys should not be shared with any other user of the cryptosystem other than key escrow or recovery arrangements
+* [Hierarchy of Trust](https://medium.com/@meghdadshamsaei/trust-model-implementation-by-pki-7cddcdb72513)
+  * trusts permits combining asymmetric cryptography with symmetric cryptography along with hashing and digital certificates (**hybrid cryptography**)
+
+#### Quantum Key Distribution
+
+* [Quantum computing](https://en.wikipedia.org/wiki/Quantum_computing)
+  * advanced area of theorectical research in computer science and physics
+  * theory behind it is that we can use princinples of quantum mechanics to replace the binary 1 an 0 bits of digital computing with multidimensional quantum bits known as _qubits_
+  * remains an emerging field and quantum computers are still confined to theoretical research
+  * no physical implementation of a useful quantum computer
+  * have the possibility and potental to revolutionize the world of computer science by providing the technological foundation for the most powerful computers ever, which would quickly upend many principles of modern cybersecurity
+* [Quantum supermacy](https://en.wikipedia.org/wiki/Quantum_supremacy)
+  * is the potential that quantum computers may be able to solve problems that are not possible to solve on contemporary computers
+    * example the factorization problem that many modern asymmetic encryption algorithms are build upon (such as RSA and Diffie-Hellman) rendering them insecure.
+* [Quantum cryptography](https://en.wikipedia.org/wiki/Quantum_cryptography)
+  * still in infancy and research but the idea is to create newer, more complex cryptosgraphic algorithms which may be more resistent to quantum attacks
+  * [Quantum Key Distribution (QKD)](https://en.wikipedia.org/wiki/Quantum_key_distribution)
+    * similar goal to Diffie-Hellman, which is to create a shared key between two users, but leveraging quantum computing
+    * In 1984 the seminal work of Bennett and Brassard (BB84) paved the way to practical implementation of Quantum Key Distribution (QKD), which has then been widely studied and improved over the years. The traditional implementation of the BB84 protocol requires Alice to use four non-orthogonal quantum states (e.g. different polarisations of a photon) randomly selected from two bases ({H,V}, {D,A}). A sufficiently long sequence (i.e. more than twice the amount of bits the resulting key should have) of these random states is sent on a quantum channel that Bob detects using one of the two bases in a random manner. Using the public channel, Bob and Alice compare the used bases without revealing the results, identify the coincident bases (sifting) and estimate the quantum bit error rate (QBER) of the detected values compared to the values sent by Alice. Owing to the non-cloning theorem, any operation performed by Eve along the quantum channel results in an increase of the QBER.
+* [Post-Quantum Cryptography](https://en.wikipedia.org/wiki/Post-quantum_cryptography)
+  * is the development of cryptographic algorithms (usually public-key algorithms) that are expected (though not confirmed) to be secure against a cryptanalytic attack by a quantum computer.
+  * current public-key algorithms are vulnerable to [Shor's algorithm](https://en.wikipedia.org/wiki/Shor%27s_algorithm), although quantum computers capable of such attacks are not yet available.
+  * Cryptographers are proactively designing new algorithms in anticipation of "Q-Day" when current methods will become insecure. The article also notes that "harvest now, decrypt later" programs are a driving factor for the early adoption of post-quantum algorithms. Conversely, most symmetric cryptographic algorithms and hash functions are considered relatively secure against quantum threats, with larger key sizes offering protection against Grover's algorithm.
+  * The importance of forward secrecy in public-key systems is a way to protect against private key compromises and mass surveillance.
+  * most important point is that we must start thinking today about the security of our current data in a post-quantum world
+  * Post-quantum cryptography research is mostly focused on six different approaches:
+    * [**Lattice-based cryptography**](https://en.wikipedia.org/wiki/Lattice-based_cryptography)
+    * [**Multivariate Cryptography**](https://en.wikipedia.org/wiki/Multivariate_cryptography)
+    * [**Hash-based Cryptography**](https://en.wikipedia.org/wiki/Hash-based_cryptography)
+    * [**Code-based Cryptography**](https://en.wikipedia.org/wiki/Post-quantum_cryptography#Code-based_cryptography)
+    * [**Isogeny-based cryptography**](https://en.wikipedia.org/wiki/Post-quantum_cryptography#Isogeny-based_cryptography)
+    * [**Symmetric key quantum resistance**](https://en.wikipedia.org/wiki/Post-quantum_cryptography#Symmetric_key_quantum_resistance)
+
+The following illustrates the QKD process:
+
+![QKD](./images/QKD_infografia-new-1.webp)
+
+### Hash Functions
+
+* [Process](https://en.wikipedia.org/wiki/Hash_function) that takes a potentially long message and generates a unique output value derived from the content of the message, commonly referred to as **_message digest_**
+* process is one-way and can not be reversed or "de-hashed"
+* **Message Digests**
+  * can be generated by the sender of a message and transmitted to the recipient along with the full message, this is done for two reasons:
+    * (1) The recipient can use the same hash function to recompute the message digest from the full message, this allows them to compare the message digest they computed with the one sent by the sender (this proves authenticity and integrity of the message). The message must be the exact same in order to generate the exact same message digest.
+    * (2) The message digest can be used to implement **_digital signatures_**
+  * most cases the message digest is 128 bits or larger
+  * a single-digit value can be used to perform the function of parity, which is a low-level or single-digit checksum value used to provide a single individual point of verification
+  * the longer the message digest, the more reliable its verification of integrity
+* Five basic requirements for a cryptographic hash function:
+  > 1. The input can be of any length
+  > 2. The output has a fixed length
+  > 3. The hash function is relatively easy to compute for any input
+  > 4. The hash function is one-way (meaning it is extremely hard to determine the input when only provided the output)
+  > 5. The hash function is collision resitent (extremely difficult to find two messages that produce the same hash value)
+* Common hashing algorithms:
+  * Secure Hash Algorithm (SHA)
+  * Message Digest 5 (MD5)
+  * Hashing Algorithm with Variable Length (HAVAL)
+  * RACE Integrity Primitives Evaluation Message Digest (RIPEMD)
+  * Hash-Based Message Authentication Code (HMAC)
+
+![Hashing](./images/hashing.png)
+
+#### Secure Hash Algorithm (SHA) Family
+
+* [SHA](https://en.wikipedia.org/wiki/Secure_Hash_Algorithms) is a family of cryptographic hash functions published by the [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) as the [Secure Hash Standard (SHS)](https://csrc.nist.gov/pubs/fips/180-4/upd1/final) also known as Federal Information Processing Standard (FIPS) 180-4
+* Algorithms include:
+  * [**SHA-0**](https://en.wikipedia.org/wiki/SHA-0):
+    * A retronym applied to the original version of the 160-bit hash function published in 1993 under the name "SHA".
+    * It was withdrawn shortly after publication due to an undisclosed "significant flaw" and replaced by the slightly revised version SHA-1.
+  * [**SHA-1**](https://en.wikipedia.org/wiki/SHA-1):
+    * A 160-bit hash function which resembles the MD5 algorithm.
+    * takes an input of virtually any length (upper bound of approx 2,097,152 terabytes on the algorithm) to produce a 160-bit message digest
+    * processes a message in 512-bit blocks, if the message is not a mutliple of 512 the algorithm pads the message with additional data until the length reaches the next highest multiple of 512
+    * This was designed by the [National Security Agency (NSA)](https://en.wikipedia.org/wiki/National_Security_Agency) to be part of the [Digital Signature Algorithm](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm). Cryptographic weaknesses were discovered in SHA-1, and the standard was no longer approved for most cryptographic uses after 2010, including digital signatures and certificates.
+    * Web browsers dropped support in 2017
+  * [**SHA-2**](https://en.wikipedia.org/wiki/SHA-2):
+    * NIST announced a replacement for SHA-1, the SHA-2 standard, which has four major variants:
+      * **SHA-256**
+        * produces a 256-bit message digest using a 512-bit block size
+      * **SHA-224**
+        * uses a truncated version of SHA-256 hash that drops 32 bits to produce a 224-bit message digest using a 512-bit block size
+      * **SHA-512**
+        * produces a 512-bit message digest using 1,024-bit block size
+      * **SHA-384**
+        * uses a truncated version of SHA-512 hash that drops 128 bits to produce a 384-bit digest using a 1,024-bit block size
+    * Developed by the NSA also
+    * Generally SHA-2 is deemed still secure and is in use however it does suffer from the same weakness as SHA-1
+    * As of 2011, the best public attacks break [preimage resistance](https://en.wikipedia.org/wiki/Preimage_attack) for 52 out of 64 rounds of SHA-256 or 57 out of 80 rounds of SHA-512, and [collision resistance](https://en.wikipedia.org/wiki/Collision_attack) for 46 out of 64 rounds of SHA-256.
+  * [**SHA-3**](https://en.wikipedia.org/wiki/SHA-3)
+    * [Keccak algorithm](https://keccak.team/index.html) as released by the federal government as SHA-3 in 2015
+    * serves as a drop-in replacement for SHA-2 offering the same variants and hash lengths using different computational algorithm
+    * provides the same level of securtiy as SHA-2 however is slower and not as commonly used outside of some specialized cases where it is efficiently implemented in hardware
+
+#### Message Digest (MD) Family
+
+* [Message Digest 2 (MD2)](https://en.wikipedia.org/wiki/MD2_(hash_function))
+  * hash algorithm developed by Ron Rivest (of RSA) in 1989
+  * provides secure hashing for 8-bit processors
+  * The 128-bit hash value of any message is formed by padding it to a multiple of the block length (128 bits or 16 bytes) and adding a 16-byte checksum to it.
+  * Even though MD2 is not yet fully compromised, the IETF retired MD2 to "historic" status in 2011, citing "signs of weakness". It is deprecated in favor of SHA-256 and other strong hashing algorithms.
+    * Nevertheless, as of 2014, it remained in use in public key infrastructures as part of certificates generated with MD2 and RSA.
+* [Message Digest 4 (MD4)](https://en.wikipedia.org/wiki/MD4)
+  * released by Rivest in 1990 as an enhanced version of MD2, supporting 32-bit processors and providing increase levels of security
+  * The 128-bit (16-byte) MD4 hashes (also termed message digests) are typically represented as 32-digit hexadecimal numbers.
+  * The security of MD4 has been severely compromised. The first full collision attack against MD4 was published in 1995, and several newer attacks have been published since then. As of 2007, an attack can generate collisions in less than two MD4 hash operations. A theoretical preimage attack also exists.
+* [Message Digest 5 (MD5)](https://en.wikipedia.org/wiki/MD5)
+  * release in 1992 by Rivest
+  * processes 512-bit block messages but leverages four distinct rounds of computation to produce a digest of the same length as MD2 and MD4
+  * same padding requirements as MD4 -- message lenght must be 64-bits less than a mutlple of 512 bits
+  * implements additional security features that reduce the speed of producing the message digest significantly
+  * also subject to cryptanalytic attacks such as collision, preventing its use for ensuring message integrity
+    * Arjen Lenstra and others demonstrated in 2005 that it is possible to create two digital certificates from different public keys that have the same MD5 hash, details on this attack can be found in their [published document](https://marc-stevens.nl/research/papers/IJACT12-StLdW.pdf).
+  * Still used in some tools today but it is better to rely on SHA-2
+* [Message Digest 6 (MD6)](https://en.wikipedia.org/wiki/MD6)
+  * It uses a [Merkle tree-like structure](https://en.wikipedia.org/wiki/Merkle_tree) to allow for immense parallel computation of hashes for very long inputs.
+  * it's claimed that it has a performance of 28 cycles per byte for MD6-256 on an Intel Core 2 Duo and provable resistance against [differential cryptanalysis](https://en.wikipedia.org/wiki/Differential_cryptanalysis).
+  * The source code of the reference implementation was released under MIT license
+  * was sent as a proposal for SHA-3, as per this [document](https://web.archive.org/web/20170812072847/https://groups.csail.mit.edu/cis/md6/submitted-2008-10-27/Supporting_Documentation/md6_report.pdf), however Rivest withdrew indicating it was not yet ready
+
+#### RIPEMD Family
+
+* [RACE Integrity Primitives Evaluation Message Digest (RIPEMD)](https://en.wikipedia.org/wiki/RIPEMD) series of hash functions which are alternatives to the SHA family which are used in applications like Bitcoin cryptocurrency implementations to compress SHA-256 hashed public keys into a shorter format as part of the process of generating Bitcoin addresses.
+* Five functions in the family:
+  * **RIPEMD**
+    * produced a 128-bit digest and contained some structural flaws that rendered it insecure
+  * **RIPEMD-128**
+    * replacement for RIPEMD
+    * also produced a 128-bit digest, but it is also no longer considered secure
+  * **RIPEMD-160**
+    * replaced RIPEMD-128 and remains secure today and is the most common variant which produces a 160-bit hash value
+  * **RIPEMD-256** and **RIPEMD-320**
+    * are based on RIPEMD-128 / 160 respectively
+    * no not offer any additional security 256 is the same as 128, 320 is the same as 160
+    * only offer longer output hash values
+
+#### Hashing Algorithm with Variable Length (HAVAL)
+
+* [HAVAL](https://en.wikipedia.org/wiki/HAVAL) can produce hashes of different lengths – 128 bits, 160 bits, 192 bits, 224 bits, and 256 bits. HAVAL also allows users to specify the number of rounds (3, 4, or 5) to be used to generate the hash. HAVAL was broken in 2004.
+
+#### Hash-Based Message Authentication Code (HMAC)
+
+* [HMAC](https://en.wikipedia.org/wiki/HMAC), also known as _Keyed-Hash Message Authentication Code_
+* symmetric (secret) key algorithm which implements a _partial_ digital signature -- it guarantees the integrity of a message during tranmission, but its does not provide for nonrepudiation
+* can be combined with any standard hash function, MD5 or SHA-2, by using a shared secret key
+* only communicating parties who know the secret key can generate and verify the partial digital signature
+* if the recipient decrypts the message digest but cannot successfully compare it to the message digest generated from the original plaintext message, that means the message was altered in transit.
+
+#### Summary of Hash Function Value Lengths
+
+* HAVAL - 128,160,192,224, and 256 bits
+* HMAC - Variable
+* MD5 - 128
+* SHA1 - 160
+* SHA2-224/SHA3-224 - 224
+* SHA2-256/SHA3-256 - 256
+* SHA2-384/SHA3-384 - 384
+* SHA2-512/SHA3-512 - 512
+* RIPEMD-128 - 128
+* RIPEMD-160 - 160
+* RIPEMD-256 - 256 (but equivalent to 128)
+* RIPEMD-320 - 320 (but equivalent t 160)
+
+### Digital Signatures
+
+* _Digital Signature (DS)_ is defined as _"a type of electronic signature that uses a cryptographic method to verify the authenticity and integrity of a digital document or message"_
+* The infrastructure for DS have two distinct goals:
+  > 1. assures the recipient that the message truly came from the claimed sender (enforces nonrepudiation)
+  > 2. assures the recipient that the message was not altered while in transit (enforces message integrity)
+* DS algorithms rely on a combination of public key cryptography and hash functions
+* does not provide confidentiality only non-repudiation, integrity, and authentication
+  * hashes (senders and the recievers generated one) match then that meets the integrity
+  * digital signature was verified using the sender's public key, then we know the message was encrypted with the sender's private key
+* accomplish confidentiality, the sender, after appending the digitally signed message digest to the plaintext message, would need to encrypt the entire message with the receiver's public key.
+  * the receiver would need to decrypt with their own private key
+
+The following diagram illustrates the process of using digital signatures
+
+![DS](./images/digital-signatures-alice-bob.jpg)
+
+#### Digital Signature Standard
+
+* [Digtial Signuature Standard (DSS)](https://en.wikipedia.org/wiki/Digital_Signature_Standard) is a specification established by NIST 
+  * it defines the acceptable digital signature algorithms used in [FIPS 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf) MUST use the SHA-3 hashing functions
+  * also defines the encryption algorithms that can be used to support digital signatures, currently there are three:
+    * [RSA Digital Signature Algorithm](https://bntan.medium.com/understanding-rsa-digital-signatures-cfba3bc67428), as specified in [IETF RFC 8017](https://datatracker.ietf.org/doc/html/rfc8017)
+    * [Elliptic Curve Digital Signature Algorithm (ECDSA)](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), as specified in FIPS 186-5
+      * provides inherent support for nonrepudiation
+    * [Edwards Curve Digital Signature Algorithm (EdDSA)](https://en.wikipedia.org/wiki/EdDSA), as specified in [IETF RFC 8032](https://datatracker.ietf.org/doc/html/rfc8032)
+
+### (Digital) Certificates
+
+* provides communicating parties the assurance that the people they are communicating with are truely who they claim to be
+* essentially endorsed copies of an individual's public key
+* when certificates are verified with trusted **certificate authorities (CA)**, they are legitimate public keys
+* digital certificates contain identifying information
+* their construction is governed by the [International Telecommunications Union (ITU)](https://www.itu.int/en/Pages/default.aspx) - [X.509 standard](https://en.wikipedia.org/wiki/X.509)
+* X.509 Certificates that conform must contain the following data:
+  * Version of X.509 to which it conforms
+  * Serial Number (from the certificate creator)
+  * Signature algorithm identifier
+    * technique used by the CA to digitally sign the contents
+  * Issuer name
+    * identification of the CA that issued the certificate
+  * Validity period
+    * date/time (start and expiration) during which the certificate if valid
+  * Subject's name
+    * contains the Command Name (CN) of the certificate as well as the distinguished name (DN) of the entity that owns the public key contained in the certificate
+    * may also include a wildcard, designated by an asterisk character (_*_), indicating the certificate is good for subdomains also, for example:
+      * `*.example.org` would be good for the following:
+        * `example.org`
+        * `www.example.org`
+        * `mail.example.org`
+        * `secure.example.org`
+      * however wildcare certs are only good for one level, therefore `*.example.org` would not work for `www.cissp.example.org`
+  * Subject's public key
+    * meat of the certificate
+    * actual public key the cert owner used to setup secure communication
+* Certificates may be issued for a variety or purposes, including providing assurance for the public keys of:
+  * Computers/machines
+  * Individual users
+  * Email address
+  * Developers (code-signing certificates)
+
+### Certificate Authorities (CAs)
+
+* binds public key infrastructure together
+* neutral organizations that provided notarization services for digital certificates
+* to obtain a DC from a reputable CA you must prove your identity to the satisfaction of the CA
+* list of some major CAs
+  * [IdenTrust](https://www.identrust.com/)
+  * [AWS Certificate Manager (ACM)](https://aws.amazon.com/certificate-manager/)
+  * [GlobalSign](https://www.globalsign.com/)
+  * [ComodoCA](https://ssl.comodoca.com/index.php)
+  * [Certum](https://www.certum.eu/en/)
+  * [GoDaddy](https://www.godaddy.com/en-ca)
+  * [DigiCert](https://www.digicert.com/)
+  * [SECOM Trust Systems](https://cloudsignatureconsortium.org/member/secom-trust-systems/)
+  * [Entrust](https://www.entrust.com/)
+  * [Actalis](https://www.actalis.com/)
+  * [Trustwave](https://www.trustwave.com/en-us/)
+  * [Google Cloud Certificate Authority Service](https://cloud.google.com/certificate-authority-service/docs)
+  * [Let's Encrypt](https://letsencrypt.org/)
+  * [Azure Certificate Authority](https://learn.microsoft.com/en-us/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list)
+* CA's preserve their trust relations using an **_offline CA_** to protect their **_root ca_**, which is the top-level certificate for their entire PKI
+  * _offline CAs_ are discounted from the network and powered down until needed
+  * _offline CA_ uses the root certificate (**root ca**) to create subordinate **_intermediate CAs_** that serve as the **_online CAs_** used to issue certificates on a rountine basis.
+* **_Registration Authorities (RAs)_**
+  * assist CAs with the burden of verifying user's identitites prior to certificate issuances
+  * dont issue certificates but allow CAs to remotely verifiy identities
+* [CA Trust Model](https://medium.com/@meghdadshamsaei/trust-model-implementation-by-pki-7cddcdb72513)
+  * use of a series of intermediate CAs is known as **_certificate chanining_**
+  * to validate a cert, the browser verifies the identity of the intermediate CAs first then traces the path of trust back to a known root CA, essentially verifying the identity of each link in the chain of trust
+* CAs do not need to be third-party service providers
+* Organization will typically using internal CAs that issue self-signed certificates for uses exclusively inside an organizations, system can be configured to trust these self-signed certificates
+
+#### CA Trust Models
+
+Several trust models exsist for PKI infrastructure, they are outlined below
+
+##### Hierarchical Trust Model
+
+The hierarchical or tree model is the **most widely adopted approach** for implementing Public Key Infrastructure (PKI). This model establishes a clear chain of trust, with a root Certificate Authority (CA) at its apex. This root CA serves as the ultimate source of truth, disseminating crucial information to intermediate CAs positioned lower in the hierarchy. These intermediate CAs implicitly trust the information provided by the root, while the root CA also extends its trust to these intermediate CAs at their respective levels. This structured arrangement ensures robust control across every tier of the hierarchical tree. Consequently, it's a preferred implementation for large organizations aiming to expand their certificate processing and tightly manage all certificate-based operations.
+
+![Hierarchial Trust Model](./images/hierarchial-trust-model.png)
+
+##### Bridge Trust Model
+
+Another common form of PKI is the Bridge Trust Model, which offers a distinct approach. Unlike hierarchical models, it establishes peer-to-peer connections among multiple Root Certificate Authorities (CAs). These direct connections enable Root CAs to exchange cross-certificates, facilitating a seamless certification process across different organizations or departmental boundaries. A notable characteristic of this model is that individual intermediate CAs only extend trust to the CAs immediately above and below them. Crucially, the Bridge Model allows for the expansion of the CA infrastructure without the need to introduce additional layers of CAs, providing enhanced flexibility and improving interoperability among diverse entities.
+
+![Bridge Trust Model](./images/bridge-trust-model.png)
+
+##### Hybrid Trust Model
+
+The Hybrid Trust Model is perfectly suited for situations where you need to link specific parts of two or more organizations or departments while keeping other segments distinct. It provides an unmatched level of control, allowing you to selectively establish trust only where it's required, rather than across your entire organization.
+
+The real power of this model lies in its extreme flexibility, enabling you to design intricate hybrid environments. Within this structure, intermediate CAs that are outside the hybrid environment maintain a narrow trust, relying only on their direct Root CA. In contrast, intermediate CAs inside the hybrid environment benefit from a much wider trust, recognizing all Root CAs connected to any intermediate CA within that hybrid network. This makes it an excellent choice for tailored trust solutions.
+
+![Hybrid](./images/hybrid.png)
+
+##### Mesh Trust Model
+
+If your goal is to implement a Hierarchical Trust Model that supports extensive cross-certification or requires a dynamic web of Root CAs, the Mesh Trust Model offers the optimal solution. It effectively evolves the bridge structure by incorporating multi-path connections and multiple Root CAs. What makes the Mesh Model particularly powerful is its pervasive trust; certifications from any given Root CA are fully authorized across all Root, Intermediate, and leaf CAs, ensuring that all connected end-users, regardless of their specific CA chain, can validate certificates.
+
+### Certificate Life Cycle
+
+* Process CAs use to create, validate, and revoke client certificates
+* Steps:
+  * **Enrollment**
+    * prove identity to CA either in person with id or other means provided by the CA, such as credit report data, etc
+    * once satisfied you provide the CA with your public key in the form of a **_certificate signing request (CSR)_**
+    * CA then creates an X.509 certificate using their private key and provides you with a copy of the digitaly signed certificate to distribute
+    * issues different types of certificates but the most common are:
+      * **_Domain Validation (DV) certificates_**, where CA simply verifies that the certificate subject has control of the domain name
+      * **_Extended Validation (EV) certificates_**, which provide a higher level of assurance and has more rigorous steps for validating the owner is a legitimate business before issuing the certificate
+  * **Validation**
+    * when provided with a digital certificate from someone that you are communicating with you verify it by checking the CA's digital signature using the CA's public key
+    * this process is built in to most modern web browsers and email clients with known trusted CAs
+    * check the validity period making sure the current date is after that start date of the cert and that its not expired
+    * check and ensure the certificate was not revoked using a [**_certificate revocation list (CRL)_**](https://en.wikipedia.org/wiki/Certificate_revocation_list) or the [**_Online Certificate Status Protocol (OCSP)_**](https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol)  
+    * The public key listed on the certificate is authentic, as long as it satisfies the following requirements:
+      * The digital signature of the CA is authentic
+      * You trust the CA
+      * The certificate is not list on a CRL
+      * The certificate actually contains the data you are trusting
+    * **_Certificate pinning_**
+      * instructs browsers to attach (pin) a certificate to a host for an extended period of time, which associates a specific domain with a particular public key.
+      * allows users and administrators to notice and intervene if certificates unexpectedly changes
+  * **Revocation**
+    * CA's occasionally need to revoke/remove a certificate for one of the following reasons:
+      > * The certificate was compromised
+      > * The certificate was erroneously issued (with out proper verification)
+      > * The details of the certificate changed
+      > * The security association changed
+    * **_Certificate Practice Statment (CPS)_**
+      * states the practices a CA employs when issueing or managing certificats
+      * also identifies the revocation grace period, which is the maximum response time within which a CA will perform any requested revocation
+    * Three techniques to verify the authenticity of certificates and identify revoked ones:
+      * **Certificate Revocation Lists (CRL)**
+        * CRLs are maintain by CAs and contain serial numbers of certificates that have been issued and revoked including the date/time of the revocation
+        * disadvantage is that these list must be downlowded and cross-referenced introducing latency in the verification process
+      * **Online Certificate Status Protocol (OCSP)**
+        * uses real-time verification by sending OSCP requests to the CAs OCSP server where it will respond with a status of `good`, `revoked`, or `unknow`
+        * browsers use this workflow for validation
+        * significant burden is placed on the OCSP servers operated by CAs verifying the certificate is valid and not revoked for every single request
+      * **Certificate Stapling**
+        * extension of OCSP that relieves some of the burden placed on CAs by the original protocol
+        * web server contacts the OCSP server itself and recieves a signed and timestamped response, which it then attaches (staples) to the digital certificate
+        * when a user requests a secure web connection, the web server sends the digitial certificate with the staple OCSP response to the user's brower
+        * the brower then verifies whether the certificate is authentic and also validates that the stapled OCSP response is genuine and recent
+        * the CA signed the OCSP response, the user's browser knows that it is forom the CA, and the timestamp provides the user's browser proof that the CA recently validated the certificate
+        * time savings is on the user's next visit to the website, the communication just resuses the staple certificate without recontacting the OCSP server, as long as the timestamp is recent enough, the browser will accept the stapled certificate without having to contact the OCSP server
+        * common to have a validity period of 24 hours
+
+### Certificate Formats
+
+* Digital certificates are typicall store in files which come in a variety of formats, both binary and text:
+* Common formats
+  * **Distinguished Encoding Rules (DER) Format**
+    * most common binary format
+    * certificates are stored with the `.der`, `.crt`, or `.cer` extensions
+  * **Privacy-Enhanced Mail (PEM) Format**
+    * ASCII based text version of the DER format
+    * certificates stores as files with the `.pem` or `.crt` extension
+  * **Personal Information Exchange (PFX) Format**
+    * commonly used by Windows
+    * may be stored in binary form using either `.pfx` or `.p12` extensions
+  * **P7B Certificates**
+    * also used by Windows systems
+    * ASCII file with the `.p7b` extension
+
+### Asymmetric Key Management Best Practices
+
+* Choose you encryption system wisely, one with an algorithm that is in the public domain and has been thoroughly vetted by industry experts
+  * be wary of the use of "black box" approach
+* Use key lengths that balances security requirements with performance considerations
+* Avoid patterns within the key to decrease the likelhood that an attacker will be able to break the encryption and degrade the securtiy of the cryptosytem
+* For public key encryption, make sure the private key is protected and secret
+* Retire keys when they are no longer needed
+* Key Rotation also
+* Back up you key, stored in a secure manner or use a key escrow service
+* Using HSM's will provide a high degree of security and operational excellence
+  * HSM's provide tamper-resistence mechanisms
+
+### Applied Cryptography
+
+#### Portable Devices (Laptop/Smartphones)
+
+* Disk encryption capabilities
+  * Windows:
+    * [BitLocker](https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/) and [Encrypting File System (EFS)](https://learn.microsoft.com/en-us/windows/win32/fileio/file-encryption)
+  * macOS:
+    * [FileVault encryption](https://support.apple.com/en-ca/guide/deployment/dep82064ec40/web)
+  * [VeraCrypt](https://veracrypt.jp/en/Home.html)
+    * Open Source Package allows disk encryption on Linux, Mac, and Windows
+* [Trusted Platform Module (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module)
+  * a chip which resides on the motherboard of the device
+  * allows for the storage and management of cryptographic keys used for full-disk encryption (FDE) solutions
+  * provides the OS access to the keys only if the user successfully authenticates, which prevents someone removing the drive from one device and inserting it into another
+
+#### Email
+
+* Simple Rules
+  * require confidentiality, encrypt the message
+  * must maintain integrtiy, hash the message
+  * needs authentication, integrity, and/or nonrepudiation, then digitally sign the message
+  * requires confidentiality, integrity, origin authentication, and nonrepudiation, then encrypt and digitally sign the message
+
+##### Secure Email Standards
+
+###### Pretty Good Privacy (PGP)
+
+* [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) was created and released in 1991 by Phil Zimmerman
+* combines the CA hierarchy with the ["web of trust" concept](https://en.wikipedia.org/wiki/Web_of_trust), which is 
+  > * you must become trusted by one or more PGP users to begin using the system
+  > * you then accept their judgement regarding teh validity of additional users and, by extension, trust a multilevel "web" of users descending from your intial trust judgements
+* encountered a few hurdles before reaching widespread use, the most difficult obstruction was the US Government
+  * the US Government treated encryption technology as munitions and prohibited the distribution of strong encryption technology outside the United States
+  * this restriction has since been repealed
+* PGP my be freely distributed to most countries
+* two versions:
+  * [PGP Encryption Solutions (Symantec PGP Encryption Suite)](https://docs.broadcom.com/doc/pgp-encryption-suite-brochure) which is a commerical product now under Broadcom's Symantec Enterprise Division
+  * [OpenPGP](https://www.openpgp.org/) which is an open source variant
+* Services that offer PGP encryption:
+  * [Proton Mail](https://proton.me/mail)
+  * [StartMail](https://www.startmail.com/)
+  * [Mailvelope](https://mailvelope.com/en)
+  * [SafeGmail Chrome Extension](https://chromewebstore.google.com/detail/sendsafely-encryption-for/glpichgelkekjnccdflklcclhnoioblm)
+  * [Hushmail](https://www.hushmail.com/)
+
+Sample PGP Message which begins with `----BEGIN PGP MESSAGE----` and ends with `----END PGP MESSAGE----`
+
+```text
+ -----BEGIN PGP MESSAGE-----
+    Version: 2.6.2
+
+    hIwD1vwet/TdJfEBBACdcCPkNI3kRwYqtHUyfpvVAY5rt+Lb9P6EztNd4sYq9egV
+    CZjfqcCn36XZmYPbbO6nZbl992kPRFzTgCRszKNPtlk6Wa93AqXs3KCZp+4emXQh
+    7moE+XTf4QUGJZ2L3w/sSNs5WFkZRIbto0ivK1aRlX1XTqhPqo9HbgEfElBVUaYA
+    AACQEWaOS3/h6BVLHTfXaK20vmLcg9BUisB5RDvYGLZv9XFwHMMjctFJJQYnWIOp
+    +7LLkmNO5fE48rWh0EOAwjAeduGzJGQb4yiE7OlxoESmmTJQ+qO1K2nDz8Stk3a6
+    WvAQJrpEUY7Og8QGlQQRPKl2F++j6XbIhZ27OeYqJp+vgylUd874KDMCcTrzF3ph
+    /Qfi
+    =xTV9
+    -----END PGP MESSAGE-----
+```
+
+Digitally signed messages contain the text of the message followed by a PGP signature like the following:
+
+```text
+I am enjoying studying CISSP
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQQVrPeUo9lk0dnOTCbvwxHCv6EJdAUCXtO/yAAKCRDvwxHCv6EJ
+dC2BAJ49fIcOdBUdE0PELySEMlKNzVnZLgCdG1gsTim3gab2dgL6qagHArSlgq8=
+=IvP/
+-----END PGP SIGNATURE-----
+```
+
+###### Secure/Multipurpose Internet Mail Extensions (S/MIME)
+
+* [S/MIME](https://en.wikipedia.org/wiki/S/MIME) de facto standard for encrypted email using the RSA encrytption algorithm
+* recieved major backing of industry, including RSA Security
+* incorporated into a number of major commercial products including:
+  * Microsoft Outlook and Microsoft 365
+  * Apple's iCloud Mail
+  * Google Workspace Enterprise Plus Edition
+* relies on the use of X.509 certificates for exchanging cryptographic keys
+* public keys are used for digital signatures
+* users must create their own certificates in order to send digitally signed messages
+* technical limitations have prevented its wisdespread use and adoption
+
+#### Web Applications
+
+##### Secure Socket Layer (SSL)
+
+* [SSL](https://www.cloudflare.com/en-ca/learning/ssl/what-is-ssl/) originally develop by Netscape (in 1995) to provide secure client/server encryption for web traffic using Hypertext Transfer Protocol Secure (HTTPS) over port 443
+* a number of [security flaws](https://www.manageengine.com/key-manager/help/ssl-vulnerability.html) in the SSL protocol rendered it insecure for use today
+* last version was 3.0
+* is the foundational for its successor TLS
+
+##### Transport Layer Security (TLS)
+
+* [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) is a protocol defined by [Internet Engineering Task Force (IETF) standard](https://www.ietf.org/), first defined in 1999, as a replacement for the insecure SSL 3.0 protocol
+* leverages asymmetric and symmetric cryptographic to create a secure channel and transmission of data in a secure manner for an entire web browsing session
+* relies on the exchange of server digital certificates to negotiate encryption/decryption paramters between the browser and the web server
+* TLS 1.3 connection steps:
+  > 1. Web browser and the web server negotiate a cipher suite that is supported by both when a user accesses a website
+  > 2. Browser retrieves the web server's digital certificate and extracts the server's public key from it
+  > 3. The browser creates a random symmetric key (ephemeral or session key), uses the web server's public key to encrypt the ephemeral key, and sends the encrypted ephemeral key to the web server
+  > 4. Web server decrypts the ephemeral key using its own private key, and the two systems exhange all future messages using the ephemeral key
+
+The following diagram outlines the above listed process flow:
+![TLS HTTPS](./images/TLS-HTTPS.png)
+
+The above approache allows TLS to leverage (1) advanced functionality of asymmetric cryptoggraphy while (2) encrypting/decrypting the vast majority of the data exchange using the fast symmetric algorithm.
+
+###### TLS Version
+
+* [TLS 1.0](https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.0)
+  * defined in 1999 as per [RFC-2246](https://www.rfc-editor.org/rfc/rfc2246)
+  * simply on enhancement to the SSL 3.0 protocol
+  * supported backwards compatibility to downgrade communications to SSL 3.0 when both parties did not support TLS
+  * officially deprecated 2020
+* [TLS 1.1](https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.1)
+  * defined in [RFC 4346 ]((https://www.rfc-editor.org/rfc/rfc4346))
+  * developed in April of 2006 as an upgrade to TLS 1.0
+  * officially deprecated in 2020
+* [TLS 1.2](https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.2)
+  * release in 2008 and defined in [RFC 5246](https://www.rfc-editor.org/rfc/rfc5246)
+  * now considered the minimum secure option
+  * dropped backwards support for SSL 3.0
+* [TLS 1.3](https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.3)
+  * release in 2018
+  * is the most secure and adds performance improves
+  * in 2024 NIST requires that all US federal agencies support TLS 1.3 and recommends the same for all other organizations
+  * cipher suite consists of two components:
+    > * The bulk encryption algorithm that will be used for symmetric encryption (server might support multiple version of DES or AES)
+    > * The hash algorithm that will be used to create message digests (server might support multiple version of the SHA algorithm)
+  * cipher suites are usually expressed in long strings that combine both of these elements for example:
+    * `TLS AES_256_CBC_SHA384` which means the server supports TLS using:
+      * AES CBC Mode with a 256-bit key for bulk encryption
+      * SHA-384 algorithm for hashing
+  * uses variants of the Diffie-Hellman key exchange algorithm
+
+###### POODLE Attack
+
+* In 2014 and attack known as [**Padding Oracle On Downgraded Legacy Encryption (POODLE)**](https://en.wikipedia.org/wiki/POODLE) demonstrated a significant flaw in the SSL 3.0 fallback mechanism of TLS
+  > * If attackers successfully exploit this vulnerability, on average, they only need to make 256 SSL 3.0 requests to reveal one byte of encrypted messages.
+* Mitigation was to completely drop support for SSL and solely relie on TLS security
+
+##### Tor and the Dark Wee
+
+* [Tor](https://en.wikipedia.org/wiki/Tor_(network))
+  * formerly known as _The Onion Router_
+  * provides a mechanism for anonymously routing traffic across the internet using encryption and a set of _relay nodes_, which receive traffic on the Tor network and pass it along
+  * [**Perfect Forward Secrecy (PFS)**](https://www.geeksforgeeks.org/computer-networks/perfect-forward-secrecy/)
+    * leverages Diffie-Hellman key exchange
+    * used by Tor networks in order to prevent nodes in the relay chaing from reading anything other than the specific information they need to accept and relay traffic
+  * using PFS and a combination of a set of three or more relay nodes, Tor allows for both anonymous browsing of the standard internet and hosting of completely anonymous sites on the [dark web](https://en.wikipedia.org/wiki/Dark_web)
+
+#### Steganography and Watermarking
+
+* _Steganography_ is defined as the "art of using cryptographic techniques to embed secret messages within another message"
+* works by modifying the [least significant bit (LSB)](https://en.wikipedia.org/wiki/Bit_numbering#Least_significant_bit_in_digital_steganography) of a pixel value in its binary representation
+  * Example:
+    * RGB color model, each pixel is described by using 3 decimal numbers, each ranging from 0 to 255
+      * first number represents the degree of red color in the pixel, second is green, and third represents blue
+    * pixel has a blue value of 64 (binary 1000000), changing the LSB to 1 would result in the binary value of 1000001 or the equivalent decimal of 65
+* changes are so minor that they do not affect the image itself but data is embedded
+* more often than not these techniques are used for illegal activities such as espionage and child pornagraphy
+* however there are legal uses also such as digital watermarking for protecting intellectual property
+* A list of commong tools can be found [here](https://github.com/lucacav/steg-tools)
+
+#### Networking
+
+* Two types of techniques used by security admins for protecting data traveling over networks
+  * [**Link encryption**](https://en.wikipedia.org/wiki/Link_encryption)
+    * all data including the header, trailer, address, and routing data is encrypted
+    * each packet has to be decrypted at each hop so that it can be properly routed to the next hop and then reencrypted before being sent along its way (slows routing)
+    * done at lower OSI layers
+  * [**End-to-end encryption (E2EE)**](https://en.wikipedia.org/wiki/End-to-end_encryption)
+    * does not encrypt the header, address, trailer and routing data
+    * moves faster from point to point 
+    * more susceptible to sniffers and eavesdroppers
+    * done at higher OSI layers
+    * examples include:
+      * [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell)
+        * suite of programs provides encrypted alternatives to common internet applications such as [Telnet](https://en.wikipedia.org/wiki/Telnet), [File Transfer Protocol (FTP)](https://en.wikipedia.org/wiki/File_Transfer_Protocol), and [rlogin](https://www.ssh.com/academy/ssh/rlogin)
+        * Two versions:
+          * [**SSH-1**](https://en.wikipedia.org/wiki/Secure_Shell#Version_1)
+            * now considered insecure
+          * [**SSH-2**](https://en.wikipedia.org/wiki/Secure_Shell#Version_2)
+            * drops support for some insecure algorithms (such as 3DES)
+            * adds several enhancements including but not limited to:
+              * support for the Diffie-Hellman key exchange protocol
+              * support for running multiple sessions over a single SSH connection (channel multiplexing)
+            * add support for Secure File Transfer Protocol (SFTP)
+            * provides protection againts [on-path attacks](https://www.cloudflare.com/en-ca/learning/security/threats/on-path-attack/), [eavesdropping](https://www.fortinet.com/resources/cyberglossary/eavesdropping), and [IP/DNS spoofing](https://www.contrastsecurity.com/glossary/spoofing-attack)
+
+#### Internet Protocol Security (IPSec)
+
+* [IPSec](https://en.wikipedia.org/wiki/IPsec)
+  * Standard architecture defined by the Internet Engineering Task Force (IETF) for setting up secure communication channel between two entities and release in 1996
+  * widespread uses and is available out-of-the-box in most commercial products
+  * relies on security associations with the following two main components:
+    * [**Authentication Header (AH)**](https://en.wikipedia.org/wiki/IPsec#Authentication_Header)
+      * provides assurance of message integrity
+      * provides authentication and access control and prevents replay attacks
+      * rarely used without ESP
+    * [**Encapsulating Security Payload (ESP)**](https://en.wikipedia.org/wiki/IPsec#Encapsulating_Security_Payload)
+      * provides confidentiality and integrity of package contents
+      * provides encryption and limited authentication and prevents replay attacks
+      * sometimes used with AH
+  * Two discrete modes of operation:
+    * [**Transport Mode**](https://en.wikipedia.org/wiki/IPsec#Transport_mode)
+      * used for end-to-end encryption
+      * only the packet payload is encrypted
+      * designed to peer-to-peer communication
+    * [**Tunnel Mode**](https://en.wikipedia.org/wiki/IPsec#Tunnel_mode)
+      * designed for link encryption
+      * the entire packet, including the header, is encrypted
+  * [Security associations (SA)](https://en.wikipedia.org/wiki/IPsec#Security_association)
+    * represents the communication session and record any configuration and status configuration about the connection
+    * essentially simplex connection, which means data transmission is one way
+    * for two way channels you need two SAs, one for each direction
+    * for bi-directional communications using both AH and ESP you need to setup four SAs
+    * establishment of shared keys using [Internet Key Exchange (IKE and IKEv2)](https://en.wikipedia.org/wiki/Internet_Key_Exchange),
+
+### Emerging Applications
+
+#### Blockchain
+
+* [Blockchain](https://en.wikipedia.org/wiki/Blockchain) is a immutable and distributed public ledger
+* creates data store that cannot be tampered with or destroyed
+* Primary application is for _cryptocurrency_
+* originally invented as a foundational technology for [**Bitcoin**](https://en.wikipedia.org/wiki/Bitcoin)
+  * allowing the tracking of bitcon transactions without the use of a centralized authority (central regulator), authority is distributed among all participants in the Bitcoin blockchain
+* other uses include supply chain tracking, property ownership records
+
+#### Lightweight Cryptography
+
+* Also known as [Lightweight Encryption](https://www.futurex.com/blog/how-will-lightweight-cryptography-impact-you)
+* speciallized hardware devices that are purpose-built to provide cryptographic operations (encrypt/decrypt) with little power expendendure as possible as well as provide low latency operations.
+  >* specialized dedicated VPN hardware devices may contain cryptographic hardware to perform encryption and decryptions operations in highly efficient form to maximize speed
+* used for IoT based environments
+* edge devices
+* remote locations
+
+#### Homomorphic Encryption
+
+* [Homomorphic Encryption](https://en.wikipedia.org/wiki/Homomorphic_encryption) provides the capabilities of maintaining data privacy while still performing computational operations on the data
+* essentially when you encrypt the data with a homomorphic encryption alogrithm and then perform computation on that data, the result, when decrypted would be the same if you had performed the computation on the plaintext data
 
 ## 3.7 - Understand methods of cryptanalytic attacks
 
-* Brute force
-* Ciphertext only
-* Known plaintext
-* Frequency analysis
-* Chosen ciphertext
-* Implementation attacks
-* Side-channel
-* Fault injection
-* Timing
-* Man-in-the-Middle (MITM)
+### Brute Force Attack
+
+* [Brute-force attack](https://en.wikipedia.org/wiki/Brute-force_attack) involves attempting every possible valid combination for a key or password
+* uses a massive amount of processing power to methodically guess the key used to secure cryptographic communications
+* given enough time, this type of attack with be succesful
+* directly proportional to the length of the key/password, every bit of key length doubles to the time to perform the brute-force attack because of the number of possible keys doubles
+* Types of brute-force attacks:
+  * **Simple brute force attacks**
+    > * A simple brute force attack occurs when a hacker attempts to guess a user’s login credentials manually without using any software. This is typically through standard password combinations or personal identification number (PIN) codes.
+    > * These attacks are simple because many people still use weak passwords, such as "password123" or "1234," or practice poor password etiquette, such as using the same password for multiple websites. Passwords can also be guessed by hackers that do minimal reconnaissance work to crack an individual's potential password, such as the name of their favorite sports team.
+  * **Dictionary attacks**
+    >* A dictionary attack is a basic form of brute force hacking in which the attacker selects a target, then tests possible passwords against that individual’s username. The attack method itself is not technically considered a brute force attack, but it can play an important role in a bad actor’s password-cracking process.
+    >* The name "dictionary attack" comes from hackers running through dictionaries and amending words with special characters and numbers. This type of attack is typically time-consuming and has a low chance of success compared to newer, more effective attack methods.
+  * **Hybrid brute force attacks**
+    >* A hybrid brute force attack is when a hacker combines a dictionary attack method with a simple brute force attack. 
+  * **Reverse brute force attacks**
+    >* A reverse brute force attack sees an attacker begin the process with a known password, which is typically discovered through a network breach. They use that password to search for a matching login credential using lists of millions of usernames. Attackers may also use a commonly used weak password, such as "Password123," to search through a database of usernames for a match.
+  * **Credential stuffing**
+    >* Credential stuffing preys on users’ weak password etiquettes.Attackers collect username and password combinations they have stolen, which they then test on other websites to see if they can gain access to additional user accounts. This approach is successful if people use the same username and password combination or reuse passwords for various accounts and social media profiles.
+* Enhancements to the effectiveness of brute-force attacks
+  * **Rainbow Tables**
+    * provide precomputed values for cryptographic hashes
+    * commonly used for cracking passwords stored on a system in hashed form
+  * **Scalable Computing**
+    * specialzed and a scalable computing hardware design purposely to use in brute-force attacks
+* [Cryptographic Salt](https://en.wikipedia.org/wiki/Salt_(cryptography))
+  * a random value this is added to the end of a password before it is hashed
+  * The salt and the password (or its version after key stretching) are concatenated and fed to a cryptographic hash function, and the output hash value is then stored with the salt in a database or on disk. The salt does not need to be encrypted, because knowing the salt would not help the attacker
+  * when comparing the password, a process must first retrieve the salt, append it to password then generate a hash in order to compare against the stored hash value
+  * Password Hashing Functions that allow creation of hashes using salts:
+    * [Password-Based Key Derivation Function 2 (PBKDF2)](https://en.wikipedia.org/wiki/PBKDF2)
+    * [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)
+    * [scrypt](https://en.wikipedia.org/wiki/Scrypt)
+  * **Key Stetching**
+    * [technique](https://en.wikipedia.org/wiki/Key_stretching) use to make brute-force attacks computationally more difficult by by increasing the resources (time and possibly space) it takes to test each possible key.
+
+![Brute Force Attacks](./images/brute-foce.png)
+
+### Analytic Attack
+
+* An [analytic attack](https://runmodule.com/2025/03/13/cryptanalytic-attack/) (also known as _cryptoanalytic attack_) is an algebraic manipulation which attempts to reduce the complexity of the algorithm
+* focuses on the logic of the algorithm
+* A technique in cybersecurity where a threat actor attempts to decipher encrypted data by exploiting weaknesses in the cryptographic algorithm. Rather than using brute force to try every possible key, the attacker analyzes the encryption structure to find patterns or inherent flaws that can reveal the plaintext or key. This approach is more sophisticated and often faster than attempting exhaustive key searches.
+
+### Implementation Attack
+
+* An attack that targets vulnerabilities in the implementation of a cryptographic system rather than inherent weaknesses in the cryptographic algorithms.
+* This can involve exploiting errors in software coding, hardware design, or system configuration to gain unauthorized access or disrupt operations.
+* Such attacks highlight the importance of robust, error-free, and secure implementation of cryptographic systems to resist potential threats.
+* Side-Channel and Timing attacks are variants of this type of attack
+
+### Statistical Attack
+
+* An attack that exploits statictical weaknesses in a cryptosystem, such as the inability to produce truly random numbers
+* may be attempted against a database
+* also may be a vulnerability in the hardware or operating system hosting the cryptography application which may be exploited
+
+### Fault Injection Attack
+
+* Type of [attack](https://en.wikipedia.org/wiki/Fault_injection) where the attacker attempts to compromise the integrity of a cryptographic device by causing some type of external fault to cause a malfunction which undermines the security of the device
+  * external fault may be high-voltage electricity, high or low temperature, or electromagnetic device
+
+### Side-Channel Attack
+
+* Type of attack is based on information obtained from the physical implementation of the cryptographic system (such as processor utilization, electricity consumption, etc), rather than on weaknesses in the algorithm itself.
+* The attacker seeks this information in order to monitor the system activity and retrieve information that is actively being encrypted.
+* Side-channel attacks include timing attacks, power analysis attacks, electromagnetic attacks, and others.
+
+### Timing Attack
+
+* Type of side channel attack
+* the attacker measures pricesly how long cryptographic operations take to complete, this allows them to gain information about the crypto process in order to undermine its security
+
+### Ciphertext-Only Analysis Attack (COA)
+
+* Type of [attack](https://en.wikipedia.org/wiki/Ciphertext-only_attack) in which only some cipher-text is known and the attacker tries to find the corresponding encryption key and plaintext.
+* It is the hardest to implement but is the most probable attack as only ciphertext is required.
+* For example, the attacker might know the language in which the plaintext is written or the expected statistical distribution of characters in the plaintext. Standard protocol data and messages are commonly part of the plaintext in many deployed systems, and can usually be guessed or known efficiently as part of a ciphertext-only attack on these systems.
+
+![COA](./images/ciphertext-only-attack.avif)
+
+### Frequency Analysis Attack
+
+* Type of [attack](https://en.wikipedia.org/wiki/Frequency_analysis) in which an attack attempts to count the number of times each letter appears in the ciphertext
+* The letters _E, T, A, O, I, N_ are the most common in the English language are the most common, while Z, Q, X and J are rare.
+* Likewise, _TH, ER, ON, and AN_ are the most common pairs of letters (termed bigrams or digraphs), and _SS, EE, TT, and FF_ are the most common repeats.
+* The nonsense phrase _"ETAOIN SHRDLU"_ represents the 12 most frequent letters in typical English language text.
+* Using this information the attack can then test serveral hypotheses:
+  > * If the common letters are also the most common in the ciphertext, the cipher was likely a transposition cipher, which rearrange the characters of the plaintext without altering them
+  > * If other (noncommon) letters are the most common in the ciphertext, the cipher is probably some form of substitution cipher that replaced the plaintext characters
+* Patterns are exploited with ciphertext-only attack
+
+### Known Plaintext Analysis Attack (KPA)
+
+* Type of [attack](https://en.wikipedia.org/wiki/Known-plaintext_attack) in which some plaintext-ciphertext pairs are already known.
+* The attacker maps them in order to find the encryption key
+* This attack is easier to use as a lot of information is already available.
+* advanced methods such as [differential cryptanalysis](https://en.wikipedia.org/wiki/Differential_cryptanalysis) are types of chosen-plaintext attacks
+  * This type of attack involves comparing pairs of plaintexts and their corresponding ciphertexts to find patterns in the encryption algorithm. It can be effective against block ciphers with certain properties.
+
+![KPA](./images/known-plaintext-attack.avif)
+
+### Chosen Ciphertext Analysis Attack (CCA)
+
+* Type of [attack](https://en.wikipedia.org/wiki/Chosen-ciphertext_attack), the attacker chooses random plaintexts and obtains the corresponding ciphertexts and tries to find the encryption key.
+* It's very simple to implement like KPA but the success rate is quite low.
+
+![CCA](./images/chosen-ciphertext-attack.avif)
+
+### Meet-in-the-Middle Attack
+
+* a [type of _Known Plaintext Attack_](https://en.wikipedia.org/wiki/Meet-in-the-middle_attack)
+* cryptographic attack against encryption schemes that rely on performing multiple encryption operations in sequence
+* this attack is the reason that Double DES (2DES) was quickly discarded
+* attacker uses a known plaintext message
+  * the plaintext message is encrypted using every possible key (k1)
+  * the requivelent ciphertext is decrypted with every possible keys (k2)
+  * when a match is found, the corresponding pair (k1, k2) represent both portions of the double encryption
+  * attack takes generally double the time necessary to break a single round of encryption (or 2^n rather than the anticipated 2^n * 2^n), offering minimal added protection
+
+![Meet-in-the-Middel](./images/example-of-MITM-attack.webp)
+
+### Man-in-the-Middle (MITM)
+
+* [Type of On-Path Attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), in which an attacker, which sits betwee two communicating parties and intercepts all communications (including the setup of cryptographic session the message/key) through a secured channel.
+* the attacker responds to the originators's initialization requests and sets up a session session with the originator
+* the attacker then establishes a second secure session with the intended recipient using a different key and posing as the originator
+* the attack can then "sit in the middle" of the comms channel and read all traffic as it passes between the two parties
+
+![MITM](./images/MITM%20Attack.jpg)
+
+### Birthday Attack
+
+* [Type of Brute-Force Attack](https://en.wikipedia.org/wiki/Birthday_attack) also known as a _collision attack_ or _reverse hash matching_ which seeks to find flaws in the one-to-one nature of hash functions
+* the malcious attacker seeks to replace the contents of a digitally signed communication with a different message that produces the same message digest in order to maintain the validity of the original digital signature
+
+### Replay Attack
+
+* Type of [attack](https://en.wikipedia.org/wiki/Replay_attack) where the malicious attacker intercepts an encrypted message between two parties (often a request for authentication) and then later "replays" the captured message to open a new session
+* can be defeated by using timestamps and expireation periods into each message, using challeng-response flows, and encrypting authentication sessions with ephemeral session keys
+
+![Replay Attack](./images/replay_attack.jpg)
+
 * Pass the hash
 * Kerberos exploitation
 * Ransomware
