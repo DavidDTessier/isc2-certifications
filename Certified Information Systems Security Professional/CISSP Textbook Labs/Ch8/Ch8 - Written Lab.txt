@@ -1,0 +1,55 @@
+1. Name at least seven security models and primary security benefits of using each
+
+    * Trusted Computing Base (TCB)
+        * combination of hardware, software, and controls work together to a for a trust union to enforce security policies
+    * (Secure State Machine Model)
+        * ensures a system remains secure throughout all its operations by defining all possible system states and transitions between them
+    * Information Flow
+        * based on state machine model
+        * focuses on controlling the movement of data and access to and from it
+    * Noninterference
+        * loosely based on the Information Flow Model
+        * more concerned on making sure the actions of subjects at a higher level do not affect the system state or actions of subjects a lower levels
+    * Take-grant
+        * controls the passage of rights to subjects
+    * Access Control matrix
+        * provides a perspective of access on multiple objects across mutilple objects
+    * Bell-LaPadula 
+        * build  for the DoD
+        * protects confidentiality
+    * Biba
+        * protects integrity
+    * Clark-Wilson
+        * protects integrity 
+    * Brewer-Nash
+        * avoids conflicts of interest
+
+2. Describe the primary components of TCB.
+    * Security Perimeter
+        * bounds between the TCB and the rest of the system
+        * prevents insecure communications between TCB and the rest of the system
+        * Has Trusted Paths
+    * Reference Monitor
+        * validates access to every resource
+        * grants access to resources
+        * stands between the subject and object
+    * Security Kernel
+        * implements the reference monitor
+        * launches components that enforce the reference monitor
+        * uses trusted paths to communicate
+        * mediates all resource access 
+
+3. What are the two primary rules or principles of the Bell-LaPadula security model? Also what are the two rules of Biba?
+
+4. What is the difference between open and closed systems and open and closed source?
+    * closed systems are typically proprietary in nature with unpublished protocols and are less likely to be targetted by attackers
+    * closed source is source code that is hidden from public, vendor maintains it, sometime is commerical in nature, could still be an open system
+    * open source is source code that is available to the public and leverages the public to review to make it more secure and stable
+    * open system built on agreed-upon industry standards, easily integrates with other systems but is more susceptible to being targeted by attackers
+
+5. Name at least four design principles and describe them?
+    * security should be considered at every stage of a system's development
+    * avoid transitive trust between systems
+    * decide either close vs open system 
+    * handle system errors in a 
+    * KISS principle

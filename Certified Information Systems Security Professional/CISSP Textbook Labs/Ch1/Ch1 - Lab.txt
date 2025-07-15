@@ -24,10 +24,7 @@
 4. What are the four components of a complete organizational security policy and their basic purpose?
 
 The four key components of a complete organizational security policy are: 
-* purpose (defining the policy's goal), 
-* scope (specifying where and when the policy applies), 
-* responsibilities (identifying who is accountable for upholding the policy), 
-* compliance (ensuring adherence to the policy's guidelines); 
-
-essentially outlining the "why," "where," "who," and "how" of security practices within an organization. 
-
+    * policies -> broad security requirements
+    * standards -> definitions of hard and software security statements
+    * guidelines -> used when no appropriate procedures
+    * procedures -> detailed step by step instructions for performing work tasks in a secure manner
