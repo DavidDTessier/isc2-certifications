@@ -2,9 +2,43 @@
 
 ## 1.1 - Understand, adhere to, and promote professional ethics
 
-* ISC2 Code of Professional Ethics
-  * https://www.isc2.org/ethics
-* Organizational code of ethics
+### ISC2 Code of Professional Ethics
+
+The [Code of Ethics Preamble]( https://www.isc2.org/ethics): _“The safety and welfare of society and the common good, duty to our principals, and to each other requires that we adhere, and be seen to adhere, to the highest ethical standards of behavior.”  “Therefore, strict adherence to this Code is a condition of certification.”_
+
+Code of Ethics Canons:
+
+* Protect society, the common good, necessary public trust and confidence, and the infrastructure
+* Act honorably, honestly, justly, responsibly, and legally
+* Provide diligent and competent service to principals
+* Advance and protect the profession
+
+Organizational code of ethics:
+
+* Your organization may have its own code of ethics.  The contents of the code of ethics may depend on the type of business that it engages in and could span dozens of pages.  If you’re a professional (doctor, lawyer, nurse, accountant), your regulatory organization may also enforce a code of ethics.  The code of ethics tells us how to behave, so that there is no confusion.  When you’re not sure what to do, you should report the situation to your management for a decision.
+
+We must be sure to act ethically at all times.  
+
+Things that are not ethical:
+
+* Gain unauthorized access to internet resources
+* Disrupt the use of the internet
+* Waste resources
+* Destroy the integrity of information
+* Compromise privacy
+
+Computer Ethics Institute (CEI) Code of Ethics:
+
+* Do not harm others
+* Do not interfere with the work of others
+* Do not snoop
+* Do not steal
+* Do not use a computer to bear false witness
+* Do not copy software
+* Do not use other people’s resources
+* Do not misappropriate other people’s work
+* Consider the social consequence of what you are doing
+* Ensure respect for others
 
 ## 1.2 - Understand and apply security concepts
 

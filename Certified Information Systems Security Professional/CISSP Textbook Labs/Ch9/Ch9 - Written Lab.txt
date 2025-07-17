@@ -1,0 +1,59 @@
+1. Name three types of ICSs and describe what they do or how they are used.
+    * Programmable Logic Controllers (PLCs)
+        * single-purpose or focused-purpose digital computational units
+        * deployed for managing and automating various industrial operations
+            * such as controlling systems on an assembly line
+    * Distributed Controls Systems (DCSs)
+        * industrial access point gathering data and implementing control over a large-scale environment
+    * Supervisory Control and Data Acquisition (SCADA)
+        * even driven 
+        * includes a human-machine interface for users to oversee, control, and managed the entire system
+       
+2. Name the three pairs of aspects or features used to describe storage.
+    * 
+    
+3. Name some vulnerabilities found is distributed architectures
+    * Interconnectedness of the components allows for error & malware propogation 
+    * unauthorized user access
+    * Communication eavesdropping
+    * Masquerading/spoofing attacks
+    * failure to enforce accountability
+
+4. There are numerous server-based technologies that both increase computation and resource access capabilities and also introduce new risks to be manage. Name at least 10 examples of these technologies (over 20 were included in this chapter)
+    * Edge Computing
+    * Fog Computing
+    * Grid Computing
+    * Large-Scale Parallel Data Systems
+    * Peer-to-Peer
+    * High-Performance Computing
+    * Real-Time Operating Systems
+    * Internet of Things
+    * Distributed Systems
+    * Industrial Control Systems
+
+
+5. In relation to mobile devices, list seven of the potential on-device security features, list the four main deployment models, and list seven of the issues that should be addressed on a mobile device deployment policy.
+
+    * On-Device Security features
+     * Full-Disk Encryption
+     * Remote Wiping
+     * Screen Lock
+     * Device Lockout
+     * Device Authentication
+     * Storage Segementation
+     * Communication Protection
+    
+    * Deployment models
+        * Bring Your Own Device (BYOD)
+        * Choose You Own Device (CYOD)
+        * Corporate-Owned, Personally Enabled (COPE)
+        * Corporate-Owned Mobile Strategy (COMS)
+
+    * Issues that should be addressed on deployment policy
+     * Data ownership
+     * Support Ownership
+     * Path and Update management
+     * Acceptable Use policy
+     * Tethering & Hotspots
+     * SIM Cloning
+     * Legal Concerns

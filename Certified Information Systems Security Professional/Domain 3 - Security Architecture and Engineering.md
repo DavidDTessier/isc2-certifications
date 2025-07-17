@@ -2,6 +2,38 @@
 
 ## 3.1 - Research, implement and manage engineering processes using secure design principles
 
+### Data Localization and Data Sovereignty
+
+* **Data Localization**
+  * **Focus**:
+    * centers on the physical location of data storage and processing
+    * mandates that certain types of data (sensitive or PI) must be kept within specific geographical borders
+  * **Scope**:
+    * addresses the geographical aspects of data storage and processing
+    * often involves regulatory requirements specifying that data should reside on servers physically located within the borders of a specific country or region
+  * **Drivers**:
+    * specific regulations or laws that mandate the physical presence of data within a particulare jurisdiction
+    * motivated by data privacy, security, and/or economic concerns
+  * **Implications**:
+    * organizations must establish data centers and/or use cloud services within the specified jurisdictions to comply with local laws/regulations
+    * may impact efficiency of cross-boarder data flow and increase OpX costs
+  * **Data Sovereignty**
+    * **Focus**:
+      * encompasses a broader set of principles related to the authority and control that a country and/or region asserts over the data generated within its jurisdiction, includes where the data is stored and concerns about legal jurisdiction and compliance with local data protection laws
+    * **Scope**:
+      * broader range of concerns (legal jurisdiction, reg compliance, and overarching authority over data collected within its boundaries)
+      * extends beyond just storage location to include control and goverance aspects
+    * **Drivers**:
+      * driven by legal, political, and cultural consideratios
+      * governments may enact data sovereignty regulations to protect the privacy of their citizens, ensure compliance with local laws, and asset control over data processing/handling within their boarders
+    * **Implications**:
+      * impacts both data storage locations and influence how organizations handle/process data including governance, legal compliance, and interactions with 3rd party service providers
+      * can require a more comprehensive approach to data management and legal compliance
+  * **Data Portability**
+    * ability of individuals to easily and securely move their personal data from one system, service, or application to another
+    * transfer data between platforms
+    * associated wtih data protection and privacy regulations emphasizing user rights and data control
+
 ### Threat Modeling
 
 * process where potential threats are identified, categorized, and analyzed.
@@ -35,28 +67,62 @@
       * **_Denial of service (DoS)_**
         * attack that attempts to prevent
       * **_Elevation of privilege_**
-    * **Process for Attack Simulation and Threat Analysis (PASTA)**
-      * https://www.iriusrisk.com/resources-blog/pasta-threat-modeling-methodologies
-      * a seven-stage threat modelling methodology.
-      * risk-centric approach that aims at selecting or developing countermeasures in relation to the value of the assets to be protected.
-      * Seven-Steps:
-        * **Stage I: Definition of the Objectives (DO)**
-        * **Stage II: Definition of the Technical Scope (DTS)**
-        * **Stage III: Application Decomposition and Analysis (ADA)**
-        * **Stage IV: Threat Analysis (TA)**
-        * **Stage V: Weakness and Vulnerability Analysis (WVA)**
-        * **Stage VI: Attack Modelling & Simulation (AMS)**
-        * **Stage VII: Risk Analysis & Management (RAM)**
-    * **Visual, Agile, and Simple Threat (VAST)**
-      * https://smartstatetech.medium.com/threat-modeling-methodology-vast-5c7de64cd924
-      * Threat modelling concept that integrates threat and risk management in to an Agile programming environment on a scalable basis
-      * two types of models
-        * VAST: Application Threat Models
-          * [App Threat Models](https://www.threatmodeler.com/application-threat-modeling-guide-for-cisos/) for dev teams are created using [process flow diagrams (PFD)](https://www.threatmodeler.com/2017/09/18/architecturally-based-process-flow-diagrams/).
-            * PFD's map the features and communications of an application in much the same way developers and architects think about the application during an SDLC design session
-        * VAST: Operational Threat Models
-          * designed for the infra teams
-          * more similar to traditional Data Flow Diagrams (DFDs) than app threat models, the data flow information is presented from an attacker - not a data packet - perspective, by relying on PFDs instead
+  * **Process for Attack Simulation and Threat Analysis (PASTA)**
+    * https://www.iriusrisk.com/resources-blog/pasta-threat-modeling-methodologies
+    * a seven-stage threat modelling methodology.
+    * risk-centric approach that aims at selecting or developing countermeasures in relation to the value of the assets to be protected.
+    * Seven-Steps:
+      * **Stage I: Definition of the Objectives (DO)**
+      * **Stage II: Definition of the Technical Scope (DTS)**
+      * **Stage III: Application Decomposition and Analysis (ADA)**
+      * **Stage IV: Threat Analysis (TA)**
+      * **Stage V: Weakness and Vulnerability Analysis (WVA)**
+      * **Stage VI: Attack Modelling & Simulation (AMS)**
+      * **Stage VII: Risk Analysis & Management (RAM)**
+  * **Visual, Agile, and Simple Threat (VAST)**
+    * https://smartstatetech.medium.com/threat-modeling-methodology-vast-5c7de64cd924
+    * Threat modelling concept that integrates threat and risk management in to an Agile programming environment on a scalable basis
+    * two types of models
+      * VAST: Application Threat Models
+        * [App Threat Models](https://www.threatmodeler.com/application-threat-modeling-guide-for-cisos/) for dev teams are created using [process flow diagrams (PFD)](https://www.threatmodeler.com/2017/09/18/architecturally-based-process-flow-diagrams/).
+          * PFD's map the features and communications of an application in much the same way developers and architects think about the application during an SDLC design session
+      * VAST: Operational Threat Models
+        * designed for the infra teams
+        * more similar to traditional Data Flow Diagrams (DFDs) than app threat models, the data flow information is presented from an attacker - not a data packet - perspective, by relying on PFDs instead
+  * **Trike**
+    * https://threat-modeling.com/trike-threat-modeling/
+    * [open source](https://trike.sourceforge.net/)
+    * risk based approach
+    * Characteristics:
+      * Enables effective communication between various team members.
+      * Allows for automated threat generation and attack graphs.
+      * Supports a requirements model and an implementation model (which is helpful in the real world because applications and systems themselves have requirements, as well as implementation requirements to deploy and use the application or system).
+      * Trike is a risk based method, meaning that teams can focus on highest risk first (and use precious time effectively).
+    * Looks at various parts of the application
+      * Requirements model
+        * Actors
+        * Assets
+        * Intended actions
+        * Rules
+        * Actor / asset action matrix
+      * Implementation model
+        * Intended actions versus supporting operations (and the state machine)
+        * Data Flow Diagrams (DFDs)
+        * Use flows
+      * Threat model
+        * Threat generation
+        * Attacks, attack trees, and attack graph
+        * Weaknesses
+        * Vulnerabilities
+        * Mitigations
+        * Attack libraries
+      * Risk model
+        * Asset values, role risks, asset-action risks, and threat exposures
+        * Weakness probabilities and mitigations
+        * Vulnerability probabilities and exposures
+        * Threat risks
+        * Using the risk model
+    * Trike has a version 1 and a version 2.
 
 * Least privilege
 
@@ -288,8 +354,30 @@ So in today's cybersecurity landscape choose Zero-Trust!
 * emphasizes a globally distributed network and workforce
 * continuous monitoring of user and device activity is a key component 
 
+### Shared Responsibility
+
+* security design principle which indicates that organizations do not operate in isolation
+* every person shares the responsibility of establishing and maintaining security
+* CISO and sec teams have the responsibility to establish security and maintain it but everyone else has the responsibility to perform their tasks within the confines of security
+* when new threats and vulnerabilities are discovered its everyone's responsibility (if not duty) to disclose that information to the proper vendor or to an information sharing center (threat intelligence source or service)
+* with 3rd parties (such has cloud service providers) each entity needs to understand their portion of the shared responsibility of performing work operations and maintaining security (cloud-shared responsibility)
+
+#### Sharing Threat Intelligence
+
+* [**Indicator of compromises (IoCs)**](https://en.wikipedia.org/wiki/Indicator_of_compromise) are artifacts observed with a hypothesis and high confidence about a threat
+* **Observable** is an identified fact of occurrence, such as a presence of a malicious file, usually accompanied by a hash
+* [**Structured Threat Information eXpression (STIX)**](https://oasis-open.github.io/cti-documentation/stix/intro.html)
+  * standard language expressing structure information about cyberthreats and a common framework for organizations to share and analyze threat intelligence
+* [**Trusted Automated eXchange of Intelligence Information (TAXII)**](https://oasis-open.github.io/cti-documentation/taxii/intro.html)
+  * defines the protocol and services for automating sharing of structured threat intelligence
+* [**Automated indicator sharing (AIS)**](https://www.cisa.gov/topics/cyber-threats-and-advisories/information-sharing/automated-indicator-sharing-ais) 
+  * initiative setup by the US Department of Homeland Security now manaaged by the National Cybersecurity and Communications Integration Center (NCCIC)
+  * used to faciliate the open and free exchange of IoCs and other cyberthreat information between the US federal governement and the private sector in an automated and timely manner (machine speed)
+  * Uses
+
+
 * Segregation of Duties (SoD)
-* Shared responsibility
+
 
 
 ## 3.2 - Understand the fundamental concepts of security models (e.g., Biba, Star Model, Bell-LaPadula)
@@ -965,21 +1053,1073 @@ The following diagram highlights the CW Rules flow:
 
 ## 3.5 - Assess and mitigate the vulnerabilities of security architectures, designs, and solution elements
 
-* Client-based systems
-* Server-based systems
+### Concepts
+
+* Hardware
+  * any tangible part of a computer that can be touched (keyboard, mouse, monitor, CPUs, storage media)
+* Processor
+  * Central Processing Unit (CPU) (processor or microprocessor)
+  * computers nerve center / brain
+  * governs all operations and either directly performs or coordinates the complex operations
+  * Execution Types:
+    * Multitasking
+      * Single processor (single-core), multiple tasks
+    * Multiprocessing
+      * Multiple processors (muticore (2, 4, 8+)), multiple tasks
+    * Types
+      * SMP - Symmetric Multiprocessing
+        * Single OS distributes task to processors
+        * Multiple processors treated equally
+        * Good for simple operations
+      * MMP - Massive Multiprocessing
+        * Multiple OS environment
+        * Tasks assigned to coordinating processors
+        * Coordinating processors assign tasks to other processors
+        * Good for complex operations
+    * Multiprogramming
+      * Single processor, one task at a time
+      * Switch to different task when one waits
+      * Needs to be specially written
+      * batch or serialize multiple processes
+    * Multithreading
+      * Multiple tasks in a single process
+  * Processing Types
+    * Single State
+      * Processors handle only one security level
+      * The system only handles one security level
+      * Access is controlled via policy
+      * Cheaper
+    * Multistate
+      * Processors handle multiple security levels
+      * The system handles multiple security levels
+      * Access is controlled via technical protection mechanisms
+      * More expensive
+
+### Protection Mechanisms
+
+* [Protection Ring](https://en.wikipedia.org/wiki/Protection_ring)
+  * also known as _hierachial protection domains_ in the computer science world
+  * mechanisms to protect data and functionality from faults (by improving fault tolerance) and malicious behavior (by providing computer security)
+  * organizes code and components in an OS (applications, utilities, or other code that runs under the OS's control) into concentric rings:
+    * Lower (deeper) rings, higher privilege
+  * Implementations:
+    * [Mutlics](https://en.wikipedia.org/wiki/Multics)
+      * MULTiplexed Information and Computing Service
+      * intial release in 1969
+      * allowed up to seven rings numbered 0 through 6
+    * Most modern OS's use a four-ring model (0 - 3) (mostly 2 rings)
+      * Ring 0 - OS Kernel/Memory (Resident Components)
+      * Ring 1 - Other OS Components
+      * Ring 2 - Drivers, Protocols, etc.
+      * Ring 3 - User-Level Programs and Applications
+      * NOTE:
+        * Rings 0-2 run in supervisory or privilege mode
+        * Rings 3 runs in user mode (programs run in a sandbox)
+        * Processes associated with the lowest ring number always runs before processes associated with higher numbered rings
+        * Processes in lower-numbered rings can access more resources and interact with the OS more directly than those in higher numbered rings
+    * **Mediated Access Model**
+      * Process communicate to lower ring via interfaces
+    * System Call
+      * Request to resources on lower level ring
+      * Usually a programming interface
+      * Lower ring must authorize requester
+
+![Protection Rings](./images/protection-rings.png)
+
+### Processing States
+
+* also known as _operating states_ which are various forms of execution in which a process may run
+* where the OS is concerned it can be in two modes:
+  * **Supervisor state**
+    * aka Kernel mode
+    * privileged, all-access mode
+  * **Problem state**
+    * associated with user mode
+    * privileges are low and all access requests must be checked against credentials for authorization before they are granted or denied
+    * this mode protects the system for security, integrity, and confidentiality
+* **Time slice**
+  * the amount of time a process is aloud to run 
+* processes line up in a queue waiting for execution where they will be scheduled to run as a processor becomes available
+  * scheduler selects highest-priority process first for execution
+  * if the process consumes its entire _time slice_ without completing its get requeued to be rescheduled
+* Processing States:
+  * **Ready**
+    * Process is ready to be given a time slice
+    * Initial state of a process
+    * Transitions to Running State
+  * **Waiting / Blocking**
+    * Process is waiting on a resource
+    * Transitions to Running State
+  * **Running**
+    * Process is currently in execution
+    * Ends upon termination or end of time slice
+    * Also called Problem State as errors can occur
+    * Transitions to Ready, Waiting, or Stopped State
+  * **Supervisory**
+    * Process is performing privileged operation
+    * States other than this is user mode
+  * **Stopped**
+    * Process is finished or must be terminated (due to errors)
+
+The following diagram illustrates the lifecyle of an executed process:
+
+![Process Life Cycle](./images/Process-life-cycle.jpg)
+
+### Memory
+
+* Memory is the second major component of a system (after CPU)
+* storage bank for information that computers need to keep readily available
+* Types
+  * **Read-only Memory (ROM)**
+    * memory that can be read and not changed
+    * contents of ROM chips are burned on at the factory and end-users are not able to alter it
+    * often contain "bootstrapping" information that computers use to start up prior to loading an OS
+      * includes _power-on self-test (POST)_ which are a series of diagnostics that run each time a computer is booted
+    * Sub-Types:
+      * **Programmable Read-Only Memory (PROM)**
+        * Unwritten ROM at factory creation
+        * Users can write once and only once
+        * Example: CD's
+      * **Erasable Programmable Read-Only Memory (EPROM)**
+        * Can be erased and re-written to
+        * two subcategories:
+          * **_Ultraviolet EPROM (UVEPROM)_**
+            * use UV light or chemicals to erase memory allowing data to be written to it as if it was brand new
+          * **_Electronically Erasable Programmable Read-Only Memory (EEPROM)_**
+            * can be electronically erased (more flexible that UVEPROM)
+            * electronic voltages delivered to the pins to erase
+      * **Flash Memory**
+        * Can be erased electronically
+        * Allows erasure of individual blocks
+        * Example: NAND Flash, SSDs, Flash Drives
+  * **Random Access Memory (RAM)**
+    * readable and writable
+    * used duing processing
+    * contents is disgarded once the sytem shutsdown
+    * volatile
+    * Types:
+      * **Real Memory**
+        * aka _main/primary memory_
+        * largest RAM storage resource available
+        * made up of _Dynamic Memory_
+        * periodically refreshed by the CPU
+      * **Cache Memory**
+        * Attached to a processor
+        * Contains RAM data that is accessed frequently
+        * Levels
+          * Level 1 - Level 2 Cache
+            * Attached to a single processor chip
+          * Level 2 Cache
+            * On a separate chip
+          * Level 3 Cache
+            * shared between cores (chips)
+          * Level 4 Cache
+            * located on mainboard/motherboard or on GPUs
+          * Peripherals also have RAM caches
+          * Printers have RAM caches which can load an entire job
+      * [**Dynamic Memory**](https://en.wikipedia.org/wiki/Dynamic_random-access_memory)
+        * Loses charge over time even if power is supplied
+        * Must be refreshed by CPU
+        * Made up of capacitors
+        * 0 == no power , 1 == power
+        * Cheaper but slower than static RAM
+      * [**Static Memory**](https://en.wikipedia.org/wiki/Static_random-access_memory)
+        * Does not lose charge over time if power is supplied
+        * Does not need to be refreshed by CPU
+        * Made up of [flip-flops](https://en.wikipedia.org/wiki/Flip-flop_(electronics)) which is a simple on/off switch that must be moved from one postiion to another to change from 0 to 1 and vice versa
+        * More expensive but faster than dyanmic RAM
+        * maintains its contents unaltered as long as power is supplied and imposes no CPU overhead
+        * much faster than dynamic ram
+
+#### Registers
+
+* similar to Memory
+* is included (onboard) with CPUs but is limited
+* provide the CPU with directly accessible memory locations known as [_Arithmetic Logic Units (ALUs)_](https://en.wikipedia.org/wiki/Arithmetic_logic_unit)
+  * Perform arithmetic operations
+    including AND, OR, NOT, XOR on binary numbers
+  * Can directly access registers
+  * Values to process must be loaded to registers first
+  * inputs are _operands_ (data to be operated on) and _opcode_ (a code indcating the operation to be performed)
+  * crucial to the operation of GPUs
+* operates in lockstep with the CPU
+
+![ALU](./images/ALU.jpg)
+
+#### Memory Addressing
+
+* means for processors to access / refer to various locations in memory
+* Five Common Types:
+  * **Register Addressing**
+    * Value to process is in a register (ex "register 1")
+    * Register address is provided by instruction
+  * **Immediate Addressing**
+    * Value to process is in the instruction
+    * Provided value is used in operation
+    * Example ("Add 2 to the value in register 1")
+  * **Direct Addressing**
+    * Value to process is in memory
+    * Memory address of value is provided by instruction
+    * address must be located on the same memory page as the instruction being executed
+    * more flexible than immediate addressing scheme
+  * **Indirect Addressing**
+    * Address of value to process is in memory
+    * Memory address of value's address is provided by instruction
+    * CPU reads the indirect address to learn the address where the value is and then retrieves the actual operand from the address
+  * **Base+Offset Addressing**
+    * Address of value to process is in a register
+    * Register address and offset is provided by instruction
+    * CPU adds the offset to the base address and retrives the operand form the computed memory location
+* Pointer
+  * basic element or object in many programming languages
+  * used to store a memory address and used by an application to retrieve the value stored at that location
+  * reference to a memory location
+  * can be used in direct, indirect, or base addressing
+  * _dereferencing_ is the act of accessing a pointer to read the memory address location
+  * null pointer exception occurs during race conditions when two processes/systems/devices try to perform two or more operations at the same time when dereferencing a pointer
+
+#### Secondary Memory
+
+* term refered to for storage devices (magnetic, optical, or flash-based, etc.) that contain data not immeidately available to the CPU
+* the CPU must first read the data and store it into _real memory_ in order to access secondary memory data
+* Example: optical disk, hard drive, etc.
+* Cheaper but slower than primary memory
+* Types:
+  * **Virtual / Paging Memory**
+    * Used to extend main memory
+    * common is _pagefile_ or _swapfile_
+    * Stores overflowing contents onto secondary memory
+    * Pages from main memory are "swapped" into secondary memory
+    * Non-used parts of main memory are stored in pagefile
+    * They are restored into main memoery when they need to be used
+    * Drawbacks
+      * paging operations that occure when data is exchanged between primary and secondary memory are slow
+      * need for virtual memory can be reduced by using flash media (NVMe - "nonvolative memory express" SSDs, SSDs, and USB Flsh drives) to host virtual memory paging files
+
+![Virtual Memory](./images/Virtual-Memory-On-Demand-Paging.jpg)
+
+#### Memory Security Issues
+
+* Pilferable
+* Data retention
+* [Cold boot attack](https://en.wikipedia.org/wiki/Cold_boot_attack), which is a memory compromise where memory chips freeze to delay the decay of resident data when the system is turned off or the RAM is pulled out of the motherboard
+
+### Data Storage Devices
+
+* used to store information that my be used by computers at any time after its written
+* Primary Storage / Memory
+  * RAM
+  * Data is readily available to the CPU
+* Secondary Storage / Memory
+  * SSDs, CDs, Hard Drives, other storage media
+  * Data is not readily available to CPU and needs to read data into Primary (main) memory
+* Non-volatile
+  * Designed to retain data
+  * flash media, ROMs, optical media, etc
+* Volatile
+  * not designed to retain data
+  * static or dynamic RAM
+* Random
+  * Any memory location can be accessed immediately
+  * Faster but more expensive; for shorter term storage
+  * Examples: Hard Drives, RAM, CDs, DVDs
+* Sequential
+  * Data prior to desired location must be read
+  * Slower but cheaper; for long term storage
+  * Examples: Magnetic Tape
+* Storage Media Security Issues
+  * Data Remanence
+    * Files can be recovered after deletion
+    * SSD blocks may retain information even after wiping (zeroization)
+      * Some blocks might hold a copy of data when copied to lower leveled blocks
+  * Theft
+    * May disclose confidential information
+    * Removable media are pilferable
+
+### Emanation Security
+
+* Sources
+  * devices that emanate electrical signals or radiaton during normal operations that may be intercepted and compromised
+    * mobile phones
+    * wireless networks
+    * external hard drives
+    * USB thumb drives, CDs
+    * modems
+* [_Van Eck Radiation or Van Eck phreaking_](https://en.wikipedia.org/wiki/Van_Eck_phreaking)) type of attack that read the electronic emanations that devices produce from a distance, eavesdropping
+* Types of Countermeasures and safeguards
+  * [**Telecommunications Electronics Material Protected from Emanating Spurious Transmissions (TEMPEST)**](https://irp.fas.org/eprint/tempest.htm)
+    * originally a government research study aimed at protecting electornic equiement against Electromagnetic Pulse (EMP)
+    * set of standards and guidelines used to minimize the unintentional electromagnetic signals that could be emitted by electronic devices that could potentially be intercepted
+  * [**Emission Security (EMSEC)**](https://www.cyber.gc.ca/en/education-community/learning-hub/courses/fundamentals-emission-security-emsec)
+    * security discipline (build on from TEMPEST) which involves implementing various security measures to prevent unauthorized individuals from obtaining valuable information that could be derived through intercepting EM signals
+    * Expanded to included monitoring emanations
+* Van Eck Countermeasures/Controls:
+  * Faraday Cage
+    * Box fully surrounded by a wire mesh
+    * Prevents EM signals from entering an exiting enclosure
+  * White Noise
+    * False traffic to hide presence of real emanations
+    * Real signal from another source can be used
+    * Used around the perimeter of an area
+  * Control Zone
+    * A zone protected by a Faraday cage or white noise
+    * Can be a room, floor, or building
+  * Shielding of cables (shielded twisted pair (STP)), conduits or replacing copper network cables with Fiber-optic cables
+
+  ### Input and Output Device Security
+
+  * IO Devices Control measures
+    * Monitors
+      * Van Eck radiation / phreaking
+      * Electronic emanations coming from monitors and/or cables
+      * Can be read via TEMPEST program
+      * CRT are more vulnerable than LCDs
+    * Printers
+      * Print outs can be taken if not secured
+      * Printers store data locally
+      * likely network attached and left exposed
+      * Multifunctional printers (MFPs)
+        * includes fax capabilites and are network attached
+        * susceptible to using [AT Commands](https://en.wikipedia.org/wiki/At_(command)) that are supported by fax modems/machines
+    * Keyboards/Mice
+      * Vulnerable to TEMPEST attacks
+      * Keyboards are vulnerable to keyloggers
+      * Signal interception if wireless
+    * POTS Telephone Modems
+      * Uncontrolled entry points into the network
+      * Can establish external connections by themselves and allow outsiders to bypass all the perimeter protection mechanisms to gain access to internal networks
+      * Needs a telephone line
+      * outright ban all telephone lines
+  * Firmware
+    * aka microcode
+    * software stored in a ROM or EPROM chip
+    * changed infrequently (actually, never if its stored on a true ROM chip as opposed to EPROM or flash chip)
+    * essentially mini OSs that provides limited instructions to hardware devices such as printers, modems, mobile devices, IoT equipement, edge / fog computing devices, and industrial control systems
+    * [**Basic Input/Output System (BIOS)**](https://en.wikipedia.org/wiki/BIOS)
+      * Starts up the operating system from the disk (bootstapping)
+      * Stored on an EEPROM chip
+      * identifies and initiates the basic system hardware components such as the hard drive, optical drive, and video card
+      * limited to keyboard control (no mouse)
+      * replaced with UEFI in modern OSs
+    * [**Unified Extensible Firmware Interface (UEFI)**](https://en.wikipedia.org/wiki/UEFI)
+      * CPU-independant architecture
+      * flexible pre-OS environment with networking support, measured boot, boot attestation (secure boot), and backward and forwared compatibility
+      * provides support for all the same functions as BIOS
+      * with improvements and support for larger hard drives, faster boot times, enhanced security features (secure boot) and event the ability to use a mouse when making system changes
+    * _Flashing_ is the process of updating the BIOS and UEFI
+      * **Phlashing**: Malicious BIOS is flashed onto the ROM
+    * _Secure boot (boot attestation)_ UEFI feature
+      * aims to protect the local OS by preventing the loading or installing of device drivers or an OS that is not signed by a preapproved digital certificate
+      * protects systems against a range of low-level or boot-level malware
+        * [rookits](https://en.wikipedia.org/wiki/Rootkit) and backdoors
+      * recent [research has discoverd vulnerabilities](https://www.eset.com/us/about/newsroom/press-releases/eset-research-discovers-uefi-secure-boot-bypass-vulnerability/?srsltid=AfmBOor7mlUiLjtjaWn4-plNhaBakWv6fyXZzdI8KoJLsiyUus0Dz9fY) that allow the bypassing of the UEFI secure boot process on specific systems
+    * [_Measured boot_](https://www.microcenter.com/tech_center/article/8862/what-is-measured-boot)
+      * optional feature of UEFI
+      * takes a hash calculation of every element involved in the boot process
+      * the hashes are performed by and stored in the Trusted Platform Module (TPM)
+      * if any issues are detected during booting, the hashes of the most recent boot can be accessed and compared to a known-good value to determine which components have been compromised
+      * does not interrupt or stop the booting; just records the hash IDs 
+      * does not prevent a malicious action; just records whatever occurs
+
+### Client-Based Systems
+
+* Client-side / Client-focused attacks where the client or process running on the client is the target
+  * example malicious webiste that transfers malicious mobile code (applet) to a vulnerable browers running on the client
+  * can occur over any communication protocols not just HTTP
+  * another example is the risk of poisoning local cache
+* **Mobile Code**
+  * [**Applets**](https://en.wikipedia.org/wiki/Applet)
+    * Client executes code sent by the server
+    * Self contained mini programs
+    * Processing burden is shifted to client
+    * Privacy advantage as data is never sent to server
+    * Applets can be trojans though insalling rooktkits or other nafarious things
+    * Examples
+      * [Java Applets](https://en.wikipedia.org/wiki/Java_applet)
+        * created by Sun Microsystems (now owned by Oracle)
+        * Sandboxed Java programs; requiring a [Java Virtual Machine (JVM)](https://en.wikipedia.org/wiki/Java_virtual_machine) to execute
+        * Ability to run on different operating systems
+        * highly exploited
+      * [ActiveX Controls](https://en.wikipedia.org/wiki/ActiveX)
+        * Created by Microsoft
+        * Non-sandboxed VB, C, C++, and Java Programs
+        * Has full access to Windows OS
+        * Can run on Mircosoft browers only (Internet Explorer)
+        * Widely exploited; usually prohited altogether by System Admins
+    * **JavaScript**
+      * most wide used web scripting language and is embedded into (included inside of) HTML documents using `<script></script>` enclosure tags
+      * usually dependant on its HTML host document, but can operate as a stand alone script file (both client-side and server-side)
+      * not considered an applet but is embedded code
+      * automatically downlowded along with primary web documents from most web servers that are access
+      * enables dynamic web pages and supports web applications as well as client-side activities and page behaviors
+      * supported by a [JavaScript engine](https://en.wikipedia.org/wiki/List_of_JavaScript_engines)
+      * typically sandoxed and limited to only web-related activities while minimizing its ability to perform general purpose programming tasks
+      * most modern browsers enforce a _same-origin policy_, which prohibits JavaScript code from access content from another origin
+        * combination of a triplet of protocol (HTTP/HTTPS), domain/IP address, and port number
+        * if any one is different the content is blocked
+      * JavaScript Abuse:
+        * fake and malicious site posing as a legit site with malicious JavaScript code sent to the browser which performs harmfull actions (such as a crednetials logging and sending them to the attack for future use on the original (legit) site)
+        * abuse of the sandbox isolation and violation of same-origin policy
+        * [Cross-site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting)
+        * [Cross-site request forgery (XSRF/CSRF)](https://en.wikipedia.org/wiki/Cross-site_request_forgery)
+      * Response to JavaScript Risks:
+        * Keep Browswers updated (client side)
+        * Implement secure JavaScript subset/libraries (server side)
+        * Use content security policy (CSP) that attemtps to rigidly enforce same-origin restrictions for most browser-side active technologies (integrated into browsers and referenced by HTML header values)
+  * **Local Caches**
+    * DNS Chache
+    * ARP Chache
+    * Temporary Internet Files
+      * Contains cached website content
+      * Can be posioned to contain malicious content (client sid scripts, etc.)
+      * Malicious content is invoked when cached items are accessed
+      * Split-response attack exploitation, can cause the client to download content that was not an intended element of a requested web page and store it in the cache.
+      * [DOM XSS](https://owasp.org/www-community/attacks/DOM_Based_XSS) can access and use locally cached files to execute malicious code or exfiltrate data
+      * Mobile code scripting attacks can be used to plant false content in the cache
+      * consider using TTLs to store files locally for a short period, minimize cache size, and deactivate the preloading of content
+        * these may lower browser performance
+      * consider deleting all browser cookies and cache upon exit
+
+### Server-Based systems
+
+* concerns of _data flow control_
+  * movement of data between processes and devices, across a network, or over communication channels
+  * protections via encryption and hashing
+  * managing the control of data flows also help prevent systems from overload (self-influenced denial of service)
+  * data flow control may be provided by networking devices, including routers and switches, as well as network applications/services
+* **Load Balancer**
+  * network service that distributes traffic load across several network links or devices (server farms)
+  * provides optimal infra utlilization, minimize response time, maximize throughput, reduce overloading, and elinimate roadblocks
+* **Denial-of-Service (DoS)**
+  * attack that overlaods a system
+  * should be monitored
+
+### Large-Scale Parallel Data Systems
+
+* [_Parallel data systems / Parallel computing_](https://en.wikipedia.org/wiki/Parallel_computing)
+  * Computation system designed to perform numerous calculations simulaneously
+  * often go beyond basic multiprocessing capabilities and instead divide up large tasks into smaller elements and distribute each subelement to a different processing subsystem for parallel computing
+  * accomplished by using distinct CPUs or multicore CPUs, virtual systems, or any combination
+* Concerned with performance, power comsumption, and reliability/stability issues
+* [Symmetric multiprocessing (SMP)](https://en.wikipedia.org/wiki/Symmetric_multiprocessing)
+  * single computer containing multiple processors which are treated equally and controlled by a single OS
+  * processors share a common OS, data bus, and memory resources
+  * may use a large number of processors
+  * processors work collectively on a single (primary) task, code, or project
+* [Asymmetric multiprocessing (AMP)](https://en.wikipedia.org/wiki/Asymmetric_multiprocessing)
+  * processors operate independantly of each other
+  * often have dedicated OS, data bus, and memory resources; as well as instruction/task set
+  * processors can be configured to execute only specific code or operate on specific tasks
+* [_Massive parallel processing (MPP)_](https://en.wikipedia.org/wiki/Massively_parallel)
+  * variation of AMP
+  * numerous AMP systems are linked together to work on a single primary task across multiple processes in multiple linked systems
+  * used for scientific reasearch for [massive parallel sequencings processing](https://en.wikipedia.org/wiki/Massive_parallel_sequencing) and other research type of activities
+  * requires more processing and power than a single OS can deliver
+
+#### Grid Computing
+
+* [form of parallel distributed processing](https://en.wikipedia.org/wiki/Grid_computing) that loosely groups a significant number of processing nodes to work toward a specific goal
+* members of the grid can enter and leave the grid at random intervals
+* members join the grid only when they require processing capacities larger than what can be done for local workloads
+* content of each work package is exposed to the world (meaning open to the world to use)
+* time-sensitive projects may not be given enough time to complete
+* often uses a primary central core of servers to manage the project, track work packets, and integrate returned work segements
+  * if these go offline it could result in a failure or crash of the entire grid
+
+#### Peer to Peer (P2P)
+
+* [P2P](https://en.wikipedia.org/wiki/Peer-to-peer) technologies are networking and distributed application solutions that share tasks and workload amoung peers
+* similar to grid computing; except no central management system, the services are usually provided in real time rather than as a collection of computational power
+* BitTorrents is an example of P2P
+* Security concerns:
+  * percieved inducment to pirate copyright material
+  * ability to eavesdrop on distributed content
+  * lack of central control/oversight/management/filtering
+  * potential for services to consume all available bandwith
+
+### Industrial Control Systems (ICS)
+
+* [ICS](https://en.wikipedia.org/wiki/Industrial_control_system) is aform of computer-management device that controls industrial processes and machines
+* aka [Operational Technology (OT)](https://en.wikipedia.org/wiki/Operational_technology)
+* used across various sectors (fabrication, manufacturing, electric generation, oil/gas, water distribution, sewage distribution, etc)
+* Forms
+  * [**DCS - Distributed Control Systems**](https://en.wikipedia.org/wiki/Distributed_control_system)
+    * Each piece of equipment have their own control system
+    * Remotely accessed and managed from a central location
+    * interconnect several PLCs
+    * Keyword: Central Management
+  * [**PLC - Programmable Logic Controllers**](https://en.wikipedia.org/wiki/Programmable_logic_controller)
+    * Single-purpose computers
+    * E.g. displaying signs, marquees, etc.
+    * Keyword: Single-purpose
+  * [**SCADA - Supervisory Control and Data Acquisition**](https://en.wikipedia.org/wiki/SCADA)
+    * Stand alone device networked with each other
+    * legacy SCADA were designed with minimal human interfaces, and often used mechanical buttons and knobs or a simple LCD screen interface
+    * newer networked SCADAs have a more complex remote-control software interface
+    * Keyword: Stand-alone; Peer-to-Peer
+* [Modbus](https://en.wikipedia.org/wiki/Modbus)
+  * widely used communication protocol in ICS
+  * developed in 1979 by Modicon (now part of Schneider Electric)
+  * now the de facto standard for connecting and managing devices within industrial environments
+  * provides a common language for different devices to exchange data and commands
+  * facilitates communication in SCADA systems, PLCs, and other industrial applications
+  * open standard that fosters interoperability
+* Little to no security was built into these systems
+* [**Stuxnet**](https://en.wikipedia.org/wiki/Stuxnet)
+  * delivered the first-ever-known rootkit to a SCADA system located in a nuclear facitity
+* recently many SCADA vendors have started to implemnent security into their solutions to prevent or at least reduce future compromises
+* rarely updated technologies leaving them vulnerable to attacks
+* Common important security controls:
+  * isolating networks
+  * limiting access physically and logically
+  * restricting code to only essential applications
+  * changing default credentials
+  * logging all activity
+* Primary concern of OT/ICS is ensuring the availability of real-time control signals (less so of integrity and confidentiality)
+* [ISA99](https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa99)
+  * standards development committee which established and maintain guidelines for securing ICS, DCS, PLC, and SCADA systems
+  * now part of the [Internation Electrotechnical Commission's (IEC) 62434 series](https://en.wikipedia.org/wiki/IEC_62443)
+* NIST also maintains ICS security standards [NIST SP 800-82rs](https://csrc.nist.gov/News/2023/nist-publishes-sp-800-82-revision-3)
+* [North Americian Electric Reliability Corporate (NERC)](https://www.nerc.com/Pages/default.aspx) also maintains their own security guides which are similar to those of the [European Reference Network for Critical Infrastructure Protection (ERNCIP)](https://erncip-project.jrc.ec.europa.eu/)
+
+### Distributed Systems
+
+* aka [_distributed computing environment (DCE)_](https://en.wikipedia.org/wiki/Distributed_computing)
+* collection of individual systems that work together to support a resource or provide a service
+* composed of homogenous (same kind) or heterogenous (diverse) members with a common function, goal or operation
+* can be implemented to provide fault tolerance, resiliency, reliability, performance, and scalability benefits
+* forms the backbone of modern Internet, business, and communication technologies
+  * DNS, SSO, directory services, massive mutliplayer online role-playing games(MMORPGs), mobile networks and websites
+  * software defined networking (SDN)
+  * service-oriented architecture (SOA)
+  * microservices
+* [Interface Definition Language (IDL)](https://en.wikipedia.org/wiki/Interface_description_language)
+  * language used to define the interface between client and server processes/objects in a distributed system
+  * enables the creation of interfaces between objects when those objects are in varying locations or using different programming language
+  * language-independant
+  * examples:
+    * [Remote Procedure Calls (RPC)](https://en.wikipedia.org/wiki/Remote_procedure_call)
+    * [Common Object Request Broker Architecture (CORBA)](https://en.wikipedia.org/wiki/Distributed_Component_Object_Model)
+    * [Distributed Component Object Model (DCOM)](https://en.wikipedia.org/wiki/Distributed_Component_Object_Model)
+* Security Issues for distribute systems:
+  * interconnectedness of components, allowing for error or malware propagations
+    * if an attacker compromised one component, it may grant them the ability to compromise the other components through pivoting and lateral movements
+  * Unauthorized user access
+  * [Masquerading](https://www.portnox.com/cybersecurity-101/masquerade-attack/), [impersonation](https://www.upguard.com/blog/impersonation-attack), and [spoofing](https://en.wikipedia.org/wiki/Spoofing_attack) attacks of users/devices
+  * bypassing or deactivating of security controls
+  * Communication eavesdropping and manipulation
+  * Insufficient authN/authZ
+  * Lack of monitoring, auditing, and logging
+  * Failing to enforce accountability
+  * larger attack surface with geographically dispursed / distribution
+* Security Controls
+  * strong authentication (mfa)
+  * strong encryption (possibly use homomorphic) for storage, communication, etc
+  * system patching and updates should be routinely done
+
+### High-Performance Computing (HPC) Systems
+
+* [HPC](https://en.wikipedia.org/wiki/High-performance_computing) are computing platforms designed to perform complex calculations or data manipulations at extremely high speeds
+* super computers and MPP solutions are common examples
+* used for real-time or near real-time processing of massive data is required
+* scientific or industrial research is a common domain that uses HPC
+* AI/ML solutions, 3d model rendering, IoT devices, ICS solutions, streaming media, voice assistants, etc are dependant on HPC
+* three main elements
+  * Compute Resources
+  * Network Capabilities
+  * Storage Capacity
+* _benign DoS_ 
+  * occurs when a service is running on insufficient resources, when there has been an unforseen traffic spike, or when something about the system fails
+  * not direct or intentional malign action on the part of an adversary
+  * due to innocent events
+
+### Real-Time Operating Systems (RTOS)
+
+* related concept to HPC
+* [RTOS](https://en.wikipedia.org/wiki/Real-time_operating_system), often implemented by HPC compute capabilities
+* designed to process or handle data as it arrives on the system with minimal latency or delay
+* usually stored in read-only memory (ROM) and designed to operate into types of environments
+  * Hard Real-Time Condition
+    * mission critical where any delays must be elinimated or minimized for safety and security (autonomous cars)
+  * Soft Real-Time Condition
+    * modest level of delay is acceptable under typical or normal operations
+    * most consumer electronics operate in this manner
+* Can event-driven or time-sharing
+  * event-driven will switch between operations or task based on preassigned priorities
+  * time-sharing will switch between operations or tasks based on clock interrupts or specific time intervals
+* Often implemented when scheduling or timing is the most critical part of the operation
+* Security Concerns:
+  * often focused single purpose leaving little room for security
+  * use custom or proprietary code, which may include unknown bugs or flaws that attackers can discover
+  * may become overloaded or distracted with bogus datasets or process requests by malware
+* Use isolation and communication monitoring to minimize abuse
+
+### Internet of Things (IoT) Systems
+
+* [IoT](https://en.wikipedia.org/wiki/Internet_of_things)
+* smart devices which are internet connected that take advantage of on-device or in-the-cloud machine learning (ML) processing
+* often perform functionality similar to emdedded systems but a slightly different
+* IoT fridge, thermostat to control ACs
+* wearable technologies is an off-shoot of smart IoT devices
+* not designed with security at its core
+* security issues
+  * older os which is not frequently updated
+  * default configuration / settings / passowrd
+* deploy to a distinct (dmz) network for IoT devices
+  * often known as the [_three dumb routers_](https://pcper.com/2016/08/steve-gibsons-three-router-solution-to-iot-insecurity/comment-page-2/) configuration
+* keep systems patched
+* monitor all activity
+* use firewalls and filtering
+* [NIST Cybersecurity for IOT Program](https://www.nist.gov/itl/applied-cybersecurity/nist-cybersecurity-iot-program)
+* [_Industrial IoT (IIoT)_](https://en.wikipedia.org/wiki/Industrial_internet_of_things) is an off-shoot mainly for Industrial use of IoT where sensors are deployed into manufacturing ,etc
+  * includes edge / fog computing
+
+### Edge / Fog Computing
+
+* Element of IIoT
+* [Edge Computing](https://en.wikipedia.org/wiki/Edge_computing)
+  * distributed computing model where compute and data are brought closer together to minimize latency
+  * performs processing on the distributed edge systems
+  * storage and processing is on device
+  * each device processing its data locally
+  * use cases
+    * ISP's deploying "mini-web servers" to host static websites
+    * Content Deliver Network (CDN)
+    * Run ML models at the edge for faster computation
+* [Fog Computing](https://en.wikipedia.org/wiki/Fog_computing)
+  * IoT sensors (edge devices) gather data locally then ship it to a central location for processing
+  * positioned in Local Area Networks (LANs)
+  * performs centralized processing of the data collected by the distribute sensors
+
+### Embedded Devices and Cyber-Physical Systems
+
+* [Embedded Systems](https://en.wikipedia.org/wiki/Embedded_system)
+  * any form of computing component added to an existing mechanical or electrical system for the purpose of providing automation, remote control, and/or monitoring
+  * designed around a limited set of related functions into a larger product that its attached to
+  * may contain/consist of the same components found in typical computer systems or microcontroller
+    * _microcontroller_ is a system on chip (SOC), which is a small computer of a CPU, various inputs/output capabilities
+      * [Andruino](https://www.arduino.cc/) is a type of microcontroller
+  * Security issues:
+    * lack of security built in
+    * no ways to patch or update manually except through vendor but rare
+    * vendor patches are often released months after a known exploit is found in the world
+  * Should be isolated from the Internet and from a private production network to minimize exposure to remote exploitation, remote control, and malware compromise
+* Static Systems
+  * systems which have the configuration and components remain relatively constant over time. They are not dynamic or constantly evolving like some modern web applications.
+  * non-persitent or stateless environments
+  * Examples:
+    * This can include embedded systems (like those in medical devices or industrial control systems), or systems where manual updates and strict version control are enforced.
+* [Cyber-Physical Systems](https://en.wikipedia.org/wiki/Cyber%E2%80%93physical_system)
+  * devices that offer a computational means to control things in the physical world
+  * key elements in robotics and sensor networks
+  * includes prosthetics to provide human augmentation or assistance
+  * collision avoidance in vehicles
+  * air traffic control coordination
+* Security Considerations:
+  * emebedded system are unable to process high-end encryption, often use older legacy crypto algorithms, poor keys or no key management
+  * difficult to patch / update
+  * no use of authentication to control access ( may use hard-coded credentials)
+  * supply chain security issues
+  * Security for static systems often involves:
+    * Network Segmentation:
+      * Isolating these systems from other networks to limit potential attack surfaces.
+      * Include application firewalls
+    * Security Layers:
+      * Grouping devices with similar sensitivity levels together and applying appropriate security controls.
+    * Manual Updates:
+      * Ensuring that updates and patches are carefully tested and applied, often requiring manual intervention.
+    * Firmware Version Control:
+      * Managing firmware versions to prevent the use of outdated and potentially vulnerable software
+    * Authentication:
+      * Use equipement that allow for customized credentials/authentication
+    * Monitioring
+
+### Microservices
+
+* architectural style where an application/system is strutured as a collection of smaller, independant, deployable, and loosely coupled services
+* each serves often represents a single business capability and operates in a self-contained manner with it own database and communication mechanism
+* designed to to be mainainted in isolation and independant of other services, and flexible
+* [Service Oriented Architecture (SOA)](https://en.wikipedia.org/wiki/Service-oriented_architecture)
+  * architecture style that focuses on discrete services and no a monolith style
+* [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API)
+  * crucial part of microservice architecure
+  * each microservice may expose an API which allows communications channels to enable seemless integration
+* Security conerns:
+  * Authentication and Authorization:
+    * Implement a secure authentication and authorization mechanism to verify and authenticated a user's/service's identity
+  * Data Encryption:
+    * Employ encryption mechanisms to secure data both in transit and at rest
+  * Monitoring / Logging
+    * Use a comprehensive monitoring and logging to detect/respond to security incidents
+  * Container Security
+    * those that are deployed using containerization technologies, should leverage secure images/configurations, implement access controls
+    * proper supply chain updates to fix vulnerabilities
+
+### Infrastructure as Code (IaC)
+
+* [IaC](https://en.wikipedia.org/wiki/Infrastructure_as_code)
+  * infrastructure change management is done via Code and follow Dev(Sec)Ops processes
+  * version control, pre-deployment testing, regression testing
+  * allows for streamlined infrastructue management
+  * uses _Definition Files_ and _Rule Sets_ that a machine readable to deploy new settings and manage hardware consistently and efficiently
+* **Immutable Architecture**
+  * Coined by Chad Fowler:
+    > * _"an immutable architecture doesn't mean that your environment should never change, but rather, once a specific instance (such as a container or virtual machine) is started, its configuration should never change."_
+  * when a server needs to be updated a new one is created or cloned from the orginal to replace the previous one
+  * IaC operates with this concepts when deploying Virtual Machines
+* [**Software-Defined Networking (SDN)**](https://en.wikipedia.org/wiki/Software-defined_networking)
+  * derivative of IaC and DCE
+  * management of networking as a virtual or software resource
+  * collection of individual components that operate together
+
+### Virtualize Systems
+
+* _Virtualization Technologies_
+  * used to host one ore more OSs within the memory of a single host computer or to run applications that are not compatible with the OS
+  * allows nay OS to run on any hardware
+* Components:
+  * [Hypervisor](https://en.wikipedia.org/wiki/Hypervisor)
+    * aka _virtual machine monitor/manager (VMM)_
+    * component used to create, manage, and operate the virtual machines
+    * Types:
+      * Type 1
+        * native or bare metal
+        * no host OS
+        * installs directly on onto the hardware where the host OS would normally reside
+        * often support server virtualization, maximizes hardware resources while elinimating any risks or resource reduction cause by a host OS
+      * Type 2
+        * "hosted"
+        * standard host OS (windows, linux, etc) is present on the hardware
+        * hypervisor is installed with another application 
+        * desktop deployments
+        * Docker , Podman, VMWare, etc
+  * Host OS
+    * computer running the hypervisor
+  * Guest OS
+    * the OS running within the hypervisor-supported virtual machine
+    * offers safe sandbox areas to test code, execute legacy applic
+* **Virtual Software**
+  * applications / software products that deployed in such a way that it is fooled into believing its interacting with a full host OS
+  * isolated from the host OS, can directly change the host OS
+* Security
+  * Hypervisor is an additional layer of software on servers and introduces additional attack surface
+    * attacker can compromise a physical host
+    * attackers can gain access to all Vritual systems hosted on the physical host
+  * Ensure that the hosts are hardend
+  * Patch management
+  * Back up of virtual assets
+  * Vulnerability and Penetration Testing
+  * VM Sprawl
+    * occurs when numerous VMs are deployed without IT oversight and/or security (shadow IT)
+  * VM Escaping
+    * occurs when software with a guest OS is able to breach the isolation protection provided by the hypervisor to violate the container of other guest OSs or infiltrate a host OS
+      * [Virtualized Environment Neglected Operations Manipulation (VENOM)](https://en.wikipedia.org/wiki/VENOM)
+        * CVE-2015-3456
+        * able to breach numerous VM products that employed a compromised open source virtual floppy disk driver to allow malicious code to jump between VMs and even access the host
+
+The following digram illustrates the different types of hypervisors:
+
+![Hypervisor](./images/hypervisor.png)
+
+### Containerization
+
+* Next stage of virtualization
+* also known as OS-virtualization
+* [form](https://en.wikipedia.org/wiki/Containerization_(computing)) of operating system-level virtualization that packages applications and their dependencies into self-contained units called _containers_
+* common deployments Docker, Kubernetes
+* provides 10 to 100 times more application density per physical server than that provided with traditional hypervisor virtualization solutions
+
+![Containerization](./images/containerization.png)
+
+### Mobile Devices
+
+* anything with a battery and not a power cord required (some may be solar powered)
+* computers (laptops, tablets), smartphones
+* Operating Systems
+  * Android
+    * Based on Linux
+    * Open Source Apache Lincense
+    * Made by Google
+    * App Store: Google Play
+    * Can be rooted
+    * [Security-Enhanced Android (SEAndroid)](https://source.android.com/docs/security/features/selinux)
+      * security improvement for Android
+      * framework to integrate elements of Security-Enhanced Linux into Android devices
+      * improvements include: 
+        * Mandatory Access Control (MAC) and Middleware manadatory access control (MMAC)
+        * sandoxing, reducing privilege daemon vulnerabilities
+        * app isolation, etc
+  * iOS
+    * Made by Apple
+    * Closed Source
+    * App Store: Apple App Store
+    * Can be jailbroken
+* Issues
+  * Easy to hide
+  * Can be used to steal data
+  * Contains sensitive info
+  * Eavesdropping
+* Device Security
+  * Full Device Encryption (FDE)
+    * Storage and voice encryption
+    * Prevents unauthorized access / reading of data
+    * while unlocked or the system has a known backdoor, encryptions is useless
+  * Remote Wiping
+    * Delete entire phone data remotely
+    * Can be blocked
+    * Deleted data may still be recovered
+  * Device Lockout
+    * Disable access if unlock attempts fail
+    * Requires a pre configured screen lock
+    * Gets longer with every failure
+  * Screen Locks
+    * Prevents access to unauthorized users
+    * Doesn't prevent access via network or USB
+    * Triggered if phone is left idle
+    * Examples: PIN, patterns, biometrics, etc.
+  * Global Positioning System (GPS) and Location Services
+    * Receives GPS signals
+    * Apps can record GPS locations
+    * Allows tracking of movement
+    * Geotagging
+      * Embedding of location and data time on photos
+      * Can dislose your location when photo is uploaded
+      * can be used fro nefarious purposes like determining normally potentical cyber stalker
+    * Location-based policies allows for allow/deny access based on IP, MAC address, OS version, patch level etc
+    * Wireless Positioning System (WiPS) or Wi-Fi Positioning System (WFPS)
+      * uses location of Wireless access points/base stations to determine a mobile device's locaiton
+      * used to suppliment GPS
+      * iBeacon, developed by Apple to track devices based on their Bluetooth device address
+  * Mobile Device Management (MDM)
+    * Controls and monitors a device remotely
+  * Unified Endpoint Managmenet (UEM)
+    * tool that provdies a single management platform to control mobile, PC, IoT, wearables, ICS, and other devices
+  * Device Authentication
+    * Methods / Patterns
+      * PINs
+      * Biometrics
+      * Radio-Frequency Identification (RFID)
+      * Near-Field Communication (NFC)
+    * Encryption when locked
+  * Content Management
+    * controls how devices access content hosted on company systems
+    * MCM - Mobile Content Management
+      * used for mobile devices and how they access content
+      * may be tied to an MDM System to ensure secure access to company data
+    * CMS - Content Management System
+  * Application Control
+    * Limits installable aplications
+    * Enforces application settings
+    * allow / deny list
+    * Mobile Application Management (MAM) similar to MDM but focuses on application managment
+  * Storage Segmentation
+    * Compartmentalizes various data in storage
+    * Used to separate device apps from user apps
+    * Can separate company data from user data
+  * Push Notifications
+    * send information to devices rather than the device / apps pulling information from online resources
+    * mostly a distraction
+    * possible social engineering attacks and distribution of malicious code
+* Asset Tracking
+  * Management process used to maintain oversight over an inventory (laptops, mobile devices, etc)
+  * Passive system that checks in at with the management service periodically or detected at the office/branch each time the employee arrives
+  * Location tracking
+  * Verifies if device is still with user
+  * Inventory Control
+    * Using mobile device to track hardware
+    * Devices can read RFID, bar codes, etc.
+* Device Access Control
+  * Lock screens, etc.
+  * Device should be unlocked to access USB / bluetooth
+* Removable Storage
+  * Devices support microSD cards
+  * Can also support external storage
+  * Sometimes bluetooth and WiFi based sotrage too
+* Disabling Unused Features
+  * Lessens the chance of exploitation
+* [Rooting / Jailbreaking](https://www.hwgsababa.com/en/what-is-rooting-and-jailbreaking/)
+  * action of breaking the digital rights management (DRM) security on the bootloader of a mobile device
+  * allows an attacker/user to operate the device with root or full system privilege
+  * operating in a rooted status reduces security, apps operate in full privilege
+  * malicious code can easily run in rooted devices
+  * "Bricking" refers to rendering a device completely nonfunctional
+    * less likely in modern mobile devices that come with a nonreplaceable recovery ROM in addition to its standard flashable firmware
+  * Custom Firmware
+    * mobile devices have pre-installed core OS or vendor/telco provided OS
+    * if devices are rooted, users can install alternate custom firmware instead
+* [Sideloading](https://en.wikipedia.org/wiki/Sideloading)
+  * activity of installing an app on a device by bringing the installer files to the device through some form of file transfer
+    * USB, debugging / running app via IDE
+  * bypasses security restrictions imposed by app stores, app allow list or MDM which mostly require digitial signed apps
+* Firmware Over-The-Air (OTA) Updates
+  * firmaware updates are downloaded from telco/vendor via data connections (wifi / cell data)
+  * can be managed via MDM with which updates are pushed/downloaded to the device
+* Credential Management
+  * Password Vault / Credential Manager
+* Text Messaging
+  * [Short Message Service (SMS)](https://en.wikipedia.org/wiki/SMS)
+    * text based message system used by most telephone, internet and mobile devices
+  * [Multimedia Messaging Service (MMS)](https://en.wikipedia.org/wiki/Multimedia_Messaging_Service)
+    * standard way to send messages that includes media (video (forty seconds), photos, etc)
+  * [Rich Communication Services (RCS)](https://en.wikipedia.org/wiki/Rich_Communication_Services)
+    * aims to be a replacement for SMS and MMS
+    * open standard
+  * attack vectors
+    * smishing amd [SPIM](https://en.wikipedia.org/wiki/SPIM)
+
+#### Mobile Device Deployment Policies
+
+* Policies
+  * **_Bring Your Own Device (BYOD)_**
+    * allows employees to bring their own personal mobile device(s) to work
+    * allows them to connect to business resources
+    * improves employee morale and job statisfaction (using their own device)
+    * potentially exposes employees PII to the organization
+    * increases security risk as the device is not managed by the organization
+    * least secure option
+  * **_Choose Your Own Device (CYOD)_**
+    * provides users with a list of approved devices they can choose to use
+    * employees may be able to purchase devices from the approved list
+    * attemps to keep the expense as the responsibility of workers intead of the organization
+    * much more complex and challenging
+    * same security concerns as COPE
+  * **_Corporate-Owned, Personnaly Enabled (COPE)_**
+    * devices are provided by the organization but allows the employee the ability to personalize the device
+    * use it for both work and personal use
+    * mini security configuration defined by orgnanization
+    * possibly organization data exposure through user error
+    * possibly exposure to malware by user installing custom apps
+  * **_Corporate-Owned Mobile Stategy (COMS)_**
+    * also know as _Corporate Owned, Business-Only (COBO)_
+    * fully owned devices and managed by the organization
+    * requires employees to carry a second device for personal use
+    * best option for security
+* Details
+  * **Data Ownership**
+    * Personal and cmpany data might be mixed in the device
+    * They should be segmented
+    * Policy should define who owns what data
+  * **Support Ownership**
+    * Responsibility for repair and maintenance
+  * **Patch and Update Management**
+    * Responsibility for installing updates
+    * How are updates to be installed
+    * How frequent are updates to be installed
+  * **Security Product Management**
+    * What security solution to use
+      * Malware/Antivirus checker
+      * Scanners, firewalls, Host-Based Intrustion Detection (HIDS)
+      * App allow list
+  * **Forensics**
+    * Involvement of a device in investigations
+  * **Privacy**
+    * Workers might be tracked when they are out of work
+    * Contents of device may be monitored by the company
+  * **Architecture/Infrastructure Considerations**
+    * Allowing BYOD devices might cause more network load
+    * Might require more IP addresses
+    * Might require new hardware to be installed (access points)
+    * Security tooling considerations (HIDS, firewall, etc)
+  * **Legal Concerns**
+    * Corporate Attorneys should be consulted to evaluate concerns with Mobile Devices
+    * using personal devices has the potential of data leakage (employee PII and organization sensitive data)
+    * BYOD increases the burden of liability
+  * **Acceptable Use Policy (AUP)**
+    * BYOD policy details should be explained well to user
+    * User must accept BYOD policy so they can be held accountable
+    * BYOD opens up inappropriate use of mobile devices
+    * Risk of information disclosure is also increased
+  * **On-board Camera/Video & Microphone Recording**
+    * Allows/Deny employees to take picture of company premises and use of microphone to record audio
+    * Pictures of confidential information may be taken
+    * Audio recordins may contain confidential/sensitive data
+  * **Tethering & Hotspots**
+    * activity of sharing cellular network data connection of mobile devices with other devices
+    * allows a mobile device to act as a wireless access point (WAP)
+    * sharing is done via Wi-Fi, Bluetooth, or USB
+    * reprensent a security risk as users can grant access ot internet access to the device that may be network-isolated
+    * bypasses security filtering, blocking, monitoring
+  * **Contactless Payment Method**
+    * payments via RFID, NFC
+    * scanning Quick Response (QR) codes using camera
+    * convienent for shoppers but risk of transaction abuse
+  * **SIM Cloning**
+    * abuse of telco's SIM, swampped/cloned
+
+### Essential Security Protection Mechanisms
+
+* **Process Isolation**
+  * Each processes have their own memory spaces
+  * Processes shouldn't be able to read each other's memory spaces
+  * Prvents unauthorized data access
+  * Protects integrity of a process as it can't be modified by another process without its consent
+  * Implemented via sandboxing processes
+* **Hardware Segmentation**
+  * Process isolation but uses hardware implementations for separation
+  * Rare; used for national security concerns
+* [**Root of Trust (RoT)**](https://trustedcomputinggroup.org/about/what-is-a-root-of-trust-rot/)
+  * foundational concept in cybersecurity and cryptography
+  * starting point or anchor of security chain, providing securre and trustworthy foundation
+  * critical for establishing, verifying the integrity, aauthenticity, and confidentiality of digital information in a system
+  * _trust anchor_
+    * specific entity or component within a system that is inherently trusted
+    * reference point for establishing trust
+    * typically well-protected and tamper proof component
+  * TPM and HSM is a hardware-based implementation of RoT
+* **System Security Policy**
+  * used to inform, and guide the development, implementation, testing, and maintenance of a particular system
+  * includes software and hardware
+
+
+
+----- other items tbd ----- 
 * Database systems
 * Cryptographic systems
-* Industrial Control Systems (ICS)
 * Cloud-based systems (e.g., Software as a Service (SaaS), Infrastructure as a Service (IaaS), Platform as a Service (PaaS))
-* Distributed systems
-* Internet of Things (IoT)
-* Microservices (e.g., application programming interface (API))
-* Containerization
 * Serverless
-* Embedded systems
-* High-Performance Computing systems
-* Edge computing systems
-* Virtualized systems
+
+### Common Security Architecture Flaws and Issues
+
+### Covert Channels
+
+* [Security issue](https://en.wikipedia.org/wiki/Covert_channel) which is a method of communication that allows information to be transferred between processes in a way that bypasses the system's security policy and is not authorized by the system's designers
+* _overt channel_ is a known communication channel
+* Two types:
+  * **Covert Timing Channel**
+    * alters/modification of a system component's timing in a predictable manner in order to transfer data
+    * very difficult to detect
+  * **Covert Storage Channel**
+    * conveys information using a common storage solution where the other process(es) can read from it
+
+### Attacks Based on Design or Coding Flaws
+
+* [Rookits](https://en.wikipedia.org/wiki/Rootkit)
+  * malware that embeds itself deep within the OS
+  * derived from the concept of rooting a device
+  * may replace an OS kernel, shim itself under the kernel, replace drivers, or infiltrate application libraries
+  * ability to hide itself from detection and prevent it from being view by file management tools
+* **Incremental Attacks**
+  * forms of attacks that are slow and gradual
+  * Two types:
+    * [**Salami Attack**](https://www.geeksforgeeks.org/ethical-hacking/what-is-salami-attack/)
+      * Small systematic whittling at assets in accounts or other records with financial values
+        * small amounts are deducted from balances
+        * stealing
+      * Transferring small amounts of cash from a compromised bank account over time
+      * example from [wired](https://www.wired.com/2008/05/man-allegedly-b/) about this type of attack
+      * likely cause by aids form insiders 
+      * Protections
+        * Seperation of Duties
+        * Code control
+        * Financial transaciton monitoring
+    * [**Data Diddling**](https://en.wikipedia.org/wiki/Data_diddling)
+      * Making small random incremental changes to data over time
+      * Difficult to detect
+      * likely done by internal attackers more than external
+      * Protections
+        * file encryption
+        * file monitoring
+
 
 ## 3.6 - Select and determine cryptographic solutions
 
@@ -2508,6 +3648,14 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
     * [scrypt](https://en.wikipedia.org/wiki/Scrypt)
   * **Key Stetching**
     * [technique](https://en.wikipedia.org/wiki/Key_stretching) use to make brute-force attacks computationally more difficult by by increasing the resources (time and possibly space) it takes to test each possible key.
+* [Pepper](https://en.wikipedia.org/wiki/Pepper_(cryptography))
+  * comparable role to salt
+  * randomized value that is added as input to a password during hashing
+  * not stored with the password (like salt is)
+  * stored seperately on a different medium like an HSM or other secure storage
+  * adds an addition layer of security with password salting
+  * NIST refers pepper as a "secret key" and recommends at least 112 bits length
+
 
 ![Brute Force Attacks](./images/brute-foce.png)
 
@@ -2615,6 +3763,7 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
 * can be defeated by using timestamps and expireation periods into each message, using challeng-response flows, and encrypting authentication sessions with ephemeral session keys
 
 ![Replay Attack](./images/replay_attack.jpg)
+
 
 * Pass the hash
 * Kerberos exploitation
