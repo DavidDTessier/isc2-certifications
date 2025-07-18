@@ -1,0 +1,25 @@
+1. What kind of device helps to define an organization's perimeter and also serves to deter casual trespassing?
+    * Fence
+2. What is the problem with halon-based fire suppression technology?
+    * the EPA banned it
+    * Degrades into toxic gas at 900 degrees Farenheit
+    * not environment friendly
+
+3. What kinds of potential issues can an emergency visit from the fire department leave in its wake?
+    * May damage equipment and walls using axes
+    * May damage using chosen fire suppression
+
+4. What are the three main types of proximity devices and how do they work?
+
+        * Passive
+          * Alters reader EM field
+          * No electronics
+          * Just a small magnet
+        * Field Powered
+          * Uses reader EM field for power
+          * Must be waved near reader
+        * Transponder
+          * Self powered
+          * Transmits signal received by reader
+          * Occurs consistently or at press of button
+          * May use a battery or capacitors or may be solar-powered

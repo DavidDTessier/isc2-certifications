@@ -379,7 +379,6 @@ So in today's cybersecurity landscape choose Zero-Trust!
 * Segregation of Duties (SoD)
 
 
-
 ## 3.2 - Understand the fundamental concepts of security models (e.g., Biba, Star Model, Bell-LaPadula)
 
 ### Concepts
@@ -3771,17 +3770,900 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
 
 ## 3.8 - Apply security principles to site and facility design
 
+* **Secure Facility Plan**
+  * outlines organization security needs, emphasizes methods or mechanisms to employ to provide security
+  * developed through risk assessment and critical path analysis
+  * based on a layered defense model (defense-in-depth)
+  * **Critical Path Analysis**
+    * systematic effort to identify relationships between mission-critical applications, processes, and operations including all the necessary supporting elements, both physical and technological.
+    * builds a complete picture of interdependencies and interactions
+    * Results in a list of items to secure including the basics
+      * Basic requirements
+        * electricity
+        * environmental controls
+          * building
+          * A/C
+          * heating
+          * humidity control
+        * water/sewage
+    * Technology Convergence must be considered
+    * Technology Convergence
+      * Tendency for technologies to merge over time
+      * Results in single points of failure
+      * Examples
+        * Voice, Video, Fax, and Data uses single connection
+        * Integrated Routers, Switches, and Firewalls
+    * Example: E-Commerce Server Critical Paths
+      * Internet Connection
+      * Computer Hardware
+      * Electricity
+      * Temperature Control
+      * Storage Facilty
+    * Security staff should participate in site and facility design considerations to make sure physical / logical security elements are not missed
+  * **Site Selection**
+    * selection should be based on the security needs of the organization
+    * cost, location and size are still important but security it paramount
+    * Considerations
+      * Visibility
+        * Terrain (trees, shrubs, planters)
+        * Visibility of Approaching Parties
+        * _Industrial Camouflage_
+          * mask the facilities actual function/purpose/operation by providing a facade
+          * example a data center may present itself as a food-packing facility
+      * Crime
+        * Riots
+        * Vandalism
+        * Break-ins
+      * Natural Disasters
+        * Fault Lines
+        * Tornadoes
+        * Hurricanse
+        * Flooding
+      * Surrounding Businesses
+        * Too Many Visitors
+        * Noise
+        * Vibrations
+        * Dangerous Materials
+      * Utilities
+        * Fire Department
+        * Medical
+        * Police
+        * Hydro
+    * **Facility Design**
+      * top priority is always protection of life and safety of personnel
+      * Considerations
+        * Health and Safety Regulations and Other Regs
+          * Occupational Safety and Health Adminstration (OSHA)
+          * Environmental Protection Agency (EPA)
+          * Build Codes
+          * Labor restrictions
+        * Required Security Level
+          * Forced Intrusions
+          * Emergency Access
+          * Resistance to Entry
+          * Direction of Entries and Exits
+          * Alrams
+          * Conductivity
+        * Safety
+          * Fire Rating
+          * Construction Materials
+          * Load Rating
+        * Access Control
+          * Walls
+          * Doors
+          * Ceilings
+          * Flooring
+        * Utilities
+          * HAVC
+          * Power
+          * Water
+          * Sewage
+          * Gas
+      * Secure Architecture
+        * [Crime Prevention Through Environmental Design (CPTED)](https://www.cpted.net/)
+          * Core principle:
+            * the physical environment can be designed and managed to reduce opportunities for crime and fear of crime.
+          * Two generations
+            * **First generation**
+              * focuses on the physical design and manipulation of the built environment to reduce crime opportunities
+              * addresses/focuses on
+                * facility design
+                * landscaping
+                * entrance concepts
+                * campus layouts
+                * lighting, road placement
+                * traffic management
+              * Four principles:
+                * **_Access Control_**
+                  * Guiding and limiting movement to and from spaces using physical barriers (fences, gates, landscaping, single points of entry) to deter unauthorized access.
+                * **_Natural Surveillance_**
+                  * Maximizing visibility through design elements (windows, lighting, clear sightlines) to ensure people can be seen and can see their surroundings, increasing the perceived risk for offenders.
+                * **_Image and Milieu_**
+                  * use of viusal elements and aesthetics to maintain pleasentness to protect a positive image to influence peoples behavior and perceptions
+                  * maintain a general positive feel and ambiance to discourage any unwanted behavior and maintain a safety and community feeling
+                * **_Territorial Control_**
+                  * Creating a clear sense of ownership and responsibility for a space through design elements (defined property lines, well-maintained areas, personalized spaces) that signal to offenders that the area is cared for and monitored.
+                  * use of decorations, flags, presentation of company logos
+            * **Second Generation**
+              * integrates social and community-building strategies to address the motivations for crime and strengthen community resilience. It emphasizes that a strong, cohesive community is a powerful crime deterrent.
+              * Core Principles:
+                * **_Social Cohesion_**
+                  * Fostering strong, positive relationships and a sense of shared responsibility among residents. This involves community programs, neighborhood watch initiatives, and activities that encourage mutual trust and cooperation.
+                * **_Community Culture_**
+                  * Promoting shared values, a sense of place, and positive community identity through events, public art, and placemaking activities that bring people together.
+                * **_Connectivity_**
+                  * Building partnerships and communication networks between residents, local businesses, police, and other stakeholders. This aims to create integrated communities where information flows freely and collective action is possible.
+                * **_Threshold Capacity_**
+                  * Understanding the social and physical "tipping points" in a community, such as density, land use mix, and available resources, and managing them to prevent breakdown and anonymity that can foster crime.
+          * Recommendations of secure site design
+            * Keep planters under 2.5 feet tall to prevent them from being used to hide behind or as a step to reach a window
+            * Keep decorative elements small or far away from the building
+            * Locate the data center at the core of the building
+            * Provide benches and tables to encourage people to sit and look around (automatic surveillance)
+            * Mount cameras in full view to act as a deterrent
+            * Keep entrances open and clear (not obstacles) in order to maintain visibility
+            * Keep the number of entrances to a minimum and close off doorways during evenings or weekends when fewer workers are present
+            * Provide parking for visitors near the entrance
+            * Make delivery access driveways and entrances less visible or noticeable to the public (back of building and require an alternate road)
+          * use of CPTED does not replace the use of actual facility hardening (locked doors, security guards, fences, etc) but wihin a combination of the two it provides a well rounded secure facility design
+          * Resources for CPTED
+            * Oscar Newman's book [_"Creating Defensible Space"_](https://ecommons.udayton.edu/cgi/viewcontent.cgi?article=1026&context=soc_fac_pub)
+
 ## 3.9 - Design site and facility security controls
 
-* Wiring closets/intermediate distribution facilities
-* Server rooms/data centers
-* Media storage facilities
-* Evidence storage
-* Restricted and work area security
-* Utilities and Heating, Ventilation, and Air Conditioning (HVAC)
-* Environmental issues (e.g., natural disasters, man-made)
-* Fire prevention, detection, and suppression
-* Power (e.g., redundant, backup)
+### Categories of Physical Controls
+
+* **Administrative**
+  * Facility Construction and Selection
+  * Site Management
+  * Personnel Controls
+  * Awareness Training
+  * Emergency Response and Procedures
+* **Technical**
+  * Access Controls
+  * Intrusion Detection
+  * Alarms
+  * CCTV
+  * Monitoring
+  * Heating
+  * Ventilating
+  * Air Conditioning
+* **Physical**
+  * Fencing
+  * Lighting
+  * Locks
+  * Construction Materials
+  * Mantraps
+  * Dogs
+  * Guards
+* Functional Order of Controls
+  * **Deter**
+    * Make attackers think attacking is a bad idea (boundary restriction)
+    * Example: Fencing
+  * **Deny**
+    * Prevent attackers from making an intrusion
+    * Example: Vault Doors
+  * **Detect**
+    * Detect when an attacker has made an intrusion
+    * Example: Motion Sensors
+  * **Delay**
+    * Make extraction of asset more difficult
+    * Example: Cable Lock
+  * **Determine**
+    * Allow security staff to assess the situation and give them authority to decide what happens next
+  * **Decide**
+    * Final decision once all the other steps have gone through
+    * Example: After the security staff assesses the situation they call the police to detain the intruder or collecting forensic evidence
+
+### Equipement Failure
+
+* common cause of a loss of availabiltiy
+* to maintain availablity its important to understand the criticality of each asset and business processes as well as the following:
+  * **AIW - Allowable Interruption Window**
+    * represents the maximum duration a business process or IT service can be unavailable before causing unacceptable harm to the organization
+  * **SDO - Service Delivery**
+    * defines the level of service that must be achieved during an alternate process mode, typically when restoring normal operations after an outage
+  * **MTD/MTO - Maximum Tolerable Downtime/Outage**
+    * The maximum amount of time mission/business process can be disrupted without causing significant harm to the organization's mission
+* **Considerations**
+  * Replacement part vendor
+  * Transport and storage
+  * Pre-purchasing
+  * Installation and restoration skills
+  * Scheduling maintenance and replacements
+* **SLA - Service Level Agreement**
+  * Required response time from vendor to deliver a service
+  * Includes repair, internet, hosting, etc.
+  * Must be established with vendor for critical assets
+* **MTTF - Mean Time to Failure**
+  * Time before a device fails
+  * Expected lifetime of a device
+  * Devices should be replaced before MTTF expires
+* **MTTR - Mean Time to Repair**
+  * Time it takes to repair a device
+* **MTBF - Mean Time Between Failures**
+  * Time between subsequent failures
+  * Usually same with MTTF
+
+### Wiring Closets
+
+* **[Cable Plant Management](https://en.wikipedia.org/wiki/Cable_management) Policy**
+  * defines a facility's physical structure and deployment of networking cables and related devices
+  * collection of interconnected cables and intermediary devices (cross-connects, patch panels, switches, etc) that establishes the physical network
+  * Elements include
+    * **_Entrance facitily_**
+      * demarcation point or main distribution frame (MDF)
+      * entrance point to the building for providers cable connects to the internal cable plant
+    * **_Equipement Room_**
+      * main wiring closet for the building
+      * often connected or adjacent to the entrance facility
+    * **_Backbone distribution system_**
+      * provides wired connections between the equipement and telecommunications rooms, including cross-floor connections
+    * **_Wiring Closet_**
+      * serves the connection needs of a large building's floor or section 
+      * provides space for netwoking equipment and cabling systems
+      * serves as the interconnection point between the backbone and horizontal distro systems
+      * AKA, _Premises Wire Distribution Room_, _main distribution frame (MDF)_, _intermediate distribution frame (IDF)_, and _telecommunications room_
+      * multiple wiring closes may exist in large installations
+        * to work around the maximum run length
+        * maximum run length is 100 meters
+        * run length is reduced in noisy environments
+      * commonly used to house and manage the wiriing for many other important elements of the building such as:
+        * Alarm systems
+        * Circuit breakers
+        * Telephone punch down blocks
+        * Wireless access points
+        * Security cameras
+    * **_Horizontal distribution system_**
+      * connects the telecommunications room and work areas
+      * includes cross-connection blocks, patch panels, and supporting hardware infra (cable trays, hangers, and conduits)
+  * **Protected Cable Distribution** or **Protective Distribution Systems** (PDSs)
+    * defines how cables are protected against unauthorized access or harm
+    * goal is to deter violations, detect access attempts, and otherwise prevent compromise of cables
+    * Elements include
+      * protective conduits
+        * may require intrusion detection within the conduit
+      * sealed connections
+      * regular human inspection
+  * fundamental to the overall security to prevent equipement theft, installation of listening devices, unauthorized access
+  * Rules:
+    * Do not use as storage area
+    * Have adequate locks
+    * Keep area tidy
+    * Remove flammable items
+    * Video surveillance
+    * Door open sensor
+    * Log Entries
+    * Regular physical inspections
+    * Include in environmental controls plan
+  * Building management must be notified of cable/wiring plant policies
+
+### Server Rooms / Data Centers
+
+* aka communication rooms, server vaults, and IT closets
+* enclosed, restricted, and protected rooms that house mission critical servers and network devices
+* generally designed as a 'lights-out' area to improve efficiency (little to no lighting)
+* Human Incompatibility as equipment is stacked with little room to maneuver
+* data centers may include :
+  * gas-based halon-substitute oxygen-displacement fire detection and extinguishing systems
+  * walls with a one-hour minimum fire rating
+  * low temperatures
+* should be location at the core/center of the building and avoid ground floor, top floor, and basement whenever possible
+* should also be located away from sewage lines, water, and gas
+* could be same building where the organization operates or a seperate remote location
+* can be owned and managed exclusively by the organization or rented/leased space from a provider (CSP) or colocation center
+* could be a single or multitenant configuratino
+* access is coontrolled via:
+  * smart/dumb cards
+    * ID badges are referred to as "dumb cards" with authorized person details
+    * smart cards
+      * uses tokens, RFID, NFC, and/or magentic strip
+      * is credit card sized with integrated chips
+      * Several phases for referring to a smartcard
+        * An identity token containing an integrated chip (IC)
+        * A processor IC card
+        * An IC card with an [ISO 7816](https://en.wikipedia.org/wiki/ISO/IEC_7816) interface
+      * reviewd as a secure and reliable solution but should not be considered complete by themselves
+      * "something you have" in terms of MFA
+      * subject of weakness as theft of the card could result in impersonation
+    * magentic strip cards
+      * have a magnetic strip (like a cc)
+      * easily copyable and not ideal for a secure environment
+  * **Data Center Security**
+    * **Technical Controls**
+      * Smartcards
+        * Types
+          * Magnetic Strip
+          * Bar Code
+          * Integrated Circuit Chip
+        * Threats
+          * Social Engineering
+          * Theft
+          * Should come with 2-factor authentication (e.g. PIN)
+          * Examples: Memory Cards
+            * Machine readable ID cards with magnetic strip
+        * Should be taken back when ab employee leaves or is terminated
+        * Authorized personel should where the badges in plain view
+        * should be designed with security to minimize duplication/copying
+      * Proximity Readers
+        * Passive
+          * Alters reader EM field
+          * No electronics
+          * Just a small magnet
+        * Field Powered
+          * Uses reader EM field for power
+          * Must be waved near reader
+        * Transponder
+          * Self powered
+          * Transmits signal received by reader
+          * Occurs consistently or at press of button
+          * May use a battery or capacitors or may be solar-powered
+        * Automatic Request to Exit (AREX)
+          * security system used to automatically signal to unlock a secured door or gate
+          * ehances security and convienence by automating the exit process
+          * typically involves proximity devices/sensors installed near the exit points
+          * may include motion detectors, infrared sensors, pressure-sentive sensors/mats or others tech to detect when someone is approaching the exit
+      * **Intrusion Detection Systems**
+        * Detects attempted intrusions
+        * Used to raise an alarm
+          * an alarm can be either of the following:
+            * **_Deterrent alarm_**
+              * may engage additional locks, shut doors, etc
+              * aims to make further instrusion or attack more difficult
+            * **_Repellent alarm_**
+              * usually sound an audio or bell and turn on lights
+              * discourage intruders or attackers form continuing their malicious or trespassing activities and force them off the premises
+            * **_Notification alarm_**
+              * triggers notification that are silent to the intruder but are recorded and notify admins/sec professionals or law enforcement
+              * record of the incident is likely log files, camera recordings
+          * Categories by location:
+            * **_Local Alarm System_**
+              * Audible alarm
+              * Can be heard for 400 feet
+              * Locally positioned guards must be able to respond
+              * Must be protected from tampering
+            * **_Central Alarm System_**
+              * Notifies a central station
+              * Locally silent
+              * Usually well-known security companies (ADT / Brinks)
+              * Examples: Residential security systems
+              * Proprietary System
+              * Central station system used by private companies
+            * **_Auxiliary Alarm System_**
+              * Alarm which notifies emergency services
+                * E.g. police/fire/medical
+              * Can be added to local alarms and central station systems
+        * Types
+          * **_Perimiter Breach Detection_**
+            * Used to detect when a perimeter (exterio or interior) is breached
+            * Contact Devices (Balanced Magnetic Switch (BMS) ex: Emergency Exit Door) or Infrared Beams (crossing a threshold)
+            * Results in sounding an alarm
+          * **_Motion Detection_**
+            * aka motion sensor
+            * devices that senses movements or sound in a specific area
+            * Types:
+              * **_Digital Motion Detector_**
+                * monitors significant or meaningful changes in the digital patterned of the monitored area
+                * smart security camera
+              * **_Passive Infrared (PIR) or Heat-Based Motion Detector_**
+                * monitoring of heat levels
+              * **_Wave Pattern Motion Detector_**
+                * transmits a constent low ultrasonic or high microwave frequency signal into monitored area and monitors for significant changes or disturbences in the reflected pattern
+              * **_Capacitance Motion Detector_**
+                * senses changes in the electrical or magnetic field surrounding the monitored object
+              * **_Photoelectric Motion Detector_**
+                * senses changes is visible light in the monitored area
+                * usually deployed in internal rooms with no windows and are kept dark
+              * **_Passive Audio Motion Detector_**
+                * listens for abnormal audio sounds
+            * "Dual-technology sensors" -- combines two different types of motion detectors
+        * Points of Failure
+          * Power
+            * Lack of power prevents the system from operating
+          * Communication
+            * Lack of communication prevents alarm from being raised
+        * Controls
+          * Heart Beat Sensor
+            * Periodically tests connectivity between alarm and IDS
+            * Alarm is raised if heartbeat signal fails
+      * **Secondary Verification**
+        * Used to verify if alarm was valid
+        * Examples
+          * Multiple Sensor Systems
+            * Must be triggered in quick succession
+        * Closed-Circuit Television (CCTV) / Security Cameras / Surveillance Monitors
+          * Allows guards to manually verify area
+          * Some may be motion sensitive and provide Gait Analysis (evaluation of the way someone walks)
+      * **Access Abuses**
+        * Examples
+          * Opening Secured Doors
+          * Bypassing Locks and Access
+          * Maquerading
+            * Using someone else's security ID
+          * Piggybacking / Tailgating
+            * Following someone through a secured gate
+        * Controls
+          * Audit Trails
+            * Can be manually (sign in sheets / done by security guards) or automatically generated (automatic log trails)
+            * allows for the reconstructions of events
+
+### Media storage facilities
+
+* Stores blank and reusable media
+* Threats
+  * Theft
+    * Restrict Access to Media
+    * Asset Tracking (RFID/NFC)
+  * Malware Planting
+    * Sanitize Returned Media
+    * Restrict Access to Media
+  * Data Remnant Recovery
+    * Secure Data Wiping
+    * Restrict Access to Media
+  * Destruction
+    * Fire
+    * Flood
+    * Electromagnetic Field
+    * Temperature Monitoring
+  * Data Remnants
+    * Remaining data on storage left over after deletion
+    * Deletion only removes file record
+    * Doesn't remove actual file data from disk
+    * Can be recovered using un-delete utilities
+  * Restricting Access to Media
+    * Use a locked cabinet or safe
+    * Check in and check out procedure
+    * Have a custodian who manages access
+    * Run sanitization processes on returned media to removing all data remnants
+      * _zeroization_ -- erase all data by replacing it with meaningless data 
+
+### Evidence storage
+
+* Stores evidence after breach
+  * log files, vm snapshots, etc
+* Requirements
+  * Dedicated storage system/network
+  * Keeping storage system offline
+  * Block internet connectivity
+  * Tracking all activities on system
+  * Calculating hashes for all datasets within
+  * Limiting access to security administrator
+  * Encrypting all datasets stored within
+  * Other requirements based on local regulations/laws, industry, contractual obligations
+
+### Restricted and Work Area Security
+
+* Controls
+  * Separate work areas and visitor areas
+  * Escort requirements for visitors
+  * Require badges and RFID tags
+  * More restrictive access to more sensitive areas
+    * server rooms should only be accessible by Sys / Network / Sec Admins
+  * Sensitive areas should be in the center of facility protection
+  * Universal access to essential facilities (e.g. restrooms)
+  * Work area sensitivity classifications
+  * Walls / Partitions
+    * Prevents shoulder surfing or eavesdropping
+    * Walls should cut off false ceilings
+      * For separating areas with different sensitivity
+  * Clea/Clear Desk Policy
+    * instructs workers to keep work areas clear of clutter
+    * reduces the disclosure of sensitive information
+    * store sensitive items in a locked drawer or closet
+* [Sensitive Compartmented Information Facility (SCIF)](https://en.wikipedia.org/wiki/Sensitive_compartmented_information_facility)
+  * often used by military and/or government agencies/division, and contractors to provide a secure environment for highly sensitive data storage and computation
+  * purpose is to store, view, and update sensitive compartmented information (SCI)(type of classified information)
+  * SCI is restricted to limit entrance to only those individual with specific business needs and authorization to access the data
+    * determined by their clearence and SCI approval levels
+  * restricted from video recording, photography, or other recording devices in the secured area
+  * established in a ground-based facility, an aircraft, or a floating platform
+  * permanent or temporary
+
+### Utilities Considerations
+
+#### Power Considerations
+
+* Power Issues
+  * Fault
+    * Momentary loss of power
+  * Blackout
+    * Prolonged loss of power
+  * Sag
+    * Momentary low voltage
+  * Brownout
+    * Prolonged low voltage
+  * Spike
+    * Momentary high voltage
+  * Surge
+    * Prolonged high voltage
+  * Inrush
+    * Initial surge of power when connecting to source
+  * Noise
+    * Prolonged power fluctuation
+    * Transient Noise
+      * Momentary power fluctuation
+    * Noise generated from electric current is known as _electromagnetic interference (EMI)_
+      * can affect data transmission for telephones, cellular, TV, radio, etc
+    * Noise generated from electric appliances is known as _Radio-frequence Interference (RFI)_ 
+      * same affect as EMI
+    * Use power condition, proper grouding, shielded cables, etc to reduce noise
+  * Clean
+    * Non fluctuating power
+  * Ground
+    * The wire in a circuit that is grounded
+* Power Controls
+  * First Line of defense - Surge Protector
+    * protected against poweroverloads
+    * if a spike occurs its fuse will blow/burn out
+    * only be used when instant termination of electricity will not cause damage to the equipment
+  * Second line of defense - Power Condition or Power-line Conditioner
+    * Advanced surge protector
+    * also able to remove or filter line noise
+  * Third Level of Protection - UPS - Uninterrptable Power Supply
+    * Self-charging battery that can be used to supply consisten, clean, and sanitized power
+    * provides surge protection, power conditioning, and batter-supplied supplemental power
+    * Provides power for a few minutes
+    * Two types:
+      * Double Conversion UPS
+        * takes power from wall outlet and stores it in a battery
+        * pulls power out of the battery and feeds it to the device(s) connected
+        * maintains a consistent, clean power supply
+      * Line-Interactive UPS
+        * surge protector, battery charge/inverter, and voltage regulator
+        * position between the power grid source and the equipment
+        * battery is not in line under normal conditions
+        * if the grid fails, there is a type of three-position switch that will automatically switch so the power is pulled from the battery through the inverter and voltage regulator to provider power
+      * Considerations
+        * determine which systems are critical that need to run on back up power in order to optimize and  distribute power
+    * Highest Level - Power Generators
+      * Provides power until main power comes back on
+      * Generally used to power full buildings
+      * maintains operations for a considerable amount time despite brown or blackouts
+      * operate using fuel tank of liquid or gaseous propellent that must be maintain to ensure reliability, sufficient fuel (with resupply) will server as an alternative power source for a long time
+      * Electric options are considered alternate or backup power sources
+      * UPS should still even with a generator installed to provide continous alternative power
+        * used for providing power until the generator is properly up and running
+
+#### Heating, Ventilation, and Air Conditioning (HVAC)
+
+* Maintaining optimizal temperature and humidity in areas that house equipment like servers and computers is key
+  * Temperature
+    * 59F to 89.6F / 15C to 32C
+      * Some extreme enviroment run the equipement 20 degree Farenheit lower or higher than this range
+  * Humidity
+    * Realtive humidity should be between 20% - 80%
+      * however some enviroments run these as low as 8% and as high as 90%
+  * The standard is called the “expanded environment envelope”
+    * Maintaining proper HVAC and humidity
+      * **Temperature** -> 64.4F - 80.6F (18-27C) → HVAC (Expanded Envelope)
+      * **Humidity** -> 40-60 percent relative Humidity
+        * Too much can lead to moisture and corrosion
+        * Too little can cause static electricity buildup and lead to **_elastrostatic discharge (ESD)_**
+  * Temperature is optimize by using fans either directly connected to heat sinks on devices like CPUs, memory banks, or video cards or indirectly by being part of their chassis or host storage cabinet (rack-mount cabinet)
+  * Servers draw cool air in the front and expel hot air out back
+    * ![Server hot/cold](../Certified%20In%20Cybersecurity%20(CC)/images/server.png)
+    * Hot/Cold aisle approach makes cooling data centers more efficient
+      ![hot/cold](../Certified%20In%20Cybersecurity%20(CC)/images/hot-cold-server-aisle.png)
+  * Static voltage and damage
+    * 40 volts : Destruction of sensitve circuits and other electronic components
+    * 1,000 volts: Scrambling of monitor displays
+    * 1,500 volts: Destruction of data stored on hard drives
+    * 2,000 volts: Abrupt system shutdown
+    * 4,000 volts: Printer jam or component damage
+    * 17,000 volts: Permanant circuit damage
+* **Plenum**
+  * boxes and tubes that distribute conditioned air throughout a building
+  * plenum spaces - areas designed to contain the HVAC plenum components and must be plenum-rated (fire rating)
+    * area is distinct from human-inhabited areas
+  * plenum fire rating requires that the produts produce minimal levels of smoke and/or toxic gases, especially if the building has enclosed spaces that could trap gases
+    * electrical cables and networking cables are typically plenum rated
+* Maintain **_Positive air pressure_**
+  * a condition where the pressure inside a confined space is higher than the pressure outside, causing air to flow outward through any available openings.
+* Maintain superior airfiltration to reduce dust, debris, microfine particulate matter infiltration, and other contaminants
+  * Could lead to startic charge or may cause corrosion
+* **Environement Monitoring**
+  * measuring and evaluating the quality of the environment
+  * focuses on temperature, humitity, dust, smoke
+  * more advanced options also monitor for chemicals, biological, radiological, and microbiological detectors
+* **Condition Monitoring**
+  * monitoring and assessing the operational parameters, performance, and health of machinery, equipement, or systems in real-time or periodicially
+  * focus is on identifying any deviations from normal operating conditions for any potential faults and/or system failures
+
+### Water Issues
+
+* **Environmental Safety Policy and Procedures** should have conditions to address any water issues that may arise
+  * Types of issues include:
+    * Leakage
+    * Flooding
+    * Electrocution
+* Controls
+  * Monitor plumbing for leaks
+  * Ensure water is away from electricity
+  * Ensure servers are away from water
+  * Ensure the facility is away from flooding areas
+  * Install water-detection circuits on the floor (or under the floor with raise flooring data centers) around mission critical systems
+    * sounds an alarm when water is detected
+  * Be familiar with locations of shut off valves and drainage
+
+### Fire prevention, detection, and suppression
+
+* **Fire Triangle**
+  * Center is the chemical reactions of Heat, Oxygen, Fuel
+  * purpose is to illustrate that if you can any of the four items from the fire triangle, the fire can be extinguished
+
+  ![Fire Triangle](./images/fire-triangle.webp)
+* **Suppression Mediums**
+  * Water suppresses the temperature (heat)
+  * Soda Acid / Dry Powders suppresses the fuel supply (fuel)
+  * Carbon dioxide (CO2) suppresses the oxygen supply (oxygen)
+  * Halon Subsitutes / Nonflammable Gases interfere with the chemistry of combustion and/or suppresses the oxygen supply (Reaction)
+  * Aqueous film forming foam (AFFF) suppresses temperature and fuel supply
+    * type of fire fighting foam
+    * water based containing foaming agents, surfacents, and typically some fluorochemicals
+    * designed to quickly spread and form a thin film/barrier that suppresses the release of flammbale vapors and prevents the fire from sprending
+* **Stages of Fire**
+  * **Stage 1: The Incipient Stage**
+    * only air ionization, no smoke
+  * **Stage 2: The Smoke Stage**
+    * Smoke is visible from the point of ignition
+  * **Stage 3: The Flame Stage**
+    * Flame can be seen with the naked eye
+  * **Stage 4: The Heat Stage**
+    * Heating building up and fire spreads
+    * everything burns
+  ![Stages of Fire](./images/stages-of-fire.jpg)
+* Controls
+  * Training and Awareness of fire safety and escape procedures
+  * Emergecny Shutdown Procedures
+  * Rendevouz Location and Exit locations
+  * Safety Verification Mechanism
+  * Knowledge of location of fire extinguishers
+  * Perform routine fire drills
+
+* **Fire Extinguishers**
+  * Effective in the first 3 stages but not so much after that
+  * For most standard office environments an multclass extinguisher is recommend (likely an ABC)
+  * Types:
+    * A - Wood/Paper - Water, Soda Acid
+    * B - Oils/Liquids - CO2/Halon/Soda Acid
+      * Splashes when doused
+    * C - Electrical - CO2/Halon
+      * Electrocution
+    * D - Metal - Dry Powder
+      * Produces own oxygen
+    * K - Cooking media (fats, oils) - Alkaline mixtures
+      * potassium acetate/citrate/carbonate (causes saponification)
+  * Water and other liquids cannot be used on Class B/K fires because they would vaporize, causing an explosion and spreading the burning liguids all over the area
+  * Watter cannot be used on Class C fires because of the possibility of electrocution
+  * Oxygen suppression cannot be used on metal fires becuase buring metal produces its own oxygen
+
+* **Fire Detection Systems**
+  * Types
+    * **_Fixed Temperature Detection_**
+      * most common and install in most office buildings
+      * triggers when a specific temperature is reach 
+      * visible sprinkler head serves as both detection and release mechanism
+      * Metal/plastic which melts at a specific temperature
+      * also a version with a small glass vial containing chemicals which vaporize to over-pressurize and shatter the container at a specific temp
+      * inexpensive and riable
+    * **_Rate-of-Rise Detection_**
+      * Monitors speed of temperature change and triggers when it reaches a certain level
+      * often digital measuring device
+      * can be fooled by HVAC heating during winter months 
+      * not widely deployed
+    * **_Flame-Actuated Systems_**
+      * Monitors infrared energy
+      * fast and reliable but fairly expensive
+      * used in high risk environments
+    * **_Smoke-Actuated Systems_**
+      * Photoelectic / radioactive ionization sensors
+      * monitors for ligth or radiation obstruction or reduction across an air gap
+      * triggered by smoke, but dust and steam can trigger it also
+      * uses americium as a source of alpha particles and a Gieger counter to detect the rate of the particles transmission
+      * produces a low level of radiation that a layer of dead skin cells is sufficient to block its transmission
+    * **_Incipient Smoke Detection Systems_**
+      * aka aspirating sensors
+      * able to detect chemicals typically associated with very early stages of combustion before a fire starts
+      * even more costly
+  * Most can be linked to fire response teams
+
+* **Water Suppression Systems**
+  * Used for human friendly environments
+  * Most-common cause of failure / false positive is humans/people
+    * they turn off the water source or trigger the release when there is no fire
+  * Types
+    * **Wet Pipe / Closed Head**
+      * Pipe is always full of water, immediately discharges when triggers
+    * **Dry Pipe**
+      * Contains compressed inert gas
+      * Once suppression is triggered, gas is released, opening a water valve that causes the pipe to fill with water and discharged into the environment
+    * **Preaction**
+      * Dry pipe until fire is detected
+      * Has a secondary trigger which releases water
+      * Allows fire to be dealt with before activating
+      * Allows for manual intervention to stop the release of water
+      * Good for areas with electronics and humans
+    * **Deluge**
+      * Large pipes; large volumes of water
+      * No good for environments with electronics and computers
+
+* **Gas Discharge Systems**
+  * For human incompatible environments
+  * Removes oxygen from environment
+  * more effective and faster than water
+  * Halon is now banned by the EPA
+  * CO2 is ineffective as a fire suppressant and poses a higher risk to people
+    * can cause asphyxiation at only 7.5 % concentration
+    * fire suppressant with CO2 is often at 34 % or higher concentration
+    * naturally colorless, oderless, and tastless
+  * Types
+    * Halon
+      * effective fire suppressant
+      * Degrades into toxic gas at 900 degrees Farenheit
+      * not environment friendly
+      * banned in 1994 by the EPA after the [1989 Montreal Protocol](https://en.wikipedia.org/wiki/Montreal_Protocol)
+    * FM-200 (HFC-227ea)
+      * replacement for Halon but is likely going to be phased out
+    * CEA-410 / CEA-308
+    * NAF-S-III (HCFC Blend A)
+    * FE-13 (HCFC-23)
+    * Argon (IG55) or Argonite (IG01)
+    * Inergen (IG541)
+    * Low Pressure Water Mists
+
+* **Damage**
+  * Smoke
+    * Smoke from a fire can damage storage devices
+  * Heat
+    * Heat from a fire can damage storage tapes and hardware
+  * Suppression
+    * Suppression mechanism can damage equipment
+    * Water and soda acid damages computers
+    * Can cause short circuits and corrosion
+  * Fire Department
+    * May damage equipment and walls using axes
+    * May damage using chosen fire suppression
+
+### Implement and Manage Physical Security
+
+* **Perimeter**
+  * Accessibility
+    * Entrances
+      * Single Entrance
+        * For security
+      * Multiple Entrances
+        * For emergencies
+    * Roads and Transportation
+    * Constrained by perimeter security
+  * Controls
+    * **Fence**
+      * Defines a security perimeter
+      * Deterrent levels
+        * Vs. Casual Trespassers
+          * 3 to 4 feet
+        * Vs. Most Trespassers
+          * 6 to 7 feet
+        * Vs. Determined Trespassers
+          * 8 feet or more
+          * With barbed wire
+      * **_Perimeter Instrusion Detection and Assessment System (PIDAS)_**
+        * fence system that has two or three fences used in concert to optimize security
+        * often present around military locations and prisons
+        * has one main tall fence (8-20 feet tall)
+          * electrified, barbed wired and may include touch detections
+        * the main fence is surrounded by an outer fence (4-6 feet tall)
+          * keeps animals and casual trespassers out
+          * reduces the _nuisance alarm rule (NAR)_ or false positives from animals or foliage on interior fences
+          * may be electrified and razor wired
+        * space between both serves as an area for guard patrols, free of vegetation
+      * **Gate**
+        * Controlled entry and exit point
+        * Must match deterrent level of fence
+        * Must be hardened vs tampering/removal/destruction
+        * Must not offer access when closed
+        * Number must be kept to a minimum
+        * Must be protected by guards or CCTV
+      * **Turnstile**
+        * Prevents tailgating
+        * Allows one person at a time
+        * Allows movement in 1 direction
+        * Used for entry rather than exit
+      * **Person/Man Trap**
+        * aka _access control vestibule_
+        * Double set of doors
+        * Protected by a guard
+        * Prevents piggybacking or tailgating (e.g. weight measurement)
+        * Immobilizes a subject until authenticated
+        * If unauthenticated, subject is locked until authorities respond
+        * typically used in high secure areas (data center or SCIF)
+      * **Security Bollard**
+        * prevents vehicles from ramming access points and entrances
+        * permanently fixed in place or automatically rises from their installed base at a fixed time or an alert
+        * disguised as planters or other architectural elements
+      * **Barricades**
+        * used to control foot traffic and vehicles
+        * K-rails (contruction)
+    * **Lighting**
+      * Discourages casual intruders
+      * Not a strong deterrent
+      * Should not show positions of detection controls
+      * Should not cause glare to detection controls
+      * Should illuminate critical areas w/ 2 candle feet of power (2 lumens, or 20 lux)
+      * Should be placed apart as their illumination diameter (10-20 percent closer)
+    * **Guards and Dogs**
+      * Advantages
+        * Can adjust to changing environment
+        * Can detect and respond to threats
+        * Acts as a deterrent
+      * Disadvantages
+        * Cannot be posted in human incompatible locations 
+          * not all environments and facilities support them
+        * No guarantees of reliability
+          * prescreening, bonding, and training do not guarrantee reliability
+        * Can be subject to injury or sickness or substance abuses (not dogs)
+        * Vulnerable to social engineering
+        * Protection stops when life is endangered
+        * Not aware of the scope of operations of facility ( although this can also be an advantage)
+        * Expensive
+        * Dogs can pose serious insurance and liability requirements, require a high level of maintaince (housing, feeding, training, health care, etc.)
+    * **Robot Sentries**
+      * used to patrol an area automatically
+      * use facial recognition tech
+      * can be on wheels or flying (Uncrewed aerial vehicle (UAV))
+* **Internal Security**
+  * Controls
+    * Visitor Control
+      * Escorts
+      * Monitoring
+      * Logging (entries/exits)
+    * Locks
+      * Key / Preset / Deadbolt, Conventional Locks
+        * Vulnerable to picking / shimming
+        * Vulnerable to bumping attacks, which is accomplished using a special bump key that when properly tapped or bump causes the lock pins to jump and allows the cylinder to turn  
+        * Key can be lost
+      * Programmable / Combination
+        * multiple access combinations or digital/electronic key pads, smartcards, or cipher devices
+        * _Electronic Access Control (EAC) lock_
+          * incorporates thee elements:
+            * electromagnet to keep the door closed
+            * a credential reader to auth subjects and deactive the electromagnet
+            * a sensor to reengage the electromagnet when the door is closed
+          * can monitor the amount of time that a door stays open to trigger a warning buzzer (longer than 5 seconds, intrusion alarm is triggered)
+        * Combination can be forgotten
+
+
+### Environmental Issues and Life Safety (e.g., natural disasters, man-made)
+
+* **Safety**
+  * Life
+    * Protecting human life is the first priority of security
+    * Includes providing them with means to survive during disasters
+      * E.g. food, water, etc.
+  * Business Continuity
+    * only once people are safe should be move to addressing business continuity procedures
+  * Environment
+    * Ensuring that environment remains safe during disaster
+    * Deals with flooding, fires, toxic gas, etc.
+  * Occupant Emergency Plans (OEP)
+    * Guides and assists with sustaining personnel safety in the wake of a disaster
+    * Guides how to minimize threats to life and prevent injury
+    * Does not address IT or BC / DR issues
+* **Regulatory Requirements**
+  * Depends on industry
+  * Regulatory requirements must be considered a baseline for and maintaining security
+* **Key Performance Indicators (KPI)**
+  * metrics / measurements of the operations or failure of various aspects of physical security
+  * used to assess the effectiveness of security efforts
+  * Commone KPIs:
+    * Number of Successful/unsuccessful intrusions
+    * Number of successful/unsuccessful crimes
+    * Number of successful/unsuccessful incidents
+    * Number of successful/unsuccessful distruptions
+    * Time to detect / assess incidents
+    * Time to respond / recover from indicdents
+    * Time to restore normal conditions after an incident
+    * Level of organizational impact of incidents
+    * Number of false positives (false detections/alerts/alarms)
 
 ## 3.10 - Manage the information system lifecycle
 
