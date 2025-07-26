@@ -1,0 +1,29 @@
+1. Name the layers of the OSI Model and their numbers from top to bottom
+
+    Application 7
+    Presentation 6
+    Session 5
+    Transport 4
+    Network 3
+    Data Link 2
+    Physical 1
+
+2. Name three problems with cabling and the methods to counteract those issues.
+
+3. What are the various technologies employed by wireless devices to maximize their use of the available radio frequencies?
+
+4. Discuss methods used to secure 802.11 wireless networking
+  * Use WPA2/3 for encryption and auth
+  * change the default SSID and password
+  * 
+
+5. Name eight Application-Layer protocols and their ports (indicate whether the ports are TCP or UDP)
+
+  * Telnet TCP Port 23
+  * SSH TCP Port 22
+  * FTP TCP Port 20/21
+  * TFTP UDP Port 69
+  * SFTP TCP Port 25
+  * IMAPS TCP port 993
+  * DHCP UDP Port 67 (server) Port 68 (client)
+  * DNS TCP Port 53
