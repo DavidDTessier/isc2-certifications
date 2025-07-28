@@ -135,7 +135,7 @@
     * NICs, Hubs, repeaters, concentrators, and amplifiers are hardware that operate here
     * cables are considered part of the physical layer as well
 
-## Transmission Control Protocol/Internet Protocol (TCP/IP) Model
+### Transmission Control Protocol/Internet Protocol (TCP/IP) Model
 
 * [TCP Model](https://www.geeksforgeeks.org/computer-networks/tcp-ip-model/)
   * Designed in the 1960s by the Department of Defense (DoD)
@@ -643,8 +643,19 @@ The following diagram illustrates how DNS operations
       * DHCPv6 and NAT66 exist
       * also leverage SLAAC
     * **Quality of Service (QoS)**
+      * oversight and management of the efficiency and performance of network communication
+      * QoS controls protect the availability of data networks under load
       * include packet classification, queueing, traffic shaping, packet marking, and policing of IPv6 packets.
-      * similar to IPv4 Type of Service (ToS)
+      * similar to IPv4 Type of Service (ToS) 
+      * Factors that affect QoS
+        * Bandwith - capacity
+        * Jitter - variation in latency
+        * Latency - time it takes for a packet to travel to its destination
+        * Packet Loss - packets that are lost between source/dest and require retransmission
+        * Interference - electrical noise, faulty equipement, etc that may corrupt packets
+        * Throughput - actual amount of data transmitted successfully
+        * Signal-to-Noise Ratio (SNR) - measurement of QoS, compares signal strength to other factors. Higher SNR the better the QoS
+      * can prioritize certain traffic types that have a low tolerance for interference, high business requirements, time-sensitive (VoIP)
   * Security Concerns
     * larger address spaces provides more address available for attackers to use as source addresses making it difficult to block or filter nefarious addresses
     * requires security filter and monitoring products to be upgraded to fully support IPv6 prior to enabling the protocol on production networks (other it may be a cover channel)
@@ -677,6 +688,74 @@ The following diagram illustrates how DNS operations
         * Second element used to craft an IPv6 address is the _interface identifier_, derived from the MAC address of the NIC.
         * To enhance privacy, some implementations may use techniques like _"privacy extensions"_ to generate random interface identifiers
         * Combination of network prefix and interface identifier results in a self-assigned unique IPv6 address for each device
+* [**Network Address Translation (NAT)**](https://en.wikipedia.org/wiki/Network_address_translation)
+  * also referenced as _Source Network Address Translation (SNAT)_, or _Stateful NAT (SNAT)_
+  * hides IPv4 configuration of internal clients and substitutes the IPv4 configuration of the proxy server's own public external NIC in outbound requests
+  * by default its a dynamic outbound mapping mechanism 
+  * essential function using [RFC 1918 - Address allocation for Private Internets](https://datatracker.ietf.org/doc/html/rfc1918) private IPv4 addresses internally while communicating with Internet resources
+  * developed to allow private networks to use any IPv4 address set without causing collisions or conflicts with public internet hosts with the same IPv4 addresses
+  * translates private IPv4 addresses to leased public addresses outside the network
+  * Basic NAT --> one-to-one translation of IP addresses
+  * Benefits
+    * connect entire network to the the internet using a single (or a few) leased public IPv4 addresses
+    * use RFC 1918 defined IPs in private network and still communicate with the public internet
+    * hides IPv4 addressing scheme and network topology from the internet
+    * restricts connections so that only traffic stemming from coonections originating from the internal protected network are allowed back into the network form the internet (most intrusion attacks are automatically repelled)
+    * basic one-way firewall by allowing incoming traffic that is in response to an internal system's request
+  * termed as 'NATed'
+  * Can be hardware or software
+  * must lease as many public IPv4 addresses as you want to have simulaneous communciations
+  * [**_Destination NAT (DNAT)_**](https://en.wikipedia.org/wiki/Network_address_translation#DNAT)
+    * reverse proxy, port fowarding
+    * a networking technique used to redirect incoming network traffic to a different destination than initially intended
+    * a type of Network Address Translation (NAT) that specifically modifies the destination IP address and potentially the port number of incoming packets.
+    * allows external devices to connect to internal services or devices that are not directly exposed on the public network
+    * Should be avoided as it grants the easy ability for an external entity to initiate a connection with an internal system which is not a secure solution
+  * [**_Port Address Translation (PAT)_**](https://en.wikipedia.org/wiki/Network_address_translation#One-to-many_NAT)
+    * aka _Overloaded NAT_, _Network and Port Address Translation (NPAT)_, and _Network Address Port Translation (NAPT)_
+    * Refered to as _One-to-Many NAT_
+    * allows a single public IPv4 address to host up to 65,536 simultaneious communications from internal cleints
+      * theorectical max , in practice it should be LIMITED to 4,000 or fewer in most cases due to hardware limitations
+      * uses Transport Layer (Layer 4) port numbers to host mulitple simultaneous comms across each public IPv4 address by mapping internel sockets (combo of ip and port number) to external sockets
+      * effectively multiplexing numerous sessions from internal systems over a single external IPv4 address
+    * lease fewer public IPs than NAT
+    * most OS's, devices, and services use this and also refers it to NAT
+  * [**_Static NAT_**](https://study-ccna.com/static-nat/)
+    * one-to-one translation
+    * one private IP address to a single public IP address
+    * Each private IP address is mapped to a single public IP address
+    * Static NAT is not often used because it requires one public IP address for each private IP address.
+    * useful for Screened Subnet/extranets
+  * [**_Stateful NAT_**](https://community.cisco.com/t5/networking-knowledge-base/stateful-network-address-translation/ta-p/3846957)
+    * maintain list of mappings between requests made by internal clients (internal ip) and the IP of the internet service contacted
+    * when a request is received it changes the source address in the packet from the client's IP to the NAT server's, this change is recorded in the NAT mapping DB along with the destination
+    * once a reply is returned/received it does the reverse lookup to send it accordingly to the inteneded receiver
+    * can be refered to Static NAT also
+  * [**_Dynamic NAT_**](https://study-ccna.com/Dynamic-nat/)
+    * does the mapping of a local address to a global address happens dynamically
+    * the router dynamically picks an address from the global address pool that is not currently assigned.
+    * The dynamic entry stays in the NAT translations table as long as the traffic is exchanged. 
+    * The entry times out after a period of inactivity and the global IP address can be used for new translations.
+    * two sets of addresses must be configure on your router:
+      * the inside addresses (private) that will be translated
+      * a pool of global addresses (public)
+    ![Dynamci NAT](./images/Dynamic_NAT-en.svg.png)
+  * [**_NAT Traversal (NAT-T)_**](https://en.wikipedia.org/wiki/NAT_traversal)
+    * [RFC 3947](https://datatracker.ietf.org/doc/html/rfc3947)
+    * traditional NAT does not support IPSec VPNs
+      * packets are deemed corrupted do to the changes done by NATing
+    * designed to support IPSec and other tunnel protocols
+    ![NAT-T](./images/natTraversal.png)
+  * [**_Netwrok Address Translatio for IPv6 (NAT66)_**](https://www.ietf.org/archive/id/draft-mrw-nat66-00.html)
+    * technique used to map multiple private IPv6 address to a smaller pool of public IPv6 addresses
+    * similar goal to standard NAT (IPv4)
+    * optional
+    * IPv6 was originally designed with the goal of provdiing globaly uinque addresses to all devics, promoting e2e connectivity without the need for address translation
+    * NAT66 can be used for specific networing requirements
+
+The following diagram illustrates the differences between SNAT and DNAT
+
+![SNAT-DNAT](./images/SNAT%20vs%20DNAT.gif)
 
 #### IP Classes
 
@@ -722,6 +801,26 @@ The following diagram illustrates how DNS operations
   * IP address range `240.0.0.0 - 255.255.255.255`
 
 NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to instead **CIDR** and **VLSM** are used
+
+#### Private IP Addresses
+
+* define in RFC 1918, a block set assided for private, unrestricted use
+* all routers and traffic-directing devices are configured by default not to forward traffic to or from these (not routed by default)
+* cannot communicate over the internet
+* be used within private networks
+* as follows:
+  * Class A: `10.0.0.0 - 10.255.255.255`
+  * Class B: `172.16.0.0 - 172.31.255.255`
+  * Class C: `192.168.0.0 - 192.168.255.255`
+* **_Automatic Private IP Addressing (APIPA)_**
+  * aka IPv4 link-local address assignment (define in RFC 3927)
+  * assigns an IP address to a system in the event of a DHCP assignement failure
+    * IP range `169.254.1.0 - 169.254.255.255`
+    * Class B subnet mask `255.255.0.0`
+  * primarily a feature of Windows (no other OS adopted this)
+  * allow for communicating with other APIPA-configured devices with the same broadcast domain but not with any system across a router or with a correctly assigned IP
+  * if this occurs there is generally a problem somewhere (bad cable or power failure on the DHCP or even a malicious attack)
+
 
 #### Variable Length Subnet Masking (VLSM)
 
@@ -851,9 +950,52 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
     * access control
     * message origin authentication
   * standard of IP security extensions as an add-on for IPv4 and integrated into IPv6
-  * primary use is for VPNs which IPSec can operate in either of the following modes:
+  * primary use is for establishing VPN links between host which IPSec can operate in either of the following modes:
     * **Transport Mode**
     * **Tunnel Mode**
+  * works only on IP networks
+  * provides secure authentication and encrypted data exchange
+  * can be paired with L2TP as L2TP/IPSec
+  * Collection of protocols:
+    * [**_Authentication Header (AH)_**](https://en.wikipedia.org/wiki/IPsec#Authentication_Header)
+      * provides assurances of message integrity/nonrepudiation
+      * provides primary auth for IPSec
+      * implements session access control
+      * prevents replay attacks
+    * [**_Encapsulating Security Payload (ESP)_**](https://en.wikipedia.org/wiki/IPsec#Encapsulating_Security_Payload)
+      * provides confidentiality and data integrity of payload contents
+      * provides encryption
+      * limited authentication
+        * allows for establishing links without AH and perform mid-session reauthentication to detect/respond to session hijacking
+      * prevent replay attacks
+      * typically uses AES encryption
+      * can be either transport or tunnel mode
+    * **_Hash-based Message Authentication Code (HMAC)_**
+      * primary hashing or integrity mechanism
+    * **_IP Payload Compression (IPComp)_**
+      * tool used by IPSec to compress data prior to ESP ecrypting it in order to attempt to keep up with wire-speed transmission
+    * **_Internet Key Exchange (IKE)_**
+      * mechanism to manage encryption keys
+      * composed of three elements
+        * **_OAKLEY_**
+          * key generation and exchange protocol
+          * similar to Diffie-Hellman
+        * **_Secure Key Exachange Mechanism (SKEME)_**
+          * means to exchange keys securerly (digital envelop)
+          * modern implementations may use [Elliptic Curve Diffie-Hellman Ephemeral (ECDHE)](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman) for key exchange
+        * **_Internet Secure Association and Key Management Protocol (ISAKMP)_**
+          * used to organize and manage the encryption keys that have been generated and exchanged
+          * _security association_ is the agreed-on method of auth and encryption used by two entities (digital keyring)
+          * used to negotiate and provide authenticated keyring material (common method of authentciation) for security associations in a secured manner
+          * VPN uses two associations
+            * one for encrypted transmissions
+            * one for encrypted reception
+          * each IPSec VPN is composed two independantly encrypted simplex communication channels
+            * supports multiple simultaneous VPNs from each host
+
+The following Diagram illustrators the IPSec Encapsulation process
+![IPSec](./images/ipsec.png)
+
 * [**Kerberos**](https://en.wikipedia.org/wiki/Kerberos_(protocol))
   * offers a single sign-on (SSO) solution for users and provides protections for logon credentials
   * Modern implementations use hybrid encryption to provide reliable authenticaiton process
@@ -882,7 +1024,7 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
       * SIP is a protocol associated with Voice over IP (VoIP)
       * is a _Singaling Protocol_ used for encapsulating the signaling between communication endpoints and switching systems to establish or terminate a connection and to identify the state of connection.
 
-## Implications of Multilayer Protocols
+### Implications of Multilayer Protocols
 
 * Multilayer protocols:
   * involve structuring network communications into separate logical layers, each with a specific function, facilitating both flexibility in network operations and enhanced security. This layered approach, exemplified by the OSI model and TCP/IP suite, allows for better abstraction, ease of troubleshooting, and the ability to apply security controls (encryption) at different levels of the network.
@@ -916,7 +1058,7 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
   * open and public standard
   * like TCP/IP it has Link, Transport, and Transportation Layers
 
-## Converged protocols (e.g., Internet Small Computer Systems Interface (iSCSI), Voice over Internet Protocol (VoIP), InfiniBand over Ethernet, Compute Express Link)
+### Converged protocols (e.g., Internet Small Computer Systems Interface (iSCSI), Voice over Internet Protocol (VoIP), InfiniBand over Ethernet, Compute Express Link)
 
 * _Converged protocols_ involve merging specialized or proprietary protocols with standard protocols, like those in the TCP/IP suite, to simplify network management and reduce costs
 * Common "converged protocols"
@@ -940,6 +1082,38 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
     * an advanced high-speed interconnect technology developed to address the increasing demands of data-intensive workloads
     * designed to enhance the performance, efficiency, and scalability of data-centric applications in various domains such as AI/ML, HPC, and others
     * supports the communication and collaboration of various components, such as CPUs/GPUs, accelerators, memory, and other devices, over a single high-speed internconnect
+  * [**Private Branch Exchange**](https://en.wikipedia.org/wiki/Business_telephone_system#Private_branch_exchange)
+    * telephone switching or exchange system deployed in private organizations in order to enable multistation use of small number of exernal PSTN lines
+    * example PBX may allow 150 phones in the office with shared access to 20 lease PSTN lines
+    * allows for interoffice calls within using external lines, assigned extension numbers to each handset
+    * supported voice mail per extension as well as remote calling (aka hoteling)
+      * ability to be outside the office, call into the PBX system, enter a code to access a dial tone and then dial another phone number
+      * original purpose was cost savings by external personnel call the office on a toll-free number, and then make any long-distance calls on the office's long-distance plan
+    * can be exploited by malicious actors to avoid toll charges and hide their identity (**_PBX Fraud/Abuse_**, **_Phreaking_**)
+    * legacy hardware base PBX while modern ones are software-based and can be exploited like other applications (DDoS, AiTM, hijacking, buffer overflow, etc)
+    * **_Phreakers_** may be able to
+      * gain unauthorized access to peronal voice mailboxes
+      * redirect messages
+      * block access
+      * redirect inbound and outbound calls
+    * PBX Abuse Countermeasures/Contols
+      * Consider replacing remote access or long-distnace calling through PBX with a credit card or calling card system
+      * Restric dial-in and dial-out features to authorized individuals who require such functionality for their work tasks
+      * (dial-in modems) -- use unpublished phone numbers that are outside the prefix block range of your voice numbers
+      * Protect admin interfaces for the PBX
+      * Block/disable any unassigned access or accounts
+      * Define an acceptable use policy and train users on how to properly use the system
+      * Log and audit all activities on the PBX and review the audit trails for security and use violations
+      * Disable maintenance modems ( i.e, remote access modems use by the vendor to remotely, manage/update/tune) and/or any form of remote admin access
+      * Change all default configurations (passwords, etc) and capabilities related to admin or privilege features
+      * Block remote dialing
+      * Keep the system current with vendor/service provide updates
+      * Deploy direct inward system access (DISA) technologies to reduce PBX fraud by external parties
+      * [**_Direct inward system access (DISA)_**](https://www.pulsar360.com/resources/glossary/direct-inward-system-access/)
+        * system feature which allows a user to access the phone system from external sources
+        * allows users (for example, on a mobile device) to connect (using a feature code and special pin) into the phone system in order to check voicemail, place calls, dial extensions, and more.
+        * addes authentication mechanisms to PBX
+        * must be properly configured/installed with monitoring and auditing
   * [**Voice over Internet Protocol (VoIP)**](https://en.wikipedia.org/wiki/Voice_over_IP)
     * tunnelling mechanism that encapsulates audio, video, and other data into IP packets in order to support voice calls and multimedia collaboration
     * has become a popular and inexpensive telephony solution for organizations and individuals worldwide
@@ -949,6 +1123,7 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
     * available as open source and commercial products
     * some VoIP solutions require specialized hardware to either replace traditional telephone handsets/base stations or allow these to connect to and function over the VoIP system
     * some VoIP solutions are software only (i.e. Skype, GChat, Teams, etc) and allow the user's existing speakers, microphone, or headset to replace the traditional telephone handset
+    * VoIP encryption is widely available but rarely end-to-end
     * [magicJack](https://www.magicjack.com/account/mjLandingpages.do?page=index)
       * VoIP solution that allows the use of existing PSTN phone devices plugged into a USB adapter to take advantage of VoIP over the internet
     * Commercial VoIP equipment typically look and feel like old PSTN equipment but simply replaces the prior _plain older telephone service (POTS)_ line with VoIP connectivity
@@ -959,25 +1134,29 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
       * Possible Attacks:
         * **Vishing (VoIP phishing)** or **Spam over Internet Telephony (SPIT)**
           * attack falsifies Caller ID using any number of VoIP tools
-        * The call manager systems and VoIP phones may also be vulnerable to host OS attacks and DoS attacks
+          * The call manager systems and VoIP phones may also be vulnerable to host OS attacks and DoS attacks
           * the risk of exploit is increased even higher if a device's or software's host OS or firmware has vulnerabilities
         * **Adversary-in-the-Middle (AiTM) attacks**
           * threat actors spoofing call managers or endpoint connection negotiations and/or responses
-        * 802.1x Authentication falsification and VLAN/VoIP hopping (jumping across authentication channels)
-          * risks associated with deploying VoIP systems of the same switches as desktop and server systems
-        * Eavesdropping on network traffic if its not encrypted
+          * 802.1x Authentication falsification and VLAN/VoIP hopping (jumping across authentication channels)
+            * risks associated with deploying VoIP systems of the same switches as desktop and server systems
+          * Eavesdropping on network traffic if its not encrypted
+        * **Phreaking**
+          * malicious actors known as _"phreakers"_ abuse phone systems 
+          * type of attack directed toward telephone systems and voice services
+          * uses various types of tech to circumvent the system to make free long distance calls, alter the function of telephone service, steal specialized services, and enven cause disruptions
+          * orginally focus on PSTN phones systems they have evolved and target mobile, PBX, and VoIP solutions
       * **Security Controls**:
         * [**_Secure Real-Time Transport Protocol (SRTP)_**](https://en.wikipedia.org/wiki/Secure_Real-time_Transport_Protocol)
-         * aka _Secure RTP_
-         * security improvement over the [Real-Time Transport Protocol (RTP)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol) which is used in many VoIP communicaitons
-         * aims to minimize the risk of DoS, AiTM attacks, as well as other VoIP exploits through robust encryption and reliable authentication
-         * RTP or SRTP takes over after the _Session Intiation Protocol (SIP)_ establishes the communication link between endpoints
-
+          * aka _Secure RTP_
+          * security improvement over the [Real-Time Transport Protocol (RTP)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol) which is used in many VoIP communicatons
+          * aims to minimize the risk of DoS, AiTM attacks, as well as other VoIP exploits through robust encryption and reliable authentication
+          * RTP or SRTP takes over after the _Session Initiation Protocol (SIP)_ establishes the communication link between endpoints
     ![VoIP Setup](./images/voip-setup.png)
 * Other concepts that may be considered _converged technologies_ include:
-    * VPN, SDN, Cloud, Virtualization, SOA, microservices, and serverless architecture
+  * VPN, SDN, Cloud, Virtualization, SOA, microservices, and serverless architecture
 
-## Software-Defined Networking (SDN)
+### Software-Defined Networking (SDN)
 
 * [SDN](https://en.wikipedia.org/wiki/Software-defined_networking) is an approach to network management that uses abstraction to enable dynamic and programmatically efficient network configuration to create grouping and segmentation while improving network performance and monitoring in a manner more akin to cloud computing than to traditional network management.
 * aims to seperate the [infrastructure layer (aka data plane and the forwarding plane)](https://en.wikipedia.org/wiki/Data_plane) -- hardware-based settings -- from the [control plane layer](https://en.wikipedia.org/wiki/Control_plane) -- network services of data transmission management (routing processes)
@@ -1011,7 +1190,7 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
 
 ![SDN](./images/SDN.jpg)
 
-## Network Segmentation
+### Network Segmentation
 
 * Segmenting networks is used to subdivide a large organizational network into smaller groupings, segments, or subnetworks (.i.e., subnets) to provide improvements suchs as:
   * **Boosting Network Performance**
@@ -1050,18 +1229,135 @@ The following diagram outlines the in-band vs out-of-band separation:
 * method of dividing a computer network into smaller, isolated segments using software-based controls and configurations, rather than physical hardware separation.
 * using switch-based Virtual Local Area Networks (VLANs), Virtual Private Networks (VPNs), routers, firewalls, virtual routing and forwarding (VRF), and virtual domains
 * Methods
-  * [**VLANs**](https://en.wikipedia.org/wiki/VLAN)
-    * method of logically dividing a physical LAN into multiple isolated broadcast domains
+  * [**Virtual Local Area Network (VLAN)**](https://en.wikipedia.org/wiki/VLAN)
+    * method of logically dividing a physical LAN into multiple isolated broadcast domains (hardware-imposed)
+    * provides traffic management capabilities
+    * used to distinguish between user and management traffic
+    * VLAN 1 is typically used for management traffic
+    * by default all ports on part of VLAN 1
+    * admins can change the VLAN assignement on a port-by-port basis
+    * various ports can be grouped together and kept distinct from other VLAN port designations
+    * VLANs can also be created / assigned based on the device's MAC address, IP Subnetting, specified protocols, or authentication
     * done at the switch level (OSI Layer 2 Data Link Layer)
+    * assigned on a per-port basis
     * devices on the same VLAN can communicate with each other as if they were on the same physical network
+    * cross VLAN communication requires routing
+      * external router or switch's internal software (L3 Switch/Multilayer Switch)
     * improves network performance, security, and flexibility by grouping devices logically instead relying solely on phyiscal network topology
     * commonly done for seperating business domains or units to segregate traffic
+    * treated like subnets (but arent)
+    * VLANs control and restrict broadcast traffic
+      * routing function between VLANs that block Ethernet broadcasts between subnets and VLANs because a router doesnt forward Layer 2 Ethernet broadcasts
+      * helps protect against _broadcast storms_ (flood of unwanted Ethernet broacast network traffic)
+      * **_Port isolation/Private Ports_**
+        * private VLANs configured to use a dedicated or reserved uplink port
+        * only members of the link can interact with each other and over a predetermined exit port or uplink port
+        * common implementation is Hotels 
+          * each room or suite is isolated on unique VLANs
+          * connections within the suite communicated but connections between units cant
+        * have path our to the Internet (uplink port)
     ![VLAN](./images/VLAN_Concept.svg.png)
-  * [**VPNs**](https://en.wikipedia.org/wiki/Virtual_private_network)
+  * [**Virtual Private Network (VPN)**](https://en.wikipedia.org/wiki/Virtual_private_network)
     * used to create secure and encrypted communication channels over a public or shared network (i.e, internet)
-    * allow remote users or branch offices to securely connect to the main corp network, essentially creating a _virual private network_
-    * used for securing comms over unstrusted networks
-    * ensures privacy and data integrity
+    * example of a virtualized network
+    * allow remote users or branch offices to securely connect to the main corp network, essentially creating a _virtual private network_
+    * used for securing comms over untrusted networks
+    * ensures privacy and data integrity, does not guarantee or proivde availability
+    * **_VPN concentrator_**
+      * dedicated hardware device designed to supports numerous simultaneous VPN connections (hundreds or thousands)
+      * provides HA, scalability, and performance of secure VPN connections
+      * aka _VPN Server_, _VPN Gateway_, _VPN Firewall_, _VPN remote access server (RAS)_, _VPN device_, _VPN Proxy_, or a _VPN appliance_
+      * use is transparent to the networked systems
+      * hosts do not need to support VPN capabilities locally if a VPN appliance is present
+    * leverages the concept known as **_tunneling_**
+      * process that protects the contents of a protocol's packet by encapsulating them in packets of another protocol
+      * prevents traffic control devices from blocking or dropping communications because devices know what the packet contains
+      * often used to enable communication between otherwise disconnected systems
+      * can be used if a primary protocol is not routable and to keep the total number of supported protocols to a minimum
+      * difficult to monitor the content of traffic (when useing IDS/IDS, filtering, etc)
+    * bypasses security features (firewalls, gateways, etc)
+    * encapsulates restricted contents inside packets that are authorized for transmission
+    * VPN data is not viewable, accessible, scanable or filterable (due to tunneling / encryption)
+    * security solutions should be place outside of the VPN tunnel to act on the data after it is decrypted and return to normal LAN ops
+    * operates in either of two modes:
+      * **_Transport Mode_**
+        * links (VPNs) are anchored or end at the individual hosts connected together
+        * IPSec provides encryption for just the payload and leaves the original message header intact 
+        * aka _host-to-host_ or _e2e encrypted_
+        * comms remain encrypted while in transit between hosts
+        * does not encrypt header
+        * best used only within a trusted network between individual systems
+      * **_Tunnel Mode_**
+        * links terminated at the VPN devices on the boundaries of the connected networks
+        * IPSec encrypts both the header and payload by encapsulating the entire LAN protocol package and adding its own temp IPSec Header
+        * used for connecting two networks across the internet (site-to-site)
+        * used for connecting distant clients to connect to an office LAN (remote access VPN)
+        * two modes:
+          * **_Site-to-Site_**
+          * **_Remote Access_**
+            * variant of site-to-site
+            * aka _link encryption_ is only provided when the communication is in the VPN link
+    * **Always-On VPN**
+      * VPN that attempts to auto-connect every time a network link beccomes active
+      * mostly associated with mobile devices
+      * can be configured to engage only when an Internet Link is established rather than a LAN or WIFI link is established intead of a wired link
+      * best used for public wifi/internet also
+    * VPN Configurations:
+      * **_Split Tunnel_**
+        * allows a VPN-connected client (remote node) to access both the organization network over the VPN and the internet directly at the same time
+        * considered a security risk for the org as open pathways exists form the internet to the LAN
+        * since the client is connected to the LAN (considered trusted) no filtering is done
+        * susceptible to transmission of malicious files, etc
+      * **_Full Tunnel_**
+        * all client's traffic is sent to the organization network over the VPN
+        * internet-destinet traffic is routed of the org network's proxy fw
+        * ensures all traffic is filtered and managed by the org network security infra
+    * Common VPN Protocols
+      * [**Point-to-Point Tunneling Protocol (PPTP)**](https://en.wikipedia.org/wiki/Point-to-Point_Tunneling_Protocol)
+        * obsolete encryption protocol developed from the dial-up Point-to-Point Protocol (PPP), but still in use/supported by many OSs and VPN services
+        * data link (layer 2)
+        * used on IP networks
+        * uses TCP port 1723
+        * offers protection for authenticated traffic through the same authentication protocols supported by PPP:
+          * **_Password Authentication Protocol (PAP)_**
+          * **_Challenge Handshake Authentication Protocol (CHAP)_**
+          * **_Extensible Authentication Protocol (EAP)_**
+          * **_Microsoft Challenge Handshake Authentication Protocol (MS-CHAPv2)_**
+            * adopted by most mordern PPTP
+            * supports encryption using [Microsoft Point-to-Point Encryption (MPPE)](https://en.wikipedia.org/wiki/Microsoft_Point-to-Point_Encryption) and supports various secure authenticaiton options
+        * initial tunnel negotiation processs is not encrypted
+        * session establishment packets (including sender/receiver IPs, and username/hashed passwords) could be intercepted by a 3rd party
+      * [**Layer 2 Tunneling Protocol (L2TP)**](https://en.wikipedia.org/wiki/Layer_2_Tunneling_Protocol)
+        * developed by combining features of PPTP and [Cisco's Layer 2 Forwarding (L2F)](https://en.wikipedia.org/wiki/Layer_2_Forwarding_Protocol) VPN Protocol
+        * has since become an Internet standard ([RFC 2661](https://datatracker.ietf.org/doc/html/rfc2661))
+        * operates at Data Link Layer (Layer 2) and can support any Layer 3 (Network) networking protocols
+        * Uses UDP port 1701
+        * can rely on PPTP's supported auth protocols, specifically IEEE 802.1X
+        * IEEE 802.1X enables L2TP to leverage or borrow auth services from any available AAA server on the network (RADIUS or TACACS+)
+        * does not offer native encryption but its supports the use of payload encryption protocols
+        * most often deployed using IPSec's ESP for payload encryption
+      * [**Generic Routing Encapsulation (GRE)**](https://en.wikipedia.org/wiki/Generic_routing_encapsulation)
+        * proprietary Cisco tunneling protocol that can be used to establish VPNs
+        * provides encapsulation but not encryption
+      * [**Secure Shell (SSH)**](https://en.wikipedia.org/wiki/Secure_Shell)
+        * secure replacement for Telnet (TCP port 23) (plaintext remote system access)
+        * and many remote "r" commands
+        * all SSH transmissions (both auth and data exchange) are encrypted
+        * TCP port 22
+        * frequently used with terminal programs (PuTTY, or Minicom)
+        * very flexible tool
+        * used to encrypt protocols such as (SFTP, SEXEC, SLOGIN, and SCP) similar to how TLS operates;
+        * OpenSSH is a means to implement SSH VPNs
+      * **OpenVPN**
+        * based on TLS
+        * provides and easy-to-configure but robustly secure VPN option
+        * open source implmentation
+        * can use either pre-shared passwords or certificates for authentication
+        * supported by many WAPs
+      * 
+  * serves as a protocol encrypter (SFTP), and functions as a `transport` mode VPN (host-to-host and link encryption only)
+        
+![VPN](./images/VPN.gif)
   * [**VRFs**](https://en.wikipedia.org/wiki/Virtual_routing_and_forwarding)
     * a technology used for network segmentation at Layer 3, enabling multiple virtual routing instances (routing table) within a single physical router.
     * each instance operates as a single and independent routing domain
@@ -1121,7 +1417,7 @@ The following diagram outlines the differences between micro-segmentation vs. ne
 
 ![Micro V Network Segmentation](./images/mico-v-net-seg.jpg)
 
-## Edge Networks
+### Edge Networks
 
 * networks that are carefully designed data architectures that allocated computing resources to edge devices within a network
 * helps distribute processing power demands away from central servers, and empowering the devices to handle portions of the processing workload
@@ -1136,7 +1432,7 @@ The following diagram outlines the differences between micro-segmentation vs. ne
 * **Peering**
   * refers to the process of establishing direct interconnections between edge networks allow data exchange in a secure manner with optimized data flow without intermediaries
 
-## Wireless Networks
+### Wireless Networks
 
 * aka unbounded network, [Wi-Fi](https://en.wikipedia.org/wiki/Wireless_network)
 * a type of computer network that allows devices to connect and communicate without the need for physical cables
@@ -1211,7 +1507,7 @@ The following diagram outlines the differences between micro-segmentation vs. ne
     * centralized management, security, routing, filtering, and more at the console
     * numerous thin access points simple handle the radio signals
 
-### Securing the SSID
+#### Securing the SSID
 
 * **Service set identifier (SSID)**
   * is a sequence of characters that uniquely names a Wi-Fi network that users see as a network name (assigned to wireless networks)
@@ -1235,7 +1531,7 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
 * Knownledge of the WAP doest not necessarily grant you access as WAPs can have numerous security features to block unwanted / unauthorized access.
 * WPA2 or WPA3 is recommended to use for its use of authentication and encryption
 
-### Wireless Channels
+#### Wireless Channels
 
 * subdivisions of frequencies within an assigned frequency
 * example:
@@ -1269,7 +1565,7 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
 * Wi-Fi band/frequency selection should be based on the purpose or use of the wireless network and level of existing interference
 * Most mesh Wi-Fi (multiple WAPs) options are based on 5 Ghz and use three or more mini-WAP devices to provide ML-optimized coverage throughout a home or office
 
-### Site Survey
+#### Site Survey
 
 * **_Wireless cells_**
   * areas within the physical environment where a wireless device can connect to a WAP
@@ -1285,7 +1581,7 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
   * often use to produce a heat map, which is a mapping of signal strength measurements over a building's blueprint
   * heat maps help to locate hot spots (oversaturation of signal) and cold spots (lack of signal) to guide WAP adjustments
 
-### Wireless Security
+#### Wireless Security
 
 * Wi-Fi is not always encrypted, typically only between client device and the base
 * For e2e communications, a VPN or an encrypted communications application should be used to pre-encrypt communications before transmitting them over Wi-Fi
@@ -1369,7 +1665,19 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
           * developed by Cisco and released as an open standard beginning in 1993
           * Although derived from TACACS, TACACS+ is a separate protocol that handles [authentication, authorization, and accounting (AAA)](https://en.wikipedia.org/wiki/AAA_protocol) services. TACACS+ has largely replaced its predecessors.
   * [**Extensible Authentication Protocol (EAP)**](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol)
-    * authentication framework that allows for new authenticatino technologies to be compatible with existing wireless or p2p connection technologies
+    * authentication framework that allows for new authentication technologies to be compatible with existing wireless or p2p connection technologies
+    * allows customized authentication security solutions (supporting smartcards, tokens, biometrics)
+    * originally designed for use over physically isolated channels and thus assumed secured pathways
+    * some EAP methods use encryption while others dont
+    * over 40 methods defined including:
+      * LEAP,
+      * PEAP, 
+      * [EAP-SIM](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Subscriber_Identity_Module_(EAP-SIM))
+      * [EAP-FAST](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Flexible_Authentication_via_Secure_Tunneling_(EAP-FAST))
+      * [EAP-MD5](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP-MD5)
+      * [EAP-POTP](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Protected_One-Time_Password_(EAP-POTP))
+      * [EAP-TLS](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Transport_Layer_Security_(EAP-TLS))
+      * [EAP-TTLS](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Tunneled_Transport_Layer_Security_(EAP-TTLS))
 * [**Lightweight Extensible Authentication Protocol (LEAP)**](https://en.wikipedia.org/wiki/Lightweight_Extensible_Authentication_Protocol)
   * Cisco proprietary alternative to TKIP for WPA
   * developed to address the deficienceies in TKIP before WPA2 was ratified as a standard
@@ -1557,7 +1865,7 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
 * some implementations support reliable auth and encryption other dont
 * best practices leave NFC features disabled until needed
 
-### Wireless Attaks
+### Wireless Attacks
 
 * [**War Driving**](https://en.wikipedia.org/wiki/Wardriving)
   * someone using a detection tool that scans for wireless networking signals (typically unauthorized ones)
@@ -1605,10 +1913,13 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
   * retransmission of captured communciations in the hope of gaining access to the the target system
   * attempt to reestablish a communication session by replaying captured traffic against a system
 
-## Satellite Communications
+### Satellite Communications
 
 * type of communication that is based on transmitting radio waves between terrestrial locations and an orbiting artificial satellite
 * [Satellites](https://en.wikipedia.org/wiki/Satellite) are used to support telehone, televsion, radio, internet, and military communications
+* [**_Very-Small-Aperture Terminal (VAST)_**](https://en.wikipedia.org/wiki/Very-small-aperture_terminal)
+  * enables small, remote terminals to communicate with geostationary satellites
+  * proves to be usefull in locations where traditional wired or terrestrial connections pose challenges
 * Can be positioned at three primary orbits
   * [**Low Earth Orbit(LEO)**](https://en.wikipedia.org/wiki/Low_Earth_orbit)
     * 160-2,000 km
@@ -1638,7 +1949,7 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
   * [**Lunar Orbit (Orbit of the Moon)**](https://en.wikipedia.org/wiki/High_Earth_orbit)
     * 384,000 km
 
-## Cellular Networks
+### Cellular Networks
 
 * aka [mobile networks / wireless networks](https://en.wikipedia.org/wiki/Cellular_network)
 * primary communications technology use by mobile devices (cellphones, etc)
@@ -1669,7 +1980,7 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
   * cell connectivity to access the internet or office network provides attackers yet another potential avenue of attack/access/compromise
     * devices can act as a bridge, creating a insecure access into a company network
 
-## Content Distribution Networks (CDNs)
+### Content Distribution Networks (CDNs)
 
 * aka [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network)
 * collection of resources deployed in numerous data centers across the internet to provide low latency, high performance, and HA of hosted content
@@ -1692,7 +2003,7 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
   * similar to CDN but an SDP's goal is to provide transparent communication services to other content or service providers
   * SDP and CDN can be implemented using microservices
 
-## Types of Networks
+### Types of Networks
 
 * [**Local Area Network (LAN)**](https://en.wikipedia.org/wiki/Local_area_network)
   * network limited to a geographical area
@@ -1705,7 +2016,7 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
 
 ![LAN v WAN](./images/lan-wan.jpg)
 
-## Transport Architecture 
+### Transport Architecture
 
 * network topologies referes to the physical and logical layout of devices/connections
 * chosen network topologies influence factors such as scalability, flexibility, fault tolerence, and ease of management
@@ -1858,6 +2169,9 @@ The following diagram illustrates the difference between the planes
     * suitable for high throughput rates (multiplexed)
     * form of anaolog
     * cable tv and modems, fiber optics, satellite, DSL, T1 and T3 are exampels
+    * _Broadband-over-power-lines (BPL)_
+      * enables high-speed data transmissions over existing electrical power lines
+      * adopting is limited due to technological challenges, regulatory considerations, and the growth of alternatives (Fiber, DSL ,etc)
   * **Casting Technologies**
     * **_Broadcast_**
       * supprots communication to all possible recipients
@@ -1943,21 +2257,296 @@ The following diagram illustrates the difference between the planes
         * 1,2,3,4 --> priority is one
           * polling changed to 1,2,1,3,1,4
 
-## OTher stuffs
+### Protocol Security Mechanisms
 
-* Internet Protocol (IP) version 4 and 6 (IPv6) (e.g., unicast, broadcast, multicast, anycast)
+* [**Point-to-Point Protocl (PPP)**](https://en.wikipedia.org/wiki/Point-to-Point_Protocol)
+  * operates at the data link layer (2)
+  * encapsulation protocol designed to support the transmission of IP transmission over dial-up or p2p links
+  * allows for multivendor interoperability of WAN devices supporting serial links
+  * rarely found on typical Ethernet networks today, its still a foundation of modern comms authentication
+  * includes communcation services such as:
+    * auto connection configuration
+    * assignment and management of IP addresses
+    * management of synchronous communication
+    * standardized encapsulation
+    * multiplexing
+    * link configuration / quality testing
+    * error detection
+    * feature or option negotiation (such as compression)
+  * internet standard documented in [RFC 1661](https://datatracker.ietf.org/doc/html/rfc1661)
+  * replaced [_Serial Line Internet Protocol (SLIP)_](https://en.wikipedia.org/wiki/Serial_Line_Internet_Protocol)
+  * SLIP offered no authentication, supported only half-duplex comms, no error detection, and required manual link establishment
+  * original PPP options for authentication were PAP, CHAP, and EAP
+* [**Password Authentication Protocol (PAP)**](https://en.wikipedia.org/wiki/Password_Authentication_Protocol)
+  * transmits usernames/passwords in cleartext
+  * offers no encryption
+* [**Challenge Handshake Authentication Protocol (CHAP)**](https://en.wikipedia.org/wiki/Challenge-Handshake_Authentication_Protocol)
+  * performs authentication using a challeng-response dialogue that cant be replayed
+  * challenge is a random number issued by the server, which the client uses along with the password hash to compute the one-way function-derived response
+  * periodically and transparently reauthenticates the remote system throughout an established session to verify the persistent identity of the remote client
+  * [MS-CHAPv2](https://en.wikipedia.org/wiki/MS-CHAP)
+    * Microsoft customization with updated algorithms and adding session encryption
+    * preferred over CHAP
+* [**Extensible Authentication Protocol (EAP)**](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol)
+  * authentication framework that allows for new authentication technologies to be compatible with existing wireless or p2p connection technologies
+  * allows customized authentication security solutions (supporting smartcards, tokens, biometrics)
+  * originally designed for use over physically isolated channels and thus assumed secured pathways
+  * some EAP methods use encryption while others dont
+  * over 40 methods defined including:
+    * [LEAP](https://en.wikipedia.org/wiki/Lightweight_Extensible_Authentication_Protocol)
+      * Lightweight Extensible Authentication Protocol
+      * cisco proprietary alt for TKIP for WPA
+      * should be avoided
+    * [PEAP](https://en.wikipedia.org/wiki/Protected_Extensible_Authentication_Protocol)
+      * Protected Extensible Authentication Protocol
+      * encapsulates EAP in a TLS tunnel
+      * preferred to EAP because it imposes its own security
+      * supports mutual auth 
+    * [EAP-SIM](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Subscriber_Identity_Module_(EAP-SIM))
+      * Subscriber Identity Module
+      * authenticating mobile devices over the Global Sytem for Mobile Comms (GSM) Network
+      * each device/subscriber is issued a subscriber identity module (SIM) card that is associated with the subscriber's account and service level
+    * [EAP-FAST](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Flexible_Authentication_via_Secure_Tunneling_(EAP-FAST))
+      * Flexible Authentciation via Secure Tunneling
+      * Cisco protocol proposed to replace LEAP because of WPA2
+    * [EAP-MD5](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP-MD5)
+      * earliest EAP methods
+      * hashes passwords using MD5
+      * now deprecated
+    * [EAP-POTP](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Protected_One-Time_Password_(EAP-POTP))
+      * EAP Protected One-Time Password
+      * supports the use of OTP tokens in multifactor auth (one-way and mutual auth)
+    * [EAP-TLS](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Transport_Layer_Security_(EAP-TLS))
+      * EAP Transport Layer Security
+      * open IETF standard that implements the TLS protocol for use in protecting auth traffic
+      * most effective when both client/server have a digitial certificate (mutual auth)
+    * [EAP-TTLS](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Tunneled_Transport_Layer_Security_(EAP-TTLS))
+      * EAP Tunneled TLS
+      * extension of EAP-TLS that creates a VPN-like tunnel between endpoints prior to auth
+      * ensures that even the client's username is never transmitted in clear text
+    * [EAP-IKEv2](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#EAP_Internet_Key_Exchange_v._2_(EAP-IKEv2))
+      * based on [Internet Key Exchange protocol v2(IKEv2)](https://en.wikipedia.org/wiki/Internet_Key_Exchange) from IPSec
+      * provides mutual auth, session key management, and supports auth using passwords, symmetric / asymmetric keys
+    * [EAP-NOOB](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol#Nimble_out-of-band_authentication_for_EAP_(EAP-NOOB))
+      * Nimble Out-of-Band Authentication
+      * versatile boostrapping solution for devices that lack preconfigured auth credentials or not yet registered on any server
+      * uses varios OOB channels such as QR Codes, NFC tags, and audio
+      * useful in IoT applications/gadgets, and toys that arrive without any details of ownership, network affiliation, or server registration
 
-* Secure protocols (e.g., Internet Protocol Security (IPSec), Secure Shell (SSH), Secure Sockets Layer (SSL)/ Transport Layer Security (TLS))
+### Port Security
 
+* locking down wiring closets and server vaults
+* discounnecting the workstation run from the patch panel (punch-down block)
+* disable any unused wall jacks
+* use a smart patch panel which can monitor MAC addresses of any devices connected to an empty port as well as a valid device is disconnected or replaced by an internal device
+* management of TCP/UDP ports
+  * port scanners can detect the presence of active services
+  * Firewall, IDS/IPS and other sec tools can detect the scanning activity and either block it or send back false/misleading informatino
 
+### Monitoring and management
 
-* Logical segmentation (e.g., virtual local area networks (VLANs), virtual private networks (VPNs), virtual routing and forwarding, virtual domain)
+* involves various practices and tools (context of network operations) aimed at ensuring the reliability, performance, and security of a network
+* **_Network Observablity_**
+  * key aspect
+  * refers to the ability of gaining insights into the internal state of a network by collecting and analyzing relevant data
+  * monitoring various metrics, logs, traces to understand network flows and components performance
+  * enhance visbility, detect issues, optimize performance, and troubleshoot issues
+* **_Traffic Flow/Shaping_**
+  * key aspect
+  * involves managing the flow of data within a network to optimize performance, allocate resources efficiently, and ensure a consitent user experience
+  * admins can prioritize certain types of data, management bandwidth usage, and control the flow of info to prevent congestion or bottlenecks
+* **_Capacity Management_**
+  * practice of planning, monitoring, and optimizing the network's capacity to ensure it can handle current and future demands
+  * monitoring resource usage and predicting future needs, admins can allocate resources appropriately, to prevent degradation and ensure scalability
+* **_Fault Detection and Handling_**
+  * identifying and addressing issues, errors, or failures 
+  * detect problems as soon as possible, minimize downtime, and implement fault tolerance and resiliency strategies
+  * automated alerts/notifications can aid in prompt response to faults
+  * ties in with Network Observability
 
-* Micro-segmentation (e.g., network overlays/encapsulation; distributed firewalls, routers, intrusion detection system (IDS)/intrusion prevention system (IPS), zero trust)
+### Load Balancing
 
-* Virtual Private Cloud (VPC)
+* purpose is to obtain optimal infrastructure utilization, minimize response time, maximize througput, reduce overloading, and elinate bottlenecks
+* used to spread or distribute network traffic load across sever network links or devices
+* common implementation is in web server farms or cluster
+* leverages Vitural IPs (VIP or VIPA) for entry point and benefits availabilty
+  * if one node in the cluster goes down the LB redirects to another without affecting the end client
+* handles SSL/TLS termination
+* hardware or software based
+* features
+  * caching, TLS offloading, compression, buffering, error checking, filtering, and sometimes firewall / IDS
+* Scheduling Techniques
+  * **_Random Choice_**
+    * each packet/connection is assigned a destination randomly
+  * **_Round Robin_**
+    * each packet or connection is assigned the next destination in order
+    * example: 1,2,3,4,1,2,3,4,5, and so on
+  * **_Load Monitoring_**
+    * packet/connection is assigned a destination based on the current load/capacity of the targets
+    * lowest load recieves the next packet
+  * **_Preference/Weighted_**
+    * packet / connection is assigned a destination based on a subjective preference or known capacity difference
+    * example system 1 can handle twice the capacity of sys 2 and 3; in this case a preference would look like 1,2,1,3,1,2,1,3,1 etc
+  * **_Least Connections/Traffic/Latency_**
+    * assignment is based on the least number of active connections
+  * **_Locality Based (geo)_**
+    * assignment based on relative distance to the client/requestor
+  * **_Locality Based (affinity)_**
+    * based on previous connection from the same client, subsequent requests go to the same destination
+* [**_Global Server Load Balancing (GLBS)_**](https://www.cloudflare.com/en-ca/learning/cdn/glossary/global-server-load-balancing-gslb/)
+  * VIPs play a crucial role
+  * traffic is distribution across mutliple data centers (globally distributed)
+* **Active-Active**
+  * form of load balancing that uses all available pathways or systems are operational
+  * in the event of failure of one or more systems, the remaining active pathways take the load
+  * maximizes resources (optimized availability)
+  * reduced capacity will be tolerated during adverse conditions (reduced availability)
+* **Active-Passive**
+  * form of loading the keeps some pathways / systems in an unused and dormant state during normal operations
+  * if one active element fails, a domant one is brought online to take over for the failed one
+  * used when level of throughput or workload needs to be consistent between normal states and adverse condiditions (maintain availablilty/consistency)
 
-* Monitoring and management (e.g., network observability, traffic flow/shaping, capacity management, fault detection and handling)
+## Manage Email Security
+
+* Simple Mail Transfer Protcol (SMTP) on TCP port 25
+  * used by email server to receive / accept messages from clients, transport those messages to other servers and deposit them into a user's server-based inbox
+  * [_Postfix_](https://en.wikipedia.org/wiki/Postfix_(software)) most common SMTP server for Unix based systems (replaces Sendmail)
+  * [_Exchange_](https://en.wikipedia.org/wiki/Microsoft_Exchange_Server) most common SMTP server for Windows
+* Post Office Protocol Version 3 (POP3) TCP Port 110 or Internet Access Protocol v4 (IMAPv4) on TCP port 143
+  * used by clients to retreive emails from their server-based inboxes
+* Internet-compatible email systems rely on [X.400 standard](https://en.wikipedia.org/wiki/X.400) for address and message handling
+* SMTP
+  * [_Open Relays_](https://en.wikipedia.org/wiki/Open_mail_relay)
+    * open agent or relay agent
+    * SMTP server does not authenticate senders before accepting and relaying mail
+    * succeptible to spamming (flood messagees)
+      * spammers piggyback on insecure email infra
+  * _Closed Relays_
+    * aka authenticated relays
+    * authenticates sender before accepting and relaying messages
+    * spammers must rely on social engineering tactics to get credientials, guessing, sparying
+  ![Closed Email Relay](./images/close-email-relay.png)
+* SaaS based email (Gmail, Outlook,etc)
+  * relies on provider for HA, distributed architecture, etc
+  * potoential risks:
+    * Block listing issues
+    * rate limiting
+    * app/add-on restrictions
+    * additional security add-ons by you
+* **Email Security**
+  * **Goals**
+    * Restrict access to messages to their intended recipient (privacy/confidentiality)
+    * Maintain the integrity of messages
+    * Authenticate/verify source of messages
+    * Provide nonrepudiation
+    * Verify the delivery of messages
+    * Classify sensitive content within or attached to messages
+  * Must be defined and begins in the Security Policy and must be approved by upper management
+  * Security Policy (Email items)
+    * Acceptable Use policies for email
+      * what activites are ok
+      * no personal usage
+      * no sending / receiving illegal, illisit, or offensive content
+      * engaging in any activities that has detrimental effect on productivity, or public relations
+    * Access control and privacy
+      * maintained so that users only have access to their inbox only
+      * no other users (authorized or not) should not be able to gain access to an individuals inbox
+    * Email Management
+      * admin functions should be defined (implement, manager, and administer)
+    * Email backup and retention policies
+      * defines how emails are backed up
+      * for how long (retention)
+      * for what purpose (legal / reg requirements)
+      * should be shared with users
+  * **Email Security Issues**
+    * Common delivery method for trojans, malicious files (destructive macros), viruses
+    * Source Address spoofing
+      * email offers little way of native source verification
+    * Email headers can be modified at their source or during transmission
+    * Possible to deliver email directly to a user's inbox on an email server by directly connecting to the email server's SMTP port
+    * **_Mail-bombing_**
+      * form of DDoS
+      * performed by inundating a system with messages
+    * **_Mail _Storm_**
+      * like _mail bombing_
+      * happens when someone responds with a Reply All to a message that has a significant number of recipients (To: , CC: lines)
+      * all others do the same (Reply All)
+      * further exacerbated if recipients have auto-responders
+    * Unwanted email
+      * spam
+* **Email Security Solutions**
+  * [**_Secure Multipurpose Internet Mail Extensions (S/MIME)_**](https://en.wikipedia.org/wiki/S/MIME)
+    * offers authentication and confidentiality
+    * uses PKI for encryption, digital envelopes, and digital signatures
+    * Auth is provided by x.509 digitial certs issued by trusted third-party CAs
+    * Privacy is provided by using [PKCS (Public Key Cryptography Standard)](https://en.wikipedia.org/wiki/PKCS) encryption
+    * two types of messages
+      * **_Signed Messages_**
+        * provides integrity, sender auth, and nonrepudiation
+      * **_Secured Enveloped Messages_**
+        * provides confidentiality and authentication
+  * [**_Pretty Good Privacy (PGP)_**](https://en.wikipedia.org/wiki/Pretty_Good_Privacy)
+    * p2p public/private key-based email system
+    * uses a variety of encryption algorithms to encrypt files/messages
+    * not a standard but rather an independantly developed product
+    * defacto standard
+  * [**_DomainKeys Identified Mail (DKIM)_**](https://dkim.org)
+    * email auth method desgined to verify authenticity of the sender
+    * allows recipient's email system to verify the domain of the message is authorized by the owner of the domain
+    * combacts email spoofing, phishing, etc
+  * [**_Sender Policy Framework (SPF)_**](https://en.wikipedia.org/wiki/Sender_Policy_Framework)
+    * helps prevent spam and email spoofing
+    * can be implemented on SMTP servers
+    * checks that inbound messages originate from a host authorized to send messages by the owners of the STMP origin doamin
+    * example: a message is received from `mark.nugget@abccorps.com`, the SPF checks with admins of `smtp.abccorps.com` that `mark.nugget` is authorized to send messages through their system before the inbound message is accepted and sent to the recipients inbox
+    ![SPF](./images/4-X-SPF_1.png)
+  * [**_Domain-based Message Authentication Reporting and Conformance_(DMARC)**](https://en.wikipedia.org/wiki/DMARC)
+    * DNS-based email auth system
+    * built the SPF and DKIM protocols
+    * allows domains to specify how their emails should be authenticated, how failed authentication should be handled, and how feedback about email activity should be provided
+    * protects against **_Business Email Compromise (BEC)_**, phishing, and other email scames
+    * Email servers can verify if a received message is valid by following the DNS-based instructions
+    ![DMARC](./images/DMARC.png)
+  * [**_STARTTLS_**](https://en.wikipedia.org/wiki/Opportunistic_TLS)
+    * aka _explicit tls_ or _opportunistic tls_
+    * used since Secure SMTP over TLS(STLS) is not 100% widespread yet
+    * will attempt to setup an encrypted connection with the target email server in the event that it is supported
+    * not a protocol but an SMTP command
+    * once the initial SMTP connection is made with the email server, the STARTTLS command will be used
+    * if the target system supports TLS, then the encryption channel will be negotiated otherwise plaintext is used
+    * secure session over TCP port 587
+    * can also be used with IMAP connections
+    * POP3 connections use the STLS command to perform a similar function
+  * **_Implicit SMTPS_**
+    * TLS-encrypted form of SMTP
+    * assumes the target server supports TLS
+    * if correct then an encrypted session is negotiated, if not then the connection is terminated
+    * plaintext is not supported
+    * initiated against TCP port 465
+* **Reputation filtering**
+  * a grading system of email services, used by email systems, that determine which are/can be used for standard/normal comms and which are used for spam
+  * Services include
+    * Sender Score
+    * Cisco SenderBase Reputation Service
+    * Broadcom's Symantec Email Security.cloud
+    * Spamhaus ZEN
+    * Barracuda Reputation Block List (BRBL)
+* **Spam Filtering Solutions**
+  * [Apache SpamAssassin](https://en.wikipedia.org/wiki/Apache_SpamAssassin)
+  * [spamd](https://en.wikipedia.org/wiki/Spamd_(disambiguation))
+
+## Fax Security
+
+* Fax Encrypter
+  * gives a fax machine the capability to use an encryption protocol to scramble the outgoing fax signal
+* Link Encryption
+  * use of an encryption communicatino path (VPN, secure telephone link, etc) to transmit the fax
+* Activity Logs/Exception Reports
+  * used to detect anomalies in fax activity (potential attack)
+* Recieved faxes should be viewed as confidential and private
+* Disable automatic printing
+* avoid using local storage or in memory
+
 
 ## 4.2 - Secure network components
 
@@ -2156,7 +2745,7 @@ The diagram below illustrates how forward and reverse proxies work
   * my incorporate non-web features including IM filtering, email filtering, spam blocking, and spoofing detection
   * considered UTM or MFDs
 
-## Operation of infrastructure (e.g., redundant power, warranty, support)
+### Operation of infrastructure (e.g., redundant power, warranty, support)
 
 * **Redundant Power**
   * Providing reliable power is essential for reliable IT/IS infra
@@ -2204,6 +2793,10 @@ The diagram below illustrates how forward and reverse proxies work
   * [**_Bridges_**](https://en.wikipedia.org/wiki/Network_bridge)
     * used to connect two hub networks together that use the same protocol
     * forwards traffic from one network to another
+    * **_Unmanaged_**
+      * no configuration options
+    * **_Managed_**
+      * offers numerous config options (such as VLANs and MAC filtering, etc)
     * connects networks using different transmission speeds which may have to buffer to store packets until they can be forwarded to the slower network
     * known as a **_store-and-forward device**_
     * OSI Layer 2 (Data Link) device
@@ -2212,6 +2805,98 @@ The diagram below illustrates how forward and reverse proxies work
     * OSI Layer 2 (Data Link) device that manages the transmission of frames via the MAC address
     * can also separate broadcast domains when used to create VLANs
     * Can operate a Layer 3 (Network) as well if the device has advanced features (routing between VLANs) -- Layer 3 Switch
+    * four primary functions
+      * **Learning**
+        * aka _learning mode_
+        * switch becomes aware of its LAN
+        * each received Ethernet frame is evaluated
+        * first source MAC address is checked against the _Content Addressable Memory (CAM)_
+          * CAM table is held in switch memory and contains mappings between MAC and port number (RJ-45 Jack)
+        * if the MAC is not in the CAM table, its added
+        * Destination MAC is checked, if its present, then the exit port is compared to the current port in the frame
+          * if they are different, the frame is fowarded to the exit port otherwise its dropped (frame exists on the network segement)
+        * if the Dest MAC is not present it is added to the CAM and then it is flooded or sent out all ports (to hopefully make sure it reaches its intended destination)
+        * **MAC Flooding Attack**
+          * intentional abuse of a switches Learning function
+          * accomplished by flooding a switch with Ethernet frames with randomized source MAC addresses
+          * switch will attempt to add each newly discovered source MAC into its CAM table
+          * CAM table will become full of false addresses, older queries will be dropped to make room for new queries (FIFO queue)
+          * will the CAM table full of false addresses the switch will not properly forward traffic so it reverts to its flooding mode
+          * attacker and everyone else on the network gets a copy of the comms
+          * attacker can eavesdrop on any communication taking place across the compromised switch
+        * **_MAC Limiting_**
+          * defense against MAC Flooding
+          * only present on managed switches
+          * restricts the number of MAC addresses that will be accepted into the CAM table from each jack/port
+          * NIDS may also be usefull in identifying a MAC flooding attack
+      * **Forwarding**
+      * **Dropping**
+      * **Flooding**
+        * acts like a hub or multiport repeater
+        * Sends/receives each Ethernet frame out of every port
+    * **_Trunk port_**
+      * used to connect other switches together
+      * dedicated port with higher bandwidth capacity
+      * leverages crossover cables
+      * allows switches to talk directly to one another, direct traffic between hosts, and stretch VLAN definitions across multiple switches
+      * VLAN functionality across multiple switches is accomplished using **_VLAN Tagging_**
+        * IEEE 802.1q (Dot1q) standard
+        * modifies the standard contruction of an Ethernet frame header to include a VLAN flag
+        * Example:
+          * Standard Ethernet Header 
+            * `[Dst MAC | Src MAC | Ethertype]`
+          * Modified using a VLAN Tag
+            * `[Dst MAC | Src MAC | VLAN | Ethertype]`
+        * cannot be interpreted by any host other than a switch
+        * the switch only interprets it on the trunk port
+        * Tagging Abuse:
+          * [_VLAN Hopping_](https://en.wikipedia.org/wiki/VLAN_hopping)
+            * **_switch spoofing_**
+              * attacking host initiates a trunk switch by speaking the tagging and trunking protocols
+            * **_double tagging_**
+              * an attacker connected to an 802.1Q-enabled port prepends two VLAN tags to a frame that it transmits.
+              * The frame (externally tagged with VLAN ID that the attacker's port is really a member of) is forwarded without the first tag because it is the native VLAN of a trunk interface.
+              * The second tag is then visible to the second switch that the frame encounters.
+              * This second VLAN tag indicates that the frame is destined for a target host on a second switch.
+              * The frame is then sent to the target host as though it originated on the target VLAN, effectively bypassing the network mechanisms that logically isolate VLANs from one another.
+              * However, possible replies are not forwarded to the attacking host (unidirectional flow).
+    * **_MAC Conflicts_**
+      * MAC Address conflicts occur when two or more devices share the same MAC address in the same local Ethernet broadcast domain
+      * make sure all are unique
+      * manual NIC configuration checks as well as queries performed by network discovery scanners
+      * vendor errors are typically the cause of duplicate MAC addresses
+        * NIC must be replaced, or
+        * MAC address must be modified (i.e., spoofed) to a nonconflicting one
+    * **_MAC Cloning_**
+      * used to impersonate another system, often a valid or authorized device in order to bypass port security or MAC filtering
+    * **_MAC Spoofing_**
+      * changing of the default MAC address to some other value
+      * use the tool [macchanger (linux/unix)](https://www.kali.org/tools/macchanger/), [Technitium (windows)](http://technitium.com/tmac) or [SMAC Tool](http://smac-tool.com)
+      * [Port of `macchanger` for MacOS](https://github.com/shilch/macchanger)
+    * **_MAC Filtering_**
+      * security mechanism intended to limit / restrict network access to those known devices with specific MAC addresses
+      * commonly used on WAPs and switches
+    * Countermeasures to MAC spoofing/cloneing
+      * Using intelligent swtiches that monitor for odd MAC address uses and abuses
+      * Using a NIDS that monitors for odd MAC address uses and abuses
+      * Maintaining an inventory of devices and their MAC addresses to confirm whether a device is authorized or unknown/rogue
+     
+      
+    * **_Auto-MIDX (medium-dependent interface crossover)_** 
+      * setting on switches that will allow ports to automatically configure themselves to adapt to whatever cable is used to link devices
+    * **_Port Mirror/Port Spanning_**
+      * common feature found on managed switches 
+      * duplicates traffic from one or more ports out a specific port
+      * may use a hardwired _Switched Port Analyzer (SPAN)_ port, which dups the traffic for all other ports or any configured as the mirror, audit, IDS, or monitoring port
+      * takes place on the switch itself
+      * often used for traffic analysis, packet capture, evidence collection, and intrusion detection
+    * **_Port Tap_**
+      * means of eavesdropping on network comms
+      * typically when a switches SPAN function is not available or doesnt meet the current interception needs
+      * vampire taps (replaced inline taps)
+      * install a tap, first, the original cable must be unplugged from the port and then plugged into the tap
+      * the tap is then plugged into the vacated original port
+      * should be installed whenever traffic monitoring on a specific cable is required
     * [**_Multiprotocol Lable Switching (MPLS)_**](https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching)
       * high-throughput, high-performance tech
       * directs data across a network based on short path labels instead of longer network addresses
@@ -2246,7 +2931,7 @@ The diagram below illustrates how forward and reverse proxies work
       * not all SOC have the above features
     * Raspberry Pi, fitness trackers, smart watches, and some smart phones are examples of SOC
 
-## Network Access Control (NAC) systems (e.g., physical, and virtual solutions)
+### Network Access Control (NAC) systems (e.g., physical, and virtual solutions)
 
 * [NAC](https://en.wikipedia.org/wiki/Network_access_control) is the concept of controlling access to an environment through strict adherence to and enforcement of security policy
 * real time automated detection and response system ensuring all monitored systems are current on patches/updates and in compliance with the latest security configuration
@@ -2255,9 +2940,11 @@ The diagram below illustrates how forward and reverse proxies work
   * Prevent/reduce known attacks directly and zero-day indirectly
   * Enforce security policy through the network
   * Use identities to perform access control
-* 802.1X
-  * provides port-based NAC
+* 802.1X (IEEE 802.1X)
+  * provides port-based NAC (port-based decisions to allow or deny based on client auth)
   * only a component of a full NAC solution
+  * defines the use of encapsulated EAP to support auth options for LAN components
+  * may be vulnerable to AiTM (MiTM / on-path) or hijacking dattacks
 * Implementation Philosophies
   * **Preadmission**
     * requires a system to meet all current security requirements (patching, malware scanning) prior to being admitted to communicate with the network
@@ -2291,7 +2978,7 @@ The diagram below illustrates how forward and reverse proxies work
 The following diagram outlines how NAC systems work
 ![NAC](./images/NAC-solution-overview.png)
 
-## Endpoint security (e.g., host-based)
+### Endpoint security (e.g., host-based)
 
 * concept that each device should manintain local security
 * [**Endpoint Detection and Response (EDR)**](https://en.wikipedia.org/wiki/Endpoint_detection_and_response)
@@ -2323,7 +3010,7 @@ The following diagram outlines how NAC systems work
   * can be overseen though a SOC (local or remote)
   * working with an MSSP allows an organization to gain benefits of the advanced security products and leverage the experience and expertise of the MSSP's staff of security management and response professionals
 
-## Transmission media (e.g., physical security of media, signal propagation quality)
+### Transmission media (e.g., physical security of media, signal propagation quality)
 
 * phyiscal pathways or channels through which data is transmitted from one location to another
 * characters of the media dictate and impact the quality and reliability of signal propagation
@@ -2466,8 +3153,42 @@ The following diagram outlines how NAC systems work
       * optical communication technology used in fiber-optic comm systems
       * used to increase the capacity and effiency of the network
       * enables data streams or channels to be simulaneously transmitted over a single optical fiber, each using different wavelength of light
+    * [**Networking Standards**](https://en.wikipedia.org/wiki/Synchronous_optical_networking)
+      * **_Synchronous Digital Hierarch7 (SDH)_**
+        * was standardized by the [International Telecommunications Union (ITU)](https://www.itu.int/)
+        * Associated with _Synchronous Time Module (STM)_
+        * Bandwidths:
+          * **STM-0**: `51.84 Mbps`
+          * **STM-1**: `155.52 Mbps`
+          * **STM-4**: `622.08 Mbps`
+          * **STM-16**: `2.488 Gbps`
+          * **STM-32**: `4.876 Gbps`
+          * **STM-64**: `9.953 Gbps`
+          * **STM-256**: `39.813 Gbps`
+      * **_Synchronous Optical Network (SONET)_**
+        * standardized by the [American National Standards Institute (ANSI)](https://www.ansi.org/)
+          * Associated with _Synchronous Transport Signal (STS)_
+            * aka _Optical Carrier (OC)_
+          * Bandwidths:
+            * **STS-1/OC-1**: `51.84 Mbps`
+            * **STS-3/OC-3**: `155.52 Mbps`
+            * **STS-12/OC-12**: `622.08 Mbps`
+            * **STS-48/OC-48**: `2.488 Gbps`
+            * **STS-96/OC-96**: `4.876 Gbps`
+            * **STS-192/OC-192**: `9.953 Gbps`
+            * **STS-768/OC-768**: `39.813 Gbps`
+      * Both SDH and SONET support mesh and rign topologies
+      * often used as the backbone for telcos with divisions/fractions of the capacity used to subscribe out to customers
+      * Both standards are hardware/physical based with line speed requirements
+      * Both use Synchronous Time-Division Multiplexing (TDM) for high-speed duplex communications with minimal need for control and management overhead
+      * Regional differences in each standard
+      * functionally similar, often used interchangeably
+      * Both STM and STS represent standarized levels within their respective hierarchies for organizing and multiplexing digital signals
+        * both have a foundational speed of 51.48 Mbps
+    
 
-### 5-4-3 Rule
+      
+#### 5-4-3 Rule
 
 * [concept](https://en.wikipedia.org/wiki/5-4-3_rule) used wheneven Ethernet or other IEEE 802.3 shared-access networks are deployed using hubs and repeaters as network connections devices in a tree topology (central trunk with various splitting branches)
 * does not apply to switched networks or the use of bridges/routers
@@ -2478,7 +3199,234 @@ The image below outlines the rules of `5-4-3`
 
 ## 4.3 - Implement secure communication channels according to design
 
-* Voice, video, and collaboration (e.g., conferencing, Zoom rooms)
-* Remote access (e.g., network administrative functions)
-* Data communications (e.g., backhaul networks, satellite)
-* Third-party connectivity (e.g., telecom providers, hardware support)
+### Secure Voice Communications
+
+### Remote Access Security Management
+
+* Telecommuniting (working remotely) has become the norm
+* Remote work requires access and the ability of a distant client to establish a connection to a network
+* Can take the following forms:
+  * Connecting to a network over the internet via a VPN
+  * Connecting to a WAP (local environment treats as remote access)
+  * Connecting to a terminal server system, mainframe, VPC, endpoint, VDI, virtual mobile interface (VMI) through a thin client
+  * Connecting to an office-located PC using RDP
+  * Using cloud-based virtual desktops
+  * Using a modem to dial up directly to a remote access server
+* **Remote Access Techniques**
+  * **_Service-Specific_**
+    * gives users the ability to connect to and manipulate/interact with a single service, such as email, remotely
+  * **_Remote Control_**
+    * grants a remote user the ability to fully control another system that is physically distant from them
+    * monitor and keyboard act as if they are directly connected to the system
+  * **_Remote Node Operations_**
+    * remote client establishes a direct connection to a LAN (wireless, VPN, or dial-up)
+    * remote system connects to a remote access server, which provides the remote client access with network services and possbily internet access
+* **Remote Connection Security**
+  * Remote access users should be authenticated before granted access
+  * Only authorized users that need access for their work should be granted access
+  * All remote communication should be protected from interception and eavesdropping
+    * requires strong E2E encryption for auth and data transmission
+  * Establishing a secure communication channel prior to initiating transmissions of sensitive or valuable information
+  * RBAC/ABAC
+* **Security Risks**
+  * If anyone with a remote connection can attempt to breach the security of an organization, the benefits of physical security are reduced
+  * Telecommuters might use insecure/less secure remote systems to access sensitive data and thus expose it to a greater risk of loss, compromise, or disclosure
+  * Remote systems might be exposed to malicious code and could be used as a carrier to bring malware into the private LAN
+  * Remote Systems
+    * may be less physically secure and thus at risk of being use by unuathorized entities or stolen
+    * might be more difficult to troubleshoot
+    * may not be upgradable or patchable due to their potential infrequent connections or slow throughput links
+* **Remote Access Security Policy**
+  * The following items should be addressed in any remote access security management policy
+    * **Remote Connectivity Technology**
+      * fully examing each type of connection options for their unique security requirements
+      * may include, cellular/mobile services, PSTN modems, cable TV internet services, Digital Subscriber Line (DSL), fiber connections, wireless networking, and satellite
+    * **Transmission Protection**
+      * encryption protocols, encrypted connection systems, and encrypted network services
+      * use appropriate combination of secured services (such as VPN, TLS, etc) for protecting data
+    * **Authentication Protection**
+      * login credential security
+      * secure auth protocols, centralized remote access auth system, and require mfa
+    * **Remote User Assistance**
+      * technical support and how remote users get assistance in cased of issues
+* **Network Administrative Functions**
+  * task performed by adminstrations to manage and control network resources from locations outside the phyiscal location
+  * essential for maintaining operational efficiency, response to issues promptly and ensures overall healh and security of network infra
+  * should be defined in an organizational security policye
+  * Functions:
+    * **_Configuration Management_**
+      * allows admins the ability to remote configure and modify network devices (routers, switches, etc)
+      * adjusting / updating configuration settings and implementing changes
+    * **_Monitoring and Analysis_**
+      * enbles admins to track network performance, analyze traffic patterns, and identify potential issues/security threats
+      * remote tools help with this and can also send alerts when issues arise
+    * **_Troubleshooting/Diagnostics_**
+      * admins can remotely diagnose and address issues with infra/network
+      * includes accessing devices, run diagnostic tests, analyzing logs, implement solutions to resolve connectivity and performance issues
+    * **_Security Management_**
+      * configure security policies, access controls, and auth mechanisms
+      * manage firewalls, VPNs, and other security measures remotely
+    * **_User Account Management_**
+      * strealine with remote access
+      * create, modify, or deactivate users
+      * reset passwords and control access rights
+    * **_Software Updates/Patch Management_**
+      * admins deploy updates and/or fixees to services / network resources
+      * helps address vulnerabilitie and ensures the network operates with the latest features and security enhancements
+    * **_Backup/Recover_**
+      * admins schedule remote backups, verify data integrity, and implement recovery procedures in case of data loss/system failures
+    * **_Policy Enforcement_**
+      * ensures network configurations align with org policies, sec standards, and industry regs
+      * enforce compliance and maintain security
+
+### Multimedia Collaboration
+
+* use of multimedia-supporting communication solutions to enhance distance collaboration (remote work)
+* collaboration can incorporates tracking changes in documents/files, email, voice and video calls (zoom, google meets, etc)
+* **_Zoom Room(s)_**
+  * dedicated phyiscal space equipped with audio-visual and communications technology designed for hosting video meetings/conferences/collab meetings
+  * includes larger displays, high-quality camera(s), microphone equipement, sound tech, touchscreens
+* **_Remote Meeting_**
+  * tech used for any product, hardware, or software that allows for interaction between remote parties
+  * digital collaboration, virtual meetings, videoconferencing, etc
+  * Security Concerns
+    * Use of strong auth techniques
+    * Use of open protocols or an encrypte tunnel
+    * Is the encryption E2E or only from client/endpoint to central server
+    * Allow for true deletion of content/data
+    * Acitivity logging/auditing
+    * Can unauthorized entities join private meetings
+    * Can attendees interject into meetings with voice, image, video, or file sharing
+    * Can the platform integrate advertising/spam into the interface and can it be disabled
+    * Data tracking disablement, what is data collected for
+    * Session recording, who has access and can they be exported/distributed
+
+### Instant Messaging and Chat
+
+* real-time messaging/chat between two or more parties (remote)
+* some IM tools allow for file sharing/transfer, voice/video conferencing, etc
+* some IM are based on P2P, others are centralized controlling server
+* P2P-based IM and Cloud-based IM systems are easy for end users to deploy and use but difficult to managage (org side) due to lack of security or management controls
+* usually have numerous vulnerabilities such as:
+  * packet sniffing/eavesdropping
+  * lack of native security capabilities (mfa/encryption)
+  * provide little or not privacy protections
+  * chat clients are susceptible to malicious code deposits/infection via file transfer functions
+  * social engineering tactics/attcks (impersonation/convincing victims to reveal confidential info (PII, Passwords, etc))
+* always consider the _locus of control (LoC)_ and the availability / effectivenss of security features (logging, mfa, encryption)
+  * LoC - refers to the extent to which individuals believe they have control over the events and outcomes in their lives
+
+### Third-Party Connectivity
+
+* very few organizations uses exclusively internal resources, most interact with 3rd party providers
+* most 3rd parties DO NOT need to interact directly with an organization's IT/IS, however sometimes this is required and its important to consider the risks and ramifications
+* anytime an organizations netowrk is connected directly to another entity's network, their local threats/risks affect each other
+* "A Compromise of one can lead to a compromise of all"
+* Connections should be planned in detail prior to establishing any connection (physical or virtual)
+* Process starts with on MOU and ends with an ISA.
+* **_Memorandum of Understanding (MOU)_**
+  * aka Memorandum of Agreement (MOA) or Letter of Intent
+  * an expression of agreement / aligned intent between two parties
+  * not technically a legal agreement or commitment, but rather a more formal form of a reciprocal agreement ("handshake")
+* **_Interconnection Security Aggreement (ISA)_**
+  * formal declaration of security stance, risk, and technical requirements of a link between two org IT infrastructures
+  * goal is to define the expectations and responsibilities of maintaining security over a communication path between tow networks
+  * Connecting networks is/can be mutally beneficial, but also raises security concerns that need to be identified and addressed
+* Full risk assessment SHOULD be performed
+* alternatives is a VPN that is shared between the two or a project specific environment in a private cloud
+* use secure file transfers to share sensitive data sets
+* WAN technologies are critical for establishing connectivty over large geographically distant areas
+* **_Telecom Providers_**
+  * play a crucial role in WAN connectivity
+  * offering services such as leased lines, [Mutiprotocol Label Switching (MPLS)](https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching), and VPN
+  * Lease-lines provided dedicated point-to-point connections
+  * MPLS and VPNs enable secure and efficient data transmission over shared infra
+  * MPLS typically deployed for creating private and secure networks across multiple locations
+    * incorporates QoS features, 
+* **Hardware Support_**
+  * equally vital in WAN connectivity is hardware components (routers, switches, etc)
+  * support for this devices are crucial to ensure proper functioning, maintenance, and troubleshooting, either through internal IT or 3rd Party vendors
+
+![MPLS](./images/MPLS%20POST.png)
+
+
+
+### Switching Technologies
+
+* [**Circuit Swtiching**](https://en.wikipedia.org/wiki/Circuit_switching)
+  * originally developed to manage telephone calls over the public swtich telephone network (PSTN)
+  * a dedicated physical pathway is created between two communicating parties
+  * once established the links remain the same throughout the entire transmission cycle
+  * provides for fixed or known transmission times, uniform level of quality, little to no loss of signal or interruptions
+  * once session is disconnected the pathway cease to exist and can be resused by another connection
+  * typical usage is rail yards, irrigation systems, electrical distribution systems
+  * Constant traffic
+  * Fixed known delays
+  * Connection-oriented
+  * Sensitive to connection loss
+  * Primarily used for voice
+* [**Packet Switching**](https://en.wikipedia.org/wiki/Packet_switching)
+  * defacto standard for data/voice transmissions
+  * message or communication is broken up into small segments (fixed-length cell or variable-length packet, protocol and technology dependent) and sent across intermediary networks to the destination
+  * each segement of data has its own header that contains source/destination info, which is read by each intermediary system and is used to route the packets to their intended destination
+  * each channel/path is reserved for use only while a packet is acutally being transmitted over it
+  * once the packet is gone the channel/path is made available
+  * does not enforce exclusivity of pathways
+  * seen as a logical transmission technology (address logic dictates how communication traverse the network and between partners)
+  * bursty traffic
+  * variable delays
+  * Connectionless
+  * Sensitive to data loss
+  * Any type of traffic
+  * Security Issues:
+    * places data packets from different sources on the same physical connection (leads to sniffing, eavesdropping, corruption, disclosure)
+  * Connection Management, traffic isolation, and encryption are crucial measures to maintain security and confidentiality
+  * [**Virtual Circuits**](https://en.wikipedia.org/wiki/Virtual_circuit#)
+    * communication path over a packet-switched network between two endpoints
+    * two types (within packet-switched networks)
+      * **_Permanent Virtual Circuits (PVCs)_**
+        * dedicated leased line
+        * the circuit always exists and is waiting to be used
+        * may be closed down when not in use, but automatically/instantly reopens whnever needed
+        * like a walkie-talkie
+      * **_Switched Virtual Circuits (SVCs)_**
+        * created each time it is needed using the best path currently available before it can be used and then dissassembles itself after the transmission is completed
+        * like a short-wave or ham radio (needs tunining)
+
+The following digram illustrates the difference between Circuit and Packet Switching
+
+![CvS Switching](./images/circuit%20vs%20packet%20switching.png)
+
+### WAN Technologies
+
+* connect geographically distance networks to provide efficient, scalable, and reliable long distance communications
+* proper connection management and encryption is key
+* Two categories
+  * **_Dedicated Line_**
+    * aka _leased line_ or _point-to-point link_
+    * continually reserved for use by a specific customer
+    * always-on and waiting between customer network and WAN links
+    * often used between multiple business locations, so they can effectively communicate as a single entity
+    * Types:
+      * T1
+        * Telephone Line 1
+        * 1.54 Mbps
+      * D53
+        * Digital Service 3
+        * 44.7 Mbps 
+        * Originally known as T3
+      * X.25
+      * Asynchronouse Transfer Mode (ATM)
+      * Frame Relay
+    * The above have mostly been replace by fiber optic-based solutions
+    * for fault-tolerance you require two dedicated lines
+    * for greated resiliency purchase two lines from two different telcos
+  * **_Nondedicated Line_**
+    * requires a connection to be established before data transmission can occur
+    * can be used to connect with any remote system that use the same type of nondedicated line
+    * Standard classic dial-up or DSL modems are examples
+* [**_Backhaul networks_**](https://en.wikipedia.org/wiki/Backhaul_(telecommunications))
+  * constitute the segment linking smaller or LAN networks to a central hub or the broder internet
+  * various WAN tech are applied in this context to ensure effectivity connectivity
+  * MPLS and [Metro-Ethernet](https://en.wikipedia.org/wiki/Metro_Ethernet) are commonly employed as this type of connections
+  * providing high bandwith, scalability, flexibility for applications spanning cell towers/BUs/DCs

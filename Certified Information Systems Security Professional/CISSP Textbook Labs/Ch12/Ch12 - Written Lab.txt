@@ -1,0 +1,54 @@
+1. Describe the differences between transport and tunnel mode of VPNs 
+  * transport
+    * does not encrypt header only payload
+  * tunnel
+    * encrypts for header and payload
+    * encapsulates entire 
+
+2. Discuss benefits of NAT 
+  * leveraging private IPs for internal networks and still be able to communicate to the internet
+  * allows simultaneous connections over a single IP 
+
+
+3. What are the main differences between circuit switching and packet switching?
+
+  * packet switching 
+    * message is split into small segments
+    * sent over network on best path and not an exclusive path
+    * conncetionless
+    * sensitive to data loss
+  * cicuit switching
+    * fix / dedicated path
+    * used of voice (PSTN)
+    * sensitive to connect loss
+
+4. What are some security issues with email and options for safeguarding against them?
+   * susceptible to delivery of malicious content (trojans, malicious files, viruses)
+   * susceptible to source address spoofing
+   * Email header modification 
+   * Mail Bombing / Storm
+   * Controls
+     * digital signed messages
+     * spam filters
+     * DKIM
+     * Sender Policy Framework / DMARC
+    
+5. What are the private IP address, APIPA addresses, and loopback addresses?
+   * Private IP Address (RFC 1918)
+     * Class A: `10.0.0.0 - 10.255.255.255`
+     * Class B: `172.16.0.0 - 172.31.255.255`
+     * Class C: `192.168.0.0 - 192.168.255.255`
+   * APIPA 
+     * 169.254.1.0 - 169.254.255.255
+   * Loop Back
+     * 127.x.x.x
+     * 127.0.0.1 --> typical
+    
+6. Name at least six facts about VLANs
+
+  * control and restrict broadcast traffic
+  * provides traffic isolation
+  * cross vlan functionality requires routing (either using a router or built in to switch)
+  * assigned per port basis
+  * does not enforce/imposed encryption (can occur within the VLAN)
+  * reduces the vulnerability of packet sniffers
