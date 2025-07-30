@@ -1,0 +1,27 @@
+1. List some physical and logical access controls used to protect assets
+
+  * Logical Controls -- AAA Model (IAAA), limit who can access information, permissions
+  * Physical Controls -- Locks, gates, turnstiles
+
+2. Describe the differences between identification, authentication, authorization, and accounting
+
+  * Identification -- proving of identity 
+  * Authentication -- loging in (proof valide ID)
+  * Authorization - access to resources / permissions
+  * Accounting - auditing/ provides nonrepudiation
+
+
+3. Describe the three primary authentication factors
+  * Something You Know (PIN, Password, Passphrease)
+  * Something You Have (Smart card, token)
+  * Something You Are (Biometrics)
+
+4. Name the method that allows users to log on once and access resources in mulitple organizations without authenticating again
+  * Federated Identity Management 
+  * SSO 
+
+5. Identify the processes and organization follows when hiring an employee and when they leave/are terminate.
+  * Provisioning/Onboarding
+    * account creation / permission assignement
+  * Deprovisioning/offboarding
+    * disable / delete accounts
