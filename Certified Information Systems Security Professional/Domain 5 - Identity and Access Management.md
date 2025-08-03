@@ -481,8 +481,6 @@ The following diagram illustrates the JIT provisioning workflow
 
 * Groups and Roles
 
-
-
 ## 5.3 - Federated identity with a third-party service
 
 * Federation Types:
@@ -503,32 +501,190 @@ The following diagram illustrates the JIT provisioning workflow
 
 ## 5.4 - Implement and manage authorization mechanisms
 
+### Access Control Concepts
 
+* **Permissions**
+  * access granted for an object and determine what you can do with it
+  * read, write, delete and/or execute
+* **Rights**
+  * refers to the ability to take an action on an object
+* **Privileges**
+  * combination or permissions and rights
+  * administrators are granted elevated privileges on systems
+* **Implicit Deny**
+  * fundamental concept and used by most authorization mechanism
+  * ensures access to an object is denied by default unless access has be granted explicitly to a subject
+* **Access Control Matrix**
+  * centralized list/database/table that includes the subjects, objects, and assigned permissions, rights, privileges
+  * when a subject attempts an action on an object the system verifies they have permission to perform the action using this list
+  * each item in the matrix would have its own single access control list (ACL)
+* **Capabilities List**
+  * a decentralized, distributed method of identifying permissions, rights, privileges assigned to subjects using tokens or keys
+  * different from ACLs (focuses on individual objects and identifies access granted to subjects)
+  * focuses on individual subjects (user/process) in regard to objects
+    * i.e.; capability for a user would list the user and its various access permissions, rights, privileges to individual objects
+* **Constrained Interface**
+  * applications use a restricted (constrained) interface to limit / restrict what users can and cant do based on their privileges, permission, rights
+  * items are either hidden or grayed out/disabled base on privileges
+  * Clark-Wilson model covers this in detail on how to implement it, see [Domain 3 - Security Architecture](./Domain%203%20-%20Security%20Architecture%20and%20Engineering.md)
+* **Content-Dependant Control**
+  * restrict access based on the content within the object
+  * database view (gcp authorized view)
+  * user granted access to the view can see data only within the view and not the underlying tables
+* **Context-Dependant Control**
+  * requires specific activity to occur prior to gaining access
+  * may be geolocation based restrictions
+  * time-based access (only within a period of time)
+* **Need To Know**
+  * ensures that subjects are granted access only to what they require access to in order to perform their assigned tasks
+  * can be based on classification of data
+* **Least Privilege**
+  * ensures subjects are grant only the privileges they need to perform this assigned job functions
+  * hand in hand with _Need To Know_
+* **Separation of Duties and Responsibilities**
+  * ensures sensitive functions are split into tasks performed by two or more employees
+  * helps prevent fraud and errors 
+  * checks and balances
 
-* Mandatory access control (MAC)
-        * Most stringent
-        * Permissions are determined the by the system
-        * Rarely used except for Highly secure environments
-        * Rule based acs based users and resources having labels, os determines the access by comparing labels
-        * Each individual is known as the _subject_
-    * Discretionary access control (DAC)
-        * Flexibility approach
-        * File based approach
-        * File owners determine access permissions
-        * Most common that orgs use this
-        * Each entry is the _discretionary access control list (DACL)_ is known as an _access control entry (ACE)_
-    * Role-based Access Control (RBAC)
-        * Grants permissions to job specific roles (groups)
-        * Users are grant access to those “roles/groups”
-        * Permission is applied to the role, users in that role will get the new permission
+### Access Control Models
 
-* Role-based access control (RBAC)
-* Rule based access control
-* Mandatory access control (MAC)
-* Discretionary access control (DAC)
-* Attribute-based access control (ABAC)
-* Risk based access control
-* Access policy enforcement (e.g., policy decision point, policy enforcement point)
+* **Discretionary access control (DAC)**
+  * Flexibility approach
+  * File based approach
+  * File owners determine access permissions
+    * owner, creator, or data custodian
+  * Most common that orgs use this
+  * Each entry is the _discretionary access control list (DACL)_ is known as an _access control entry (ACE)_
+  * **_New Technology File System (NTFS)_**
+    * Microsoft tech
+    * uses DAC model
+* **_Nondiscretionary Access Control_**
+  * access is managed by admins and centrally controlled
+  * changes affected the entire environment
+  * focuses on rules governing the whole environment
+  * less flexible
+  * easier to audit
+  * any model that is not _discretionary_ fall under this term
+* **Role-based Access Control (RBAC)**
+  * Grants permissions to job specific roles (groups)
+  * Users are grant access to those “roles/groups”
+  * Permission is applied to the role, users in that role will get the new permission
+  * referred to _restrictions_ or _filters_
+  * helps enforce and prevent _privilege creep_
+  * typically follows organization hierarchy
+    * managers and leadership get greater / higher privileges
+  * **_Task-Based Access Control (TBAC)_**
+    * related to RBAC
+    * each user is assigned an array of tasks
+    * focus is controlling access based on tasks instead of job role or user identity
+    * Microsoft Project uses TBAC
+      * each project has multiple task that a project manager assignes to users
+    * Jira is also an example
+* **Rule-Based Access Control**
+  * uses a set of rules, restrictions, filters, or conditions to determine what can and cannot occur on a system
+  * includes granting subject access to an object, or granting the subject the ability to perform an action
+  * have global rules that apply to all subjects
+  * firewall is an example
+    * includes rules/filters with an ACL, defined by the admin
+    * only allows traffic that match the allow rules
+    * includes a final rule (implict deny) which denies or blocks all other traffic
+    * may be viewable or hidden (but active)
+* **Attribute-Based Access Control (ABAC)**
+  * advanced implementation of _rule-based access control_
+  * uses policies that include one or more attributes/characteristics for rules
+    * can be based on network, devices, user location, group membership, etc
+  * flexible and much more specific
+  * applies the rules to all subjects equally
+  * SDNs use ABAC model
+  * typically created in plain language statements such as _"Allow Managers to access WAN using tablets or smartphones."_
+  * MDM systems typically use this type access control
+* **Mandatory access control (MAC)**
+  * Most stringent
+  * Permissions are determined the by the system
+  * Grants access based on labels such as _confidential or secret_, according to organization policy.
+    * each label is referred to as a _security domain_, _realm of security_
+  * Rarely used except for Highly secure environments
+  * Rule based on users and resources having labels, os determines the access by comparing labels
+  * Each individual is known as the _subject_
+  * Referred to as the _lattice model_
+  * Governments use labels based on law, private sector organizations are free to use whatever labels they choose
+  * prohibitive rather than permissive, uses implicit deny philosophy
+  * used compartmentalization to ensure need to know principle
+  * Classification:
+    * **_Hierarchical Environment_**
+      * relates various classification labels in an ordered structured from low to medium to high security, such as _Confidential_, _Secret_, and _Top Secret_
+      * each level or classification level in the structure is related
+      * Clearance in one level grants the subject access to all objects in higher levels
+        * Exm someone with Top Secret clearance has access to Top Secret and Secret Data
+    * **_Compartmentalized Environment_**
+      * no relationship between one security domain and anther
+      * each domain represents a separate isolated compartment
+      * to gain access to an object, the subject must have specific clearance for the object's security domain
+    * **_Hybrid Environment_**
+      * combines both _hierarchical_ and _compartmentalized_ concepts
+      * each hierarchical level may contain many subdivisions that are isolated from the rest of the security domain
+      * a subject must have the correct clearance and the need to know data within a specific compartment to gain access to the isolated object
+      * provides granular control over access but becomes harder to manage as it grows
+  The following diagram illustrates the flow for how MAC Access works
+  ![MAC ACL](./images/MAC-ACL.png)
+* **Risk-Based Access Control**
+  * relatively new concept
+  * complex implementation
+  * may use binary to control access 
+    * user logged in using MFA or they didnt
+  * more complex options may use ML capabilities to determine access grants (more predictive)
+  * model attempts to evaluate risk by considering several different elements:
+    * **_The environment_**
+      * place or setting
+      * Examples ER or pharmacy
+    * **_The situation_**
+      * purpose for access
+      * Examples:
+        * seeing patient data in the ER
+        * dispensing drugs at a pharmacy
+    * **_Security policies_**
+      * software code that makes risk-based decisions based on available data
+      * can be modified to meet company requirements
+      * Examples:
+        * Doctors, nurse attempting to access patient data in the ER
+          * Security Risk Model would deem this low risk and grant access to the patient data
+        * Pharmacy personnel accessing patient data for dispensing medication
+          * Security Risk Model would deem this medium or low risk and would grant access partial patient data to identify any potential adverse drug interactions but not the full patient medical history
+      * May required MFA and/or use of compliant mobile device before granting access
+  The following diagram illustrates how _risk-based access control_ works
+  ![RiskBAC](./images/risk-based-ac.png)
+
+### Zero-Trust Access Policy Enforcement
+
+* traditional networks use the "moat and castle" or defense-in-depth approach
+* more modern approach is the "zero trust" approach which presumes that their is not trust boundary and no network edge
+* each activity is validated when requested as part of a continuous authentication process
+  * access is only granted/allowed after its policies are checked, including elements like identity, permissions, system configurations, security status, threat intelligence data review, and security posture
+
+The following diagram illustrates NIST's interpretation of Zero Trust ([NIST SP 800-207](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf))
+![NIST ZTA](./images/zta-800-207.png)
+
+#### ZTA Key Components
+
+* **Subjects**
+  * users, devices, or systems that request access or attempt to use rights
+* **Policy Engine**
+  * system that makes decisions based on both rules and external systems like
+    * threat intelligence feeds
+    * IAM Systems
+    * MDM Systems
+    * SIEM devices
+  * use a trust algorithm that makes the decision to grant, deny, or revoke access to a given resource based on the factors used for input into the algo
+  * once a decision is made, its logged and the policy administrator takes action based on the decision
+* **Policy Administration**
+  * not individuals, but process/components that establish or remove the communication path between subjects and resource
+    * includes creating session-specific auth tokens/credentials as needed
+  * if authN/authZ is denied, it will tell the _policy enforcement point_ to end the session or connection
+* **Policy Decision Point**
+  * the union of the _policy engine_ and _policy administrator_ acting as one
+* **Policy Enforcement Point(s)**
+  * commuicate with policy admins to forward requests from subjects and to receive instructions from them about connections to allow or end
+  * typically deployed with a local client or application and a gateway element that is part of the network path to services/resources
 
 ## 5.5 - Manage the identity and access provisioning lifecycle
 
@@ -603,4 +759,191 @@ The following diagram illustrates the JIT provisioning workflow
 * Privilege escalation (e.g., use of sudo, auditing its use)
 * Service accounts management
 
-# 5.6 - Implement authentication systems
+## 5.6 - Implement authentication systems
+
+### Implementing SSO on the Internet
+
+* [**Extensible Markup Language (XML)**](https://en.wikipedia.org/wiki/XML)
+  * open standard used to describe data
+  * can include tags to describe data as anything desired
+    * Example: `<ExamResults>Passed</ExamResults>`
+  * common language to exchange data
+  * many schemas exists and if companies agree on one they can easily share information
+  * many cloud-based provides use XML-based languages to share information for authentication and authorization
+    * They don't use standard XML but variants based on it
+* [**Security Assertion Markup Language (SAML)**](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)
+  * open XML-based standard commonly used to exchange authN/authZ (AA) information between federated entities
+  * provides SSO capabilities for browser access
+  * [**_Organization for the Advancement of Structured Information Standards (OASIS)_**](https://www.oasis-open.org/)
+    * a nonprofit consortium that encourages open standards development
+    * adopted SAML 2.0 in 2005 as a standard (and maintained it since)
+    * [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0) is a convergence of SAML 1.1, the [Liberty Alliance Identity Federation Framework (ID-FF) 1.2](https://en.wikipedia.org/wiki/Liberty_Alliance), and [Internet2's Shibboleth 1.3](https://en.wikipedia.org/wiki/Shibboleth_(software)#Shibboleth_1.3)
+  * **_SAML 2.0_** specification utilizes three entities:
+    * **Principal or User Agent**
+      * user/entity trying to access the resource
+      * exmaple : Sally is trying to access her bank account information at `bankofamerica.com`
+    * **Service Provider (SP) or Relying Party**
+      * entity providing the service
+      * example: `bankofamerica.com`
+    * **Identity Provider (IdP) or Asserting Party**
+      * third-party that holds the user authentication and authorization information
+      * responds to the SP with XML messages (_SAML Assertions_) validating or rejecting a user's credentials
+      * if auth is successful the IdP provides session attributes and what the user can access back to the SP, which grants the user access to the resource
+      * Statements that may be included in SAML Assertions
+        * **Authentication Statements**
+          * provides proof the user provided valid credentials, identifies the identification method, and identifies the time the user logged on
+        * **Attribute Statements**
+          * may contain any info about the user including their entitlements/claims
+        * **Authorization Statements**
+          * indicates whether the user is authorized to access the requested service
+          * if denied, the reason is indicated
+    * Cloud service provides include SAML in their solutions for easy of use for their customers
+    * provides authentication, attribute, and authorization statements in its assertions
+   The following diagram illustrates how the SAML flow works
+   ![SAML](./images/saml.webp)
+* [**Open Authorization (OAuth)**](https://en.wikipedia.org/wiki/OAuth)
+  * authorization framework, not an authorization protocol
+  * exchanges API messages and uses a token to show that access is authorized
+  * described in [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749)
+  * maintain by the [Internet Engineering Task Force (IETF)](https://www.ietf.org/)
+  * current version and most supported is OAuth 2.0 and is backwards compatible with OAuth 1.0
+  * used to shared account information with third-party websites
+  * Key Concepts:
+    * **Resource Owner**: The user who owns the data or resource (e.g., your Facebook profile).
+    * **Client**: The application requesting access to the resource (e.g., a third-party photo-sharing app).
+    * **Resource Server**: The service that hosts the protected resources (e.g., Facebook's servers).
+    * **Authorization Server**: The server that issues access tokens (e.g., Google's authorization server).
+    * **Access Token:** A short-lived credential that allows the client to access specific resources on behalf of the resource owner.
+  * Workflow:
+    **_1. Authorization Request_**: - The client (app) directs the user to the authorization server, requesting access to specific resources.
+    **_2. User Consent_**: - The user logs in to the authorization server (if not already) and grants or denies the request.
+    **_3. Access Token Issuance_**: - If the user grants consent, the authorization server issues an access token to the client.
+    **_4. Accessing Protected Resources_**: - The client uses the access token to access the requested resources on the resource server.
+  The following diagram illustrates how the OAuth workflows works:
+  ![OAuth](./images/OAuth2.0.png)
+* [**OpenID Connect (OIDC)**](https://en.wikipedia.org/wiki/OpenID)
+  * authentication layer using the OAuth 2.0 authorization framework
+  * builds on the deprecated OpenID standard to use JSON Web Tokens
+  * provides both authentication and authorization
+  * maintained by the [OpenID Foundation](https://en.wikipedia.org/wiki/OpenID#OpenID_Foundation)
+  * uses a [Javascript Object Notation (JSON) Web Token (JWT)](https://en.wikipedia.org/wiki/JSON_Web_Token) (ID Token)
+  * uses a web service to retrieve the JWT
+  * JWT provides authentication and also includes profile information about the user
+  * Log in using Google account, Facebook Account, etc are all forms of OIDC
+  * Key Concepts:
+    * **Authentication vs. Authorization**:
+      * OIDC focuses on authentication (verifying who someone is), while OAuth 2.0 is primarily for authorization (granting access to resources).
+    * **ID Token**:
+      * OIDC uses a security token called an ID token, which contains claims (pieces of information) about the authenticated user.
+    * **OpenID Provider (OP)**:
+      * service that handles user authentication and issues the ID token. Examples include Google, Facebook, or a dedicated identity provider like Auth0.
+    * **Relying Party (RP)**:
+      * application or website that relies on the OpenID Provider to authenticate users.
+  * Workflow:
+    **_1. User Initiates Login_**: - A user attempts to log in to a relying party application.
+    **_2. Redirection to OP_**: - The application redirects the user to the OpenID Provider (e.g., Google).
+    **_3. Authentication at OP_**: - The user logs in to the OpenID Provider (entering their username and password, or using another authentication method).
+    **_4. ID Token Issuance_**: - If authentication is successful, the OP issues an ID token (and potentially other tokens like access and refresh tokens) to the relying party.
+    **_5. User Information Verification_**: - The relying party verifies the ID token and retrieves user information (claims) from it.
+    **_6. Access Granted_**: - Based on the verified user information, the relying party grants the user access to its resources.
+  The following diagram illustrates how the OIDC flow works:
+  ![OIDC](./images/OIDC.png)
+
+  ### Implementing SSO on Internet Networks
+
+  * [**Kerberos**](https://en.wikipedia.org/wiki/Kerberos_(protocol))
+    * a network authentication protocol that allows secure communication between trusted hosts over an insecure network, like the internet.
+    * leveages a _Ticket authentication_ mechanism that employs a third-party entity to prove identification and provide authentication
+    * aims to provide a secure way for clients and servers to authenticate each other, preventing unauthorized access to resources.
+    * Key Components:
+      * **Key Distribution Center (KDC)**:
+        * The Kerberos server (third-party) that manages user authentication and ticket issuance.
+        * uses symmetric-key cryptography to authenticate clients to servers
+        * all clients/servers are registers with the KDC, which maintains secret keys for all network members
+      * **Tickets**:
+        * Cryptographic tokens that allow users to access specific services.
+        * aka _Service Ticket (ST)_
+        * subjects request tickets to access objects (files), if they are authN/authZ'ed to access the object, the KDC issues them a ticket
+        * have specific lifetimes and usage parameters
+        * once it expires a client must request a renewal or a new ticket
+      * **Kerberos Authentication Service (KAS)**:
+        * Part of the KDC responsible for initial user authentication.
+        * verifies/rejects the authenticity and timeliness of tickets
+        * often called the KDC
+      * **Ticket Granting Service (TGS)**: 
+        * Part of the KDC responsible for issuing service tickets.
+      * **Ticket-Granting Ticket (TGT)**:
+        * provides proof that a subject has authenticated through a KDC and is authorized to request tickets to access other objects
+        * encrypted and includes a symmetric key, expiration time, and the user's IP address
+        * presented by subjects when requesting tickets to access objects
+      * **Kerberos Principal**:
+        * typically a user but can be any entity that requests a ticket
+      * **Kerberos Realm**:
+        * a logical area (domain or network, etc) ruled/governed by Kerberos
+        * principals within the realm can request tickets from the KDC, which issues tickets to principal in the realm
+    * Requires a database of accounts
+      * typically stored in a directory service such as Active Directory
+    * Kerberos Login Workflow:
+      (1). User types in their login creds (username/password) into the client
+      (2). Client generates a request, including the plaintext username and domain of the user (not password), sends it the KAS
+      (3). The KAS verifies the account against its database
+      (4). The KDC generates a session key that the client and the Kerberos server will use. Its encrypted with a hash value of the user's password, the KDC also generates an encrypted timestamped TGT
+      (5). The KDC transmits the encrypted session key and TGT to the client
+      (6). Client installs the TGT for use until it expires and decrypts the session key using a hash of the user's password
+    The following diagram illustrates the Kerberos Auth Process:
+    ![Kerberos Auth](./images/kerberos%20auth.png)
+
+    * Client Access to Object Workflow:
+      (1). Client send the TGT back to the KDC with a request for access to a resource
+      (2). KDC verifies that the TGT is valid and checks its access control matrix to verify that the user has sufficient privileges to access the request resource
+      (3). The TGS generates a service ticket and sends it to the client
+      (4). Client sends the service ticket to the resource server
+      (5). The resource server verifies the validity of the service ticket with the KDC
+      (6). Once the id and authN are verified, the Kerberos activity is complete. The resource server opens a session with the client and begins communication or data transmission
+    The following diagram illustrates the Kerberos Resource Request Process:
+    ![Kerberos Request](./images/kerberos-resource-request.jpg)
+    * Kerberos Issues:
+      * the KDC is a single point of failure
+        * if the KDC becomes compromised, the secret key for every system and client is can be compromised
+        * if the KDC goes offline, no auth can occur
+      * has strict time requirements
+        * default config requires all systems to time-sync within 5 mins of each other
+        * if a sys is not in sync then the previously issued TGT will no longer be valid and the sys will no longer be able to recieve new tickets
+        * Time-Synchronization is typically configured in the network
+          * In AD the domain controller (DC) time sync
+  * [**Remote Authentication Dial-In User Service (RADIUS)**](https://en.wikipedia.org/wiki/Radius)
+    * centralized authN/authZ capabilities for remote connections
+    * used when organizations has more than one network access server (remote server)
+    * users can connect to any network access server, which passes on the user's credentials to the RADIUS server to verify authN/authZ and track accounting
+    * Key Terms
+      * Network Access Server: Is the RADIUS client
+      * Authentication Server: Is the RADIUS server
+    * ISPs use RADIUS for authentication
+      * users access the ISP from anywhere
+      * the ISP server forwards the user's connection request to the RADIUS server
+    * Used for location-based security
+      * Can be used to restrict access based on IP address and geolocation services
+    * [**_Integrated Services Digital Network (ISDN)_**](https://en.wikipedia.org/wiki/ISDN)
+      * a set of communication standards for transmitting voice, video, and data over digital lines, primarily through the public switched telephone network. It was designed to replace analog systems and allow for simultaneous transmission of various data types. While it was an early form of high-speed internet, it has largely been superseded by faster technologies like DSL and cable internet. 
+      * dial-up lines that are used for VPNs
+      * used by RADIUS as a callback security for extra layer of protection
+      * users call in after authenticating to the RADIUS, which terminates the connection and initiates the callback on the user predefined phone number
+      * useful if the user's creds have been compromised, this prevents an attacker from user them
+    * Uses UDP by default
+      * runs of Ports 1812 (authN/authZ messages) and 1813 (accounting messages)
+      * only encrypts the password's exchange but not the entire session
+    * Current versions is defined in [RFC 2865](https://datatracker.ietf.org/doc/html/rfc2865)
+    * [RFC 6614](https://datatracker.ietf.org/doc/html/rfc6614) is Experimental and defines how RADIUS can be configured to you TLS over TCP
+      * uses Port 2083
+  * **Terminal Access Controller Access Control System Plus (TACACS+)**
+    * developed by Cisco
+    * became on open standard
+    * provides improvements over RADIUS and earlier version of TACACS
+    * separates authN, authZ, and accounting into separate process
+      * can be hosted on different servers if desired
+    * encrypts all auth info
+    * uses TCP port 49
+    * provides higher level of reliability for packet transmissions
+
+The following image illustrates the similar workflows for RADIUS and TACACS+
+![radius/tacacs+](./images/tacacs+radius.png)

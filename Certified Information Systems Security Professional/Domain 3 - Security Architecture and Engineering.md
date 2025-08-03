@@ -378,7 +378,6 @@ So in today's cybersecurity landscape choose Zero-Trust!
 
 * Segregation of Duties (SoD)
 
-
 ## 3.2 - Understand the fundamental concepts of security models (e.g., Biba, Star Model, Bell-LaPadula)
 
 ### Concepts
@@ -1365,46 +1364,46 @@ The following diagram illustrates the lifecyle of an executed process:
     * Can be a room, floor, or building
   * Shielding of cables (shielded twisted pair (STP)), conduits or replacing copper network cables with Fiber-optic cables
 
-  ### Input and Output Device Security
+### Input and Output Device Security
 
-  * IO Devices Control measures
-    * Monitors
-      * Van Eck radiation / phreaking
-      * Electronic emanations coming from monitors and/or cables
-      * Can be read via TEMPEST program
-      * CRT are more vulnerable than LCDs
-    * Printers
-      * Print outs can be taken if not secured
-      * Printers store data locally
-      * likely network attached and left exposed
-      * Multifunctional printers (MFPs)
-        * includes fax capabilites and are network attached
-        * susceptible to using [AT Commands](https://en.wikipedia.org/wiki/At_(command)) that are supported by fax modems/machines
-    * Keyboards/Mice
-      * Vulnerable to TEMPEST attacks
-      * Keyboards are vulnerable to keyloggers
-      * Signal interception if wireless
-    * POTS Telephone Modems
-      * Uncontrolled entry points into the network
-      * Can establish external connections by themselves and allow outsiders to bypass all the perimeter protection mechanisms to gain access to internal networks
-      * Needs a telephone line
-      * outright ban all telephone lines
-  * Firmware
-    * aka microcode
-    * software stored in a ROM or EPROM chip
-    * changed infrequently (actually, never if its stored on a true ROM chip as opposed to EPROM or flash chip)
-    * essentially mini OSs that provides limited instructions to hardware devices such as printers, modems, mobile devices, IoT equipement, edge / fog computing devices, and industrial control systems
-    * [**Basic Input/Output System (BIOS)**](https://en.wikipedia.org/wiki/BIOS)
-      * Starts up the operating system from the disk (bootstapping)
-      * Stored on an EEPROM chip
-      * identifies and initiates the basic system hardware components such as the hard drive, optical drive, and video card
-      * limited to keyboard control (no mouse)
-      * replaced with UEFI in modern OSs
-    * [**Unified Extensible Firmware Interface (UEFI)**](https://en.wikipedia.org/wiki/UEFI)
-      * CPU-independant architecture
-      * flexible pre-OS environment with networking support, measured boot, boot attestation (secure boot), and backward and forwared compatibility
-      * provides support for all the same functions as BIOS
-      * with improvements and support for larger hard drives, faster boot times, enhanced security features (secure boot) and event the ability to use a mouse when making system changes
+* IO Devices Control measures
+  * Monitors
+    * Van Eck radiation / phreaking
+    * Electronic emanations coming from monitors and/or cables
+    * Can be read via TEMPEST program
+    * CRT are more vulnerable than LCDs
+  * Printers
+    * Print outs can be taken if not secured
+    * Printers store data locally
+    * likely network attached and left exposed
+    * Multifunctional printers (MFPs)
+      * includes fax capabilites and are network attached
+      * susceptible to using [AT Commands](https://en.wikipedia.org/wiki/At_(command)) that are supported by fax modems/machines
+  * Keyboards/Mice
+    * Vulnerable to TEMPEST attacks
+    * Keyboards are vulnerable to keyloggers
+    * Signal interception if wireless
+  * POTS Telephone Modems
+    * Uncontrolled entry points into the network
+    * Can establish external connections by themselves and allow outsiders to bypass all the perimeter protection mechanisms to gain access to internal networks
+    * Needs a telephone line
+    * outright ban all telephone lines
+* Firmware
+  * aka microcode
+  * software stored in a ROM or EPROM chip
+  * changed infrequently (actually, never if its stored on a true ROM chip as opposed to EPROM or flash chip)
+  * essentially mini OSs that provides limited instructions to hardware devices such as printers, modems, mobile devices, IoT equipement, edge / fog computing devices, and industrial control systems
+  * [**Basic Input/Output System (BIOS)**](https://en.wikipedia.org/wiki/BIOS)
+    * Starts up the operating system from the disk (bootstapping)
+    * Stored on an EEPROM chip
+    * identifies and initiates the basic system hardware components such as the hard drive, optical drive, and video card
+    * limited to keyboard control (no mouse)
+    * replaced with UEFI in modern OSs
+  * [**Unified Extensible Firmware Interface (UEFI)**](https://en.wikipedia.org/wiki/UEFI)
+    * CPU-independant architecture
+    * flexible pre-OS environment with networking support, measured boot, boot attestation (secure boot), and backward and forwared compatibility
+    * provides support for all the same functions as BIOS
+    * with improvements and support for larger hard drives, faster boot times, enhanced security features (secure boot) and event the ability to use a mouse when making system changes
     * _Flashing_ is the process of updating the BIOS and UEFI
       * **Phlashing**: Malicious BIOS is flashed onto the ROM
     * _Secure boot (boot attestation)_ UEFI feature
@@ -2118,6 +2117,255 @@ The following digram illustrates the different types of hypervisors:
       * Protections
         * file encryption
         * file monitoring
+
+### Attack Control Attacks
+
+* **Crackers, Hackers, and Attackers**
+  * malicious individuals who are intent on waging an attack against a person or system
+  * attempt to crack teh security of a system to exploit it
+  * motivated by greed, power, and recognition
+  * actions can result in lost of property (data, IP, etc), disabled systems, compromised security, negative public perception/brand, loss of market share, reduced profitability, and lost productivity
+  * simply put they are cybercriminals
+  * **_hacker_**
+    * term used in the 1970s/80s for technology enthusiasts with no malicious intent
+    * today they are more widespread use as the term for _crackers_
+* **Risk Elements**
+  * **_Risk_**
+    * possibility / liklihood that a threat will exploit a vulnerability resulting in a loss or harm to an asset
+  * **_Threat_**
+    * potential occurrence that can result in an undesirable outcome
+    * could include potential attacks by criminals or other attackers
+    * natural occurrences such as floods, earthquakes, fires, etc
+  * **_Vulnerability_**
+    * type of weaknesss
+    * weakness can be due to a flaw or limitation in hardware or software
+    * can also be the absence of a security control, such as no antivirus software, etc
+  * **_Risk Management_**
+    * process to attemp to reduce or eliminate vulnerabilities or reduce the impact of potential threats by implmenting controls/countermeasures
+    * not possible, or financially responsible, to elinimate all risks
+      * therefore an organization focuses on reducing the risks that can cause it the most harm
+* **Comon Access Control Attacks**
+  * **_Privilege Escalation_**
+    * a type of cyberattack where an attacker gains unauthorized access to higher levels of privileges within a system or network, often starting with low-level access.
+    * allows the malicious actor to perform actions they shouldn't be able to, like accessing sensitive data, modifying system configurations, or deploying malware. Essentially, it's like a hacker gaining entry with a low-level guest pass and then using that access to steal the master key.
+    * Types:
+      * **Vertical privilege escalation**:
+        * an attacker gains access to a higher level of privilege, such as moving from a regular user to an administrator.
+        * use of the Mimikatz tool to gain admin privileges
+      * **Horizontal (Lateral) privilege escalation**:
+        * This involves gaining access to other user accounts or systms at the same privilege level.
+        * can access to systems and compromise account via vertical
+        * aka _Lateral Movement_
+    * **_Linux Superuser_**
+      * Command `su` or `sudo`
+        * `su` --> _substitute user_ (switch default user to the root user)
+        * `sudo` --> _superuser do_
+          * run commands as admin
+          * users can either be added the `sudo group` in order to run the command (use their own credentials) or they need to know the admin account creds to use the `sudo` command
+        * Both commands will log their activity for audit purposes
+          * `sudo` --> logs are recorded for the user's account
+          * `su` --> logs are recorded under the root/admin password
+    * Techniques used:
+      * Malcious attachment in an email to gain initial access (same privileges as the user), can use vertical escalation to gain admin access
+      * Powershell
+        * typically applications run as LocalSystem account with full admin privileges
+        * attacker can use this to exploit items such as running malware and scripts as admin
+        * do network reconnaissance 
+          * `Get-ADComputer` cdmlet will retreive and list all computers in an AD domain
+          * can use this to perform RC commands
+        * by default the command execution is set to `Restricted`, menaing you can't run PS scripts
+        * allow you can use the following type of command to circumvent this restrictiion
+          `powershell.exe "& {Get-Content .\hello.ps1 | Invoke-Expression}"`
+        * best to use a service account with appropriate permissions instead of `LocalSystem`
+  * **_Password Attack_**
+    * passwords are the weakest form of authentication
+    * Common Attacks
+      * **_Dictionary Attack_**
+        * attempt to discover the password using every possible password in a defined database or list of common or expected passwords
+        * often scan for one-upped-constructed passowrds
+          * previously used passwords but with a different character (i.e password1 (old), password2(new))
+        * used to generate _rainbow tables_
+        * can often include foreign words
+      * **_Brute-Force Attack_**
+        * attempts to discover the passwords for user accounts by systematically attempting all possible combinations of letters, numbers, and symbols
+        * DDoS of passwords
+        * typically automated
+        * _**hybrid attack**_
+          * attack that uses a dictionary attempt firts then performs a type of brute-force with one-upped-constructed passwords
+        * longer/more complex passwords take much more time to brute-force (the more secure it is)
+        * passwords should not be stored in plaintext, but hashed and only the hash is stored for comparison during authentication
+        * _**comparative analysis**_ or _**reverse-hash matchin**_
+          * a password is guessed and a hash is calculated, the system campares the hash against on offline database (stolen containg ths hashes)
+          * repeat the guessing and hashing until the hashes match
+        * two passwords create the same hashing results in a collision
+          * MD5 has this problem and allows attackers to exploit it
+        * GPUs can enhence the time it takes for brute-force attacks to be successful
+      * **_Spraying Attack_**
+        * special type of brute-force attack
+        * attackers uses "spraying" in an attempt to bypass account lockdown/lockout security controls
+        * usually a system will lock an account out if the same user enters the wrong password too many times within a short period (i.e.; 30 mins)
+        * program uses the same guess password but loopeds through a list of different accounts and different systems
+        * once completing the list, it picks another password and starts process again
+        * list is long and typically takes up to 30 mins to perform
+      * **_Credential Stuffing Attack_**
+        * sometimes confused with password spraying but is different
+        * this checks a single username/password on each site
+        * i.e people tend to use the same password across mutliple sites
+      * **_Birthday Attack_**
+        * focuses on finding collisions
+        * based on the statistical phenomenon known as the _birthday paradox_
+          * its states thatif there 23 people in a room, there is a 50 % chancethat any two of them will have the same birthday (not the same year but same month/day combo March,30)
+          * with Feb 29 in a lear year, there is only 366 possible days in a year
+          * with 367 people in a room you have 100% chance of having at least two people with the same birthd
+          * similar to finding any two passwords with the same hash
+        * can use hashing algorithms with enough bits to make collisions computationally infeasible and use salts/pepper
+          * SHA using 512 bits is more resitent than MD5 (128 bits)
+      * **_Rainbow Table Attack_**
+        * passord and hash guess using a large database/list or precomputed hashes
+        * Attackers create these by:
+          I. Guessing a password
+          II. Hashing the guessed password
+          III. Putting both the guessed password and hash into a "rainbow table"
+        * password checking tools can them compare every hash in the table against the hash in a stolen password database file
+        * significantly reduces the password cracking time
+        * rainbow tables are free to download and some are large
+          * MD5-based ones using all four character types for an eight-character password is about 460 gigabytes
+        * instead of downloading these, many attackers create their own using tools such as [`rtgen`](http://project-rainbowcrack.com/generate.htm)(available on Kali Linux) and scripts freely availabel online
+        * using salt passwords reduces the effectiveness of rainbow tables
+          * salts are random numbers stored in the same databases holding the hashed passwords
+          * crypto algos that use salts
+            * Argon2, bcrypt, and Password-Based Key Deriviation Function 2 (PDKDF2)
+          * with enough time using brute-force salted passwords can be cracked
+        * pepper is a large constant number stored elsehere
+      * [**Mimikatz**](https://en.wikipedia.org/wiki/Mimikatz)
+        * released in 2011 by Benjamin Delpy to perform some experiments in Windows security while learning C that extracts passwords stored in memory and software that performs that exploit.
+        * has become a popular tool used by attackers and penetration testers
+        * included in Metasploit
+        * still maintained on [Github](https://github.com/gentilkiwi/mimikatz)
+        * Other [details](https://www.varonis.com/blog/what-is-mimikatz)
+        * Capabilities
+          * **_Read Passwords from Memory_**
+            * plaintext passwords and pins stored in LASS can be extracted and read
+            * command `sekurlsa::logonpasswords` will display the user ID and password for users currently logged on to the system
+            * possible to obtain the password hashes
+          * **_Extract Kerberos Tickets_**
+            * includes a module that can access the Kerberos API to perform a _Kerberos Exploitation Attack_
+          * **_Extract Certificates and Private Keys_**
+            * includes a _Windows CryptoAPI_ module which can extract certificate and associated private keys on a system
+          * **_Read LM and NTLM Password Hashes in Memory_**
+            * possible to prevent Windows from storing LM hashes in the local Security Account Manager db, some still create the hash and store it in memory
+          * **_Read Cleartext Passwords in Local Security Authority Subsystm (LASS)_**
+            * LASS does not normally store passwords in cleartext, but malware can modify the registry to enable digest auth
+            * once enabled, mimikatz can read the passwords
+          * **_List Running Processes_**
+            * allows for identifying process that they can use to pivot their attack against other targets
+            * Mimkatz can run as a fileless malware on remote systems
+              * a Powershell script, such as `Invoke-Mimikatz`, that load Mimikatz in memory without saving the files to disk, it can then perform any of its functions on the remote computer
+        * fixes to block it arent always implemented
+      * [**Pass-the-Hash Attack (PtH)**](https://en.wikipedia.org/wiki/Pass_the_hash)
+        * allows an attacker to send a captured hash of a password to an auth server
+        * attacker doesnt need to know the password
+        * Mimikatz or [DCSync](https://www.extrahop.com/resources/attacks/dcsync) can be used to capture the password hash, then use them to simulate the login process
+        * enter the user ID and the hash into the tool and then send them to an auth server
+        * PtH attackers a primarily associated with Windows systems using NT LAN Manager (NTLM) or Kerberos, but other systems can also be vulnerable
+        * Once the attacker gains access to a single system they can then launch a PtH, the follow steps are outline:
+          * (1) Use a tool such as Mimikatz to capture user hashes, which are stored in the `lsass.exe` process running in memory.
+            * Mimikatz command `"privilege::debug" "log passthehash.log" "sekurlsa::logonpasswords"`
+            * if someone with admin privileges recently logged on, it will capture the admin user ID and hash
+          * (2) Attacker then uses the captured creds to authenticate, can log on as the user on the local system or remotely to an auth server (Domain Controller in AD domain)
+          * (3) Once logged in, atacker can use the account to move laterally throughout the network
+            * example running the `PsExec` tool can execute commands on remote systems, or command prompt to begin reconnaissance or repeat the previous steps on the remote system
+            * PsExec is part of Sysinternals process utilities ([PsTools](https://learn.microsoft.com/en-us/sysinternals))
+              * suite of command-line utilities used to connect to remote computers
+              * admins use it to access the command prompt on remote systems
+              * they can run any command prompt commands, list processes, reboot computers, dump event logs, and more
+          * Mitigation
+            * moving target
+            * MS has been providing updates to limit PtH attacks
+            * best protection is to prevent the infection of the first computer
+            * if someone logs in as admin its game over
+        * [**Kerberos Exploitation Attack**](https://www.netwrix.com/cracking_kerberos_tgs_tickets_using_kerberoasting.html)
+          * done by using tools such as Mimkatz or [Rubeus](https://www.kali.org/tools/rubeus/) and [Impacket](https://www.kali.org/tools/impacket/)
+            * Rubeus is an open source tool written in C# and used on Windows systems
+            * Impacket is an open source collection of modules written in python and used on Linux systems
+          * Exploitation includes the following:
+            * **_Overpass the Hash_**
+              * alternative to PtH attack
+              * used when the NTLM is disabled on a network, but system still create an NTLM hash and store it in memory
+              * attack can request a ticket-granting (TGT) with the user's hash and us this TGT to access network resources 
+              * aka _pass the key_
+            * **_Pass The Ticket_**
+              * attackers attempt to harvest tickets held in the `lsass.exe` process
+              * once harvested attackers inject the ticket(s) to impersonate a user
+            * **_Silver Ticket_**
+              * used to capture NTLM hash of a service account to create a ticket-granting service (TGS) ticket
+              * service accounts use TGS instead of user-based TGTs
+              * grants attacker all the privileges of the sa
+            * **_Golden Ticket_**
+              * attackers obtains the hash of the Kerberos server account (KRBTGT), they can create tickets at will within AD
+              * gives them the god mode power
+              * the KRBTGT account encrypts and signs all kerberos tickets within a domain with a hash of its password
+              * password never changes, the hash never changes (attacker learns it once)
+              * if an attacker gains access to the domain admin account they can log on to the domain controller and run Mimikatz to extract the hash
+                * allows attacker to forge Kerberos tickets and request ticket-granting service (TGS) tickets for any service
+            * **_Kerberos Brute Force_**
+              * use of the python scrypt `kerbrute.py` ran on Linux systems or Rubeus on Windows
+              * additionally to guesssing passwords, these tools can guess usernames, Kerberos reports whether or not usernames are valid
+            * **_ASREPRoast_**
+              * identifies users that don't have Kerberos preauthentication enabled
+                * kerberos preauthentication is a security feature within kerberos that helps prevent password-guessing attacks
+              * when preauth is disabled, attackers can send an auth request to a KDC, which will reply with a TGT, encrypted with the client's password as the key
+              * attacker can then perform an offline attack to decrypt the ticket and discover the client's password
+            * **_Kerberoasting_**
+              * collects encrypted TGS tickets
+              * Service Accounts (user accounts use by services) use TGS tickets instead of TGT tickets
+              * once harvested attackers can crack them offline
+              * TGS is used by services running in the context of a user account
+              * attack attempts to find users that dont have Kerberos preauthentication
+        * **Sniffer Attack**
+          * _sniffing_ captures packets sent over a network for analysis
+          * aka packet analyzer or protocol analyzer
+            * software application that captures traffic travelling over a network
+            * used by admins to analyze and troubleshoot network problems
+            * also used by attackers for _sniffing_
+          * type of attack aka _snooping attack_ or _eavesdropping attack_
+          * occurs when a sniffer is used to crap/capture info transmitted over a network (clear and plaintext, including passwords)
+          * [Wireshark](https://www.wireshark.org/) is a popular free protocol analyzer
+          ![Wireshark](./images/wireshark-capture.jpg)
+          * Sniffing Prevention
+            * Encrypt all sensitive data sent over the network
+            * Avoid the use of insecure protocols such as HTTP, FTP, and Telnet and use secure alternatives HTTPS, SFTP, and SSH
+            * Use onetime passwords when encryption is not possible or feasible
+              * OTP prevent the success of sniffing attacks (used once)
+            * Protect network devices with physical security (access to routers, switches, etc) from install network sniffers
+            * Monitor the network for signatures from sniffers
+              * IDS systems can monitor the network for sniffers and will raise an alert when detecting sniffers
+        * **Spoofing Attacks**
+          * aka masquerading/impersonation
+          * spoofed/fake login screen (credential harvesting)
+          * IP spoofing (replaces valide IPs with false ones to hide identity of attacker or impersonate a trusted system)
+          * **_Email Spoofing_**
+            * spammers use fake email addresses
+            * used in Phishing attacks
+          * **_Phone Number Spoofing_**
+            * fake CallerID
+  * **Core Protection Methods**
+    * **_Control physical access_**
+    * **_Control electronic access to files_**
+    * **_Hash and salt/pepper passwords_**
+    * **_Use password masking_**
+      * applciations dont display passwords use special characters such as `***`
+    * **_Deploy multifactor auth (MFA)_**
+    * **_Use account lockout controls_**
+    * **_Use last logon notification_**
+      * date time of last login
+      * user can validate if it was them or something suspect
+    * **_Educate users about security_**
+      * Security awareness training
+
+
+
+      
 
 
 ## 3.6 - Select and determine cryptographic solutions
@@ -3654,7 +3902,6 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
   * stored seperately on a different medium like an HSM or other secure storage
   * adds an addition layer of security with password salting
   * NIST refers pepper as a "secret key" and recommends at least 112 bits length
-
 
 ![Brute Force Attacks](./images/brute-foce.png)
 

@@ -1,0 +1,16 @@
+1. Describe the primary differences between discretionary and nondiscretionary access control methods
+
+  * discretionary (data owners decide whom they want to grant access to)
+  * nondiscretionary (access is centrally managed by admins)
+  
+2. List at least three standards used to provide SSO capabilities on the internet
+
+  * SAML, OAUTH, OIDC 
+
+3. Identify the Powershell cmdlet that allows you to run Powershell commands indirectly
+
+  * PsExec
+
+4. Name a tool that is commonly used in the pass the hash and kerberos exploitation attacks for privilege escalation
+
+  * Mimikatz
