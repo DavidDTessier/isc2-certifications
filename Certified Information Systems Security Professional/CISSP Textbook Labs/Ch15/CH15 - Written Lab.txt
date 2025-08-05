@@ -1,0 +1,41 @@
+1. Describe the difference between TCP SYN scanning and TCP connect scanning
+  * TCP SYN scanning
+    * sends a single packet to each scanned port with the SYN flag
+    * indicates a request to open a new connection
+    * if scanner receives a response that has the SYN and ACK flags set, this indicates that the system is moving to the second phase in the TCP handshake and that the port is open
+    * aka "half-open" or "stealth" scanning
+  * TCP Connect scanning
+    * opens a full connection
+    * used when the user running the scan does not the necessary permissions to run a half-open scan
+    * most other scans require the ability to send raw packets, and a user may be restricted by the OS from sending handcrafted packets
+
+2. What are the five port status values returned by the Nmap network discovery scanning tool?
+
+  * **Open**
+    * port is open on the remote system and there is an application that is actively accepting connections on the port
+  * **Closed**
+    * port is accessible on the remote system, meaning that the firewall is allowing access, but there is no application accepting connections on that port
+  * **Filtered**
+    * nmap is unable to determine whether a port is open or closed because a fw is interfering with the connection attempt
+  * **Unfiltered**
+    * port is accessible, but nmap cannot determine whether it is open or closed
+    * port is exposed to the packet probes sent by nmap, but no conclusive evidence can determine the port's status
+  * **Open | Filtered** 
+    * cannot establish whether the port is open or filtered
+    * occurs when a port does not respond to Nmap's probes, which could be due to a packet filtering preventing nmap's requests from reaching the port, or the port is open but designed not to respond to the probes used by Nmap
+
+3. What is the difference between static and dynamic code scanning/testing techniques?
+
+   * static code testing
+     * test code (not the running app)
+     * may test a compiled binary
+   * dynamic testing
+     * tests the application in the wild running
+     * used for black box testing
+
+4. What is the difference between mutation fuzzing and generational fuzzing?
+
+   * mutation fuzzing 
+      * uses previous testing inputs but modified 
+   * generational fuzzing 
+     * data models that create new inputs based on the understanding of the data in the program
