@@ -124,7 +124,7 @@
         * Using the risk model
     * Trike has a version 1 and a version 2.
 
-* Least privilege
+
 
 ### Defense in Depth
 
@@ -146,6 +146,51 @@
 * Engineers (Programmers, Developers, etc) should strive to build security into every application or system they develop
   * with a greater level of security provided to critical applications and those that process sensitive information
 * much easier to build security into a system during the development than adding security to an existing system
+
+#### Least privilege and Need-To-Know
+
+* two standard principles to following in IT security
+* help protect valuable assets by limiting access
+* related and sometimes interchangeable but have differences
+* **_Principle of Least Privilege_**
+  * subjects are granted only the privilegeds necessary to perform their assigned work tasks
+  * includes both permissions and rights
+  * for data this means controlling the ability to read, write, create, alter, and delete
+  * ensures protection of confidentiality and data integrity
+  * works on the assumption of well defined job descriptions for users
+  * this is typically violated when all users are added to the local Admin group or granting root access to a computer
+    * problems if the use logs in to a system as root/admin and accidentally installs malware on to the system
+  * also used in context of applications and services
+    * service accounts should have limited scope and permissions for what they need to do
+* **_Need-To-Know Principle_**
+  * imposes the requirement to grant users access to only the data or assets/resources they need to perform assigned work tasks
+  * primary purporse is to keep secret information secret and limit who knows the secret
+  * commonly associated with security clearences, but the clearence doesnt automatically grant them access to the secret data
+    * admins grant them access to only the data on a "need-to-known" basis for their job
+  * primarily for military and government agencies, but can be utilized for civilian organizations
+  * helps protected against unauthorized access that could result in loss of confidentiality
+
+#### Segregation of Duties (SoD) and Responsibilities
+
+* aka "separation of duties"
+* ensures that no single person has total control over a critical function and/or system
+* creates "checks-and-balances" systems where two or more users verify each other's actions and must work in together to accomplish necessary work tasks
+* more difficult for engaging in malicious, fraudualant, or unauthorized activities
+* may lead to the risk of collusions between two or more people to compromise the organization
+  * fraud detection is increase and acts as an effective deterrent
+* typically tasks are broken up to prevent fraud
+  * example:
+    * one person approves payment for a valid invoice, but someone makes the payment
+    * dividing admin capabilities/functions among multiple trusted individuals
+* **Two-Person Control**
+  * aka "two-man rule"
+  * requires the approval of two individuals for critical tasks
+  * example:
+    * two keys are required to open a safe, the keys are split between two people
+  * _**Split knowledge**_ c
+    * concept which combines both the concept of segragation of duties and two-man rule in to one
+    * used in key escrow
+    * infomration of privilege to perform a task is split between two or more users, ensuring no single person has sufficent privileges to compromise the security of the environment
 
 #### Objects and Subjects
 
@@ -376,7 +421,8 @@ So in today's cybersecurity landscape choose Zero-Trust!
   * Uses
 
 
-* Segregation of Duties (SoD)
+
+
 
 ## 3.2 - Understand the fundamental concepts of security models (e.g., Biba, Star Model, Bell-LaPadula)
 

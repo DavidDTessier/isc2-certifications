@@ -1,0 +1,27 @@
+1. Define the difference between "need-to-know" and the principle of least privilege
+
+   * need-to-know
+     * only have access to the data/systems you need to perform your job 
+   * least privilege
+     * only begin granted the rights and permissions to perform you assigned task/job 
+    
+2. Describe the purpose of monitoring the assignment and usage of special privileges
+  * PAM 
+    * to prevent unauthorized acces 
+    * auditing of special privilege
+
+3. List the three primary cloud-based service models and identify the level of maintenance provided by the cloud service provider in each of the models
+  * SaaS 
+    * CSP managed everything 
+    * customer is responsbilty for the security and data 
+  * PaaS
+    * customer is responsible for the application, security , data
+    * CSP is responsible to the maintenance / security of the infrastructure that runs the PaaS 
+  * IaaS
+    * customer manages all aspects
+    * csp manages the host infrastructure that runs the IaaS infra
+
+4. Explain how change management processes help prevent outages
+  * changes are audited, review for risk and either approved/rejected
+  * changes require a rollback plan to get a system back to a previous state
+  * ensures no unauthorized changes are implemented

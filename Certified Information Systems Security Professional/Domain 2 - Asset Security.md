@@ -101,9 +101,41 @@ The following diagram shows the relationship between government and non-governme
 
 ## 2.3 - Provision information and assets securely
 
-* Information and asset ownership
-* Asset inventory (e.g., tangible, intangible)
-* Asset management
+* **Information and Asset Ownership**
+  * data owner ultimately has the responsibility in the organization for the data (senior manager, CEO, president, or department head)
+  * identifying and classifying assets is key
+  * identifying assets' owners (person responsible for the protection of the asset)
+  * data owner typically delegate data protection tasks to others in the organization
+    * example: data custodian "security" role typically perform daily tasks such as implementing access controls, performing backups, and managing data storage
+* **Asset Management**
+  * refers to managing both "tangible and intangible" assets
+  * starts with an inventory list of assets, tracking the asset(s), and taking additional steps to protect them throughout their lifetime
+  * ensures the prevention of losses
+  * **_Tangible Assets_**
+    * include hardware and software assets owned by the organization
+    * hardware systems typically have a bar-code or RFID tag that can be scanned to record and track the asset
+      * RFID is more expensive, however it reduces inventory tracking time
+      * equipment should be properly sanitized before disposing
+    * software assets are operating systems and applications
+      * Commercial-off-the-shelf (COTS) or home build
+      * COTS typically requires connecting to a licensing server (on activation or periodically)
+      * if a key is stolen it will invalid the organization Licensing Agreement for the COTS
+      * licensing should be monitored and key should stored securely
+        * org pays for a licence key for 5 products installations but only installs and activates 1 immediately, if the key is stolen and installed of 4 other systems those will be activated with success
+  * **_Intangible Assets_**
+    * include patents, copyrights, company reputation, and other assets representing potential revenue
+    * senior management is typically the "owner" of these assets
+      * attempt to determine the value of them by estimating the benefits the asset will bring to the organization
+        * example:
+          * company sells a product based on a patent, revenue from these sales can be used to assign a value to the patent
+          * Utility and plant patents in the US are valid for 20 yrs and design patents are valid for 15 yrs (timeframe used for the calculation)
+          * US patents require payment of maintenance fees periodically to maintain the patent, failing to pay them will result in a patent loss (tracking is key)
+    * organizations report the value of intangible assets on their balance sheets using [_"Generally Acceptable Accounting Principles (GAAP)"_](https://en.wikipedia.org/wiki/Generally_Accepted_Accounting_Principles_(United_States))
+      * ensures an annual review of intangible assets
+  * **_Configuration Management System (CSM)_**
+    * system used to assist with hardware asset management
+    * automated
+    * connects to hardware systems in order to check configuration settings and verifies the system still on the network and active
 
 ## 2.4 - Manage data lifecycle
 
