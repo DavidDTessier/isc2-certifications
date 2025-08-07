@@ -13,7 +13,7 @@
 3. List the three primary cloud-based service models and identify the level of maintenance provided by the cloud service provider in each of the models
   * SaaS 
     * CSP managed everything 
-    * customer is responsbilty for the security and data 
+    * customer is responsible for the security and data 
   * PaaS
     * customer is responsible for the application, security , data
     * CSP is responsible to the maintenance / security of the infrastructure that runs the PaaS 
