@@ -416,9 +416,9 @@ So in today's cybersecurity landscape choose Zero-Trust!
 * [**Trusted Automated eXchange of Intelligence Information (TAXII)**](https://oasis-open.github.io/cti-documentation/taxii/intro.html)
   * defines the protocol and services for automating sharing of structured threat intelligence
 * [**Automated indicator sharing (AIS)**](https://www.cisa.gov/topics/cyber-threats-and-advisories/information-sharing/automated-indicator-sharing-ais) 
-  * initiative setup by the US Department of Homeland Security now manaaged by the National Cybersecurity and Communications Integration Center (NCCIC)
-  * used to faciliate the open and free exchange of IoCs and other cyberthreat information between the US federal governement and the private sector in an automated and timely manner (machine speed)
-  * Uses
+  * initiative setup by the US Department of Homeland Security now managed by the National Cybersecurity and Communications Integration Center (NCCIC)
+  * used to facilitates the open and free exchange of IoCs and other cyberthreat information between the US federal governement and the private sector in an automated and timely manner (machine speed)
+  * Uses STIX and TAXII to share intel
 
 
 

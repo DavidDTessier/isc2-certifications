@@ -1,0 +1,22 @@
+1. Define an incident
+
+   * defined as any event that has a negative effect on the confidentiality, integrity, and/or availability of an organization's asset(s)
+   
+2. List the different phases of incident management identified in the CISSP Security Operatinos domain
+
+    * **Detection**
+    * **Response**
+    * **Mitigation**
+    * **Reporting**
+    * **Recovery**
+    * **Remediation**
+    * **Lessons learned**
+
+3. Describe the primary types of intrusion detection systems
+
+* host-based
+* network-based
+
+4. Discuss the benefits of a SIEM system 
+
+5. Describe the purpose of SOAR technologies
