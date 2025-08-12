@@ -865,7 +865,7 @@ The following diagram illustrates the differences between firewalls, IDS, and IP
     * specialized firewall that protects a web server
     * inspects all incoming traffic and can block malicious content (XSS, CSRF, SQL Injections, etc)
   * _**Next-Generation Firewall (NGFW)**_
-    * functions as a _unified threat management (UTM)_ devices and combines several capbilities, including
+    * functions as a _unified threat management (UTM)_ devices and combines several capabilities, including
       * traditional fw items like packet filtering and stateful inspection
       * can also perform deep packet inspection and analysis to block detected malware/malicious code
       * IDS/IPS capabilities
@@ -876,7 +876,7 @@ The following diagram illustrates the differences between firewalls, IDS, and IP
   * docker/podman
 
 * **Third-party provided security services**
-  * outsourced services (MSSP), auditing, pen testing, etc
+  * outsourced services (MSSP), auditing, pen testing, etc.
   * may be required by laws and regulations
   * may also be SaaS based UTM, firewalls, etc
 
@@ -893,7 +893,6 @@ The following diagram illustrates the differences between firewalls, IDS, and IP
     * leverages AI and ML techniques to detect abnormal activities
     * ML system would use the defined baselines to detect abnormalities while the AI system simply monitor the traffic and creates the baselines as it monitors
     * both AI and ML requires feedback to improve accuracy (i.e reporting false-positives, false-negatives)
-
 
 ## 7.8 - Implement and support patch and vulnerability management
 
@@ -997,33 +996,543 @@ The following diagram illustrates the differences between firewalls, IDS, and IP
       * after implementation, a _post-implementation review (PIR)_ is conducted to confirm that the change was successful and to identify any lessons learned for future improvements.
 
 
-
-
 ## 7.10 - Implement recovery strategies
 
-* Backup storage strategies (e.g., cloud storage, onsite, offsite)
-* Recovery site strategies (e.g., cold vs. hot, resource capacity agreements)
-* Multiple processing sites
-* System resilience, high availability (HA), Quality of Service (QoS), and fault tolerance
+* **System Resilience and Fault Tolerence**
+  * primary goal is to eliminate _single point of failure (SPOF)_ in critical business systems
+  * **_single point of failure (SPOF)_**
+    * any component that can cause an entire system to fail
+    * single disk
+    * website is reliant on a single DB
+  * **_System Resilience_**
+    * ability of a system to maintain an acceptable level of service during an adverse event or return to a previous state after an adverse event
+      * i.e hardware fault managed by a fault-tolerant components, attack managed by a IDPS, fail-over clusters
+  * **_Fault Tolerance_**
+    * ability of a system to suffer a fault but continue to operate
+    * achieved by adding additional redundant components
+      * additional disks, servers, etc
+      * RAID arrays are a form of fault-tolerance for disks
+* [**High Availability (HA)**](https://en.wikipedia.org/wiki/High_availability)
+  * use of redundant technology components to allow a system to quickly recover from a failure after experiencing a brief disruption
+  * often achieved through the use of load balancing and failover servers
+  * **_Availability Effectiveness Measurements_**
+  * `99.9%`
+    * "three-nines"
+    * system may only experience `0.1%` of downtime during whatever period is measure
+    * applied to a 30-day month, 99.9% availability would require less than 44 minutes of downtime
+  * `99.999%`
+    * "five-nines"
+    * applied to the same 30-day window, system would only be permitted 26 seconds of downtime per month
+
+![Nines Availability](./images/high-availability-chart.png)
+  
+* [**Redundant Array of Inexpensive Disks (RAID)**](https://www.prepressure.com/library/technology/raid)
+  * common solution to make storage systems resilient and fault-tolerant
+  * Technology:
+    * **_RAID 0 - Stripe set/Striped Volume_**
+      * ![RAID 0](../Certified%20In%20Cybersecurity%20(CC)/images/RAID-0.png)
+        * Splits data evenly across two or more disks without parity info, redundancy, or fault tolerance
+        * Failure of one drive will fail the entire array 
+        * Ideal use for non-critical storage that has to be read/written at high speeds, such as image retouching and/or video editing
+    * **_RAID 1 - Mirroring_**
+      * ![RAID 1](../Certified%20In%20Cybersecurity%20(CC)/images/raid-level-1-mirroring.svg)
+      * Server contains two disks with identical contents when the system writes data to disk
+      * Automatically synchronizes the disks on every change
+      * If primary fails the system automatically switch over to the backup
+      * Ideal for mission critical storage, for instance accounting systems. 
+      * Also suitable for small servers in which only two drives will be used
+    * **_RAID 2_**
+      * ![RAID 2](../Certified%20In%20Cybersecurity%20(CC)/images/raid-2-level.png)
+      * Rarely used in practice
+      * Stripes data at the bit (rather than block) level and uses a [Hammering Code](https://en.wikipedia.org/wiki/Hamming_code) for error correction
+      * Disks are synchronized by the control to spin at the same angular orientation to reach index at the same time
+      * Cannot service multiple requests simultaneously
+    * **_RAID 3_**
+      * ![RAID 3](../Certified%20In%20Cybersecurity%20(CC)/images/raid-3-raid.webp)
+      * Rarely used
+      * Byte-level striping with a dedicated parity disk
+      * Like RAID2 cannot service multiple requests simultaneously
+      * I/O operations requires activty on every disck and usually requries synchronized spindles
+    * **_RAID 4_**
+      * ![RAID 4](../Certified%20In%20Cybersecurity%20(CC)/images/raid-4-level.png)
+      * block-level striping with a dedicated parity disk
+      * Provides good performance of random reads, random writes is low due to the need to write all parity data to a single disk
+      * In the diagram a read request for block A1 would be served by disk 0, a simultaneous read for B1 would wait, but a read for B2 would be serviced concurrently by disk 1
+    * **_RAID 5 - Disk Striping with Parity_**
+      * ![RAID 5](../Certified%20In%20Cybersecurity%20(CC)/images/raid-5.avif)
+      * Replaces RAID 3 and RAID 4
+      * Requires **at least 3** disk drives and can work with up to **16**
+      * Uses three or more disks to store data and parity information spread across the disks
+      * If onedisk fails the system can regenerate that disk content using the parity information
+    * **_RAID 6_**
+      * ![RAID 6](../Certified%20In%20Cybersecurity%20(CC)/images/raid6.webp)
+      * Extension of RAID 5 by adding another parity block, thus uses block-level striping with two parity blocks distributed across all member disks
+    * **_RAID 10 (Combines RAID 1 and RAID 0)_**
+      * ![RAID 10](../Certified%20In%20Cybersecurity%20(CC)/images/RAID_10.png)
+      * aka RAID 1 + 0 or _stripe of mirrors_
+      * configured as two or more (RAID-1) with each mirror configured in a striped (RAID-0) configuration
+      * uses atleast four disks but can support more as long as each one drive in each mirror continues to function
+      * example 3 mirrored sets (M1, M2, M3) total of 6 disks
+        * if one drive in M1, one in M2, and one in M3 failed everything would continue
+        * if two drives in any of the mirrors (both in M1) failed the entire array would fail
+  * RAID is a fault-tolerant strategy that is designed to protect against a single disk failure but IS NOT a backup strategy
+  * Comes in both software and hardware-based solutions
+  * _Software-based_
+    * requires the OS to manage the disks in the array and can reduce overall system performance
+    * inexpensive
+  * _Hardware-based_
+    * more efficient and reliable
+    * more expensive but the benefits outweigh the costs when used to increase availability of a critical component
+    * typically includes spare drives that can be logically added ad-hoc
+    * supports "hot-swapping" allow technicians to replace failed disks without powering down systems
+    * "cold-swapping" requires the system to be powered down to replace the faulty drive
+
+* **Load Balancing and Fail Over**
+  * form of fault-tolerance and ha
+  * _**fail over cluster**_
+    * includes two or more servers
+    * if one fails it "fails over" to the other to take the balance of traffic etc
+  * failover is achieved through the use of _load balancers_
+  * **_Load Balancer_**
+    * can be hardware or software based
+    * balances client load across multiple servers (~3)
+    * make it easier to add / remove servers
+    * provides health checks on each connected system
+  ![Load Balancing](./images/lb.png)
+
+* **Trusted Recovery**
+  * refers to the ability of a system to return to a secure and operational state after a failure or interruption, ensuring data integrity and preventing security compromises
+  * provides security assurances and ensures recovery without compromise after a system failure.
+  * Systems can be designed so they fail in either a _fail-secure_ or _fail-open_ stated
+    * **_Fail-Secure_**
+      * default to a secure state in the event of a failure
+      * blocks all access in order to allow the system to _fail securely_
+    * **_Fail-Open_**
+      * grants all access
+  * choice is dependent on whether security or availability is more important after a failure see [Domain 3 - Security Architecture](./Domain%203%20-%20Security%20Architecture%20and%20Engineering.md)
+  * Consists of two elements
+    * **Failure Preparation**
+      * includes system resilience, fault-tolerant solutions, and reliable backup solutions
+    * **Process of System Recovery**
+      * system should be forced to reboot into a single-user, nonprivileged state
+        * normal user can log on and does not grant unauthorized access to users
+      * includes restoration of all affected files/services actively in use on the system at the time of the failure
+      * missing or damaged files are restored, any changes to classification labels are corrected
+      * all security settings are configured and verified
+  * [Common Criteria - Trusted Recovery](https://www.commoncriteriaportal.org/files/ccfiles/CC2022PART2R1.pdf) - defines four types
+    * **Manual Recovery**
+      * does not fail in a secure state
+      * admin is required to manually perform the actions necessary to implement a secured or trusted recovery after a failure/system crash
+    * **Automated Recovery**
+      * system is able to perform trusted recovery activities to restore itself against at least one type of failure
+      * Hardware RAID provides automated recovery against the failure of a hard drive but not against the failure of an entire server
+      * some types will require manual recovery
+    * **Automated Recovery without Undue Loss**
+      * similar to automated
+      * includes mechanisms to ensure that specific objects are protected to prevent their loss (steps to restore data or other objects)
+      * include additional protection mechanisms to restore corrupted files, rebuild data from transaction logs, and verify integrity of key system and security components
+    * **Function Recovery**
+      * systems automatically recover specific functions or rolls back to a specific state
+
+* **Quality of Service (QoS)**
+  * controls that protect the availability of data networks under load
+  * different factors contribute to the quality of end-user experience
+  * Factors
+    * **_Bandwidth_**
+      * network capacity available to carry communication
+    * **_Latency_**
+      * time it takes a packet to travel from source to destination
+    * **_Jitter_**
+      * variation in latency between different packets
+    * **_Packet Loss_**
+      * some packets may be lost between source/destination requiring retransmission
+    * **_Interference_**
+      * Electrical noise, faulty equipement, etc that may corrupt the contents of packets
+
+* **Recovery Strategies**
+  * DRP should be designed so that the first employees on the scene can immediately begin the recovery effort
+  * **Alternate Processing Sites**
+    * Alternative processing facilities that are specifically desgined for shifting computing functions from the primary DC when it goes down
+    * Three main types:
+      * **_Hot Sites_**
+        * Fully operational data centers
+        * Stocked with equipment and data requied to handle operations
+        * Ready to run at a moments notice
+        * Unparalleled level of redundancy
+        * Active / Active
+        * Very expensive to keep up, doubling data center costs
+      * **_Cold Sites_**
+        * Empty data centers
+        * Stocked with core equipment such as network communication and environmental controls
+        * No servers or data to restore operations
+        * Relatively inexpensive
+        * Operational in weeks or months
+        * Requires planning to make operational
+      * **_Warm Sites_**
+        * Stocked with all necessary equipement, data, software to support the company's operations
+        * Not maintained in a parallel fashion
+        * Similar in expense as hot site
+        * Available in hours or days
+        * Active / Passive
+    * Additional Types:
+      * **_Mobile Sites_**
+        * nonmainstream alternative
+        * typically self-contained trailers, planes, or other easily relocatable units
+        * includes all the environmental control systems necessary to maintain a safe computing environment
+        * "fly-away"
+        * usually configured as cold / warm sites depending on the DRP designed
+        * possible to configure as a hot site (more expensive)
+      * **_Cloud Computing_**
+        * leverage on-demand computing resources available from CSPs as either cold/warm, or hot
+        * should leverage a _resource capacity agreement_ with the CSP
+          * ensures that the CSP will provide the resources needed to support disaster recovery operations
+    * **_Mutual Assistance Agreements (MAA)_**
+      * aka _reciprocal agreement_
+      * formal, legally binding contracts between two or more organizations that outline how they will assist each other during emergencies or other critical situations
+      * define the terms and conditions for resource sharing, responsibilities, and communication protocols to ensure effective collaboration and minimize disruptions.
+      * drawbacks:
+        * difficult to enforce
+        * cooperating organizations should be located in relatively close proximity to each other to facilitate transportation of employees between sites
+          * means that both organizations may be vulnerable to the same threats (earquake) and would likely mean the MAA is pointless
+        * confidentiality concerns
+          * different organizations placing data in hands of others
+      * may be useful as an agreement between two internal units/subsidaries of the same org
+  * **Storage Recovery Strategies**
+    * Three Types
+      * **_Offsite_**
+        * remote storage location from primary site
+        * best to be geographically diverse in order to mitigate risk of local disaster
+        * can be managed by org or third party vendor
+      * **_Onsite_**
+        * on primary premises
+      * **_Cloud Storage_**
+        * flexible and scalable solution
+        * remote and geographically diverse data storage
+        * mitigates risks of data loss due to local disaster by enabling data retrieval from any location
+        * redundancy built in
+        * can be cost-effective
+        * regulatory considerations apply when storing data cross jurisdictions (compliance, etc)
+    * Types of Database Backups
+      * **_Electronic Vaulting_**
+        * database backups are moved to a remote site using bulk transfers
+        * a method of offsite data protection that involves transferring backup data electronically to a remote storage location, rather than physically transporting tapes or disks
+        * remote location may be managed by the org or a third-party
+          * if a 3rd party their should an agreement in place
+        * ensuring data is secure and safely stored away from the primary site is key
+      * **_Remote Journaling_**
+        * the process of continuously copying journal or transaction logs from a primary system to a remote, geographically separate location.
+        * technique is crucial for disaster recovery, ensuring data integrity and enabling quick failover with minimal data loss
+      * **_Remote Mirroring_**
+        * most expensive
+        * the process of replicating data between two geographically distant locations to ensure data availability and business continuity in case of a disaster at the primary site
+        * live database is managed at the secondary site
+        * used in Cloud-based database platforms
+    * Backup and Storage Strategies
+      * **Backup Types**
+        * Copy files
+        * Write to tape drives
+          * Unwiedly to manage
+        * Disk-to-Disk backups in different sites
+          * Network attached storage
+          * _Virtual Tape Libraries (VTL)_
+            * use of disk model by using software to make disk storage look like tape media
+          * should maintain a geo-diverse storage strategy
+        * Cloud Backups
+          * AWS, Azure, GCP
+      * **Backup Forms**
+        * **_Full_**
+          * Eveything
+          * Snapshots and images
+        * **_Differential_**
+          * Supplemental to full
+          * Only data that has changed since the last full backup
+          * if use will Full, you need to restore the most recent "Full" and the most recent diff (two restores)
+          * dont take long to restore, but take long to create
+        * **_Incremental_**
+          * Similar to differential but with a twist
+          * Data modified since last full or recent incremental
+          * if use will Full, you need to restore the most recent "Full" and all the incremental ones since
+          * take long to restore, but quicker to create
+        * Scenarios:
+          * Joe performs **full** backups every Sunday evening and **differential** backups every weekday evening. His system fails on Friday morning. What backups does he restore?
+            * Answer:
+                1. Sunday's full backup
+                2. Thursday's differential backup
+          * Joe performs **full** backups every Sunday evening and **incremental** backups every weekday evening. His system fails on Friday morning. What backups does he restore?
+            * Answer:
+                1. Sunday's full backup
+                2. Monday, Tuesday, Wednesday, and Thursday's incremental backup
+      * **Tap Backup and Rotation**
+        * **_Grandfather-Father-Son (GFS) Strategy_**
+          * hierarchical method that uses three backup levels: daily, weekly, and monthly
+          * widely used due to its balance of simplicity and comprehensive data retention
+          * Details
+            * **Son Tapes**:
+              * most frequent backups, typically performed daily (Monday through Thursday)
+              * often use incremental or differential backups, which only save files that have changed since the last backup.
+              * tapes are reused weekly on a rotating basis.
+            * **Father Tapes**:
+              * weekly backups, usually a full backup performed on a Friday.
+              * new "father" tape is used each week for a month, after which they are rotated and reused.
+            * **Grandfather Tapes**:
+              * long-term, monthly backups
+              * full backup is performed on the last day of the month and this tape is kept for a much longer period, sometimes even for years, and is often stored off-site for disaster recovery purposes.
+          * strategy provides a good number of recent backups for quick recovery (sons), a few more comprehensive backups for weekly recovery (fathers), and a robust set of long-term archives (grandfathers).
+        * **_Towers of Hanoi Strategy_**
+          * more complex but highly efficient method that uses a recursive pattern based on the mathematical puzzle of the same name
+          * allows for a long backup history with a minimal number of tapes.
+          * Each tape is assigned a specific, non-overlapping rotation schedule.
+            * Tape 1 is used every other day (days 1, 3, 5, etc.).
+            * Tape 2 is used every fourth day (days 2, 6, 10, etc.).
+            * Tape 3 is used every eighth day (days 4, 12, 20, etc.), and so on.
+          * rotation pattern ensures that the most recent backups are on the tapes used most frequently, while the oldest backups are on the tapes used least frequently
+          * excellent for maximizing the retention period with the fewest tapes, but it can be difficult to manage manually due to its complex schedule.
+        * **_Six Cartridge Weekly Strategy_**
+          * simple and cost-effective backup rotation scheme, often used by small businesses
+          * variation of the Grandfather-Father-Son (GFS) model, but with fewer tapes and a shorter retention period.
+          * How it works:
+            1. **Tape Labeling**: You have six tapes. Five are labeled for the days of the workweek: Monday, Tuesday, Wednesday, and Thursday, with two tapes labeled for Friday (e.g., "Fri 1" and "Fri 2").
+            2. **Daily Backups (Monday - Thursday)**: On these days, you perform an incremental or differential backup. This means you only back up the files that have been created or modified since the last backup. These tapes are reused weekly.
+            3. **Weekly Backups (Friday)**: On Friday, you perform a full backup of your entire system. This full backup is done on a designated "Friday" tape.
+            4. **Rotation**: The Friday tapes are rotated weekly. The first Friday of the month, you use "Fri 1." The second Friday, you use "Fri 2." The third Friday, you use "Fri 1" again, and so on.
+            5. **Off-site Storage**: One of the key aspects of this strategy is off-site storage for disaster recovery. The Friday tape that is not being used for the current week's backup is stored in a secure off-site location. This ensures you have a recent, full backup available in case of a local disaster like a fire or theft.
+          * provides a two-week history of data: one week of daily incremental backups and a full backup from the previous week
+          * easy to manage and provides a good balance between data protection and the number of tapes required.
+      * **Best Practices**
+        * schedule during off-peak hours (evenings, weekends, or maintanence windows)
+        * either have sufficient capacity to handle increased storage or configure a mechanism to move to offsite storage for longer to storage retention (if needed)
+        * configure periodic backups, continuous backups (RAID), or mirroring depending on the needs
+        * test recovery processes!!!
+  * **Software Escrow Arrangmenets**
+    * used to protect a company agains the failure of a software developer to provide support for their products or the possiblity of the developer going out of business
+    * copies of the source code is held by an independant third-party organization, they also maintain updated copies
+    * trigger events as specified in the agreement that will allow the third-party to release the copies of the code to the end-user, who can then analyze the code to resolve issues or implement updates as needed.
+
 
 ## 7.11 - Implement Disaster Recovery (DR) processes
 
-* Response
-* Personnel
-* Communications (e.g., methods)
-* Assessment
-* Restoration
-* Training and awareness
-* Lessons learned
+* **Disaster Recovery Plan (DRP)**
+  * technical complement to the business-focused _Business Continuity Plan (BCP)_
+  * includes the technical controls that prevent disruptions and facilitate, the restoration of service as quickly as possible after a disruption occurs
+  * together the BCP and DRP kick in and guide the actions of emergency response until the end goal is reached (which is to see the business restored to full operating capacity in its primary operations facilities)
+  * While a comprehensive approach often involves both, you can choose to develop either a Business Continuity Plan (BCP) or a Disaster Recovery Plan (DRP) individually, depending on your specific needs and priorities. However, it's generally more effective to integrate them.
+
+* **Natural Disasters**
+  * reflect the occasional fury of our habitat
+  * violent changes that result from changes in the earth's surface or atmosphere that are beyond human control
+  * Types
+    * **_Earthquakes_**
+      * caused by shifting of seismic plates
+      * can occur almost anywhere in the world without warning
+      * far more likely to occur along known [fault lines around the world](https://en.wikipedia.org/wiki/List_of_fault_zones)
+        * well known is [San Andreas Fault](https://en.wikipedia.org/wiki/San_Andreas_Fault), poses significant risk to portions of western US
+      * DRP should consider and have procedures to address this if your organization resides close or near a seismic fault area
+      * US Area that are known to have the highest earthquake risk
+        * Alaska
+        * Arkansas
+        * California
+        * Hawaii
+        * Idaho
+        * Illinois
+        * Kentucky
+        * Missouri
+        * Montana
+        * Nevada
+        * Oregon
+        * South Carolina
+        * Tennessee
+        * Utah
+        * Washington
+        * Wyoming
+    * **_Floods_**
+      * occur almost anywhere in the world at any time of the year
+      * results from gradual accumulation of rainwater in rivers, lakes, and other bodies of water that then overflow their banks and flood the community
+      * _flask floods_
+        * type of flood that strikes when a sudden sever storm dumps more rainwater on an area then the ground can absorb in a short period of time
+      * can occur also when dams are breached (i,e Large waves cause by seismic activity or _tsunamis_) combine the awesome power and weight of water with flooding
+      * responsible for ~$8 Billion in damages to businesses and homes each year in the US according to government statistics
+      * most general business insurance policies do not cover flood damage
+      * DRP should consider and have procedures to address this if your organization resides close or near to an area that is susceptible to flooding
+      * [**_Federal Emergency Management Agency (FEMA)_**](https://www.fema.gov/)
+        * agency of the U.S. Department of Homeland Security, established on April 1, 1979, by President Jimmy Carter
+        * primary role is to coordinate the federal government's response to disasters in the United States
+        * _National Flood Insurance Program_
+          * offers specialize government-backed flood insurance
+          * also is responsible for completing flood risk assessment for the entire United States and provides this data to citizens in graphical form of [Flood Maps](https://www.fema.gov/flood-maps)
+          * [reading and understand flood maps tutorial](https://www.fema.gov/sites/default/files/documents/how-to-read-flood-insurance-rate-map-tutorial.pdf)
+        * `100-year floodplain`
+          * 1 in 100 (1%) chance of flooding
+        * `500-year floodplain`
+          * 1 in 500 (0.2%) chance of flooding
+    * **Storms**
+      * come in many forms and pose diverse risks
+      * prolonged periods of rainfall can bring flash flooding
+      * hurricanes/tornadoes come with risk of high wind speeds the can possible damage or destroy structures
+      * hailstorms bring rapid onslaught of destructive ice chunks
+      * lightning
+      * [_**National Weather Service's National Hurricane Center**_](https://www.nhc.noaa.gov/)
+        * allows monitoring atlantic and pacific storms before they hit local news
+    * **Fires**
+      * natural and human-made
+      * BCP/DRP process should evaluate the risk of fire and implement at least basic measures to mitigate that risk and prepare the business for recovery
+      * perform a fire [risk assessment](https://safetyculture.com/topics/risk-assessment/fire-risk-assessment/) and preparedness check as part of any BCP/DRP efforts
+      * [**_National Interagency Fire Center_**](https://www.nifc.gov/fireInfo/nfn.htm)
+        * posts daily fire updates and forecasts
+    * **Pandemics**
+      * poses a significant risk to the health and safety to society and potential to disrupt business operations
+      * no physical damage but threatens the safety of individuals and prevents them from gathering in large numbers
+      * COVID-19, SARS, avian flu, swine flu
+      * BCP/DRP should take considerations in future pandemics and have contigencies in place
+    * Other Natural Events
+      * Volcanic Eruptions (Hawaii, etc)
+      * Monsoons (Asia)
+      * tsunamis (South Pacific)
+      * Avalanches (mountainous regions)
+      * Mudslides (Western US)
+
+* **Human-Made Disasters**
+  * **Fires**
+    * smaller scale (but could evolve to large scale) resulting from human action
+      * carelessness, faulty electrical wiring, improper fire protection practices, arson, etc
+  * **Acts of Terrorism**
+    * risks posed by terrorist threats
+    * Sept 11 2001
+    * general business insurance may not properly cover an organization against acts of terrorism
+    * unpredictable nature
+    * BCP/DRP should have considerations using the "what-if" situations/questions (but shouldn't focus to heavily as to overallocate resources to just "what-if" situations to the detriment of the other known BCP/DRP activities)
+  * **Bombings/Explosions**
+    * by gas leaks or other
+    * BCP/DRP should have considerations for this but is difficult to determine and relies on Physical security measures
+  * **Power Outages**
+    * DRP should contain provisions to deal with the threat of a short power outage
+    * critical systems are protected by UPS devices to keep them running long enough to shut down or long enough to get emergency generators up/working
+  * **Network, Utility, and Infrastructure Failures**
+    * water, sewers, natural gas, telecom, etc
+    * regional infra (highways, airports, roads, railways, etc)
+    * for internet connectivity should have redundancy
+      * different providers (also how do each provider handle redundancy)
+  * **Hardware/Software Failures**
+    * RAID (hardware storage)
+    * fail over servers
+    * DRP/BCP should have provisions for this
+  * **Strikes/Picketing**
+    * human factor considerations in BCP/DRP
+    * outside the purview of cybersecurity teams but planning requires input from other teams (HR, Legal, etc)
+  * **Theft/Vandalism**
+    * part of terrorist activities (but smaller scale)
+    * provisions should include protections of assets as well
+
+* **Disaster Recovery Plan (DRP) - Documents & Development**
+  * DRP should be FULLY DOCUMENTED and treated as an extremely sensitive document
+  * DRP should be accessed on a **compartmentalized, need-to-know** basis only
+  * Documents should include:
+    * Executive Summary providing a high-level overview of the plan
+    * Department-specific plans
+      * custom-tailored to department needs
+    * Technical Guides for IT personnel responsible for implementing and maintaining critical backup systems
+    * Checklists for individuals on the disaster recovery team
+      * should be sorted in priority order with the most important being first
+    * Full copies of the plan for critical disaster recovery team members
+  * Resources
+    * [Disaster Recovery Internation Institute (DRII) Professional Practices Library](https://drii.org/resources/professionalpractices/EN)
+      * collection of documents that examine how to work through and document a planning process for BCP and DRP
+    * [BCI Good Practice Guidelines (GPG)](https://www.thebci.org/resource/good-practice-guidelines--gpg--edition-7-0.html)
+    * [NIST SP 800-34 - Contingency Planning Guide For Federal Information Systems](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf)
+    * [ISO 27001:2022](https://www.iso.org/standard/27001)
+  * Components:
+    * **_Response_**
+      * formal declaration of a disaster based on the DRP criteria
+      * Activate an alternate process facility, **if necessary depending on type of disaster**
+      * Contain physical damage
+      * Execute checklist, first priority items actioned first
+    * **_Personnel & Commounication_**
+      * DRP should contain list of key personnel to contact in the review of a disaster
+      * includes key members of the DRP team as well as personnel  who execute critical DR tasks throughout the organization
+      * should include altnerate means of contact (.e.g., pager numbers, cell nummbers, etc)
+      * should also include backup contacts for key personnel
+      * should also include contact information for utilities
+    * **_Assessment_**
+      * Triage the damage to the organization and implement functional recovery plans to restore operations on a permanent basis
+    * **_Restoration/Recovery_**
+      * _**Restoration**_ involves bringing a business facility and environment back to a workable state
+      * _**Recovery**_ involves bringing business operations and processes back to a working state
+      * Key Metrics
+        * **_Recovery Time Objective (RTO)_**
+          * Target amount of time to restore to normal operations
+        * **_Recovery Point Objective (RPO)_**
+          * Max time period for which data may be lost
+        * **_Recovery Service Level (RSL)_**
+          * Percentage of a service that **must** be available during a disaster
+    * **_Training and awareness_**
+      * Train personnel on the BC/DR plan
+      * Training plans should include
+        * Orientation training for all new employees
+        * Initial training for employees taking on a new DR role for the first time
+        * Detailed refresher training for DR team members
+        * Brief awareness refreshers for all other employees
+    * **_Lessons learned_**
+      * designed to provide everyone involved in IR activities/efforts an opportunity to reflect on their roles and the teams overall role
+      * provide a feedback loop to improve IR and DR Plans
+      * everyone is gathered in a room and the sessions is hosted by a facilitor (whom had no role in the response)
+      * facilitator is a neutral party who is responsible for guiding the conversation(s)
+      * [NIST SP 800-61](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf)
+        * offers a series of questions to use in lessons learned process
+        * Questions:
+          * Exactly what happened and at what times?
+          * How well did staff and management perform in dealing with the incident?
+          * Were documented procedures followed?
+          * Were the procedures adequate?
+          * What information was needed sooner?
+          * Were any steps or actions taken that might have inhibited the recovery?
+          * What would the staff and management do differently the next time a similar incident occurs?
+          * How could infomration sharing with other organizations have improved?
+          * What corrective actions can prevent similar incidents in the future?
+          * What precursors or indicators should be watched for in the future to detect similar incidents?
+          * What additional tools or resources are needed to detect, analyze, and mitigate future incidents?
+        * Answers to the above questions (if given honestly) offer valuable insight into the state of the organization's IR and DR program
+        * build a roadmap for improvements to bolster DR efforts
+
 
 ## 7.12 - Test Disaster Recovery Plans (DRP)
 
-* Read-through/tabletop
-* Walkthrough
-* Simulation
-* Parallel
-* Full interruption
-* Communications (e.g., stakeholders, test status, regulators)
+* Test BC/DR Plans
+  * Goals
+    * Validate that the plan functions correctly
+    * Identify necessary plan updates
+  * Testing Types:
+    * Read-through
+      * simplest form
+      * copies of the DRP are distributed and each member is asked to review their role in the DR process and provide feedback
+        * make sure no obsolete information is in the DRP
+    * Tabletop Exercise
+      * Type of read-through
+      * Team gathers together for a formal review of the DR plan and role-play a disaster scenario (only known to the moderator)
+    * Walk-though
+      * vary in scope and intent
+      * may include taking physical action or at least considering their impact on the exercise
+      * example:
+        * might require that everyone leave the building and return home to participate in the exercise
+    * Simulation
+      * Use a practice scenario to test the DR plan and asked to develop an appropriate response
+      * some responses are tested
+        * may include/involve interruption of noncritical business activities and use of some operational personnel
+    * Parallel Test
+      * Type of simulation test
+      * Activate the DR environment but do not switch operations there
+      * Personnel relocate to alternate site
+    * Full-Interruption Test
+      * Tests switching primary operations to the alternate environment and can be very disruptive to business
+            * Rarely used
+    * Testing strategies often combine multiple tests types
+  * **_Communications_**
+    * keep communication lines open during testing (especially a full-interruption test) is crucial
+    * Stakeholders need to be kept a breast of the progress, any challenges faced, and deviations from the expected end time
+      * stakeholders may include regulators also bepending on the compliance regulations of the operating industry
+    * Maintain comprehensive records of the test and sharing them reinforces committment
+    * Being transparent is key
+  * **_Post-Test_**
+    * a debriefing session which provides an opportunity for discussing the outcomes of the test, highlighting both the successes and pointing out areas for improvement
+    * provides closure to the current test
 
 ## 7.13 - Participate in Business Continuity (BC) planning and exercises
 

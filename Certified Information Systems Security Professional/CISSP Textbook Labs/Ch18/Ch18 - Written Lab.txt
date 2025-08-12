@@ -1,0 +1,28 @@
+1. What are some of the main concerns businesses have when considering adopting a mutual assistance agreement?
+  
+    * need to be close enough to support the transfer of personnel in the event of a disaster
+      * how ever if its localized both parties may be out 
+    * privacy concerns on storing sensitive data
+
+2. List and explain the six types of discover recovery tests
+
+   * Read-Through
+     * copies are distributed and members are asked to review and understand their roles/resps
+   * Tabletop
+     * like read through but with a scenario to test
+   * Walkthrough
+     * a scenerio is given and some actions may be taken
+   * Simulation
+   * Parallel Test 
+     * activation and relocation to alternative processing site
+     * no operations of interrupted or transfered to alternative site
+   * Full-Interruption Test 
+     * full activation of the DRP, operation shifts to alternative process site
+     * can be disruptive
+
+3. Explain the difference between the three types of backup strategies discussed in this chapter
+
+4. Describe how cloud computing influences disaster recovery programs
+
+  * provides scalabable solution for DRP
+  * geo graphically dispurse

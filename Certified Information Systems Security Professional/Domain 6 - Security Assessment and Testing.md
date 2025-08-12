@@ -513,7 +513,6 @@
   * Repeat audit findings
   * User attempts to visit known malicious sites
 
-
 * **Account Management**
   * part of the Security Management process
   * Reviews ensure that users only retain authorized permissions and that unauthorized modifications do not occur
@@ -539,8 +538,6 @@
 * Management review and approval
 * Key performance and risk indicators
 * Backup verification data
-
-
 
 ## 6.4 - Analyze test output and generate report
 
