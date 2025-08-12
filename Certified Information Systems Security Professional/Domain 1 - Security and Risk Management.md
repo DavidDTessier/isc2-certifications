@@ -8,10 +8,30 @@ The [Code of Ethics Preamble]( https://www.isc2.org/ethics): _“The safety and 
 
 Code of Ethics Canons:
 
-* Protect society, the common good, necessary public trust and confidence, and the infrastructure
-* Act honorably, honestly, justly, responsibly, and legally
-* Provide diligent and competent service to principals
-* Advance and protect the profession
+  1. **_Protect society, the common good, necessary public trust and confidence, and the infrastructure_**
+  This is the highest-level canon. It emphasizes that a cybersecurity professional's primary responsibility is to the well-being of the public. This includes promoting public trust in information systems, preserving the integrity of the public infrastructure, and discouraging unsafe practices that could cause harm.
+
+  2. **_Act honorably, honestly, justly, responsibly, and legally_**
+  This canon focuses on the personal integrity of the professional. It requires individuals to be truthful, transparent, and fair in their work. It also mandates that professionals must observe all contracts and agreements, act within the bounds of the law, and take responsibility for their actions.
+
+  3. **_Provide diligent and competent service to principals_**
+  This canon addresses the professional's responsibility to their employers and clients. It requires them to provide high-quality, professional service that is within their competence. This includes preserving the value of the principal's systems, avoiding conflicts of interest, and respecting the trust and privileges granted to them.
+
+  4. **_Advance and protect the profession_**
+  This final canon focuses on the collective good of the cybersecurity profession. It encourages professionals to mentor others, share knowledge, and promote a positive reputation for the field. It also requires them to avoid associating with those whose practices might diminish the profession's standing and to maintain their own professional competence through continuous learning.
+
+ISC<sup>2</sup> members who encounter violations of the Code of Ethics may report the possible violation to ISC<sup>2</sup> for investigations by filling a formal ethics complaint, which must specify the canon that was violated and the member who violated it.
+Complaints are only accepted from those who believe they have been injured by the alleged behvior
+
+Compliants must be in writing and injury resolution is determined based on:
+
+* Any memeber of the general public may file a complaint involving Canon 1 or 2
+* Only an employer or someone with a contracting relationship with the individual may file a complain under Canon 3
+* Other professionals may file a complaint under Canon 4
+  * not limited to Cybersecurity professionals
+  * can be anyone certified or licensed as a professional and subscribes to a code of ethics as part of that license/certification is eligible to file a Canon 4 complaint
+
+### Ethics and the Internet
 
 Organizational code of ethics:
 
@@ -19,7 +39,7 @@ Organizational code of ethics:
 
 We must be sure to act ethically at all times.  
 
-Things that are not ethical:
+Things that are not ethical as defined by [RFC 1087](https://datatracker.ietf.org/doc/html/rfc1087) (developed by the [Internet Architecture Board (IAB)](https://www.iab.org/)):
 
 * Gain unauthorized access to internet resources
 * Disrupt the use of the internet
@@ -27,23 +47,56 @@ Things that are not ethical:
 * Destroy the integrity of information
 * Compromise privacy
 
-Computer Ethics Institute (CEI) Code of Ethics:
+### [Computer Ethics Institute (CEI)](http://cpsr.org/issues/ethics/cei) Code of Ethics
 
-* Do not harm others
-* Do not interfere with the work of others
-* Do not snoop
-* Do not steal
-* Do not use a computer to bear false witness
-* Do not copy software
-* Do not use other people’s resources
-* Do not misappropriate other people’s work
-* Consider the social consequence of what you are doing
-* Ensure respect for others
+The commandments are a set of standards to guide ethical conduct in the use of computers:
+
+  1. **Thou shalt not use a computer to harm other people**
+    * This principle extends the idea of physical harm to digital harm, such as creating malicious software or engaging in cyberbullying.
+
+  2. **Thou shalt not interfere with other people's computer work**
+    * This means avoiding actions that disrupt others' computer systems, like spreading viruses or deliberately causing a network to crash.
+
+  3. **Thou shalt not snoop around in other people's computer files**
+    * This commandment emphasizes the importance of digital privacy, comparable to not invading someone's personal space or reading their private letters.
+
+  4. **Thou shalt not use a computer to steal**
+    * This covers a wide range of illegal activities, including stealing data, money, or services through a computer.
+
+  5. **Thou shalt not use a computer to bear false witness**
+    * This is about using a computer to spread misinformation or lies, such as creating fake online profiles or spreading false rumors.
+
+  6. **Thou shalt not copy or use proprietary software for which you have not paid**
+    * This addresses software piracy and the importance of respecting intellectual property rights.
+
+  7. **Thou shalt not use other people's computer resources without authorization or proper compensation**
+    * This is about respecting the ownership and access rights of computer hardware and networks, such as hacking into a system or using a company's resources for personal gain.
+
+  8. **Thou shalt not appropriate other people's intellectual output**
+    * This commandment relates to plagiarism and copyright infringement, reminding users to properly credit and seek permission for the work of others.
+
+  9. **Thou shalt think about the social consequences of the program you are writing or the system you are designing**
+    * This is a call to action for developers and designers to consider the ethical and societal impact of their work before it's released.
+
+  10. **Thou shalt always use a computer in ways that ensure consideration and respect for your fellow humans**
+    * This is a foundational principle that encapsulates all the others, emphasizing empathy and human dignity in all digital interactions.
+
+### [Code of Fair Information Practices](https://epic.org/fair-information-practices/)
+
+* developed by a government advisory committee in 1973
+* five principles
+
+  1. There must be no personal data record-keeping systems whose very existence is secret.
+  2. There must be a way for a person to find out what information about the person is in a record and how it is used.
+  3. There must be a way for a person to prevent information about the person that was obtained for one purpose from being used or made available for other purposes without the person’s consent.
+  4. There must be a way for a person to correct or amend a record of identifiable information about the person.
+  5. Any organization creating, maintaining, using, or disseminating records of identifiable personal data must assure the reliability of the data for their intended use and must take precautions to prevent misuses of the data.
 
 ## 1.2 - Understand and apply security concepts
 
 ### CIA Triad
-Core concept of Information Security known as the _The CIA_ triad, which has three major goals
+
+Core concept of Information Security known as the _**CIA**_ triad, which has three major goals
 
 ![CIA](../images/cia-triad.jpg)
 

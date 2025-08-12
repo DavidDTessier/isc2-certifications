@@ -1,0 +1,43 @@
+1. What are the major categories of computer crime?
+
+   * **_Military & Intelligence Attacks_**
+        * launched primarily to obtain secret and/or restricted information from law enforcement or military and research sources
+      * **_Business Attacks_**
+        * focus on illegally obtaining confidential information
+        * corporate espionage or industrial espionage, stealing trade secrets.
+        * other attacks may focus on integrity and/or availability of information
+          * DDoS etc
+      * **_Financial Attacks_**
+        * carried out to unlawfully obtain money or services
+        * Ex: shoplifting, burglary
+        * Can also be "cybercrime for hire" where the attacker engages in mercenary activity, conducting cyberattacks against targets for their clients
+        * DDoS can also fall under this category
+        * Ransomware
+      * **_Terrorist Attacks_**
+        * to disrupt normal life and instill fear, as opposed to military or intelligence attack which is designed to extract secret information.
+        * industrial control systems are key targets for this type of attack
+          * power grids, utilities, oil & gas
+      * **_Grudge Attacks_**
+        * carried out to do damage to an organization or person, usualy out of resentment or to “get back at” an organization
+        * Insider threat is big, these attacks can come from disgruntled employees.
+      * **_Thrill Attacks_**
+        * done for “the fun of it”, "high" of success, usually by “script kiddies”.
+        * May also be related to “hacktivism” (combination of _hacker_ and _activist_)
+          * often politically motivated (i.e, Anonymous or LulzSec) and use automated tools to create large-scale DDoS
+
+
+2. What is the main motivation behind a thrill attack?
+
+  * the fun of it 
+  * sometimes politically motivate
+
+3. What is the difference between an interview and an interrogation?
+
+   * **_Interviewing_**
+    * a non-accusatory, structured conversation aimed at gathering information
+  * **_Interrogation_**
+    * a more formal and accusatory process focused on obtaining a confession or incriminating information from a suspect.
+    * information is presented in court
+
+4. What are the three basic requirements that evidence must meet in order to be admissible in court?
+  * must be relevant to determining a fact, material/related to the case, competent (obtained legally)
