@@ -1,0 +1,15 @@
+1. What is the main purpose of a primary key in a database table?
+
+    * selected from candidate keys to identify data.
+    * Only one primary key per table.
+
+2. What is polyinstantiation?
+    
+    * occurs when two or more rows in the same relational database table appear to have identical primary keys but contain different data for use at different classification levels
+    * often used as a defense against some types of interfence attacks
+    * introduces additional storage costs* technique use to prevent unauthorized users from determining classified information by noticiing the absense of information 
+
+3. Explain the difference between supervised and unsupervised learning
+
+   * supervised uses labelled data for training
+   * unsupervised uses unlabelled data for training

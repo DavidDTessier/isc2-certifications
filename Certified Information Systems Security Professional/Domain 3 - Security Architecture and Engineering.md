@@ -285,13 +285,13 @@ The following diagram highlights the flow of transitive trust:
       * for example a firewall (if designed to fail-open) would allow communication to continue with out filtering
       * in contrast it designed with fail-safe/fail-closed/fail-secure solution then comms would be totally cut off sacrificing availabitly for condifidentiality/integrity
   * **Fail-Open**
-    * synonimous with _fail-soft_
+    * related with _fail-soft_
     * protects availability
   * **Fail-Closed**
-    * synonimous with _fail-secure_
+    * related with _fail-secure_
     * protects confidentiality & integrity
 * If a product is primarily digital
-  * focus of security is compeletely on digital assets
+  * focus of security is completely on digital assets
 * If a product is primarily physical world
   * focus of security is on people
   * however their are situations where assets are focused more than people, i.e bank vaults may be closed and locked in an emergency even though people may be locked inside
@@ -1097,7 +1097,7 @@ The following diagram highlights the CW Rules flow:
 
 ## 3.5 - Assess and mitigate the vulnerabilities of security architectures, designs, and solution elements
 
-### Concepts
+### Security Architecture Concepts
 
 * Hardware
   * any tangible part of a computer that can be touched (keyboard, mouse, monitor, CPUs, storage media)
@@ -2114,13 +2114,233 @@ The following digram illustrates the different types of hypervisors:
   * used to inform, and guide the development, implementation, testing, and maintenance of a particular system
   * includes software and hardware
 
+### Database Systems
 
+* [**Hierarchical Databases**](https://en.wikipedia.org/wiki/Hierarchical_database_mode)
+  * data model combines records and fields that are related in a logical tree structure
+  * results are in a one to many model, where each node may have zero, one, or many children but only one parent
+  ![Hiearchical Model](./images/hierarchical.png)
+* **Distributed Databases**
+  * data stored in several databases that are logically connected
+  * user percieves the data as single entity, consists of several interconnected parts
+  * each field can have numerous children and parents
+  * many-to-many
+  ![Distributed Data](./images/distributed-data.gif)
+* **Relational Database**
+  * flat two-dimensional tables of rows/columns
+  * each table looks like a spreadsheet with row/column structure
+  * provides a one to one mapping relationship
+  * Table
+    * contains a set of related records
+    * contains a number of attributes (fields)
+    * _Relation_
+  * Column
+    * an attribute within a table
+  * Record
+    * tuple/row in the table
+    * maded up of multiple columns (_degree_)
+      * does not change normally, requires a DBA intervention (schema change)
+    * number of rows (_cardinality_)
+      * can change
+  * _Domain_ of an attribute is the set of allowable values that the attribute can take
+  ![RDBMS](./images/RDBMS.webp)
+  * In the example above the table has a _cardinality_ of 3 (three rows in the table) and a degree of 3 ( three columns)
+  * Relationships between tables are defined to identify related records
+  * Related records are identified using a variety of keys:
+    * **_Candidate Keys_**
+      * subset of attributes that can uniquely identify a record in the table
+      * **_Primary Keys_**
+        * selected from candidate keys to identify data.
+        * Only one primary key per table.
+      * **_Foreign Keys_**
+        * used to enforce relationships between two tables (referrential integrity)
+        * ensures that if one table contains a foreign key, it corresponds to a primary key in another table
+      * **_Alternate Keys_**
+        * candiate key not selected as a primary key
+  * **Standard Query Language (SQL)**
+    * provides users with a consistent interface for the sotrage, retrieval, and modification of data and for admin control of the database
+    * each DBMS vendor has slighlty different versions (but all support core )
+      * [Microsoft's Transact-SQL (TSQL)](https://en.wikipedia.org/wiki/Transact-SQL)
+        ```sql
+        DECLARE @var1 NVARCHAR(30);
+        SET @var1 = 'Some Name';
+        SELECT @var1 = Name
+          FROM Sales.Store
+          WHERE CustomerID = 100;
+        ```
+      * [Oracle's PL/SQL](https://en.wikipedia.org/wiki/PL/SQL)
+        ```sql
+        -- Calculate salary for employees by taking commission and bonus into account
+        set serveroutput on
+        declare 
+          cursor empcur is 
+            select first_name, salary, commission_pct
+            from employees;
+            
+          v_salary employees.salary%type;   
+        begin 
+          for emprec in empcur
+          loop 
+              -- Calculate salary + commission 
+              v_salary := emprec.salary +  emprec.salary * nvl(emprec.commission_pct,0);
+              -- Add bonus of 10% or 5% based on commission pct                   
+              if emprec.commission_pct is not null then
+                  v_salary := v_salary  + emprec.salary * 0.10;
+              else
+                  v_salary := v_salary  + emprec.salary * 0.05;
+              end if;
+              
+              dbms_output.put_line( rpad(emprec.first_name,20) ||  to_char(v_salary,'99,999.00'));
+          end loop;
+        end;
+        ```
+    * primary security feature is granularity of authorization
+      * allows permission at a very fine level of detail
+      * limit user access by table, row, coloumn, or even by cell (some cases)
+    * Two Major Components:
+      * **Data Definition Language (DDL)**
+        * creation and modification of the db strucutre (Schema)
+      * **Data Manipulation Language (DML)**
+        * allows users to interact with the data container in the schema (queries)
+  * [**Database Normalization**](https://www.essentialsql.com/database-normalization)
+    * systematic process used in relational database design to organize data efficiently and reduce redundancy
+    * Three Most common forms
+      * **_First Normal Form (1NF)_**:
+        * Requires that each column in a table contains atomic (single) values, and each row is uniquely identifiable.
+      * **_Second Normal Form (2NF)_**:
+        * Requires that a table be in 1NF and that all non-key attributes are fully functionally dependent on the entire primary key.
+      * **_Third Normal Form (3NF)_**:
+        * Requires that a table be in 2NF and that there are no transitive dependencies, meaning non-key attributes are not dependent on other non-key attributes.
+        * **_Boyce-Codd Normal Form (BCNF)_**:
+          * A stricter version of 3NF, addressing certain anomalies that 3NF might not catch in specific cases involving multiple candidate keys.
+  * **Database Transactions**
+    * discrete sets of SQL instructions that will either succeed or fail as a group (not partial)
+    * Must be committed to the database and cannot be undone when it succeeds using the `COMMIT` command or implicit when the transaction completes (successfully)
+    * If a transaction must be aborded it can be rolled back using the `ROLLBACK` command or implicitly restores itself
+    * Example:
 
------ other items tbd ----- 
-* Database systems
-* Cryptographic systems
-* Cloud-based systems (e.g., Software as a Service (SaaS), Infrastructure as a Service (IaaS), Platform as a Service (PaaS))
-* Serverless
+```sql
+    -- Start a new transaction
+    BEGIN TRANSACTION;
+
+    -- Deduct funds from Account A
+    UPDATE Accounts
+    SET Balance = Balance - 150.00
+    WHERE AccountID = 'A';
+
+    -- Add funds to Account B
+    UPDATE Accounts
+    SET Balance = Balance + 150.00
+    WHERE AccountID = 'B';
+
+    -- Check for potential issues (e.g., insufficient funds in Account A)
+    -- This is a conceptual check; actual error handling might involve triggers or more complex logic.
+    -- IF (SELECT Balance FROM Accounts WHERE AccountID = 'A') < 0 THEN
+    --     ROLLBACK; -- Undo all changes if an issue is found
+    -- ELSE
+    --     COMMIT; -- Make all changes permanent if no issues
+    -- END IF;
+
+    -- For a simpler example, assume success and commit the transaction
+    COMMIT;
+```
+
+* Four Categories for RDBMS Transactions ([ACID Model](https://en.wikipedia.org/wiki/ACID))
+  * **_Atomicity_**
+    * transaction must be atomic - all or nothing
+    * any part fails, the entire process fails and rollsback
+  * **Consistency_**
+    * consistent with all the database’s rules (ex must have primary keys, etc)
+  * **_Isolation_**
+    * transactions operate separately
+    * prevents overwritting
+  * **_Durability_**
+    * once committed, they are preserved
+    * ensure durablility through the use of backup mechanims (transaction logs)
+
+* **Security for Multilevel Databases**
+  * **_Mulitlevel Database_**
+    * provides granular security for data depending on the sensitivity of the data field and clearance of the user for both writing and reading data.
+    * Contain information with a variety of different classifications, and must verify labels assigned to owners and provide only the appropriate information
+    * **_Database contamination_**
+      * mixing data with different classification levels and/or need-to-know requirements
+    * Deploy a trusted front-end to add multilevel security to a legacy/insecure DBMS
+  * **Database Views**
+    * collate data form multiple tables, aggregate individual records, or restrict a user's access to a limited subset of database attributes and/or records
+    * stored as a SQL command
+    * may have a performance hit if the view is very complex
+  * **Concurrency**
+    * edit control is a preventitive control that states information stored in the database is always correct
+    * Locks allow one user to make changes but deny other users access at the same time
+    * Unlock restores the ability of other users to access the data they need
+    * can be deployed to a single or multilevel database
+    * **_Lost Updates_**
+      * when different processes make updates and are unaware of each other
+    * **_Dirty Reads_**
+      * reading a record from a transaction that did not successfully commit
+  * **Aggregation**
+    * process of combining records from one or more tables to produce potentially useful information
+    * security vulnerabilities
+      * **_Aggregation Attacks_**
+        * used to collect numerous low-security level or value
+        * control access to aggregate functions and adequately assess the potential information they may reveal to unauthorized individuals
+        * combine defense-in-depth, need-to-know, and least privilege
+      * **_Inference Attacks_**
+        * type of data mining attack where an attacker deduces sensitive information from a database by analyzing seemingly unrelated data points or by exploiting relationships between publicly available information and the database's contents
+        * access control, data masking/bluring can help prevent
+    * database partitioning can also help reduce these attacks
+  * **Other Security Mechanisms**
+    * **_Semantic Integrity_**  
+      * constraint/rule that enforces the logical meaning and relationships within a database, ensuring data accuracy and consistency.
+    * **_Time/date Stamps_**
+      * maintains data integrity and availability
+      * often used in distributed databases
+      * proves chronlogical order and allows for rebuilding of data
+    * **_Content-dependent access controls_**
+      * granular object control
+      * based on the contents/payload of the object being accessed
+      * increases processing overhead
+    * **_Cell Suppression_**
+      * another form of granular control
+      * hides individual database fields/cells or imporsing more security restrictions on them
+    * **_Context-dependent access control_**
+      * tied to content-dependent
+      * how each object or packet or field relates to the overall activity or communication
+    * **_Database Partitioning_**
+      * process of splitting a single database into multiple parts, each with its own unique security and access and/or type of content
+    * **_Polyinstantiation_**
+      * occurs when two or more rows in the same relational database table appear to have identical primary keys but contain different data for use at different classification levels
+      * often used as a defense against some types of interfence attacks
+      * introduces additional storage costs
+    * **_Noise and Perturbation_**
+      * process of inserting false or misleading information in the database to thwart / redirect confidentiality attacks
+      * risky to use as it may affect business operations
+* **Open-Database Connectivity (ODBC)**
+  * a proxy between applications and backend database drivers that give programmers greater freedom in creating solutions without having to worry about the underlying database
+* **NoSQL**
+  * class of database that use models other than a relational model to store data
+  * used for high-speed or non tabular for of data
+  * Common Types
+    * **_Key-value stores_**
+      * simplest form
+      * key/value pairs
+      * key is the index that uniquely identifies the record which contains the data value
+      * useful for high-speed applications and very large datasets where rigid structure is not required
+    * **_Graph databases_**
+      * stores data in a graph format
+      * uses nodes to represent objects and edges to represent relationships
+      * useful for representing any type of network, such as social networks, geographic locations, and other datasets that lend themselves to graph presentation
+    * **_Document stores_**
+      * similar to kv stores
+      * store information using keys, but the type of information is more complex and stored in a document (XML or JSON)
+     that are good for high-speed applications, graph databases, and document stores.
+
+#### Database Storage Threats
+
+* **_Illegitimate Access to Storage System_**
+  * inadequate access control in place
+  * gives an open door to threat actors
+* See convert Channels below as this applies here also
 
 ### Common Security Architecture Flaws and Issues
 
