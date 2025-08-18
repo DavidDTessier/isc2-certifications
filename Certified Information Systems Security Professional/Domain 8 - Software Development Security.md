@@ -477,6 +477,38 @@ Learn: Evaluate the outcome of the solution and learn from the experience for fu
         * _STOP_ error occurs when an undesirable activity occurs in spite of the OS's efforts to prevent it
     * Must balance security, functionality, user-friendliness.
     * Added security means increased cost, admin overhead, and reduce productivity/throughput
+  
+* **Security Controls**
+  * **_Input Validation_**
+    * input whitelisting / allowed inputs
+    * input blacklisting / disallowed inputs
+    * cleaning / encoding content
+    * _metacharaters_
+      * aka special characters `'[]\;&^$.|?*+{}().`
+      * should be escaped as much as possible
+    * **_Parameter Pollution_**
+      * a web application vulnerability where an attacker exploits how a web application handles multiple HTTP parameters with the same name. By injecting encoded query string delimiters, attackers can potentially manipulate the application's logic, bypass input validation, and even gain unauthorized access.
+  * Use a **_Web Application Firewall (WAF)_**
+  * **_Database Security_**
+    * **Parameterized Queries**
+      * method of executing database queries where placeholders are used for values within the SQL statement, and the actual values are provided separately at execution time
+      * offers significant advantages over directly embedding values into the query string, which is often referred to as dynamic SQL
+      * Java uses teh `PreparedStatement()` function while PHP use the `bindParam()` function
+    * **Stored Procedures**
+      * prepared collection of SQL statements and control-flow logic that is stored and executed within a relational database management system (RDBMS).
+      * functions as a subprogram that can be called and executed multiple times by applications or users
+    * **Obfuscation and Camouflage**
+      * protects against data exposure
+      * **_Data Minimization_**
+        * best defense
+        * only collect what is required, avoid collecting sensitive information
+        * reduces data exposure risks (no data no risk)
+      * **_Tokenization_**
+        * replaces personal identifiers that might directly reveal an identity with unique identifiers using a lookup table
+        * loop up table must be secure
+      * **_Hashing_**
+        * irreversable one-way encryption
+        * should use salting with a random value prior to hashing to make they resitent to rainbow table attacks
 
 ### Software Development Life Cycle
 
@@ -563,14 +595,38 @@ Learn: Evaluate the outcome of the solution and learn from the experience for fu
   * **_Dynamic Testing (DAST)_**
     * done in a runtime environment
   
-### Code Repositories
+### Code Security
 
-* central storage point for developers to collaborate on source code.
-* GitHub, BitBucket, SourForge 
+* **_Code Signing_**
+  * confirms authenticity of developers code
+  * use crypto function to digitally sign their code with their own private key, and then browsers can use the developers public key to verify that the signature is authentic
+  * does guarantee it came from the original source
+  * does not guarantee that their is no malicious code 
+* **_Code Reuse_**
+  * use of third-party libraries and SDKs
+  * shared modules
+  * libraries, sdks and modules should be scanned and vetted before integrating into any system code
+* **_Code Repositories_**
+  * central storage point for developers to collaborate on source code.
+  * GitHub, BitBucket, SourForge 
   also provides bug tracking, webhosting, release management, and communications functions that support software development
-  * often integrate with code management tools
-    * `git tool`
-* should not store sensitive information (i.e, secrets, api keys, etc)
+    * often integrate with code management tools
+      * `git tool`
+  * should not store sensitive information (i.e, secrets, api keys, etc)
+  * avoids _dead code_, in use code but no body owns it
+  * follow proper release management
+* **_Source Code Comments_**
+  * proper code documentation that make it easy for anyone to understand what is happening
+  * also helps onboard new members
+* **_Error Handling_**
+  * try/catch
+  * logging errors minimizing in production environments (only log the exception message or custom message and not the stack trace or entire log)
+* **_Memory Management_**
+  * watch for _resource exhaustion_/_memory leaks_ of memory, storage, etc
+  * _Pointers_
+    * area of memory that stores an address of another location in memory
+    * _Dereferening_ occurs when an application needs to access to the location of an object it follows the pointer and access teh memory referenced they the pointer address
+    * _NULL_ pointer exception occurs when an application tries to dereference a pointer that is NULL
 
 ## 8.3 - Assess the effectiveness of software security
 

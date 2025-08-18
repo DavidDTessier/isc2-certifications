@@ -1,0 +1,20 @@
+1. What is the major difference between a virus and a worm?
+
+   * A virus needs a host file or program to spread, while a worm can replicate and spread independently
+   often exploiting vulnerabilities to propagate across networks
+
+2. What are the actions an antivirus software package might take when it discovers an infected file?
+
+    * Eradicates virues (if possible), disinfects the affect file, and restores the machine to a safe condition
+    * Quarantine - isolate but not remove, admin can descide what to do
+      * files may be removed if security settings/policies do not provide for quarrantine or the files exceed a predefined danger threshold, in order to preseve the safety of the systek
+
+3. Explain how a data integrity assurance package like Tripwire provides some secondary virus detection capabilities?
+    * monitors and alerts on modifications to files
+    * 
+4. What controls may be used to protect against SQL inject vulnerabilities?
+
+        * Stored Procedures
+        * Prepared Statements
+        * Input Validation
+        * Metacharacters escape

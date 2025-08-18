@@ -474,14 +474,16 @@
         * **Impact**
           * The attacker is trying to manipulate, interrupt, or destroy systems and data.
           * This can include activities like wiping disks, encrypting files for a ransomware attack, or shutting down critical services.
-       
+* **User and Entity Behavior Analytics (UEBA)**
+  * analyzes user-based activities on endpoints and other devices
+  * builds a profile of each individual's normal activity and highlights deviations from that profile that may indicate a potential compromise
 
 * Intrusion detection and prevention (IDPS)
 
 
 * Log management
 
-* User and Entity Behavior Analytics (UEBA)
+
 
 ## 7.3 - Perform Configuration Management (CM) (e.g., provisioning, baselining, automation)
 
