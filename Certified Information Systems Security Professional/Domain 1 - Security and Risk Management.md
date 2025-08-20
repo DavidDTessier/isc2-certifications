@@ -1,4 +1,4 @@
-# Domain 1: Security and Risk Management
+# Domain 1: Security and Risk Management (16% of the Exam)
 
 ## 1.1 - Understand, adhere to, and promote professional ethics
 
@@ -100,7 +100,7 @@ Core concept of Information Security known as the _**CIA**_ triad, which has thr
 
 ![CIA](../images/cia-triad.jpg)
 
-* Confidentiality
+* **Confidentiality**
   * Efforts and measures to protect and control access to information / data / objects / resources to prevent unauthorized disclosure
   * One form of confidentiality MAY not support or allow other forms
   * Concepts:
@@ -118,7 +118,7 @@ Core concept of Information Security known as the _**CIA**_ triad, which has thr
     * **Privacy**: Keeping information confidential that is personally identifiable, or that might cause harm, embarrassment,  or disgrace to someone if revealed.
     * **Seclusion**: Storing something in an out-of-the-way location with strict access controls
     * **Isolation**: Act of keeping something separated from others
-* Integrity
+* **Integrity**
   * Protecting the reliability and correctness of data
   * Prevents unauthorized alterations of data
   * Examined from three perspectives:
@@ -130,15 +130,15 @@ Core concept of Information Security known as the _**CIA**_ triad, which has thr
     * Strict access controls
     * rigorous authentication procedures
     * IDS
-* Concepts:
-  * **Accuracy**: Being correct and precise
-  * **Truthfulness**: Being a true reflection of reality
-  * **Validity**: Being factually or logically sound
-  * **Accountability**: Being responsible or obligated for actions and results
-  * **Responsibility**: Being in charge or having control over something or someone
-  * **Completeness**: Having all necessary components, or parts
-  * **Comprehensiveness**: Being complete in scope; the full inclusion of all needed elements
-* Availability
+  * Concepts:
+    * **Accuracy**: Being correct and precise
+    * **Truthfulness**: Being a true reflection of reality (Authenticity)
+    * **Validity**: Being factually or logically sound
+    * **Accountability**: Being responsible or obligated for actions and results (Nonrepudiation)
+    * **Responsibility**: Being in charge or having control over something or someone
+    * **Completeness**: Having all necessary components, or parts
+    * **Comprehensiveness**: Being complete in scope; the full inclusion of all needed elements
+* **Availability**
   * Efforts to make sure data and systems are available for authorized use
   * Supporting infrastructure is functional and allows authorized users to gain access
   * Threats to availability may include
@@ -155,6 +155,54 @@ Core concept of Information Security known as the _**CIA**_ triad, which has thr
     * **Accessibility**: Assurance that the widest range of subjects can interact with a resource regardless of their capabilities or limitations
     * **Timeliness**: Being prompt, on-time, within a reasonable time frame, low latency response times
 
+#### Five Pillars - Extension of CIA Triad
+
+* additional pillars of CIA Triad
+* **Authenticity**
+  * Concept that data is authentic or genuine and originates from its alleged source
+  * Relates to integrity but more closely related to verifying that it is from a claimed origin
+  * IF data has authenticity, the recipient can have high level of confidence that the data is from whom it claims to be and did not change in transit
+  * digital signatures
+  * prevents fraud
+  * "verifies you are who you claim to be"
+* **Nonrepudiation**
+  * Ensures that the subject of an activity or who caused an event cannot deny that the event occurred.
+  * Prevents a subject from claiming not to have done or performed an action or to not have been the cause if an event
+  * Made possible through identification, authentication, authorization, auditing, and accounting
+  * Established using digital certificates, session identification, transaction logs, and numerous other transactional and access control mechanisms.
+  * a suspect cannot be held accountable IF they can repudiate the claim against them
+  * digital signatures, comprehensive audit trails, physical signatures, biometrics, video surveillance
+
+### AAA Services
+
+* Core fundamental concepts for security mechanisms (**_Access Control_**) of all security environments which is the abbreviation for _Authentication, authorization, and accounting (or sometimes auditing)_
+* Five elements:
+  * **Identification**
+    * claiming to be an identity when attempting to access a secured area/system
+    * involves username/password, swiping a smart card, proximity card, etc
+    * biometrics
+    * without this a system has no way of correlating au authentication factor with the subject
+    * Identity must be proven before use is allowed or access is granted
+  * **Authentication**
+    * proving/verifying that a claimed identity is valid
+    * requires subject to provide additional info to prove their identity
+    * most common is a password
+    * Identification and authentication are typically used together in a two-step process
+      * Providing the identity is the first step, providing the authentication factor is the second step
+      * without both a subject cannot gain access to a system. neither element alone is useful in terms of security
+  * **Authorization**
+    * defines the permission (i.e allow/grant and/or deny) or a resource and object access for a specific identity or subject
+    * ensures that the requested activity or access to an object is possible
+  * **Auditing**
+    * recording of a log of the events and activities related to the system and subjects
+    * programmatic means by which a subject's actions are tracked and recorded to hold them accountable
+    * process for detecting unauthorized or abnormal activities
+    * support accountability
+  * **Accounting**
+    * also known as _accountability_
+    * reviewing log files to check for compliance violations in order to hold subjects accountable for their actions, especially in violation of organizational security policies
+    * supports auditing
+
 ### DAD, Overprotection, Authenticity, Nonrepudiation
 
 #### DAD
@@ -162,15 +210,15 @@ Core concept of Information Security known as the _**CIA**_ triad, which has thr
 ![DAD](../Certified%20Information%20Systems%20Security%20Professional/images/dad.png)
 Referred to as the opposite of the _CIA Triad_ is the **DAD Triad** which stands for _Disclosure, alteration, and destruction_. These all represent the **failures** of security protections in the CIA triad.
 
-* Disclosure
+* **Disclosure**
   * Occurs when sensitive or confidential material is accessed by unauthorized entities
   * Violates confidentiality
-  * Attackers perform data exfiltration 
-* Alteration
+  * Attackers perform data exfiltration
+* **Alteration**
   * Occurs when data is either maliciously or accidentally changed
   * Violates integrity
   * attackers modify records for financial gain (encrypt for ransomware)
-* Destruction
+* **Destruction**
   * Occurs when a resource is damaged or mad inaccessible to authorized entities
   * Violates availability
   * attackers launch DDoS attack against a website
@@ -181,56 +229,12 @@ Referred to as the opposite of the _CIA Triad_ is the **DAD Triad** which stands
   * Overprotecting confidentiality and integrity can result in a restriction to availability
   * Overproviding availability can result in a loss of confidentiality and integrity
 
-#### Authenticity
-
-* Concept that data is authentic or genuine and originates from its alleged source
-* Relates to integrity but more closely related to verifying that it is from a claimed origin
-* IF data has authenticity, the recipient can have high level of confidence that the data is from whom it claims to be and did not change in transit
-
-#### Nonrepudiation
-
-* Ensures that the subject of an activity or who caused an event cannot deny that the event ocurred.
-* Prevents a subject from claiming not to have done or performed an action or to not have been the cause if an event
-* Made possible through identification, authentication, authorization, auditing, and accounting
-* Established using digital certificates, session identification, transaction logs, and numerous other transactional and access control mechanisms.
-* a suspect cannot be held accountable IF they can repudiate the claim against them
-
-### AAA Services
-
-Core fundamental concepts for security mechanisms of all security environments which is the abbreviation for _Authentication, authorization, and accounting (or sometimes auditing)_. However this actually refers to five elements:
-
-* Identification
-  * claiming to be an identity when attempting to access a secured area/system
-  * involves username/password, swiping a smart card, proximity card, etc
-  * biometrics
-  * without this a system has no way of correlating au authentication factor with the subject
-  * Identity must be proven before use is allowed or access is granted
-* Authentication
-  * proving/verifying that a claimed identity is valid
-  * requires subject to provide additional info to prove their identity
-  * most common is a password
-  * Identification and authentication are typically used together in a two-step process
-    * Providing the identity is the first step, providing the authentication factor is the second step
-    * without both a subject cannot gain access to a system. neither element alone is useful in terms of security
-* Authorization
-  * defines the permission (i.e allow/grant and/or deny) or a resource and object access for a specific identity or subject
-  * ensures that the requested activity or access to an object is possible
-* Auditing
-  * recording of a log of the events and activities related to the system and subjects
-  * programmatic means by which a subject's actions are tracked and recorded to hold them accountable
-  * process for detecting unauthorized or abnormal activities
-* Accounting
-  * also known as _accountability_
-  * reviewing log files to check for compliance violations in order to hold subjects accountable for their actions, especially in violation of organizational security policies
-
 ### Protection (Controls) Mechanisms
 
 Common methods:
 
 * **Defense in Depth**
-  * also known as _layering_
-  * https://en.wikipedia.org/wiki/Defense_in_depth_(computing)
-  * also known as the [onion model](https://en.wikipedia.org/wiki/Onion_model)
+  * aka [_layering_](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)) or the [onion model](https://en.wikipedia.org/wiki/Onion_model)
   * use of multiple overlapping controls in a series for one objective
   * no one control can protect against all possible threats
   * a single failed control **SHOULD NOT** result in the exposure of systems and/or data
@@ -238,22 +242,43 @@ Common methods:
   * a parallel configuration are very wide but shallow, useful in distributing computing applications
   * _Defense in breadth_ or _Diversity in defense_
     * Using a wide range of security products from varied vendors significantly reduces or avoids the risk of a single exploit compromising several layers at once.
-    * Can be problematic if elements of the security layers are from the same vendor or share common code, since a vulnerability could affect numerous layers simultaneously 
+    * Can be problematic if elements of the security layers are from the same vendor or share common code, since a vulnerability could affect numerous layers simultaneously
+  * Example:
+    * A company secures its internal network using multiple layers:
+      * a firewall to block unauthorized traffic, multi-factor authentication (MFA) for user logins, endpoint protection software on all devices, network segmentation to isolate sensitive systems, and continuous logging and monitoring for anomalies.
+      * Pros:
+        * Redundancy: If one layer fails (e.g., a user falls for a phishing attack), other controls like MFA or endpoint detection can still prevent or mitigate the breach.
+        * Reduced Risk: It makes successful attacks more difficult, requiring attackers to bypass several independent defenses.
+        * Comprehensive Coverage: Addresses multiple types of threats—technical, physical, and human.
+      * Cons:
+        * Complexity - Managing and maintaining multiple overlapping controls can increase administrative overhead and potential for misconfiguration.
+        * Cost - More tools, licenses, and personnel are needed, which can strain smaller organizations’ budgets.
+        * User Frustration - Layered security (e.g., frequent MFA prompts, limited access) can lead to productivity complaints or attempts to bypass controls.
 * **Abstraction**
+  * the process of hiding complex implementation details and exposing only essential features to reduce risk, simplify access control, and minimize the attack surface.
   * think about Object Oriented Programming (OOP)
   * used for efficiency
   * assign security controls to a group of objects collected by type or function
   * mediated access to data/services (request admin access)
 * **Data Hiding**
+  * the practice of concealing internal data structures or sensitive information from unauthorized users to prevent accidental or malicious access or modification.
   * intentionally preventing data from being discovered or access by a subject by positioning that data in a logical storage compartment that is not accessible to nor seen by the subject cannot access or see the data
   * subject cannot access or see the data
   * keeping a database from being accessed by unauthorized visitors and restricting a subject to a lower classification level from access data at a higher classification level
   * similar to security through obscurity_ however does not actually implement any form of protection, instead attempts to hope something important is not discovered by keeping knowledge of it a secret
 * **Encryption**
+  * the process of converting readable data into an unreadable format using an algorithm and key, ensuring that only authorized parties can access the original information.
   * Falls under data hiding also referred to as the science of hiding the meaning or intent of a communication from unintended recipients
   * can take many forms and should be applied to every type of electronic communication
   * More details in [Domain 3](Domain%203%20-%20Security%20Architecture%20and%20Engineering.md)
 * **Security Boundaries**
+  * Clearly defined borders—physical, logical, or administrative—that separate different levels of trust, control, or security within or between systems, helping to enforce access controls, contain threats, and protect sensitive resources.
+    * **_Physical Security Boundary_**:
+      * A locked server room with keycard access that physically restricts who can get close to critical infrastructure like servers, switches, or firewalls.
+    * **_Logical Security Boundary_**:
+      * A network firewall that separates an internal trusted network from an untrusted external network (e.g., the internet), enforcing rules about what data can pass between them.
+    * **_Administrative Security Boundary_**:
+      * A set of policies and user roles that limits access to HR data to only HR personnel, even though the data resides on the same server used by other departments.
   * line of intersection between areas, subnets, or environments with different security requirements or needs
   * exists between high-security and low-security areas such as LAN and the Internet
   * flow control mechanisms should be deployed between the boundaries for security
@@ -269,6 +294,7 @@ Common methods:
 ### Security Governance
 
 * Defined as "the collection of practices related to supporting, evaluating, defining and directing an organization's security efforts"
+* the framework of policies, processes, and controls that ensure an organization’s information security strategy aligns with its business objectives, complies with regulations, and manages risk effectively.
 * seeks to compare the security processes and infrastructure used within an organization with knowledge and insights obtained from external sources
 * implementation of a security solution and a management method that are tightly interconnected
 * Performed by a board of directors or governance committee
@@ -282,6 +308,7 @@ Common methods:
 
 ### Third-Party Governance
 
+* the processes and controls an organization uses to manage and monitor the security practices of external vendors, partners, or service providers to ensure they meet required security standards and do not introduce undue risk.
 * system of external entity oversight that law, regulation, industry standards, contractual obligation, or licensing requirements may mandate.
 * involves outside investigator or auditor hired by an organization
 * application of security oversight to third parties the organization relies on for such activities as:
@@ -293,10 +320,13 @@ Common methods:
 * focuses on verifying compliance with stated security objectives, requirements, regulations, and contractual obligations
   * done by performing on-site assessments or audits
   * both target and governing body SHOULD participate in full and open document exchange and review
+* Ponemon Institute’s 2023 report on third-party risk found that 51% of organizations experienced a data breach caused by a third party.
+* Gartner has reported that 60% of organizations work with over 1,000 third parties and that cyber incidents involving third parties are growing year over year.
+* The IBM Cost of a Data Breach Report 2023 notes that breaches involving third parties cost more and take longer to identify and contain than internal incidents.
 
 ### Documentation Review
 
-* process of reading the exchange materials and verifying them against standards and expectations
+* the systematic examination of policies, procedures, standards, and records to ensure they are accurate, complete, up to date, and aligned with security requirements, best practices, and compliance obligations.
 * typically performed before any on-site inspect is done
 * if documentation is sufficient and meets expectations/requirements then the on-site review will focus on compliance with the stated documentation
 * if document is incomplete, inaccurate, or otherwise insufficient, then the on-site review is postponed until the documentation is updated and corrected
@@ -305,11 +335,20 @@ Common methods:
   * mostly comes from Federal Information Security Management Act (FISMA)
   * once an ATO is revoked/lost, complete documentation and site inspection/review show full compliance are typically required/necessary
 
-### Alignment of the security function to business strategy, goals, mission, and objectives
+### A
 
-**_Security Function_** is defined as _"the aspect of operating a business that focuses on the task evaluating and improving security over time"_ and **management** of this function is typically performed through thorough _Security Governance_.
+* The rules for the information security ”game” must be documented, and they’re first documented in policy.
+* Do the rules for the game further the business strategy, goals, mission, and objectives OR do they hinder them?
+* **_Business case_** - a structured justification for a security initiative or investment, demonstrating how it supports organizational objectives, mitigates risk, ensures compliance, and delivers value—often by weighing costs, benefits, and potential impacts.
+* **_Top-down approach_** - a management-driven strategy where senior leadership defines security policies, goals, and priorities, ensuring alignment with business objectives and enabling effective implementation across the organization.
 
 #### Managing The Security Function
+
+* **_Security Function_**
+  * the organizational role or team responsible for developing, implementing, managing, and monitoring the strategies, policies, and controls that protect information assets from threats and ensure confidentiality, integrity, and availability.
+  * If information security is risk management (it is), then risk **assessment(s)**, **measurement**, risk **decision-making**, and ongoing improvements are all imperative.
+
+**_Security Function_** is defined as _"the aspect of operating a business that focuses on the task evaluating and improving security over time"_ and **management** of this function is typically performed through thorough _Security Governance_.
 
 * Performing _Risk Assessments_ to drive the security policy is clearest and most direct example of management of the security function.
 * Security must be measurable, meaning various aspects of the security mechanism function, provide clear benefit and have one or more metrics that be recorded and analyzed.
@@ -322,25 +361,31 @@ Common methods:
 
 #### Security Management Planning
 
+* alignment of the security function to business strategy, goals, mission, and objectives
 * ensures the proper creation, implementation, and enforcement of a security policy
 * aligns security function to the strategy, goals, mission, and objectives of the organization which includes:
   * designing and implementing security based on:
-    * business cases
+    * **_Business case_**
+      * a structured justification for a security initiative or investment, demonstrating how it supports organizational objectives, mitigates risk, ensures compliance, and delivers value—often by weighing costs, benefits, and potential impacts.
       * demonstrates a business specific need to alter an existing process or choose an approach to a business task
     * budget restrictions
     * scarcity of resources
-* **_top down approach_** is the most effective way to tackle security management planning
-  * Upper/senior management is responsible for initiating and defining policies for the organization
-* **_bottem up approach_** is when IT makes security decision without consulting with Senior Management, this approach is problematic and is rarely used in organizations
-* responsibility of upper management and not IT staff
+* Approaches
+  * **_Top down approach_**
+    * the most effective way to tackle security management planning
+    * a (upper/senior) management-driven strategy where senior leadership defines security policies, goals, and priorities, ensuring alignment with business objectives and enabling effective implementation across the organization.
+  * **_Bottom up approach_**
+    * a strategy where technical staff or operational teams initiate and implement security measures without formal direction from upper management, often resulting in ad hoc solutions that may lack alignment with broader organizational goals.
+* responsibility should be upper management and not IT staff
 * considered an issue of business operations rather than IT administration
 * team/department responsible for security should be autonomous
-  * _Information Security (InfoSec) team_ SHOULD be lead by a designated _Chief information security officer (CISO)_ who reports directly to SR. Management (CEO or board)
-      * sometimes referred to a _Chief Security Office (CSO)_, but this is mostly a subposition under the CISO same as _Information Security Office (ISO)_
+  * **_Information Security (InfoSec)team_** SHOULD be lead by a designated **_Chief information security officer (CISO)_** who reports directly to SR. Management (CEO or board)
+    * sometimes referred to a **_Chief Security Office (CSO)_**, but this is mostly a subposition under the CISO same as **_Information Security Office (ISO)_**
+    * leads a team of security generalists/specialists
   * placing the autonomy of the CISO and their team outside the typical org structure improves security management across the org and avoid cross-department and internal political issues.
   * Other members include:
-    * _Chief Information Office (CIO)_ focuses on ensuring information is used effectively to accomplish business objectives
-    * _Chief Technology Officer (CTO)_ focuses on ensuring that equipment/software work properly to support the business functions.
+    * **_Chief Information Office (CIO)_** focuses on ensuring information is used effectively to accomplish business objectives
+    * **_Chief Technology Officer (CTO)_** focuses on ensuring that equipment/software work properly to support the business functions.
 * Elements of security management planning include:
   * Defining security roles
   * Describing how security will be managed
@@ -359,16 +404,22 @@ Common methods:
     * Serves as the planning horizon for the other plans
     * SHOULD include a risk assessment
     * Good for 5 years if maintained and updated annually
+    * High-level and broad in scope
+    * Developed by senior leadership (CISO, CIO)
+    * Addresses regulatory requirements, emerging risks, and future tech trends
   * **Tactical Plan**
     * Midterm plan developed to provide more details on accomplishing the goals from the strategic plan
     * can be crafted ad hoc based on unpredicted events
-    * typically useful for about a year
+    * typically useful for about 1-2 years
     * prescribes and schedules tasks necessary to accomplish organizational goals
+    * medium-level detail
+    * managed by security managers or team leads
     * Examples include:
       * Project plans
       * Acquisition plans
       * Hiring and budget plans,
       * maintenance, support and system development plans
+    * allocates resources and timelines
   * **Operational Plan**
     * short team highly detailed plan based on strategic and tactical plans
     * valid or useful for a short time, must be updated monthly or quarterly to stay in compliance with the tactical plans
@@ -376,8 +427,10 @@ Common methods:
       * resource allotments,
       * budgetary requirements,
       * staffing assignments,
-      * scheduling, and step-by-step or implementation procedures
+      * scheduling, and step-by-step or implementation procedures (playbooks)
       * includes how the implementation processes are in compliance with the organization's security policy
+      * owned and maintained by technical teams, analysts, or admins
+      * typically tied to roles or functions
       * examples:
         * training plans
         * system deployment plans
@@ -389,43 +442,6 @@ Common methods:
     * serve as a basis for decision-making for the entire organization
   * security documentation should be concrete, well-defined, and clearly stated
 * security plans MUST be developed, maintained and actually used to be EFFECTIVE
-
-### Organizational processes (e.g., acquisitions, divestitures, governance committees)
-
-* Security governance SHOULD address all aspects of the organization including processes such as **acquisitions**, **divestitures**, and **governance committees**.
-* Mergers and Acquisitions (M&A)
-  * adds organizational and legal risk which include:
-    * inappropriate info discloser
-    * data loss
-    * downtime, or failure to achieve sufficient ROI
-  * higher degree of security oversight in increased during M&A do reduce losses during the transition period
-  * M&A's done without security considerations the risks inherent in those obtained products remain throughout their deployment life cycle, 
-  * minimizing inherent threats in acquired elements will reduce risk and cost on security management
-  * important to consider TCO over the life of a product / solution then the initial purchase and implementation
-* Divestitures required additional security governance/oversight
-  * either asset or employee reduction
-    * for media assets (storage media) it requires sanitization to remove any private info to avoid data leakage and possible destroyed safely to reduce the risk of data remanent recovery.
-    * released employees need to be debriefed (exit interview), usually review NDAs and any other binding documents (contracts/agreements)
-* Security Assessments are key for evaluating third party entities (contractor/suppliers, outsourced workforce, vendors, etc) and is just as important as ensuring a product was designed with security in mind
-* If using an external entity for assessments and monitoring it is imperative to make sure they have a security minded approach to their business operations
-* Consider the following when evaluating a 3rd Party for your security integration:
-  * **On-site Assessment**
-    * site visit of the organization for interviewing personnel and observing operational habits
-  * **Document Exchange and Review**
-    * investigating the ways datasets and documents are exchanged and the formal processes by which they perform assessments and reviews
-    * focuses on means and processes
-  * **Process/Policy Review**
-    * Request/review security policies, processes/procedures and documentation of incident response for review
-    * focuses on the written policies/procedures
-  * **Third-Party Audit**
-    * using an independant auditor as defined by the _American Institute of Certified Public Accountants (AICPA)_, provides an unbiased review based on _System and Organizational Controls (SOC)_ reports
-* Establish minimum security requirements for all M&As (modeled after your existing security policies)
-  * for hardware/software sec requirements should meet or exceed the security of your existing infrastructure
-  * for external services review any Service Level Agreement (SLA)/ Service Level Requirement (SLR) to ensure security is a prescribed component of the service
-    * SLR is a statement of the expectations of service and performance from the product or service of a vendor, often provided by the customer/client prior to establishment of the SLA
-* Other process that are essential to strong security governance are:
-  * Change control/change Management
-  * Data Classification
 
 ### Organizational roles and responsibilities
 
@@ -469,23 +485,121 @@ Common methods:
     * role assigned to the person (internal or external) responsible for reviewing and verifying that the security policy is properly implemented and the derived security solutions are adequate
     * produces compliance and effectiveness reports
     * issues discovered in these reports are transformed into new directives assigned by the senior manager to security professionals or custodians
+  * **Executive & Leadership Roles**
+    * **_Chief Information Security Officer (CISO)_**
+      * Sets the overall security strategy and direction.
+      * Aligns security with business goals.
+      * Reports to executive leadership or the board.
+    * **_Deputy CISO / Security Director_**
+      * Assists the CISO, often managing day-to-day operations.
+      * Coordinates between teams and oversees program execution.
+  * **Management & Oversight Roles**
+    * **_Security Program Manager_**
+      * Oversees large-scale security initiatives and project portfolios.
+      * Ensures milestones, budgets, and timelines are met.
+    * **_Compliance / GRC Manager_**
+      * Manages governance, risk, and compliance (GRC) functions.
+      * Oversees regulatory compliance and policy frameworks (e.g., ISO 27001, NIST, HIPAA).
+    * **_Security Awareness & Training Lead_**
+      * Develops and delivers security education to employees.
+      * Promotes a security-conscious culture.
+  * **Technical & Operational Roles**
+    * **_Security Architect_**
+      * Designs secure systems, networks, and cloud environments.
+      * Ensures security is built into infrastructure and software.
+    * **_Security Engineer_**
+      * Implements and manages technical security controls (e.g., firewalls, SIEMs, EDR).
+      * Builds automation and tooling for defense.
+    * **_Penetration Tester / Ethical Hacker_**
+      * Simulates attacks to identify weaknesses.
+      * Provides remediation guidance.
+    * **_Security Analyst_**
+      * Monitors systems for threats, analyzes alerts, and investigates incidents.
+      * Often part of the SOC (Security Operations Center)
+    * **_Incident Responder / SOC Analyst_**
+      * Handles real-time incident detection, containment, and response.
+      * Escalates and coordinates incident management efforts.
+    * **_Threat Intelligence Analyst_**
+      * Tracks threat actors, TTPs, and emerging risks.
+      * Enriches defense posture with external (threat) intel
+  * **Governance, Risk, and Compliance (GRC) Roles**
+    * **_Risk Analyst / Risk Manager_**
+      * Identifies, assesses, and mitigates information security risks.
+      * Works closely with business units on risk decisions.
+    * **_Policy & Audit Analyst_**
+      * Develops policies, standards, and procedures.
+      * Conducts internal audits and supports external assessments
+    * **_Third-Party Risk Analyst_**
+      * Evaluates and monitors security risks posed by vendors and partners.
+      * Manages due diligence and assessments.
+  * **Specialized or Supporting Roles**
+    * **_Data Privacy Officer_**
+      * Oversees compliance with privacy laws (e.g., GDPR, CCPA).
+      * Works with legal and security on personal data protection.
+    * **_Security Software Developer / DevSecOps Engineer_**
+      * Integrates security into the software development lifecycle (SDLC).
+      * Automates security testing and deployment.
+    * **_Cloud Security Engineer_**
+      * Secures cloud platforms (AWS, Azure, GCP).
+      * Manages identity, encryption, and configuration.
+
+### Organizational processes (e.g., acquisitions, divestitures, governance committees)
+
+* Security governance SHOULD address all aspects of the organization including processes such as **acquisitions**, **divestitures**, and **governance committees**.
+* Mergers and Acquisitions (M&A)
+  * adds organizational and legal risk which include:
+    * inappropriate info discloser
+    * data loss
+    * downtime, or failure to achieve sufficient ROI
+  * higher degree of security oversight in increased during M&A do reduce losses during the transition period
+  * M&A's done without security considerations the risks inherent in those obtained products remain throughout their deployment life cycle, 
+  * minimizing inherent threats in acquired elements will reduce risk and cost on security management
+  * important to consider TCO over the life of a product / solution then the initial purchase and implementation
+* Divestitures required additional security governance/oversight
+  * either asset or employee reduction
+    * for media assets (storage media) it requires sanitization to remove any private info to avoid data leakage and possible destroyed safely to reduce the risk of data remanent recovery.
+    * released employees need to be debriefed (exit interview), usually review NDAs and any other binding documents (contracts/agreements)
+* Security Assessments are key for evaluating third party entities (contractor/suppliers, outsourced workforce, vendors, etc) and is just as important as ensuring a product was designed with security in mind
+* If using an external entity for assessments and monitoring it is imperative to make sure they have a security minded approach to their business operations
+* Consider the following when evaluating a 3rd Party for your security integration:
+  * **On-site Assessment**
+    * site visit of the organization for interviewing personnel and observing operational habits
+  * **Document Exchange and Review**
+    * investigating the ways datasets and documents are exchanged and the formal processes by which they perform assessments and reviews
+    * focuses on means and processes
+  * **Process/Policy Review**
+    * Request/review security policies, processes/procedures and documentation of incident response for review
+    * focuses on the written policies/procedures
+  * **Third-Party Audit**
+    * using an independant auditor as defined by the _American Institute of Certified Public Accountants (AICPA)_, provides an unbiased review based on _System and Organizational Controls (SOC)_ reports
+* Establish minimum security requirements for all M&As (modeled after your existing security policies)
+  * for hardware/software sec requirements should meet or exceed the security of your existing infrastructure
+  * for external services review any Service Level Agreement (SLA)/ Service Level Requirement (SLR) to ensure security is a prescribed component of the service
+    * SLR is a statement of the expectations of service and performance from the product or service of a vendor, often provided by the customer/client prior to establishment of the SLA
+* Other process that are essential to strong security governance are:
+  * Change control/change Management
+  * Data Classification
 
 ### Security control frameworks
 
 * Often referred to as _security frameworks_ or _cybersecurity frameworks_, **security control frameworks** are a structured set of guidelines, standards, best practices, and controls designed to help organizations effectively manage and enhance their information security and cybersecurity posture.
 * Provide a systematic and comprehensive approach to identifying, implementing, and monitoring security controls and measures to protect and organization's data, systems, network, and sensitive information
 * Common Security control frameworks:
-  * **International Organization for Standardization (ISO)**
-    * https://www.iso.org/home.html
+  * [**International Organization for Standardization (ISO)**](https://www.iso.org/home.html)
     * founded in 1947
-    * worldwide standards-setting group of representatives from various national standards organizations
+    * globally recognized standards-setting group of representatives from various national standards organizations
     * defines standards for industrial and commercial equipment, software, protocols, and management among others
     * issues six main products
       * [International Standards](https://www.iso.org/standards.html)
       * Technical Reports
       * Technical Specifications
       * Publicly Available Specifications
-      * Technical Corrigenda
+      * Standards
+        * **_ISO 27001_**: The core standard—defines requirements for an Information Security Management System (ISMS).
+        * **_ISO 27002_**: Provides best practices and detailed guidance on security controls.
+        * **_ISO 27000_**: Gives foundational terms and concepts for the entire series.
+        * **_ISO 27701_**: Covers privacy controls
+        * **_ISO 31000_**: Covers risk management programs
       * Guides
         * widely recognized and accepted standards across many industries
         * have been adopted as requirements and/or laws by various governments
@@ -494,19 +608,24 @@ Common methods:
           * an international standards organization
           * prepares and publishes international standards for all electrical, electronic, and related technologies.
           * ISO and IEC often work together in establishing worldwide standards
-  * **National Institute of Standards and Technology (NIST)**
+      * Goal is to help organizations systematically manage information security risks through governance, policies, and controls.
+  * [**National Institute of Standards and Technology (NIST)**](https://www.nist.gov/)
     * US Federal agency which operates under the umbrella of the US Department of Commerce
     * founded in 1901 as the National Bureau of Standards, became NIST in 1988
     * mission is to promote and maintain measurement standards and advance technology and innovation
     * plays a pivotal role in developing and promoting standards and best practices in the areas of science and technology
     * responsible for establishing and maintaining various standards including those related to computer security
-    * well-known publications is [NIST Special Publication (SP) 800-53 - "Security and Privacy Controls for Information Systems and Organizations"](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
+    * best-known publications is [**_NIST Special Publication (SP) 800-53 - "Security and Privacy Controls for Information Systems and Organizations"_**](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
       * widely used as a reference for implementing information security practices, especially within government organizations and various sectors that handle sensitive data
-      * Also established the [_Risk Management Framework (RMF)_](https://csrc.nist.gov/projects/risk-management) and the [_Cybersecurity Framework (CSF)_](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)
-
+    * [**_Risk Management Framework (RMF)_**](https://csrc.nist.gov/projects/risk-management)
+    * [**_Cybersecurity Framework (CSF)_**](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)
+      * provides a common language for cybersecurity risk
+      * helps identify and prioritize actions
+      * aligns security actions across control types
+      * offers different value to different organizations
   * **Control Objectives for Information and Related Technology (COBIT)**
-    * https://www.isaca.org/resources/cobit
-    * documented set of best IT security practices crafted by ISACA, (Previously spelled out as _Informatino Systems Audit and Control Association_, however they only use the acronym current)
+    * [Business-focused control framework covering IT and related technologies](https://www.isaca.org/resources/cobit)
+    * documented set of best IT security practices crafted by ISACA, (Previously spelled out as _Information Systems Audit and Control Association_, however they only use the acronym currently)
     * prescribes goals and requirements for security controls
     * encourages the mapping of IT security ideals to business objectives
     * first release in 1996
@@ -522,14 +641,14 @@ Common methods:
         * ensures that all relevant factors are considered and that decisions are made in the best interest of the entire enterprise
       * **Dynamic Governance System**
         * nature of IT is dynamic, requires agile governance
-        * encourages organizations to continously assess and adapt their governance practices to keep pace with tech advancements and changing business process needs
+        * encourages organizations to continuously assess and adapt their governance practices to keep pace with tech advancements and changing business process needs
         * flexible and responsive to change
       * **Tailored To Enterprise Needs**
         * highlights the importance of tailoring governance practices to the unique needs of each enterprise
         * not one-size-fits-all
         * encourages enterprises to customize their governance practices to suit their individual requirements
         * ensures effective, efficient, and aligned strategic objectives
-      * **Separating Governance from Management**
+      * **Separating Governance from Management (Governance Distinct from Management)**
         * emphasizes the need to establish clear roles and responsibilities between governance and management functions
         * distinct yet interdependent activities
         * clear separation is necessary for effective decision-making and accountability
@@ -538,11 +657,11 @@ Common methods:
         * underscores the importance of an integrated and comprehensive methodology that covers the enter enterprise
         * not limited to individual processes ro functions but encompasses the entire IT ecosystem
         * ensures that governance processes are well-coordinated that the organization operates as a unified whole
-    * **Sherwood Applied Business Security Architecture (SABSA)**
-      * https://sabsa.org/
+    * [**Sherwood Applied Business Security Architecture (SABSA)**](https://sabsa.org/)
       * launched in 1995
       * framework and methodology for developing **risk-driven** enterprise security and information assurance architectures
       * known for having a holistic and business-focused approach to security architecture
+      * incorporates risk management as well
       * Key aspects
         * **_Risk-focused_**
           * places a strong emphasis on identifying and management security risk within the context of the business
@@ -563,9 +682,11 @@ Common methods:
         * **_Certification_**
           * offers a certification program that allows security professionals to become certified in SABSA's methodologies and practices
     * **Federal Risk and Authorization Management Program (FedRAMP)**
-      * US government-wides program designed to standardize the security assessment, authorization, and continuous monitoring processes for cloud products and services used by federal agencies
+      * [US government-wides program](https://www.fedramp.gov/) designed to standardize the security assessment, authorization, and continuous monitoring processes for cloud products and services used by federal agencies
       * established in 2011 to provide a cost-effective, risk-based approach for the adoption and use of cloud services by the federal government.
       * primary goal is to ensure that cloud services meet stringent security requirements and can be used by US government organizations to process, store, and transmit sensitive and classified information
+      * [FedRAMP Marketplace](https://marketplace.fedramp.gov/products)
+        * lists all the cloud services that have been approved for use by government agencies
       * follows the Federal Information Processing Standard (FIPS) 199
       * Key elements
         * **_Security standardization_**
@@ -591,12 +712,17 @@ Common methods:
         * **_Compliance framework_**
           * provides a framework that ensures the security of cloud services and helps federal agencies make informed decisions when selecting and implementing cloud solutions
         * plays a critical role in securing federal government data and systems
-    * **Information Technology Infrastructure Library (ITIL)**
+    * [**Information Technology Infrastructure Library (ITIL)**](https://www.itlibrary.org/)
       * initially crafted by the British Government in 1989
-      * https://www.itlibrary.org/
       * set of recommended best practices for the optimization of IT services to support business growth, transformation, and change
       * focuses on understanding how IT and security need to be integrated with and aligned to the objectives of the organization
       * often used as a starting point for the crafting of a customized IT security solution within an established infrastructure
+      * ITIL emphasizes:
+        * Integrating security into all stages of IT service delivery
+        * Ensuring confidentiality, integrity, and availability (CIA) of data
+        * Defining and maintaining security policies, roles, and responsibilities
+        * Supporting risk management and compliance
+        * Promoting collaboration between IT security and other IT service functions
       * analyzes the work of info tech organizations and divides it into 34 practices that organizations should consider implementing, which are divided into 3 categories:
         * General Management
           * 14 practices
@@ -638,12 +764,10 @@ Common methods:
             * Deployment management
             * Infrastructure and platform management
             * Software development and management
-    * **Center for Internet Security (CIS)**
+    * [**Center for Internet Security (CIS)**](https://www.cisecurity.org/cis-benchmarks)
       * provides OS, application, and hardware security configurations guides
-      * https://www.cisecurity.org/cis-benchmarks
       * these are not considered security control frameworks but they are often used in conjunction with them
-    * **Society of Worldwide Interbank Financial Telecommunication (SWIFT)**
-      * https://www.swift.com/
+    * [**Society of Worldwide Interbank Financial Telecommunication (SWIFT)**]( https://www.swift.com/)
       * specialized security control framework called [_Swift Customer Security Control Framework (CSCF)_](https://www2.swift.com/knowledgecentre/rest/v1/publications/cscf_dd/61.0/CSCF_v2025_20240701.pdf?logDownload=true)
         * set of 21 mandatory and 10 advisory security controls for operating environment of SWIFT users
         * to ensure the security, trust, and integrity of financial messaging and transactions within the global financial network
@@ -679,8 +803,13 @@ Common methods:
     * Cybercrimes
       * number of laws serve to protect society from computer/cyber crimes:
         * **Computer Fraud and Abuse Act (CFAA)**
+          * Prohibits unauthorized access to computer systems
+          * Prohibits the creation of malicious code
         * **Electronic Communication Privacy Act (ECPA)**
+          * Restricts government interception of communications
+          * Strick Requires for law enforcement
         * **Identity Theft and Assumption Deterrent Act (ITADA)**
+          * Makes identity theft a federal crime
     * In the US, legislative bodies at all levels of government establish criminal laws through elected representatives
       * at the federal level both the House of Representatives and the Senate must pass criminal law bills by mandatory vote (in most cases)
       * following this the president must normally sign it in order for the bill to become law
@@ -814,14 +943,15 @@ Early compute crime prosecutions were attempted under traditional criminal law b
 
 ### Intellectual Property (IP)
 
-Intangible assets of companies, such as brand names, recipies, songs, etc, are all collective referred as _intellectual property_ and are valuable to every organization and or company or individual (artist, producer, etc) and there are laws that exist to protect the rights of the owners.
+Intangible assets of companies, such as brand names, receipies, songs, etc, are all collective referred as _intellectual property_ and are valuable to every organization and or company or individual (artist, producer, etc) and there are laws that exist to protect the rights of the owners.
 
 #### Types of IP
 
 * **_Copyright and the Digital Millenium Copyright Act**
-  * _Copyright laws_
-    * https://www.copyright.gov/title17/
-    * guarrantee the creators of "original works of authorship" protection against the unauthorized duplication of their work
+  * [**_Copyright laws_**](https://www.copyright.gov/title17/)
+    * guarantee the creators of "original works of authorship" protection against the unauthorized duplication of their work
+    * granted automatically to creators
+    * using the &copy; symbol
     * Eight broad categories of work qualify:
       * Literary works
         * copyrighting computer software is included here, however it only protects the code, and does not protect the ideas or process behind the software
@@ -836,13 +966,12 @@ Intangible assets of companies, such as brand names, recipies, songs, etc, are a
     * Formal process to obtain copyright, sending copies of the protected works along with appropriate registration fee to the US Copyright Office (see https://www.copyright.gov)
     * The law states that that officially registering a copyright is not a prerequisite for copyright enforcement, the creator has automatic copyright form the instance the work is created.
       * burden of proving owner ship is on the creator in a court of law, official registration makes this easier to prove
-      * exceptions to the "default to the creator of the work" polcy are works for hire, which is when the "work" is done for an employer during normal course of an employee's workday.
+      * exceptions to the "default to the creator of the work" policy are works for hire, which is when the "work" is done for an employer during normal course of an employee's workday.
         * refers to situations where the employer or commissioning party, rather than the creator, is considered the author and initial copyright owner of a work, especially when created by an employee or under specific circumstances.
     * current copyright length:
       * works by one or more authors are protected 70 years after the death of the last surviving author
       * works for hire and anonymous works are provided protections for 95 years from the date of first publication or 120 years from the date of creation, whichever is shorter
-* _Digital Millenium Copyright Act (DMCA)_
-  * https://www.congress.gov/bill/105th-congress/house-bill/2281
+* [**_Digital Millenium Copyright Act (DMCA)_**](https://www.congress.gov/bill/105th-congress/house-bill/2281)
   * enacted in 1998 by US Congress to help existing copyright laws protect digital media
   * hotly debated law
   * brings U.S Copyright laws into compliance with two [World Intellectual Property Organization (WIPO)](https://www.wipo.int/portal/en/index.html) treaties
@@ -879,15 +1008,15 @@ Intangible assets of companies, such as brand names, recipies, songs, etc, are a
 * **Patents**
   * also known as _utility patents_
   * protects the IP rights of inventors
-  * period of 20 years from the time of the invention (date of initial application) during which the inventor has exclusive rights to use the invention (directly or via licensing aggreements)
+  * period of 20 years from the time of the invention (date of initial application) during which the inventor has exclusive rights to use the invention (directly or via licensing agreements)
   * after teh 20 yrs, the rights of the invention is in the public domain for anyone to use
   * Three main requirements:
-        1. Invention must be new, patentable only if they are original ideas
-        2. Invention must be useful, and work and accomplish some sort of task
-        3. Invention must not be obvious. You could not, for example, obtain a patent for your idea to use a drinking cup to collect rainwater. This is an obvious solution. You may be able to patent a specially designed cup to optimizes the amount of rainwater collected while minimizing evaporation
+    1. Invention must be new, patentable only if they are original ideas
+    2. Invention must be useful, and work and accomplish some sort of task
+    3. Invention must not be obvious. You could not, for example, obtain a patent for your idea to use a drinking cup to collect rainwater. This is an obvious solution. You may be able to patent a specially designed cup to optimizes the amount of rainwater collected while minimizing evaporation
     * _Design patents_
       * lasts for 15 years, easier to obtain
-      * covers the appearence of the invention and NOT the idea of the invention
+      * covers the appearance of the invention and NOT the idea of the invention
       * sometimes considered a weaker form of IP protection over utility patents
     * **_Patent trolls_**
       * companies that solely exist to hold patents, primarily in the software world, just to make money on legal disputes against companies they feel infringe upon the patents held in their portfolio
@@ -896,12 +1025,12 @@ Intangible assets of companies, such as brand names, recipies, songs, etc, are a
   * Copyright and Patent Laws do not really protect trade secrets as you would need to disclose the information in public, which defeats the whole premise of being "secret"
   * Also these both have expiration dates
   * Process for trade secret protection:
-    * You dont have to resgister it with anyone
+    * You don't have to register it with anyone
     * Leverage the proper RBAC controls to ensure ONLY those who SHOULD have access to the trade secret has access
     * use NDAs protect disclosure and include penalities for disclosure
     * take steps to ensure you value and protect your trade secret
   * following the process listed above is the best way to protect computer software, this is what Apple and Microsoft do to protect their core base of IP
-  * Laws enacted 
+  * Laws enacted
     * [Economic Espionage Act of 1996](https://www.congress.gov/104/plaws/publ294/PLAW-104publ294.pdf)
       * Contains two major provisions:
         >* Any individual found guilty of stealing trade secrets from a US corporation with intention of benefiting a foreign government or agent may be fined up to `$500,000` and imprisoned up to 15 years. Organizations found guilty may be fined up to `$10,000,000`
@@ -909,6 +1038,13 @@ Intangible assets of companies, such as brand names, recipies, songs, etc, are a
     * [Defend Tade Secrets Act of 2016](https://en.wikipedia.org/wiki/Defend_Trade_Secrets_Act)
         >* Extension of the Economic Espionage Act of 1996, by adding a civil right of action, allowing companies to file a civil suite in federal court claiming theft of trade secrets
 * **Software Licensing**
+  * Licensing Agreement
+    * protection of IP
+    * protections may include
+      * Individuals who may use software
+      * Amount of information that may be processed
+      * Locations of use
+      * Number of servers
   * **_Perpetual Licenses_**
     * pay one time free and use the software indefinitely without limitations
     * maintenance or updates my require additional fee
@@ -930,37 +1066,40 @@ Intangible assets of companies, such as brand names, recipies, songs, etc, are a
     * set number of users can use the software at any given time
     * additional users must waiting until a slot is available or you must purchase more slots
   * **_Name User Licenses_**
-    * license for the software is tied to a specific user, typically identified by thier login credentials, ensuring only designate individuals can access the software
+    * license for the software is tied to a specific user, typically identified by their login credentials, ensuring only designate individuals can access the software
   * **_Cloud Service License Agreements_**
     * agreements pertain to software-as-a-service (SaaS) provided over the internet
     * may present a link to terms or flash legal information on the screen, requiring user affirmation before accessing the service
-  * Software Alliance
-    * http://bsa.org
+  * [**_Software Alliance_**](http://bsa.org)
     * group that provides guidance and enforcement activities regarding software licensing
 
 ### Import/Export
 
 * **Transborder data flow**
   * The movement or transfer of digital information across national or jurisdictional boundaries.
-  * It often involves different legal and regulatory environments, including diverse data protection laws. 
+  * It often involves different legal and regulatory environments, including diverse data protection laws.
   * This cross-border data flow can present challenges to ensuring consistent data protection and privacy standards, making the understanding and application of proper safeguards and compliance measures crucial.
 * Two federal regulations governing imports and exports:
   * [International Traffic and Arms Regulations (ITAR)](https://www.pmddtc.state.gov/ddtc_public/ddtc_public?id=ddtc_kb_article_page&sys_id=24d528fddbfc930044f9ff621f961987)
     * controls the manufacture, export, and import of items that are specifically designated as military and defense items, including technical information related to those items
-    * items covered under ITAR appear on a list called the [United States Munition List (USML), maintained in 22 CFR 121](https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-121)
+    * items covered appear on a list called the [United States Munition List (USML), maintained in 22 CFR 121](https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-121)
   * [Export Administration Regulations (EAR)](https://www.bis.gov/regulations)
     * covers a broader set of items that are designed for commercial use but many have military applications
-    * items covered by EAR appear on the [Commerce Control List (CCL)](https://www.bis.gov/licensing/classify-your-item/interactive-commerce-control-list?isExpanded=&category=&keyword=) maintained by the U.S. Department of Commerce
+    * dual use technologies
+    * items covered appear on the [Commerce Control List (CCL)](https://www.bis.gov/licensing/classify-your-item/interactive-commerce-control-list?isExpanded=&category=&keyword=) maintained by the U.S. Department of Commerce
       * includes an entire category covering information security products
+  * [Office of Foreign Assets Control (OFAC)](https://ofac.treasury.gov/)
+    * restricts economic transactions with countries that are considered sponsors of terrorism, narcotics, or other activities considered contrary to foreign policy of the US
 * Countries of concern
-  * countries designated by US Department of Commerce's [Bureau of Industry and Security (BIS)](https://www.bis.gov/) as they pose a threat of nuclear proliferation, they are classified as state sponsors of terrorism, or other concenrs.
+  * countries designated by US Department of Commerce's [Bureau of Industry and Security (BIS)](https://www.bis.gov/) as they pose a threat of nuclear proliferation, they are classified as state sponsors of terrorism, or other concerns.
     * countries on this list include Cuba, Iran, North Korea, and Syria
+
 * Encryption Export Controls
   * US BIS set forth regulations on the export of encryption products outside the US
-  * Under previous regulations it was viturally impossible to export even relatively low-grade encryption technology outside the US, which left the software manufactures at a great competitive disadvantage to foreign firms
+  * Under previous regulations it was virtually impossible to export even relatively low-grade encryption technology outside the US, which left the software manufactures at a great competitive disadvantage to foreign firms
   * regulations where put in place, after software companies lobbied the US congress for changes, to foster the growth of the American security software industry
-  * current regs designat the categories of mass and retail market security software, and the rules permit firms to submit these products for review which should take no longer than 30 days
-    * after successful review companies can freely export
+  * current regulations designate the categories of mass and retail market security software, and the rules permit firms to submit these products for review which should take no longer than 30 days
+    * after successful review companies cany freely export
 
 ### Privacy and Privacy Laws
 
@@ -974,26 +1113,22 @@ Some US Laws that have elements dedicated to privacy:
         > The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated, and no Warrants shall issue, but upon probable cause, supported by Oath or affirmation, and particularly describing the place to be searched, and the persons or things to be seized.
     * direct interpretation prohibits governement agents from searching property without a warrant or probable cause
     * the courts have expanded their interpretation of the Fourth Amendment to include protections against wiretapping and other invasions of privacy.
-* **Privacy Act of 1974**
-  * https://www.justice.gov/opcl/privacy-act-1974
+* [**Privacy Act of 1974**](https://www.justice.gov/opcl/privacy-act-1974)
   * most significant piece of privacy legislation
   * restricing the way federal government may deal with private information about individual citizens
   * mandates that the US federal agencies maintain only the records that are necessary for conducting their businessand that they destroy those records when they are no longer required for legitament function of government
   * provides a formal procedure for individuals to gain access to records / and information about themselves that the governement maintains on them
   * severly limits the ability of the federal goverment agencies to disclose private information to others people or agencies without prior written consent of the affected individuals
   * does offer exceptions involving the census, law enforcement, the National Archives, health and safety, and court orders
-* **Electronic Communications Privacy Act of 1986 (ECPA)**
-  * https://bja.ojp.gov/program/it/privacy-civil-liberties/authorities/statutes/1285
+* [**Electronic Communications Privacy Act of 1986 (ECPA)**](https://bja.ojp.gov/program/it/privacy-civil-liberties/authorities/statutes/1285)
   * makes it illegal and a criminal event to invade the electronic privacy of an individual
   * broaded the Federal Wiretap Act, which previously covered communications traveling via a physical wire, to apply to any illegal interception of electronic communication or to the intentional, unauthorized access of electronically stored data
   * prohibits the interception of disclosure of electronic communication and defines those situations in which disclosure is legal
   * protects against the monitoring of email and voicemail communciations and prevents providers of those services from making unauthorized disclosures of their content
   * noteable provisions of the ECPA makes it illegal to monitor mobile phone conversations which is punishable by a fine of up to `$500` and up to 5 years in prison
-* **Communications Assistance for Law Enforcement Act (CALEA) of 1994**
-  * https://www.fcc.gov/calea
+* [**Communications Assistance for Law Enforcement Act (CALEA) of 1994**](https://www.fcc.gov/calea)
   * Amended the ECPA to require all communication carriers to make wiretapps possible for law enforcement with an appropriate court order, regardless of the technology in use
-* **Economic Esponiage Act of 1996**
-  * https://www.congress.gov/104/plaws/publ294/PLAW-104publ294.pdf
+* [**Economic Esponiage Act of 1996**](https://www.congress.gov/104/plaws/publ294/PLAW-104publ294.pdf)
   * extends the definition of property to include proprietary economic information so that the theft of this data can be considered industrial or corporate esponiage
   * changed the legal definition of theft so that it was no longer restricted to physical considerations
 * **Health Insurance Protability and Accountability Act (HIPAA) of 1996**
@@ -1004,8 +1139,7 @@ Some US Laws that have elements dedicated to privacy:
     * requiring strict security measures for hospitals, physicians, insurance companies, and other organizations that process or store private medical information of individuals
   * clearly defines the rights of individuals whom are subject of medical records and requires organizations that maintain to disclose these rights in writing
 * **Health Information Technology for Economic and Clinical Health Act of 2009**
-  * also know as HITECH
-  * https://www.hhs.gov/hipaa/for-professionals/special-topics/hitech-act-enforcement-interim-final-rule/index.html
+  * aka [HITECH](https://www.hhs.gov/hipaa/for-professionals/special-topics/hitech-act-enforcement-interim-final-rule/index.html)
   * Amendment to HIPAA made by congress in 2009
   * updated many HIPAA privacy and security requirements
   * implemented throught [HIPAA Omnibus Rule in 2013](https://pmc.ncbi.nlm.nih.gov/articles/PMC3804103/)
@@ -1072,7 +1206,19 @@ Some US Laws that have elements dedicated to privacy:
     * major difference between the GDPR and the DDP is the widened scope of the regulation.
     * New law applies to all organizations that collect data from EU residents or process that information on behalf of someone who collects it.
     * law even applies to companies oustide of the EU, if they collection information about residents of the EU
-    * key provisions:
+    * applies to ANY company with customers in the EU
+    * includes a 72-hour notification deadline in the case of data breach
+    * Include the following on data subject privacy rights:
+      >* The right to be informed
+      >* The right of access
+      >* The right to rectification
+      >* The right to erasure (the right to be forgotten)
+      >* The rigth to restrict processing
+      >* The right to data portability
+      >* The rigth to object
+      >* Rights in relation to automated decision making and profilling (AI, etc)
+    * other data types in GDPR: race or ethnic origin, political affiliations or opinions, religious or philosophical beliefs, and sexual orientation
+    * Key Provisions:
       * **_Lawfulness, fairness, and transparency_**:
         * must have a legal basis for process personal information
         * must not process data in a manner that is misleading or detrimental to data subjects
@@ -1090,6 +1236,37 @@ Some US Laws that have elements dedicated to privacy:
         * must have appropriate security, iintegrity, and confidentiality controls in place to protect data
       * **_Accountability_**:
         * must take responsibility for actions taken with protected data and that the data controller must be able to demonstrate compliance.
+      * Key Concepts:
+        * **Data Processor**
+          * anyone who processes/handles personal data on behalf of the data controller
+          * THE CUSTODIAN
+          * third-party outside of your organization
+          * is responsible for the safe and private custody transport, and storage
+      * **Data Controller**
+        * the person or entity that controls processing of the data
+        * THE OWNER
+        * set policies and guidelines for their data sets
+        * owns teh data and risks associated with any data breaches
+        * when data controllers use processors, they must ensure that security requirements follow the data and sign a Data Processing Aggreement (DPA)
+      * **Data Protection Officer (DPO)**
+        * ensures the organization complies with data regulations
+        * under GDPR, the DPO is a Manadatory appointment
+      * **Data Subject**
+        * the individual or entity that is the subject of the personal data
+      * **Data Owner**
+        * Data Controller in GDPR
+        * usually a member of senior management
+        * CAN delegate some day-to-day duties
+        * CANNOT delegate total responsibility
+      * **Data Steward**
+        * handles day-to-day governance activities.
+        * they are delegated responsibility by data owners
+      * **Data Custodian**
+        * Data Processor in GDPR
+        * ensures
+        * Usually someone in the IT department
+        * DOES implement controls for data owner
+        * DOES NOT decide what controls are needed
     * **Cross-Border Information Sharing**
       * GDPR is of particular concern when tranferring information across internation borders
       * companies who need to transfer between subsidaries have two options to complay with EU regulations:
@@ -1104,16 +1281,14 @@ Some US Laws that have elements dedicated to privacy:
       * GDPR restricts data transfers to countries outside of the EU, if companies violated privacy rules they may face fines of up to 4 percent of their global revenue or 20 million Euros whichever is higher.
         * Unfortunately the GDPR is filled with legalese which present many challenges for organizations, example is clause 107:
           > * _"Consequently the transfer of personal data to that third country or international organization should be prohibited, unless the requirements in this Regulation relating to transfers subject to appropriate safeguards, including **binding corporate rules**, and derogations for specific situations are fufilled."_
-    * **Privacy Shield**
-      * https://www.privacyshield.gov/ps/program-overview
+    * [**Privacy Shield**](https://www.privacyshield.gov/ps/program-overview)
       * safe-harbor used in the past between the EU and the United States allowing Organizations to certify their compliance with privacy practices through independant assessors and, if awarded the privacy shield, were permitted to transfer information
       * declared invalid in 2020 by a ruling of the Court of Justice of the EU (CJEU) called [Schrems II](https://www.gdprsummary.com/schrems-ii/), in which the Court cast doubt over the extent transfers can be legitimised by the European Commission’s Standard Contractual Clauses (SCC) for personal data transfers to the US and globally. The SCCs were still valid as a transfer mechanism in principle but would require additional work.
       * a new program call the [EU-US Data Privacy Framework](https://www.dataprivacyframework.gov/Program-Overview) was established in 2023 and is currently under review
     * **Asisa-Pacific Economic Cooperation (APEC)**
       * Published a privacy framework similar to the GDPR
     * **Canadian Privacy Law**
-      * **_Personal Information Protection and Electronic Documents Act (PIPEDA)_**
-      * https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/
+      * [**_Personal Information Protection and Electronic Documents Act (PIPEDA)_**](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/)
       * national-leve law in Canada that restricts how commercial businessses may collect and disclose personal information
       * covers information about an individual that is identifiable to the individual, for example:
         * Race, religion, nationality, or ethnic orgin
@@ -1135,8 +1310,7 @@ Some US Laws that have elements dedicated to privacy:
       * may also be superseded by provincial-level laws (Alberta, BC, Quebec have their own privacy laws)
       * does not apply to non-profit or political parties and associations
     * **Chinese Privacy Law**
-      * **_Personal Information Protection Law (PIPL)_**:
-      * https://personalinformationprotectionlaw.com/
+      * [**_Personal Information Protection Law (PIPL)_**](https://personalinformationprotectionlaw.com/)
       * came into effect in 2021
       * China's first comprehensive national standard in data privacy law
       * its somewhat analogous to the GDPR and emposes stringent regulations on personal data processing activities
@@ -1157,8 +1331,7 @@ Some US Laws that have elements dedicated to privacy:
         * **Heavy Penalities**:
           * Noncompliance can result in severe consequences including financial penalties, suspension of business activities, or revocation of business licenses.
     * **South African Privacy Law**
-      * **_Protection of Personal Information Act (POPIA)_**:
-        * https://popia.co.za/
+      * [**_Protection of Personal Information Act (POPIA)_**](https://popia.co.za/)
         * went into effect in 2020
         * promotes the protection of PI processed by public and private bodies and introduces specific conditions for the lawful processing of PI, closely mirroring principles of the GDPR
         * key provisions
@@ -1187,15 +1360,83 @@ Some US Laws that have elements dedicated to privacy:
               * [Information Regulator](https://inforegulator.org.za/) is the enforcement authority
               * they have the power to investigate and fine responsible parties for noncompliance
               * penalties include both monetary fines and imprisonment
+    * **Brazil Privacy Laws**
+      * [**_General Personal Data Protection Law_**](https://iapp.org/resources/article/brazilian-data-protection-law-lgpd-english-translation/)
+        * aka **_Lei Geral de Proteção de Dados (LGPD)_**
+        * a comprehensive law aimed at regulating how personal data is collected, processed, stored, and shared within Brazil. The LGPD has been in effect since September 2020 and is enforced by the Brazilian National Data Protection Authority (ANPD)
     * **US State Privacy Laws**
-      * **California Consumer Privacy Act (CCPA)**
-        * https://oag.ca.gov/privacy/ccpa
+      * [**California Consumer Privacy Act (CCPA)**](https://oag.ca.gov/privacy/ccpa)
         * enacted into law in 2018
         * gives consumers the following protections:
           * The right to know what information businesses are collecting about them and how its used and shared
           * The right to be forgotten, which allows consumers the right to request that their data is deleted
-          * The right to opt out of the sale of their PI
+            * optout of info sho
+          * The right to opt out of the sale/sharing of their PI
           * The right to excercise their privacy rights without the fear of discrimination or retaliation for their use
+        * includes a private right of action allowing the consumer to sue data controllers in their data has be the subject of a breach,theft or exfiltration
+      * [**California Data Broker Law**](https://cppa.ca.gov/data_brokers/)
+        * requries annual registery with the Attourney General (CALI)
+        * requires the Attourny General publish registrations on their website
+      * [**Califronia Privacy Rights Act (CPRA)**](https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5)
+        * modifies and strenghtens California's data privacy laws with new provisions that went into effect Jan 1 2023
+        * established the California Privacy Protection Agency to implement and enforce the law. The Attorney General also retains civil enforcement authority.
+        * Creates new category of **_Sensitive Personal Information (SPI)_** which is highly regulated under the CPRA
+          * Social Security, Driver's license, Geo location, contents of non-public comms, health/genetic information, ethnicity/relegion, sex, philosophy, etc
+        * includes rights to correct innaccurate personal information held by businessses, right to limit the use and disclosure of SPIs
+      * [**California Electronic Communications Privacy Act (CalEPCA)**](https://www.aclunc.org/our-work/legislation/california-electronic-communications-privacy-act-calecpa-sb-178)
+        * hailed nation's best privacy act
+        * came into effect January 1, 2016
+        * extends upon the Federal ECPA act
+        * apply to only California state law enforcement
+        * no California government entity can search our phones and no police officer can search our online accounts without going to a judge, getting our consent, or showing it is an emergency.
+        * Restrictions:
+          * **_Access to Service Provider Records_**
+            * requires a search warrant or court order in criminal cases
+            * requires a subpeona in non-criminal cases
+          * **_Access to Electronic Device(s)_**
+            * requires a search warrant, wiretap order, consent of the customer, or certification of an emergency situtation
+      * [**California Financial Information Privacy Act**](https://dfpi.ca.gov/regulated-industries/california-residential-mortgage-lending-act/california-financial-information-privacy-act/)
+        * aka Senate Bill 1 (SB-1)
+        * extends upon the financial privacy legislations put in place by the federal Gramm-Leach-Bliley Act
+      
+### Generally Accepted Privacy Principles (GAPP)
+
+* [Generally Accepted Privacy Principles (GAPP)](https://us.aicpa.org/interestareas/informationtechnology/privacy-management-framework)
+* recently replaced with the Privacy Management Framework
+* developed by a collaboration between four majory industry organizations:
+  * American Institute of Certified Public Accountants (AICPA)
+  * Canadian Institute of Chartered Accountants (CICA)
+  * Information Systems Audit and Control Association (ISACA)
+  * Institute of Internal Auditors (IIA)
+* framework of privacy prinicples
+* widely incorporated into the SOC 2 framework as an optional criterion
+* organizations that pursue a SOC 2 audit can include these privacy controls if appropriate
+* similar to ISO 27018, which is an optional extension of the controls defined in ISO 27002
+* an audit of these controls results in a report that can be shared with customers or potential customers, who can use it to assess a service provider's ability to protect sensitive data.
+* 10 Principles
+    1. **Management**
+        * the organization defines, documents, communicates, and assigns accountability for its privacy policies and procedures
+    2. **Notice**
+        * the origanization provides notice of its privacy policies and procedures.
+        * the organization identifies the purposes for which personal information is collected, used, and retained
+    3. **Choice and consent**
+        * the organization describes the choices available to the individual, and secures implicit or explicit consent regarding the collection, use, and disclosure of personal data
+    4. **Collection**
+        * Personal information is collected only for the purposes identified in the notice provided to the individual
+    5. **Use, retention, and disposal**
+        * The personal information is limited to the purposes indentified in the notice the individual consented to
+        * data should be disposed of securely when its no longer needed for the disclosed purpose
+    6. **Access**
+        * the organization provides individuals with access to their personal information for review or update
+    7. **Disclosure to third parties**
+        * Personal information is disclosed to third parties only for the identified purposes and with implicit or explicit consent of the individual
+    8. **Security for privacy**
+        * personal information is protected against both phyiscal and logical unauthorized access
+    9. **Quality**
+        * the organization maintains accurate, complete, and relevant personal information that is necessary for the purposes identified
+    10. **Monitoring and enforcement**
+        * the organization monitors compliance with its privacy policies and procedures
+        * it also has procedures in place to address privacy-related complaints and disputes
 
 ### Privacy In The Workplace
 
@@ -1208,12 +1449,11 @@ Consider the following if planning to monitor communications of employees:
 
 ### Compliance
 
-* **Payment Card Industry Data Security Standard (PCI DSS)**
+* [**Payment Card Industry Data Security Standard (PCI DSS)**](https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0_1.pdf)
   * established in 2006 by major credit card companies to enhance the security of payment card transactions and to protect cardholder data
   * set of security standards and requirements designed to ensure the protection of sensitive credit/debit card information
   * organizations that are not merchants but that store, process, or transmit cc information on behalf of merchants MUST also comply (example Shared Hosting providers)
   * current standard is v4.0.1
-  * https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0_1.pdf
   * Key Components
     * **_Data Security_**
       * sets guidelines for secure handling of payment card data
@@ -1279,17 +1519,21 @@ Security professionals should conduct security assessments of vendors both durin
 
 ## 1.5 - Understand requirements for investigation types (i.e., administrative, criminal, civil, regulatory, industry standards)
 
+
 ## 1.6 - Develop, document, and implement security policy, standards, procedures, and guidelines
 
 * Maintaining security is an essential part of ongoing business
 * to reduce the likelihood of a security failure having proper security formalized, document, and implemented is key to produce a solid and reliable security infrastructure
 * Key documentation and procedures concepts
   * **Security Policies**
-    * top tier of the formalization
-    * document that defines the scope of security needed by the organization
+    * Formal, high-level documents that define an organization’s rules, expectations, and responsibilities for protecting information assets.
+    * Serve as the foundation & scope of the security program, guiding decisions, behavior, and the implementation of controls
     * discusses the assets that require protection and the extent to which security solutions should go to provide the necessary protection
-    * overview/generalization of a business's security needs
-    * defines strategic security objectives, vision, goals, and outlines the security framework of the organization
+    * Common Characteristics:
+      * Broad in scope and strategic in nature
+      * Provide direction, not detailed instructions
+      * Enforceable across the organization
+      * Require regular review and updates
     * used to
       * assign responsibilities,
       * define roles,
@@ -1298,7 +1542,7 @@ Security professionals should conduct security assessments of vendors both durin
       * indicate compliance requirements
       * define acceptable risk level
     * used as proof of due diligence has been exercised by sr. management in protecting itself
-    * compulsory document
+    * compulsory document (**compliance is manadatory**)
     * several types
       * **Organizational Security Policy**
         * focuses on issues relevant to every aspect of the organization
@@ -1312,16 +1556,18 @@ Security professionals should conduct security assessments of vendors both durin
     * Crafted under the guidance of the defined security policies
     * defines compulsory requirements for the homogenous use of hardware, software, technology, and security controls
     * provide a course of action for how technology and procedures are implemented
+    * usually align to an industry or government standard
+    * compulsory document (**compliance is manadatory**)
   * **Security Baselines**
     * Crafted under the guidance of the defined security policies
     * more operationally focused form of the standards
     * defines the minimum level of security that every system must meet
     * all systems not complying with the baseline MUST be taken out of production until they are compliant
     * provides a common foundational secure state that more additional and stringent security measures can be built
-    * usually system specific and follow/refer to an industry or government standard
+    * usually system specific and follow/refer/align to an industry or government standard
   * **Security Guidelines**
-    * * Crafted under the guidance of the defined security policies
-    * not compulsory
+    * Crafted under the guidance of the defined security policies
+    * not compulsory/mandatory
     * offers recommendations on how standards and guidelines are implemented
     * serves as an operational guide for both security professionals and users
     * flexible and can be customized for each system/condition
@@ -1353,7 +1599,7 @@ Security professionals should conduct security assessments of vendors both durin
     * Purpose is to ensure that the organization dedicates sufficient time and attention to detail to both developing the project scope and plan then documenting those activities for future reference
     * Requires the use of a proven methodology
     * Focusing on several goals:
-      * _Organizational review_:
+      * **_Organizational review_**:
       * Perform a structured review of the business organization from a crisis planning point of view
       * identify all departments and individuals who have a stake in the BCP process
       * Areas to consider:
@@ -1363,7 +1609,7 @@ Security professionals should conduct security assessments of vendors both durin
         * Senior executives and other key individuals essential for the ongoing viability of the organization
           * sometimes an IT leader leads this or a dedicated business continuity manager leads the process
           * outcome is the selection of the remainder of the members that will be part of the BCP team
-      * _BCP team selection_:
+      * **_BCP team selection_**:
         * Assess the resources available to participate in business continuity activities and is one of the outcomes of the _Organizational Review_
         * once BCP team is selected then it does a through analysis of systems and processes as highlighted in the org review
         * team should include at a minimum:
@@ -1380,7 +1626,7 @@ Security professionals should conduct security assessments of vendors both durin
         * group should be diverse as possible and still operates in harmony
         * biases will help achieve a healthy balance in the final BCP plan as each rep advocates the needs of their department, but the leader of the BCP process need to be a strong leader as to not turn the biases into a "turf war" that derails the process
         * bcp and dr spending of not discretionary expenses, its management's fiduciary responsibility to the organization's shareholders require them to at least ensure that adequate BCP measures are in place
-    * _Resource Requirements_:
+    * **_Resource Requirements_**:
       * Next is the assessment of the resources need in the BCP efforts
         * requires expenditures of significant resources, ranging from the purchases and deployment of redundant computing facilities to the pencils and paper used by team members scratching out the first drafts of the plan
         * labor is a huge component
@@ -1389,7 +1635,8 @@ Security professionals should conduct security assessments of vendors both durin
             * **_BCP Development_**
               * require some resources (mostly time and effort of BCP Team members and support staff) in the development of the BCP process's four elements
                 * Project Scope / Planning
-                * Business impact analysis
+                * Business impact analysis/assessment (BIA)
+                  * identifies and prioritizes risk
                 * Continuity planning
                 * Plan approval and implementation
             * **_BCP Testing, Training, and Maintenance_**
@@ -1410,7 +1657,7 @@ Security professionals should conduct security assessments of vendors both durin
               * companies may be bound to various sector-specific, federal, state (province), and local laws or regulations that require them to implement various degrees of BCP
               * failure to implement an effective BCP could result in loss of life or property and decreased public confidence in government (for government/emergency services scenarios)
               * may be bound to implement sound BCP practices based on customer commitments in SLAs
-    * **_Business impact analysis (BIA)_**
+    * **_Business impact analysis/assessment (BIA)_**
       * identifies the business processes and tasks that are critical to an organization's ongoing viability and the threats posed to those resources
       * assesses the likelihood that each threat will occur and the impact those occurrences will have on the business
       * results in quantitative and qualitative measures that can help prioritize the commitment of business continuity resources to the various local, regional, and global risk exposures that face the organization
@@ -1476,7 +1723,7 @@ Security professionals should conduct security assessments of vendors both durin
         4. **Impact analysis**
             * most critical portion of the BIA
             * use data gathered in previous steps to determine the impact of each identified risk would have on the business if it were to occur
-            * Quantitative point of view we look at three specific metrics:
+            * **Quantitative** point of view we look at three specific metrics:
                 * _Exposure factor (EF)_
                     * the amount of damage that the risk poses to the asset, expressed as a percentage of the asset's value
                     * example: if the BCP team consults with fire experts and determines that a building fire would destroy 70 % of the building, the EF of the building to fire is 70%
@@ -1489,7 +1736,7 @@ Security professionals should conduct security assessments of vendors both durin
                     * calculate via ALE = SLE x ARO (from likelyhood assessment)
                     * example: fire experts might predict that a fire will occur in the building approx. once every 30 yrs, specifically determining that there is a 0.03 chance of a fire in a given year.
                         * the ALE is then 3 % of the $350,000 SLE or $10,500, meaning you should expect to loose $10,500 each year due to a fire in the building
-            * Qualitative point of view
+            * **Qualitative** point of view
                 * used to counter balance the results of the quantitative analysis, which considers non-monetary impact that interruptions might have on a business, for example:
                     * Loss of goodwill among client bases
                     * Loss of employees to other jobs after prolonged downtime
@@ -1671,18 +1918,18 @@ Security professionals should conduct security assessments of vendors both durin
 
 ## 1.8 - Contribute to and enforce personnel security policies and procedures
 
-* Candidate screening and hiring
+* **Candidate screening and hiring**
   * Hiring requires the following steps:
     * creating a _job description_ or _position description_
     * should address relevant security issues such if the position requires handling of sensitive material or access to confidential information
     * defines the _roles_ and _responsibilities_ for the employee in order to perform their work tasks
-    * _Job roles_ are typically tied to rank/level of privilege
-    * _Job description_ map to specifically assigned responsibilities and tasks
+    * **_Job roles_** are typically tied to rank/level of privilege
+    * **_Job description_** map to specifically assigned responsibilities and tasks
       * not exclusive for the hiring process
       * should be maintained throughout the organization's life
       * comparison between between what a persons **SHOULD** be responsible for and what they **actually are** responsible for.
       * managers **SHOULD** audit privilege assignments to ensure workers do not obtain access that is not strictly required for them to accomplish their work tasks
-    * _Job responsibilities_ are specific work task an employee is required to perform and should be detailed in the job description
+    * **_Job responsibilities_** are specific work task an employee is required to perform and should be detailed in the job description
       * list of responsibilities guides the assignment of access rights and permissions and privileges
       * setting a classification for the job
     * screening employment candidates
@@ -1693,14 +1940,15 @@ Security professionals should conduct security assessments of vendors both durin
       * interview process should be standardized process for fairness
       * the decision whether to hire someone or not needs to be legally defensible
       * hiring and training someone best suited
-* Onboarding
+      * reduce insider threat risk
+* **Onboarding**
   * process of adding new employees to the organization
   * should be guided by _policy-driven_ requirements
   * review and sign employee agreements and policies, such as but not limited to:
-    * _Acceptable Usage Policy (AUP)_
+    * **_Acceptable Usage Policy (AUP)_**
       * defines what is and what is not acceptable activity, practice, or use for company equipment and resources
         * failure to comply may result in job actions, warnings, penalties, or termination
-      * _Nondisclosure agreement (NDA)_
+      * **_Nondisclosure agreement (NDA)_**
         * used to protect confidential information within an organization from being disclosed by current or former employees
         * violations are met with strict penalties
         * several forms
@@ -1711,7 +1959,7 @@ Security professionals should conduct security assessments of vendors both durin
             * used when both parties agree to protect each other's confidential information
           * **Multilateral NDA**
             * used when there are three or more parties involved
-      * _Non-compete Agreement (NCA)_
+      * **_Non-compete Agreement (NCA)_**
         * sometimes referred to as _non-compete clause or covenant not to compete (NCC)
         * legal contract between employee and employer, business and independent contractor
         * purpose is to restrict the ability of one party (usually employee or contractor) from engaging in competitive activities or working for a competing entity, typically within a geographical area and for a define duration, after their termination
@@ -1728,29 +1976,40 @@ Security professionals should conduct security assessments of vendors both durin
     * stress reduction
     * decrease in resignation rates
   * network account onboarding via IAM and the principal of least privilege
-* Employee Oversight
+* **Employee Oversight**
   * managers should perform regular review or audit the job description, work tasks, privileges, and responsibilities for every staff member
   * Enforce mandatory vacations
+    * a security control that requires employees to take time off, helping to detect fraud or malicious activity that might be hidden through continuous control of their duties.
   * _User behavior analytics (UBA)_ / _User and entity behavior analytics (UEBA)_
     * analysis of the behavior of users/devices for the purpose of some goal, in the relation to security it allows for the improvement of the security process and procedures
-* Offboarding, transfers, and termination processes
+* **Offboarding, transfers, and termination processes**
   * may be required to re-sign NDA
   * removal of IAM permissions or review and realigning IAM for departmental transfers depending on the policies this could also be termination/rehire
   * disabling/deleting user accounts, best practice is to deactivate the user account and keep it for auditing purposes for at least 3 months
   * deactivating access cards (for office building)
   * return of company assets
+  * preserve and secure data
+    * Back up the employee’s:
+      * Email inbox
+      * Files and folders
+      * Chat messages (if business-related)
+      * Logs of system activity (for review if needed)
   * offboarding process should be clearly documented
   * termination process should be performed in coordination with HR and security
   * nonvoluntary terminations where there is perceived risk of a confrontation and SHOULD be attended by security guard(s)
-  * for voluntary terminations (professional, retirement, extended leave) an _exit interview_ is performed with HR to learn about the employee's experiences and to understand WHY the employee is leaving to better improve employee culture in the future
+  * for voluntary terminations (professional, retirement, extended leave) an **_exit interview_(()) is performed with HR to learn about the employee's experiences and to understand WHY the employee is leaving to better improve employee culture in the future
   * former employee is escorted off the premises (if any) and not allowed to return without and escort
   * Other security issues that should be handled as soon as possible:
     * remove or deactivate the employee's user account at the same time as or just before they are notified of being terminated
     * make sure the employee returns any organizational equipment or suppliees from their vehicle or home
     * arrange for a security department member to accompany the release employee while they gather their personal belongings from the work area
     * inform all security personnel and anyone else who watches or monitors any entrance point to ensure that the former employee does not attempt to reenter the building without an escort.
-* Vendor, consultant, and contractor agreements and controls
-  * _Multiparty risks_ exists due to serveral entities or organizations are involved in a project and the following risk/threats are variations of:
+  * Notify Internal Teams
+    * Inform IT, security, HR, and management of the separation.
+    * Remove them from contact lists, org charts, and communication channels.
+    * Reassign open tasks or access-dependent responsibilities.
+* **Vendor, consultant, and contractor agreements and controls**
+  * **_Multiparty risks_** exists due to serveral entities or organizations are involved in a project and the following risk/threats are variations of:
     * objectives
     * expectations
     * timelines
@@ -1760,12 +2019,12 @@ Security professionals should conduct security assessments of vendors both durin
   * Use of SLAs is important here as well as vendor/consultant controls are key for risk reduction and risk avoidance
     * SLAs should include a focus on protecting and improving security in addition to ensuring quality and timeliness of services at a reasonable price
     * However some SLAs are set and cannot be change but with some you may have  significant influence over their content
-  * _Outsourcing_
+  * **_Outsourcing_**
     * performing a task or operations via a third-party instead of in-house
     * examples : Application Development
     * can be used as a risk response option known as transference or assignment 
     * however using third-party vendors/consultants have induced risk of intellectual property (IP) theft or espionage
-  * _Vendor Management System (VMS)_
+  * **_Vendor Management System (VMS)_**
     * software solution used for the management and procurement of staffing services, hardware, software, and any other needed products and services
 
 ## 1.9 - Understand and apply risk management concepts
@@ -1773,6 +2032,7 @@ Security professionals should conduct security assessments of vendors both durin
 ### Risk Management
 
 * primary responsibility of upper management
+* about reducing risk (the likelihood, the impact, or both) and maintaining it at an acceptable level.
 * detailed process of identifying factors that could damage or disclose assets, evaluating those factors in light of asset value and countermeasure costs, and implementing cost-effective solutions for mitigating or reducing risk.
 * used to develop and implement information security strategies that support the mission of the organization
 * first time is the skeleton of a security policy, subsequent risk management events are used to improve and sustain an org's security infrastructure over time as internal and external conditions change
@@ -1812,6 +2072,8 @@ Security professionals should conduct security assessments of vendors both durin
   * actual cost
   * nonmonetary expenses/costs (time, attention, productivity, r&d)
   * using math-based risk evaluation (_quantative_) a dollar figure is assigned as the _asset value (AV)_
+* **Impact**
+  * The damage or consequence if an exploit is successful (i.e, data breach, etc)
 * **Threats**
   * potential event/occurrence that may cause an undesirable or unwanted outcome
   * can be any action or inaction that can lead to damage, destruction, alteration, loss or disclosure of assets or that could block access to or prevent maintenance of assets
@@ -1966,7 +2228,7 @@ Security professionals should conduct security assessments of vendors both durin
         8. Perform a cost/benefit analysis of countermeasure for each threat for each asset. Select the most appropriate response to each threat.
     * Cost functions
       * **Exposure Factor (EF)**
-        * also referred to as _loss potential_
+        * also referred to as **_loss potential_** (in percentages `%`)
         * percentage of loss that an organization would experience if a specific asset were violated by a realized threat
         * typically not 100% loss in most cases
         * usually small for assets that are easily replaceable, such as hardware
@@ -1977,23 +2239,33 @@ Security professionals should conduct security assessments of vendors both durin
         * indicates the potential amount of loss an organization would or could experience if an asset were harmed by a specific threat occuring
         * calculation is `SLE = Asset Value (AV) * Exposure Factor (EF)`
         * SLE is expressed in a dollar value
-          * example an AV of $200,000 and an EF of 45%, SLE for that threat is $90,000
+          * example an **AV** of `$200,000` and an **EF** of `45% (.45)`, SLE for that threat is `$90,000`
         * not always necessary to calculate the SLE as the ALE is most commonly needed value in determining criticality prioritization therefore the SLE can be skipped
       * **Annualized Rate of Occurrence (ARO)**
-        * also known as _a probability determination_
+        * also known as **_a probability determination_**
         * expected frequency with which a specific threat or risk will occur (that is, become realized) within a single year
         * can range from 0.0 (a threat will never be realized) to a very large number indicating the risk/threat will occur often
         * complicated to calculate, as it's determined by using historical internal data, performing statistical analysis, consulting public or subscription risk ledgers/registers, working with consultants, or using a risk management software solution
         * example:
-          * earthquake in Tulsa is around 0.00001 where as the ARO of an earthquake in San Francisco may be .03 (for a 6.7 + magnitude), or you can compare the ARO of an earthquake in Tulsa of .00001 to the ARO of an email virus in an office in Tulsa of 10,000,000
+          * earthquake in Tulsa is around `0.00001` where as the **ARO** of an earthquake in San Francisco may be `.03` (for a 6.7 + magnitude), or you can compare the ARO of an earthquake in Tulsa of `.00001` to the ARO of an email virus in an office in Tulsa of `10,000,000`
       * **Annualized Loss Expectancy (ALE)**
         * is the possible yearly loss of all instances of a specific realized threat against a specific asset
         * calculated using the following formula(s):
           * `ALE = Single Loss Expectancy (SLE) * Annualized Rate of Occurrence (ARO)`
           * `ALE = Asset Value (AV) * Exposure Factor (EF) * Annualized Rate of Occurrence (ARO)`
         * Example:
-          * SLE = $90,000, ARO = .5, then ALE is $45,000
-          * SLE = $90,000, ARO = 15, then ALE is $1,340,000
+          * `SLE = $90,000, ARO = .5, then ALE is $45,000`
+          * `SLE = $90,000, ARO = 15, then ALE is $1,340,000`
+    * **Scenario**:
+      * You manage a file server that contains sensitive customer data. You want to calculate the Annual Loss Expectancy (ALE) if the server gets hit by ransomware.
+      * **_Step-By-Step Calculations_**
+        1. **Asset Value (AV)**: The data and system are worth `$100,000` to your organization.
+        2. **Exposure Factor (EF)**: If ransomware hits, you estimate `40%`of the asset value would be lost (due to downtime, recovery costs, lost revenue, etc.). So, EF = `0.40`
+        3. **Single Loss Expectancy (SLE)**: SLE = AV × EF = `$100,000 × 0.40 = $40,000`
+        4. **Annual Rate of Occurrence (ARO)**: Based on past incidents and threat intel, you estimate this could happen once every 2 years. So, `ARO = 0.5`
+        5. **Annual Loss Expectancy (ALE)**: `ALE = SLE × ARO = $40,000 × 0.5 = $20,000`
+      * **_Interpretation_**
+        * You can expect to lose $20,000 per year (on average) due to ransomware risk on that file server.
   * **Qualitative Risk Analysis**
     * assigns subjective and intangible values to the loss of an asset
     * takes into account perspectives, feelings, intuition, preferences, ideas, and gut reactions
@@ -2019,8 +2291,8 @@ Security professionals should conduct security assessments of vendors both durin
         * usefulness and validity of assessment improves as the number and diversity of participants increases
         * where possible include one or more individuals from each level of the organizational hierarchy and include cross-sections from each major departments
         * See [NIST SP 800-30 Rev.1](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30r1.pdf) for details om examples on ratings and levels
-          * Tables D-3, D-4, D-5, D-6, and E-4 
-      * Delphi technique
+          * Tables D-3, D-4, D-5, D-6, and E-4
+      * **_Delphi Technique_**
         * primary mechanism that is not immediately recognizable or understood
         * simply an anonymous feedback-and-response process used to enable a group to reach an anonymous consensus
         * primary purpose is to elicit honest and uninfluenced responses from all participants, while minimizing influence of bias and discrimination
@@ -2137,6 +2409,15 @@ Security professionals should conduct security assessments of vendors both durin
     * may be covered in the Legal liabilities coverage also
   * **Third-party liability**
     * coverage may extend to liabilities arising from third parties, such as vendors, partners, and customers, who are affected by a cybersecurity incident involving the insured organization
+* **Cons**:
+  1. **_Not a Substitute for Good Security_**- Insurance doesn’t stop breaches—it just helps pay for the consequences. Weak controls can still lead to major damage.
+  2. **_Coverage Gaps & Fine Print_** - Policies may exclude certain types of attacks, such as nation-state threats or insider incidents, unless explicitly covered.
+  3. **_Claims Can Be Denied_** - If the organization fails to meet security obligations (e.g., didn’t patch systems), insurers may reject the claim.
+  4. **_Can Create Complacency_** - Over-reliance on insurance might lead some organizations to underinvest in actual security controls.
+  5. **_Rising Premiums_** - Due to the increasing frequency and severity of cyberattacks, costs are going up,
+* Bottom Line:
+  * Cyber insurance is a valuable safety net, but it should complement—not replace—a strong security program.
+  * Think of it as your financial firewall, not your first line of defense.
 
 ### Cost vs. Benefit of Security Controls
 
@@ -2230,7 +2511,7 @@ Security professionals should conduct security assessments of vendors both durin
   * includes the policies and procedures defined by the organization's security policy and other regulations or requirements
   * focus on personal oversight and business practices
   * examples include:
-    * policies, procedures
+    * policies, standards, and procedures
     * hiring practices, background checks
     * data classifications and labelling
     * security awareness and training efforts
@@ -2282,7 +2563,7 @@ Security professionals should conduct security assessments of vendors both durin
         * recording/reviewing of events captured by security cameras or CCTV
         * job rotation
         * mandatory vacations
-        * audit trails
+        * audit trailstory
         * honeypots / honeynets
         * IDS
         * violation reports / supervision and review of users
@@ -2368,13 +2649,11 @@ Security professionals should conduct security assessments of vendors both durin
 
 ### Risk Reporting and Documentation
 
-* _Risk reporting_ is a key task performed at the conclusion of a risk analysis
+* **_Risk reporting_** is a key task performed at the conclusion of a risk analysis
 * involves the production of a risk report and a presentation of that report to the interested/relevant parties.
   * Sample Report Examples:
-    * Risk Management Report:
-      * https://vepimg.b8cdn.com/uploads/vjfnew/8029/content/docs/1679939645risk-management-sample-report-to-board-pdf1679939645.pdf
-    * Risk Assessment Template:
-      * https://www.cdse.edu/Portals/124/Documents/jobaids/cyber/Risk-Assessment-Report-Template.pdf
+    * [Risk Management Report](https://vepimg.b8cdn.com/uploads/vjfnew/8029/content/docs/1679939645risk-management-sample-report-to-board-pdf1679939645.pdf)
+    * [Risk Assessment Template](https://www.cdse.edu/Portals/124/Documents/jobaids/cyber/Risk-Assessment-Report-Template.pdf)
 * risk report should be accurate, timely, comprehensive of the entire organization, clear and precise to support decision-making, and updated on a regular basis
 * Two forms of risk reporting
   * **Internal**
@@ -2403,7 +2682,7 @@ Security professionals should conduct security assessments of vendors both durin
 
 * improving security posture by periodically performing risk assessment as threat change
 * _Enterprise Risk Management (ERM)_ program can be evaluated using the _Risk Maturity Model (RMM)_
-* **Risk Maturity Model (RMM)**
+* [**Risk Maturity Model (RMM)**](https://www.riskmaturitymodel.org/risk-maturity-model-rmm-for-erm/)
   * assesses the key indicators and activities of a mature, sustainable, and repeatable risk management process
   * generally relate the assessment of risk maturity against a five-level model
   * RMM levels:
@@ -2415,8 +2694,7 @@ Security professionals should conduct security assessments of vendors both durin
         * risk management focuses on achieving objectives rather than just reacting to external threats
         * increased strategic planning is geared toward business success rather than just avoidance
         * lessons learned are reintegrated into the risk management process
-  * Example Study of attempting to develop a Generic RMM:
-    * https://pure.tudelft.nl/ws/files/97873197/Developing_a_generic_risk_maturity_model_GRMM_for_evaluating_risk_management_in_construction_projects.pdf
+  * Example Study of attempting to develop a [Generic RMM](https://pure.tudelft.nl/ws/files/97873197/Developing_a_generic_risk_maturity_model_GRMM_for_evaluating_risk_management_in_construction_projects.pdf)
 
 #### Legacy Risk
 
@@ -2441,18 +2719,26 @@ Security professionals should conduct security assessments of vendors both durin
   * [NIST Risk Management Framework (RMF)](https://csrc.nist.gov/projects/risk-management)
     * US government guide for establishing and maintaining security
     * established in 2010 and mandatory requirements for federal agencies
+    * aligns with NIST CSF, ISO 27001, and FedRAMP
     * defined by [NIST SP 800-37 Rev 2](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf)
     * structured and comprehensive framework to managed and mitigate info security and cybersecurity risks associated with their info systems and networks
     * Use of the RMF will result in the establishment of a security infrastructure and a process for ongoing improvement of the secured environment
-    * Seven phases (six of which are used cyclically) (Taken from NIST SP 800-37 Rev. 2)
-      >* **Prepare** to execute the RMF from organization- and system-level perspective by establishing a context and priorities for managing 
-            security and privacy risk
-      >* **Categorize** the system and information processed, stored, and transmitted by the system based on an analysis of the impact of loss
-      >* **Select** an initial set of controls for the system and tailor the controls as needed to reduce risk to an acceptable level based on an assessment of risk
-      >* **Implement** the controls and describe how the controls are employed within the system and its environment of operation
-      >* **Assess** the controls to determine if the controls are implemented correctly, operating as intended, and producing the desired outcomes with respect to satisfying the security and privacy requirements
-      >* **Authorize** the system or common controls based on a determination that the risk to organizational operations and assets, individuals, other organizations, and the Nation is acceptable
-      >* **Monitor** the system and the associated controls on an ongoing basis to include assessing control effectiveness, documenting changes to the system and environment of operation, conducting risk assessments and impact analyses, and reporting the security and privacy posture of the system
+    * flexible and adaptible
+    * Seven phases (six of which are used cyclically)
+      * **Prepare**
+        * (new in Rev. 2) - Establish context, assign roles, and get the organization ready to manage risk.
+      * **Categorize**
+        * Define the system and classify it based on the potential impact of a breach (confidentiality, integrity, availability).
+      * **Select**
+        * Choose appropriate security and privacy controls based on the system’s categorization (often from NIST SP 800-53).
+      * **Implement**
+        * Deploy the selected controls and document how they are applied.
+      * **Assess**
+        * Evaluate whether the controls are implemented correctly, operating as intended, and producing the desired results.
+      * **Authorize**
+        * A senior official formally accepts the risk and approves the system for operation.
+      * **Monitor**
+        * Continuously observe controls, track risk, and update as the system or environment changes.
     * [NIST Cybersecurity Framework (CSF)](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)
       * established in 2014 and is a US government guide for establishing and maintaining security
       * designed for critical infrastructure and commercial organizations
@@ -2461,12 +2747,46 @@ Security professionals should conduct security assessments of vendors both durin
       * is an improvement system rather than its own specific risk management processes
       * provides a structured approach for organizations to assess, develop, and enhance their cybersecurity posture and resilience against cyberthreats
       * consists of six functions:
-        >* **_Identify_**: Understand and catalog assets, risks, and vulnerabilities
-        >* **_Protect_**: Implement safeguards to protect assets and data
-        >* **_Detect_**: Develop and deploy mechanisms for identifying and detecting security incidents
-        >* **_Respond_** : Define strategies and processes for responding to and mitigating cybersecurity incidents
-        >* **_Recover_**: Develop and implement strategies for recovery and resilience after a cybersecurity incident
-        >* **_Govern_**: Establish, communicate, and oversee roles, responsibilities, and policies that ensure a proactive and adaptive approach to cybersecurity
+        * **Govern (GV)**
+          * Establish, communicate, and oversee roles, responsibilities, and policies that ensure a proactive and adaptive approach to cybersecurity
+          * Subcategories:
+            * **_Organizational Contest (GV.OC)_**
+            * **_Risk Management Strategy (GV.RM)_**
+            * **_Roles, Responsibilities, and Authorities (GV.RR)_**
+            * **_Policy (GV.PO)_**
+            * **_Oversight (GV.OV)_**
+            * **_Cybersecurity Supply Chain Risk Management (GV.SC)_**
+        * **Identify (ID)**
+          * Understand and catalog assets, risks, and vulnerabilities
+          * Subcategories:
+            * **_Asset Management (ID.AM)_**
+            * **_Risk Assessment (ID.RA)_**
+            * **_Improvement (ID.IM)_**
+        * **Protect (PR)**
+          * Implement safeguards to protect assets and data
+          * Subcategories:
+            * **_Identity Management, Authentication, and Access Control (PR.AA)_**
+            * **_Awareness and Tranining (PR.AT)_**
+            * **_Data Security (PR.DS)_**
+            * **_Platform Security (PR.PS)_**
+            * **_Technology Infrastructure Resillience (PR.IR)_**
+        * **Detect (DE)**
+          * Develop and deploy mechanisms for identifying and detecting security incidents
+          * Subcategories:
+            * **_Continous Monitoring (DE.CM)_**
+            * **_Adverse Event Analysis (DE.AE)_**
+        * **Respond (RS)**
+          * Define strategies and processes for responding to and mitigating cybersecurity incidents
+          * Subcategories:
+            * **_Incident Management (RS.MA)_**
+            * **_Incident Analysis (RS.AN)_**
+            * **_Incident Response Reporting and Communication (RS.CO)_**
+            * **_Incident Mitigation (RS.MI)_**
+        * **Recover (RC)**
+          * Develop and implement strategies for recovery and resilience after a cybersecurity incident
+          * Subcategories:
+            * **_Incident Recovery Plan Execution (RC.RP)_**
+            * **_Incident Recover Communication (RC.CO)_**
     * [ISO/IEC 31000 - Risk Management - Guidelines](https://shahrdevelopment.ir/wp-content/uploads/2020/03/ISO-31000.pdf)
       * High level overview of the idea of risk management that can be used by any organization
       * ISO guideline is intended to be useful to any type of organization
@@ -2488,6 +2808,9 @@ Security professionals should conduct security assessments of vendors both durin
 
 ### Threat Modeling
 
+* The structured process of **identifying**, **analyzing**, **and evaluating potential threats and vulnerabilities** to a system, application, or process **before** they can be exploited
+* **Purpose**:
+  * To proactively understand **what could go wrong**, assess **who might attack**, and design **mitigations** to reduce risk—**before** building or deploying technology.
 * the process where potential threats are identified, categorized, and analyzed.
 * looks for zero-day exploits before harm is experienced
 * can be performed proactive during design and development or as a reactive measure once a product has been deployed
@@ -2549,6 +2872,7 @@ Security professionals should conduct security assessments of vendors both durin
         * consequences of a threat
         * techniques required to implement an exploitation
         * list of potential countermeasures and safeguards
+      ![Reduction Analysis](./images/Reduction-Analysis.jpg)
     * **Prioritization and Response**
       * Following documentation, next step is to rank or rate the threats
       * achieved using techniques such as:
@@ -2567,9 +2891,10 @@ Security professionals should conduct security assessments of vendors both durin
             * **_Discoverability_**: How hard is it for an attacker to discover the weakness?
           * once threat priorities are set, responses/remediation steps should be considered and weighted according to their cost and effectiveness (Risk Management)
 * Methodologies (See [Domain 3](Domain%203%20-%20Security%20Architecture%20and%20Engineering.md) for Details):
-  * * **STRIDE** 
+  * * **STRIDE**
   * **Process for Attack Simulation and Threat Analysis (PASTA)**
   * **Visual, Agile, and Simple Threat (VAST)**
+  * Attack Trees, Kill Chain/MITRE ATT&CK Mapping
 
 #### Sample Threat Model Diagram
 
@@ -2577,24 +2902,26 @@ Security professionals should conduct security assessments of vendors both durin
 
 ## 1.11 - Apply Supply Chain Risk Management (SCRM) concepts
 
-### Supply Chain
+### [Supply Chain](https://en.wikipedia.org/wiki/Supply_chain)
 
-* https://en.wikipedia.org/wiki/Supply_chain
 * concept that most computers, devices, networks, systems, and even cloud-based services are not built by a single entity
 * manufacturers generally do final assembly rather than manufacture the individual components
 * even the commodity vendors likely have not mined the material to manufacture their components
 * long and complex logistics process of how a product is manufactured from raw material into a final product and distributed.
 
-### Supply Chain Risk Management (SCRM)
+### [Supply Chain Risk Management (SCRM)](https://en.wikipedia.org/wiki/Supply_chain_risk_management)
 
-* https://en.wikipedia.org/wiki/Supply_chain_risk_management
 * means to ensure that all vendors or links in the supply chain are reliable, trustworthy, reputable organizations that disclose their practices and security requirements to their business partners (maybe not public)
 * should be evaluated for every organizational acquisition of products and services from 3rd party suppliers and providers
 * each link in the chain should be responsible and accountable to the next link
 * each handoff should be properly organized, documented, managed, and audited
-* goal is of a **secure supply chain** is to 
+* goal is of a **secure supply chain** is to
   * ensure that the finished product is of sufficient quality, meets performance, operational goals, and provides stated security mechanisms
   * at no point in the process was any element subjected to unauthorized or malicious tampering or sabotage.
+* **SLR (Service Level Requirement)**
+  * A documented customer expectation for a specific level of service performance (e.g., 99.9% uptime).
+* **SLA (Service Level Agreement)**
+  * A formal agreement between a provider and a customer that defines the agreed-upon level of service, including metrics, responsibilities, and penalties.
 
 ### Supply Chain Risks
 
@@ -2761,7 +3088,7 @@ Security professionals should conduct security assessments of vendors both durin
     * Always assuming Called ID is false or incorrect
   * **Spear Phishing**
     * more targeted form of phishing where messages are crafted and directed to a specific group of individuals
-    * may be crafted to seem as if it orginated from a CEO or other top office in an organization this is known as _Business Email Compromise (BEC)_
+    * may be crafted to seem as if it orginated from a CEO or other top office in an organization this is known as **_Business Email Compromise (BEC)_**
       * BEC is often focused on convincing members of accounting or financial departments to transfer funds or pay invoices based on instructions seeming to originate from a boss, manager, or executive
       * also known as _CEO fraud_ or _CEO spoofing_
     * defenses include:
@@ -2824,7 +3151,7 @@ Security professionals should conduct security assessments of vendors both durin
       * visitors should be pre-arranged so that security can vet and id them
       * visitors MUST be accompanied at all times
   * **Tailgating & Piggybacking**
-    * Tailgating
+    * **_Tailgating_**
       * occurs when unauthorized entity gains access to a facility under the authorization of a valid worker but without their knowledge
       * occurs when a worker uses their valid creds to unlock / open a door, then walks into the building as teh door closes, granting the attacker the opportunity to stop the door from closing and to sneak in without realizing
       * attack that does not depend ont the consent of the victim
@@ -2833,7 +3160,7 @@ Security professionals should conduct security assessments of vendors both durin
           * avoid social pressure to hold the door open, especially for secure entries
           * [access control vestibules (mantraps)](https://en.wikipedia.org/wiki/Mantrap_(access_control))
           * security cameras / guards as deterrent instead of prevention
-    * Piggybacking
+    * **_Piggybacking_**
       * occurs when an unauthorized entity gains access to a facility under the authorization of a valid work by tricking the victim into provide consent
       * could happen when the intruder feigns the need for assistance, such as holding a large box or lots of paperwork and asks for someone to "hold the door"
       * goal is to distract the victim while the attacker gains access in order to prevent the victim from realizing that the attack did no provide their own creds
@@ -2993,13 +3320,13 @@ Security professionals should conduct security assessments of vendors both durin
   * Change the target focus of training, sometimes on the individual, sometimes on customers/clients, and others the organization
   * Change around topic orders or emphasis; maybe focus on social engineering during one training, then next time focus on mobile device security, then family and travel security after that
   * Use a variety of presentation methods, such as in-person instruction, prerecorded videos, computer software/simulations, virtual reality (VR) experiences, off-site training, interactive websites, or assigned reading of either prepared courseware or off-the-shelf books such as:
-    * Scam Me If You Can: Simple Strategies to Outsmart Today's Rip-off Artists
-    * The Art of the Con: How to Think Like a Real Hustler and Avoid Being Scammed
+    * [Scam Me If You Can: Simple Strategies to Outsmart Today's Rip-off Artists](https://www.amazon.ca/Scam-Me-You-Can-Strategies/dp/0525538968)
+    * [The Art of the Con: How to Think Like a Real Hustler and Avoid Being Scammed](https://a.co/d/bbeNhzs)
   * Use role-playing by providing attendees with parts in a reenactment both as attacker and defender, but allow various people to offer ideas related to defending or responding to the attacks
-  * Security Champions
+  * **_Security Champions_**
     * people who take the lead in a project, such as development, leadership, or training, to enable, support, encourage the adoption of security knowledge and practices through peer leadership, behavior demonstration, and social encouragement
     * can be non-security ppl, often found in application / system engineering but the concept can be used for anyone in the organization
-  * Gamification
+  * **_Gamification_**
     * encourages security and compliance awareness and engagement by integrating common elements of gameplay into other activities such as scoring points, leaderboard, developing group stories/scenarios, achievements
     * well applied game dynamics can result in improved worker engagement with training, an increase in organizational application of lessons, expansion of the comprehension of application of concepts, more efficient workflow
     * capture the flag drills, phishing simulation, role-based training, etc
@@ -3010,3 +3337,13 @@ Security professionals should conduct security assessments of vendors both durin
   * quiz should be done immediately following the training
   * a follow up quiz should be performed 3 to 6 months post the training to check on if the employee has retained the information
   * well-designed, engaging, and successful security training program should result in a measurable reduction in employee-related security incident management costs, hopefully exceeding the cost of the training program itself, for greater ROI
+* Examples
+  * Awareness:
+    * A poster in the office saying, “Think before you click—phishing emails are everywhere!”
+    * A quick video reminder during Cybersecurity Awareness Month
+  * Training:
+    * Teaching help desk staff how to reset passwords securely
+    * A hands-on session for employees on how to spot a phishing email in Outlook
+  * Education:
+    * Enrolling in a CISSP course or university program on cybersecurity
+    * Learning cryptographic principles in a formal classroom setting

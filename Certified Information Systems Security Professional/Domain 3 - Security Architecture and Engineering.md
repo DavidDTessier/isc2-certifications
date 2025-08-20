@@ -50,8 +50,7 @@
   * follows the [NIST Secure Software Development Framework](https://csrc.nist.gov/Projects/ssdf) closely
   * aids developers in creating secure software by diminishing the quantity and seriousness of software vulnerabilities while trimming development expenses
 * Modelling Frameworks
-  * **STRIDE**
-    * https://en.wikipedia.org/wiki/STRIDE_model
+  * [**STRIDE**](https://en.wikipedia.org/wiki/STRIDE_model)
     * Developed by Microsoft as a threat categorization scheme
     * stands for :
       * **_Spoofing_**
@@ -67,18 +66,34 @@
       * **_Denial of service (DoS)_**
         * attack that attempts to prevent
       * **_Elevation of privilege_**
-  * **Process for Attack Simulation and Threat Analysis (PASTA)**
-    * https://www.iriusrisk.com/resources-blog/pasta-threat-modeling-methodologies
+        * Gaining more access than you’re supposed to (e.g., a regular user becomes admin).
+    * How You Use It
+      * When you’re designing or reviewing a system:
+        1. Look at each component (e.g., login forms, APIs, databases).
+        2. Ask: “Could this be spoofed? Tampered with?…” for each STRIDE category.
+        3. Identify threats and put in controls (like encryption, logging, access restrictions) to reduce risk.
+  * [**Process for Attack Simulation and Threat Analysis (PASTA)**](https://www.iriusrisk.com/resources-blog/pasta-threat-modeling-methodologies)
     * a seven-stage threat modelling methodology.
-    * risk-centric approach that aims at selecting or developing countermeasures in relation to the value of the assets to be protected.
+    * **_risk-centric_** approach that aims at selecting or developing countermeasures in relation to the value of the assets to be protected.
     * Seven-Steps:
       * **Stage I: Definition of the Objectives (DO)**
+        * Understand what the business cares about (e.g., protect customer data).
       * **Stage II: Definition of the Technical Scope (DTS)**
+        * Document the system: architecture, users, components, data flows
       * **Stage III: Application Decomposition and Analysis (ADA)**
+        * Break down the system into smaller parts to see where weaknesses might exist.
       * **Stage IV: Threat Analysis (TA)**
+        * Identify potential threats based on attacker goals and capabilities.
       * **Stage V: Weakness and Vulnerability Analysis (WVA)**
+        * Find technical weaknesses in the system.
       * **Stage VI: Attack Modelling & Simulation (AMS)**
+        * Simulate how attacks could happen using attack trees or kill chains.
       * **Stage VII: Risk Analysis & Management (RAM)**
+        * Recommend and prioritize defenses based on risk and impact.
+    * How to Use It:
+      * Give each factor a score (e.g., 1–10)
+      * Add them up to get a risk score for each threat
+      * Higher total = bigger risk = higher priority
   * **Visual, Agile, and Simple Threat (VAST)**
     * https://smartstatetech.medium.com/threat-modeling-methodology-vast-5c7de64cd924
     * Threat modelling concept that integrates threat and risk management in to an Agile programming environment on a scalable basis

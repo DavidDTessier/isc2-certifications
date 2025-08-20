@@ -1200,7 +1200,6 @@ The following diagram illustrates the differences between firewalls, IDS, and IP
       * ensures that the system can return to a state before the change if required
       * after implementation, a _post-implementation review (PIR)_ is conducted to confirm that the change was successful and to identify any lessons learned for future improvements.
 
-
 ## 7.10 - Implement recovery strategies
 
 * **System Resilience and Fault Tolerance**
