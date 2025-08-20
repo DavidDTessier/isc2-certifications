@@ -847,6 +847,9 @@ Common methods:
     * does not require an act of the legislative branch to gain the force of law, but must comply with all criminal and civil laws
     * agencies may not implement regulations that directly contradict exist laws
     * must also comply with the US Constitution and are subject to judicial review
+  * **_Contract Law_**
+    * Governs agreements between parties
+    * Security requirements are often included in contracts with vendors, customers, and employees (e.g., Non-Disclosure Agreements -NDAs).
 * Should focus on generalities of law, regulations, investigations, and compliance as they affect organizational security efforts, specifically you will need to :
   * Understand legal and regulatory issues that pertain to information security in a holistic concept
   * Determine compliance and other requirements that apply to your organization
@@ -941,6 +944,7 @@ Early compute crime prosecutions were attempted under traditional criminal law b
           * charged DHS with establishing a national cybersecurity and communications integration center
           * role is to serve as the interface between federal agencies and civilian organizations for sharing cybersecurity risks, incidents, analysis, and warnings 
 
+
 ### Intellectual Property (IP)
 
 Intangible assets of companies, such as brand names, receipies, songs, etc, are all collective referred as _intellectual property_ and are valuable to every organization and or company or individual (artist, producer, etc) and there are laws that exist to protect the rights of the owners.
@@ -971,10 +975,11 @@ Intangible assets of companies, such as brand names, receipies, songs, etc, are 
     * current copyright length:
       * works by one or more authors are protected 70 years after the death of the last surviving author
       * works for hire and anonymous works are provided protections for 95 years from the date of first publication or 120 years from the date of creation, whichever is shorter
-* [**_Digital Millenium Copyright Act (DMCA)_**](https://www.congress.gov/bill/105th-congress/house-bill/2281)
+* [**_Digital Millennium Copyright Act (DMCA)_**](https://www.congress.gov/bill/105th-congress/house-bill/2281)
   * enacted in 1998 by US Congress to help existing copyright laws protect digital media
   * hotly debated law
   * brings U.S Copyright laws into compliance with two [World Intellectual Property Organization (WIPO)](https://www.wipo.int/portal/en/index.html) treaties
+  * Applies to ISPs and CSPs
     1. Prohibition of attempts to circumvent copyright protection mechanisms placed on a protected work by copyright holder.
         * clause designed to protect copy-prevention mechanisms placed on digital media (CDs, DVDs, etc)
         * DMCA provides penalities of up to $1 Million and 10 yrs in prision for repeat offenders
@@ -987,9 +992,9 @@ Intangible assets of companies, such as brand names, receipies, songs, etc, are 
             * the service provider must not determine the recipients of the material
             * any intermediate copies must not ordinarily be accessible to anyone other than anticipated recipients and must not be retained for longer than reasonably necessary
             * the material must be transmitted with no modification to its content
-            * also exempts service provdiers related to system caching, search engines, and the storage of information on a network by individual users, however the SP must take prompt action to remove copyrighted materials upon notification of the infringement
+            * also exempts service providers related to system caching, search engines, and the storage of information on a network by individual users, however the SP must take prompt action to remove copyrighted materials upon notification of the infringement
         * allows for the creation of backup copies of computer software and any maintenance, testing, or routine usage activities that require software duplication and only applies if the software is licensed and must be delete when no longer needed
-        * spells out application of copyright law principles to the streaming of audio/video content over the internet as "eligible nonsubscription transmissions"
+        * spells out application of copyright law principles to the streaming of audio/video content over the internet as "eligible non-subscription transmissions"
 * **Trademarks Protection for Trade Secrets**
   * Protection laws for words, slogans, and logos used to identify companies and its products or services
   * main objective to avoid confusion in the marketplace while protecting the IP rights of people and businesses
@@ -1090,10 +1095,12 @@ Intangible assets of companies, such as brand names, receipies, songs, etc, are 
       * includes an entire category covering information security products
   * [Office of Foreign Assets Control (OFAC)](https://ofac.treasury.gov/)
     * restricts economic transactions with countries that are considered sponsors of terrorism, narcotics, or other activities considered contrary to foreign policy of the US
-* Countries of concern
+* [Defense Federal Acquisition Regulation Supplement (DFARS)](https://www.itgovernanceusa.com/dfars)
+  * DoD rules for contractors handling defense info (CDI)
+  * mandates specific security
+* [Countries of Concern](https://www.pillsburylaw.com/en/news-and-insights/doj-data-security-program-compliance-guide.html)
   * countries designated by US Department of Commerce's [Bureau of Industry and Security (BIS)](https://www.bis.gov/) as they pose a threat of nuclear proliferation, they are classified as state sponsors of terrorism, or other concerns.
     * countries on this list include Cuba, Iran, North Korea, and Syria
-
 * Encryption Export Controls
   * US BIS set forth regulations on the export of encryption products outside the US
   * Under previous regulations it was virtually impossible to export even relatively low-grade encryption technology outside the US, which left the software manufactures at a great competitive disadvantage to foreign firms
@@ -1103,7 +1110,7 @@ Intangible assets of companies, such as brand names, receipies, songs, etc, are 
 
 ### Privacy and Privacy Laws
 
-Consitional Bill of Rights in the US does not explictly provide for a right to privacy, however the right has been upheld by numerous courts and is vigorously pursued by organizations such as the American Civil Liberties Union (ACLU).
+Constitutional Bill of Rights in the US does not explicitly provide for a right to privacy, however the right has been upheld by numerous courts and is vigorously pursued by organizations such as the American Civil Liberties Union (ACLU).
 
 Some US Laws that have elements dedicated to privacy:
 
@@ -1131,8 +1138,7 @@ Some US Laws that have elements dedicated to privacy:
 * [**Economic Esponiage Act of 1996**](https://www.congress.gov/104/plaws/publ294/PLAW-104publ294.pdf)
   * extends the definition of property to include proprietary economic information so that the theft of this data can be considered industrial or corporate esponiage
   * changed the legal definition of theft so that it was no longer restricted to physical considerations
-* **Health Insurance Protability and Accountability Act (HIPAA) of 1996**
-  * https://www.ncbi.nlm.nih.gov/books/NBK500019/
+* [**Health Insurance Protability and Accountability Act (HIPAA) of 1996**](https://www.ncbi.nlm.nih.gov/books/NBK500019/)
   * passed by Congress in 1996
   * made numerous changes to the laws governing health insurance and health maintenance organizations (HMOs)
   * provisions include:
@@ -1147,8 +1153,7 @@ Some US Laws that have elements dedicated to privacy:
   * the assoication is covered in writing via a business associate agreement (BAA) which are directly subject to HIPAA and HIPAA enforcement actions
   * introduces new data breach notification requirements, Break Notification Rule, in which enties that experience a data breach must notify affected individuals of the breach and must also notify both the Secretary of Health and Human Services and the media when the breach affects more than 500 people
   * notification must take place without unreasonable delay and no more thant 60 days after the discovery of the breach
-* **Children's Online Privacy Protection Act (COPPA) of 1998**
-  * https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa
+* [**Children's Online Privacy Protection Act (COPPA) of 1998**](ttps://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa)
   * Updated in 2002 to include provisions that became law and make demands on websites that cater to children or knowingly collect information from children:
     * Websites need to clear state their privacy notice and states the type of information they collect and what its used for and if its disclosed to 3rd parties
     * Parents must be provided with the opportunity to review any information collected from their children and permanently detele it from the site's records
@@ -1158,15 +1163,13 @@ Some US Laws that have elements dedicated to privacy:
   * Senate Bill SB 1386 (California, 2002)
     * became the first state to immediately disclose to individuals the known or suspected breach of PII
   * 2018, Alabama and South Dekota became the last two states to pass data breach notification laws
-  * List of state data breach notification laws can be found [here](https://www.ncsl.org/technology-and-communication/security-breach-notification-laws)
-* **Gramm-Leach-Bliley of 1999**
-  * https://www.ftc.gov/legal-library/browse/statutes/gramm-leach-bliley-act
+  * List of [state data breach notification laws](https://www.ncsl.org/technology-and-communication/security-breach-notification-laws)
+* [**Gramm-Leach-Bliley of 1999 (GBLA)**](https://www.ftc.gov/legal-library/browse/statutes/gramm-leach-bliley-act)
   * requires the FTC, along with the Federal banking agencies and other regulators, to issue regulations ensuring that financial institutions protect the privacy of consumers' personal financial information
   * relaxes previous regulations concerning the services each financial institution (banks, insurance companies, creditors) could provide in relation to information sharing
   * increase latitude has a wider privacy implication
   * included a number of limitations on the types of information that could be exchanged even among subsidiaries of the same coorporation and required financial institutions to provide written privacy policies to all their customers
-* **US PATRIOT Act of 2001**
-  * https://www.fincen.gov/resources/statutes-regulations/usa-patriot-act
+* [**US PATRIOT Act of 2001**](https://www.fincen.gov/resources/statutes-regulations/usa-patriot-act)
   * Known as the _Uniting and Strengthening America by Providing Appropriate Tools Required to Intercept and Obstruct Terrorism Act of 2001_
   * passed by Congress after the events of Sept 11, 2001 terrorist attack on NYC and Washington
   * greatly broadended the powers of law enforcement and intelligence agencies across a number of areas, including when monitoring electronic information
@@ -1175,8 +1178,7 @@ Some US Laws that have elements dedicated to privacy:
   * another change allows for ISPs to voluntairily provide the government with a large range of information, and allows them to obtain detailed information on user activity through the use of a subpena
   * the PATRIOT act amended the Computer Fraud and Abuse Act to provide more severe penalties for national security related criminal acts, jail terms of up to 20 years and expands the coverage of the CFAA
   * Orginal provisions expired in 2015 as Congress failed to renew the bill, however they later passed the Uniting and Stengthening America by Fulfilling Rights and Ensuring Effective Discipline Over Monitoring (USA FREEDOM) Act in June 2015, restoing the provisions in the PATRIOT act
-* **Clarifying Lawful Overseas Use of Data (CLOUD) Act**
-  * https://en.wikipedia.org/wiki/CLOUD_Act
+* [**Clarifying Lawful Overseas Use of Data (CLOUD) Act**](https://en.wikipedia.org/wiki/CLOUD_Act)
   * establishing procedures that govern access to data by tech organizations across national and internal borders
   * introduced as a way to improve law enforcement's ability to gather digital evidence stored in servers regardles of their location, however the company MUST be based in the United States or subject to US jurisdiction
   * Key Aspects:
@@ -1184,8 +1186,7 @@ Some US Laws that have elements dedicated to privacy:
     > * U.S.-based tech companies can recieve and must comply with lawful orders for data disclosure issued by foreign governments with which the U.S. has an executive agreement, bypassing the need for the U.S. governement intervention if certain conditions and human rights standards are met.
     > * Clarifies that U.S. law enforcement can compel U.S.-based ISPs via warrant or subpoena to disclose electronic data in their pocession, custody, or control, even if the data is stored on servers located outside the United States.
     > * Provides mechanisms for technology companies to challenge or seek a modification to the data requests if they believe the order violates the rights of the customer or the laws of foreign jurisdiction
-* **Family Education Rights and Privacy Act**
-  * also know as FERPA
+* [**Family Education Rights and Privacy Act (FERPA)**](https://studentprivacy.ed.gov/ferpa)
   * specialized privacy bill that affects any educational institution that accepts any form of funding from the federal government
   * grants certain privacy rights to students 18 or older (or younger than 18 and attending a postsecondary institution) and the parents of minor students
   * specific protections include:
@@ -1193,9 +1194,9 @@ Some US Laws that have elements dedicated to privacy:
     * right to respect correction of records they deem are erroneous
     * right to include statements in the records contesting anything that is not correct
     * schools may not release personal information from student records without written consent, except under certain circumstances
-* **Identity Theft and Assumption Deterrent**
+* [**Identity Theft and Assumption Deterrent Act**](https://www.ftc.gov/legal-library/browse/rules/identity-theft-assumption-deterrence-act-text)
   * signed in to law in 1998 by the sitting US President
-  * and extended by the **Identify Theft Penalty Enhancement Act** in 2004, make identity threft a crime against the person whose identity was stolen and provide servere criminal penalties (up to a 15-yr prison sentence and/or substantial fines) for any person found guilty
+  * and extended by the [**Identify Theft Penalty Enhancement Act**](https://www.congress.gov/bill/108th-congress/house-bill/1731) in 2004, make identity threft a crime against the person whose identity was stolen and provide servere criminal penalties (up to a 15-yr prison sentence and/or substantial fines) for any person found guilty
   * prior to these laws, the only legal victims of identity theft were the creditors who were defrauded
 * **European Union Privacy Law**
   * long since been the leading force in privacy law
@@ -1242,31 +1243,31 @@ Some US Laws that have elements dedicated to privacy:
           * THE CUSTODIAN
           * third-party outside of your organization
           * is responsible for the safe and private custody transport, and storage
-      * **Data Controller**
-        * the person or entity that controls processing of the data
-        * THE OWNER
-        * set policies and guidelines for their data sets
-        * owns teh data and risks associated with any data breaches
-        * when data controllers use processors, they must ensure that security requirements follow the data and sign a Data Processing Aggreement (DPA)
-      * **Data Protection Officer (DPO)**
-        * ensures the organization complies with data regulations
-        * under GDPR, the DPO is a Manadatory appointment
-      * **Data Subject**
-        * the individual or entity that is the subject of the personal data
-      * **Data Owner**
-        * Data Controller in GDPR
-        * usually a member of senior management
-        * CAN delegate some day-to-day duties
-        * CANNOT delegate total responsibility
-      * **Data Steward**
-        * handles day-to-day governance activities.
-        * they are delegated responsibility by data owners
-      * **Data Custodian**
-        * Data Processor in GDPR
-        * ensures
-        * Usually someone in the IT department
-        * DOES implement controls for data owner
-        * DOES NOT decide what controls are needed
+        * **Data Controller**
+          * the person or entity that controls processing of the data
+          * THE OWNER
+          * set policies and guidelines for their data sets
+          * owns teh data and risks associated with any data breaches
+          * when data controllers use processors, they must ensure that security requirements follow the data and sign a Data Processing Aggreement (DPA)
+        * **Data Protection Officer (DPO)**
+          * ensures the organization complies with data regulations
+          * under GDPR, the DPO is a Manadatory appointment
+        * **Data Subject**
+          * the individual or entity that is the subject of the personal data
+        * **Data Owner**
+          * Data Controller in GDPR
+          * usually a member of senior management
+          * CAN delegate some day-to-day duties
+          * CANNOT delegate total responsibility
+        * **Data Steward**
+          * handles day-to-day governance activities.
+          * they are delegated responsibility by data owners
+        * **Data Custodian**
+          * Data Processor in GDPR
+          * ensures
+          * Usually someone in the IT department
+          * DOES implement controls for data owner
+          * DOES NOT decide what controls are needed
     * **Cross-Border Information Sharing**
       * GDPR is of particular concern when tranferring information across internation borders
       * companies who need to transfer between subsidaries have two options to complay with EU regulations:
@@ -1398,7 +1399,7 @@ Some US Laws that have elements dedicated to privacy:
       * [**California Financial Information Privacy Act**](https://dfpi.ca.gov/regulated-industries/california-residential-mortgage-lending-act/california-financial-information-privacy-act/)
         * aka Senate Bill 1 (SB-1)
         * extends upon the financial privacy legislations put in place by the federal Gramm-Leach-Bliley Act
-      
+
 ### Generally Accepted Privacy Principles (GAPP)
 
 * [Generally Accepted Privacy Principles (GAPP)](https://us.aicpa.org/interestareas/informationtechnology/privacy-management-framework)
@@ -1495,9 +1496,8 @@ Consider the following if planning to monitor communications of employees:
         >* Log and monitor all access to systems and neworks regularly
         >* Test security of systems and networks regularly
         >* Support information security with organizational policies and programs
-* **Sarbanes-Oxley Act (SOX)**
+* [**Sarbanes-Oxley Act (SOX)**](https://en.wikipedia.org/wiki/Sarbanes%E2%80%93Oxley_Act)
   * Enacted in 2002
-  * https://en.wikipedia.org/wiki/Sarbanes%E2%80%93Oxley_Act
   * that mandates certain practices in financial record keeping and reporting for corporations.
   * top management must individually certify the accuracy of financial information. In addition, penalties for fraudulent financial activity are much more severe. The act increased the oversight role of boards of directors and the independence of the outside auditors who review the accuracy of corporate financial statements.
 
@@ -1594,10 +1594,15 @@ Security professionals should conduct security assessments of vendors both durin
 * involves assessing the risks to the organizational processes and creating policies, plans, and procedures to minimize the impact those risks might have on the organization
 * used to maintain the continuous operation of a business in the event of an emergency
 * goal is to provide quick, calm, and efficient response in the event of an emergency
-* four main elements
+* **Executive management** must at least ensure that support is given for three BCP/DRP items:
+  1. Executive management support is needed for initiating the plan.
+  2. Executive management support is needed for final approval of the plan.
+  3. Executive management must demonstrate due care and due diligence and be held liable under applicable laws/regulations.
+* Four main elements
   * **_Project Scope and planning_**
     * Purpose is to ensure that the organization dedicates sufficient time and attention to detail to both developing the project scope and plan then documenting those activities for future reference
     * Requires the use of a proven methodology
+    * provides long term strategy
     * Focusing on several goals:
       * **_Organizational review_**:
       * Perform a structured review of the business organization from a crisis planning point of view
@@ -1626,6 +1631,13 @@ Security professionals should conduct security assessments of vendors both durin
         * group should be diverse as possible and still operates in harmony
         * biases will help achieve a healthy balance in the final BCP plan as each rep advocates the needs of their department, but the leader of the BCP process need to be a strong leader as to not turn the biases into a "turf war" that derails the process
         * bcp and dr spending of not discretionary expenses, its management's fiduciary responsibility to the organization's shareholders require them to at least ensure that adequate BCP measures are in place
+      * Example Scope
+        * Critical business functions
+        * Threats, vulnerabilities, and risks
+        * Data backup and recovery plan
+        * BCP personnel
+        * Communications plan
+        * BCP testing requirements
     * **_Resource Requirements_**:
       * Next is the assessment of the resources need in the BCP efforts
         * requires expenditures of significant resources, ranging from the purchases and deployment of redundant computing facilities to the pencils and paper used by team members scratching out the first drafts of the plan
@@ -1679,12 +1691,20 @@ Security professionals should conduct security assessments of vendors both durin
             * should be mindful to gather as much information from all part of the organization that may not be part of the BCP team in order to not miss any critical functions
             * this process identifies business process priorities from a qualitative approach
             * team should then create a list of organization assets and assign an asset value (AV) in monetary terms
-            * then define what is the _maximum tolerable downtime (MTD)_, sometimes known as _maximum tolerable outage (MTO)_, which is the max length of time that each business function can tolerate a disruption before suffering irreparable harm
-                * the MTD for critical business functions should be lower than the MTD for activities not identified as critical
-            * define the _recovery time objective (RTO)_ for each business function is the amount of time in which you think you can feasibly recover the function in the event of a disruption
-                * closely related to the MTD, the RTO should be less then the MTD
-            * define the _recovery point objective (RPO)_ which is the amount of data loss that is acceptable and defines the point in time before the incident where the organization should be able to recover data
-                * example a database transaction log is backed up every 15 mins, therefore the RPO would be 15 mins
+            * then define the **_Maximum tolerable downtime (MTD)_**
+              * aka **_maximum tolerable outage (MTO)_**
+              * the max length of time that each business function can tolerate a disruption before suffering irreparable harm
+              * the MTD for critical business functions should be lower than the MTD for activities not identified as critical
+            * then define the **_Maximum Acceptable Outage (MAO)_**
+              * total length of time a critical business function can be unavailable
+            * define the **_Recovery Time Objective (RTO)_**
+              * defined for each business function
+              * the amount of time in which you think you can feasibly recover the function in the event of a disruption
+              * closely related to the MTD, the RTO should be less then the MTD
+            * define the **_Recovery Point Objective (RPO)_**
+              * defined for each business function
+              * the amount of data loss that is acceptable and defines the point in time before the incident where the organization should be able to recover data
+              * example a database transaction log is backed up every 15 mins, therefore the RPO would be 15 mins
             * once the MTD, RTO, and RPO are defined you can then start designing and planning the procedures necessary to accomplish the recover tasks
         2. **Risk identification**
             * risk occurs when an asset has a vulnerability and a threat exists that might exploit that vulnerability
@@ -1724,18 +1744,19 @@ Security professionals should conduct security assessments of vendors both durin
             * most critical portion of the BIA
             * use data gathered in previous steps to determine the impact of each identified risk would have on the business if it were to occur
             * **Quantitative** point of view we look at three specific metrics:
-                * _Exposure factor (EF)_
+                * **_Exposure factor (EF)_**
                     * the amount of damage that the risk poses to the asset, expressed as a percentage of the asset's value
                     * example: if the BCP team consults with fire experts and determines that a building fire would destroy 70 % of the building, the EF of the building to fire is 70%
-                * _Single loss expectancy (SLE)_
+                * **_Single loss expectancy (SLE)_**
                     * the monetary loss expected each time the risk materializes
                     * compute SLE = Asset Value (AV) x Exposure Factor (EF)
                     * example: is the building is worth $500,000, the SLE would be 70% of $500,000, or $350,000. This figure can be interpreted to mean that you could expect a single fire in the building would cause $350,000 worth of damage
-                * _Annualized loss expectancy (ALE)_
+                * **_Annualized loss expectancy (ALE)_**
                     * the monetary loss that the business expects to suffer as a result of the risk harming the asset during a typical year
                     * calculate via ALE = SLE x ARO (from likelyhood assessment)
-                    * example: fire experts might predict that a fire will occur in the building approx. once every 30 yrs, specifically determining that there is a 0.03 chance of a fire in a given year.
-                        * the ALE is then 3 % of the $350,000 SLE or $10,500, meaning you should expect to loose $10,500 each year due to a fire in the building
+                    * Example
+                      * Fire experts might predict that a fire will occur in the building approx. once every 30 yrs, specifically determining that there is a `0.03` chance of a fire in a given year.
+                        * the ALE is then `3%` of the `$350,000` SLE or `$10,500`, meaning you should expect to loose `$10,500` each year due to a fire in the building
             * **Qualitative** point of view
                 * used to counter balance the results of the quantitative analysis, which considers non-monetary impact that interruptions might have on a business, for example:
                     * Loss of goodwill among client bases
@@ -1752,7 +1773,7 @@ Security professionals should conduct security assessments of vendors both durin
             * finally assign a resource to as many items as possible to action
     * **_Continuity planning_**
       * focuses on developing and implementing a continuity strategy to minimize the impact realized risks might have on protected assets
-      * goals is to create a _Continuity of operations plan (COOP)_, which focuses on how an organization will carry out critical business functions beginning shortly after a disaster occurs and extending for up to one month of sustained operations
+      * goals is to create a **_Continuity of Operations Plan (COOP)_**, which focuses on how an organization will carry out critical business functions beginning shortly after a disaster occurs and extending for up to one month of sustained operations
       * two primary subtasks are involved here:
         * **_Strategy development_**
           * bridges the gap between the BIA and the continuity planning elements of BCP development
@@ -3054,6 +3075,11 @@ Security professionals should conduct security assessments of vendors both durin
     * watching for attempted abuses
     * training personnel
     * reporting any suspicious activity
+  * **Pretexting**
+    * creating a fabricated scenario to gain a victim's trust and extract confidential data or access,
+    * to deceive individuals into divulging sensitive information or performing actions that compromise security
+    * involves crafting a believable story and impersonating someone trustworthy to manipulate the target.
+    * Essentially, it's a sophisticated form of lying used to gain access to systems, data, or other resources.
   * **Prepedning**
     * adding terms, expressions, or phrases to the beginning or header of some other communication
     * used in order to further refine or establish pretext of a SE attack, such as spam, hoaxes, phishing.
