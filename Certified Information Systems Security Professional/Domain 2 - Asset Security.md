@@ -14,7 +14,7 @@
   * any information that can identify an individual
   * [NIST SP 800-122](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-122.pdf), which provides more information on how to protect _PII_, provides more formal definition
     > Any information about an individual maintained by an agency, including
-    (1) any information that can be used to distinguish or trace an individual's identity, such as name, social security number, data and place of birth, mother's maiden name, or biometric records; and 
+    (1) any information that can be used to distinguish or trace an individual's identity, such as name, social security number, data and place of birth, mother's maiden name, or biometric records; and
     (2) any other information that is linked or linkable to an individual, such as medical, educational, financial, and employment information.
 * **_Protected Health Information (PHI)_**:
   * any health information in electronic form, maintained in electronic media, or transmitted or maintained in other form or media
@@ -51,9 +51,9 @@
   * **Unclassified**:
     * Refers to any data that doesn't meet one of the descriptions for top secret, secret, or confidential data. Within the US, unclassified data is available to anyone, though it often requires individuals to request the info using procedures identified in the Freedom of Information Act (FOIA).
     * subclassifications:
-      * Official Use Only (FOUO)
-      * Sensitive But Unclassified (SBU)
-      * Controlled unclassified information (CUI)
+      * **_Official Use Only (FOUO)_**
+      * **_Sensitive But Unclassified (SBU)_**
+      * **_Controlled unclassified information (CUI)_**
     * Documents with the listed subclassification designation have strict control limitations for their distributions.
 * Non-governmental organizations rarely need to classify their data on potential damage to national security, instead the focus is on damage to the organization.
   * They consider not only sensitive data but also critical data
@@ -99,6 +99,12 @@ The following diagram shows the relationship between government and non-governme
 
 ## 2.2 - Establish information and asset handling requirements
 
+* **Marking and Labeling**
+  * Mark or label assets based on its classification.
+  * Best practice -apply the highest level of security until the data can be determined as not sensitive
+  * See the [US National Archives for there implementations of labels and markings for CUI](https://www.archives.gov/cui/registry/category-marking-list)
+* 
+
 ## 2.3 - Provision information and assets securely
 
 * **Information and Asset Ownership**
@@ -108,6 +114,9 @@ The following diagram shows the relationship between government and non-governme
   * data owner typically delegate data protection tasks to others in the organization
     * example: data custodian "security" role typically perform daily tasks such as implementing access controls, performing backups, and managing data storage
 * **Asset Management**
+  * Asset Owners
+    * individual assigned to be responsible for organization assets (hardware, devices, systems, etc)
+    * responsible for the procurement, management, and life cycle
   * refers to managing both "tangible and intangible" assets
   * starts with an inventory list of assets, tracking the asset(s), and taking additional steps to protect them throughout their lifetime
   * ensures the prevention of losses
@@ -121,7 +130,7 @@ The following diagram shows the relationship between government and non-governme
       * COTS typically requires connecting to a licensing server (on activation or periodically)
       * if a key is stolen it will invalid the organization Licensing Agreement for the COTS
       * licensing should be monitored and key should stored securely
-        * org pays for a licence key for 5 products installations but only installs and activates 1 immediately, if the key is stolen and installed of 4 other systems those will be activated with success
+        * org pays for a license key for 5 products installations but only installs and activates 1 immediately, if the key is stolen and installed of 4 other systems those will be activated with success
   * **_Intangible Assets_**
     * include patents, copyrights, company reputation, and other assets representing potential revenue
     * senior management is typically the "owner" of these assets
@@ -138,6 +147,24 @@ The following diagram shows the relationship between government and non-governme
     * connects to hardware systems in order to check configuration settings and verifies the system still on the network and active
 
 ## 2.4 - Manage data lifecycle
+
+![Data Lifecycle](../Certified%20Cloud%20Security%20Professional/images/secure-data-lifecycle.png)
+
+* **Phases**
+  * Create/Collect
+    * can be created by users/systems
+  * Store
+    * ensure data is handled properly, using encryption at rest
+    * ensure data is classified as soon as possible
+  * Use
+    * data should be protected by adequate security controls based on its classification
+  * Share
+    * encryption of data in use or in transit over a network
+  * Retain/Archive
+        * needed to comply with laws or regulations requiring the retention of data
+  * Destroy
+    * when data is no longer need, it should be destroy in such a way the it is not readable nor recoverable
+    * crypto-shredding!!
 
 * **Data Roles**
   * **_Data Owner_**
@@ -180,6 +207,9 @@ The following diagram shows the relationship between government and non-governme
       > * _"A data subject is a person who can be identified through an identifier, such as a name, an identification number, location data, an online identifier, or other means."_
     * Example:
       * if a file includes PII on Sally Smith, Sally Smith is the data subject
+  * **_Data Steward_**
+    * ensure the data's context and meaning are understood, and business rules governing the data's usage, (being used as intended)
+    * In COBIT (Control Objectives for Information and Related Technologies), both Data Stewards and Data Custodians play crucial roles in data governance, but they have distinct responsibilities. Data Stewards focus on the "what" and "why" of data, defining data quality rules and ensuring data is used correctly. Data Custodians focus on the "how", implementing the technical infrastructure and security measures to support data governance policies.
 * **Data Collection**
   * only collect data that is required and if you require more than that data will need to be securely stored:
     * credit card information
@@ -198,7 +228,6 @@ The following diagram shows the relationship between government and non-governme
         * Manually (USB)
         * Use a unidirectional network bridge which connects the two networks but allows data traversal in one direction from unclassifed to classified
         * Technical guard solution which is a combo of hardware and software placed between the two networks and allows properly marked data to travel between the networks
-* Data Retention
 * **Data Remanence**
   * data that remains after proper erasure
   * data on hard drives as residual magentic flux or slack space
@@ -312,6 +341,17 @@ The following diagram shows the relationship between government and non-governme
 * **Security Baselines**
   * once organizations have identified and classified their assets they typically want to secure them, enter _Security Baselines_
   * _Baselines_ provide a starting point and ensure minimum security standards.
+    * derived by completing the system categorization (FIPS 199 & NIST SP 800-60) to determine the sensitivity levels for a systems Confidentiality, Integrity,  and Availability (CIA)
+    * **_NIST SP 800-60 - Guide for Mapping Types of Information and Information Systems to Security Categories_**
+      * provides guidance for federal agencies to map types of information and information systems to security categories based on [FIPS 199](https://nvlpubs.nist.gov/nistpubs/fips/nist.fips.199.pdf).
+      * offers a framework for determining impact levels (low, moderate, high) for confidentiality, integrity, and availability, helping organizations apply appropriate security measures. The publication serves as a resource for understanding and implementing the information categorization requirements mandated by the FISMA of 2002. 
+      * Two Volumes
+        * [Volume I](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-60v1r1.pdf)
+          * Contains the basic guidelines for mapping information types and systems to their security categories.
+        * [Volume II](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-60v2r1.pdf):
+          * Includes appendices with detailed recommendations and rationale for categorizing mission-based, management, and support information types. 
+    The following diagram illustrates the Categorization and selection of controls as per NIST SP 800-60:
+    ![Controls Categorization](./images/NIST-sp-800-60-categorization.png)
   * [NIST SP 800-53, Rev. 5 - Security and Privacy Controls for Information Systems and Organizations](https://doi.org/10.6028/NIST.SP.800-53r5):
     * mentions _security control baselines_ and identifies it as _"the set of minimum security controls defined for an information system."_
     * stresses that a single set of security controls does not apply to all situations, therefore organizations tail security baselines to meet their needs
@@ -330,7 +370,7 @@ The following diagram shows the relationship between government and non-governme
 * **Scoping and Tailoring**
   * happens after the security baseline is selected
   * fine-tuning process
-  * _tailoring_
+  * **_Tailoring_**
     * is the process of aligning the controls with an organization's specific security requirements
     * ensures a baseline is a good fit for the organization
     * refers to modifying the list of security controls within a baseline to align with an organization's mission
@@ -342,7 +382,7 @@ The following diagram shows the relationship between government and non-governme
         > * Selecting compensating controls
         > * Assigning values to organization-defined control parameters via explicit assignment and selection process
         > * Supplementing baselines with additional controls and control enhancements providing specification information for control implementation
-    * _scoping_
+    * **_Scoping_**
       * part of the tailoring process and refers to reviewing a list of baseline security and privacy controls and selecting only those controls that apply to the IT systems you're trying to protect.
       * in simple terms, scoping eliminates controls that are recommended in a baseline:
         >* Example: if a system doesn't allow any two people to log on to it simultaneously, there is no need to apply a concurrent session control

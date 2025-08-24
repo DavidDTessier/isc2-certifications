@@ -630,6 +630,11 @@ Common methods:
     * encourages the mapping of IT security ideals to business objectives
     * first release in 1996
     * current version is COBIT 2019 (released in 2018) expands on COBIT 5
+    * COBIT-based data governance
+      * **Data Owner** is a senior leader accountable for a data set, setting policies and risk tolerance.
+      * **Data Steward** is the operational expert defining data standards and ensuring quality and compliance, acting as a liaison with the owner.
+      * **Data Custodian** is typically an IT professional responsible for the secure technical management of data, implementing the owner's rules and the steward's standards (delegated by data owners).
+      * **Business Owner** is a senior person accountable for a business process or area, similar to a data owner but for a business function rather than a data asset.
     * based on six key principles for governance and management of enterprise IT
       * **Provide Stakeholder Value (Meeting Stakeholder Needs)**
         * emphasizes the importance of understanding and prioritizing the needs of stakeholders

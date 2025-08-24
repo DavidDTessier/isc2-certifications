@@ -12,7 +12,7 @@
     * addresses the geographical aspects of data storage and processing
     * often involves regulatory requirements specifying that data should reside on servers physically located within the borders of a specific country or region
   * **Drivers**:
-    * specific regulations or laws that mandate the physical presence of data within a particulare jurisdiction
+    * specific regulations or laws that mandate the physical presence of data within a particular jurisdiction
     * motivated by data privacy, security, and/or economic concerns
   * **Implications**:
     * organizations must establish data centers and/or use cloud services within the specified jurisdictions to comply with local laws/regulations
@@ -139,13 +139,9 @@
         * Using the risk model
     * Trike has a version 1 and a version 2.
 
-
-
 ### Defense in Depth
 
-* also known as _layering_ 
-* https://en.wikipedia.org/wiki/Defense_in_depth_(computing)
-* also known as the [onion model](https://en.wikipedia.org/wiki/Onion_model)
+* aka [_layering_](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)) and  the [onion model](https://en.wikipedia.org/wiki/Onion_model)
 * use of multiple overlapping controls in a series for one objective
 * no one control can protect against all possible threats
 * a single failed control **SHOULD NOT** result in the exposure of systems and/or data
@@ -220,16 +216,16 @@
 
 #### Transitive Trust
 
-* [_Tranisitve trus_](https://www.getidee.com/blog/what-is-transitive-trust) is the concept that if process A trusts B and B Trusts C, then A inherits the trust of C through this transitive property.
+* [**_Transitve trust_**](https://www.getidee.com/blog/what-is-transitive-trust) is the concept that if process A trusts B and B Trusts C, then A inherits the trust of C through this transitive property.
   * can be reflective in a mathematical equation `if a = b and b = c, then a = c`
 * big security concern as it is enables the bypassing of restrictions or limitations between A and C, especially if A and C both support interaction with B as discussed in the example below:
-  > * An organzation has blocked sites such as Facebook and YouTube to increase worker productivity thus workers (A) do not have access to internet sites (C)
+  > * An organization has blocked sites such as Facebook and YouTube to increase worker productivity thus workers (A) do not have access to internet sites (C)
   > * However if workers are able to have access to a web proxy, vpn, or anonymization service then this can serve as a means to bypass these restrictions as (B) web proxy|VPN|AnonService would have access to the internet sites
-  > * in other words, if workers (A) are accessig a VPN service (B), and the VPN service (B) can access the blocked internet service (C), then A can access C through B via what is called a **_transitive trust exploitation_**.
+  > * in other words, if workers (A) are accessing a VPN service (B), and the VPN service (B) can access the blocked internet service (C), then A can access C through B via what is called a **_transitive trust exploitation_**.
 
 The following diagram highlights the flow of transitive trust:
 
-![Tranistive Trust](./images/transitive-trust.webp)
+![Transtive Trust](./images/transitive-trust.webp)
 
 #### Closed and Open Systems
 
@@ -246,25 +242,28 @@ The following diagram highlights the flow of transitive trust:
     * more popular and widely deployed which attracts more attention to attackers
     * attackers will basic attacking skills will find more targets that are open vs closed
     * security of open systems will be more reliant on secure and defensive coding practices and a thoughtful defense-in-depth deployment strategy
-* APIs
+* **Application Programming Interfaces (APIs)**
   * define the set of interactions allowed between system including applications, services, networking, firmware and hardware
   * also define the types of requests that can be made and the data forms of the exchange, as well as authentication and/or session encryption
+  * common way for open systems to communicate with each other
+  * can make closed system integration more secure
 
 #### Open Source vs Closed Source
 
-* _Open-source_
+* **_Open-Source_**
   * is where the systems source code, and other internal logic is exposed to the public
   * often depends on public inspection and review to improve the product over time
   * can be either close-system or open-system
-* _Closed-source_
+* **_Closed-Source_**
   * is where the system's source code, and other internal logic is hidden from public and proprietary to the vendor
   * more dependant on the vendor/programmer to review and revise the product over time
   * can be either close-system or open-system
-* Both are available for sale or no charge, however the term _commercial_ generally infers _closed-source_
+* Both are available for sale or no charge, however the term **_commercial_** generally infers **_closed-source_**
 
 ### Secure Defaults
 
-* Also known as [_**secure-by-default**_](https://www.resourcely.io/post/your-guide-to-secure-defaults), which is a security principle where a system's or application's initial configuration is set to the most secure settings possible
+* aka [**_Secure-by-default_**](https://www.resourcely.io/post/your-guide-to-secure-defaults), which is a security principle where a system's or application's initial configuration is set to the most secure settings possible
+* concept that you build in secure options, or configurations into systems by design
 * this is used in software and system design, as well as in network and device configuration.
   * For example, a password manager may have a secure default password length requirement, or a router may have a secure default firewall configuration.
 * Many users assume system default settings are optimal when they are installed
@@ -272,6 +271,9 @@ The following diagram highlights the flow of transitive trust:
 * default settings typically make the discovery and exploitation of systems trivial for attackers
 * you should never assume that default settings of any system/product is secure, as they typically are not
 * the responsibility lies with the system's administrators and/or company security staff to review and alter a product's defaults settings to comply with organizational security policies
+* **_Minimize User Friction_**
+  * The concept you want users to be able to easily use
+  * applications or systems from the first time the use it
 * **_Restrictive defaults_**:
   > * refer to the practice or policy where the default settings or options are intentionally configured to be more limiting or restrictive to enhance security, privacy and compliance
   > * typically provided via a preconfigured set of options in which the default settings priorities security, privacy, safety, or regulatory compliance
@@ -298,7 +300,7 @@ The following diagram highlights the flow of transitive trust:
     * example fail-safe door will open easily in case of emergency to allow people to escape a building
     * context is different between physical and digital world
       * for example a firewall (if designed to fail-open) would allow communication to continue with out filtering
-      * in contrast it designed with fail-safe/fail-closed/fail-secure solution then comms would be totally cut off sacrificing availabitly for condifidentiality/integrity
+      * in contrast if designed with fail-safe/fail-closed/fail-secure solution then comms would be totally cut off sacrificing availability for confidentiality/integrity
   * **Fail-Open**
     * related with _fail-soft_
     * protects availability
@@ -317,14 +319,15 @@ The following diagram highlights the flow of transitive trust:
 ### Keep it simple and small
 
 * [KISS principle](https://en.wikipedia.org/wiki/KISS_principle)
-* in security it encourages avoiding overcomplicating the environment, organization, or product design for a more streamlined, optimized, and reduced solution
+* in security it encourages avoiding over-complicating the environment, organization, or product design for a more streamlined, optimized, and reduced solution
 * more complex the system is the harder it is to secure and more features/capabilities means a larger attack surface to protect
 * Other related concepts:
   * [**Don't Repeat Yourself (DRY)**](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
     * eliminate redundancy by not repeat code in multiple places
   * [**Computing Minimalism**](https://en.wikipedia.org/wiki/Minimalism_(computing))
     * crafting code to use the least necessary hardware and software resources as possible
-    * [PERT technique](https://en.wikipedia.org/wiki/Program_evaluation_and_review_technique)
+    * [Program Evaluation & Review Technique (PERT)](https://en.wikipedia.org/wiki/Program_evaluation_and_review_technique)
+      * method of analyzing the tasks involved in completing a project, especially the time needed to complete each task, and to identify the minimum time needed to complete the total project
   * [**Rule of Least Power**](https://en.wikipedia.org/wiki/Rule_of_least_power)
     * principle to use the least powerful programming language that will suit the need of the solution
   * [**Worse is Better (aka New Jersey Style)**](https://en.wikipedia.org/wiki/Worse_is_better)
@@ -335,20 +338,21 @@ The following diagram highlights the flow of transitive trust:
 ### Zero Trust (ZTA) or Trust but Verify
 
 * [ZTA](https://en.wikipedia.org/wiki/Zero_trust_architecture), also known as _"never trust, always verify"_ which is base on the thinking that a breach is assumed and that everyone should be deemed malicious
-  * fromalized in [NIST SP 800-207 - Zero Trust Architecture](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf)
+  * formalized in [NIST SP 800-207 - Zero Trust Architecture](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf)
   * security concept where nothing and no person inside the organization is automatically trusted
   * each and every requested for activity/access is assumed to from an untrusted source/location until otherwise verified
   * every transaction should be verified before it is allowed to occur
   * every access request should be authenticated, authorized, and encrypted prior to the access being granted to a resource or asset
-  * requires internal network microsegementation and strong adherence to the principle of least privilege in order to prevent lateral movement by limit and/or severely restricting the ability to move about the environment
+  * requires internal network micro-segmentation and strong adherence to the principle of least privilege in order to prevent lateral movement by limit and/or severely restricting the ability to move about the environment
   * can leverage an [Attibute-based RBAC](https://en.wikipedia.org/wiki/Attribute-based_access_control) for control also
-  * only successfull if real-time monitoring, vetting, and visibility into user activities are maintained
+  * only successfully if real-time monitoring, vetting, and visibility into user activities are maintained
 * [Microsegmentation](https://en.wikipedia.org/wiki/Microsegmentation_(network_security))
-  * network security concept of diving up an internal network into small segements/zones
-  * each segement/zone is seperated from each other by internal segementation firewalls (ISFWs), subnets, or virtual local arean networks (VLAN)
+  * network security concept of diving up an internal network into small segments/zones
+  * each segment/zone is separated from each other by internal segmentation firewalls (ISFWs), subnets, or virtual local area networks (VLAN)
   * all communication been each zone can be filtered, may require authentication, often includes session encryption, and may also use allow list and block list control
 
 ![ZTA](./images/zta.png)
+![NIST ZTA](./images/zta-800-207.png)
 
 * [Trust but Verify](https://gigaom.com/2024/06/07/zero-trust-101-its-time-to-ditch-trust-but-verify/)
   * was the gold was standard in cybersecurity
@@ -436,9 +440,6 @@ So in today's cybersecurity landscape choose Zero-Trust!
   * Uses STIX and TAXII to share intel
 
 
-
-
-
 ## 3.2 - Understand the fundamental concepts of security models (e.g., Biba, Star Model, Bell-LaPadula)
 
 ### Concepts
@@ -461,20 +462,24 @@ So in today's cybersecurity landscape choose Zero-Trust!
 #### Trusted Computing Base (TCB)
 
 * [TCB](https://en.wikipedia.org/wiki/Trusted_computing_base) is a design principle in which the combination of hardware, software, and controls work together to a for a trust union to enforce security policies
-* should be as small as possible in order for detailed analysis to reasonably ensure that the system meets design specs and reqs
+* should be as small as possible in order for detailed analysis to reasonably ensure that the system meets design specs and requirements
 * is the only portion of the system that can be trusted to adhere to and enforce security policies
-* uses **_security perimeters (SP)_** to seperate the TCB from the rest of the system
-  * the SP ensures no insecure communication or interactions between the TCB and the rest of the system
-* uses **_trusted paths (TP)_** for secure communications
+* **Security Perimeters (SP)**
+  * used to separate the TCB from the rest of the system
+  * ensures no insecure communication or interactions between the TCB and the rest of the system
+* **Trusted Paths (TP)**
+  * used by the TCB for secure communications
   * TPs are established channels with strict standards to allow necessary communications to occur without exposing the TCB to security exploitations
-* leverages a **_reference monitor (RM)_** to provides access control and verification mechanism for the TCB
-  * stands between every subject and object, verifying that a subject's credentials meet the object's access requirements befor any requests are allowed to proceed
+* **Reference Monitor (RM)**
+  * used by the TCB to provides access control and verification mechanism for the TCB
+  * stands between every subject and object, verifying that a subject's credentials meet the object's access requirements before any requests are allowed to proceed
   * RM is a set of design requirements on a reference validation mechanism which as key component of an operating system, enforces an access control policy over all subjects and objects.
   * A reference validation mechanism must be:
     * (i) always invoked (i.e., complete mediation);
     * (ii) tamperproof; and
     * (iii) small enough to be subject to analysis and tests, the completeness of which can be assured (i.e., verifiable).
-* the [**_security kernal_**](https://en.wikipedia.org/wiki/Security_kernel) is a collection of components that implement the _reference monitor_ in order to provide access control or authentication, authorization, and accounting (3A) specifically.
+* [**Security Kernel**](https://en.wikipedia.org/wiki/Security_kernel)
+  * a collection of components that implement the _**reference monitor**_ in order to provide access control or authentication, authorization, and accounting (3A) specifically.
   * it mediates all resource access requests, granting only those requests that match the appropriate access rules in use for a system
 
 The following diagram(s) illustrate these conncepts:
@@ -513,7 +518,7 @@ The following diagram(s) illustrate these conncepts:
 
 ![information flow](./images/information_flow.png)
 
-##### Compsition Theories
+##### Composition Theories
 
 * falls under the information flow model and build on the notion of inputs and outputs between systems which essentially describes information flow between systems
 * Three theories:
@@ -548,16 +553,16 @@ The following diagram(s) illustrate these conncepts:
 * Four rules:
   * **Take Rule**:
     * Allows subjects to take rights over an object
-    * (ineheritence)
+    * (inheritance)
   * **Grant Rule**:
     * Allows a subject to grant rights over an object
-    * (inheritence)
+    * (inheritance)
   * **Create Rule**:
     * Allows a subject to create new rights
   * **Remove Rule**:
     * Allows a subject to remove rights it has
 
-![Take-Grant Model](./images/take-grant.png)
+![Take-Grant Model](./images/take-grant.webp)
 
 #### Access Control Matrix
 
@@ -610,21 +615,25 @@ The following diagram(s) illustrate these conncepts:
     * (i.e., the _ss-Property_)
     * No Read Up
     * Subjects can't read objects with higher sensitivity labels
-  * **(*)-Property (_star-property_(**)
+  * **(*)-Property (_star-property_**)
     * No Write Down
     * Subjects can't write to objects with lower sensitivity labels
     * Unless performing declassification, which is a valid operation
   * **Discretionary Security Property**
-    * An access matrix is used to enforce discretionary access control
+    * subject can perform operations only if permitted by an access matrix which is used to enforce discretionary access control
+    * _Strong Star Confidentiality Rule_
 * First two properties define the states into which the system can transition (not other transitions allowed), while the third determines and enforces a subject's job/role-based need to know to access an object
-* **Trusted Subject**
-  * not constrained to the (*)-Property
-  * defined as _"a subject that is guarrnteed not to consummate a security-breaching information transfer even if it is possible."_
-  * allowed to violate the (*)-Property and perfrom write-down, which is needed for reclassification or declassification
-* Applications and Use Cases
+* **_Trusted Subject_**
+  * not constrained to the `(*)-Property`
+  * defined as _"a subject that is guaranteed not to consummate a security-breaching information transfer even if it is possible."_
+  * allowed to violate the `(*)-Property` and perform write-down, which is needed for reclassification or declassification
+* **Applications and Use Cases**
   * widely used in military and government environments where strict confidentiality is required.
   * helps in safeguarding classified and sensitive information by controlling access based on security clearance levels.
   * ensures that data integrity is maintained and that information does not inadvertently reach individuals who lack the necessary authorization.
+* **Issues**
+  * does not consider risks to the _integrity_ of information
+  * does not deal with covert channels or the possibility of performing operations in a manner that reveals confidential information through side channels
 
 ![Bell-LaPadula Model](./images/bell-lapadula.png)
 
@@ -645,9 +654,12 @@ The following diagram(s) illustrate these conncepts:
   * **Simple Integrity Property**
     * No Read Down
     * Subjects can't read objects at lower integrity levels
+    * prevents compromising the integrity of more secure information from a less secure source.
+      * higher integrity processes could produce untrustworthy results if they read and use data from lower integrity sources
   * **(*)(star) Integrity Property**
     * No Write Up
     * Subjects can't write objects at higher integrity levels
+    * prevents the corruption of more secure information by a less privileged subject. 
   * **Invocation Property**
     * process from below cannot request higher access
     * No up read/write
