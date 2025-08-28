@@ -6,91 +6,91 @@
 
 The [Code of Ethics Preamble]( https://www.isc2.org/ethics): _“The safety and welfare of society and the common good, duty to our principals, and to each other requires that we adhere, and be seen to adhere, to the highest ethical standards of behavior.”  “Therefore, strict adherence to this Code is a condition of certification.”_
 
-Code of Ethics Canons:
+**Code of Ethics Canons**:
 
-  1. **_Protect society, the common good, necessary public trust and confidence, and the infrastructure_**
-  This is the highest-level canon. It emphasizes that a cybersecurity professional's primary responsibility is to the well-being of the public. This includes promoting public trust in information systems, preserving the integrity of the public infrastructure, and discouraging unsafe practices that could cause harm.
+* **I. Protect society, the common good, necessary public trust and confidence, and the infrastructure**
+  * highest-level canon
+  * emphasizes that a cybersecurity professional's primary responsibility is to the well-being of the public
+  * includes promoting public trust in information systems, preserving the integrity of the public infrastructure, and discouraging unsafe practices that could cause harm.
+* **II. Act honorably, honestly, justly, responsibly, and legally**
+  * focuses on the personal integrity of the professional
+  * requires individuals to be truthful, transparent, and fair in their work
+  * mandates that professionals must observe all contracts and agreements, act within the bounds of the law, and take responsibility for their actions.
+* **III. Provide diligent and competent service to principals**
+  * addresses the professional's responsibility to their employers and clients
+  * requires them to provide high-quality, professional service that is within their competence
+  * includes preserving the value of the principal's systems, avoiding conflicts of interest, and respecting the trust and privileges granted to them.
+* **IV. Advance and protect the profession**
+  * focuses on the collective good of the cybersecurity profession
+  * encourages professionals to mentor others, share knowledge, and promote a positive reputation for the field
+  * requires them to avoid associating with those whose practices might diminish the profession's standing and to maintain their own professional competence through continuous learning.
 
-  2. **_Act honorably, honestly, justly, responsibly, and legally_**
-  This canon focuses on the personal integrity of the professional. It requires individuals to be truthful, transparent, and fair in their work. It also mandates that professionals must observe all contracts and agreements, act within the bounds of the law, and take responsibility for their actions.
+**Violations**:
 
-  3. **_Provide diligent and competent service to principals_**
-  This canon addresses the professional's responsibility to their employers and clients. It requires them to provide high-quality, professional service that is within their competence. This includes preserving the value of the principal's systems, avoiding conflicts of interest, and respecting the trust and privileges granted to them.
-
-  4. **_Advance and protect the profession_**
-  This final canon focuses on the collective good of the cybersecurity profession. It encourages professionals to mentor others, share knowledge, and promote a positive reputation for the field. It also requires them to avoid associating with those whose practices might diminish the profession's standing and to maintain their own professional competence through continuous learning.
-
-ISC<sup>2</sup> members who encounter violations of the Code of Ethics may report the possible violation to ISC<sup>2</sup> for investigations by filling a formal ethics complaint, which must specify the canon that was violated and the member who violated it.
-Complaints are only accepted from those who believe they have been injured by the alleged behvior
-
-Compliants must be in writing and injury resolution is determined based on:
-
-* Any memeber of the general public may file a complaint involving Canon 1 or 2
-* Only an employer or someone with a contracting relationship with the individual may file a complain under Canon 3
-* Other professionals may file a complaint under Canon 4
-  * not limited to Cybersecurity professionals
-  * can be anyone certified or licensed as a professional and subscribes to a code of ethics as part of that license/certification is eligible to file a Canon 4 complaint
+* Members of ISC<sup>2</sup> who encounter violations of the Code of Ethics may report the possible violation to ISC<sup>2</sup> for investigations
+* Members are required to fill a formal ethics complaint and must specify the canon that was violated and the member who violated it
+* Complaints are only accepted from those who believe they have been injured by the alleged behavior
+* Complaints must be in writing and injury resolution is determined based on:
+  * **Any member of the general public** may file a complaint involving **Canon I an/or II**
+  * Only an **employer or someone** with **a contracting relationship with the individual** may file a complain under **Canon II**
+  * Other professionals may file a complaint under Canon IV
+    * not limited to Cybersecurity professionals
+    * can be anyone certified or licensed as a professional and subscribes to a code of ethics as part of that license/certification is eligible to file a Canon 4 complaint
 
 ### Ethics and the Internet
 
 Organizational code of ethics:
 
-* Your organization may have its own code of ethics.  The contents of the code of ethics may depend on the type of business that it engages in and could span dozens of pages.  If you’re a professional (doctor, lawyer, nurse, accountant), your regulatory organization may also enforce a code of ethics.  The code of ethics tells us how to behave, so that there is no confusion.  When you’re not sure what to do, you should report the situation to your management for a decision.
+* Your organization may have its own code of ethics
+* contents of the code of ethics may depend on the type of business that it engages in and could span dozens of pages.  
+* If you’re a professional (doctor, lawyer, nurse, accountant), your regulatory organization may also enforce a code of ethics.  
+* The code of ethics tells us how to behave, so that there is no confusion.
+* When you’re not sure what to do, you should report the situation to your management for a decision.
 
 We must be sure to act ethically at all times.  
 
 Things that are not ethical as defined by [RFC 1087](https://datatracker.ietf.org/doc/html/rfc1087) (developed by the [Internet Architecture Board (IAB)](https://www.iab.org/)):
 
-* Gain unauthorized access to internet resources
-* Disrupt the use of the internet
-* Waste resources
-* Destroy the integrity of information
-* Compromise privacy
+* Purposely seeks to gain unauthorized access to the resources of the Internet
+* Destroys the integrity of computer-based information
+* Disrupts the intended use of the Internet
+* Wastes resources such as people, capacity, and computers through such actions
+* Compromises the privacy of users
+* Involves negligence in the conduct of Internet-wide experiments
 
 ### [Computer Ethics Institute (CEI)](http://cpsr.org/issues/ethics/cei) Code of Ethics
 
 The commandments are a set of standards to guide ethical conduct in the use of computers:
 
-  1. **Thou shalt not use a computer to harm other people**
-    * This principle extends the idea of physical harm to digital harm, such as creating malicious software or engaging in cyberbullying.
+1. **Thou shalt not use a computer to harm other people**: This principle extends the idea of physical harm to digital harm, such as creating malicious software or engaging in cyberbullying.
 
-  2. **Thou shalt not interfere with other people's computer work**
-    * This means avoiding actions that disrupt others' computer systems, like spreading viruses or deliberately causing a network to crash.
+2. **Thou shalt not interfere with other people's computer work**: This means avoiding actions that disrupt others' computer systems, like spreading viruses or deliberately causing a network to crash.
 
-  3. **Thou shalt not snoop around in other people's computer files**
-    * This commandment emphasizes the importance of digital privacy, comparable to not invading someone's personal space or reading their private letters.
+3. **Thou shalt not snoop around in other people's computer files**: This commandment emphasizes the importance of digital privacy, comparable to not invading someone's personal space or reading their private letters.
 
-  4. **Thou shalt not use a computer to steal**
-    * This covers a wide range of illegal activities, including stealing data, money, or services through a computer.
+4. **Thou shalt not use a computer to steal**: This covers a wide range of illegal activities, including stealing data, money, or services through a computer.
 
-  5. **Thou shalt not use a computer to bear false witness**
-    * This is about using a computer to spread misinformation or lies, such as creating fake online profiles or spreading false rumors.
+5. **Thou shalt not use a computer to bear false witness**: This is about using a computer to spread misinformation or lies, such as creating fake online profiles or spreading false rumors.
 
-  6. **Thou shalt not copy or use proprietary software for which you have not paid**
-    * This addresses software piracy and the importance of respecting intellectual property rights.
+6. **Thou shalt not copy or use proprietary software for which you have not paid**: This addresses software piracy and the importance of respecting intellectual property rights.
 
-  7. **Thou shalt not use other people's computer resources without authorization or proper compensation**
-    * This is about respecting the ownership and access rights of computer hardware and networks, such as hacking into a system or using a company's resources for personal gain.
+7. **Thou shalt not use other people's computer resources without authorization or proper compensation**: This is about respecting the ownership and access rights of computer hardware and networks, such as hacking into a system or using a company's resources for personal gain.
 
-  8. **Thou shalt not appropriate other people's intellectual output**
-    * This commandment relates to plagiarism and copyright infringement, reminding users to properly credit and seek permission for the work of others.
+8. **Thou shalt not appropriate other people's intellectual output**: This commandment relates to plagiarism and copyright infringement, reminding users to properly credit and seek permission for the work of others.
 
-  9. **Thou shalt think about the social consequences of the program you are writing or the system you are designing**
-    * This is a call to action for developers and designers to consider the ethical and societal impact of their work before it's released.
+9. **Thou shalt think about the social consequences of the program you are writing or the system you are designing**: This is a call to action for developers and designers to consider the ethical and societal impact of their work before it's released.
 
-  10. **Thou shalt always use a computer in ways that ensure consideration and respect for your fellow humans**
-    * This is a foundational principle that encapsulates all the others, emphasizing empathy and human dignity in all digital interactions.
+10. **Thou shalt always use a computer in ways that ensure consideration and respect for your fellow humans**: This is a foundational principle that encapsulates all the others, emphasizing empathy and human dignity in all digital interactions.
 
 ### [Code of Fair Information Practices](https://epic.org/fair-information-practices/)
 
-* developed by a government advisory committee in 1973
-* five principles
-
-  1. There must be no personal data record-keeping systems whose very existence is secret.
-  2. There must be a way for a person to find out what information about the person is in a record and how it is used.
-  3. There must be a way for a person to prevent information about the person that was obtained for one purpose from being used or made available for other purposes without the person’s consent.
-  4. There must be a way for a person to correct or amend a record of identifiable information about the person.
-  5. Any organization creating, maintaining, using, or disseminating records of identifiable personal data must assure the reliability of the data for their intended use and must take precautions to prevent misuses of the data.
+* Developed by a government advisory committee in 1973
+* Five Principles
+  >1. There must be no personal data record-keeping systems whose very existence is secret.
+  >2. There must be a way for a person to find out what information about the person is in a record and how it is used.
+  >3. There must be a way for a person to prevent information about the person that was obtained for one purpose from being used or made available for other purposes without the person’s consent.
+  >4. There must be a way for a person to correct or amend a record of identifiable information about the person.
+  >5. Any organization creating, maintaining, using, or disseminating records of identifiable personal data must assure the reliability of the data for their intended use and must take precautions to prevent misuses of the data.
 
 ## 1.2 - Understand and apply security concepts
 
@@ -157,14 +157,16 @@ Core concept of Information Security known as the _**CIA**_ triad, which has thr
 
 #### Five Pillars - Extension of CIA Triad
 
-* additional pillars of CIA Triad
+![5 Pillars](./images/five-pillars.png)
+
+* Additional pillars of CIA Triad
 * **Authenticity**
   * Concept that data is authentic or genuine and originates from its alleged source
   * Relates to integrity but more closely related to verifying that it is from a claimed origin
   * IF data has authenticity, the recipient can have high level of confidence that the data is from whom it claims to be and did not change in transit
   * digital signatures
   * prevents fraud
-  * "verifies you are who you claim to be"
+  * _**"verifies you are who you claim to be"**_
 * **Nonrepudiation**
   * Ensures that the subject of an activity or who caused an event cannot deny that the event occurred.
   * Prevents a subject from claiming not to have done or performed an action or to not have been the cause if an event
@@ -173,9 +175,9 @@ Core concept of Information Security known as the _**CIA**_ triad, which has thr
   * a suspect cannot be held accountable IF they can repudiate the claim against them
   * digital signatures, comprehensive audit trails, physical signatures, biometrics, video surveillance
 
-### AAA Services
+### (I)AAA Services
 
-* Core fundamental concepts for security mechanisms (**_Access Control_**) of all security environments which is the abbreviation for _Authentication, authorization, and accounting (or sometimes auditing)_
+* Core fundamental concepts for security mechanisms (**_Access Control_**) of all security environments
 * Five elements:
   * **Identification**
     * claiming to be an identity when attempting to access a secured area/system
@@ -208,20 +210,23 @@ Core concept of Information Security known as the _**CIA**_ triad, which has thr
 #### DAD
 
 ![DAD](../Certified%20Information%20Systems%20Security%20Professional/images/dad.png)
-Referred to as the opposite of the _CIA Triad_ is the **DAD Triad** which stands for _Disclosure, alteration, and destruction_. These all represent the **failures** of security protections in the CIA triad.
 
-* **Disclosure**
-  * Occurs when sensitive or confidential material is accessed by unauthorized entities
-  * Violates confidentiality
-  * Attackers perform data exfiltration
-* **Alteration**
-  * Occurs when data is either maliciously or accidentally changed
-  * Violates integrity
-  * attackers modify records for financial gain (encrypt for ransomware)
-* **Destruction**
-  * Occurs when a resource is damaged or mad inaccessible to authorized entities
-  * Violates availability
-  * attackers launch DDoS attack against a website
+* Opposite of the **CIA Triad** and **Five Pillars of InfoSec**
+* stands for _Disclosure, alteration, and destruction_
+* represent the **_failures_** of security protections in the CIA triad.
+* Elements:
+  * **Disclosure**
+    * Occurs when sensitive or confidential material is accessed by unauthorized entities
+    * Violates confidentiality
+    * Attackers perform data exfiltration
+  * **Alteration**
+    * Occurs when data is either maliciously or accidentally changed
+    * Violates integrity
+    * attackers modify records for financial gain (encrypt for ransomware)
+  * **Destruction**
+    * Occurs when a resource is damaged or mad inaccessible to authorized entities
+    * Violates availability
+    * attackers launch DDoS attack against a website
 
 #### Overprotection
 
@@ -231,29 +236,153 @@ Referred to as the opposite of the _CIA Triad_ is the **DAD Triad** which stands
 
 ### Protection (Controls) Mechanisms
 
-Common methods:
+#### Defense-In-Depth
 
-* **Defense in Depth**
-  * aka [_layering_](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)) or the [onion model](https://en.wikipedia.org/wiki/Onion_model)
-  * use of multiple overlapping controls in a series for one objective
+![defense-in-depth](./images/layers-of-defense-in-depth.png)
+
+* aka [_layering_](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)) or the [onion model](https://en.wikipedia.org/wiki/Onion_model)
+* multiple overlapping controls in a series for one objective
   * no one control can protect against all possible threats
   * a single failed control **SHOULD NOT** result in the exposure of systems and/or data
-  * a series configuration are very narrow but deep
-  * a parallel configuration are very wide but shallow, useful in distributing computing applications
-  * _Defense in breadth_ or _Diversity in defense_
-    * Using a wide range of security products from varied vendors significantly reduces or avoids the risk of a single exploit compromising several layers at once.
-    * Can be problematic if elements of the security layers are from the same vendor or share common code, since a vulnerability could affect numerous layers simultaneously
-  * Example:
-    * A company secures its internal network using multiple layers:
-      * a firewall to block unauthorized traffic, multi-factor authentication (MFA) for user logins, endpoint protection software on all devices, network segmentation to isolate sensitive systems, and continuous logging and monitoring for anomalies.
-      * Pros:
-        * Redundancy: If one layer fails (e.g., a user falls for a phishing attack), other controls like MFA or endpoint detection can still prevent or mitigate the breach.
-        * Reduced Risk: It makes successful attacks more difficult, requiring attackers to bypass several independent defenses.
-        * Comprehensive Coverage: Addresses multiple types of threats—technical, physical, and human.
-      * Cons:
-        * Complexity - Managing and maintaining multiple overlapping controls can increase administrative overhead and potential for misconfiguration.
-        * Cost - More tools, licenses, and personnel are needed, which can strain smaller organizations’ budgets.
-        * User Frustration - Layered security (e.g., frequent MFA prompts, limited access) can lead to productivity complaints or attempts to bypass controls.
+* Concepts:
+  * a **series configuration** are very narrow but deep
+  * a **parallel configuration** are very wide but shallow, useful in distributing computing applications
+* _Defense in breadth_ or _Diversity in defense_
+  * Using a wide range of security products from varied vendors significantly reduces or avoids the risk of a single exploit compromising several layers at once.
+  * Can be problematic if elements of the security layers are from the same vendor or share common code, since a vulnerability could affect numerous layers simultaneously
+* Example:
+  * A company secures its internal network using multiple layers:
+    * a firewall to block unauthorized traffic, multi-factor authentication (MFA) for user logins, endpoint protection software on all devices, network segmentation to isolate sensitive systems, and continuous logging and monitoring for anomalies.
+    * Pros:
+      * Redundancy: If one layer fails (e.g., a user falls for a phishing attack), other controls like MFA or endpoint detection can still prevent or mitigate the breach.
+      * Reduced Risk: It makes successful attacks more difficult, requiring attackers to bypass several independent defenses.
+      * Comprehensive Coverage: Addresses multiple types of threats—technical, physical, and human.
+    * Cons:
+      * Complexity - Managing and maintaining multiple overlapping controls can increase administrative overhead and potential for misconfiguration.
+      * Cost - More tools, licenses, and personnel are needed, which can strain smaller organizations’ budgets.
+      * User Frustration - Layered security (e.g., frequent MFA prompts, limited access) can lead to productivity complaints or attempts to bypass controls.
+* Groups of Controls
+  * **Administrative Controls**
+    * sometimes referred to as _management controls_, _managerial controls_, or _procedural controls_
+    * includes the policies and procedures defined by the organization's security policy and other regulations or requirements
+    * focus on personal oversight and business practices
+    * examples include:
+      * policies, standards, and procedures
+      * hiring practices, background checks
+      * data classifications and labelling
+      * security awareness and training efforts
+      * reports / reviews
+      * work supervision
+      * personal controls
+      * testing
+  * **Logical/Technical Controls**
+    * involves the hardware or software mechanisms used to manage access and provide protection for IT resources and systems
+    * examples include:
+      * authentication methods (such as passwords, smartcards, and biometrics)
+      * encryption
+      * constrained interfaces
+      * access control lists
+      * protocols, firewalls
+      * routers
+      * intrusion detection/prevention systems (ID/IPS)
+      * **Physical Controls**
+        * security mechanisms focused on providing protection to the facility and real-world objects
+        * examples include:
+          * guards / guard dogs
+          * fences
+          * motion detectors / lights / video cameras
+          * locked doors / seal windows
+          * cable protection / laptop locks
+          * badges / swipe cards
+          * access control vestibules
+          * alarms
+* **Security Controls**
+  * refers to a broad range of controls that perform task to mitigate a wide variety of info sec risks such as ensuring only authorized users can log on and preventing unauthorized users from gaining access to resources
+  * Types of Controls
+    * **Preventive**
+      * aka _Preventative control_
+      * deployed to thwart or stop unwanted or unauthorized activity from occurring.
+      * Examples:
+        * fences / locks
+        * authentication / access control vestibules
+        * alarm systems, separation of duties,
+        * job rotation / security policies
+        * DLP / pen testing
+        * antimalware software / firewalls / IPS
+    * **Detection**
+      * aka _Detective control_
+      * deployed to discover or detect unwanted or unauthorized activity
+      * operate after the fact and can discover the activity only after it has occurred
+      * examples:
+        * security guards
+        * motion detectors
+        * recording/reviewing of events captured by security cameras or CCTV
+        * job rotation
+        * mandatory vacations
+        * audit trailstory
+        * honeypots / honeynets
+        * IDS
+        * violation reports / supervision and review of users
+        * incident investigations
+    * **Corrective**
+      * aka _Corrective control_
+      * modifies the environment to return systems to normal after an unwanted or unauthorized activity has occurred
+      * attempts to correct any problems resulting from a security incident
+      * deployed to repair or restore resources, functions, and capabilities
+      * Examples include:
+        * antimalware solution that can remove or quarantine a virus
+        * terminating a malicious activity or rebooting as system
+        * backup and restore plan to ensure that lost data can be restored
+        * IPS that can modify an environment to stop an attack in progress
+        * installing a spring on a door so that it will close and lock
+        * using file integrity-checking tools (sigverif) which will replace corrupt boot files upon each boot event to protect the stability and security of the booted OS
+    * **Recovery**
+      * aka _Recovery control_
+      * extension of corrective controls but has more advanced or complex abilities
+      * attempts to repair or restore resources, functions, capabilities after a security policy violation
+      * address more significant damaging events compared to corrective controls
+      * examples include:
+        * backup and restores / fault-tolerant drive systems
+        * system imaging / server clustering
+        * antimalware software
+        * database or vm shadowing
+        * examples in relation to BCDR
+          * hot / warm / cold sites
+          * alternate processing facilities
+          * service bureaus
+          * reciprocal agreements / cloud providers
+          * rolling mobile operating centers / multisite solutions
+    * **Deterrent**
+      * aka _Deterrent control_
+      * similar to preventative controls however deterrent controls often depend on individuals being convinced not to take an unwanted action
+      * countermeasure deployed to discourage security policy violations
+      * examples include
+        * policies, security awareness training
+        * locks / fences / security badges / guards
+        * access control vestibules
+        * security cameras
+    * **Directive**
+      * aka _directive control_
+      * deployed to direct, confine, or control the actions of subjects to force or encourage compliance with security policies
+      * examples include
+        * security policy requirements or criteria
+        * posted notifications
+        * guidance from security guard
+        * escape route exit signs
+        * monitoring
+        * supervision
+        * procedures
+    * **Compensating**
+      * aka _compensating (compensation) control_
+      * deployed to provide various options to other existing controls to aid in the enforcement and support of security policies
+      * can be any controls used in addition to, or in place of, another control
+      * can be a means to improve the effectiveness of a primary control or as the alternate or failover option in the event of a primary control failure
+      * examples include:
+        * if a building's fire prevention and suppression control system fails and the building is damaged by fire so that it is not inhabitable, a compensating control would be have a disaster recovery plan with an alternate processing site available to support work operations
+        * if a preventative control fails to stop the deletion of a file, a backup can be a compensating control, allowing fore the restoration of that file
+
+#### Other Concepts
+
 * **Abstraction**
   * the process of hiding complex implementation details and exposing only essential features to reduce risk, simplify access control, and minimize the attack surface.
   * think about Object Oriented Programming (OOP)
@@ -550,9 +679,10 @@ Common methods:
   * adds organizational and legal risk which include:
     * inappropriate info discloser
     * data loss
-    * downtime, or failure to achieve sufficient ROI
+    * downtime
+    * failure to achieve sufficient ROI
   * higher degree of security oversight in increased during M&A do reduce losses during the transition period
-  * M&A's done without security considerations the risks inherent in those obtained products remain throughout their deployment life cycle, 
+  * M&A's done without security considerations the risks inherent in those obtained products remain throughout their deployment life cycle
   * minimizing inherent threats in acquired elements will reduce risk and cost on security management
   * important to consider TCO over the life of a product / solution then the initial purchase and implementation
 * Divestitures required additional security governance/oversight
@@ -687,7 +817,7 @@ Common methods:
         * **_Certification_**
           * offers a certification program that allows security professionals to become certified in SABSA's methodologies and practices
     * **Federal Risk and Authorization Management Program (FedRAMP)**
-      * [US government-wides program](https://www.fedramp.gov/) designed to standardize the security assessment, authorization, and continuous monitoring processes for cloud products and services used by federal agencies
+      * [US government-wide program](https://www.fedramp.gov/) designed to standardize the security assessment, authorization, and continuous monitoring processes for cloud products and services used by federal agencies
       * established in 2011 to provide a cost-effective, risk-based approach for the adoption and use of cloud services by the federal government.
       * primary goal is to ensure that cloud services meet stringent security requirements and can be used by US government organizations to process, store, and transmit sensitive and classified information
       * [FedRAMP Marketplace](https://marketplace.fedramp.gov/products)
@@ -827,6 +957,7 @@ Common methods:
       * All laws are subject to judicial review by regional courts with the right appeal all the way up to the Supreme Court of the US
         * if a court finds a that a law is unconstitutional, it has the power to strike it down and render it invalid
   * **_Civil Law_**
+    * aka "Tort Law"
     * forms the bulk of the US body of laws
     * designed to provide for an orderly society and govern matters that are not crimes but require an impartial arbiter to settle between individuals and organizations
     * the loosing party may suffer sever financial penalties
@@ -843,7 +974,7 @@ Common methods:
     * difference between criminal and civil law is how they are enforced
       * usually law enforcement do not become involved in matters of civil law beyond taking action necessary to restore order
       * in criminal prosecution, the government, through law enforcement investigators and prosecutors, brings action against a person accused of a crime
-      * in civil matters, it is incumbent upon the person who thinks they have been wronged to obtain legal counsel and file a civil lawsuit 
+      * in civil matters, it is incumbent upon the person who thinks they have been wronged to obtain legal counsel and file a civil lawsuit
   * **_Administrative Law_**
     * enacted by the US executive branch agencies in the form of executive orders, policies, procedures, and regulations
     * govern daily operations of the agency(ies)
@@ -864,9 +995,9 @@ Common methods:
 Early compute crime prosecutions were attempted under traditional criminal law but were dismissed by the judges citing using traditional law was a far stretch, this led to legislators passing specific statutes that defined computer crime and laid out specific penalities for various crimes, which are as follows:
 
 * **Computer Fraud and Abuse Act (CFAA)**
-  * U.S Legislation: https://www.justice.gov/jm/jm-9-48000-computer-fraud
+  * [U.S Legislation](https://www.justice.gov/jm/jm-9-48000-computer-fraud)
   * Originally crafted in 1984 as the _Counterfeit Access Device and Computer Fraud and Abuse Act_, was the first cybercrime-specific legislation in the US
-  * amended in 1986 to create the modern _Computer Fraud and Abuse Act_ which has since been amended periodically
+  * amended in 1986 to create the modern **_Computer Fraud and Abuse Act_** which has since been amended periodically
   * the Comprehensive Crime Control Act (CCCA) of 1984 originally had sections for computer crime but the CFAA was carefully written to exclusively cover computer crimes that crossed state boundaries to avoid infringing on states' rights and treading n thin constitutional ice
   * Major provisions of the original CCCA made it a crime to perform the following:
     * Access classified information or financial information in a federal system without authorization or in excess of authorized privileges
@@ -894,26 +1025,23 @@ Early compute crime prosecutions were attempted under traditional criminal law b
     * Ongoing legislative and judicial actions may affect the broad interpretations of the CFAA in the US, example:
       * in a 2020 case, [_Sandvig v. Barr_](https://www.aclu.org/documents/sandvig-v-barr-memorandum-opinion), a federal court ruled that the CFAA did not apply to the violations of the terms of use of a website because that would effectively allow website operators to define the boundaries of criminal activity
       * in 2021, the US Supreme Court ruled the case, [_Van Buren v. United States_](https://en.wikipedia.org/wiki/Van_Buren_v._United_States), that someone violates the CFAA if they first access a computer system that they are authorized to access but then obtain information from files, folders, or databases that they are not authorized to access
-    * **National Information Infrastructure Protection Act of 1996**
-      * https://en.wikipedia.org/wiki/National_Information_Infrastructure_Protection_Act
+    * [**National Information Infrastructure Protection Act of 1996**](https://en.wikipedia.org/wiki/National_Information_Infrastructure_Protection_Act)
       * also referred to as NIIPA
       * Amendment to the CFAA in 1996
       * designed to further extend the protection it provides, NIIPA includes the following main new areas of coverage:
         * Extends the CFAA to cover computer systems used in international commerce in addition to systems used in interstate commerce
         * Extends similar protections to portions of the national infrastructure other than computing systems, such as railroads, gas pipelines, electric power grids, and telecommunications circuits
         * Treats any intentional or reckless act that causes damage to critical portions of the national infrastructure as a felony
-* **Federal Information Security Management Act of 2002**
-  * also known as FISMA
-  * https://en.wikipedia.org/wiki/Federal_Information_Security_Management_Act_of_2002
+* [**Federal Information Security Management Act (FISMA) of 2002**](https://en.wikipedia.org/wiki/Federal_Information_Security_Management_Act_of_2002)
   * passed in 2002, and repealed and replaced two earlier laws:
     * The Computer Security Act of 1987
     * Government Information Security Reform Act of 2000
   * requires that federal / governmental agencies implement an information security program that covers the agency's operations, including the activities of contractors as part of their operations
-  * places significant burden on federal agencies and government contractors, who must develop and maintain substantial documentation of their complaince activities for FISMA
-  * NIST is responsible for devvelopment of the FISMA implementation guidelines, the following outlines the elements of an effective info sec program:
-    * Periodic risk assessments, including the magnitude/levels of harm that could result from the unauthorized access, use, disclosure, disruption, modification, or destruction of information and/or info systems that support the operations and assests of the organization
+  * places significant burden on federal agencies and government contractors, who must develop and maintain substantial documentation of their compliance activities for FISMA
+  * NIST is responsible for development of the FISMA implementation guidelines, the following outlines the elements of an effective info sec program:
+    * Periodic risk assessments, including the magnitude/levels of harm that could result from the unauthorized access, use, disclosure, disruption, modification, or destruction of information and/or info systems that support the operations and assets of the organization
     * Creation of policies and procedures based on risk assessments which cost-effectively reduce info sec risks to an acceptable level and ensuring that information security is addressed throughout the life cycle of each organizational information system
-    * Require subbordinate plans for providing adequate info sec of networks, facilities, info systems, or groups of info systems, as appropriate
+    * Require subordinate plans for providing adequate info sec of networks, facilities, info systems, or groups of info systems, as appropriate
     * Security awareness training for all personnel (including contractors and other users of info systems that support operations and organizational assets) to inform them of associated risks as well as their roles/responsibilities as it pertains to the organizational policies and procedures
     * Periodic testing and evaluation of the effectiveness of info sec policies, procedures, practices, and sec controls with frequency depending on risk, but no less than annually
     * Defined process for planning, implementing, evaluating, and documenting remedial actions to address any deficiencies in the information security policies, procedures, and practices of the organization
@@ -923,15 +1051,13 @@ Early compute crime prosecutions were attempted under traditional criminal law b
     * **Federal Cybersecurity Laws of 2014**
       * Then US President, Barack Obama, signed a series of bills/executive orders into law to help modernize the federal government's approach to cybersecurity issues
       * Enacted Laws:
-        * **FISMA Act of 2014**
-          * Admendment to FISMA 2002
-          * https://www.cisa.gov/topics/cyber-threats-and-advisories/federal-information-security-modernization-act
-          * centeralized the federal cybersecurity responsibility to the Department of Homeland Security (DHS)
+        * [**FISMA Act of 2014**](https://www.cisa.gov/topics/cyber-threats-and-advisories/federal-information-security-modernization-act)
+          * Amendment to FISMA 2002
+          * centralized the federal cybersecurity responsibility to the Department of Homeland Security (DHS)
             * two exceptions:
               * defense-related cybersecurity issues remain the responsibility of the secretary of defense
               * the director of national intelligence bears the responsibility for intelligence-related issues
-        * **Cybersecurity Enhancement Act of 2014**
-          * https://www.govinfo.gov/content/pkg/COMPS-12455/pdf/COMPS-12455.pdf
+        * [**Cybersecurity Enhancement Act of 2014**](https://www.govinfo.gov/content/pkg/COMPS-12455/pdf/COMPS-12455.pdf)
           * Charges NIST with the responsibility for coordinating nationwide work on voluntary cybersecurity standards
           * Ammended in 2022 to create an ongoing and voluntary public/private partnership to improve cybersecurity r&d, develop the cybersec workforce, and build public cybersec awareness
           * NIST produces the 800 series of Special Publications related to computer security in the federal governement
@@ -944,11 +1070,9 @@ Early compute crime prosecutions were attempted under traditional criminal law b
                 * fed contractors must comply with it
               * [NIST Cybersecurtiy Framework (CSF)](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)  
                 * set of standards designed to serve as a voluntary risk-based framework for securing information systems
-        * **National Cybersecurity Protection Act of 2014**
-          * https://www.congress.gov/bill/113th-congress/senate-bill/2519/text
+        * [**National Cybersecurity Protection Act of 2014**](https://www.congress.gov/bill/113th-congress/senate-bill/2519/text)
           * charged DHS with establishing a national cybersecurity and communications integration center
-          * role is to serve as the interface between federal agencies and civilian organizations for sharing cybersecurity risks, incidents, analysis, and warnings 
-
+          * role is to serve as the interface between federal agencies and civilian organizations for sharing cybersecurity risks, incidents, analysis, and warnings
 
 ### Intellectual Property (IP)
 
@@ -1119,25 +1243,25 @@ Constitutional Bill of Rights in the US does not explicitly provide for a right 
 
 Some US Laws that have elements dedicated to privacy:
 
-* **Fourth Admendment**
+* **Fourth Amendment**
   * basis for privacy rights within the US Constitution
   * reads:
         > The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated, and no Warrants shall issue, but upon probable cause, supported by Oath or affirmation, and particularly describing the place to be searched, and the persons or things to be seized.
-    * direct interpretation prohibits governement agents from searching property without a warrant or probable cause
+    * direct interpretation prohibits government agents from searching property without a warrant or probable cause
     * the courts have expanded their interpretation of the Fourth Amendment to include protections against wiretapping and other invasions of privacy.
 * [**Privacy Act of 1974**](https://www.justice.gov/opcl/privacy-act-1974)
   * most significant piece of privacy legislation
   * restricing the way federal government may deal with private information about individual citizens
-  * mandates that the US federal agencies maintain only the records that are necessary for conducting their businessand that they destroy those records when they are no longer required for legitament function of government
-  * provides a formal procedure for individuals to gain access to records / and information about themselves that the governement maintains on them
-  * severly limits the ability of the federal goverment agencies to disclose private information to others people or agencies without prior written consent of the affected individuals
+  * mandates that the US federal agencies maintain only the records that are necessary for conducting their business and that they destroy those records when they are no longer required for legitemant function of government
+  * provides a formal procedure for individuals to gain access to records / and information about themselves that the government maintains on them
+  * severely limits the ability of the federal government agencies to disclose private information to others people or agencies without prior written consent of the affected individuals
   * does offer exceptions involving the census, law enforcement, the National Archives, health and safety, and court orders
 * [**Electronic Communications Privacy Act of 1986 (ECPA)**](https://bja.ojp.gov/program/it/privacy-civil-liberties/authorities/statutes/1285)
   * makes it illegal and a criminal event to invade the electronic privacy of an individual
-  * broaded the Federal Wiretap Act, which previously covered communications traveling via a physical wire, to apply to any illegal interception of electronic communication or to the intentional, unauthorized access of electronically stored data
+  * broaded the [Federal Wiretap Act of 1968](https://en.wikipedia.org/wiki/Omnibus_Crime_Control_and_Safe_Streets_Act_of_1968), which previously covered communications traveling via a physical wire, to apply to any illegal interception of electronic communication or to the intentional, unauthorized access of electronically stored data
   * prohibits the interception of disclosure of electronic communication and defines those situations in which disclosure is legal
-  * protects against the monitoring of email and voicemail communciations and prevents providers of those services from making unauthorized disclosures of their content
-  * noteable provisions of the ECPA makes it illegal to monitor mobile phone conversations which is punishable by a fine of up to `$500` and up to 5 years in prison
+  * protects against the monitoring of email and voicemail communications and prevents providers of those services from making unauthorized disclosures of their content
+  * notable provisions of the ECPA makes it illegal to monitor mobile phone conversations which is punishable by a fine of up to `$500` and up to 5 years in prison
 * [**Communications Assistance for Law Enforcement Act (CALEA) of 1994**](https://www.fcc.gov/calea)
   * Amended the ECPA to require all communication carriers to make wiretapps possible for law enforcement with an appropriate court order, regardless of the technology in use
 * [**Economic Esponiage Act of 1996**](https://www.congress.gov/104/plaws/publ294/PLAW-104publ294.pdf)
@@ -1149,6 +1273,25 @@ Some US Laws that have elements dedicated to privacy:
   * provisions include:
     * requiring strict security measures for hospitals, physicians, insurance companies, and other organizations that process or store private medical information of individuals
   * clearly defines the rights of individuals whom are subject of medical records and requires organizations that maintain to disclose these rights in writing
+  * Fines and penalities excist for non-compliance
+    * vary by the seriousness of the violation, ranging from fines between `$100` and `$50,000` per violation, with annual caps up to `$1.5 million` for repeated violations of the same type
+    * Criminal penalties include up to `10 years` in prison and **fines** of up to `$250,000` for violations involving gaining information under false pretenses or with intent to sell or use it for personal gain.
+    * penalties are tiered based on the nature of the violation, from reasonable cause to willful neglect.
+  * Consits of 5 titles
+    * Title I:
+      * Protects health insurance coverage for workers and their families who change or lose their jobs. It limits new health plans' ability to deny coverage due to a pre-existing condition.
+    * Title II:
+      * Prevents Health Care Fraud and Abuse; Medical Liability Reform
+      * Administrative Simplification that requires the establishment of national standards for electronic health care transactions and national identifiers for providers, employers, and health insurance plans.
+    * Title III:
+      * Guidelines for pre-tax medical spending accounts.
+      * It provides changes to health insurance law and deductions for medical insurance.
+    * Title IV:
+      * Guidelines for group health plans.
+      * It provides modifications for health coverage.
+    * Title V:
+      * Governs company-owned life insurance policies.
+      * Makes provisions for treating people without United States Citizenship and repealed financial institution rule to interest allocation rules.
 * **Health Information Technology for Economic and Clinical Health Act of 2009**
   * aka [HITECH](https://www.hhs.gov/hipaa/for-professionals/special-topics/hitech-act-enforcement-interim-final-rule/index.html)
   * Amendment to HIPAA made by congress in 2009
@@ -1501,6 +1644,9 @@ Consider the following if planning to monitor communications of employees:
         >* Log and monitor all access to systems and neworks regularly
         >* Test security of systems and networks regularly
         >* Support information security with organizational policies and programs
+    * Fines and Penalities For Non-compliance
+      * $5,000 to $100,000 per month and increasing the longer an organization remains non-compliant.
+      * issued by payment processors and acquiring banks and can lead to higher transaction fees, termination of the ability to process card payments, inclusion on high-risk merchant lists (like MATCH), costly breach remediation, legal action, and severe reputational damage.
 * [**Sarbanes-Oxley Act (SOX)**](https://en.wikipedia.org/wiki/Sarbanes%E2%80%93Oxley_Act)
   * Enacted in 2002
   * that mandates certain practices in financial record keeping and reporting for corporations.
@@ -1762,6 +1908,23 @@ Security professionals should conduct security assessments of vendors both durin
                     * Example
                       * Fire experts might predict that a fire will occur in the building approx. once every 30 yrs, specifically determining that there is a `0.03` chance of a fire in a given year.
                         * the ALE is then `3%` of the `$350,000` SLE or `$10,500`, meaning you should expect to loose `$10,500` each year due to a fire in the building
+                * **Risk Priority Number (RPN)**
+                  * another common formula for measureing risk
+                  * used in the [**_Failure Mode and Effects Analysis (FMEA)_**](https://en.wikipedia.org/wiki/Failure_mode_and_effects_analysis)
+                    * the process of reviewing as many components, assemblies, and subsystems as possible to identify potential failure modes in a system and their causes and effects
+                  * Steps:
+                    * **Step 1: Detect a failure mode**
+                    * **Step 2: Severity number (S)**
+                      * How serious is the failure?
+                      * Rating 1-10
+                    * **Step 3: Probability number (O)**
+                      * How often is this failure likely to occur?
+                      * Rating 1-10
+                    * **Step 4: Detection number (D)**
+                      * How likely are we to detect this failure before it causes harm?
+                      * Rating 1-10
+                    * **Step 5: Risk Calculation**
+                      * `Risk Priority Number (RPN) = S x D x O`
             * **Qualitative** point of view
                 * used to counter balance the results of the quantitative analysis, which considers non-monetary impact that interruptions might have on a business, for example:
                     * Loss of goodwill among client bases
@@ -2052,6 +2215,59 @@ Security professionals should conduct security assessments of vendors both durin
     * however using third-party vendors/consultants have induced risk of intellectual property (IP) theft or espionage
   * **_Vendor Management System (VMS)_**
     * software solution used for the management and procurement of staffing services, hardware, software, and any other needed products and services
+  * **_Vendor Due Deligence_**
+    * process of management of busniess partnerships that protects the confidentiality, integrity, and availablity of the organization's info and IT systems against many of the risk's associated with acquiring hardward, software, and services
+    * rule of thumb is "you should always ensure that vendors follow security and procedures that are at least as effective (if not more) as those you would apply."
+  * **_Vendor Management Lifecycle_**
+    * Defined in [ISO/IEC 27036-2023 - Cybersecurity - Supplier Relationshsips](https://www.iso27001security.com/html/27036.html)
+      * Four Parts:
+        * **1.** [**_ISO/IEC 27036-1:2012 - Concepts_**](https://www.iso.org/standard/82905.html)
+        * **2.** [**_ISO/IEC 27036-2:2022 - Requirements_**](https://www.iso.org/standard/82060.html)
+        * **3** [**_ISO/IEC 27036-3:2023 - Guidelines for hardware, software, and services supply chain security](https://www.iso.org/standard/82890.html)
+        * **4.** [**_ISO/IEC 27036-4:2016 - Guidelines for security of cloud services](https://www.iso.org/standard/59689.html)
+    * Process
+      * **Selection**
+        * may use a formal _Request for Proposal (RFP)_
+        * may be an informal process
+        * should include security requirements
+        * should include assessment of provider's risk management program
+      * **Onboarding**
+        * Verify contract details
+        * Arrange secure data transfer
+        * Establish incident/response procedures
+      * **Monitoring/Maintenance**
+        * Conduct site visits
+        * Review independant audit reports
+        * Handle security incidents
+      * **Offboarding**
+        * Destroys confidential information
+        * Unwinds a business relationship
+        * May restart lifecylce
+    * Agreements
+      * **_Service Level Requirement (SLR)_**
+        * A documented customer expectation for a specific level of service performance (e.g., 99.9% uptime).
+      * **_Service Level Aggreement (SLA)_**
+        * written contract between the customer and vendor that describes the conditions of service and penalties the vendor will incur for failure to maintain the agreed upon service level
+        * defines the agreed-upon level of service, including metrics, responsibilities, and penalties.
+      * **_Memorandum of Understanding (MOU)_**
+        * letter written to document aspects of the relationship
+        * commonly used when a legal dispute is unlikely
+        * documents the relationship to avoid misunderstandings
+        * commonly used in cases where an internal service provider is offering a service to a customer in a different business unit of the same company
+      * **_Memorandum of agreement (MOA)_**
+        * formal document that outliens the terms and details of an agreement between two parties
+        * establishes a mutual understanding of the roles and responsibilities and fullfilling specific objectives
+        * more detailed than MOUs
+        * includes clauses regarding resource allocation, risk maangement, and performance
+      * **_Business Partner Agreements (BPA)_**
+        * agreement between buisnesses that wish to do conduct business with each other in a partnership
+        * outlines each businesses R&R and division of profits
+      * **_Master Service Agreement (MSA)_**
+        * formal documents the key terms that govern a relationship between a customer and vendor when the customer wishes to enter into many different projects with the vendor
+      * **_Work Order (WO)/Statement of Work_**
+        * created each time the customer has a new project for the vendor
+        * details the specifics of the work
+        * governed by the terms of MSA 
 
 ## 1.9 - Understand and apply risk management concepts
 
@@ -2471,7 +2687,7 @@ Security professionals should conduct security assessments of vendors both durin
   * Cost of testing and evaluation
 * Security should be cost effective, meaning the value of the asset to be protected determines the maximum expenditures for protection mechanisms
 * If no safeguard options are cost-effective, than accepting the risk MAY be the only option
-* _cost/benefit calculation_ or _cost/benefit analysis_
+* **_Cost/Benefit Calculation_** or **_Cost/Benefit Analysis_**
   * `[ALE1 - ALE2] - ACS = Value of the safeguard to the company`
   * if the result is negative then the safeguard is not financially responsible
   * if the result is positive, then that value is the annual savings your organization may reap by deploying the safeguard
@@ -2527,130 +2743,6 @@ Security professionals should conduct security assessments of vendors both durin
   * should provide fail-safe and/or fail-secure options
 * counter measure should implemented in a defense-in-depth manner (see image below)
 
-#### Defense-In-Depth
-
-![defense-in-depth](./images/layers-of-defense-in-depth.png)
-
-* Three Categories of Countermeasure Implementation
-* **Administrative Controls**
-  * sometimes referred to as _management controls_, _managerial controls_, or _procedural controls_
-  * includes the policies and procedures defined by the organization's security policy and other regulations or requirements
-  * focus on personal oversight and business practices
-  * examples include:
-    * policies, standards, and procedures
-    * hiring practices, background checks
-    * data classifications and labelling
-    * security awareness and training efforts
-    * reports / reviews
-    * work supervision
-    * personal controls
-    * testing
-* **Logical/Technical Controls**
-  * involves the hardware or software mechanisms used to manage access and provide protection for IT resources and systems
-  * examples include:
-    * authentication methods (such as passwords, smartcards, and biometrics)
-    * encryption
-    * constrained interfaces
-    * access control lists
-    * protocols, firewalls
-    * routers
-    * intrusion detection/prevention systems (ID/IPS)
-    * **Physical Controls**
-      * security mechanisms focused on providing protection to the facility and real-world objects
-      * examples include:
-        * guards / guard dogs
-        * fences
-        * motion detectors / lights / video cameras
-        * locked doors / seal windows
-        * cable protection / laptop locks
-        * badges / swipe cards
-        * access control vestibules
-        * alarms
-* **Security Controls**
-  * refers to a broad range of controls that perform task to mitigate a wide variety of info sec risks such as ensuring only authorized users can log on and preventing unauthorized users from gaining access to resources
-  * Types of Controls
-    * **Preventive**
-      * aka _Preventative control_
-      * deployed to thwart or stop unwanted or unauthorized activity from occurring.
-      * Examples:
-        * fences / locks
-        * authentication / access control vestibules
-        * alarm systems, separation of duties,
-        * job rotation / security policies
-        * DLP / pen testing
-        * antimalware software / firewalls / IPS
-    * **Detection**
-      * aka _Detective control_
-      * deployed to discover or detect unwanted or unauthorized activity
-      * operate after the fact and can discover the activity only after it has occurred
-      * examples:
-        * security guards
-        * motion detectors
-        * recording/reviewing of events captured by security cameras or CCTV
-        * job rotation
-        * mandatory vacations
-        * audit trailstory
-        * honeypots / honeynets
-        * IDS
-        * violation reports / supervision and review of users
-        * incident investigations
-    * **Corrective**
-      * aka _Corrective control_
-      * modifies the environment to return systems to normal after an unwanted or unauthorized activity has occurred
-      * attempts to correct any problems resulting from a security incident
-      * deployed to repair or restore resources, functions, and capabilities
-      * Examples include:
-        * antimalware solution that can remove or quarantine a virus
-        * terminating a malicious activity or rebooting as system
-        * backup and restore plan to ensure that lost data can be restored
-        * IPS that can modify an environment to stop an attack in progress
-        * installing a spring on a door so that it will close and lock
-        * using file integrity-checking tools (sigverif) which will replace corrupt boot files upon each boot event to protect the stability and security of the booted OS
-    * **Recovery**
-      * aka _Recovery control_
-      * extension of corrective controls but has more advanced or complex abilities
-      * attempts to repair or restore resources, functions, capabilities after a security policy violation
-      * address more significant damaging events compared to corrective controls
-      * examples include:
-        * backup and restores / fault-tolerant drive systems
-        * system imaging / server clustering
-        * antimalware software
-        * database or vm shadowing
-        * examples in relation to BCDR
-          * hot / warm / cold sites
-          * alternate processing facilities
-          * service bureaus
-          * reciprocal agreements / cloud providers
-          * rolling mobile operating centers / multisite solutions
-    * **Deterrent**
-      * aka _Deterrent control_
-      * similar to preventative controls however deterrent controls often depend on individuals being convinced not to take an unwanted action
-      * countermeasure deployed to discourage security policy violations
-      * examples include
-        * policies, security awareness training
-        * locks / fences / security badges / guards
-        * access control vestibules
-        * security cameras
-    * **Directive**
-      * aka _directive control_
-      * deployed to direct, confine, or control the actions of subjects to force or encourage compliance with security policies
-      * examples include
-        * security policy requirements or criteria
-        * posted notifications
-        * guidance from security guard
-        * escape route exit signs
-        * monitoring
-        * supervision
-        * procedures
-    * **Compensating**
-      * aka _compensating (compensation) control_
-      * deployed to provide various options to other existing controls to aid in the enforcement and support of security policies
-      * can be any controls used in addition to, or in place of, another control
-      * can be a means to improve the effectiveness of a primary control or as the alternate or failover option in the event of a primary control failure
-      * examples include:
-        * if a building's fire prevention and suppression control system fails and the building is damaged by fire so that it is not inhabitable, a compensating control would be have a disaster recovery plan with an alternate processing site available to support work operations
-        * if a preventative control fails to stop the deletion of a file, a backup can be a compensating control, allowing fore the restoration of that file
-
 #### Security Control Assessment (SCA)
 
 * formal evaluation of a security infrastructure's individual mechanisms against a baseline or reliability expectation.
@@ -2667,11 +2759,45 @@ Security professionals should conduct security assessments of vendors both durin
 
 #### Continuous monitoring and measurement
 
+![NIST-ISCM](./images/ISCM.webp)
+
+* Defined in [NIST SP 800-137 - Information Security Continuous Monitoring (ISCM) For Federal Information Systems and Organizations](https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-137.pdf)
 * Security controls need to provide benefits that can be continuously monitored and measured (quantified, evaluated, compared)
+* should match organizational risk and requirements
 * monitoring may be native to the control or can be externally monitored, and should be taken into consideration during selection time (MSSP or self hosted etc)
 * measuring effectiveness of a countermeasure is not always an absolute value, some often offer degrees of improvement rather than specific hard numbers as to the number of breaches prevent or attacks thwarted
 * often its needed to have a baseline of recorded events prior to and post the installation of the countermeasure in order to understand success / fail measurements
 * cost/benefit plays a factor here, just justify the expense
+* Six Steps (according to NIST):
+  * **Define**
+    * define based upon risk tolerance that maintains clear visibility into assets, vulnerabilities, threats, and business impact
+  * **Establish**
+    * outlining metrics and monitoring  and assessment frequencies
+  * **Implement**
+    * collecting the metrics
+    * performaning the assessments
+    * building reports
+    * autormated fashion as much as possible
+  * **Aanlyze/Report**
+    * findings from collected data
+  * **Respond**
+    * * respond to findings by mitigating, avoiding, transfering, or accepting risk
+  * **Review/Update**
+    * review and update the program
+    * adjust the strategy and mature measurement capabilities
+* SIEMs
+* Correlate data over time
+* Anamoly (Heuristic) Analysis
+  * Detect outlier data points
+* Trend Analysis
+  * Detects changes over time
+* Behavioral Analysis
+  * Detects unusual user activity
+  * signatures or anamoly analysi
+* Availabiltiy Analysis
+  * Protects uptime
+* Continuoust tuning
+  * maintains effective controls
 
 ### Risk Reporting and Documentation
 
@@ -2701,7 +2827,7 @@ Security professionals should conduct security assessments of vendors both durin
   * can serve as a project management document to track completion of risk response activities and historical record of risk management over time
 * **Risk matrix (heat map)**
   * form of risk assessment that is performed on a basic graph or chart
-  * sometimes labeled as a qualitative risk assessment 
+  * sometimes labeled as a qualitative risk assessment
   * simplest form is a 3x3 grid comparing probability and damage potential
 
 #### Continuous Improvement
@@ -2740,6 +2866,8 @@ Security professionals should conduct security assessments of vendors both durin
 
 ### Risk Frameworks
 
+![NIST RMF](./images/nist-rmf.avif)
+
 * guideline or recipe for how risk is to be assessed, resolved, and monitored
 * frameworks:
   * [NIST Risk Management Framework (RMF)](https://csrc.nist.gov/projects/risk-management)
@@ -2755,6 +2883,7 @@ Security professionals should conduct security assessments of vendors both durin
         * (new in Rev. 2) - Establish context, assign roles, and get the organization ready to manage risk.
       * **Categorize**
         * Define the system and classify it based on the potential impact of a breach (confidentiality, integrity, availability).
+        * Businesss Impact Analysis
       * **Select**
         * Choose appropriate security and privacy controls based on the system’s categorization (often from NIST SP 800-53).
       * **Implement**
@@ -2868,7 +2997,7 @@ Security professionals should conduct security assessments of vendors both durin
         * uses asset valuation results and attempts to identify threats to valuable assets
       * **Focused on Attackers**
         * ability to identify potential attackers and the threats they represent based on the attackers' motivations, goals, or tactics, techniques, and procedures (TTPs)
-      * **Focused on Software**
+      * **Focused on Service/Software**
         * considering potential threats against software
     * **Determining and Diagramming Potential Attacks**
       * next stage of Threat Model
@@ -2878,20 +3007,26 @@ Security professionals should conduct security assessments of vendors both durin
         * the diagram should be a high-level overview and not detailed evaluation of the coding logic
         * however depending on the complexity of the system multiple diagrams at varying focus points should be created for detail magnification
     * **Performing Reduction Analysis**
-      * _Reduction Analysis_ is also known as _application/system decomposition_ which is the process of breaking down the individual components of an application, system, or environment.
-      * also for gaining a greater level of understanding of the logic of the product, its internal components, as well as its interactions with external elements.
+      * aka **_Application/System Decomposition_**
+      * the process of breaking down the individual components of an application, system, or environment.
+      * allows for gaining a greater level of understanding of the logic of the product, its internal components, as well as its interactions with external elements.
       * decomposition
         * application (software, computers, or os)
           * broken down to subroutines, modules or objects
         * systems or networks broken down by protocols
         * business infrastructure can be broken down by departments, tasks, networks
       * decomp analysis allows for each element to be evaluated to understand inputs, processing, security, data management, storage, and outputs. Also a good way to understand  and take notice of vulnerabilities and points of attack.
-      * five key elements
-        * **Trust Boundaries**: Key location where the level of trust or security changes
-        * **Dataflow Paths**: Movement of data between locations
-        * **Input Points**: Locations where external input is received
-        * **Privilege Operations**: Activities that require greater privilege than a standard user account or process typically required to make system changes or alter security
-        * **Details about Security Stance and Approach**: Declaration of the security policy, security foundations, and security assumptions
+      * Five Key Elements
+        * **Trust Boundaries**:
+          * Key location where the level of trust or security changes
+        * **Dataflow Paths**:
+          * Movement of data between locations
+        * **Input Points**:
+          * Locations where external input is received
+        * **Privilege Operations**:
+          * Activities that require greater privilege than a standard user account or process typically required to make system changes or alter security
+        * **Details about Security Stance and Approach**:
+          * Declaration of the security policy, security foundations, and security assumptions
       * once threats are identified they should be fully documented by defining the following:
         * the means
         * the target
@@ -2933,7 +3068,7 @@ Security professionals should conduct security assessments of vendors both durin
 * concept that most computers, devices, networks, systems, and even cloud-based services are not built by a single entity
 * manufacturers generally do final assembly rather than manufacture the individual components
 * even the commodity vendors likely have not mined the material to manufacture their components
-* long and complex logistics process of how a product is manufactured from raw material into a final product and distributed.
+* long and complex logistics process of how a product is manufactured from raw material into a final product and distributed.M
 
 ### [Supply Chain Risk Management (SCRM)](https://en.wikipedia.org/wiki/Supply_chain_risk_management)
 
@@ -2941,6 +3076,7 @@ Security professionals should conduct security assessments of vendors both durin
 * should be evaluated for every organizational acquisition of products and services from 3rd party suppliers and providers
 * each link in the chain should be responsible and accountable to the next link
 * each handoff should be properly organized, documented, managed, and audited
+* vendors should operate with the same security as or as close to your organizations security
 * goal is of a **secure supply chain** is to
   * ensure that the finished product is of sufficient quality, meets performance, operational goals, and provides stated security mechanisms
   * at no point in the process was any element subjected to unauthorized or malicious tampering or sabotage.
@@ -3369,12 +3505,12 @@ Security professionals should conduct security assessments of vendors both durin
   * a follow up quiz should be performed 3 to 6 months post the training to check on if the employee has retained the information
   * well-designed, engaging, and successful security training program should result in a measurable reduction in employee-related security incident management costs, hopefully exceeding the cost of the training program itself, for greater ROI
 * Examples
-  * Awareness:
+  * **Awareness**:
     * A poster in the office saying, “Think before you click—phishing emails are everywhere!”
     * A quick video reminder during Cybersecurity Awareness Month
-  * Training:
+  * **Training:**
     * Teaching help desk staff how to reset passwords securely
     * A hands-on session for employees on how to spot a phishing email in Outlook
-  * Education:
+  * **Education:**
     * Enrolling in a CISSP course or university program on cybersecurity
     * Learning cryptographic principles in a formal classroom setting

@@ -361,6 +361,13 @@
   * used in the process of hunting threats
   * activity of looking for existing evident of a compromise once symptoms or indicators of compromise (IOCs) of an exploit become known.
   * uses IoC information to find harm that has already occurred
+  * Criteria
+    * **Timeliness**
+      * How promptly is threat intelligence delivered?
+    * **Accuracy**
+      * Is the data correct?
+    * **Reliability**
+      Is the provider consistent?
   * [**Threat Feeds**](https://www.cloudflare.com/en-ca/learning/security/glossary/threat-intelligence-feed/)
     * steady stream of raw data related to current and potential threats
     * _threat intelligence feed_
@@ -371,19 +378,72 @@
         * Code shared on internet sites
         * IP addresses linked to malicious activity
       * helps identifying potential threats and malicious traffic by comparing feeds with actual network traffic
-    * [**Indicator of compromises (IoCs)**](https://en.wikipedia.org/wiki/Indicator_of_compromise) are artifacts observed with a hypothesis and high confidence about a threat
+      * **_Open Source Intelligence_**
+        * Intel coming from public information
+        * Sources
+          * Security Websites
+          * Vulnerability Databases
+          * News Media
+          * Social Media
+          * Dark Web
+          * Information sharing sites
+          * File Repositories
+          * Code Repositories
+          * Security researchers
+    * [**Indicator(s) of compromises (IoCs)**](https://en.wikipedia.org/wiki/Indicator_of_compromise)
+      * artifacts observed with a hypothesis and high confidence about a threat
+    * [**Cyber Observable eXpression (CybOX)**](https://cyboxproject.github.io/)
+      * now integrated into STIX
+      * provided a standardized schema for categorizing security observations
+      * language for capturing observable cybersecurity events
     * [**Structured Threat Information eXpression (STIX)**](https://oasis-open.github.io/cti-documentation/stix/intro.html)
       * standard language expressing structure information about cyberthreats and a common framework for organizations to share and analyze threat intelligence
     * [**Trusted Automated eXchange of Intelligence Information (TAXII)**](https://oasis-open.github.io/cti-documentation/taxii/intro.html)
       * defines the protocol and services for automating sharing of structured threat intelligence
+    * [**OpenIOC**](https://en.wikipedia.org/wiki/Mandiant)
+      * created by Mandiant (now part of Google)
+      * an extensible XML schema for the description of technical characteristics that identify threats, threat actors methodologies, and evidence of compromise
+      ![OpenIOC](./images/openioc.png)
+  * Intel Sharing
+    * [**Information Sharing and Analysis Centers (IASCs)**](https://en.wikipedia.org/wiki/Information_Sharing_and_Analysis_Center)
+      * bring together cybersecurity teams from competing organizations to help share industry specific security information in a confidential manner
+      * goal is to gather and disseminate threat intel without jeapordizing anonymity
+      * an ISAC is typically non-profit
     * [**Automated indicator sharing (AIS)**](https://www.cisa.gov/topics/cyber-threats-and-advisories/information-sharing/automated-indicator-sharing-ais)
       * initiative setup by the US Department of Homeland Security now managed by the National Cybersecurity and Communications Integration Center (NCCIC)
-      * used to facilitates the open and free exchange of IoCs and other cyberthreat information between the US federal governement and the private sector in an automated and timely manner (machine speed)
+      * used to facilitates the open and free exchange of IoCs and other cyberthreat information between the US federal government and the private sector in an automated and timely manner (machine speed)
       * Uses STIX and TAXII to share intel
+  * [**OASIS Cyber Threat Intelligence (CTI) Technical Committee**](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=cti)
+    * originally managed by the DHS
+    * chartered to define a set of information representations and protocols to address the need to model, analyze, and share cyber threat intelligence
+    * focuses on development and standardization of STIX (Structured Threat Information Expression) and TAXII (Trusted Automated Exchange of Indicator Information) under the OASIS open standards process.
+    The following image illustrates the relationship between CyBOX, STIX, and TAXII
+    ![OASIS](./images/OASIS_2.png)
+  * **Threat Research**
+    * process of using threat intelligence to get inside the heads of adversaries
+    * Core techniques
+      * **Reputational Threat Research**
+        * Identify potentially malicious actors based upon their use of IP address, email address, domains, etc. that were previously used in attacks
+      * **Behavioral Threat Research**
+        * Identify potentially malicious actors based upon the similarity of their behaviors to past attackers
+    * Research Sources
+      * Vendor Websites
+      * Vulnerability feeds
+      * Cybersecurity Conferences
+      * Academic journals
+      * Request For Comment (RFC) Documents
+      * Local industry groups
+      * Social media
+      * Threat feeds
+      * Adversary tactics, techniques and procedures (TTP)
   * [**Threat Hunting**](https://en.wikipedia.org/wiki/Threat_hunting)
+    * works under the assumption that the attack has already breached
     * process of actively searching for cyberthreats in a network
     * starts with the assumption that attackers are in the network
     * search for IoCs following the "kill chain model"
+    * Steps:
+      * **_Establish a Hypothesis_**
+      * **_Associate IoCs to hypothesis_**
   * [**Kill Chain Model**](https://en.wikipedia.org/wiki/Kill_chain_(military))
     * used by the military to disrupt attacks
     * has a lot of depth and includes the following phases:
