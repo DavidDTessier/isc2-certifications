@@ -12,7 +12,7 @@
   * can include confidential, proprietary, protected, or any type of data that an organization needs to protect due to its value or comply with laws and regulations
 * **_Personally Identifiable Information (PII)_**:
   * any information that can identify an individual
-  * [NIST SP 800-122](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-122.pdf), which provides more information on how to protect _PII_, provides more formal definition
+  * [**_NIST SP 800-122 - Guide to Protecting the Confidentiality of PII_**](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-122.pdf), which provides more information on how to protect _PII_, provides more formal definition
     > Any information about an individual maintained by an agency, including
     (1) any information that can be used to distinguish or trace an individual's identity, such as name, social security number, data and place of birth, mother's maiden name, or biometric records; and
     (2) any other information that is linked or linkable to an individual, such as medical, educational, financial, and employment information.
@@ -35,7 +35,7 @@
   * could be software code that was developed, technical plans for products, internal processes, etc
   * copyright/patent/trade secret laws provide protections for these items but sometimes that is not enough as criminals tend to ignore those
 
-### Data classification
+### Data Classification
 
 * included in organizational security or data policy
 * identifies the value of data to the organization and is critical to protect data confidentiality and integrity
@@ -43,13 +43,14 @@
 * identifies how data owners can determine the proper classification and how personnel should protect data based on its classification
 * US Government provides clear definitions for some of their most common classifications labels:
   * **Top Secret**:
-    >* "applied to information, the unauthorized disclosure of which reasonably could be expected to cause exceptionally grave damage to the national security that the original classification authority is able to identify or describe"
+    * highest form
+    * applied to information, the unauthorized disclosure of which reasonably could be expected to cause exceptionally grave damage to the national security that the original classification authority is able to identify or describe
   * **Secret**:
-    >* "applied to information, the authorized disclosure of which reasonably could be expected to cause serious damaged to the national security that the original classification authority is able to identify or describe."
+    * applied to information, the authorized disclosure of which reasonably could be expected to cause serious damaged to the national security that the original classification authority is able to identify or describe.
   * **Confidential**:
-    >* "applied to information, the unauthorized disclosure of which reasonably could be expected to cause damage to the national security that the original classification authority is able to identify or describe."
+    * applied to information, the unauthorized disclosure of which reasonably could be expected to cause damage to the national security that the original classification authority is able to identify or describe.
   * **Unclassified**:
-    * Refers to any data that doesn't meet one of the descriptions for top secret, secret, or confidential data. Within the US, unclassified data is available to anyone, though it often requires individuals to request the info using procedures identified in the Freedom of Information Act (FOIA).
+    * Refers to any data that doesn't meet one of the descriptions for top secret, secret, or confidential data. Within the US, unclassified data is available to anyone, though it often requires individuals to request the info using procedures identified in the **_Freedom of Information Act (FOIA)_**.
     * subclassifications:
       * **_Official Use Only (FOUO)_**
       * **_Sensitive But Unclassified (SBU)_**
@@ -61,23 +62,23 @@
   * some organizations use labels such as "Class 3, Class 2, Class 1, and Class 0"
   * Common labels used by non-government organizations
     * **Confidential or Proprietary**
-    > * highest level of classified data
-    > * a data breach would cause exceptionally grave damage to the organization
-    > * use the strongest level of access control to protect the data
+      * highest level of classified data
+      * a data breach would cause exceptionally grave damage to the organization
+      * use the strongest level of access control to protect the data
     * **Private**
-    > * refers to data that should stay private / internal within an organization
-    > * doesn't meet the definition of _Confidential/Proprietary_
-    > * data breach may cause serious damage
-    > * may contain PII/PHI data as well as financial data (example payroll data)
+      * refers to data that should stay private / internal within an organization
+      * doesn't meet the definition of _Confidential/Proprietary_
+      * data breach may cause serious damage
+      * may contain PII/PHI data as well as financial data (example payroll data)
     * **Sensitive**
-    > * similar to data labelled as "confidential"
-    > * data breach would cause damage to the mission of the organization
-    > * data may include network plans and information such as IP addresses, layouts, devices, operating systems, software, etc.
-    > * if an attacker gains access to this data, it makes it much easier for them to launch attacks
+      * similar to data labelled as "confidential"
+      * data breach would cause damage to the mission of the organization
+      * data may include network plans and information such as IP addresses, layouts, devices, operating systems, software, etc.
+      * if an attacker gains access to this data, it makes it much easier for them to launch attacks
     * **Public**
-    > * similar to "unclassified" data
-    > * includes information posted on websites, in brochures, or any other public source
-    > * must take great steps to protect its integrity, i.e having an attacker modifying the public data
+      * similar to "unclassified" data
+      * includes information posted on websites, in brochures, or any other public source
+      * must take great steps to protect its integrity, i.e having an attacker modifying the public data
 
 The following diagram shows the relationship between government and non-government classifications for data.
 
@@ -88,10 +89,11 @@ The following diagram shows the relationship between government and non-governme
 * Includes sensitive data, the hardware used to process it, and the media used to store it
 * Should match the data classifications, i.e. if a computer is processing top secret information it should also be marked/classified as "top secret"
 * Security labelling includes both physical and electronic tags/labels:
-  * Physical
+  * **Physical**
     * placed on media/system/device that handles sensitive data
     * remain of the system or media throughout its lifetime
-  * Digital/Electronic
+  * **Digital/Electronic**
+    * metadata
     * placed/included as a header or footer in a document or embedded as a watermark
     * DLP solutions can identify documents and add metadata tags into the document when detected
 * organizations should have procedures for downgrading classification however it's usually uncommon
@@ -101,9 +103,8 @@ The following diagram shows the relationship between government and non-governme
 
 * **Marking and Labeling**
   * Mark or label assets based on its classification.
-  * Best practice -apply the highest level of security until the data can be determined as not sensitive
+  * Best practice-apply the highest level of security until the data can be determined as not sensitive
   * See the [US National Archives for there implementations of labels and markings for CUI](https://www.archives.gov/cui/registry/category-marking-list)
-* 
 
 ## 2.3 - Provision information and assets securely
 
@@ -114,7 +115,7 @@ The following diagram shows the relationship between government and non-governme
   * data owner typically delegate data protection tasks to others in the organization
     * example: data custodian "security" role typically perform daily tasks such as implementing access controls, performing backups, and managing data storage
 * **Asset Management**
-  * Asset Owners
+  * **_Asset Owners_**
     * individual assigned to be responsible for organization assets (hardware, devices, systems, etc)
     * responsible for the procurement, management, and life cycle
   * refers to managing both "tangible and intangible" assets
@@ -141,6 +142,9 @@ The following diagram shows the relationship between government and non-governme
           * US patents require payment of maintenance fees periodically to maintain the patent, failing to pay them will result in a patent loss (tracking is key)
     * organizations report the value of intangible assets on their balance sheets using [_"Generally Acceptable Accounting Principles (GAAP)"_](https://en.wikipedia.org/wiki/Generally_Accepted_Accounting_Principles_(United_States))
       * ensures an annual review of intangible assets
+  * **_Information Technology Assessment Management System (ITAMS)_**
+    * tool to track and manage IT assets
+    * key for ITSM
   * **_Configuration Management System (CSM)_**
     * system used to assist with hardware asset management
     * automated
@@ -151,25 +155,25 @@ The following diagram shows the relationship between government and non-governme
 ![Data Lifecycle](../Certified%20Cloud%20Security%20Professional/images/secure-data-lifecycle.png)
 
 * **Phases**
-  * Create/Collect
+  * **_Create/Collect_**
     * can be created by users/systems
-  * Store
+  * _**Store_**
     * ensure data is handled properly, using encryption at rest
     * ensure data is classified as soon as possible
-  * Use
+  * **_Use_**
     * data should be protected by adequate security controls based on its classification
-  * Share
+  * _**_Share_**
     * encryption of data in use or in transit over a network
-  * Retain/Archive
-        * needed to comply with laws or regulations requiring the retention of data
-  * Destroy
+  * **_Retain/Archive_**
+    * needed to comply with laws or regulations requiring the retention of data
+  * **_Destroy_**
     * when data is no longer need, it should be destroy in such a way the it is not readable nor recoverable
     * crypto-shredding!!
 
 * **Data Roles**
   * **_Data Owner_**
     * the person who has ultimate organization responsibility for data
-    * typically is the chief executive officer (CEO), president, or a department head
+    * typically a business leader (ie. chief executive officer (CEO), president, or a department head)
     * identify the classification of data and ensure that it is labelled properly
     * ensure that the data has adequate security controls based on the classification and the organization's security policy requirements
     * may be liable for negligence if they fail to perform due diligence in establishing and enforcing security policies to protect and sustain sensitive data
@@ -178,9 +182,23 @@ The following diagram shows the relationship between government and non-governme
       > * Provides input to information system owners regarding the security requirements and controls for the information system(s) where the information resides
       > * Decides who has access to the information system and with what types of privileges or access rights
       > * Assists in the identification and assessment of the common security controls where the information resides
+  * **_Data Steward_**
+    * ensure the data's context and meaning are understood, and business rules governing the data's usage, (being used as intended)
+    * handles the day-to-day data governance activities
+    * delegated responsibilities by the data owners
+    * In COBIT (Control Objectives for Information and Related Technologies), both Data Stewards and Data Custodians play crucial roles in data governance, but they have distinct responsibilities. Data Stewards focus on the "what" and "why" of data, defining data quality rules and ensuring data is used correctly. Data Custodians focus on the "how", implementing the technical infrastructure and security measures to support data governance policies.
+  * **_Data Custodians_**
+    * day-to-day tasks are delegated from the _Data Owners_ to the _Data Custodians_
+    * helps protect the integrity and security by ensuring that it is properly stored and protected
+    * responsibility for managing data, including back ups
+    * often IT staff members
+    * delegated tasks by data stewards and owners
+    * example:
+      * custodians would ensure that the data is backed up by following the guidelines in a backup policy. If administrators have configured auditing on the data, custodians would also maintain these logs
+    * in practice, personnel within an IT department or system security administrators would typically be the custodians and may be the same administrators responsible for assigning permissions to data
   * **_Data Controllers_**
     * persons or entities responsible for the collection and use of data
-    * in GDRP terms:
+    * in **GDRP** terms:
       > * _"the data controller determines the purposes for which and the means by which personal data is processed."_
     * determines the "why" and the "how" of personal data collection and use
       * still true even if the data controller does not handle the data themselves
@@ -192,28 +210,21 @@ The following diagram shows the relationship between government and non-governme
   * **_Data Privacy Officer / Data Protection Officer (DPO)_**
     * oversees control of data and ensures the organization follows all relevant laws and regulations to protect individuals' private data  
     * mandated by the GDPR
-  * **_Data Custodians_**
-    * day-to-day tasks are delegated from the _Data Owners_ to the _Data Custodians_
-    * helps protect the integrity and security by ensuring that it is properly stored and protected
-    * example:
-      * custodians would ensure that the data is backed up by following the guidelines in a backup policy. If administrators have configured auditing on the data, custodians would also maintain these logs
-    * in practice, personnel within an IT department or system security administrators would typically be the custodians and may be the same administrators responsible for assigning permissions to data
-  * **_Users_**
+  * **_Data Users_**
     * any person who access the data via a computing system to accomplish work tasks
     * should only have access to the data they need to perform their work tasks
     * employees / end users
+    * should maintain security and privacy of data based on policies governed by the data owners and stewards
   * **_Data Subjects_**
     * GDPR definition:
       > * _"A data subject is a person who can be identified through an identifier, such as a name, an identification number, location data, an online identifier, or other means."_
     * Example:
       * if a file includes PII on Sally Smith, Sally Smith is the data subject
-  * **_Data Steward_**
-    * ensure the data's context and meaning are understood, and business rules governing the data's usage, (being used as intended)
-    * In COBIT (Control Objectives for Information and Related Technologies), both Data Stewards and Data Custodians play crucial roles in data governance, but they have distinct responsibilities. Data Stewards focus on the "what" and "why" of data, defining data quality rules and ensuring data is used correctly. Data Custodians focus on the "how", implementing the technical infrastructure and security measures to support data governance policies.
 * **Data Collection**
   * only collect data that is required and if you require more than that data will need to be securely stored:
     * credit card information
     * personal information (name, address, etc)
+  * obtain new consent prior to collection
 * **Data Location**
   * refers to the location of data backups or copies
   * backups should have both on-site and off-site copies for redundancy purposes
@@ -230,14 +241,14 @@ The following diagram shows the relationship between government and non-governme
         * Technical guard solution which is a combo of hardware and software placed between the two networks and allows properly marked data to travel between the networks
 * **Data Remanence**
   * data that remains after proper erasure
-  * data on hard drives as residual magentic flux or slack space
-    * _slack space_ is the unused space within a disk cluster, operating systems store files on hard drives in clusters, which are groups of sectors
+  * data on hard drives as residual magnetic flux or slack space
+    * **_slack space_** is the unused space within a disk cluster, operating systems store files on hard drives in clusters, which are groups of sectors
       * some operating systems fill in the slack space with data from memory
   * system tools to delete data generally leave much of the data remaining on the media, and widely available tools can easily undelete it
   * forensic experts and attackers have tools they can use to retrieve this data even after it has been reportedly deleted
-  * for Hard Drives, use a degausser which generates a heavy magnetic field and realigns the disks, however they are only effective on magnectic media (tape, HDD, Floppy Disks, etc)
+  * for Hard Drives, use a degausser which generates a heavy magnetic field and realigns the disks, however they are only effective on magnetic media (tape, HDD, Floppy Disks, etc)
   * for Solid State Drives (SSDs), which use integrated circuitry instead of magnetic flux on spinning platters, only way is total destruction
-    * NSA REQUIRES the destructions of SSDs using an approved disintegrator, which shred SSDs to a size of 2 millimeters or smaller
+    * NSA REQUIRES the destructions of SSDs using an approved disintegrator, which shreds SSDs to a size of `2 millimeters` or smaller
   * another possible method for protecting SDDs is to encrypt the data.
 * **Data Destruction**
   * organizations should destroy sensitive data when its no longer needed
@@ -258,6 +269,7 @@ The following diagram shows the relationship between government and non-governme
       * as new files are written to the media, the system eventually overwrites the erased data, however depending on the size of the data and the free space available it may take months to overwrite
       * anyone with forensic recovery tools can retrieve the deleted data
     * **_Clearing_**:
+      * most basic
       * also known as _overwriting_
       * process of preparing media for reuse and ensuring that the cleared data cannot be recovered using traditional recovery tools
       * when media is cleared, unclassified data is written over all addressable locations on the media:
@@ -274,12 +286,12 @@ The following diagram shows the relationship between government and non-governme
       * not always trusted to remove all data remnants
     * **_Degaussing_**:
       * process of using a tool called a degausser to create a strong magnetic field that erases data on some types of media
-      * used commonly to remove data from magnetic tapes and magnetic hard disk drives (HDD) with the goal of removing data from the media
+      * used commonly to remove data from magnetic tapes and magnetic hard disk drives (HDD, tapes, etc) with the goal of removing data from the media
       * may render a hard drive unusable so its not a good option when you want to reuse the media
       * has no effect on optical disks (CDs, DVDs, Blue-rays) or flash storage media (SD cards, USB flash drives, SSDs)
     * **_Destruction_**:
       * final stage in the life cycle of media and is the most secure method of sanitizing media
-      * ensures that the media cannot be reused or repaired and that data cannot be extracted 
+      * ensures that the media cannot be reused or repaired and that data cannot be extracted
       * destruction methods include:
         * incineration
         * shredding
@@ -287,6 +299,8 @@ The following diagram shows the relationship between government and non-governme
         * pulverizing
         * melting
       * some organizations remove the platters in highly classified disk drives and destroys them separately
+    The following flow chart (from NIST) outlines a decision tree for media sanitization
+    ![NIST Media Sanitization](./images/data-destruction-flowchart.webp)
 * **Declassification**
   * involves any process that purges media or a system in preparation for reuse in an unclassified environment
   * many organizations choose not to declassify any media and instead destroy it when it is no longer needed, to avoid any potential risk of data leaks
@@ -313,10 +327,10 @@ The following diagram shows the relationship between government and non-governme
 * **End of Life (EOL) / End of Support (EOS)**
   * can apply to either software or hardware
   * in context of asset retention, they apply directly to hardware assets
-  * _EOL_
+  * **_EOL_**
     * refers to the time when vendors stop producing and offering a product for sale
     * support is still provided for a period of time
-  * _EOS_
+  * **_EOS_**
     * refers to the time when the support ends
   * most hardware is on a refresh cycle based of the EOL and EOS time frames
   * organizations retain legacy hardware to access older data (tape drives)
@@ -328,29 +342,62 @@ The following diagram shows the relationship between government and non-governme
   > * any data in storage (on media such as hard drives, SSDs, external USB drives, SANS, backup taps)
   > * Strong symmetric encryption protects data at rest
   * **_Data in Transit_**
-  > * data in motion or being communicated
-  > * data transmitted over a network (internal network using wired or wireless methods as well as data being transmitted over the public networks such as the Internet)
-  > * combination of symmetric and asymmetric encryption protects data in transit
+    * data in motion or being communicated
+    * data transmitted over a network (internal network using wired or wireless methods as well as data being transmitted over the public networks such as the Internet)
+    * combination of symmetric and asymmetric encryption protects data in transit
+    * Methods:
+      * **End-to-End Encryption**:
+        * data portion of a packet is encrypted immediately upon transmission from the source node, and the data remains encrypted through every node
+      * **Link encryption**:
+        * the packet header and data are encrypted between each node. Encrypting the packet header hides the routing information of packets traversing a network.
+        * Unlike with end-to-end encryption, the header and data are decrypted at each node, so header information and plaintext content are also available at each node.
+      * **Onion Network**: 
+        * very effective method of protecting data in transit, as it essentially provides complete confidentiality and anonymity through the use of multiple layers of encryption
+        * provides confidentiality of data as well as anonymity, an onion network makes it very difficult to determine the sender and receiver while data is in transit.
+      ![Data In Transit](./images/protecting-data-in-transit.png)
+
   * **_Data in Use_**
-  > * data being processed, which refers to data in memory or temporary storage buffers while an application is using it
-  > * often the data in decrypted before being placed into memory in order for the application to use the data
-  > * it is recommended to flush buffers when the data is no longer needed
-  > * in some cases applications may work on encrypted data using [homomorphic encryption](https://en.wikipedia.org/wiki/Homomorphic_encryption), which limits risk because memory doesn't hold unencrypted data.
-  > * The best defense is strong encryption, as well as strong authentication and authorization controls
+    * data being processed, which refers to data in memory or temporary storage buffers while an application is using it
+    * often the data in decrypted before being placed into memory in order for the application to use the data
+    * it is recommended to flush buffers when the data is no longer needed
+    * in some cases applications may work on encrypted data using [homomorphic encryption](https://en.wikipedia.org/wiki/Homomorphic_encryption), which limits risk because memory doesn't hold unencrypted data.
+    * The best defense is strong encryption, as well as strong authentication and authorization controls (rbac), dlp
+
+* **Information Obfuscation Methods**
+  * **_Obfuscation_**
+    * action of making something obscure, unclear, or unintelligible; in other words, hiding it.
+    * makes something harder to understand
+  * **Methods**:
+    * **_Concealing data_**:  
+      * completely removes access to sensitive data.
+    * **_Information Pruning/Pruning Data_**:
+      * primarily takes place in nonproduction environments and involves the removal of sensitive data from attributes.
+    * **_Fabricating data_**:
+      * creating fake data to replace real data or sensitive data
+    * **_Trimming data_**
+      * removes part of an attribute's value and is typically used for identification purposes.
+    * **_Encrypting data_**:
+      * creates ciphertext of a value and can be done at the attribute, table, or database levels.
 
 * **Security Baselines**
-  * once organizations have identified and classified their assets they typically want to secure them, enter _Security Baselines_
-  * _Baselines_ provide a starting point and ensure minimum security standards.
+  * **_Security Baselines_**
+    * provide a starting point and ensure minimum security standards.
     * derived by completing the system categorization (FIPS 199 & NIST SP 800-60) to determine the sensitivity levels for a systems Confidentiality, Integrity,  and Availability (CIA)
     * **_NIST SP 800-60 - Guide for Mapping Types of Information and Information Systems to Security Categories_**
       * provides guidance for federal agencies to map types of information and information systems to security categories based on [FIPS 199](https://nvlpubs.nist.gov/nistpubs/fips/nist.fips.199.pdf).
-      * offers a framework for determining impact levels (low, moderate, high) for confidentiality, integrity, and availability, helping organizations apply appropriate security measures. The publication serves as a resource for understanding and implementing the information categorization requirements mandated by the FISMA of 2002. 
+      * offers a framework for determining impact levels (low, moderate, high) for confidentiality, integrity, and availability, helping organizations apply appropriate security measures. The publication serves as a resource for understanding and implementing the information categorization requirements mandated by the FISMA of 2002 
       * Two Volumes
         * [Volume I](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-60v1r1.pdf)
           * Contains the basic guidelines for mapping information types and systems to their security categories.
         * [Volume II](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-60v2r1.pdf):
-          * Includes appendices with detailed recommendations and rationale for categorizing mission-based, management, and support information types. 
-    The following diagram illustrates the Categorization and selection of controls as per NIST SP 800-60:
+          * Includes appendices with detailed recommendations and rationale for categorizing mission-based, management, and support information types.
+  * **Standards Selection**
+    * security controls should align and comply with external security standards to are appropriate for the organization
+    * typically define compulsory requirements for organizations
+      > * Example: PCI DSS defines requirements that business must follow to process major credit cars or similarly if the organization processes and collects personal data from EU citizens then they must abide by GDPR.
+    * organization's need to identify the standards that apply to them and ensure they comply with those standards
+    * if your organization does not need to legally comply with any specific standard, using a well-designed community standard is recommended.
+    The following diagram illustrates the categorization and selection of controls process as per NIST SP 800-60:
     ![Controls Categorization](./images/NIST-sp-800-60-categorization.png)
   * [NIST SP 800-53, Rev. 5 - Security and Privacy Controls for Information Systems and Organizations](https://doi.org/10.6028/NIST.SP.800-53r5):
     * mentions _security control baselines_ and identifies it as _"the set of minimum security controls defined for an information system."_
@@ -374,7 +421,7 @@ The following diagram shows the relationship between government and non-governme
     * is the process of aligning the controls with an organization's specific security requirements
     * ensures a baseline is a good fit for the organization
     * refers to modifying the list of security controls within a baseline to align with an organization's mission
-    * _NIST SP 800-53B_ formally defines it as:
+    * **_NIST SP 800-53B_** formally defines it as:
       > * _"part of an organization-wide risk management process that includes framing, accessing, responding to, and monitoring information security and privacy risks"_
       * and indicates it includes the following:
         > * Identifying and designating common controls
@@ -386,12 +433,6 @@ The following diagram shows the relationship between government and non-governme
       * part of the tailoring process and refers to reviewing a list of baseline security and privacy controls and selecting only those controls that apply to the IT systems you're trying to protect.
       * in simple terms, scoping eliminates controls that are recommended in a baseline:
         >* Example: if a system doesn't allow any two people to log on to it simultaneously, there is no need to apply a concurrent session control
-* **Standards Selection**
-  * security controls should align and comply with external security standards to are appropriate for the organization
-  * typically define compulsory requirements for organizations
-    > * Example: PCI DSS defines requirements that business must follow to process major credit cars or similarly if the organization processes and collects personal data from EU citizens then they must abide by GDPR.
-  * organization's need to identify the standards that apply to them and ensure they comply with those standards
-  * if your organization does not need to legally comply with any specific standard, using a well-designed community standard is recommended.
 * **Data Protection Methods**
   * **_Encryption_**
     * See data states
@@ -411,25 +452,29 @@ The following diagram shows the relationship between government and non-governme
       * **Automatic Expiration**:
         * subscription model
         * subscription period ends the product an automatic expiration function blocks any further access
-    * Digital watermarks are sometimes included into video and audio files using steganography, which do not prevent copying but can be used to detect the unuathorized copying of a file (copyright enforcement and detection)
+    * Digital watermarks are sometimes included into video and audio files using stenography, which do not prevent copying but can be used to detect the unauthorized copying of a file (copyright enforcement and detection)
     * Similarly metadata is sometimes placed into files to identify the buyer
     * Many organizations and individuals are opposed to DRM as they claim it restricts the fair use of materials they purchase
       * example: purchased MP3 songs and you want to copy onto both an MP3 player and a smartphone, DRM blocks this type of activity
   * **_Data Loss Prevention (DLP)_**
     * solution that attempts to detect and block attempts of data exfiltration
     * have capabilities of scanning unencrypted data looking for keywords and data patterns
-    * Pattern-matching DLP systems look for specific patterns such as social security numbers which have a pattern of _nnn-nn-nnnn_
+    * **_Pattern-matching_** DLP systems look for specific patterns such as social security numbers which have a pattern of _nnn-nn-nnnn_
+    * **_Watermarking feature_** adds a data pattern to files which can be used by the DLP system to track the documents.
     * most include deep discovery capabilities also
     * Cloud DLP solutions offer the same functionality for keyword and pattern matching
     * Three types of DLP
-      > * **Network DLP**
-      >   * placed at the edge of the network and scans all outgoing data in a traditional network looking for specific data
-      > * **Endpoint DLP**
-      >   * scans files stored on a system as well as files sent to external devices such as printers
-      >   * can prevent users from copying sensitive data to a USB flash drive or sending sensitive data to a printer
-      >   * place on a device/system (laptop / severs)
-      > * **Cloud DLP**
-      >   * subset of Network DLP designed and tailored for cloud-native environments
+      * **Network DLP**
+        * placed at the edge of the network and scans all outbound traffic to detect data in a traditional network looking for specific data
+      * **Endpoint DLP**
+        * aka Host-Based DLP
+        * software agents installed on a single system
+        * scans files stored on a system as well as files sent to external devices such as printers
+        * can prevent users from copying sensitive data to a USB flash drive or sending sensitive data to a printer
+        * place on a device/system (laptop / severs)
+      * **Cloud DLP**
+        * subset of Network DLP designed and tailored for cloud-native environments
+        * managed by the csp
   * **_Cloud Access Security Broker (CASB)_**
     * software logically placed between users and cloud resources
     * may be on-premise or within the cloud
@@ -451,7 +496,7 @@ The following diagram shows the relationship between government and non-governme
     * refers to the process of substituting a sensitive data element with a non-sensitive equivalent, referred to as a token. The token has no intrinsic or exploitable meaning or value and maps back to the sensitive data through a tokenization system.
     * A one-way cryptographic function is used to convert the original data into tokens, making it difficult to recreate the original data without obtaining entry to the tokenization system's resources.
     * To deliver such services, the tokenization system maintains a vault database of tokens that are connected to the corresponding sensitive data. Protecting the system vault is vital to the system, and improved processes must be put in place to offer database integrity and physical security.
-    * The tokenization system must be secured and validated using security best practices[6] applicable to sensitive data protection, secure storage, audit, authentication and authorization. The tokenization system provides data processing applications with the authority and interfaces to request tokens, or detokenize back to sensitive data.
+    * The tokenization system must be secured and validated using security best practices applicable to sensitive data protection, secure storage, audit, authentication and authorization. The tokenization system provides data processing applications with the authority and interfaces to request tokens, or detokenize back to sensitive data.
     ![Tokenization Example](./images/tokenization.png)
   * **_Anonymization_**
     * refers to the process of removing all relevant data so that it is theoretically impossible to identify the original subject or person
