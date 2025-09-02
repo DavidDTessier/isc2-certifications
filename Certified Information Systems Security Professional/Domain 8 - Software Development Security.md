@@ -748,13 +748,83 @@ Learn: Evaluate the outcome of the solution and learn from the experience for fu
   * **_Hybrid Cloud_**
     * includes a combination of two or more clouds that are bound together by a technology that provides data and application portability
     * maintenance responsibilities are share based on who is hosting the assets and the service models in use
-* **Managed Security Service Provider (MSSP)**
-  * third-party (often cloud-based) services that provide remote oversight and management of on-prem IT or Cloud IT
-  * some are general purpose or focused on specific IT area (security, etc)
-  * some are vertical focused also (legal, medical, fin, gov, etc)
-  * _Security-as-a-Service (SECaaS)_
-    * various forms of security solutions/services being offered through cloud solutions
-    * SIEM/SOAR, MDR/XDR, IDS/IPS, etc
+* **Cloud computing roles and responsibilities**
+  * As described in ISO/IEC 17788
+  * **_Cloud Service Customer (CSC)_**
+    * Consumer of cloud computing resources/services from one or more CSPs
+    * Sub-Roles:
+      * Cloud service user
+      * Cloud service administrator
+      * Cloud service business manager
+      * Cloud service integrator
+  * **_Cloud Service Provider (CSP)_**
+    * Offers cloud computing services for sale to third parties
+    * Responsible for building and maintaining the infrastructure service offerings
+    * Can also be a cloud customer if they off-load maintenance to other cloud service providers
+      * i.e. AWS, GCP, Azure, Oracle, etc
+    * Sub-Roles
+      * Cloud Service Operation Manager
+      * Cloud Service Deployment Manager
+      * Cloud Service Manager
+      * Cloud Service Business Manager
+      * Customer support and care representative
+      * Inter-cloud provider
+      * Cloud service security and risk manager
+      * Network provider
+  * **_Cloud Service Partner (CSN)_**
+    * 3rd party companies that offer some product or service that interacts with the primary offerings of CSPs
+      * i.e - CWX, SADA, Accenture, Tata, Avenade
+    * Sub-Roles:
+      * Cloud Service Developer
+      * Cloud Auditor
+      * Cloud Service Broker
+  * **_Cloud Service Broker (CSB)_**
+    * entity that manages the use, performance and delivery of cloud services
+    * negotiates relationships between cloud providers and cloud consumers 
+    * Provides
+      * Service Intermediation
+        * Implementing some specific capability and providing value-add services to customers
+      * Service aggregation
+        * Combines/integrates services into one or more new services
+      * Service arbitrage
+        * broker has ability/flexibility to choose services from multiple agencies
+  * **_Cloud Service Auditor (CSA)_**
+    * 3rd party that can conduct an independent assessment of cloud services, info sys operations, performance, and sec of the cloud implementation
+  * **_Cloud Access Security Broker (CASB)_**
+    * Provides IAM Services
+  * **Cloud Regulator**
+    * Create rules governing us of cloud computing
+      * PCI DSS , GDPR
+  * Other Roles / Functions of Cloud Computing
+    * **_Cloud Administrator_**
+      * responsible for implementation, monitoring, and maintenance of the cloud
+    * **_Cloud Application Architect_**
+      * responsible for adapting, porting, and deploying application
+    * **_Cloud Architect_**
+      * responsible for designs and develops solutions
+    * **_Cloud Operator_**
+      * Responsible for daily operational tasks
+    * **_Cloud Data Architect_**
+      * Manages data storage and data flow within, to and from the cloud
+    * **_Cloud Service Manager_**
+      * Responsible for bus agreements
+      * pricing for the cloud customer
+    * **_Cloud Storage Administrator_**
+      * Manages storage volume/repository assignment and configuration
+    * **_Cloud Service Business Manager_**
+      * Oversees business and billing admin
+    * **_Cloud Service Operations Manager_**
+      * Prepares systems operations and support for the cloud, admin services
+    * **_Managed Security Service Provider (MSSP)_**
+      * Maintains the security environment for companies
+      * may manage firewalls, IDPS, SIEM systems, and other security services and infra
+      * may provide an outsourced security operations center (SOC) and incident response (IR)
+      * third-party (often cloud-based) services that provide remote oversight and management of on-prem IT or Cloud IT
+      * some are general purpose or focused on specific IT area (security, etc)
+      * some are vertical focused also (legal, medical, fin, gov, etc)
+      * _Security-as-a-Service (SECaaS)_
+        * various forms of security solutions/services being offered through cloud solutions
+        * SIEM/SOAR, MDR/XDR, IDS/IPS, etc
 * **Rapid Elasticity and Scalability**
   * Elasticity
     * ability of a system to **automatically expand and contract rapidly**

@@ -22,9 +22,9 @@
       * encompasses a broader set of principles related to the authority and control that a country and/or region asserts over the data generated within its jurisdiction, includes where the data is stored and concerns about legal jurisdiction and compliance with local data protection laws
     * **Scope**:
       * broader range of concerns (legal jurisdiction, reg compliance, and overarching authority over data collected within its boundaries)
-      * extends beyond just storage location to include control and goverance aspects
+      * extends beyond just storage location to include control and governace aspects
     * **Drivers**:
-      * driven by legal, political, and cultural consideratios
+      * driven by legal, political, and cultural considerations
       * governments may enact data sovereignty regulations to protect the privacy of their citizens, ensure compliance with local laws, and asset control over data processing/handling within their boarders
     * **Implications**:
       * impacts both data storage locations and influence how organizations handle/process data including governance, legal compliance, and interactions with 3rd party service providers
@@ -32,11 +32,11 @@
   * **Data Portability**
     * ability of individuals to easily and securely move their personal data from one system, service, or application to another
     * transfer data between platforms
-    * associated wtih data protection and privacy regulations emphasizing user rights and data control
+    * associated with data protection and privacy regulations emphasizing user rights and data control
 
 ### Threat Modeling
 
-* process where potential threats are identified, categorized, and analyzed.
+* Process where potential threats are identified, categorized, and analyzed.
 * can be performed proactive during design and development or as a reactive measure once a product has been deployed
 * process identifies
   * the potential harm,
@@ -140,6 +140,8 @@
     * Trike has a version 1 and a version 2.
 
 ### Defense in Depth
+
+![Defense-in-Depth](./images/defense-in-depth-layers.webp)
 
 * aka [_layering_](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)) and  the [onion model](https://en.wikipedia.org/wiki/Onion_model)
 * use of multiple overlapping controls in a series for one objective
@@ -275,8 +277,8 @@ The following diagram highlights the flow of transitive trust:
   * The concept you want users to be able to easily use
   * applications or systems from the first time the use it
 * **_Restrictive defaults_**:
-  > * refer to the practice or policy where the default settings or options are intentionally configured to be more limiting or restrictive to enhance security, privacy and compliance
-  > * typically provided via a preconfigured set of options in which the default settings priorities security, privacy, safety, or regulatory compliance
+  * refer to the practice or policy where the default settings or options are intentionally configured to be more limiting or restrictive to enhance security, privacy and compliance
+  * typically provided via a preconfigured set of options in which the default settings priorities security, privacy, safety, or regulatory compliance
 
 ### Fail Securely
 
@@ -316,7 +318,7 @@ The following diagram highlights the flow of transitive trust:
 * If priority is on maintaining confidentiality and integrity then the product fails and the connection or communication is cut off (fail-secure, fail-closed and/or fail-safe)
 * Blue Screen of Death (BSoD) is a fail-secure/fail-safe/fail-closed design
 
-### Keep it simple and small
+### Keep It Simple and Small
 
 * [KISS principle](https://en.wikipedia.org/wiki/KISS_principle)
 * in security it encourages avoiding over-complicating the environment, organization, or product design for a more streamlined, optimized, and reduced solution
@@ -344,9 +346,22 @@ The following diagram highlights the flow of transitive trust:
   * every transaction should be verified before it is allowed to occur
   * every access request should be authenticated, authorized, and encrypted prior to the access being granted to a resource or asset
   * requires internal network micro-segmentation and strong adherence to the principle of least privilege in order to prevent lateral movement by limit and/or severely restricting the ability to move about the environment
-  * can leverage an [Attibute-based RBAC](https://en.wikipedia.org/wiki/Attribute-based_access_control) for control also
+  * can leverage an [Attribute-based RBAC](https://en.wikipedia.org/wiki/Attribute-based_access_control) for control also
   * only successfully if real-time monitoring, vetting, and visibility into user activities are maintained
-* [Microsegmentation](https://en.wikipedia.org/wiki/Microsegmentation_(network_security))
+  * **Core Components of ZTA**
+    * **_Policy Decision Point (PDP)_**
+      * Encompasses two key components:
+        * **_Policy Engine (PE)_**:
+          * responsible for making the decision to grant or deny access to a resource
+          * analyzes data from various sources to assess the trust level of a request.
+        * **_Policy Administrator (PA)_**:
+          * responsible to establish and manage the communication path between a user and a resource
+          * sends commands to the Policy Enforcement Point (PEP) to allow or deny a connection based on the PE's decision.
+    * **_Policy Enforcement Point (PEP)_**:
+      * component acts as a gatekeeper, enforcing the access decision made by the Policy Engine.
+      * It's the point where the connection between the user and the resource is terminated or allowed
+      * Examples include firewalls, routers, and application gateways.
+* [Micro-segmentation](https://en.wikipedia.org/wiki/Microsegmentation_(network_security))
   * network security concept of diving up an internal network into small segments/zones
   * each segment/zone is separated from each other by internal segmentation firewalls (ISFWs), subnets, or virtual local area networks (VLAN)
   * all communication been each zone can be filtered, may require authentication, often includes session encryption, and may also use allow list and block list control
@@ -384,12 +399,14 @@ So in today's cybersecurity landscape choose Zero-Trust!
   * Use, retention, and disclosure of data must be limited and only for what has been consented to, with exceptions by law. Information should only be retained for the stated amount time needed and then securely erased.
 * Framework is based on sever foundational principles which has been highlighted in [Ann Cavoukian's Paper - _"Privacy by Design - The 7 Fundamental Principles: Implementation and Mapping of Fair Information Practices"_](https://privacy.ucsc.edu/resources/privacy-by-design---foundational-principles.pdf):
   * **Proactive, not reactive; preventive, not remedial**
-  > * The privacy by design approach is characterized by proactive rather than reactive measures. It anticipates and prevents privacy invasive events before they happen. Privacy by design does not wait for privacy risks to materialize, nor does it offer remedies for resolving privacy infractions once they have occurred — it aims to prevent them from occurring. In short, privacy by design comes before-the-fact, not after
+  > * The privacy by design approach is characterized by proactive rather than reactive measures
+  > * anticipates and prevents privacy invasive events before they happen
+  > * Privacy by design does not wait for privacy risks to materialize, nor does it offer remedies for resolving privacy infractions once they have occurred — it aims to prevent them from occurring. In short, privacy by design comes before-the-fact, not after
   * **Privacy as the default**
   > * Privacy by design seeks to deliver the maximum degree of privacy by ensuring that personal data are automatically protected in any given IT system or business practice. If an individual does nothing, their privacy still remains intact. No action is required on the part of the individual to protect their privacy — it is built into the system, by default.
   * **Privacy embedded into design**
   > * Privacy by design is embedded into the design and architecture of IT systems as well as business practices. It is not bolted on as an add-on, after the fact. The result is that privacy becomes an essential component of the core functionality being delivered. Privacy is integral to the system without diminishing functionality.
-  * **Full functionality - postive sum, not zero-sum**
+  * **Full functionality - positive sum, not zero-sum**
   > * Privacy by design seeks to accommodate all legitimate interests and objectives in a positive-sum “win-win” manner, not through a dated, zero-sum approach, where unnecessary trade-offs are made. Privacy by design avoids the pretense of false dichotomies, such as privacy versus security, demonstrating that it is possible to have both.
   * **End-to-end life cycle protection**
   > * Privacy by design, having been embedded into the system prior to the first element of information being collected, extends securely throughout the entire lifecycle of the data involved — strong security measures are essential to privacy, from start to finish. This ensures that all data are securely retained, and then securely destroyed at the end of the process, in a timely fashion. Thus, privacy by design ensures cradle-to-grave, secure lifecycle management of information, end-to-end
@@ -398,7 +415,7 @@ So in today's cybersecurity landscape choose Zero-Trust!
   * **Respect for user privacy**
   > * Above all, privacy by design requires architects and operators to keep the interests of the individual uppermost by offering such measures as strong privacy defaults, appropriate notice, and empowering user-friendly options. Keep it user-centric
 [OWASP Top 10 Privacy Risks Project](https://www.owasp.org/index.php/OWASP_Top_10_Privacy_Risks_Project)
-  * provides practicle guidelines on how to implement privacy by design when developing web applications
+  * provides practical guidelines on how to implement privacy by design when developing web applications
 
 ### Secure Access Service Edge (SASE)
 
@@ -412,11 +429,11 @@ So in today's cybersecurity landscape choose Zero-Trust!
 * core principle is identity-centric security
   * which prioritizes the identity of users and devices over the traditional perimeter-based security model
   * users can access resources from diverse locations and devices
-* implemented through [zero trust network access (ZTNA)](https://www.zscaler.com/resources/security-terms-glossary/what-is-zero-trust-network-access)
+* implemented through [zero trust network access (ZNA)](https://www.zscaler.com/resources/security-terms-glossary/what-is-zero-trust-network-access)
   * which is founded on the concept of Zero Trust (trust no one , verify all)
   * every user and device must be authenticated (with MFA for users when possible) and authorization processes for access
 * emphasizes a globally distributed network and workforce
-* continuous monitoring of user and device activity is a key component 
+* continuous monitoring of user and device activity is a key component
 
 ### Shared Responsibility
 
@@ -434,13 +451,12 @@ So in today's cybersecurity landscape choose Zero-Trust!
   * standard language expressing structure information about cyberthreats and a common framework for organizations to share and analyze threat intelligence
 * [**Trusted Automated eXchange of Intelligence Information (TAXII)**](https://oasis-open.github.io/cti-documentation/taxii/intro.html)
   * defines the protocol and services for automating sharing of structured threat intelligence
-* [**Automated indicator sharing (AIS)**](https://www.cisa.gov/topics/cyber-threats-and-advisories/information-sharing/automated-indicator-sharing-ais) 
+* [**Automated indicator sharing (AIS)**](https://www.cisa.gov/topics/cyber-threats-and-advisories/information-sharing/automated-indicator-sharing-ais)
   * initiative setup by the US Department of Homeland Security now managed by the National Cybersecurity and Communications Integration Center (NCCIC)
-  * used to facilitates the open and free exchange of IoCs and other cyberthreat information between the US federal governement and the private sector in an automated and timely manner (machine speed)
+  * used to facilitate the open and free exchange of IoCs and other cyber threat information between the US federal government and the private sector in an automated and timely manner (machine speed)
   * Uses STIX and TAXII to share intel
 
-
-## 3.2 - Understand the fundamental concepts of security models (e.g., Biba, Star Model, Bell-LaPadula)
+## 3.2 - Understand the fundamental concepts of security models
 
 ### Concepts
 
@@ -457,9 +473,7 @@ So in today's cybersecurity landscape choose Zero-Trust!
   * usually cannot be altered
   * provides a safeguard against tampering that neither tokens or capbilities lists provide
 
-### Security Models
-
-#### Trusted Computing Base (TCB)
+### Trusted Computing Base (TCB)
 
 * [TCB](https://en.wikipedia.org/wiki/Trusted_computing_base) is a design principle in which the combination of hardware, software, and controls work together to a for a trust union to enforce security policies
 * should be as small as possible in order for detailed analysis to reasonably ensure that the system meets design specs and requirements
@@ -487,7 +501,11 @@ The following diagram(s) illustrate these conncepts:
 ![TCS](./images/Trusted-Computer-System.webp)
 ![TCB ACL](./images/tcbaccesscontrol.webp)
 
-#### State Machine Model
+### Security Models
+
+#### Types
+
+##### State Machine Model
 
 * Secure State Machine Model ensures a system remains secure throughout all its operations by defining all possible system states and transitions between them.
 * The goal is to ensure that all transitions maintain security, meaning no transition can move the system from a secure state to an insecure one.
@@ -505,7 +523,7 @@ The following diagram(s) illustrate these conncepts:
 
 ![FSM](./images/FSM.png)
 
-#### Information Flow Model
+##### Information Flow Model
 
 * based on the State Machine Model and built around [information flow theory](https://en.wikipedia.org/wiki/Information_flow_(information_theory))
 * focuses on controlling the flow of information including both direction of information flow and the type of flow
@@ -515,27 +533,27 @@ The following diagram(s) illustrate these conncepts:
 * used to established a relationship between two versions or states of the same object when those two versions/states exist at different points in time
   * dictates the transformation of an object at different points in time
 * addresses covert channels by specifically excluding all undefined flow pathways
+* Bell-La
 
 ![information flow](./images/information_flow.png)
 
-##### Composition Theories
-
-* falls under the information flow model and build on the notion of inputs and outputs between systems which essentially describes information flow between systems
-* Three theories:
-  * **Cascading**
-    * Input of one system comes from output of another
-    * Example: Web server with database backend
-      * A -> B -> C : Chaining
-  * **Feedback**
-    * System receives input and responds with output
-    * Example: HTTP Request and Response
-      * A -> B : Request
-      * A <- B : Response
-  * **Hookup**
-    * System sends input to one system and sends copy to another
-    * Example: CC and BCC in email
-      * A -> B : To Destination
-      * A -> C : To Hookup
+* **Composition Theories**
+  * falls under the information flow model and build on the notion of inputs and outputs between systems which essentially describes information flow between systems
+  * Three theories:
+    * **Cascading**
+      * Input of one system comes from output of another
+      * Example: Web server with database backend
+        * A -> B -> C : Chaining
+    * **Feedback**
+      * System receives input and responds with output
+      * Example: HTTP Request and Response
+        * A -> B : Request
+        * A <- B : Response
+    * **Hookup**
+      * System sends input to one system and sends copy to another
+      * Example: CC and BCC in email
+        * A -> B : To Destination
+        * A -> C : To Hookup
 
 #### Noninterference Model
 
@@ -546,7 +564,7 @@ The following diagram(s) illustrate these conncepts:
     > * if a vialotion occurs, subject B could be place into an insecure state or be able to deduce/infer information about a higher level of classification
 * type of model that can be imposed to form protection against damage caused by malicious programs, such as Trojan horses, backdoors, and rootkits
 
-#### Take-Grant Model
+##### Take-Grant Model
 
 * [model](https://en.wikipedia.org/wiki/Take-grant_protection_model) which describes how rights can be passed/taken from subject to subject/objects using a [_directed graph (graph theory_](https://en.wikipedia.org/wiki/Directed_graph)
 * Allows you to track where rights can change and where leakage may/can occur
@@ -564,7 +582,7 @@ The following diagram(s) illustrate these conncepts:
 
 ![Take-Grant Model](./images/take-grant.webp)
 
-#### Access Control Matrix
+##### Access Control Matrix
 
 * An access control matrix is a table that states a subject’s access rights on an object.
 * A subject’s access rights can be of the type _read_, _write_, and _execute_
@@ -587,7 +605,7 @@ The following diagram(s) illustrate these conncepts:
 
 ![Access Control Matrix](./images/access-control-matrix.png)
 
-#### Lattice-Based Access Control
+##### Lattice-Based Access Control
 
 * subject are assigned position in a lattice
   * mutlilayered security structure/multileveled security domains
@@ -600,16 +618,23 @@ The following diagram(s) illustrate these conncepts:
 
 ![Lattice](./images/lattice.png)
 
-#### Bell-LaPadula Model
+#### Models
 
+##### Bell-LaPadula Model
+
+* Lattice/Layered-based Model
 * [_Bell-LaPadula Model_](https://en.wikipedia.org/wiki/Bell%E2%80%93LaPadula_model) was developed in the 1970s for the US Department of Defense (DoD) and was based on their multilevel security policies
-* doesnt suppport many moderned day operations such as file sharing and networking
+  * **_Mulitlevel Security Models_**
+    * systems designed to operate at different security levels simultaneously while enforcing confidentiality and integrity constraints that restrict access between security levels
+* doesn't support many modern day operations such as file sharing and networking
 * does not address [covert channels](https://en.wikipedia.org/wiki/Covert_channel)
   > * which is a method of communication that allows information to be transferred between processes in a way that bypasses the system's security policy and is not authorized by the system's designers
-* Prevents information flow to lower sensitivity levels but blocking lower-classified information from accessing higher-classified objects
+* Prevents information flow to lower sensitivity levels but blocking lower-classified subjects from accessing higher-classified objects
 * Protects Confidentiality but does not address integrity or availability
-* within clearence levels, access can be granted on a "need-to-know" basis
-* built on the state machine concept and information flow model, also employs mandatory access controls and is a [lattice-based access control concept](https://en.wikipedia.org/wiki/Lattice-based_access_control), the _lattice_ tiers are the _classification levels_ defined by the organizations
+* within clearance levels, access can be granted on a "need-to-know" basis
+* built on the state machine concept and information flow model
+* employs mandatory access controls and is a [lattice-based access control concept](https://en.wikipedia.org/wiki/Lattice-based_access_control)
+  * the _lattice_ tiers are the _classification levels_ defined by the organizations
 * Three properties of this type of state machine:
   * **Simple Security Property**
     * (i.e., the _ss-Property_)
@@ -617,11 +642,16 @@ The following diagram(s) illustrate these conncepts:
     * Subjects can't read objects with higher sensitivity labels
   * **(*)-Property (_star-property_**)
     * No Write Down
+    * Prevents security leakage of information
     * Subjects can't write to objects with lower sensitivity labels
+      * i.e = subjects with secret clearance cannot write to objects with classified clearance
     * Unless performing declassification, which is a valid operation
+  * **Strong Star Property**
+    * aka _Strong Star Confidentiality Rule_
+    * No read/write up or down
+    * Subject who has read and write capabilities can only perform both of those functions at the same security level; nothing higher and nothing lower.
   * **Discretionary Security Property**
     * subject can perform operations only if permitted by an access matrix which is used to enforce discretionary access control
-    * _Strong Star Confidentiality Rule_
 * First two properties define the states into which the system can transition (not other transitions allowed), while the third determines and enforces a subject's job/role-based need to know to access an object
 * **_Trusted Subject_**
   * not constrained to the `(*)-Property`
@@ -637,8 +667,9 @@ The following diagram(s) illustrate these conncepts:
 
 ![Bell-LaPadula Model](./images/bell-lapadula.png)
 
-#### Biba Model
+##### Biba Model
 
+* Lattice/Layered-based Model
 * [Biba Model](https://en.wikipedia.org/wiki/Biba_Model) was created by Kenneth J. Biba in 1975
 * Designed after Bell-LaPadula Model and is the inverted version
 * Built on a State Machine concept and based on the Information Flow model
@@ -659,7 +690,7 @@ The following diagram(s) illustrate these conncepts:
   * **(*)(star) Integrity Property**
     * No Write Up
     * Subjects can't write objects at higher integrity levels
-    * prevents the corruption of more secure information by a less privileged subject. 
+    * prevents the corruption of more secure information by a less privileged subject.
   * **Invocation Property**
     * process from below cannot request higher access
     * No up read/write
@@ -680,11 +711,53 @@ The following diagram shows the comparison of the flows of both Biba and Bell-La
 
 ![Biba-Bell](./images/bell-lapadula-and-biba-models.png)
 
+##### Lipner Model
+
+* a hybrid security model that combines the principles of the Bell-LaPadula (BLP) confidentiality model and the Biba integrity model to address security concerns in a commercial environment.
+* developed by [Steve Lipner](https://www.stevelipner.org/about_me/default.html), former director of software security at Microsoft,  to meet specific requirements not fully covered by either model alone, such as the separation of development and production environments.
+* First Commercial model
+* Key concepts and components include:
+  * **Bell-LaPadula Confidentiality**
+    * The Lipner model uses a two-level confidentiality system:
+      * **_Audit Manager (AM)_**:
+        * the highest confidentiality level, reserved for system auditors and managers.
+      * **_System Low (SL)_**:
+        * the lowest confidentiality level, assigned to all other processes.
+    * also incorporates three confidentiality categories to further segment data:
+      * **_Production (SP)_**:
+        * For production code and data.
+      * **_Development (SD)_**:
+        * For programs under development.
+      * **_System Development (SSD)_**:
+        * For system programs in development.
+  * **Biba Integrity**
+    * The Lipner model also incorporates a three-level integrity system:
+      * **_System Program (ISP)_**:
+        * highest integrity level, for system software.
+      * **_Operational (IO)_**:
+        * For production and development programs.
+      * **_System Low (ISL)_**:
+        * lowest integrity level, for user-level behavior.
+    * Two integrity categories:
+      * **_Development (ID)_**: For development entities.
+      * **_Production (IP)_**: For production entities.
+* Key Features and Roles
+  * defines different roles for users and objects, each with specific confidentiality and integrity levels and categories shown in the table below
+
+| User Role      | Confidentiality  | Integrity    |
+| -------------- | ---------------  | ---------    |
+| **Ordinary Users** | **_(SL, {SP})_** | **_(ISL, {IP})_** |
+| **Application Developers** | **_(SL, {SD})_** | **_(ISL, {ID})_** |
+| **System Programmers** | **_(SL, {SSD})_** | **_(ISL, {ID})_** |
+| **System Managers/Auditors** | **_(AM, {SP, SD, SSD})_** | **_(ISL, {IP, ID})_** |
+| **System Controllers** | **_(SL, {SP, SD}) with downgrade privilege_** | **_(ISP, {IP, ID})_** |
+
 #### Clark-Wilson (CW) Model
 
+* Rules-Based model
 * [CW Model](https://en.wikipedia.org/wiki/Clark%E2%80%93Wilson_model) was developed by David D. Clark and David R. Wilson and was published in the IEEE paper [_A Comparison of Commercial and Military Computer Security Policies_](https://ieeexplore.ieee.org/document/6234890) in which Clark and Wilson argued that
   > * the existing integrity models such as **Biba (read-up/write-down)** were better suited to enforcing data integrity rather than information confidentiality. They stated that the Biba models are more clearly useful in, as an example, banking classification systems to prevent the untrusted modification of information and the tainting of information at higher classification levels. They also stated that their model, Clark–Wilson, is more clearly applicable to business and industry processes in which the integrity of the information content is paramount at any level of classification (although the authors stress that all three models are obviously of use to both government and industry organizations).
-* model is not based on a formal State Machine concept buts insteads defines that each data item and allows modifications through only a limited or controlled intermediary program or interface
+* model is not based on a formal State Machine concept buts instead defines that each data item and allows modifications through only a limited or controlled intermediary program or interface
 * does not require the use of a lattice structure but uses a _three-part relationship of subject/program/object_ known as a **triple** or an **access control triplet** which means:
   * Within this relationship, subjects do not have direct access to objects. Objects can only be accessed through programs.
 * model's enforcement and certification rules define data items and processes that provide the basis for an integrity policy. The core of the model is based on the notion two principles:
@@ -700,7 +773,7 @@ The following diagram shows the comparison of the flows of both Biba and Bell-La
     * any data item that is not controlled by the security model
     * any data that is to be input nor has been validated, or any output
   * **Integrity Verification Procedure (IVP)**
-    * a prcess / procedure that scans data items and confirms their integrity
+    * a process / procedure that scans data items and confirms their integrity
   * **Transformation Procedures (TPs)**
     * allowed procedures which can modify a CDI
     * limited access to CDIs through TPs is the backbone of the model
@@ -711,9 +784,9 @@ The following diagram shows the comparison of the flows of both Biba and Bell-La
     * Subjects at different levels see different sets of data
     * Enforces separation of duties in effect
     * Example: A web application that shows you only the info and features you can access
-* Consists of two sets of rules: 
+* Consists of two sets of rules:
   * **Certification Rules (C)** and **Enforcement Rules (E)**.
-  * Provides nine rules to ensure the external and internal integrity of the data items. The are as followed:
+  * Provides nine rules to ensure the external and internal integrity of the data items:
     * C1—When an IVP is executed, it must ensure the CDIs are valid.
     * C2—For some associated set of CDIs, a TP must transform those CDIs from one valid state to another.
     * Since we must make sure that these TPs are certified to operate on a particular CDI, we must have E1 and E2.
@@ -739,27 +812,28 @@ The following diagram illustrates the basic workflow of the Clark-Wilson Model:
 The following diagram highlights the CW Rules flow:
 ![CW Rules](./images/cw-model-rules-flow.png)
 
-#### Brewer and Nash (BaN) Model
+##### Brewer and Nash (BaN) Model
 
-* [BaN Model](https://en.wikipedia.org/wiki/Brewer_and_Nash_model), at one time was referred to as the "Chinese Wall" model but is now known as the "ethical wall" or "cone of silence" model
+* Rules-Based (Access Control Matrix, etc)
+* [BaN Model](https://en.wikipedia.org/wiki/Brewer_and_Nash_model), at one time was referred to as the "Chinese Wall" model but is now known as the _"ethical wall"_ or _"cone of silence"_ model
 * created to permit access controls to change dynamically based on a user's previous activity (kind of a state machine model)
 * focuses primarily on confidentiality
 * leverages **security domains (perimeter)** / **conflict classes** to prevent conflict of interests, example:
   * someone who works at company A and has access to proprietary data from company B should not also be allowed access to similar data for company C if those two companies compete with each other
 * prevents subjects with access to one domain that belongs to a specific conflict class from accessing any other domain that belongs to the same conflict class (principle of **data isolation**)
 * metaphorical wall between information in conflict classes
-* uses principle of data islotation
+* uses principle of data isolation
 * Key Principles
   * Access Control Based on User’s Past Actions:
     * The model enforces access restrictions based on the user’s previous interactions with sensitive data. If a user has accessed certain information, they are restricted from accessing related or competing data to prevent conflicts of interest or breaches of confidentiality.
 * Applications and Use Cases
   * especially useful in systems dealing with competitive or sensitive information, such as financial trading systems, legal firms, and consulting agencies.
-  * helps prevent situations where users might gain an unfair advantage or compromise confidentiality by ensuring that their access to information is controlled based on their previous activities.
-  * particularly valuable in environments where managing and mitigating conflicts of interest is crucial for maintaining trust and security
+  * prevents situations where users might gain an unfair advantage or compromise confidentiality by ensuring that their access to information is controlled based on their previous activities.
+  * valuable in environments where managing and mitigating conflicts of interest is crucial for maintaining trust and security
 
 ![Brewer Nash](./images/brewer-nash.png)
 
-#### Goguen-Meseguer Model
+##### Goguen-Meseguer Model
 
 * also known as the [non-interference model](https://en.wikipedia.org/wiki/Non-interference_(security)), is a security model focused on integrity and preventing information leakage.
 * based on the state machine concept
@@ -767,38 +841,39 @@ The following diagram highlights the CW Rules flow:
 * Focused on integrity
 * ensures that actions performed at one security level do not affect the state or actions at another security level. This is achieved by predefining which subjects (users or processes) can access which objects (data or resources) and what actions they are allowed to perform.
 * Key aspects:
-  * Non-Interference:
+  * **_Non-Interferenc_**e:
     * core principle is that actions at a higher security level should not be visible or have any impact on lower security levels. 
-  * Predetermined Access:
+  * **_Predetermined Access_**:
     * defines which subjects can access which objects and the specific actions they can perform on those objects.
-  * Domains:
+  * **_Domains_**:
     * Users can be grouped into domains based on their access rights, further ensuring separation and preventing interference between different groups.
-  * State Machines:
+  * **_State Machines_**:
     * can be viewed as a state machine that predetermines the possible states and transitions, preventing unauthorized changes to the system's state.
-* establishes a framework where different security levels operate independently, preventing any unintended influence or information leakage between them.
+* Establishes a framework where different security levels operate independently, preventing any unintended influence or information leakage between them.
 
 #### Sutherland Model
 
-* [nondeducibility model]((https://apps.dtic.mil/sti/pdfs/ADA462529.pdf)), introduced by Sutherland in 1986, is a security model focused on information flow within a system.
-* aims to ensure that information from a higher security level cannot be deduced or inferred from information at a lower security level, this achieved by defining security domains and preventing information leakage between them.
-* Security Domains:
-  * involves partitioning a system into security domains, often categorized as "high" and "low".
-* Information Flow:
+* [non-deducibility model]((https://apps.dtic.mil/sti/pdfs/ADA462529.pdf)), introduced by Sutherland in 1986, is a security model focused on information flow within a system.
+* Aims to ensure that information from a higher security level cannot be deduced or inferred from information at a lower security level, this achieved by defining security domains and preventing information leakage between them.
+* **Security Domains**:
+  * involves partitioning a system into security domains, often categorized as `"high"` and `"low"`.
+* **Information Flow**:
   * core idea is that information from the higher domain should not be deducible by observing only the lower domain.
   * Essentially, an attacker with access to only the lower domain should not be able to infer anything about the state of the higher domain.
-* Nondeducibility:
+* **Non-deducibility**:
   * property is achieved when the low-level observations do not reveal any unique information about the high-level state that is not already known.
 * Practical Implications:
-  * nondeducibility model can be applied to various systems, including those with multiple security domains, cyber-physical systems, and even automated vehicle platoons.
-* Distinction from Noninterference:
-  While related, nondeducibility differs from noninterference. Noninterference focuses on preventing any interference between security levels, while nondeducibility specifically addresses the deducibility of high-level information from low-level observations.
+  * Can be applied to various systems, including those with multiple security domains, cyber-physical systems, and even automated vehicle platoons.
+* **Distinction from Noninterference**:
+  * Noninterference focuses on preventing any interference between security levels
+  * Non-deducibility specifically addresses the deducibility of high-level information from low-level observations.
 * Example:
-  > * In a vehicle platoon, nondeducibility could be used to determine if an attacker could infer the actions of the control unit (high-level) by observing sensor data (low-level). If the sensor data doesn't uniquely reveal the control unit's actions, the system is considered nondeducibility secure.
+  > * In a vehicle platfrom, nondeducibility could be used to determine if an attacker could infer the actions of the control unit (high-level) by observing sensor data (low-level). If the sensor data doesn't uniquely reveal the control unit's actions, the system is considered nondeducibility secure.
 * provides a framework for designing and analyzing systems where sensitive information must be protected from unauthorized deduction based on publicly available data.
 
-#### Grahan-Denning Model
+##### Graham-Denning Model
 
-* [Model](https://en.wikipedia.org/wiki/Graham%E2%80%93Denning_model) that is based on the Access Control Matrix
+* [Model](https://en.wikipedia.org/wiki/Graham%E2%80%93Denning_model) that is based on the Access Control Matrix/Rules-Based
 * a security model that articulates formal rules for managing computer security issues regarding processes and subjects. It revolves around building a system that governs how processes interact, focusing mainly on protection domains, objects, and the rules that specify rights.
 * Ensures secure information flow within a system
 * Maintains proper access rights
@@ -815,16 +890,17 @@ The following diagram highlights the CW Rules flow:
 
 #### Harrison-Ruzzo-Ullman (HRU) Model
 
-* [HRU Model](https://en.wikipedia.org/wiki/HRU_(security)) which extends the _Grahan-Denning Model_ and  focuses on dynamic access control and rights management in computer systems.
-* provides a framework for managing and changing user access rights flexibly and securely, addressing the need for dynamic adjustments to permissions based on evolving requirements.
+* [HRU Model](https://en.wikipedia.org/wiki/HRU_(security)) extends the _Graham-Denning Model_ to focuses on dynamic access control and rights management in computer systems.
+* Provides a framework for managing and changing user access rights flexibly and securely, addressing the need for dynamic adjustments to permissions based on evolving requirements.
 * Key Principles
-  * Description of Access Rights:
-    * The HRU Model defines access rights in terms of capabilities and permissions that users have. It allows for dynamic modification of these rights, making it adaptable to changes in user roles or system requirements.
-* Capabilities-Based Access Control:
+  * **_Description of Access Rights_**:
+    * The HRU Model defines access rights in terms of capabilities and permissions that users have
+    * Allows for dynamic modification of these rights, making it adaptable to changes in user roles or system requirements.
+* **_Capabilities-Based Access Control_**:
   * Users are granted capabilities that define their access to resources. These capabilities can be modified dynamically to reflect changes in user roles or system policies.
-* Applications and Use Cases
+* **Applications and Use Cases**
   * particularly suited for systems with dynamic and complex access requirements, such as large-scale enterprise environments, cloud computing platforms, and systems with varying user roles and permissions.
-  * helps manage access control in environments where user roles and system needs frequently change, ensuring that permissions are adjusted appropriately and securely.
+  * allows management of access control in environments where user roles and system needs frequently change, ensuring that permissions are adjusted appropriately and securely.
 
 ## 3.3 - Select controls based upon systems security requirements
 
@@ -835,24 +911,26 @@ The following diagram highlights the CW Rules flow:
     * Notes
       * Initiated by a vendor
       * Test system security capabilities
-      * Compare design, security criteria, and actual capabiltiies
+      * Compare design, security criteria, and actual capabilities
       * Auditors decided if security criteria is met
       * Security criteria is based on intended use (commercial, health, etc)
       * Usually performed by a 3rd party
+      * Determines that a system meets security criteria
     * Steps
-      * Choose security crtieria (TCSEC/ITSEC/CC)
-      * Analyze each system component beased on criteria
+      * Choose security criteria (`TCSEC/ITSEC/CC`)
+      * Analyze each system component based on criteria
       * Evaluate deployment environment
       * Determine level of security
   * Accreditation
     * Recognition of the certification
     * Performed by an adopting organization/customer
+    * pproves use of a system in a specific environment
   * Maintenance
     * Ensuring that the security criteria is up to date
     * Ensuring that the system still meets security criteria
 * [Rainbow Series](https://en.wikipedia.org/wiki/Rainbow_Series)
   * security standards and guidelines published by the US in the 1980s and 1990s
-  * orginally published by the US DoD Computer Security Center and then by Nation Computer Security Center
+  * originally published by the US DoD Computer Security Center and then by Nation Computer Security Center
   * describe the process of evaluation for trusted systems
   * Some import Books in the series
     * [Orange - Trusted Computer System Evaluation](http://csrc.nist.gov/publications/secpubs/rainbow/std001.txt)
@@ -871,32 +949,32 @@ The following diagram highlights the CW Rules flow:
     * [Venice Blue - Computer Security Subsystem Interpretation](https://web.archive.org/web/20110720183823/http://iaarchive.fi/Rainbow/NCSC-TG-009%20VENICE%20BLUE.pdf)
     * Most books can be found [here](https://en.wikipedia.org/wiki/Rainbow_Series)
 * Evaluation Models
-  * [US DoD's Trusted Computer System Evaluation Criteria (TSEC)]((https://en.wikipedia.org/wiki/Trusted_Computer_System_Evaluation_Criteria))
+  * [US DoD's Trusted Computer System Evaluation Criteria (TCSEC)]((https://en.wikipedia.org/wiki/Trusted_Computer_System_Evaluation_Criteria))
     * TCSEC - Orange Book
       * Categories
-        * D - Minimal Protection
-          * Do not meet the requirement to belong to any other category
-        * C - Discretionary Protection
-          * C1 - Discretionary Protection
+        * **D - Minimal Protection**
+          * Reserved for those systems that have been evaluated but that fail to meet the requirement for a higher division
+        * **C - Discretionary Protection**
+          * **_C1 - Discretionary Protection_**
             * Access is controlled using users and groups
-          * C2 - Controlled Access Protection
+          * **_C2 - Controlled Access Protection_**
             * Meets requirements of C1
             * Strict logon procedures
             * Enforces media cleansing
-        * B - Mandatory Protection
-          * B1 - Labeled Security
+        * **B - Mandatory Protection**
+          * **_B1 - Labeled Security_**
             * Access is controlled using subject and object labels
-          * B2 - Structured Protection
+          * **_B2 - Structured Protection_**
             * Meets requirements of B1
             * Ensures that no covert channels exists
             * Operator and administrators are separated
             * Enforces process isolation
-          * B3 - Security Domains
+          * **_B3 - Security Domains_**
             * Meets requirements of B2
             * Administrators are separated from other users
             * Reduce exposure to vulnerabilities
-          * A - Verified Protection
-            * A1 - Verified Protection
+          * **A - Verified Protection**
+            * **_A1 - Verified Protection_**
             * Meets requirements of B3
             * Each step of implementation is documented
       * Limitations
@@ -919,21 +997,33 @@ The following diagram highlights the CW Rules flow:
       * Restrictions
         * Centralized networks
         * Single accreditation authority
-  * [EU's Information Technology Security Evaluation Criteria (ITEC)](https://en.wikipedia.org/wiki/ITSEC)
+  * [EU's Information Technology Security Evaluation Criteria (ISTEC)](https://en.wikipedia.org/wiki/ITSEC)
     * European security evaluation criteria
     * Corresponds to TCSEC categories
-    * Categories
-      * F0: F-D - Minimal Protection
-      * F1: F-C1 - Discretionary Protection
-      * F2: F-C2 - Controlled Access Protection
-      * F3: F-B1 - Labeled Security
-      * F4: F-B2 - Structured Access Protection
-      * F5: F-B3 - Security Domains
+    * measure function (F) and assurance (E) separate from each other were incorporated
+    * Ratings
+      * **F** - Functional Rating
+        * **F0**: F-D - Minimal Protection
+        * **F1**: F-C1 - Discretionary Protection
+        * **F2**: F-C2 - Controlled Access Protection
+        * **F3**: F-B1 - Labeled Security
+        * **F4**: F-B2 - Structured Access Protection
+        * **F5**: F-B3 - Security Domains
+      * **E** - levels of assurance
+        * **E6.** - Formal end-to-end security tests + source code reviews
+        * **E5.** - Semiformal system + unit tests and source code review
+        * **E4.** - Semiformal system + unit tests
+        * **E3.** - Informal system + unit tests
+        * **E2.** - Informal system tests
+        * **E1.** - System in development
+        * **E0.** - Inadequate assurance
     * Difference from TCSEC
       * Change doesn't require re-evaluation of a system
       * Also considers integrity
       * Doesn't require a TCB
 * [Common Criteria (CC)](https://en.wikipedia.org/wiki/Common_Criteria)
+  * replaced the DoD's Orange Book in 2005
+  * unified evaluation process for systems
   * defines various levels of testing and confirmation of system security capabilities
   * subjective product evaluation model and replace previous static systems such as the following:
     * [US DoD's Trusted Computer System Evaluation Criteria (TSEC)](https://en.wikipedia.org/wiki/Trusted_Computer_System_Evaluation_Criteria)
@@ -945,13 +1035,14 @@ The following diagram highlights the CW Rules flow:
   * Arrangement was formally published as a standard in [ISO/IEC 15408:2022](https://cdn.standards.iteh.ai/samples/72891/fbfa4f603f384c7ab0663ffc4c163f3f/ISO-IEC-15408-1-2022.pdf) labeled as _"Information security, cybersecurity, and privacy protection: Evaluation criteria for IT Security"_
     * current version is set to be replaced by [ISO/IEC WD 15408-1](https://www.iso.org/standard/88134.html) sometime in 2026
   * Goals
-    * Add to buyer confidence in purchasing products
+    * provides confidence in the industry for consumers, security functions, vendors, and others.
     * Eliminates duplicate evaluations
     * To make security evaluations more cost effectove
     * To evaluation functionality and assurance of TOE/target of evaluation
   * Key Elements:
     * **Protection Profiles (PPs)**
       * Specify security demands of customers
+      * Capabilities that security products should pocess
       * "What I want" from customers
     * **Security Targets (STs)**
       * Security claims of a vendor about their systems
@@ -972,43 +1063,43 @@ The following diagram highlights the CW Rules flow:
       * Specifies requirements for each function that needs evaluation
     * Security Assurance
       * Specifies how systems are designed, checked, and tested
-  * EAL Categories
-    * EAL1 - Functionally Tested
+  * **Evaluation Assurance Levels (EALs) Categories**
+    * **_EAL1 - Functionally Tested_**
       * TCSEC: D
       * For non-serious threats to security
       * Requirements
         * Features are working as intended
-    * EAL2 - Structurally Tested
+    * **_EAL2 - Structurally Tested_**
       * TCSEC: C1
       * For low to moderate assurance requirements
       * Requirements
         * EAL1 is passed
         * Design information is evaluated
-    * EAL3 - Methodically Tested and Checked
+    * **_EAL3 - Methodically Tested and Checked_**
       * TCSEC: C2
       * For moderate assurance requirements
       * Requirements
         * EAL2 is passed
         * Security is engineered since design stage
-    * EAL4 - Methodically Designed, Reviewed, and Tested
+    * **_EAL4 - Methodically Designed, Reviewed, and Tested_**
       * TCSEC: B1
       * For moderate assurance requirements
       Requirements
         * EAL3 is passed
         * Security and commercial best practices are followed
-    * EAL5 - Semi-Formally Designed and Tested
+    * **_EAL5 - Semi-Formally Designed and Tested_**
       * TCSEC: B2
       * For high assurance requirements
       * Requirements
         * EAL4 requirements
         * Specialist security engineering techniques are followed
-    * EAL6 - Semi-Formally Verified, Designed, and Tested
+    * **_EAL6 - Semi-Formally Verified, Designed, and Tested_**
       * TCSEC: B3
       * For high risk situations
       * Requirements
         * EAL5 requirements
         * Specialist security engineering techniques are used at all phases of design
-    * EAL7 - Formally Verified, Designed, and Tested
+    * **_EAL7 - Formally Verified, Designed, and Tested_**
       * TCSEC: A1
       * For highest-risk situations
       * Requirements
@@ -1019,12 +1110,8 @@ The following diagram highlights the CW Rules flow:
     * controls over electormagnetic emmissions is no addressed
     * evaluation of the strenght of cryptographic alogrithms is not explicitly laided out
 * **Authorization to Operate (ATO)**
-  * official approval to use secured equipement for operational objectives / use
+  * full official approval to use secured equipement for operational objectives / use
   * part or Risk Management Framework ([NIST SP 800-37r2](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-37r2.pdf))
-  * **_Authorizating Official (AO)_**
-    * person/persons who performs the assessment and assignment of ATOs
-    * authorized entity who can evaluate IT/IS systems, its operations, and its risks, and potentially issue an ATO
-    * has the discresion to determine which breaches or security changes result in a loss of ATO. Can be either a modest intrusion event or the application of a substantial security patch could cause the ngegation of an ATO
   * issued for 3 years and must be reobtained whenever one of the following occurs:
     * The ATO time frame has expired
     * The system experiences a significant security change and/or breach
@@ -1038,28 +1125,95 @@ The following diagram highlights the CW Rules flow:
       * also used to allow reciprocity in accepting another AO's ATO
     * **Denial of Authorization**
       * issued when risk is unacceptable
+  * **_Authorizating Official (AO)_**
+    * person/persons who performs the assessment and assignment of ATOs
+    * authorized entity who can evaluate IT/IS systems, its operations, and its risks, and potentially issue an ATO
+    * has the discresion to determine which breaches or security changes result in a loss of ATO. Can be either a modest intrusion event or the application of a substantial security patch could cause the ngegation of an ATO
+  * **_Interim Authorization to Operate (IATO)_**
+    * temporary auth to operate for 6 months
+    * done while security issues are correct then a reevalution is done to grant full ATO
+  * **_Interim Authorization to Test (IATT)_**
+    * allows the system to operate for testing purposes only
+  * **_Denial of Authorization to Operate (DATO)_**
+    * prohibits the use of the system
+    * can be issued for non-compliance
   
 ## 3.4 - Understand security capabilities of Information Systems (IS) (e.g., memory protection, Trusted Platform Module (TPM), encryption/decryption)
 
 * **Memory Protection**
+  * aka **_Memory Protection Unit_**
   * Prevents processes from interacting with memory locations not allocated to them
+  * Prevents buffer overflow
+  * **_Dual-mode Operation_**
+    * hardware feature that is required to support memory protect
+    * processor can operate in one (at least) two modes:
+      * **Priviledge (or kernal) Mode**
+        * OS runs in this mode
+          * grants it permission to set up and control the memory protection subsytem
+        * permits the os to execute special privileged instructions that control the processor environment
+      * **Unpriviledged (or user) Mode**
+        * programs run in this mode
+        * limits it to accessing only the specific memory area dictated by the OS
+  * **_Address Space Layout Randomization (ASLR)_**
+    * seeks to mitigate the risks of **predictable memory address location**
+      * the location in memory for a known instruction becomes a risk when there is a threat of exploiting that location for an attack
+    * Example:
+      * buffer overflow attack requires knowing two things:
+        * the exact amount by which to overflow the memory to facilitate executing malicious code
+        * where exactly to send the overflow
+          * defeated by ASLR by randomizing the location
+  * Key Concepts
+    * proper memory protection **relies upon both** the correct **operation of the hardware** and the correct **design of the operating system** to prevent prgrams from accessing memory they have not been given permission to access
+    * Defects can compromise the security provided by Memory Protection
+      * side channel attacks may lead to direct disclosure of information in memory
+      * Spectre and Meltdown are two examples that used defects and design flaws that allowed deduction of the contents of memory locations in which those programs where not allowed to access
 * **Virtualization**
-  * Allows mutliple operating systems to run on the same set of hardware
+  * Allows mulitple operating systems to run on the same set of hardware
+* **Secure Cryptoprocessor**
+  * **_Features_**
+    * tamper detection / automatic destruction
+    * shield chip designs with security layers that prevent eavesdropping on internal signals using ion probes or other microscopic devices
+    * hardware-based cryptographic accelerator
+      * specialized instructions or logic to increase the performance of standard crypto algos (AES, SHA, RSA, ECC, DSA, and ECDSA)
+    * Trusted boot process which validates the initial boot firmware and OS load
+  * Examples/Types
+    * Proprietary
+      * Apple iPhone "Secure Enclave"
+    * Open Standard
+      * TPM as specified by ISO/IEC 11889 and used in most laptops and servers
+    * Standalone
+      * seperate device with external communication ports
+    * Smartcards 
 * **Hardware Security Module (HSM)**
   * Hardware cryptoprocessors
   * Used to store keys
   * Used by banks and authorities to store certificates
   * Provides tamper protection to prevent their misuse even if an attack gains physical access
 * **Trusted Platform Module (TPM)**
-  * Specs for a cryptoprocessor chip
+  * Specs for a cryptoprocessor chip defined in ISO/IEC 11889
+  * provides secure storage and cryptographic services
   * A type of a hardware security module (HSM)
   * Provides
-    * Key storage
+    * private/public Key generation and storage
+      * private key never leaves the TPM in plaintext (increased security)
+    * digitally sign data using private key
+      * reduces MITM attacks
+    * encrypts data such that it can only be decrypted using the same TPM
+    * verify state of the machine
     * Hardware encryption
       * Hard drive encryption
       * More secure
       * Key is stored in TPM so TPM is required to decrypt the hard drive
       * Hard drive can't be decrypted when put in a separate system
+  * Concepts
+    * **_Attestation_**
+      * creates a crypto hash of the system's known good hardware and software state
+      * allows third-party verification of the system's integrity
+    * **_Binding_**
+      * encrypts data using a crypto key that is uniquely associated with (or bound to) the system
+    * **_Sealing_**
+      * ensures that the ciphertext can be decrypted only if the system is attested to be in a known good state
+  ![TPM](./images/TPM_1.2_diagram.svg.png)
 * **Interfaces**
   * Provides users access to the data
   * Must be constrained based on user privileges
@@ -1069,11 +1223,11 @@ The following diagram highlights the CW Rules flow:
   * Ability of a system to continue to operate when experiencing a fault
   * Achieved by adding redundant components
   * Essential element of security design
-  * Example Redundant Array of Independand Disks (RAID)
-* Encryption
+  * Example Redundant Array of Independent Disks (RAID)
+* **Encryption**
   * process of converting plaintext to ciphertext
   * Symmetric & Asymmetric
-* Decryption 
+* **Decryption**
   * reverse of encryption
   * converting ciphertext back to it original plaintext equivalent
 
@@ -1179,10 +1333,28 @@ The following diagram highlights the CW Rules flow:
       * intial release in 1969
       * allowed up to seven rings numbered 0 through 6
     * Most modern OS's use a four-ring model (0 - 3) (mostly 2 rings)
-      * Ring 0 - OS Kernel/Memory (Resident Components)
-      * Ring 1 - Other OS Components
-      * Ring 2 - Drivers, Protocols, etc.
-      * Ring 3 - User-Level Programs and Applications
+      * **Ring 0: Kernel Mode**
+        * OS Kernel/Memory (Resident Components)
+        * Full access to all hardware and resources
+        * responsible for low-level tasks such as memory management, process execution, and direct hardware communication
+        * Most privileged
+      * **Ring 1: Supervisory Mode**
+        * Other OS Components
+        * Moderate Privilege
+        * used for managing the OS subsystems
+        * limited access compared to Ring 0 but still handles some critical system functions
+        * Managed I/O operations and supervises other system functions
+      * **Ring 2: System Mode**
+        * Less privileged
+        * Often used for higher-level system services
+        * Can interact with kernel-level functionality but cannot directly access hardware
+        * Acts as an intermediary between user apps and the kernel
+        * Drivers, Protocols, etc.
+      * **Ring 3: User Mode**
+        * User-Level Programs and Applications
+        * Restricted from directly accessing hardware or critical system resources
+        * Ensures that user applciations cannot compromise the system's stability or security
+        * Least privileged
       * NOTE:
         * Rings 0-2 run in supervisory or privilege mode
         * Rings 3 runs in user mode (programs run in a sandbox)
@@ -1194,7 +1366,6 @@ The following diagram highlights the CW Rules flow:
       * Request to resources on lower level ring
       * Usually a programming interface
       * Lower ring must authorize requester
-
 ![Protection Rings](./images/protection-rings.png)
 
 ### Processing States
@@ -1206,10 +1377,11 @@ The following diagram highlights the CW Rules flow:
     * privileged, all-access mode
   * **Problem state**
     * associated with user mode
-    * privileges are low and all access requests must be checked against credentials for authorization before they are granted or denied
+    * privileges are low
+    * all access requests must be checked against credentials for authorization before they are granted or denied
     * this mode protects the system for security, integrity, and confidentiality
 * **Time slice**
-  * the amount of time a process is aloud to run 
+  * the amount of time a process is allowed to run
 * processes line up in a queue waiting for execution where they will be scheduled to run as a processor becomes available
   * scheduler selects highest-priority process first for execution
   * if the process consumes its entire _time slice_ without completing its get requeued to be rescheduled
@@ -1278,13 +1450,13 @@ The following diagram illustrates the lifecyle of an executed process:
         * Attached to a processor
         * Contains RAM data that is accessed frequently
         * Levels
-          * Level 1 - Level 2 Cache
+          * **_Level 1 - Level 2 Cache_**
             * Attached to a single processor chip
-          * Level 2 Cache
+          * **_Level 2 Cache_**
             * On a separate chip
-          * Level 3 Cache
+          * **_Level 3 Cache_**
             * shared between cores (chips)
-          * Level 4 Cache
+          * **_Level 4 Cache_**
             * located on mainboard/motherboard or on GPUs
           * Peripherals also have RAM caches
           * Printers have RAM caches which can load an entire job
@@ -1301,17 +1473,25 @@ The following diagram illustrates the lifecyle of an executed process:
         * More expensive but faster than dyanmic RAM
         * maintains its contents unaltered as long as power is supplied and imposes no CPU overhead
         * much faster than dynamic ram
+* **_Memory Management_**
+  * Tracks what applications are using each segment of memory
+  * Grants request for additional memory
+  * Frees up memory that is no longer needed
+* **_Segmentation Fault_**
+  * Error that occurs when an application requests unauthorized access to a memory segment
+* **_Memory Leak_**
+  * Applciations accumulate memory over time and fail to release it when no longer needed
 
 #### Registers
 
 * similar to Memory
-* is included (onboard) with CPUs but is limited
+* included (onboard) with CPUs but is limited
 * provide the CPU with directly accessible memory locations known as [_Arithmetic Logic Units (ALUs)_](https://en.wikipedia.org/wiki/Arithmetic_logic_unit)
   * Perform arithmetic operations
-    including AND, OR, NOT, XOR on binary numbers
+    including `AND`, `OR`, `NOT`, `XOR` on binary numbers
   * Can directly access registers
   * Values to process must be loaded to registers first
-  * inputs are _operands_ (data to be operated on) and _opcode_ (a code indcating the operation to be performed)
+  * inputs are _operands_ (data to be operated on) and _opcode_ (a code indicating the operation to be performed)
   * crucial to the operation of GPUs
 * operates in lockstep with the CPU
 
@@ -1341,12 +1521,12 @@ The following diagram illustrates the lifecyle of an executed process:
     * Address of value to process is in a register
     * Register address and offset is provided by instruction
     * CPU adds the offset to the base address and retrives the operand form the computed memory location
-* Pointer
+* **Pointer**
   * basic element or object in many programming languages
   * used to store a memory address and used by an application to retrieve the value stored at that location
   * reference to a memory location
   * can be used in direct, indirect, or base addressing
-  * _dereferencing_ is the act of accessing a pointer to read the memory address location
+  * **_dereferencing_** is the act of accessing a pointer to read the memory address location
   * null pointer exception occurs during race conditions when two processes/systems/devices try to perform two or more operations at the same time when dereferencing a pointer
 
 #### Secondary Memory
@@ -1568,10 +1748,11 @@ The following diagram illustrates the lifecyle of an executed process:
 ### Large-Scale Parallel Data Systems
 
 * [_Parallel data systems / Parallel computing_](https://en.wikipedia.org/wiki/Parallel_computing)
-  * Computation system designed to perform numerous calculations simulaneously
+  * Computation system designed to perform numerous calculations simultaneously
   * often go beyond basic multiprocessing capabilities and instead divide up large tasks into smaller elements and distribute each subelement to a different processing subsystem for parallel computing
   * accomplished by using distinct CPUs or multicore CPUs, virtual systems, or any combination
-* Concerned with performance, power comsumption, and reliability/stability issues
+    * **_Multicore_** CPU containing two, four, eight, dozens or more independant execution cores
+* Concerned with performance, power consumption, and reliability/stability issues
 * [Symmetric multiprocessing (SMP)](https://en.wikipedia.org/wiki/Symmetric_multiprocessing)
   * single computer containing multiple processors which are treated equally and controlled by a single OS
   * processors share a common OS, data bus, and memory resources
@@ -5028,6 +5209,18 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
     * magentic strip cards
       * have a magnetic strip (like a cc)
       * easily copyable and not ideal for a secure environment
+  * Standards & Guidance:
+    * [Building Industry Consulting Service International (BICSI) | ANSI/BICSI 002-2014/002-2019](https://www.bicsi.org/standards/available-standards-store/single-purchase/ansi-bicsi-002-2019-data-center-design)
+      * Created in 1977
+      * focused on cabling design and setups and also includes specifications on power, energy efficiency, and hot/cold aisle setups.
+    * [International Data Center Authority (IDCA) | Infinity Paradigm](https://idc-a.org/)
+      * Covers data center location, facility structure, and infrastructure and applications
+    * [American Society of Heating, Refrigeration, and Air-Conditioning Engineers (ASHRAE)](https://www.ashrae.org/about)
+      * global professional organization dedicated to advancing the fields of heating, ventilation, air conditioning, and refrigeration (HVAC&R). The organization creates and shares technical standards, research, and guidelines used in the industry to develop healthy and sustainable buildings
+    * [ISO/IEC 30134 - Information Technology - Data Centres - Key performance Indicators](https://cdn.standards.iteh.ai/samples/66934/34c5293f9b1b4769b1c49968fc577a91/ISO-IEC-30134-5-2017.pdf)
+    * [European Union (EU - EN 50600)](https://www.en-standard.eu/csn-en-50600-3-1-information-technology-data-centre-facilities-and-infrastructures-part-3-1-management-and-operational-information/?srsltid=AfmBOoogVc72p5maMDFrNC53jYGZHDWCOnKudYJXFYp9R1wn4JUr-AHt)
+    * [Electronics Industries Association and Telecommunications Industries Association (EIA/TIA): ANSI/TIA-942, Telecomm Infrastructure Standard for Data Centers](https://tiaonline.org/products-and-services/tia942certification/ansi-tia-942-standard/)
+      * globally recognized standard outlines the minimum requirements and guidelines for designing and installing data centers and computer rooms
   * **Data Center Security**
     * **Technical Controls**
       * Smartcards
@@ -5149,6 +5342,11 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
 ### Media storage facilities
 
 * Stores blank and reusable media
+* Recommend Controls
+  * Controlled and stable temp & humidity
+  * Air filtration and positive air pressure to minimize infiltration by airborne dust and microfine particulate matter or contaminants (such as corrosive fumes and engine exhaust from diesel generators or nearby vehicles)
+  * Appropriate floor covering to minimize static electricity
+  * Carefull siting of the media storage facilities to avoid magnetic fields that might arise from electrical equipment (e.g.; transformers or motors)
 * Threats
   * Theft
     * Restrict Access to Media
@@ -5174,7 +5372,7 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
     * Check in and check out procedure
     * Have a custodian who manages access
     * Run sanitization processes on returned media to removing all data remnants
-      * _zeroization_ -- erase all data by replacing it with meaningless data 
+      * _zeroization_ -- erase all data by replacing it with meaningless data
 
 ### Evidence storage
 
@@ -5190,10 +5388,15 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
   * Encrypting all datasets stored within
   * Other requirements based on local regulations/laws, industry, contractual obligations
 
+Example evidence storage room
+
+![Evidence Storage Facility](./images/evidence-storage-room.webp)
+
 ### Restricted and Work Area Security
 
 * Controls
   * Separate work areas and visitor areas
+  * dual control / person rule - evidence storage rooms
   * Escort requirements for visitors
   * Require badges and RFID tags
   * More restrictive access to more sensitive areas
@@ -5217,6 +5420,8 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
   * restricted from video recording, photography, or other recording devices in the secured area
   * established in a ground-based facility, an aircraft, or a floating platform
   * permanent or temporary
+
+  ![SCIF](./images/SCIF.jpg)
 
 ### Utilities Considerations
 
@@ -5243,7 +5448,7 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
       * Momentary power fluctuation
     * Noise generated from electric current is known as _electromagnetic interference (EMI)_
       * can affect data transmission for telephones, cellular, TV, radio, etc
-    * Noise generated from electric appliances is known as _Radio-frequence Interference (RFI)_ 
+    * Noise generated from electric appliances is known as _Radio-frequence Interference (RFI)_
       * same affect as EMI
     * Use power condition, proper grouding, shielded cables, etc to reduce noise
   * Clean
@@ -5287,15 +5492,15 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
 
 * Maintaining optimizal temperature and humidity in areas that house equipment like servers and computers is key
   * Temperature
-    * 59F to 89.6F / 15C to 32C
+    * `59F` to `89.6F` / `15C` to `32C`
       * Some extreme enviroment run the equipement 20 degree Farenheit lower or higher than this range
   * Humidity
-    * Realtive humidity should be between 20% - 80%
+    * Realtive humidity should be between `20% - 80%`
       * however some enviroments run these as low as 8% and as high as 90%
   * The standard is called the “expanded environment envelope”
     * Maintaining proper HVAC and humidity
-      * **Temperature** -> 64.4F - 80.6F (18-27C) → HVAC (Expanded Envelope)
-      * **Humidity** -> 40-60 percent relative Humidity
+      * **Temperature** -> `64.4F - 80.6F (18-27C)` → HVAC (Expanded Envelope)
+      * **Humidity** -> `40-60 %` relative Humidity
         * Too much can lead to moisture and corrosion
         * Too little can cause static electricity buildup and lead to **_elastrostatic discharge (ESD)_**
   * Temperature is optimize by using fans either directly connected to heat sinks on devices like CPUs, memory banks, or video cards or indirectly by being part of their chassis or host storage cabinet (rack-mount cabinet)
@@ -5346,20 +5551,55 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
 
 ### Fire prevention, detection, and suppression
 
+* **_Human safety is paramount_**
+  * fire safety must be designed to protect lives and health of those who work in the facility (first & foremost)
+  * enabling occupants to safely exit the building and ensure that fire suppression systems are unlikely to compromise health or safety
+* Balancing the costs of the following:
+  * Downtime
+  * Restoration costs
+  * Fire suppression system costs (capital-ex and op-ex)
+* **Fire Protection Standards/Guidelines**
+  * (Canada & US):[National Fire Protection Associate (NFPA)](https://www.nfpa.org/)
+    * [NFPA 75](https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=75) & [NFPA 76](https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=76)
+      * Specifies how hot or cold aisle continment should be
+    * [NFPA 70](https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70)
+      * Requires implementation of an emergency power-off button to protect first responders
+  * (UK):[BS 6266:2011, "Fire protection for electrical equipment installations. Code of Practice"](https://www.en-standard.eu/bs-6266-2011-fire-protection-for-electronic-equipment-installations-code-of-practice/?srsltid=AfmBOorMUMRLeNPA7Zfy0RvLjz-L3AkfB4grglTumNUoRbcwDwvtSfBT)
+  * (Germany): The [VdS series of guidelines for fire protection and suppression](https://vds.de/fileadmin/publikationen/richtlinien/vds_5490en.pdf)
 * **Fire Triangle**
   * Center is the chemical reactions of Heat, Oxygen, Fuel
   * purpose is to illustrate that if you can any of the four items from the fire triangle, the fire can be extinguished
-
   ![Fire Triangle](./images/fire-triangle.webp)
 * **Suppression Mediums**
   * Water suppresses the temperature (heat)
   * Soda Acid / Dry Powders suppresses the fuel supply (fuel)
   * Carbon dioxide (CO2) suppresses the oxygen supply (oxygen)
   * Halon Subsitutes / Nonflammable Gases interfere with the chemistry of combustion and/or suppresses the oxygen supply (Reaction)
-  * Aqueous film forming foam (AFFF) suppresses temperature and fuel supply
+  * **_Aqueous film forming foam (AFFF)_** suppresses temperature and fuel supply
     * type of fire fighting foam
     * water based containing foaming agents, surfacents, and typically some fluorochemicals
     * designed to quickly spread and form a thin film/barrier that suppresses the release of flammbale vapors and prevents the fire from sprending
+* **Heat, Flame, and Smoke Detectors**
+  * three methods for detecting fire
+  * typically alert locally, may also be centrally monitored by a fire alarm system
+  * an audible alarm and flashing ligths should be used, so that both deaf and blind personnel will be aware of the alarm
+  * **_Heat Detectors_**
+    * alert when temperatures exceed an established safe baseline
+    * may trigger when a specific temperature is exceeded or when temperature changes at a specific rate (such as "10 F in less than 5 mins")
+  * **_Smoke Detectors_**
+    * work through two primary methods
+      * **Ionization-based**
+        * contains a small radioactive source which creats a small electric charge
+      * **Photoelectric Sensors**
+        * similar to ionization-based
+        * contains a LED (Light Emitting Diode) and a photoelectric sensor that generates a small charge while receiving light
+    * both types alert when smoke interrupts the radioactivity or light, lowering or blocking the electric charge
+    * dust should always be avoided in data centers, may trigger smoke detectors (false alarms)
+  * **_Flame Detectors_**
+    * detect infrared or ultraviolet light emitted in fire
+    * drawback
+      * usually requires line-of-sight to detect the flame
+      * smoke detectors do not have this drawback
 * **Stages of Fire**
   * **Stage 1: The Incipient Stage**
     * only air ionization, no smoke
@@ -5373,7 +5613,7 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
   ![Stages of Fire](./images/stages-of-fire.jpg)
 * Controls
   * Training and Awareness of fire safety and escape procedures
-  * Emergecny Shutdown Procedures
+  * Emergency Shutdown / Route Procedures
   * Rendevouz Location and Exit locations
   * Safety Verification Mechanism
   * Knowledge of location of fire extinguishers
@@ -5383,18 +5623,20 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
   * Effective in the first 3 stages but not so much after that
   * For most standard office environments an multclass extinguisher is recommend (likely an ABC)
   * Types:
-    * A - Wood/Paper - Water, Soda Acid
-    * B - Oils/Liquids - CO2/Halon/Soda Acid
+    * **_A - Wood/Paper - Water, Soda Acid_**
+    * **_B - Oils/Liquids - CO2/Halon/Soda Acid_**
       * Splashes when doused
-    * C - Electrical - CO2/Halon
+    * **_C - Electrical - CO2/Halon_**
       * Electrocution
-    * D - Metal - Dry Powder
+    * **_D - Metal - Dry Powder_**
       * Produces own oxygen
-    * K - Cooking media (fats, oils) - Alkaline mixtures
+    * **_F/K - Cooking media (fats, oils) - Alkaline mixtures_**
       * potassium acetate/citrate/carbonate (causes saponification)
   * Water and other liquids cannot be used on Class B/K fires because they would vaporize, causing an explosion and spreading the burning liguids all over the area
   * Watter cannot be used on Class C fires because of the possibility of electrocution
   * Oxygen suppression cannot be used on metal fires becuase buring metal produces its own oxygen
+
+  ![Fire Extinguisher Types](./images/Extinguisher-Types.jpg)
 
 * **Fire Detection Systems**
   * Types
@@ -5452,8 +5694,8 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
   * more effective and faster than water
   * Halon is now banned by the EPA
   * CO2 is ineffective as a fire suppressant and poses a higher risk to people
-    * can cause asphyxiation at only 7.5 % concentration
-    * fire suppressant with CO2 is often at 34 % or higher concentration
+    * can cause asphyxiation at only `7.5 %` concentration
+    * fire suppressant with CO2 is often at `34%` or higher concentration
     * naturally colorless, oderless, and tastless
   * Types
     * Halon
@@ -5626,42 +5868,45 @@ The above approache allows TLS to leverage (1) advanced functionality of asymmet
 
 ## 3.10 - Manage the information system lifecycle
 
-Stages of IS life cyle:
+![InfoSys Lifecycle](./images/infosys-lifecycle.jpg)
 
-* **Stakeholders' Needs and Requirements**
-  * initial phase
-  * focuses on identitifying and understanding the needs, expectations, requirements of stackholders whom will use the system
-  * thorough analysis of diverse set of requirements (end users, managers, regualtory bodies, etc)
-* **Requirements Analysis**
-  * second phase
-  * detailed analysis/examination of discovered requirements
-  * determining functional and nonfunctional requirements
-  * constraint considerations and alignment with organizational goals
-* **Architectural Design**
-  * third phase
-  * blueprint is created for the IS
-  * defining overall structure, components, modules, data flow, and interfaces of the system
-* **Development /implementation**
-  * forth phase
-  * coding of the system occurs
-  * engineers/developers create software, configure hardware, and integrate various components to bring the system to life
-* **Integration**
-  * fifth phases (but sometimes linked with the Development cycle)
-  * process of combining different modules or components of the system to ensure they work seemlessly together as a whole unit
-* **Verification and validation**
-  * sixth phase
-  * focused on confirming that the deployed system works as intended
-  * verification ensures each component of the system works correctly 
-  * validation ensures the system as a whole fullfills its intended purpose
-* **Transition/deployment**
-  * seventh phase
-  * system is deployed for production usage
-  * migration of system from development to production/operational environment and making it available to all users
-* **Operations and maintenance/sustainment**
-  * system is actively used in an operational environment
-  * Operations is day-to-day management, monitoring , and support
-  * Maintainance ensures that the system continues to function correctly by addressing issues, applying updates, and making improvements
-  * Sustainment refers to the ongoing focus on maintaining and supporting the operational functionality of a IS over an extended period to time
-* **Retirement/Disposal**
-  * system reaches EOL
-  * considerations for decommishonining takes place included data disposal, ensuring compliance with regulations, and making descisions about the future of the system or its replacement
+* **Purporse**:
+  * The management of information system from assessment of needs through the decommissioning of the system
+* **Stages**
+  * **Stakeholders' Needs and Requirements**
+    * initial phase
+    * focuses on identitifying and understanding the needs, expectations, requirements of stackholders whom will use the system
+    * thorough analysis of diverse set of requirements (end users, managers, regualtory bodies, etc)
+  * **Requirements Analysis**
+    * second phase
+    * detailed analysis/examination of discovered requirements
+    * determining functional and nonfunctional requirements
+    * constraint considerations and alignment with organizational goals
+  * **Architectural Design**
+    * third phase
+    * blueprint is created for the IS
+    * defining overall structure, components, modules, data flow, and interfaces of the system
+  * **Development /implementation**
+    * forth phase
+    * coding of the system occurs
+    * engineers/developers create software, configure hardware, and integrate various components to bring the system to life
+  * **Integration**
+    * fifth phases (but sometimes linked with the Development cycle)
+    * process of combining different modules or components of the system to ensure they work seemlessly together as a whole unit
+  * **Verification and validation**
+    * sixth phase
+    * focused on confirming that the deployed system works as intended
+    * verification ensures each component of the system works correctly
+    * validation ensures the system as a whole fullfills its intended purpose
+  * **Transition/deployment**
+    * seventh phase
+    * system is deployed for production usage
+    * migration of system from development to production/operational environment and making it available to all users
+  * **Operations and maintenance/sustainment**
+    * system is actively used in an operational environment
+    * Operations is day-to-day management, monitoring , and support
+    * Maintainance ensures that the system continues to function correctly by addressing issues, applying updates, and making improvements
+    * Sustainment refers to the ongoing focus on maintaining and supporting the operational functionality of a IS over an extended period to time
+  * **Retirement/Disposal**
+    * system reaches EOL
+    * considerations for decommishonining takes place included data disposal, ensuring compliance with regulations, and making descisions about the future of the system or its replacement
