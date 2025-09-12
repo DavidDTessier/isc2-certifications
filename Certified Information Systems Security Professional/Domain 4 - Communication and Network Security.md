@@ -5,8 +5,8 @@
 ### Open System Interconnection (OSI) Model
 
 * [OSI Model](https://en.wikipedia.org/wiki/OSI_model)
-* standardized model that establishes a common communications standard
-* Developed by the International Organization for Standardization (ISO) in the late 1970s but only formally published as I[SO/IEC 7498](https://cdn.standards.iteh.ai/samples/20269/4b12bcad0c6247dba2875b7cdf47b807/ISO-IEC-7498-1-1994.pdf) in 1984
+* standardized (vendor neutral) model that establishes a common communications standard
+* Developed by the International Organization for Standardization (ISO) in the late 1970s but only formally published as [ISO/IEC 7498](https://cdn.standards.iteh.ai/samples/20269/4b12bcad0c6247dba2875b7cdf47b807/ISO-IEC-7498-1-1994.pdf) in 1984
   * facilitates interoperability between different vendor system
   * has become a common reference point
 * Divides networking tasks into seven layers, each layer performing specific tasks/operations support data exchange
@@ -29,6 +29,9 @@
       * Physical Layer: Transmits the data as a stream of bits over the physical medium.
 * Seven Layers:
 ![OSI](./images/OSI-Model.webp)
+![OSI E2E](./images/OSI-E2E.png)
+![OSI E2E - 1](./images/OSI-e2e-1.png)
+![OSI E2E - 2](./images/osi-e2e-3.jpg)
   * [**Application Layer (7)**](http://www.highteck.net/EN/Application/Application_Layer_Functionality_and_Protocols.html)
     * responsible for interfacing with user applications, network services, or the OS with the protocol stack
     * receives data from software via the protocol stack
@@ -47,6 +50,7 @@
         * WAFs
   * **Presentation Layer (6)**
     * responsible for transform data into a format that any system can understand (that follows the OSI model)
+      * example EBCDIC to ASCII
     * also responsible for encryption and compression
     * Encryption can occur in a least five locations:
       * Pre-network encryption (software encrypts prior to sending into App Layer)
@@ -58,10 +62,10 @@
   * **Session Layer (5)**
     * responsible for establishing, maintaining, and terminating communications sessions between two computers
     * manages dialog discipline or dialog control (simplex, half-duplex, full-duplex)
-      * **_Simplex_** : One-way communication (sender / receiver, but both)
+      * **_Simplex_** : One-way communication (sender / receiver, but not both)
       * **_Half-Duplex_**: Two-way comms, only one-direction can send or receive data at a time
-      * **_Full-Duplex_**: Two-way comms, data can be sent and received by both parties in both directions simultaneously
-    * establishes checkpoints for grouping/recovery/retransmission of PDU's that have failed or been lost since teh last verified checkpoint
+      * **_Full-Duplex_**: Two-way comms, data can be sent and received by both parties in both directions simultaneously (modern nics/switches/smartphones)
+    * establishes checkpoints for grouping/recovery/retransmission of PDU's that have failed or been lost since the last verified checkpoint
     * No Session Layer in the TCP/IP Model and session layer activities are handled by TCP at the Transport Layer or not at all in the case of UDP usage
   * [**Transport Layer (4)**](http://www.highteck.net/EN/Transport/OSI_Transport_Layer.html)
     * responsible for managing the integrity of a connection and controlling the session
@@ -69,12 +73,16 @@
     * divides data into segments (TCP)/ datagrams (UDP) that are easier to manage and transmit
     * Session Rules
       * Specify how much data each segment can contain
-      * How to verify message integrity
+      * How to verify message integrity (checksums)
       * How to determine whether data has been lost
     * Protocol operating at L4:
       * Transmission Control Protocol (TCP)
+        * Reliable, Connection-Oriented
       * User Datagram Protocol (UDP)
+        * Not-Reliable, Best Effort, Fast, Connectionless
       * Transport Layer Security (TLS)
+    * TCP 3-Way Handshake happens here
+    * SYN Floods can occur here and session hijacking
   * [**Network Layer (3)**](http://www.highteck.net/EN/Network/OSI_Network_Layer.html)
     * responsible for logical addressing and performing routing
     * logical addressing occurs when an address is assigned and used by software or a protocol rather than being provided and controlled by hardware
@@ -90,35 +98,55 @@
       * determine the best logical path for the transmission of packets based on speed, hops, preference, and so on
       * use the destination IP to forward the data
       * [_routed (routing) protocol_](https://en.wikipedia.org/wiki/Routing_protocol)
-        * controlled by routers and their routing tables (maintained by the router) which include known subnets and the pathways between them 
+        * controlled by routers and their routing tables (maintained by the router) which include known subnets and the pathways between them
         * routing info is used to direct the traffic
         * include Internetwork Package Exchange (IPX) and Internet Protocol (IP)
+        * Common Protocols:
+          * Internet Protocol (IP)
+            * Core protocol for identifying and routing packets
+          * Internet Control Message Protocol (ICMP)
+            * Used for diagnostics (ping, traceroute)
+          * IPSec
+            * Secures IP communications with encryption and auth
         * Types
           * [**Interior Routing Protocols**](https://en.wikipedia.org/wiki/Interior_gateway_protocol)
             * [Type 1 - Link State](https://en.wikipedia.org/wiki/Link-state_routing_protocol)
               * gathers router characteristics such as speed, latency, error rates, and actual monetary costs for use
               * gathered info is then tabulated to make next hop routing decisions
               * Examples:
-                * [Open Shortest Path First (OSPF)](https://en.wikipedia.org/wiki/Open_Shortest_Path_First) and [Intermediate System to Intermediate System (IS-IS)](https://en.wikipedia.org/wiki/Intermediate_system_to_intermediate_system)
+                * [Open Shortest Path First (OSPF)](https://en.wikipedia.org/wiki/Open_Shortest_Path_First)
+                  * Fast, scalable, uses "cost" as a metric
+                * [Intermediate System to Intermediate System (IS-IS)](https://en.wikipedia.org/wiki/Intermediate_system_to_intermediate_system)
+                  * similar to OSPF
+                  * often used by ISPs
             * [Type 2 - Distance Vector Routing](https://en.wikipedia.org/wiki/Distance-vector_routing_protocol)
               * maintains a list of destination networks along with metrics of direction and distance measured in hops (the number of routes to cross to reach the destination)
               * Examples:
-                * [Routing Information Protocol (RIP)](https://en.wikipedia.org/wiki/Routing_Information_Protocol) and [Interior Gateway Routing Protocol (IGRP)](https://en.wikipedia.org/wiki/Interior_Gateway_Routing_Protocol)
-                  * [Enhanced Interior Routing Gateway Protocol (EIRGP)](https://en.wikipedia.org/wiki/Enhanced_Interior_Gateway_Routing_Protocol)
+                * [Routing Information Protocol (RIP)](https://en.wikipedia.org/wiki/Routing_Information_Protocol)
+                  * Simple, slow, 15 hop count limit
+                * [Interior Gateway Routing Protocol (IGRP)](https://en.wikipedia.org/wiki/Interior_Gateway_Routing_Protocol)
+                * [Enhanced Interior Routing Gateway Protocol (EIRGP)](https://en.wikipedia.org/wiki/Enhanced_Interior_Gateway_Routing_Protocol)
+                  * Hybrid, Cisco proprietary (was)
           * [**Exterior Routing Protocols**](https://en.wikipedia.org/wiki/Exterior_gateway_protocol)
-            * One type known as Path Vector Routing Protocol
+            * One type known as **Path Vector Routing Protocol**
             * makes next hop decisions based on the entire remaining path (i.e vector) to the destination
+            * Used between autonomous systems (across the internet)
             * far-sighted
-            * Example: 
-              * [Border Gateway Protocol (BGP)](https://en.wikipedia.org/wiki/Border_Gateway_Protocol) which maintains a routing table of the [autonomous systems (AS)](https://en.wikipedia.org/wiki/Autonomous_system_(Internet)) across the internet
+            * Example:
+              * [Border Gateway Protocol (BGP)](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)
+                * path-vector
+                * policy, reachability
+                * maintains a routing table of the [autonomous systems (AS)](https://en.wikipedia.org/wiki/Autonomous_system_(Internet)) across the internet
                 * AS: a collection of IP networks and routers under the control of a single organization that presents a common routing policy to the internet
   * [**Data Link Layer (2)**](https://en.wikipedia.org/wiki/Data_link_layer)
     * responsible for formatting the packet for transmission into a _frame_
     * format is determined by the hardware/topology/tech of the network (ie. Ethernet (IEEE 802.3))
+    * uses **_Cyclic Redundancy Check (CRC)_** to detect transmission errors
     * adds the source/destination hardware address to the data frame
     * the hardware address is known as the [**_Media Access Control (MAC) address_**](https://en.wikipedia.org/wiki/MAC_address)
+      * Unique hardware identifier assigned to a NIC
       * 6-byte (48 bit) binary address expressed in hexadecimal notation (ex: 00-13-02-1F-58-F5)
-      * also known as the _physical/NIC/Ethernet address_ 
+      * also known as the _physical/NIC/Ethernet address_
       * first 3 bytes (24 bits) is the _organizationally unique identifier (OUI)_,
         * denotes the vendor/manufacturer of the devices
         * registered with the [Institute of Electrical and Electronics Engineers (IEEE)](https://en.wikipedia.org/wiki/Institute_of_Electrical_and_Electronics_Engineers)
@@ -126,10 +154,21 @@
       * last 3 bytes (24 bits) represents a unique number assigned to that interface by the manufacturer
         * some vendors will encode information into these final 24 bits, which may represent the make, model, and production run along with a unique value
     * protocols operating at this layer:
+      * Ethernet (IEEE 802.3)
+      * WIFI (IEEE 802.11)
       * **Address Resolution Protocol (ARP)**
     * devices operating at this layer:
       * Switches and Bridges
-        * Switches recieve a frame on one port and send it out another port based on the destination MAC address, which are used to determine whether a frame is transfered over the bridge from one network segment to another
+        * Switches receive a frame on one port and send it out another port based on the destination MAC address, which are used to determine whether a frame is transfered over the bridge from one network segment to another
+    * Security Relevance
+      * Vulnerable to:
+        * MAC Spoofing
+        * ARP Poisoning
+        * Switch port attacks
+      * Controls include:
+        * Port security on switches
+        * Dynamic ARP inspection
+        * VLAN Segmentation
   * **Physical Layer (1)**
     * receives a frame and coverts it to bits to transmit over the physical medium and vice versa for receiving communications
     * NICs, Hubs, repeaters, concentrators, and amplifiers are hardware that operate here
@@ -365,7 +404,7 @@ The following diagram illustrates the differences between the OSI and TCP Models
   * requires a PTR (pointer) resource record to be defined in the domain's zone file
 * DNS Hierarchial Scheme
   * Public and Private Networks
-  * links IPs to *[*_Fully Qualified Domain Names (FDQNs)_**](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)
+  * links IPs to [**_Fully Qualified Domain Names (FDQNs)_**](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)
 * FQDN Consists of three main parts:
   * [**Top-Level Domain (TLD)**](https://en.wikipedia.org/wiki/Top-level_domain)
     * The `com` in `www.google.com`
@@ -386,7 +425,7 @@ The following diagram illustrates the differences between the OSI and TCP Models
   * Far Left Section:
     * can be either a single hostname (`www.`, `ftp.`, `blog.`, etc)
     * or multi-sectioned subdomain designation such as `server1.group3.blog5.myexample.com`
-* Total length of a FQDN can't exceed 253 characters (including dots)
+* Total **length** of a FQDN can't exceed 253 characters (including dots)
 * Any single section cannot exceed 63 characters
 * can only contain letters, numbers, hyphens, and periods
 * [**Authorization Name Server**](https://en.wikipedia.org/wiki/Name_server#Authoritative_name_server)
@@ -427,16 +466,23 @@ The following diagram illustrates the differences between the OSI and TCP Models
   * still in use on TCP/IP computers
   * administrations or threat actors can add entries to the host file
   * example
-   ```text
+  ```text
    127.0.0.1        localhost
    127.0.1.1        kail
 
    192.168.56.101   bankofamerica.com
-   ```
+  ```
+
 * How DNS Works:
-  * Now that the Internet contains billions of IP addresses and FQDN, the host file is woefully inadequate. Enter DNS. First developed by Paul Mockapetris (now in the Internet Hall of Fame) in 1983, DNS is both distributed and dynamic, unlike our hosts file.
-  * DNS does not rely upon one file or one server, but instead upon many files across many server across the globe. These servers are organized in a hierarchical manner. Due to this distributed nature, the DNS system is resistant to outages of one or many of these servers.
-  * As illustrated in the diagram below, the user asks (queries) the local DNS server (cache) to access download.`beta.example.com`. The local DNS server does not have that resource as it is new. It then queries the root server. The root server responds “I don’t know” but refers the local DNS server to the IP address of the authoritative server for the top-level domain (TLD), in this case `.com`. The local DNS server will then query the TLD server for `.com` and it will respond with the authoritative server for the domain, in this case example.com. The local DNS server will then query the authoritative server for `beta.example.com`. If it has the record, it will return the resource (IP address) and if not, it will respond it “doesn’t know”.
+
+1. User types a domain (e.g., `www.example.com`) in a browser.
+2. The system checks local DNS cache for the IP.
+3. If not found, it queries a recursive resolver (usually your ISP or a public DNS like Google).
+4. The resolver queries a root name server (.) → directs to a TLD server (.com) → then to the
+authoritative name server for example.com.
+5. The authoritative server returns the IP address.
+6. The resolver caches it and sends it back to your device.
+7. Your device connects to the web server via its IP
 
 The following diagram illustrates how DNS operations
 
@@ -519,7 +565,7 @@ The following diagram illustrates how DNS operations
   * An attacker provides (injects) incorrect DNS information for a domain (FQDN) to a DNS server (updated the zone files on the primary auth server or cache servers), which then gives out that incorrect information (also known as a DNS poisoning)
     * Attacks on Primary Authoritative Servers are rare as they would be noticed quickly
     * typically the attack is on the Cache Servers
-  * DNSSEC can help in migitating this as the DNS record can be validated to come from the officially signed and registered DNS zone, and not from a rogue DNS server or other process attempting to inject malicious traffic into the data stream.
+  * DNSSEC can help in mitigating this as the DNS record can be validated to come from the officially signed and registered DNS zone, and not from a rogue DNS server or other process attempting to inject malicious traffic into the data stream.
   ![DNS Spoofing](./images/dns-spoofing.png)
 * [**Rogue DNS Server**](https://www.imperva.com/learn/application-security/dns-hijacking-redirection/)
   * can listen in on network traffic for any DNS query or specific DNS queries related to a target site
@@ -530,14 +576,20 @@ The following diagram illustrates how DNS operations
 * [**DNS Pharming**](https://en.wikipedia.org/wiki/Pharming)
   * closley related to DNS Poisoning
   * exploit vulnerabilities in DNS infrastructure to redirect users to malicious websites.
-  * typically occurs either by modifying the local `hosts` file on a system or by poisoning/spoofing DNS resolution
-  * _**Modification to Host file**
-    * the host file is loaded into memory when the system boots which they will take precedence
-    * attack plants info into the hosts file, on the next boot the host will be reloaded into memory
-    * effective attack
-* **Corrupt the IP Configuration**
-  * attacker alters a clients DNS server lookup address which results in a false DNS server definition in order to start spoofing DNS responses
-  * perform by compromising the DHCP server or a through a script
+  * Two Types
+    * **_Local Pharming_**
+      * attacker infects the victim’s computer or router and alters the hosts file or DNS settings.
+      * When the user types `bank.com`, the device resolves it to a malicious IP address, even though the URL looks normal.
+    * **_Remote (Server-Level) Pharming_**
+      * attacker poisons a legitimate DNS server or sets up a rogue DNS server.
+      * All users relying on that DNS server are silently redirected to malicious lookalike websites.
+    * **Modification to Host file**
+      * the host file is loaded into memory when the system boots which they will take precedence
+      * attack plants info into the hosts file, on the next boot the host will be reloaded into memory
+      * effective attack
+    * **Corrupt the IP Configuration**
+      * attacker alters a clients DNS server lookup address which results in a false DNS server definition in order to start spoofing DNS responses
+      * perform by compromising the DHCP server or a through a script
 * **DNS Query Spoofing**
   * attack occurs when a threat actor is able to eavesdrop's on the client's query to a DNS server (Man-in-the-Middle)
   * the attacker intercepts the query and sends back a false reply which contains the same QID from the cloned query
@@ -549,7 +601,7 @@ The following diagram illustrates how DNS operations
 * **DNS Poisoning Defenses**
   * [**Split-DNS**](https://en.wikipedia.org/wiki/Split-horizon_DNS)
     * aka split-brain, split-view, split-horizon
-    * deploying a DNS server for public use and a seperate DNS for internal use
+    * deploying a DNS server for public use and a separate DNS for internal use
     * all data in the zone file on the public DNS is accessible by the public via queries or probing
     * internal DNS is for internal clients (connected to the internal network) and outsiders are prohibited from access / interacting with it
       * blocking inbound port 53 for both TCP and UDP
@@ -578,7 +630,8 @@ The following diagram illustrates how DNS operations
     * strong multi-factor auth on domain registrar site
     * setup auto-renew and double check payment methods a week before the renewal data
 * **Homograph Attack**
-  * type of cyberattack where malicious actors create fake website URLs that closely resemble legitimate ones (Phony international domain names (IDN)) by using visually similar characters from different alphabets. This deception aims to trick users into visiting the fake site, potentially leading to credential theft, malware installation, or other malicious activities.
+  * type of cyberattack where malicious actors create fake website URLs that closely resemble legitimate ones (Phony international domain names (IDN)) by using visually similar characters from different alphabets.
+  * deception aims to trick users into visiting the fake site, potentially leading to credential theft, malware installation, or other malicious activities.
   * example could include Cyrillic characters that, when resolved, direct you to a different site
   * Full discussion on this [type of attack](http://blog.malwarebytes.com/101/2017/10/out-of-character-homograph-attacks-explained)
   * Examples:
@@ -604,19 +657,30 @@ The following diagram illustrates how DNS operations
   * "best effort" delivery
   * Leverage TCP with IP in order to obtain reliable and controlled communication sessions
 
-#### Pv4 vs IPv6
+#### IPv4 vs IPv6
 
 * [IPv4](https://en.wikipedia.org/wiki/IPv4)
   * most widely used
   * 32-bit length for addressing
-  * uses the dotted quad notation, four numbers separated by periods (`192.168.200.1`)
+  * uses the dotted quad notation, four numbers separated by periods (`192.168.1.1`)
     * Range 0 - 255
       * 8-bit binary numbers
       * 2<sup>8</sup> = 256 possible values
       * Start counting at 0
+    * **Bit Placement**:
+      * 0 = `00000000`
+      * 255 = `11111111`
+      * Example:
+        * `192.168.1.1`
+          * 192 = `128 (1), 64 (1), 32 (0), 16 (0), 8 (0), 4 (0), 2 (0), 1 (0)`
+          * 168 = `128 (1), 64 (0), 32 (1), 16 (0), 8 (1), 4 (0), 2 (0), 1 (0)`
+          * 1 = `128 (0), 64 (0), 32 (0), 16 (0), 8 (0), 4 (0), 2 (0), 1 (1)`
+          * 1 = `128 (0), 64 (0), 32 (0), 16 (0), 8 (0), 4 (0), 2 (0), 1 (1)`
+          * Binary = `11000000 10101000 00000001 00000001`
+          * Subnet Mask (255.255.255.0) = `11111111 11111111 11111111 00000000`
     * Must not be reused on internet-connected systems
     * May be reused if on private networks
-    * If a system requires the internet then a Network Address Translation (NAT) server is required .. most modern modems (ISPs) provide this functionality
+    * If a system requires the internet then a Network Address Translation (NAT) server is required most modern modems (ISPs) provide this functionality
   * Features:
     * [Type of Service (ToS)](https://en.wikipedia.org/wiki/Type_of_service)
       * field in the second byte (8 bits) of the IPv4 header
@@ -691,7 +755,7 @@ The following diagram illustrates how DNS operations
 * [**Network Address Translation (NAT)**](https://en.wikipedia.org/wiki/Network_address_translation)
   * also referenced as _Source Network Address Translation (SNAT)_, or _Stateful NAT (SNAT)_
   * hides IPv4 configuration of internal clients and substitutes the IPv4 configuration of the proxy server's own public external NIC in outbound requests
-  * by default its a dynamic outbound mapping mechanism 
+  * by default it's a dynamic outbound mapping mechanism 
   * essential function using [RFC 1918 - Address allocation for Private Internets](https://datatracker.ietf.org/doc/html/rfc1918) private IPv4 addresses internally while communicating with Internet resources
   * developed to allow private networks to use any IPv4 address set without causing collisions or conflicts with public internet hosts with the same IPv4 addresses
   * translates private IPv4 addresses to leased public addresses outside the network
@@ -700,7 +764,7 @@ The following diagram illustrates how DNS operations
     * connect entire network to the the internet using a single (or a few) leased public IPv4 addresses
     * use RFC 1918 defined IPs in private network and still communicate with the public internet
     * hides IPv4 addressing scheme and network topology from the internet
-    * restricts connections so that only traffic stemming from coonections originating from the internal protected network are allowed back into the network form the internet (most intrusion attacks are automatically repelled)
+    * restricts connections so that only traffic stemming from connections originating from the internal protected network are allowed back into the network from the internet (most intrusion attacks are automatically repelled)
     * basic one-way firewall by allowing incoming traffic that is in response to an internal system's request
   * termed as 'NATed'
   * Can be hardware or software
@@ -713,8 +777,8 @@ The following diagram illustrates how DNS operations
     * Should be avoided as it grants the easy ability for an external entity to initiate a connection with an internal system which is not a secure solution
   * [**_Port Address Translation (PAT)_**](https://en.wikipedia.org/wiki/Network_address_translation#One-to-many_NAT)
     * aka _Overloaded NAT_, _Network and Port Address Translation (NPAT)_, and _Network Address Port Translation (NAPT)_
-    * Refered to as _One-to-Many NAT_
-    * allows a single public IPv4 address to host up to 65,536 simultaneious communications from internal cleints
+    * Referred to as _One-to-Many NAT_
+    * allows a single public IPv4 address to host up to 65,536 simultaneious communications from internal clients
       * theorectical max , in practice it should be LIMITED to 4,000 or fewer in most cases due to hardware limitations
       * uses Transport Layer (Layer 4) port numbers to host mulitple simultaneous comms across each public IPv4 address by mapping internel sockets (combo of ip and port number) to external sockets
       * effectively multiplexing numerous sessions from internal systems over a single external IPv4 address
@@ -804,14 +868,20 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
 
 #### Private IP Addresses
 
-* define in RFC 1918, a block set assided for private, unrestricted use
+* define in RFC 1918, a block set aside for private, unrestricted use
 * all routers and traffic-directing devices are configured by default not to forward traffic to or from these (not routed by default)
 * cannot communicate over the internet
 * be used within private networks
 * as follows:
-  * Class A: `10.0.0.0 - 10.255.255.255`
-  * Class B: `172.16.0.0 - 172.31.255.255`
-  * Class C: `192.168.0.0 - 192.168.255.255`
+  * **Class A**:
+    * `10.0.0.0 - 10.255.255.255`
+    * `10.0.0.0/8`
+  * **Class B**:
+    * `172.16.0.0 - 172.31.255.255`
+    * `172.16.0.0/12`
+  * **Class C**:
+    * `192.168.0.0 - 192.168.255.255`
+    * `192.168.0.0/16`
 * **_Automatic Private IP Addressing (APIPA)_**
   * aka IPv4 link-local address assignment (define in RFC 3927)
   * assigns an IP address to a system in the event of a DHCP assignement failure
@@ -821,23 +891,27 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
   * allow for communicating with other APIPA-configured devices with the same broadcast domain but not with any system across a router or with a correctly assigned IP
   * if this occurs there is generally a problem somewhere (bad cable or power failure on the DHCP or even a malicious attack)
 
-
 #### Variable Length Subnet Masking (VLSM)
 
 * [VLSM](https://www.pynetlabs.com/what-is-vlsm-variable-length-subnet-mask/)
 * a technique used in computer networking to divide an IP address space into subnets of varying sizes, optimizing IP address allocation.
-* allows for flexibility in subnet sizes, enabling efficient use of IP addresses, especially in networks with diverse host count requirements. 
+* allows for flexibility in subnet sizes, enabling efficient use of IP addresses, especially in networks with diverse host count requirements.
 
 #### Classless Inter-Domain Routing (CIDR)
 
 * [**_CIDR_**](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) is based on VLSM
   * [IETF's RFC for CIDR](http://tools.ietf.org/html/rfc4632)
+    * RFC 1518 & RFC 1519
+* replaces class-based addressing with a prefix-based (bitwise) routing
+* allowed IP blocks to be allocated in variable sizes (e.g.; /20, /28, etc)
+* introduced route aggregation (a.k.a supernetting) to reduce the size of routing tables
+  * Example: Multiple /24 routes could be summarized as a single /20
 * provides for a subnet masking notation that uses a mask bit counts rather than a full dotted-decimal notation mask.
 * Example instead of `255.255.0.0`, a CIDR notation is added to the IP address after a slash as in `172.16.1.1/16`
-* has the ability to combine multiple noncontiguous (not connected, not touching, or not sharing a border) sets of addresses into a single subnet
+* has the ability to combine multiple non-contiguous (not connected, not touching, or not sharing a border) sets of addresses into a single subnet
   * Example combine several Class C subnets in a single larger subnet group
 
-#### Internet Control Message Protocl (ICMP)
+#### Internet Control Message Protocol (ICMP)
 
 * [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) is an OSI Layer 3 (Network) protocol
 * mainly used to determine whether or not data is reaching its intended destination in a timeline many
@@ -846,7 +920,7 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
 * `ping`, `traceroute`, `tracert`, `pathping`, and others are utility tools that leverage this protocol
 * connectionless protocol
 * Common ICMP Type Codes
-    * ![ICMP Codes](../Certified%20In%20Cybersecurity%20(CC)/images/icmp-codes.png)
+  * ![ICMP Codes](../Certified%20In%20Cybersecurity%20(CC)/images/icmp-codes.png)
 * Command Line Network Tools:
   * [**ping**](https://en.wikipedia.org/wiki/Ping_(networking_utility))
     * Checks if a system responds
@@ -878,8 +952,16 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
 * Security Concerns
   * Features of ICMP where exploited in various formats of bandwith-based denial of service attacks (DoS)
     * [**ping of death**](https://en.wikipedia.org/wiki/Ping_of_death)
+      * type of DoS attack
+      * attack where a malicious ICMP packet larger than the maximum allowed size (65,535 bytes) is sent to a target system, causing it to crash, freeze, or become unstable due to a buffer overflow when it tries to reassemble the fragmented packet
     * [**Smurf attacks**](https://en.wikipedia.org/wiki/Smurf_attack)
+      * anoth DoS attack
+      * attacker floods a target with "ping" requests by spoofing the source IP address to appear as the victim's address.
+      * spoofed requests are broadcast to a network, causing all devices on that network to send a reply to the victim's IP address, overwhelming it with a massive flood of traffic and making the network or server inaccessible.
     * [**ping floods**](https://en.wikipedia.org/wiki/Ping_flood)
+      * DoS attack
+      * overwhelms a target with "echo request" packets, overwhelming its resources and preventing it from responding to legitimate traffic.
+      * Attackers often use the `-flood` option available in some ping utilities to send these packets as rapidly as possible without waiting for replies.
 * Security Controls
   * limiting use and bandwidth/throughput rates of ICMP
 
@@ -891,6 +973,10 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
 * used to manage a hosts dynamic multicast group membership
 * with IGMP an initial signal is multiplied at the router if divergent pathways exist to the intended recipients
 * can be assisted by Trivial File Transfer Protocol (TFTP) systems to host or cache content that is to be sent to multiple recipients
+* Common IGMP versions
+  * **_IGMPv1_** - Basic joing capability
+  * **_IGMPv2_** - Adds leave functionality and faster response
+  * **_IGMPv3_** - Supports source-specific multicast (receive only from certain senders)
 
 #### Address Resolution Protocol (ARP)
 
@@ -950,15 +1036,16 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
     * access control
     * message origin authentication
   * standard of IP security extensions as an add-on for IPv4 and integrated into IPv6
-  * primary use is for establishing VPN links between host which IPSec can operate in either of the following modes:
+  * Two Modes of Operations
     * **Transport Mode**
+      * host-to host (internal systems)
+      * Encrypts on the payload of the IP packet
     * **Tunnel Mode**
-  * works only on IP networks
-  * provides secure authentication and encrypted data exchange
-  * can be paired with L2TP as L2TP/IPSec
-  * Collection of protocols:
+      * Network-to-network (vpns)
+      * Encrypts the entire IP packet and wraps it into a new one
+  * Two modes of protection:
     * [**_Authentication Header (AH)_**](https://en.wikipedia.org/wiki/IPsec#Authentication_Header)
-      * provides assurances of message integrity/nonrepudiation
+      * provides assurances of message integrity/non-repudiation (no encryption)
       * provides primary auth for IPSec
       * implements session access control
       * prevents replay attacks
@@ -970,6 +1057,12 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
       * prevent replay attacks
       * typically uses AES encryption
       * can be either transport or tunnel mode
+  * works only on IP networks
+
+  * provides secure authentication and encrypted data exchange
+  * can be paired with L2TP as L2TP/IPSec
+  * Collection of protocols:
+    * AH, ESP
     * **_Hash-based Message Authentication Code (HMAC)_**
       * primary hashing or integrity mechanism
     * **_IP Payload Compression (IPComp)_**
@@ -986,11 +1079,11 @@ NOTE: class-based grouping of IPv4 addresses is no longer strictly adhered to in
         * **_Internet Secure Association and Key Management Protocol (ISAKMP)_**
           * used to organize and manage the encryption keys that have been generated and exchanged
           * _security association_ is the agreed-on method of auth and encryption used by two entities (digital keyring)
-          * used to negotiate and provide authenticated keyring material (common method of authentciation) for security associations in a secured manner
+          * used to negotiate and provide authenticated keyring material (common method of authentication) for security associations in a secured manner
           * VPN uses two associations
             * one for encrypted transmissions
             * one for encrypted reception
-          * each IPSec VPN is composed two independantly encrypted simplex communication channels
+          * each IPSec VPN is composed two independently encrypted simplex communication channels
             * supports multiple simultaneous VPNs from each host
 
 The following Diagram illustrators the IPSec Encapsulation process
@@ -998,15 +1091,35 @@ The following Diagram illustrators the IPSec Encapsulation process
 
 * [**Kerberos**](https://en.wikipedia.org/wiki/Kerberos_(protocol))
   * offers a single sign-on (SSO) solution for users and provides protections for logon credentials
-  * Modern implementations use hybrid encryption to provide reliable authenticaiton process
+  * Modern implementations use hybrid encryption to provide reliable authentication process
+  * Key Items
+    * **Key Distribution Center (KDC)**
+      * Trusted third party that issues tickets
+    * **Ticket Granting Ticket (TGT)**
+      * Proves identity to the TGS
+    * **Ticket Granting Service (TGS)**
+      * Issues service-specific tickets
+    * **Tickets**
+      * Time-limited tokens used instead of passwords
 * [**Secure Shell (SSH)**](https://en.wikipedia.org/wiki/Secure_Shell)
-  * perfrect example of an end-to-end (e2e) encryption technique
+  * perfect example of an end-to-end (e2e) encryption technique
   * security tool can be used to encrypt numerous plaintext utilities such as ([Remote Procedure Call (RCP)](https://en.wikipedia.org/wiki/Remote_procedure_call), [Remote Login (rlogin)](https://www.ssh.com/academy/ssh/rlogin), and [rexec](https://linux.die.net/man/1/rexec))
   * serves as a protocol encrypter (SFTP), and functions as a `transport` mode VPN (host-to-host and link encryption only)
 * [**Signal Protocol**](https://en.wikipedia.org/wiki/Signal_Protocol)
   * cryptographic protocol which provides e2e encryption for voice communication, videoconferencing, and text messaging services
   * aka _TextSecure Protocol_
   * core element in the messaging app _Signal_
+  * How it Works:
+    * Uses a combination of:
+      * **_Double Rachet algorithm_**
+        * for constantly changing encryptions keys per message
+      * **_Extended Triple Diffie-Hellman (X3DH)_**
+        * for initial key agreement
+      * **_Prekeys_**
+        * for async commounication (even if recipient is offline)
+    * Every message is encrypted with a unique session key (confidentiality and forward secrecy)
+    * Post-compromise security
+      * if a device is compromised, past messages remain secret
 * [**Secure Remote Procedure Call (S-RPC)**](https://docs.oracle.com/cd/E19683-01/806-4078/6jd6cjrte/index.html)
   * authentication service for cross-network service communications (using RPC) and is simply a means to prevent unauthorized execution of code on remote systems
 * [**Transport Layer Security (TLS)**](https://en.wikipedia.org/wiki/Transport_Layer_Security)
@@ -1058,10 +1171,17 @@ The following Diagram illustrators the IPSec Encapsulation process
   * open and public standard
   * like TCP/IP it has Link, Transport, and Transportation Layers
 
-### Converged protocols (e.g., Internet Small Computer Systems Interface (iSCSI), Voice over Internet Protocol (VoIP), InfiniBand over Ethernet, Compute Express Link)
+### Converged Protocols
 
 * _Converged protocols_ involve merging specialized or proprietary protocols with standard protocols, like those in the TCP/IP suite, to simplify network management and reduce costs
 * Common "converged protocols"
+  * **Session Initiation Protocol (SIP)**
+    * Sets up and manages multimedia communication sessions (VOIP)
+  * **Multiprotocol Label Switching (MPLS)**
+    * Supports multiple types of traffic
+    * examples data, voice, video, etc
+  * **Fiber Channel over Ethernet (FCoE)**
+    * Transports storage traffic over Ethernet networks
   * [**Storage Area Network (SAN)**](https://en.wikipedia.org/wiki/Storage_area_network)
     * secondary network (distinct from primary communication network)
     * provides consolidation and management of various storage devices into a single consolidated network-accessible storage container
@@ -1115,7 +1235,7 @@ The following Diagram illustrators the IPSec Encapsulation process
         * addes authentication mechanisms to PBX
         * must be properly configured/installed with monitoring and auditing
   * [**Voice over Internet Protocol (VoIP)**](https://en.wikipedia.org/wiki/Voice_over_IP)
-    * tunnelling mechanism that encapsulates audio, video, and other data into IP packets in order to support voice calls and multimedia collaboration
+    * tunneling mechanism that encapsulates audio, video, and other data into IP packets in order to support voice calls and multimedia collaboration
     * has become a popular and inexpensive telephony solution for organizations and individuals worldwide
     * has the potential to replace or supplant [_public switched telephone network (PSTN)_](https://en.wikipedia.org/wiki/Public_switched_telephone_network) services due to it being less expensive and wider options of features available
     * can be used as direct telephone replacement on networks as well as mobile devices
@@ -1158,16 +1278,27 @@ The following Diagram illustrators the IPSec Encapsulation process
 
 ### Software-Defined Networking (SDN)
 
+![SDN](./images/SDN.jpg)
+
+* considered a converaged protocol
 * [SDN](https://en.wikipedia.org/wiki/Software-defined_networking) is an approach to network management that uses abstraction to enable dynamic and programmatically efficient network configuration to create grouping and segmentation while improving network performance and monitoring in a manner more akin to cloud computing than to traditional network management.
 * aims to seperate the [infrastructure layer (aka data plane and the forwarding plane)](https://en.wikipedia.org/wiki/Data_plane) -- hardware-based settings -- from the [control plane layer](https://en.wikipedia.org/wiki/Control_plane) -- network services of data transmission management (routing processes)
 * API driven
-* Compents
+* Core Portocol
+  * [**OpenFlow**](https://en.wikipedia.org/wiki/OpenFlow)
+    * used to communicated between SDN controller and network devices
+* Components
   * **Control Plane**
     * uses protocols to decide where to send traffic
     * consists of one or more controllers, which are considered the brains of the SDN network, where the whole intelligence is incorporated.
     * traffic management typically requires access control over the systems the protocols are using this is done via attribute base access control (ABAC)
+    * Centralized in an SDN controller
+    * Single point of failure
   * **Data Plane**
     * includes the rules to decide whether traffic will be forwarded or not
+    * operates in switches/routers
+  * **Applications**
+    * uses APIs to talk to the controller and define behavior
   * **South-bound Interface**
     * communication path from the SDN controller to the network devices in the data plane
     * faciliates the control and management of traffic
@@ -1188,8 +1319,6 @@ The following Diagram illustrators the IPSec Encapsulation process
 * [**Software-defined wide-area networs (SDWAN or SD-WAN)**](https://en.wikipedia.org/wiki/SD-WAN)
   * evoluaiton of SDN that can be used to managed the connectivity and control services between distant data centers, remove locations, and cloud services over Wide Area Networks (WAN) links
 
-![SDN](./images/SDN.jpg)
-
 ### Network Segmentation
 
 * Segmenting networks is used to subdivide a large organizational network into smaller groupings, segments, or subnetworks (.i.e., subnets) to provide improvements suchs as:
@@ -1201,6 +1330,14 @@ The following Diagram illustrators the IPSec Encapsulation process
     * often reduces congestion and contains communication problems ([broadcast storms](https://en.wikipedia.org/wiki/Broadcast_storm))
   * **Providing Security**
     * improve security by isolating traffic and user access to those segments where they are authorized
+  * Types of Segmentation:
+    * VLANs (Virtual LANs)
+      * Logically seperate traffic withing switches
+    * Subnetting
+      * Divides IP address space into isolated segments
+    * Firewalls & ACLs
+      * Control traffic between segments
+    * Physical Segmentation (less common)
 
 ### Physical Segmentation
 
@@ -1212,14 +1349,14 @@ The following Diagram illustrators the IPSec Encapsulation process
     * often synonymous with "logical segmentation"
   * **_Out-of-Band_**
     * involves separating data and traffic control onto different communication paths or networks
-    * control signals and managment traffic have a dedicated network that is distinct from the network that is different that normal data transmissions
+    * control signals and management traffic have a dedicated network that is distinct from the network that is different that normal data transmissions
     * creates separate and distinct network structure for traffic that would otherwise interfere with the production network
     * secondary networks for storage or other services (SANs, VoIP, etc. ) may be created for backup, patch management and other operations
   * **_Air-gapped_**
     * most stringent
     * complete physical separation between two systems or networks
     * full isolation, no direct physical connections between systems
-    * avoids the use of wireless communicaitions or block them purposefully
+    * avoids the use of wireless communications or block them purposefully
 
 The following diagram outlines the in-band vs out-of-band separation:
 ![In-Band vs OOB](./images/in-band%20vs%20out-band.png)
@@ -1274,10 +1411,10 @@ The following diagram outlines the in-band vs out-of-band separation:
       * prevents traffic control devices from blocking or dropping communications because devices know what the packet contains
       * often used to enable communication between otherwise disconnected systems
       * can be used if a primary protocol is not routable and to keep the total number of supported protocols to a minimum
-      * difficult to monitor the content of traffic (when useing IDS/IDS, filtering, etc)
+      * difficult to monitor the content of traffic (when using IDS/IDS, filtering, etc)
     * bypasses security features (firewalls, gateways, etc)
     * encapsulates restricted contents inside packets that are authorized for transmission
-    * VPN data is not viewable, accessible, scanable or filterable (due to tunneling / encryption)
+    * VPN data is not viewable, accessible, scannable or filterable (due to tunneling / encryption)
     * security solutions should be place outside of the VPN tunnel to act on the data after it is decrypted and return to normal LAN ops
     * operates in either of two modes:
       * **_Transport Mode_**
@@ -1354,11 +1491,11 @@ The following diagram outlines the in-band vs out-of-band separation:
         * open source implmentation
         * can use either pre-shared passwords or certificates for authentication
         * supported by many WAPs
-      * 
   * serves as a protocol encrypter (SFTP), and functions as a `transport` mode VPN (host-to-host and link encryption only)
         
 ![VPN](./images/VPN.gif)
-  * [**VRFs**](https://en.wikipedia.org/wiki/Virtual_routing_and_forwarding)
+
+  * [**Virtual Routing and Forwarding (VRF)**](https://en.wikipedia.org/wiki/Virtual_routing_and_forwarding)
     * a technology used for network segmentation at Layer 3, enabling multiple virtual routing instances (routing table) within a single physical router.
     * each instance operates as a single and independent routing domain
     * enables isolation of routing information
@@ -1639,14 +1776,22 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
   * finalized January 2018
   * WPA3-ENT uses 192-bit AES-CCMP encryption
   * WPA3-PER remains at 128-bit AES-CCMP
-  * [**_Simultaneous Authentication of Equals (SAE)_**](https://en.wikipedia.org/wiki/Simultaneous_Authentication_of_Equals)
-    * replaces the shared key of WPA2
-    * still uses a passowrd, but it no longer encrypts and sends that password across the connection to perform authentication
-    * performs a zero-knowledge proof process known as [_Dragonfly Key Exchange_ ](https://www.rfc-editor.org/rfc/rfc7664)(derivative of Diffie-Hellman)
-      * process uses the present password and the MAC address of the client and AP to perform authentication and session key exchange
-      * attacks have been performed against DragonFly (i.e, [DragonBlood Attacks](https://wpa3.mathyvanhoef.com/))
-  * implements [IEEE 802.11w-2009](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) management frame protection so that a majority of network management operations have confidentiality, integrity, authentication of source, and replay protection
-* [**802.1X/EAP**](https://en.wikipedia.org/wiki/IEEE_802.1X)
+  * Key Features
+    * [**_Simultaneous Authentication of Equals (SAE)_**](https://en.wikipedia.org/wiki/Simultaneous_Authentication_of_Equals)
+      * replaces the shared key of WPA2
+      * still uses a passowrd (pre-shared key), but it no longer encrypts and sends that password across the connection to perform authentication
+      * provides resistence to offline dictionary attacks
+      * performs a zero-knowledge proof process known as [_Dragonfly Key Exchange_ ](https://www.rfc-editor.org/rfc/rfc7664)(derivative of Diffie-Hellman)
+        * process uses the present password and the MAC address of the client and AP to perform authentication and session key exchange
+        * attacks have been performed against DragonFly (i.e, [DragonBlood Attacks](https://wpa3.mathyvanhoef.com/))
+      * Offers forward secrecy
+    * Stronger Encryption
+      * min 128-bit encryption for personal use
+      * 192-bit encryption required for WPA3-Enterprise
+    * Inidividualized Data Encryption
+      * Uses Opportunistic Wireless Encryption (OWE) to encrypt each user's traffic -- even without a password (re open / public networks)
+    * implements [IEEE 802.11w-2009](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) management frame protection so that a majority of network management operations have confidentiality, integrity, authentication of source, and replay protection
+* [**802.1X**](https://en.wikipedia.org/wiki/IEEE_802.1X)
   * enterprise (ENT) authentication
   * standard port-based network access control that ensures that clients cannot communicate with a resource until proper authentication has taken place
   * WPA, WPA2/3 supports this
@@ -1774,6 +1919,36 @@ The following diagram illustrates the differences between SSID, BSSID, and ESSID
     * uses frequencies simultaneously in parallel
     * uses special encoding mechanisms knows as _chipping code_ to allow a receiver to reconstruct data even if parts of the signal were distorted because of interference
     * _chipping code_ is a pre-defined sequence of bits (0s and 1s) that is much higher in frequency than the actual data being transmitted.
+  * **Carrier-Sense Multiple Access (CSMA)**
+    * type of _arbitration_ tech
+    * perform the following steps:
+      i. host listens to the LAN media to determine whether is is in use
+      ii. If the LAN media is not being used, the host transmits
+      iii. the host waits for an ack
+      iv. if no ack after a time period, this host starts over at step i.
+    * does not directly address collisions
+    * if collision occurs then comms is not successful and ack would not be received
+    * data would be retransmitted
+  * **Carrier-Sense Multiple Access w/ Collision Detection (CSMA/CD)**
+    * contention-based
+    * perform the following steps:
+      i. host listens to the LAN media to determine whether is is in use
+      ii. If the LAN media is not being used, the host transmits
+      iii. While transmit he host listens for collisions
+      iv. if collision is detected, the host transmits a jam signal
+      v. if a jam signal is received, all host stop transmitting, each host waits a random period of time and tehn starts ofver
+    * employed in Ethernet
+    * 40 percent loss in potential throughput
+  * **Carrier-Sense Multiple Access w/ Collision Avoidance (CSMA/CA)**
+    * contention-based
+    * perform the following steps:
+      i. host has two connections: inbound (listens)/outbound (transmits data)
+      ii. If the LAN media is not being used, the host requests permission to transmit
+      iii. if permission is not granted after timeout period, the host starts over
+      iv. if permission is grant, host transmits data
+      v. host waits for ack
+      vi. if no ack after a period of time, host starts over
+    * 802.11 wireless is an example
   * [**Orthogonal Frequency-Division Multiplexing (OFDM)**](https://en.wikipedia.org/wiki/Orthogonal_frequency-division_multiplexing#:~:text=OFDM%20is%20a%20frequency%2Ddivision,is%20divided%20into%20multiple%20streams.)
     * employs digital mutlicarrier modulation scheme that allows for a more tighly compacted transmission
     * modulated signals are perpendicular (orthogonal) and thus do not cause interference
@@ -2209,10 +2384,10 @@ The following diagram illustrates the difference between the planes
     * often include mechanisms to detect and manage collisions (CSMA/CD, CSMA/CA)
 * Technologies that avoid/prevent collision
   * **Carrier-Sense Multiple Access (CSMA)**
-    * type of _arbitration_ tech 
+    * type of _arbitration_ tech
     * perform the following steps:
       i. host listens to the LAN media to determine whether is is in use
-      ii. If the LAN media is not being used, the host transmits 
+      ii. If the LAN media is not being used, the host transmits
       iii. the host waits for an ack
       iv. if no ack after a time period, this host starts over at step i.
     * does not directly address collisions

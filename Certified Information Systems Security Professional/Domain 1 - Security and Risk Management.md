@@ -32,7 +32,7 @@ The [Code of Ethics Preamble]( https://www.isc2.org/ethics): _“The safety and 
 * Complaints are only accepted from those who believe they have been injured by the alleged behavior
 * Complaints must be in writing and injury resolution is determined based on:
   * **Any member of the general public** may file a complaint involving **Canon I an/or II**
-  * Only an **employer or someone** with **a contracting relationship with the individual** may file a complain under **Canon II**
+  * Only an **employer or someone** with **a contracting relationship with the individual** may file a complain under **Canon III**
   * Other professionals may file a complaint under Canon IV
     * not limited to Cybersecurity professionals
     * can be anyone certified or licensed as a professional and subscribes to a code of ethics as part of that license/certification is eligible to file a Canon 4 complaint

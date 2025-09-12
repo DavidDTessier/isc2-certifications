@@ -538,13 +538,6 @@
   * analyzes user-based activities on endpoints and other devices
   * builds a profile of each individual's normal activity and highlights deviations from that profile that may indicate a potential compromise
 
-* Intrusion detection and prevention (IDPS)
-
-
-* Log management
-
-
-
 ## 7.3 - Perform Configuration Management (CM) (e.g., provisioning, baselining, automation)
 
 * _**Configuration Management (CM)**_
