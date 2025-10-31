@@ -303,77 +303,95 @@ Learn: Evaluate the outcome of the solution and learn from the experience for fu
 ### Software Development
 
 * **Programming Languages**
-  * [**_Binary code_**](https://en.wikipedia.org/wiki/Binary_code) - what computers understand, a series of 1s and 0s called machine language.
-  * [**_Machine Code / Language_**](https://en.wikipedia.org/wiki/Machine_code)
-    * instructions computers follow consisting of a long series of binary digits
-    * each CPU has its own language
-    * not human-readable
-    * requires hardware-specific knowledge
-  * [**_Assembly Language_**](https://en.wikipedia.org/wiki/Assembly_language)
-    * higher-level alternative to _machine code_
-    * use mnemonics to present the basic instruction set of a CPU
-    * requires hardware-specific knowledge
-    * requires a lot of tedious programming
-      * adding two numbers can take up to six/seven lines of code
+  * **First Generation (1GL)**
+    * [**_Binary code_**](https://en.wikipedia.org/wiki/Binary_code) - what computers understand, a series of 1s and 0s called machine language.
+    * [**_Machine Code / Language_**](https://en.wikipedia.org/wiki/Machine_code)
+      * instructions computers follow consisting of a long series of binary digits
+      * each CPU has its own language
+      * not human-readable
+      * requires hardware-specific knowledge
+  * **Second Generation (2GL)**
+    * [**_Assembly Language_**](https://en.wikipedia.org/wiki/Assembly_language)
+      * higher-level alternative to _machine code_
+      * use mnemonics to present the basic instruction set of a CPU
+      * requires hardware-specific knowledge
+      * requires a lot of tedious programming
+        * adding two numbers can take up to six/seven lines of code
 
-    The following example illustrates a simple hello world application in _Assembly_
+      The following example illustrates a simple hello world application in _Assembly_
 
-      ```code
-          section .data
-          msg db 'Hello, World!', 0xA  ; Message string with a newline character (0xA)
-          len equ $ - msg             ; Length of the message
+        ```code
+            section .data
+            msg db 'Hello, World!', 0xA  ; Message string with a newline character (0xA)
+            len equ $ - msg             ; Length of the message
 
-      section .text
-          global _start               ; Entry point for the program
+        section .text
+            global _start               ; Entry point for the program
 
-      _start:
-          ; System call to write to standard output (sys_write)
-          mov eax, 4                  ; System call number for sys_write
-          mov ebx, 1                  ; File descriptor for standard output (stdout)
-          mov ecx, msg                ; Pointer to the message string
-          mov edx, len                ; Length of the message
-          int 0x80                    ; Call the kernel
+        _start:
+            ; System call to write to standard output (sys_write)
+            mov eax, 4                  ; System call number for sys_write
+            mov ebx, 1                  ; File descriptor for standard output (stdout)
+            mov ecx, msg                ; Pointer to the message string
+            mov edx, len                ; Length of the message
+            int 0x80                    ; Call the kernel
 
-          ; System call to exit the program (sys_exit)
-          mov eax, 1                  ; System call number for sys_exit
-          xor ebx, ebx                ; Exit code 0
-          int 0x80                    ; Call the kernel
-      ```
+            ; System call to exit the program (sys_exit)
+            mov eax, 1                  ; System call number for sys_exit
+            xor ebx, ebx                ; Exit code 0
+            int 0x80                    ; Call the kernel
+        ```
+  * **Third Generation (3GL)**
+    * **_High level languages**_
+      * Python, C++, Ruby, R, Java, Visual Basic
+      * allow programmers to write instructions that are better approximates for human communication.
+      * decreases the length to create applications
+      * some are portable across OS and hardware systems/platforms
+      * Several forms:
+        * **Compiled languages**
+          * C/C++, Java, FORTRAN, COBOL use a compiler to convert the higher level language into an executable that the computer understands (OS/CPU specific)
+          * **_Decompiler_** - convert the binary back to source code
+          * **_Disassember_** - converts the binary back to machine-readable assembly language (an intermediate step during the compilation process)
+          * Both _decompiler_ and _disassmebler_ tools are using in reverse engineering field (also in anti-malware analysis and competitive analysis)
+          * [_Obsfuscation_](https://en.wikipedia.org/wiki/Obfuscation_(software))
+            * practice of creating source or machine code that is intentionally difficult for humans or computers to understand
+            * when decompilers/disassmblers try to retrieve the source code its entire unreadable
+        * **Intermediate Language**
+          * C#, VB source code is compiled into an intermediate language called Microsoft Intermediate Language (MSIL) or Common Intermediate Language (CIL).
+          * Java: Java source code is compiled into Java bytecode.
+          * Requires the use **_Runtime Environment_**'s
+            * allows portable execution of compiled code across different OS
+            * [Java Virtual Machine (JVM)](https://en.wikipedia.org/wiki/Java_virtual_machine)
+              * well known type of runtime
+              * installed on systems and may then rely on that runtime to execute compiled Java Code
+            * [Common Language Runtime (CLR)](https://en.wikipedia.org/wiki/Common_Language_Runtime)
+              * virtual machine component of Microsoft .NET Framework, manages the execution of .NET programs.
+              * leverages [Just-in-time compilation](https://en.wikipedia.org/wiki/Just-in-time_compilation) which converts the managed code (compiled intermediate language code) into machine instructions which are then executed on the CPU of the computer.
+              * **_CoreCLR_**
+                * is the runtime environment for new .NET stack of languages
+        * **_Interpreted Languages_**
+          * Python, R, JavaScript, and VBScript are not compiled and run in their original versions.
+          * uses an _interpreter_ to execute the source code stored on the system
+      * Compiled code is generally less prone to third party manipulation, but it is easier to hide malicious code.
+      * Compiled code is neither more nor less secure than interpreted.
+      * Interpreted code is less prone to the undetected insertion of malicious code by the original programmer because the end user can view the source code in plain view and check for accuracy
+      * Anyone that touches software has the ability to make modifications (good or bad)
+  * **Fourth Generation (4GL)**
+    * more abstract and closer to human language compared to third-generation languages
+    * often focus on reducing programming effort and specificity and are geared towards solving business problems or database querying. 
+    * Examples include 
+      * SQL (Structured Query Language) for database interactions, 
+      * ABAP (Advanced Business Application Programming) used in SAP applications,
+      * Informix-4GL, and Progress 4GL, now known as OpenEdge Advanced Business Language. 
+    * They enable developers to write code with higher-level constructs, and many provide capabilities for rapid application development, report generation, and data manipulation.
+    * SQL, ColdFusion, Progress 4GL, Oracle Reports
+    * Can be mixed with 3GL (python, ruby, C#, Java, etc)
+    * Security Implications:
+       * Less susceptible to traditional coding errors, but security risks may shift to data access, configuration, and the platform's vulnerabilities. 
+  * **Fifth Generation (5GL)**
+    * AI/ML
+    * Natural Language
 
-  * **_High level languages**_
-    * Python, C++, Ruby, R, Java, Visual Basic
-    * allow programmers to write instructions that are better approximates for human communication.
-    * decreases the length to create applications
-    * some are portable across OS and hardware systems/platforms
-    * Several forms:
-      * **Compiled languages**
-        * C/C++, Java, FORTRAN use a compiler to convert the higher level language into an executable that the computer understands (OS/CPU specific)
-        * **_Decompiler_** - convert the binary back to source code
-        * **_Disassember_** - converts the binary back to machine-readable assembly language (an intermediate step during the compilation process)
-        * Both _decompiler_ and _disassmebler_ tools are using in reverse engineering field (also in anti-malware analysis and competitive analysis)
-        * [_Obsfuscation_](https://en.wikipedia.org/wiki/Obfuscation_(software))
-          * practice of creating source or machine code that is intentionally difficult for humans or computers to understand
-          * when decompilers/disassmblers try to retrieve the source code its entire unreadable
-      * **Intermediate Language**
-        * C#, VB source code is compiled into an intermediate language called Microsoft Intermediate Language (MSIL) or Common Intermediate Language (CIL).
-        * Java: Java source code is compiled into Java bytecode.
-        * Requires the use **_Runtime Environment_**'s
-          * allows portable execution of compiled code across different OS
-          * [Java Virtual Machine (JVM)](https://en.wikipedia.org/wiki/Java_virtual_machine)
-            * well known type of runtime
-            * installed on systems and may then rely on that runtime to execute compiled Java Code
-          * [Common Language Runtime (CLR)](https://en.wikipedia.org/wiki/Common_Language_Runtime)
-            * virtual machine component of Microsoft .NET Framework, manages the execution of .NET programs.
-            * leverages [Just-in-time compilation](https://en.wikipedia.org/wiki/Just-in-time_compilation) which converts the managed code (compiled intermediate language code) into machine instructions which are then executed on the CPU of the computer.
-            * **_CoreCLR_**
-              * is the runtime environment for new .NET stack of languages
-      * **_Interpreted Languages_**
-        * Python, R, JavaScript, and VBScript are not compiled and run in their original versions.
-        * uses an _interpreter_ to execute the source code stored on the system
-    * Compiled code is generally less prone to third party manipulation, but it is easier to hide malicious code.
-    * Compiled code is neither more nor less secure than interpreted.
-    * Interpreted code is less prone to the undetected insertion of malicious code by the original programmer because the end user can view the source code in plain view and check for accuracy
-    * Anyone that touches software has the ability to make modifications (good or bad)
 * **Libraries**
   * shared packages that contain reusable code
   * perform a variety of functions (text manipulation to ML)

@@ -23,7 +23,7 @@ The broad spectrum of topics included in the CISSP Common Body of Knowledge (CBK
 | 3. Security Architecture and Engineering  | 13% |
 | 4. Communication and Network Security     | 13% |
 | 5. Identity and Access Management (IAM)   | 13% |
-| 6. Security Assessment and Testing        | 13% |
+| 6. Security Assessment and Testing        | 12% |
 | 7. Security Operations                    | 13% |
 | 8. Software Development Security          | 10% |
 | TOTAL                                     | 100% |

@@ -533,7 +533,7 @@ The following diagram(s) illustrate these conncepts:
 * used to established a relationship between two versions or states of the same object when those two versions/states exist at different points in time
   * dictates the transformation of an object at different points in time
 * addresses covert channels by specifically excluding all undefined flow pathways
-* Bell-La
+* Bell-Lapadula & Biba
 
 ![information flow](./images/information_flow.png)
 
